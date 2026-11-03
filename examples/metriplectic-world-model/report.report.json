@@ -1,0 +1,2465 @@
+{
+  "tool": "pipelinehalt",
+  "version": "0.4.0",
+  "generatedAt": "2026-11-03T21:11:07.007Z",
+  "declarationsScanned": 916,
+  "claims": [
+    {
+      "claim": {
+        "id": "theorem-1",
+        "number": "Theorem 1",
+        "statement": "\\lean{split_exists_unique}\\coined: every bilinear bracket is uniquely an antisymmetric part plus a symmetric part.",
+        "kind": "theorem",
+        "source": "paper/metriplectic-world-model.tex:35",
+        "lean": [
+          "split_exists_unique"
+        ]
+      },
+      "matched": [
+        {
+          "name": "split_exists_unique",
+          "score": 0.2,
+          "explicit": true
+        }
+      ],
+      "mismatches": [],
+      "drift": 0
+    },
+    {
+      "claim": {
+        "id": "theorem-2",
+        "number": "Theorem 2",
+        "statement": "\\lean{canonical_metric_bracket}\\coined: on a real inner product space, a bilinear form $B$ that is symmetric (C1), degenerate along $u$ (C2: $B(u,\\cdot)=0$) and invariant under every linear isometry fixing $u$ equals \\[B(x,y)=c\\,\\ip{\\Pi_u x,\\Pi_u y}.\\] The hypotheses do not mention $\\Pi_u$. \\lean{canonical_metric_bracket_sign}\\coined: if $B(x,x)\\le0$ then $c\\le0$. \\lean{Pi_u_form_symm_degen}\\coined: the forced form satisfies C1, C2.",
+        "kind": "theorem",
+        "source": "paper/metriplectic-world-model.tex:36",
+        "lean": [
+          "canonical_metric_bracket",
+          "canonical_metric_bracket_sign",
+          "Pi_u_form_symm_degen"
+        ]
+      },
+      "matched": [
+        {
+          "name": "canonical_metric_bracket",
+          "score": 0.112,
+          "explicit": true
+        },
+        {
+          "name": "canonical_metric_bracket_sign",
+          "score": 0.109,
+          "explicit": true
+        },
+        {
+          "name": "Pi_u_form_symm_degen",
+          "score": 0.146,
+          "explicit": true
+        }
+      ],
+      "mismatches": [],
+      "drift": 0
+    },
+    {
+      "claim": {
+        "id": "eq:ceiling",
+        "number": "Theorem 3",
+        "statement": "\\lean{uniform_ceiling}\\coined: if $M'\\le CM^2-\\kappa M^3$ and $\\kappa>0$, then \\begin{equation}M(t)\\le\\max\\bigl(M(0),\\max(C/\\kappa,0)\\bigr)\\qquad(t\\ge0).\\end{equation} Also \\lean{absorbing}, \\lean{ceiling_antitone_kappa}, \\lean{kappa_zero_no_ceiling}\\coined{} (at $\\kappa=0$, $1/(1-t)$ satisfies $M'\\le M^2$ and blows up).",
+        "kind": "theorem",
+        "source": "paper/metriplectic-world-model.tex:40",
+        "lean": [
+          "uniform_ceiling",
+          "absorbing",
+          "ceiling_antitone_kappa",
+          "kappa_zero_no_ceiling"
+        ]
+      },
+      "matched": [
+        {
+          "name": "uniform_ceiling",
+          "score": 0.179,
+          "explicit": true
+        },
+        {
+          "name": "absorbing",
+          "score": 0.223,
+          "explicit": true
+        },
+        {
+          "name": "ceiling_antitone_kappa",
+          "score": 0.117,
+          "explicit": true
+        },
+        {
+          "name": "kappa_zero_no_ceiling",
+          "score": 0.229,
+          "explicit": true
+        }
+      ],
+      "mismatches": [],
+      "drift": 0
+    },
+    {
+      "claim": {
+        "id": "theorem-4",
+        "number": "Theorem 4",
+        "statement": "\\lean{maxpoint_rate_logLoss}\\coined: under \\lean{EnergyIdentity}, \\lean{StretchingLogLoss}, \\lean{ViscousAtMax}, \\lean{TetherFeedback}, \\lean{CrossControlled}, \\[y'\\le\\Bigl(C_1+\\tfrac{\\kappa}{4}+\\tfrac{4C_2^2}{\\kappa}\\Bigr)y^2-\\Bigl(\\tfrac{\\kappa}{4}-C_{\\mathrm{abs}}\\Bigr)y^3,\\] so with \\lean{uniform_ceiling} a uniform ceiling follows whenever $\\kappa>4C_{\\mathrm{abs}}$ (Young absorption at $\\varepsilon=\\kappa/4$).",
+        "kind": "theorem",
+        "source": "paper/metriplectic-world-model.tex:43",
+        "lean": [
+          "maxpoint_rate_logLoss",
+          "EnergyIdentity",
+          "StretchingLogLoss",
+          "ViscousAtMax",
+          "TetherFeedback",
+          "CrossControlled",
+          "uniform_ceiling"
+        ]
+      },
+      "matched": [
+        {
+          "name": "maxpoint_rate_logLoss",
+          "score": 0.317,
+          "explicit": true
+        },
+        {
+          "name": "EnergyIdentity",
+          "score": 0.133,
+          "explicit": true
+        },
+        {
+          "name": "StretchingLogLoss",
+          "score": 0.12,
+          "explicit": true
+        },
+        {
+          "name": "ViscousAtMax",
+          "score": 0.079,
+          "explicit": true
+        },
+        {
+          "name": "TetherFeedback",
+          "score": 0.121,
+          "explicit": true
+        },
+        {
+          "name": "CrossControlled",
+          "score": 0.158,
+          "explicit": true
+        },
+        {
+          "name": "uniform_ceiling",
+          "score": 0.185,
+          "explicit": true
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "6e4625e44d0d",
+          "claimId": "theorem-4",
+          "kind": "narrower",
+          "lean": "uniform_ceiling",
+          "key": "bound:t>=0",
+          "detail": "`uniform_ceiling` restricts t ≥ 0; the claim states no such restriction.",
+          "question": "Paper claim Theorem 4 (theorem-4) states: “\\lean{maxpoint_rate_logLoss}\\coined: under \\lean{EnergyIdentity}, \\lean{StretchingLogLoss}, \\lean{ViscousAtMax}, \\lean{TetherFeedback}, \\lean{CrossControlled}, \\[y'\\le\\Bigl(C_1+\\tfrac{\\kappa}{4}+\\tfr…”. Lean theorem `uniform_ceiling` assumes `∀ t, 0 ≤ t → HasDerivAt M (M' t) t` (restricting t ≥ 0), which the claim does not state. Is the restricted domain intentional?",
+          "weight": 0.6
+        },
+        {
+          "id": "6e4625e44d0d",
+          "claimId": "theorem-4",
+          "kind": "narrower",
+          "lean": "uniform_ceiling",
+          "key": "bound:t>=0",
+          "detail": "`uniform_ceiling` restricts t ≥ 0; the claim states no such restriction.",
+          "question": "Paper claim Theorem 4 (theorem-4) states: “\\lean{maxpoint_rate_logLoss}\\coined: under \\lean{EnergyIdentity}, \\lean{StretchingLogLoss}, \\lean{ViscousAtMax}, \\lean{TetherFeedback}, \\lean{CrossControlled}, \\[y'\\le\\Bigl(C_1+\\tfrac{\\kappa}{4}+\\tfr…”. Lean theorem `uniform_ceiling` assumes `∀ t, 0 ≤ t → M' t ≤ C * M t ^ 2 - κ * M t ^ 3` (restricting t ≥ 0), which the claim does not state. Is the restricted domain intentional?",
+          "weight": 0.6
+        },
+        {
+          "id": "6e4625e44d0d",
+          "claimId": "theorem-4",
+          "kind": "narrower",
+          "lean": "uniform_ceiling",
+          "key": "bound:t>=0",
+          "detail": "`uniform_ceiling` restricts t ≥ 0; the claim states no such restriction.",
+          "question": "Paper claim Theorem 4 (theorem-4) states: “\\lean{maxpoint_rate_logLoss}\\coined: under \\lean{EnergyIdentity}, \\lean{StretchingLogLoss}, \\lean{ViscousAtMax}, \\lean{TetherFeedback}, \\lean{CrossControlled}, \\[y'\\le\\Bigl(C_1+\\tfrac{\\kappa}{4}+\\tfr…”. Lean theorem `uniform_ceiling` assumes `0 ≤ t` (restricting t ≥ 0), which the claim does not state. Is the restricted domain intentional?",
+          "weight": 0.6
+        }
+      ],
+      "drift": 0.936
+    },
+    {
+      "claim": {
+        "id": "theorem-5",
+        "number": "Theorem 5",
+        "statement": "\\lean{scalarLaplacian_newtonPotential_eq}\\coined: for $g\\in C^2_c(\\mathbb{R}^3)$ and $N(y)=1/|y|$, $\\Delta(N\\star g)(x)=-4\\pi g(x)$ for every $x$.",
+        "kind": "theorem",
+        "source": "paper/metriplectic-world-model.tex:56",
+        "lean": [
+          "scalarLaplacian_newtonPotential_eq"
+        ]
+      },
+      "matched": [
+        {
+          "name": "scalarLaplacian_newtonPotential_eq",
+          "score": 0.311,
+          "explicit": true
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "f40f0a514cb3",
+          "claimId": "theorem-5",
+          "kind": "conditional",
+          "lean": "scalarLaplacian_newtonPotential_eq",
+          "key": "hyp:ContDiff ℝ 2 g",
+          "detail": "`scalarLaplacian_newtonPotential_eq` assumes `hg : ContDiff ℝ 2 g`, not stated in the claim.",
+          "question": "Paper claim Theorem 5 (theorem-5) states: “\\lean{scalarLaplacian_newtonPotential_eq}\\coined: for $g\\in C^2_c(\\mathbb{R}^3)$ and $N(y)=1/|y|$, $\\Delta(N\\star g)(x)=-4\\pi g(x)$ for every $x$.”. Lean theorem `scalarLaplacian_newtonPotential_eq` assumes `hg : ContDiff ℝ 2 g`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "9348152d5d3e",
+          "claimId": "theorem-5",
+          "kind": "conditional",
+          "lean": "scalarLaplacian_newtonPotential_eq",
+          "key": "hyp:HasCompactSupport g",
+          "detail": "`scalarLaplacian_newtonPotential_eq` assumes `hc : HasCompactSupport g`, not stated in the claim.",
+          "question": "Paper claim Theorem 5 (theorem-5) states: “\\lean{scalarLaplacian_newtonPotential_eq}\\coined: for $g\\in C^2_c(\\mathbb{R}^3)$ and $N(y)=1/|y|$, $\\Delta(N\\star g)(x)=-4\\pi g(x)$ for every $x$.”. Lean theorem `scalarLaplacian_newtonPotential_eq` assumes `hc : HasCompactSupport g`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        }
+      ],
+      "drift": 0.75
+    },
+    {
+      "claim": {
+        "id": "theorem-6",
+        "number": "Theorem 6",
+        "statement": "\\lean{newtonPotential_deriv_eq}\\coined: for $h\\in C^1_c$, $N\\star\\partial_jh=-\\int G_j(t)\\,h(x-t)\\,dt$. (Regularized identity \\lean{regNewton_conv_deriv}, then $\\varepsilon\\to0$ on both sides; the right side is dominated by $|t|^{-2}|h|$.)",
+        "kind": "theorem",
+        "source": "paper/metriplectic-world-model.tex:59",
+        "lean": [
+          "newtonPotential_deriv_eq",
+          "regNewton_conv_deriv"
+        ]
+      },
+      "matched": [
+        {
+          "name": "newtonPotential_deriv_eq",
+          "score": 0.154,
+          "explicit": true
+        },
+        {
+          "name": "regNewton_conv_deriv",
+          "score": 0.219,
+          "explicit": true
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "eb0ac7eb4dd0",
+          "claimId": "theorem-6",
+          "kind": "conditional",
+          "lean": "newtonPotential_deriv_eq",
+          "key": "hyp:ContDiff ℝ 1 h",
+          "detail": "`newtonPotential_deriv_eq` assumes `hh : ContDiff ℝ 1 h`, not stated in the claim.",
+          "question": "Paper claim Theorem 6 (theorem-6) states: “\\lean{newtonPotential_deriv_eq}\\coined: for $h\\in C^1_c$, $N\\star\\partial_jh=-\\int G_j(t)\\,h(x-t)\\,dt$. (Regularized identity \\lean{regNewton_conv_deriv}, then $\\varepsilon\\to0$ on both sides; the ri…”. Lean theorem `newtonPotential_deriv_eq` assumes `hh : ContDiff ℝ 1 h`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "274384ae54fb",
+          "claimId": "theorem-6",
+          "kind": "conditional",
+          "lean": "newtonPotential_deriv_eq",
+          "key": "hyp:HasCompactSupport h",
+          "detail": "`newtonPotential_deriv_eq` assumes `hc : HasCompactSupport h`, not stated in the claim.",
+          "question": "Paper claim Theorem 6 (theorem-6) states: “\\lean{newtonPotential_deriv_eq}\\coined: for $h\\in C^1_c$, $N\\star\\partial_jh=-\\int G_j(t)\\,h(x-t)\\,dt$. (Regularized identity \\lean{regNewton_conv_deriv}, then $\\varepsilon\\to0$ on both sides; the ri…”. Lean theorem `newtonPotential_deriv_eq` assumes `hc : HasCompactSupport h`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "169940891af5",
+          "claimId": "theorem-6",
+          "kind": "conditional",
+          "lean": "regNewton_conv_deriv",
+          "key": "hyp:ContDiff ℝ 1 h",
+          "detail": "`regNewton_conv_deriv` assumes `hh : ContDiff ℝ 1 h`, not stated in the claim.",
+          "question": "Paper claim Theorem 6 (theorem-6) states: “\\lean{newtonPotential_deriv_eq}\\coined: for $h\\in C^1_c$, $N\\star\\partial_jh=-\\int G_j(t)\\,h(x-t)\\,dt$. (Regularized identity \\lean{regNewton_conv_deriv}, then $\\varepsilon\\to0$ on both sides; the ri…”. Lean theorem `regNewton_conv_deriv` assumes `hh : ContDiff ℝ 1 h`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "e54dae77fd01",
+          "claimId": "theorem-6",
+          "kind": "conditional",
+          "lean": "regNewton_conv_deriv",
+          "key": "hyp:HasCompactSupport h",
+          "detail": "`regNewton_conv_deriv` assumes `hc : HasCompactSupport h`, not stated in the claim.",
+          "question": "Paper claim Theorem 6 (theorem-6) states: “\\lean{newtonPotential_deriv_eq}\\coined: for $h\\in C^1_c$, $N\\star\\partial_jh=-\\int G_j(t)\\,h(x-t)\\,dt$. (Regularized identity \\lean{regNewton_conv_deriv}, then $\\varepsilon\\to0$ on both sides; the ri…”. Lean theorem `regNewton_conv_deriv` assumes `hc : HasCompactSupport h`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        }
+      ],
+      "drift": 0.938
+    },
+    {
+      "claim": {
+        "id": "theorem-7",
+        "number": "Theorem 7",
+        "statement": "\\lean{biotSavart_eq_curl_newtonVec}\\coined: for \\lean{IsTestOrbit}~$\\omega$, $\\mathrm{BiotSavart}\\,\\omega=(4\\pi)^{-1}\\operatorname{curl}(N\\star\\omega)$ pointwise, $N\\star\\omega$ taken componentwise (\\lean{newtonVec}).",
+        "kind": "theorem",
+        "source": "paper/metriplectic-world-model.tex:60",
+        "title": "Step 5",
+        "lean": [
+          "biotSavart_eq_curl_newtonVec",
+          "IsTestOrbit",
+          "newtonVec"
+        ]
+      },
+      "matched": [
+        {
+          "name": "biotSavart_eq_curl_newtonVec",
+          "score": 0.481,
+          "explicit": true
+        },
+        {
+          "name": "IsTestOrbit",
+          "score": 0.092,
+          "explicit": true
+        },
+        {
+          "name": "newtonVec",
+          "score": 0.145,
+          "explicit": true
+        }
+      ],
+      "mismatches": [],
+      "drift": 0
+    },
+    {
+      "claim": {
+        "id": "theorem-8",
+        "number": "Theorem 8",
+        "statement": "\\lean{curl_curl_newtonVec}\\coined: for \\lean{IsTestOrbit}~$\\omega$, $\\operatorname{curl}\\operatorname{curl}(N\\star\\omega)=4\\pi\\omega$, using symmetry of second derivatives (\\lean{fderiv_fderiv_swap}), $\\operatorname{div}(N\\star\\omega)=N\\star\\operatorname{div}\\omega=0$, and the step-3 theorem.",
+        "kind": "theorem",
+        "source": "paper/metriplectic-world-model.tex:61",
+        "title": "Step 4",
+        "lean": [
+          "curl_curl_newtonVec",
+          "IsTestOrbit",
+          "fderiv_fderiv_swap"
+        ]
+      },
+      "matched": [
+        {
+          "name": "curl_curl_newtonVec",
+          "score": 0.373,
+          "explicit": true
+        },
+        {
+          "name": "IsTestOrbit",
+          "score": 0.092,
+          "explicit": true
+        },
+        {
+          "name": "fderiv_fderiv_swap",
+          "score": 0.097,
+          "explicit": true
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "e5b5c43d2a7e",
+          "claimId": "theorem-8",
+          "kind": "conditional",
+          "lean": "fderiv_fderiv_swap",
+          "key": "hyp:ContDiff ℝ 2 f",
+          "detail": "`fderiv_fderiv_swap` assumes `hf : ContDiff ℝ 2 f`, not stated in the claim.",
+          "question": "Paper claim Theorem 8 (theorem-8) states: “\\lean{curl_curl_newtonVec}\\coined: for \\lean{IsTestOrbit}~$\\omega$, $\\operatorname{curl}\\operatorname{curl}(N\\star\\omega)=4\\pi\\omega$, using symmetry of second derivatives (\\lean{fderiv_fderiv_swap})…”. Lean theorem `fderiv_fderiv_swap` assumes `hf : ContDiff ℝ 2 f`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        }
+      ],
+      "drift": 0.5
+    },
+    {
+      "claim": {
+        "id": "theorem-9",
+        "number": "Theorem 9",
+        "statement": "\\lean{curlBiotSavartTest}\\coined: \\lean{CurlBiotSavartTest} holds, i.e.\\ $\\operatorname{curl}\\mathrm{BiotSavart}\\,\\omega=\\omega$ for every smooth, compactly supported, divergence-free $\\omega$. Consequently \\lean{helicity_casimir_test_closed}\\coined: helicity is a Casimir of the Arnold bracket at such $\\omega$, given the explicit argument $D\\,S=u$.",
+        "kind": "theorem",
+        "source": "paper/metriplectic-world-model.tex:62",
+        "lean": [
+          "curlBiotSavartTest",
+          "CurlBiotSavartTest",
+          "helicity_casimir_test_closed"
+        ]
+      },
+      "matched": [
+        {
+          "name": "curlBiotSavartTest",
+          "score": 0.39,
+          "explicit": true
+        },
+        {
+          "name": "CurlBiotSavartTest",
+          "score": 0.249,
+          "explicit": true
+        },
+        {
+          "name": "helicity_casimir_test_closed",
+          "score": 0.31,
+          "explicit": true
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "583b621a90ca",
+          "claimId": "theorem-9",
+          "kind": "conditional",
+          "lean": "helicity_casimir_test_closed",
+          "key": "hyp:D S = velocity_from_vorticity ω",
+          "detail": "`helicity_casimir_test_closed` assumes `hD : D S = velocity_from_vorticity ω`, not stated in the claim.",
+          "question": "Paper claim Theorem 9 (theorem-9) states: “\\lean{curlBiotSavartTest}\\coined: \\lean{CurlBiotSavartTest} holds, i.e.\\ $\\operatorname{curl}\\mathrm{BiotSavart}\\,\\omega=\\omega$ for every smooth, compactly supported, divergence-free $\\omega$. Conse…”. Lean theorem `helicity_casimir_test_closed` assumes `hD : D S = velocity_from_vorticity ω`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        }
+      ],
+      "drift": 0.5
+    },
+    {
+      "claim": {
+        "id": "theorem-10",
+        "number": "Theorem 10",
+        "statement": "\\lean{biotSavart_selfAdjoint}\\coined: for continuous compactly supported $a,b$, $\\int\\langle Ba,b\\rangle=\\int\\langle Bb,a\\rangle$ (Fubini with the majorant $|x-y|^{-2}|a(y)||b(x)|$, kernel symmetry, triple product).",
+        "kind": "theorem",
+        "source": "paper/metriplectic-world-model.tex:66",
+        "lean": [
+          "biotSavart_selfAdjoint"
+        ]
+      },
+      "matched": [
+        {
+          "name": "biotSavart_selfAdjoint",
+          "score": 0.269,
+          "explicit": true
+        }
+      ],
+      "mismatches": [],
+      "drift": 0
+    },
+    {
+      "claim": {
+        "id": "theorem-11",
+        "number": "Theorem 11",
+        "statement": "\\lean{helicity_gateaux}\\coined: with $\\mathcal H(\\omega)=\\int\\langle B\\omega,\\omega\\rangle$ (\\lean{helicity}\\coined), $2B\\omega$ is a G\\^ateaux representative of $\\mathcal H$ on the test class.",
+        "kind": "theorem",
+        "source": "paper/metriplectic-world-model.tex:67",
+        "lean": [
+          "helicity_gateaux",
+          "helicity"
+        ]
+      },
+      "matched": [
+        {
+          "name": "helicity_gateaux",
+          "score": 0.304,
+          "explicit": true
+        },
+        {
+          "name": "helicity",
+          "score": 0.124,
+          "explicit": true
+        }
+      ],
+      "mismatches": [],
+      "drift": 0
+    },
+    {
+      "claim": {
+        "id": "theorem-12",
+        "number": "Theorem 12",
+        "statement": "\\lean{curl_eq_of_isGateauxRepOn}\\coined: two $C^1$ representatives of the same functional on the test class have equal curl. Hence \\lean{helicity_casimir_of_rep}\\coined: if $D\\,S$ is any $C^1$ representative of $\\mathcal H$, then $\\operatorname{curl} D\\,S=2\\omega$ and $S$ is a Casimir of the Arnold bracket \\lean{ArnoldBracketOf}; no hypothesis on the value of $D\\,S$.",
+        "kind": "theorem",
+        "source": "paper/metriplectic-world-model.tex:68",
+        "lean": [
+          "curl_eq_of_isGateauxRepOn",
+          "helicity_casimir_of_rep",
+          "ArnoldBracketOf"
+        ]
+      },
+      "matched": [
+        {
+          "name": "curl_eq_of_isGateauxRepOn",
+          "score": 0.315,
+          "explicit": true
+        },
+        {
+          "name": "helicity_casimir_of_rep",
+          "score": 0.378,
+          "explicit": true
+        },
+        {
+          "name": "ArnoldBracketOf",
+          "score": 0.121,
+          "explicit": true
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "512b196b0962",
+          "claimId": "theorem-12",
+          "kind": "conditional",
+          "lean": "curl_eq_of_isGateauxRepOn",
+          "key": "hyp:∀ c, ContDiff ℝ 1 (fun y => d₁ y c)",
+          "detail": "`curl_eq_of_isGateauxRepOn` assumes `h₁ : ∀ c, ContDiff ℝ 1 (fun y => d₁ y c)`, not stated in the claim.",
+          "question": "Paper claim Theorem 12 (theorem-12) states: “\\lean{curl_eq_of_isGateauxRepOn}\\coined: two $C^1$ representatives of the same functional on the test class have equal curl. Hence \\lean{helicity_casimir_of_rep}\\coined: if $D\\,S$ is any $C^1$ repres…”. Lean theorem `curl_eq_of_isGateauxRepOn` assumes `h₁ : ∀ c, ContDiff ℝ 1 (fun y => d₁ y c)`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "4c63ce7eb397",
+          "claimId": "theorem-12",
+          "kind": "conditional",
+          "lean": "curl_eq_of_isGateauxRepOn",
+          "key": "hyp:∀ c, ContDiff ℝ 1 (fun y => d₂ y c)",
+          "detail": "`curl_eq_of_isGateauxRepOn` assumes `h₂ : ∀ c, ContDiff ℝ 1 (fun y => d₂ y c)`, not stated in the claim.",
+          "question": "Paper claim Theorem 12 (theorem-12) states: “\\lean{curl_eq_of_isGateauxRepOn}\\coined: two $C^1$ representatives of the same functional on the test class have equal curl. Hence \\lean{helicity_casimir_of_rep}\\coined: if $D\\,S$ is any $C^1$ repres…”. Lean theorem `curl_eq_of_isGateauxRepOn` assumes `h₂ : ∀ c, ContDiff ℝ 1 (fun y => d₂ y c)`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "a5b4409f11d8",
+          "claimId": "theorem-12",
+          "kind": "conditional",
+          "lean": "helicity_casimir_of_rep",
+          "key": "hyp:∀ c, ContDiff ℝ 1 (fun y => D S y c)",
+          "detail": "`helicity_casimir_of_rep` assumes `hC : ∀ c, ContDiff ℝ 1 (fun y => D S y c)`, not stated in the claim.",
+          "question": "Paper claim Theorem 12 (theorem-12) states: “\\lean{curl_eq_of_isGateauxRepOn}\\coined: two $C^1$ representatives of the same functional on the test class have equal curl. Hence \\lean{helicity_casimir_of_rep}\\coined: if $D\\,S$ is any $C^1$ repres…”. Lean theorem `helicity_casimir_of_rep` assumes `hC : ∀ c, ContDiff ℝ 1 (fun y => D S y c)`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        }
+      ],
+      "drift": 0.875
+    },
+    {
+      "claim": {
+        "id": "theorem-13",
+        "number": "Theorem 13",
+        "statement": "\\lean{streamFunctionRepModGradOn_of_exists}\\coined: \\lean{StreamFunctionRepModGradOn} follows from one $C^2$ kinetic-energy representative $\\psi$ with $\\operatorname{curl}\\psi=u$ and the Poincar\\'e lemma \\lean{CurlFreeIsGradient}\\coined; the curl half of uniqueness is \\lean{kineticEnergy_reps_curl_eq}\\coined.",
+        "kind": "theorem",
+        "source": "paper/metriplectic-world-model.tex:69",
+        "lean": [
+          "streamFunctionRepModGradOn_of_exists",
+          "StreamFunctionRepModGradOn",
+          "CurlFreeIsGradient",
+          "kineticEnergy_reps_curl_eq"
+        ]
+      },
+      "matched": [
+        {
+          "name": "streamFunctionRepModGradOn_of_exists",
+          "score": 0.519,
+          "explicit": true
+        },
+        {
+          "name": "StreamFunctionRepModGradOn",
+          "score": 0.232,
+          "explicit": true
+        },
+        {
+          "name": "CurlFreeIsGradient",
+          "score": 0.246,
+          "explicit": true
+        },
+        {
+          "name": "kineticEnergy_reps_curl_eq",
+          "score": 0.262,
+          "explicit": true
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "1a28658ca9b6",
+          "claimId": "theorem-13",
+          "kind": "conditional",
+          "lean": "streamFunctionRepModGradOn_of_exists",
+          "key": "hyp:IsTestOrbit ω",
+          "detail": "`streamFunctionRepModGradOn_of_exists` assumes `hω : IsTestOrbit ω`, not stated in the claim.",
+          "question": "Paper claim Theorem 13 (theorem-13) states: “\\lean{streamFunctionRepModGradOn_of_exists}\\coined: \\lean{StreamFunctionRepModGradOn} follows from one $C^2$ kinetic-energy representative $\\psi$ with $\\operatorname{curl}\\psi=u$ and the Poincar\\'e l…”. Lean theorem `streamFunctionRepModGradOn_of_exists` assumes `hω : IsTestOrbit ω`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "ac3fa8351710",
+          "claimId": "theorem-13",
+          "kind": "conditional",
+          "lean": "streamFunctionRepModGradOn_of_exists",
+          "key": "hyp:∀ c, ContDiff ℝ 2 (fun y => ψ y c)",
+          "detail": "`streamFunctionRepModGradOn_of_exists` assumes `hψ : ∀ c, ContDiff ℝ 2 (fun y => ψ y c)`, not stated in the claim.",
+          "question": "Paper claim Theorem 13 (theorem-13) states: “\\lean{streamFunctionRepModGradOn_of_exists}\\coined: \\lean{StreamFunctionRepModGradOn} follows from one $C^2$ kinetic-energy representative $\\psi$ with $\\operatorname{curl}\\psi=u$ and the Poincar\\'e l…”. Lean theorem `streamFunctionRepModGradOn_of_exists` assumes `hψ : ∀ c, ContDiff ℝ 2 (fun y => ψ y c)`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "8226d0bd11e0",
+          "claimId": "theorem-13",
+          "kind": "conditional",
+          "lean": "StreamFunctionRepModGradOn",
+          "key": "hyp:IsTestOrbit ω",
+          "detail": "`StreamFunctionRepModGradOn` assumes `hω : IsTestOrbit ω`, not stated in the claim.",
+          "question": "Paper claim Theorem 13 (theorem-13) states: “\\lean{streamFunctionRepModGradOn_of_exists}\\coined: \\lean{StreamFunctionRepModGradOn} follows from one $C^2$ kinetic-energy representative $\\psi$ with $\\operatorname{curl}\\psi=u$ and the Poincar\\'e l…”. Lean def `StreamFunctionRepModGradOn` assumes `hω : IsTestOrbit ω`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "11344663a8b8",
+          "claimId": "theorem-13",
+          "kind": "conditional",
+          "lean": "kineticEnergy_reps_curl_eq",
+          "key": "hyp:IsTestOrbit ω",
+          "detail": "`kineticEnergy_reps_curl_eq` assumes `hω : IsTestOrbit ω`, not stated in the claim.",
+          "question": "Paper claim Theorem 13 (theorem-13) states: “\\lean{streamFunctionRepModGradOn_of_exists}\\coined: \\lean{StreamFunctionRepModGradOn} follows from one $C^2$ kinetic-energy representative $\\psi$ with $\\operatorname{curl}\\psi=u$ and the Poincar\\'e l…”. Lean theorem `kineticEnergy_reps_curl_eq` assumes `hω : IsTestOrbit ω`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "53029f75ad0d",
+          "claimId": "theorem-13",
+          "kind": "conditional",
+          "lean": "kineticEnergy_reps_curl_eq",
+          "key": "hyp:∀ c, ContDiff ℝ 1 (fun y => d₁ y c)",
+          "detail": "`kineticEnergy_reps_curl_eq` assumes `h₁ : ∀ c, ContDiff ℝ 1 (fun y => d₁ y c)`, not stated in the claim.",
+          "question": "Paper claim Theorem 13 (theorem-13) states: “\\lean{streamFunctionRepModGradOn_of_exists}\\coined: \\lean{StreamFunctionRepModGradOn} follows from one $C^2$ kinetic-energy representative $\\psi$ with $\\operatorname{curl}\\psi=u$ and the Poincar\\'e l…”. Lean theorem `kineticEnergy_reps_curl_eq` assumes `h₁ : ∀ c, ContDiff ℝ 1 (fun y => d₁ y c)`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "34468ba2e188",
+          "claimId": "theorem-13",
+          "kind": "conditional",
+          "lean": "kineticEnergy_reps_curl_eq",
+          "key": "hyp:∀ c, ContDiff ℝ 1 (fun y => d₂ y c)",
+          "detail": "`kineticEnergy_reps_curl_eq` assumes `h₂ : ∀ c, ContDiff ℝ 1 (fun y => d₂ y c)`, not stated in the claim.",
+          "question": "Paper claim Theorem 13 (theorem-13) states: “\\lean{streamFunctionRepModGradOn_of_exists}\\coined: \\lean{StreamFunctionRepModGradOn} follows from one $C^2$ kinetic-energy representative $\\psi$ with $\\operatorname{curl}\\psi=u$ and the Poincar\\'e l…”. Lean theorem `kineticEnergy_reps_curl_eq` assumes `h₂ : ∀ c, ContDiff ℝ 1 (fun y => d₂ y c)`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        }
+      ],
+      "drift": 0.984
+    },
+    {
+      "claim": {
+        "id": "theorem-14",
+        "number": "Theorem 14",
+        "statement": "\\lean{curlFreeIsGradient}\\coined: every $C^2$ curl-free field on $\\mathbb{R}^3$ is the gradient of a $C^2$ function.",
+        "kind": "theorem",
+        "source": "paper/metriplectic-world-model.tex:71",
+        "lean": [
+          "curlFreeIsGradient"
+        ]
+      },
+      "matched": [
+        {
+          "name": "curlFreeIsGradient",
+          "score": 0.277,
+          "explicit": true
+        }
+      ],
+      "mismatches": [],
+      "drift": 0
+    },
+    {
+      "claim": {
+        "id": "theorem-15",
+        "number": "Theorem 15",
+        "statement": "\\lean{decays_newtonPotential}\\coined: if $g$ is continuous, compactly supported and $\\int g=0$, then $|N\\star g(x)|\\le C(1+|x|)^{-2}$. Derivatives of $C^1_c$ functions and the coordinates of a divergence-free test field have mean zero (\\lean{IsTestOrbit.integral_coord_eq_zero}\\coined).",
+        "kind": "theorem",
+        "source": "paper/metriplectic-world-model.tex:72",
+        "lean": [
+          "decays_newtonPotential",
+          "integral_coord_eq_zero"
+        ]
+      },
+      "matched": [
+        {
+          "name": "decays_newtonPotential",
+          "score": 0.241,
+          "explicit": true
+        },
+        {
+          "name": "IsTestOrbit.integral_coord_eq_zero",
+          "score": 0.328,
+          "explicit": true
+        }
+      ],
+      "mismatches": [],
+      "drift": 0
+    },
+    {
+      "claim": {
+        "id": "theorem-16",
+        "number": "Theorem 16",
+        "statement": "\\lean{integral_pairing_curl_symm}\\coined: \\[\\int\\ip{a,\\curl b}\\dd x=\\int\\ip{\\curl a,b}\\dd x\\]for fields with decaying coordinates and first derivatives. Hence, with $\\psi=(4\\pi)^{-1}N\\star\\omega$ (\\lean{keStream}\\coined), $\\int\\langle B\\omega,B\\varepsilon\\rangle=\\int\\langle\\psi,\\varepsilon\\rangle$, so $\\psi$ is a $C^\\infty$ G\\^ateaux representative of the kinetic energy with $\\operatorname{curl}\\psi=u$ (\\lean{keStream_isGateauxRep}\\coined).",
+        "kind": "theorem",
+        "source": "paper/metriplectic-world-model.tex:73",
+        "lean": [
+          "integral_pairing_curl_symm",
+          "keStream",
+          "keStream_isGateauxRep"
+        ]
+      },
+      "matched": [
+        {
+          "name": "integral_pairing_curl_symm",
+          "score": 0.071,
+          "explicit": true
+        },
+        {
+          "name": "keStream",
+          "score": 0.143,
+          "explicit": true
+        },
+        {
+          "name": "keStream_isGateauxRep",
+          "score": 0.247,
+          "explicit": true
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "f80402535217",
+          "claimId": "theorem-16",
+          "kind": "conditional",
+          "lean": "integral_pairing_curl_symm",
+          "key": "hyp:∀ i, DGood (fun x => a x i)",
+          "detail": "`integral_pairing_curl_symm` assumes `ha : ∀ i, DGood (fun x => a x i)`, not stated in the claim.",
+          "question": "Paper claim Theorem 16 (theorem-16) states: “\\lean{integral_pairing_curl_symm}\\coined: \\[\\int\\ip{a,\\curl b}\\dd x=\\int\\ip{\\curl a,b}\\dd x\\]for fields with decaying coordinates and first derivatives. Hence, with $\\psi=(4\\pi)^{-1}N\\star\\omega$ (\\l…”. Lean theorem `integral_pairing_curl_symm` assumes `ha : ∀ i, DGood (fun x => a x i)`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "8a3f918d1d3e",
+          "claimId": "theorem-16",
+          "kind": "conditional",
+          "lean": "integral_pairing_curl_symm",
+          "key": "hyp:∀ i, DGood (fun x => b x i)",
+          "detail": "`integral_pairing_curl_symm` assumes `hb : ∀ i, DGood (fun x => b x i)`, not stated in the claim.",
+          "question": "Paper claim Theorem 16 (theorem-16) states: “\\lean{integral_pairing_curl_symm}\\coined: \\[\\int\\ip{a,\\curl b}\\dd x=\\int\\ip{\\curl a,b}\\dd x\\]for fields with decaying coordinates and first derivatives. Hence, with $\\psi=(4\\pi)^{-1}N\\star\\omega$ (\\l…”. Lean theorem `integral_pairing_curl_symm` assumes `hb : ∀ i, DGood (fun x => b x i)`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "8ba8604df4e8",
+          "claimId": "theorem-16",
+          "kind": "conditional",
+          "lean": "keStream_isGateauxRep",
+          "key": "hyp:IsTestOrbit ω",
+          "detail": "`keStream_isGateauxRep` assumes `hω : IsTestOrbit ω`, not stated in the claim.",
+          "question": "Paper claim Theorem 16 (theorem-16) states: “\\lean{integral_pairing_curl_symm}\\coined: \\[\\int\\ip{a,\\curl b}\\dd x=\\int\\ip{\\curl a,b}\\dd x\\]for fields with decaying coordinates and first derivatives. Hence, with $\\psi=(4\\pi)^{-1}N\\star\\omega$ (\\l…”. Lean theorem `keStream_isGateauxRep` assumes `hω : IsTestOrbit ω`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        }
+      ],
+      "drift": 0.875
+    },
+    {
+      "claim": {
+        "id": "theorem-17",
+        "number": "Theorem 17",
+        "statement": "\\lean{streamFunctionRepModGradOn}\\coined: \\lean{StreamFunctionRepModGradOn} holds unconditionally on the test class.",
+        "kind": "theorem",
+        "source": "paper/metriplectic-world-model.tex:74",
+        "lean": [
+          "streamFunctionRepModGradOn",
+          "StreamFunctionRepModGradOn"
+        ]
+      },
+      "matched": [
+        {
+          "name": "streamFunctionRepModGradOn",
+          "score": 0.756,
+          "explicit": true
+        },
+        {
+          "name": "StreamFunctionRepModGradOn",
+          "score": 0.423,
+          "explicit": true
+        }
+      ],
+      "mismatches": [],
+      "drift": 0
+    },
+    {
+      "claim": {
+        "id": "theorem-18",
+        "number": "Theorem 18",
+        "statement": "\\lean{danskin_upper_dini}\\coined: if $f,\\partial_t f$ are jointly continuous on $\\mathbb{R}\\times K$, $K$ compact, then for some maximizer $x_\\star$ of $f(t,\\cdot)$ on $K$ and every $\\varepsilon>0$, $\\sup_K f(t+h)\\le f(t,x_\\star)+h(\\partial_t f(t,x_\\star)+\\varepsilon)$ for small $h>0$; i.e.\\ $D^+\\sup_K f(t)\\le\\partial_t f(t,x_\\star)$. \\lean{vorticity_danskin_upper_dini}\\coined\\ applies it to $|\\omega|^2$.",
+        "kind": "theorem",
+        "source": "paper/metriplectic-world-model.tex:77",
+        "lean": [
+          "danskin_upper_dini",
+          "vorticity_danskin_upper_dini"
+        ]
+      },
+      "matched": [
+        {
+          "name": "danskin_upper_dini",
+          "score": 0.25,
+          "explicit": true
+        },
+        {
+          "name": "vorticity_danskin_upper_dini",
+          "score": 0.306,
+          "explicit": true
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "e4f1b2b3e5a5",
+          "claimId": "theorem-18",
+          "kind": "conditional",
+          "lean": "danskin_upper_dini",
+          "key": "hyp:K.Nonempty",
+          "detail": "`danskin_upper_dini` assumes `hne : K.Nonempty`, not stated in the claim.",
+          "question": "Paper claim Theorem 18 (theorem-18) states: “\\lean{danskin_upper_dini}\\coined: if $f,\\partial_t f$ are jointly continuous on $\\mathbb{R}\\times K$, $K$ compact, then for some maximizer $x_\\star$ of $f(t,\\cdot)$ on $K$ and every $\\varepsilon>0$, …”. Lean theorem `danskin_upper_dini` assumes `hne : K.Nonempty`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "f88207356c89",
+          "claimId": "theorem-18",
+          "kind": "conditional",
+          "lean": "danskin_upper_dini",
+          "key": "hyp:Continuous (Function.uncurry f)",
+          "detail": "`danskin_upper_dini` assumes `hf : Continuous (Function.uncurry f)`, not stated in the claim.",
+          "question": "Paper claim Theorem 18 (theorem-18) states: “\\lean{danskin_upper_dini}\\coined: if $f,\\partial_t f$ are jointly continuous on $\\mathbb{R}\\times K$, $K$ compact, then for some maximizer $x_\\star$ of $f(t,\\cdot)$ on $K$ and every $\\varepsilon>0$, …”. Lean theorem `danskin_upper_dini` assumes `hf : Continuous (Function.uncurry f)`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "ad7f644669b8",
+          "claimId": "theorem-18",
+          "kind": "conditional",
+          "lean": "danskin_upper_dini",
+          "key": "hyp:Continuous (Function.uncurry f')",
+          "detail": "`danskin_upper_dini` assumes `hf' : Continuous (Function.uncurry f')`, not stated in the claim.",
+          "question": "Paper claim Theorem 18 (theorem-18) states: “\\lean{danskin_upper_dini}\\coined: if $f,\\partial_t f$ are jointly continuous on $\\mathbb{R}\\times K$, $K$ compact, then for some maximizer $x_\\star$ of $f(t,\\cdot)$ on $K$ and every $\\varepsilon>0$, …”. Lean theorem `danskin_upper_dini` assumes `hf' : Continuous (Function.uncurry f')`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "05e6b8cd588d",
+          "claimId": "theorem-18",
+          "kind": "conditional",
+          "lean": "danskin_upper_dini",
+          "key": "hyp:∀ s x, HasDerivAt (fun r => f r x) (f' s x) s",
+          "detail": "`danskin_upper_dini` assumes `hd : ∀ s x, HasDerivAt (fun r => f r x) (f' s x) s`, not stated in the claim.",
+          "question": "Paper claim Theorem 18 (theorem-18) states: “\\lean{danskin_upper_dini}\\coined: if $f,\\partial_t f$ are jointly continuous on $\\mathbb{R}\\times K$, $K$ compact, then for some maximizer $x_\\star$ of $f(t,\\cdot)$ on $K$ and every $\\varepsilon>0$, …”. Lean theorem `danskin_upper_dini` assumes `hd : ∀ s x, HasDerivAt (fun r => f r x) (f' s x) s`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "511ca30486ec",
+          "claimId": "theorem-18",
+          "kind": "conditional",
+          "lean": "vorticity_danskin_upper_dini",
+          "key": "hyp:K.Nonempty",
+          "detail": "`vorticity_danskin_upper_dini` assumes `hne : K.Nonempty`, not stated in the claim.",
+          "question": "Paper claim Theorem 18 (theorem-18) states: “\\lean{danskin_upper_dini}\\coined: if $f,\\partial_t f$ are jointly continuous on $\\mathbb{R}\\times K$, $K$ compact, then for some maximizer $x_\\star$ of $f(t,\\cdot)$ on $K$ and every $\\varepsilon>0$, …”. Lean theorem `vorticity_danskin_upper_dini` assumes `hne : K.Nonempty`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "86c11c3cfb18",
+          "claimId": "theorem-18",
+          "kind": "conditional",
+          "lean": "vorticity_danskin_upper_dini",
+          "key": "hyp:Continuous (Function.uncurry ω)",
+          "detail": "`vorticity_danskin_upper_dini` assumes `hc : Continuous (Function.uncurry ω)`, not stated in the claim.",
+          "question": "Paper claim Theorem 18 (theorem-18) states: “\\lean{danskin_upper_dini}\\coined: if $f,\\partial_t f$ are jointly continuous on $\\mathbb{R}\\times K$, $K$ compact, then for some maximizer $x_\\star$ of $f(t,\\cdot)$ on $K$ and every $\\varepsilon>0$, …”. Lean theorem `vorticity_danskin_upper_dini` assumes `hc : Continuous (Function.uncurry ω)`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "1b702ba9428f",
+          "claimId": "theorem-18",
+          "kind": "conditional",
+          "lean": "vorticity_danskin_upper_dini",
+          "key": "hyp:Continuous (Function.uncurry (time_deriv ω))",
+          "detail": "`vorticity_danskin_upper_dini` assumes `hct : Continuous (Function.uncurry (time_deriv ω))`, not stated in the claim.",
+          "question": "Paper claim Theorem 18 (theorem-18) states: “\\lean{danskin_upper_dini}\\coined: if $f,\\partial_t f$ are jointly continuous on $\\mathbb{R}\\times K$, $K$ compact, then for some maximizer $x_\\star$ of $f(t,\\cdot)$ on $K$ and every $\\varepsilon>0$, …”. Lean theorem `vorticity_danskin_upper_dini` assumes `hct : Continuous (Function.uncurry (time_deriv ω))`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "8026f08d4749",
+          "claimId": "theorem-18",
+          "kind": "conditional",
+          "lean": "vorticity_danskin_upper_dini",
+          "key": "hyp:∀ s x, HasDerivAt (fun r => ω r x) (time_deriv ω s x) s",
+          "detail": "`vorticity_danskin_upper_dini` assumes `hd : ∀ s x, HasDerivAt (fun r => ω r x) (time_deriv ω s x) s`, not stated in the claim.",
+          "question": "Paper claim Theorem 18 (theorem-18) states: “\\lean{danskin_upper_dini}\\coined: if $f,\\partial_t f$ are jointly continuous on $\\mathbb{R}\\times K$, $K$ compact, then for some maximizer $x_\\star$ of $f(t,\\cdot)$ on $K$ and every $\\varepsilon>0$, …”. Lean theorem `vorticity_danskin_upper_dini` assumes `hd : ∀ s x, HasDerivAt (fun r => ω r x) (time_deriv ω s x) s`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        }
+      ],
+      "drift": 0.996
+    },
+    {
+      "claim": {
+        "id": "theorem-19",
+        "number": "Theorem 19",
+        "statement": "\\lean{sup_mul_deriv_eq_inner}\\coined: if $Y=\\sup|\\omega|$ is differentiable at $t$, then $YY'=\\omega\\cdot\\partial_t\\omega$ at every global maximizer. At such a point $\\omega\\cdot(v\\cdot\\nabla)\\omega=0$ (\\lean{inner_convective_eq_zero_of_max}\\coined) and $\\omega\\cdot\\Delta\\omega\\le0$ for $C^2$ fields (\\lean{inner_laplacian_nonpos_of_max}\\coined).",
+        "kind": "theorem",
+        "source": "paper/metriplectic-world-model.tex:78",
+        "lean": [
+          "sup_mul_deriv_eq_inner",
+          "inner_convective_eq_zero_of_max",
+          "inner_laplacian_nonpos_of_max"
+        ]
+      },
+      "matched": [
+        {
+          "name": "sup_mul_deriv_eq_inner",
+          "score": 0.209,
+          "explicit": true
+        },
+        {
+          "name": "inner_convective_eq_zero_of_max",
+          "score": 0.251,
+          "explicit": true
+        },
+        {
+          "name": "inner_laplacian_nonpos_of_max",
+          "score": 0.175,
+          "explicit": true
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "df67b304a861",
+          "claimId": "theorem-19",
+          "kind": "conditional",
+          "lean": "sup_mul_deriv_eq_inner",
+          "key": "hyp:∀ s, IsLUB (range fun x => ‖ω s x‖) (Y s)",
+          "detail": "`sup_mul_deriv_eq_inner` assumes `hY : ∀ s, IsLUB (range fun x => ‖ω s x‖) (Y s)`, not stated in the claim.",
+          "question": "Paper claim Theorem 19 (theorem-19) states: “\\lean{sup_mul_deriv_eq_inner}\\coined: if $Y=\\sup|\\omega|$ is differentiable at $t$, then $YY'=\\omega\\cdot\\partial_t\\omega$ at every global maximizer. At such a point $\\omega\\cdot(v\\cdot\\nabla)\\omega=…”. Lean theorem `sup_mul_deriv_eq_inner` assumes `hY : ∀ s, IsLUB (range fun x => ‖ω s x‖) (Y s)`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "d4a37925245d",
+          "claimId": "theorem-19",
+          "kind": "conditional",
+          "lean": "sup_mul_deriv_eq_inner",
+          "key": "hyp:HasDerivAt Y Y' t",
+          "detail": "`sup_mul_deriv_eq_inner` assumes `hYd : HasDerivAt Y Y' t`, not stated in the claim.",
+          "question": "Paper claim Theorem 19 (theorem-19) states: “\\lean{sup_mul_deriv_eq_inner}\\coined: if $Y=\\sup|\\omega|$ is differentiable at $t$, then $YY'=\\omega\\cdot\\partial_t\\omega$ at every global maximizer. At such a point $\\omega\\cdot(v\\cdot\\nabla)\\omega=…”. Lean theorem `sup_mul_deriv_eq_inner` assumes `hYd : HasDerivAt Y Y' t`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "4674fbcdc980",
+          "claimId": "theorem-19",
+          "kind": "conditional",
+          "lean": "sup_mul_deriv_eq_inner",
+          "key": "hyp:∀ x, HasDerivAt (fun r => ω r x) (time_deriv ω t x) t",
+          "detail": "`sup_mul_deriv_eq_inner` assumes `hd : ∀ x, HasDerivAt (fun r => ω r x) (time_deriv ω t x) t`, not stated in the claim.",
+          "question": "Paper claim Theorem 19 (theorem-19) states: “\\lean{sup_mul_deriv_eq_inner}\\coined: if $Y=\\sup|\\omega|$ is differentiable at $t$, then $YY'=\\omega\\cdot\\partial_t\\omega$ at every global maximizer. At such a point $\\omega\\cdot(v\\cdot\\nabla)\\omega=…”. Lean theorem `sup_mul_deriv_eq_inner` assumes `hd : ∀ x, HasDerivAt (fun r => ω r x) (time_deriv ω t x) t`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "8aac28e38def",
+          "claimId": "theorem-19",
+          "kind": "conditional",
+          "lean": "inner_laplacian_nonpos_of_max",
+          "key": "hyp:ContDiff ℝ 2 ω",
+          "detail": "`inner_laplacian_nonpos_of_max` assumes `hω : ContDiff ℝ 2 ω`, not stated in the claim.",
+          "question": "Paper claim Theorem 19 (theorem-19) states: “\\lean{sup_mul_deriv_eq_inner}\\coined: if $Y=\\sup|\\omega|$ is differentiable at $t$, then $YY'=\\omega\\cdot\\partial_t\\omega$ at every global maximizer. At such a point $\\omega\\cdot(v\\cdot\\nabla)\\omega=…”. Lean theorem `inner_laplacian_nonpos_of_max` assumes `hω : ContDiff ℝ 2 ω`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        }
+      ],
+      "drift": 0.938
+    },
+    {
+      "claim": {
+        "id": "theorem-20",
+        "number": "Theorem 20",
+        "statement": "\\lean{maxPointRealization_of_field}\\coined: for a solution of \\lean{ModelVorticityPDE} with $\\nu\\ge0$, $\\omega(t)\\in C^2_c$, $C^1$ in time, and $Y=\\sup|\\omega|>0$ differentiable, \\lean{MaxPointRealization} holds with \\lean{EnergyIdentity}, \\lean{ViscousAtMax} and \\lean{CrossControlled} discharged. The remaining hypotheses are \\lean{FieldStretchingBound}\\coined\\ and \\lean{FieldTetherFeedback}\\coined. Running the ceiling argument from the one-sided Dini bound alone is open.",
+        "kind": "theorem",
+        "source": "paper/metriplectic-world-model.tex:79",
+        "lean": [
+          "maxPointRealization_of_field",
+          "ModelVorticityPDE",
+          "MaxPointRealization",
+          "EnergyIdentity",
+          "ViscousAtMax",
+          "CrossControlled",
+          "FieldStretchingBound",
+          "FieldTetherFeedback"
+        ]
+      },
+      "matched": [
+        {
+          "name": "maxPointRealization_of_field",
+          "score": 0.502,
+          "explicit": true
+        },
+        {
+          "name": "ModelVorticityPDE",
+          "score": 0.166,
+          "explicit": true
+        },
+        {
+          "name": "MaxPointRealization",
+          "score": 0.208,
+          "explicit": true
+        },
+        {
+          "name": "EnergyIdentity",
+          "score": 0.217,
+          "explicit": true
+        },
+        {
+          "name": "ViscousAtMax",
+          "score": 0.125,
+          "explicit": true
+        },
+        {
+          "name": "CrossControlled",
+          "score": 0.179,
+          "explicit": true
+        },
+        {
+          "name": "FieldStretchingBound",
+          "score": 0.142,
+          "explicit": true
+        },
+        {
+          "name": "FieldTetherFeedback",
+          "score": 0.159,
+          "explicit": true
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "e115c56e1496",
+          "claimId": "theorem-20",
+          "kind": "conditional",
+          "lean": "maxPointRealization_of_field",
+          "key": "hyp:∀ t, ContDiff ℝ 2 (ω t)",
+          "detail": "`maxPointRealization_of_field` assumes `hreg : ∀ t, ContDiff ℝ 2 (ω t)`, not stated in the claim.",
+          "question": "Paper claim Theorem 20 (theorem-20) states: “\\lean{maxPointRealization_of_field}\\coined: for a solution of \\lean{ModelVorticityPDE} with $\\nu\\ge0$, $\\omega(t)\\in C^2_c$, $C^1$ in time, and $Y=\\sup|\\omega|>0$ differentiable, \\lean{MaxPointRealiz…”. Lean theorem `maxPointRealization_of_field` assumes `hreg : ∀ t, ContDiff ℝ 2 (ω t)`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "af9620700716",
+          "claimId": "theorem-20",
+          "kind": "conditional",
+          "lean": "maxPointRealization_of_field",
+          "key": "hyp:∀ t, HasCompactSupport (ω t)",
+          "detail": "`maxPointRealization_of_field` assumes `hsupp : ∀ t, HasCompactSupport (ω t)`, not stated in the claim.",
+          "question": "Paper claim Theorem 20 (theorem-20) states: “\\lean{maxPointRealization_of_field}\\coined: for a solution of \\lean{ModelVorticityPDE} with $\\nu\\ge0$, $\\omega(t)\\in C^2_c$, $C^1$ in time, and $Y=\\sup|\\omega|>0$ differentiable, \\lean{MaxPointRealiz…”. Lean theorem `maxPointRealization_of_field` assumes `hsupp : ∀ t, HasCompactSupport (ω t)`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "148e4290db0f",
+          "claimId": "theorem-20",
+          "kind": "conditional",
+          "lean": "maxPointRealization_of_field",
+          "key": "hyp:∀ s x, HasDerivAt (fun r => ω r x) (time_deriv ω s x) s",
+          "detail": "`maxPointRealization_of_field` assumes `hd : ∀ s x, HasDerivAt (fun r => ω r x) (time_deriv ω s x) s`, not stated in the claim.",
+          "question": "Paper claim Theorem 20 (theorem-20) states: “\\lean{maxPointRealization_of_field}\\coined: for a solution of \\lean{ModelVorticityPDE} with $\\nu\\ge0$, $\\omega(t)\\in C^2_c$, $C^1$ in time, and $Y=\\sup|\\omega|>0$ differentiable, \\lean{MaxPointRealiz…”. Lean theorem `maxPointRealization_of_field` assumes `hd : ∀ s x, HasDerivAt (fun r => ω r x) (time_deriv ω s x) s`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "cb4640d339f5",
+          "claimId": "theorem-20",
+          "kind": "conditional",
+          "lean": "maxPointRealization_of_field",
+          "key": "hyp:∀ s, IsLUB (range fun x => ‖ω s x‖) (Y s)",
+          "detail": "`maxPointRealization_of_field` assumes `hY : ∀ s, IsLUB (range fun x => ‖ω s x‖) (Y s)`, not stated in the claim.",
+          "question": "Paper claim Theorem 20 (theorem-20) states: “\\lean{maxPointRealization_of_field}\\coined: for a solution of \\lean{ModelVorticityPDE} with $\\nu\\ge0$, $\\omega(t)\\in C^2_c$, $C^1$ in time, and $Y=\\sup|\\omega|>0$ differentiable, \\lean{MaxPointRealiz…”. Lean theorem `maxPointRealization_of_field` assumes `hY : ∀ s, IsLUB (range fun x => ‖ω s x‖) (Y s)`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "308e9677c5d7",
+          "claimId": "theorem-20",
+          "kind": "narrower",
+          "lean": "maxPointRealization_of_field",
+          "key": "bound:t>=0",
+          "detail": "`maxPointRealization_of_field` restricts t ≥ 0; the claim states no such restriction.",
+          "question": "Paper claim Theorem 20 (theorem-20) states: “\\lean{maxPointRealization_of_field}\\coined: for a solution of \\lean{ModelVorticityPDE} with $\\nu\\ge0$, $\\omega(t)\\in C^2_c$, $C^1$ in time, and $Y=\\sup|\\omega|>0$ differentiable, \\lean{MaxPointRealiz…”. Lean theorem `maxPointRealization_of_field` assumes `∀ t, 0 ≤ t → HasDerivAt Y (Y' t) t` (restricting t ≥ 0), which the claim does not state. Is the restricted domain intentional?",
+          "weight": 0.6
+        },
+        {
+          "id": "308e9677c5d7",
+          "claimId": "theorem-20",
+          "kind": "narrower",
+          "lean": "maxPointRealization_of_field",
+          "key": "bound:t>=0",
+          "detail": "`maxPointRealization_of_field` restricts t ≥ 0; the claim states no such restriction.",
+          "question": "Paper claim Theorem 20 (theorem-20) states: “\\lean{maxPointRealization_of_field}\\coined: for a solution of \\lean{ModelVorticityPDE} with $\\nu\\ge0$, $\\omega(t)\\in C^2_c$, $C^1$ in time, and $Y=\\sup|\\omega|>0$ differentiable, \\lean{MaxPointRealiz…”. Lean theorem `maxPointRealization_of_field` assumes `∀ t, 0 ≤ t → 0 < Y t` (restricting t ≥ 0), which the claim does not state. Is the restricted domain intentional?",
+          "weight": 0.6
+        }
+      ],
+      "drift": 0.99
+    },
+    {
+      "claim": {
+        "id": "theorem-21",
+        "number": "Theorem 21",
+        "statement": "\\lean{arnoldCasimirField_helicity}\\coined: $2u$ satisfies \\lean{ArnoldCasimirField}\\coined\\ ($\\forall a$, \\lean{ArnoldBracketOf} $\\omega\\,a\\,(2u)=0$) on the test class. This is the clean form of \\lean{EntropyCasimir} for the concrete bracket (\\lean{entropyCasimir_of_arnoldCasimirField}\\coined). The choice-based form \\lean{EntropyCasimirChoice}\\coined\\ is kept and marked not provable as stated.",
+        "kind": "theorem",
+        "source": "paper/metriplectic-world-model.tex:80",
+        "lean": [
+          "arnoldCasimirField_helicity",
+          "ArnoldCasimirField",
+          "ArnoldBracketOf",
+          "EntropyCasimir",
+          "entropyCasimir_of_arnoldCasimirField",
+          "EntropyCasimirChoice"
+        ]
+      },
+      "matched": [
+        {
+          "name": "arnoldCasimirField_helicity",
+          "score": 0.308,
+          "explicit": true
+        },
+        {
+          "name": "ArnoldCasimirField",
+          "score": 0.224,
+          "explicit": true
+        },
+        {
+          "name": "ArnoldBracketOf",
+          "score": 0.17,
+          "explicit": true
+        },
+        {
+          "name": "EntropyCasimir",
+          "score": 0.283,
+          "explicit": true
+        },
+        {
+          "name": "entropyCasimir_of_arnoldCasimirField",
+          "score": 0.158,
+          "explicit": true
+        },
+        {
+          "name": "EntropyCasimirChoice",
+          "score": 0.23,
+          "explicit": true
+        }
+      ],
+      "mismatches": [],
+      "drift": 0
+    },
+    {
+      "claim": {
+        "id": "theorem-22",
+        "number": "Theorem 22",
+        "statement": "\\lean{ceiling_of_upper_dini}\\coined: if $M$ is continuous on $[0,\\infty)$, $M(t+h)\\le M(t)+h(R(t)+\\varepsilon)$ for small $h>0$, and $R(t)<0$ whenever $M(t)>B$, then $M(0)\\le B$ implies $M\\le B$ on $[0,\\infty)$.",
+        "kind": "theorem",
+        "source": "paper/metriplectic-world-model.tex:82",
+        "lean": [
+          "ceiling_of_upper_dini"
+        ]
+      },
+      "matched": [
+        {
+          "name": "ceiling_of_upper_dini",
+          "score": 0.141,
+          "explicit": true
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "356941d5bd0d",
+          "claimId": "theorem-22",
+          "kind": "narrower",
+          "lean": "ceiling_of_upper_dini",
+          "key": "bound:t>=0",
+          "detail": "`ceiling_of_upper_dini` restricts t ≥ 0; the claim states no such restriction.",
+          "question": "Paper claim Theorem 22 (theorem-22) states: “\\lean{ceiling_of_upper_dini}\\coined: if $M$ is continuous on $[0,\\infty)$, $M(t+h)\\le M(t)+h(R(t)+\\varepsilon)$ for small $h>0$, and $R(t)<0$ whenever $M(t)>B$, then $M(0)\\le B$ implies $M\\le B$ on $…”. Lean theorem `ceiling_of_upper_dini` assumes `∀ t, 0 ≤ t → ∀ ε > 0, ∃ dl > 0, ∀ h, 0 < h → h < dl → M (t + h) ≤ M t + h * (R t + ε)` (restricting t ≥ 0), which the claim does not state. Is the restricted domain intentional?",
+          "weight": 0.6
+        },
+        {
+          "id": "356941d5bd0d",
+          "claimId": "theorem-22",
+          "kind": "narrower",
+          "lean": "ceiling_of_upper_dini",
+          "key": "bound:t>=0",
+          "detail": "`ceiling_of_upper_dini` restricts t ≥ 0; the claim states no such restriction.",
+          "question": "Paper claim Theorem 22 (theorem-22) states: “\\lean{ceiling_of_upper_dini}\\coined: if $M$ is continuous on $[0,\\infty)$, $M(t+h)\\le M(t)+h(R(t)+\\varepsilon)$ for small $h>0$, and $R(t)<0$ whenever $M(t)>B$, then $M(0)\\le B$ implies $M\\le B$ on $…”. Lean theorem `ceiling_of_upper_dini` assumes `∀ t, 0 ≤ t → B < M t → R t < 0` (restricting t ≥ 0), which the claim does not state. Is the restricted domain intentional?",
+          "weight": 0.6
+        },
+        {
+          "id": "356941d5bd0d",
+          "claimId": "theorem-22",
+          "kind": "narrower",
+          "lean": "ceiling_of_upper_dini",
+          "key": "bound:t>=0",
+          "detail": "`ceiling_of_upper_dini` restricts t ≥ 0; the claim states no such restriction.",
+          "question": "Paper claim Theorem 22 (theorem-22) states: “\\lean{ceiling_of_upper_dini}\\coined: if $M$ is continuous on $[0,\\infty)$, $M(t+h)\\le M(t)+h(R(t)+\\varepsilon)$ for small $h>0$, and $R(t)<0$ whenever $M(t)>B$, then $M(0)\\le B$ implies $M\\le B$ on $…”. Lean theorem `ceiling_of_upper_dini` assumes `0 ≤ t` (restricting t ≥ 0), which the claim does not state. Is the restricted domain intentional?",
+          "weight": 0.6
+        }
+      ],
+      "drift": 0.936
+    },
+    {
+      "claim": {
+        "id": "theorem-23",
+        "number": "Theorem 23",
+        "statement": "\\lean{field_uniform_ceiling}\\coined: take a solution of \\lean{ModelVorticityPDE} with $\\nu\\ge0$, $\\kappa>0$, $C^2$ in space, $C^1$ in time, and support in a fixed compact set. Under \\lean{FieldStretchingBound} and \\lean{FieldTetherFeedback}, $\\sup|\\omega(t)|\\le\\max(\\sup|\\omega(0)|,C/\\kappa,0)$ for all $t\\ge0$. No differentiability of $\\sup|\\omega|$ is assumed; its continuity is proved (\\lean{sup_continuous_of_uniform_support}\\coined).",
+        "kind": "theorem",
+        "source": "paper/metriplectic-world-model.tex:83",
+        "lean": [
+          "field_uniform_ceiling",
+          "ModelVorticityPDE",
+          "FieldStretchingBound",
+          "FieldTetherFeedback",
+          "sup_continuous_of_uniform_support"
+        ]
+      },
+      "matched": [
+        {
+          "name": "field_uniform_ceiling",
+          "score": 0.313,
+          "explicit": true
+        },
+        {
+          "name": "ModelVorticityPDE",
+          "score": 0.19,
+          "explicit": true
+        },
+        {
+          "name": "FieldStretchingBound",
+          "score": 0.163,
+          "explicit": true
+        },
+        {
+          "name": "FieldTetherFeedback",
+          "score": 0.182,
+          "explicit": true
+        },
+        {
+          "name": "sup_continuous_of_uniform_support",
+          "score": 0.147,
+          "explicit": true
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "45421bd1f4b0",
+          "claimId": "theorem-23",
+          "kind": "conditional",
+          "lean": "field_uniform_ceiling",
+          "key": "hyp:K.Nonempty",
+          "detail": "`field_uniform_ceiling` assumes `hne : K.Nonempty`, not stated in the claim.",
+          "question": "Paper claim Theorem 23 (theorem-23) states: “\\lean{field_uniform_ceiling}\\coined: take a solution of \\lean{ModelVorticityPDE} with $\\nu\\ge0$, $\\kappa>0$, $C^2$ in space, $C^1$ in time, and support in a fixed compact set. Under \\lean{FieldStretc…”. Lean theorem `field_uniform_ceiling` assumes `hne : K.Nonempty`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "ce00c0ef8ed0",
+          "claimId": "theorem-23",
+          "kind": "conditional",
+          "lean": "field_uniform_ceiling",
+          "key": "hyp:∀ t, ContDiff ℝ 2 (ω t)",
+          "detail": "`field_uniform_ceiling` assumes `hreg : ∀ t, ContDiff ℝ 2 (ω t)`, not stated in the claim.",
+          "question": "Paper claim Theorem 23 (theorem-23) states: “\\lean{field_uniform_ceiling}\\coined: take a solution of \\lean{ModelVorticityPDE} with $\\nu\\ge0$, $\\kappa>0$, $C^2$ in space, $C^1$ in time, and support in a fixed compact set. Under \\lean{FieldStretc…”. Lean theorem `field_uniform_ceiling` assumes `hreg : ∀ t, ContDiff ℝ 2 (ω t)`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "808336f5c549",
+          "claimId": "theorem-23",
+          "kind": "conditional",
+          "lean": "field_uniform_ceiling",
+          "key": "hyp:Continuous (Function.uncurry ω)",
+          "detail": "`field_uniform_ceiling` assumes `hc : Continuous (Function.uncurry ω)`, not stated in the claim.",
+          "question": "Paper claim Theorem 23 (theorem-23) states: “\\lean{field_uniform_ceiling}\\coined: take a solution of \\lean{ModelVorticityPDE} with $\\nu\\ge0$, $\\kappa>0$, $C^2$ in space, $C^1$ in time, and support in a fixed compact set. Under \\lean{FieldStretc…”. Lean theorem `field_uniform_ceiling` assumes `hc : Continuous (Function.uncurry ω)`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "37ee7ee261b8",
+          "claimId": "theorem-23",
+          "kind": "conditional",
+          "lean": "field_uniform_ceiling",
+          "key": "hyp:Continuous (Function.uncurry (time_deriv ω))",
+          "detail": "`field_uniform_ceiling` assumes `hct : Continuous (Function.uncurry (time_deriv ω))`, not stated in the claim.",
+          "question": "Paper claim Theorem 23 (theorem-23) states: “\\lean{field_uniform_ceiling}\\coined: take a solution of \\lean{ModelVorticityPDE} with $\\nu\\ge0$, $\\kappa>0$, $C^2$ in space, $C^1$ in time, and support in a fixed compact set. Under \\lean{FieldStretc…”. Lean theorem `field_uniform_ceiling` assumes `hct : Continuous (Function.uncurry (time_deriv ω))`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "e7700aaabbb7",
+          "claimId": "theorem-23",
+          "kind": "conditional",
+          "lean": "field_uniform_ceiling",
+          "key": "hyp:∀ s x, HasDerivAt (fun r => ω r x) (time_deriv ω s x) s",
+          "detail": "`field_uniform_ceiling` assumes `hd : ∀ s x, HasDerivAt (fun r => ω r x) (time_deriv ω s x) s`, not stated in the claim.",
+          "question": "Paper claim Theorem 23 (theorem-23) states: “\\lean{field_uniform_ceiling}\\coined: take a solution of \\lean{ModelVorticityPDE} with $\\nu\\ge0$, $\\kappa>0$, $C^2$ in space, $C^1$ in time, and support in a fixed compact set. Under \\lean{FieldStretc…”. Lean theorem `field_uniform_ceiling` assumes `hd : ∀ s x, HasDerivAt (fun r => ω r x) (time_deriv ω s x) s`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "468354839a67",
+          "claimId": "theorem-23",
+          "kind": "conditional",
+          "lean": "field_uniform_ceiling",
+          "key": "hyp:∀ s, IsLUB (range fun x => ‖ω s x‖) (Y s)",
+          "detail": "`field_uniform_ceiling` assumes `hY : ∀ s, IsLUB (range fun x => ‖ω s x‖) (Y s)`, not stated in the claim.",
+          "question": "Paper claim Theorem 23 (theorem-23) states: “\\lean{field_uniform_ceiling}\\coined: take a solution of \\lean{ModelVorticityPDE} with $\\nu\\ge0$, $\\kappa>0$, $C^2$ in space, $C^1$ in time, and support in a fixed compact set. Under \\lean{FieldStretc…”. Lean theorem `field_uniform_ceiling` assumes `hY : ∀ s, IsLUB (range fun x => ‖ω s x‖) (Y s)`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "edbe966b3974",
+          "claimId": "theorem-23",
+          "kind": "conditional",
+          "lean": "sup_continuous_of_uniform_support",
+          "key": "hyp:K.Nonempty",
+          "detail": "`sup_continuous_of_uniform_support` assumes `hne : K.Nonempty`, not stated in the claim.",
+          "question": "Paper claim Theorem 23 (theorem-23) states: “\\lean{field_uniform_ceiling}\\coined: take a solution of \\lean{ModelVorticityPDE} with $\\nu\\ge0$, $\\kappa>0$, $C^2$ in space, $C^1$ in time, and support in a fixed compact set. Under \\lean{FieldStretc…”. Lean theorem `sup_continuous_of_uniform_support` assumes `hne : K.Nonempty`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "5f734dbbe1a4",
+          "claimId": "theorem-23",
+          "kind": "conditional",
+          "lean": "sup_continuous_of_uniform_support",
+          "key": "hyp:Continuous (Function.uncurry ω)",
+          "detail": "`sup_continuous_of_uniform_support` assumes `hc : Continuous (Function.uncurry ω)`, not stated in the claim.",
+          "question": "Paper claim Theorem 23 (theorem-23) states: “\\lean{field_uniform_ceiling}\\coined: take a solution of \\lean{ModelVorticityPDE} with $\\nu\\ge0$, $\\kappa>0$, $C^2$ in space, $C^1$ in time, and support in a fixed compact set. Under \\lean{FieldStretc…”. Lean theorem `sup_continuous_of_uniform_support` assumes `hc : Continuous (Function.uncurry ω)`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "2c47a4a995e1",
+          "claimId": "theorem-23",
+          "kind": "conditional",
+          "lean": "sup_continuous_of_uniform_support",
+          "key": "hyp:∀ s, IsLUB (range fun x => ‖ω s x‖) (Y s)",
+          "detail": "`sup_continuous_of_uniform_support` assumes `hY : ∀ s, IsLUB (range fun x => ‖ω s x‖) (Y s)`, not stated in the claim.",
+          "question": "Paper claim Theorem 23 (theorem-23) states: “\\lean{field_uniform_ceiling}\\coined: take a solution of \\lean{ModelVorticityPDE} with $\\nu\\ge0$, $\\kappa>0$, $C^2$ in space, $C^1$ in time, and support in a fixed compact set. Under \\lean{FieldStretc…”. Lean theorem `sup_continuous_of_uniform_support` assumes `hY : ∀ s, IsLUB (range fun x => ‖ω s x‖) (Y s)`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        }
+      ],
+      "drift": 0.998
+    },
+    {
+      "claim": {
+        "id": "theorem-24",
+        "number": "Theorem 24",
+        "statement": "\\lean{fieldTetherFeedback_cubicTether}\\coined: for $T=-\\kappa|\\omega|^2\\omega$ (\\lean{cubicTether}\\coined), \\lean{FieldTetherFeedback} holds. Hence \\lean{field_uniform_ceiling_cubicTether}\\coined\\ needs only \\lean{FieldStretchingBound}. For a general tether it does not follow.",
+        "kind": "theorem",
+        "source": "paper/metriplectic-world-model.tex:84",
+        "lean": [
+          "fieldTetherFeedback_cubicTether",
+          "cubicTether",
+          "FieldTetherFeedback",
+          "field_uniform_ceiling_cubicTether",
+          "FieldStretchingBound"
+        ]
+      },
+      "matched": [
+        {
+          "name": "fieldTetherFeedback_cubicTether",
+          "score": 0.178,
+          "explicit": true
+        },
+        {
+          "name": "cubicTether",
+          "score": 0.253,
+          "explicit": true
+        },
+        {
+          "name": "FieldTetherFeedback",
+          "score": 0.225,
+          "explicit": true
+        },
+        {
+          "name": "field_uniform_ceiling_cubicTether",
+          "score": 0.334,
+          "explicit": true
+        },
+        {
+          "name": "FieldStretchingBound",
+          "score": 0.247,
+          "explicit": true
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "35a64a766837",
+          "claimId": "theorem-24",
+          "kind": "conditional",
+          "lean": "fieldTetherFeedback_cubicTether",
+          "key": "hyp:∀ s, IsLUB (range fun x => ‖ω s x‖) (Y s)",
+          "detail": "`fieldTetherFeedback_cubicTether` assumes `hY : ∀ s, IsLUB (range fun x => ‖ω s x‖) (Y s)`, not stated in the claim.",
+          "question": "Paper claim Theorem 24 (theorem-24) states: “\\lean{fieldTetherFeedback_cubicTether}\\coined: for $T=-\\kappa|\\omega|^2\\omega$ (\\lean{cubicTether}\\coined), \\lean{FieldTetherFeedback} holds. Hence \\lean{field_uniform_ceiling_cubicTether}\\coined\\ ne…”. Lean theorem `fieldTetherFeedback_cubicTether` assumes `hY : ∀ s, IsLUB (range fun x => ‖ω s x‖) (Y s)`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "b88ac2a7e6b3",
+          "claimId": "theorem-24",
+          "kind": "conditional",
+          "lean": "field_uniform_ceiling_cubicTether",
+          "key": "hyp:ModelVorticityPDE ν ω u (cubicTether κ ω)",
+          "detail": "`field_uniform_ceiling_cubicTether` assumes `hpde : ModelVorticityPDE ν ω u (cubicTether κ ω)`, not stated in the claim.",
+          "question": "Paper claim Theorem 24 (theorem-24) states: “\\lean{fieldTetherFeedback_cubicTether}\\coined: for $T=-\\kappa|\\omega|^2\\omega$ (\\lean{cubicTether}\\coined), \\lean{FieldTetherFeedback} holds. Hence \\lean{field_uniform_ceiling_cubicTether}\\coined\\ ne…”. Lean theorem `field_uniform_ceiling_cubicTether` assumes `hpde : ModelVorticityPDE ν ω u (cubicTether κ ω)`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "9049770cc544",
+          "claimId": "theorem-24",
+          "kind": "conditional",
+          "lean": "field_uniform_ceiling_cubicTether",
+          "key": "hyp:IsCompact K",
+          "detail": "`field_uniform_ceiling_cubicTether` assumes `hK : IsCompact K`, not stated in the claim.",
+          "question": "Paper claim Theorem 24 (theorem-24) states: “\\lean{fieldTetherFeedback_cubicTether}\\coined: for $T=-\\kappa|\\omega|^2\\omega$ (\\lean{cubicTether}\\coined), \\lean{FieldTetherFeedback} holds. Hence \\lean{field_uniform_ceiling_cubicTether}\\coined\\ ne…”. Lean theorem `field_uniform_ceiling_cubicTether` assumes `hK : IsCompact K`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "02c4fb96257d",
+          "claimId": "theorem-24",
+          "kind": "conditional",
+          "lean": "field_uniform_ceiling_cubicTether",
+          "key": "hyp:K.Nonempty",
+          "detail": "`field_uniform_ceiling_cubicTether` assumes `hne : K.Nonempty`, not stated in the claim.",
+          "question": "Paper claim Theorem 24 (theorem-24) states: “\\lean{fieldTetherFeedback_cubicTether}\\coined: for $T=-\\kappa|\\omega|^2\\omega$ (\\lean{cubicTether}\\coined), \\lean{FieldTetherFeedback} holds. Hence \\lean{field_uniform_ceiling_cubicTether}\\coined\\ ne…”. Lean theorem `field_uniform_ceiling_cubicTether` assumes `hne : K.Nonempty`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "954c21494fa0",
+          "claimId": "theorem-24",
+          "kind": "conditional",
+          "lean": "field_uniform_ceiling_cubicTether",
+          "key": "hyp:∀ t, ContDiff ℝ 2 (ω t)",
+          "detail": "`field_uniform_ceiling_cubicTether` assumes `hreg : ∀ t, ContDiff ℝ 2 (ω t)`, not stated in the claim.",
+          "question": "Paper claim Theorem 24 (theorem-24) states: “\\lean{fieldTetherFeedback_cubicTether}\\coined: for $T=-\\kappa|\\omega|^2\\omega$ (\\lean{cubicTether}\\coined), \\lean{FieldTetherFeedback} holds. Hence \\lean{field_uniform_ceiling_cubicTether}\\coined\\ ne…”. Lean theorem `field_uniform_ceiling_cubicTether` assumes `hreg : ∀ t, ContDiff ℝ 2 (ω t)`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "04c3cc451c5c",
+          "claimId": "theorem-24",
+          "kind": "conditional",
+          "lean": "field_uniform_ceiling_cubicTether",
+          "key": "hyp:Continuous (Function.uncurry ω)",
+          "detail": "`field_uniform_ceiling_cubicTether` assumes `hc : Continuous (Function.uncurry ω)`, not stated in the claim.",
+          "question": "Paper claim Theorem 24 (theorem-24) states: “\\lean{fieldTetherFeedback_cubicTether}\\coined: for $T=-\\kappa|\\omega|^2\\omega$ (\\lean{cubicTether}\\coined), \\lean{FieldTetherFeedback} holds. Hence \\lean{field_uniform_ceiling_cubicTether}\\coined\\ ne…”. Lean theorem `field_uniform_ceiling_cubicTether` assumes `hc : Continuous (Function.uncurry ω)`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "9f7591ae40e9",
+          "claimId": "theorem-24",
+          "kind": "conditional",
+          "lean": "field_uniform_ceiling_cubicTether",
+          "key": "hyp:Continuous (Function.uncurry (time_deriv ω))",
+          "detail": "`field_uniform_ceiling_cubicTether` assumes `hct : Continuous (Function.uncurry (time_deriv ω))`, not stated in the claim.",
+          "question": "Paper claim Theorem 24 (theorem-24) states: “\\lean{fieldTetherFeedback_cubicTether}\\coined: for $T=-\\kappa|\\omega|^2\\omega$ (\\lean{cubicTether}\\coined), \\lean{FieldTetherFeedback} holds. Hence \\lean{field_uniform_ceiling_cubicTether}\\coined\\ ne…”. Lean theorem `field_uniform_ceiling_cubicTether` assumes `hct : Continuous (Function.uncurry (time_deriv ω))`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "8afea0c125fa",
+          "claimId": "theorem-24",
+          "kind": "conditional",
+          "lean": "field_uniform_ceiling_cubicTether",
+          "key": "hyp:∀ s x, HasDerivAt (fun r => ω r x) (time_deriv ω s x) s",
+          "detail": "`field_uniform_ceiling_cubicTether` assumes `hd : ∀ s x, HasDerivAt (fun r => ω r x) (time_deriv ω s x) s`, not stated in the claim.",
+          "question": "Paper claim Theorem 24 (theorem-24) states: “\\lean{fieldTetherFeedback_cubicTether}\\coined: for $T=-\\kappa|\\omega|^2\\omega$ (\\lean{cubicTether}\\coined), \\lean{FieldTetherFeedback} holds. Hence \\lean{field_uniform_ceiling_cubicTether}\\coined\\ ne…”. Lean theorem `field_uniform_ceiling_cubicTether` assumes `hd : ∀ s x, HasDerivAt (fun r => ω r x) (time_deriv ω s x) s`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "52149584a942",
+          "claimId": "theorem-24",
+          "kind": "conditional",
+          "lean": "field_uniform_ceiling_cubicTether",
+          "key": "hyp:∀ s, IsLUB (range fun x => ‖ω s x‖) (Y s)",
+          "detail": "`field_uniform_ceiling_cubicTether` assumes `hY : ∀ s, IsLUB (range fun x => ‖ω s x‖) (Y s)`, not stated in the claim.",
+          "question": "Paper claim Theorem 24 (theorem-24) states: “\\lean{fieldTetherFeedback_cubicTether}\\coined: for $T=-\\kappa|\\omega|^2\\omega$ (\\lean{cubicTether}\\coined), \\lean{FieldTetherFeedback} holds. Hence \\lean{field_uniform_ceiling_cubicTether}\\coined\\ ne…”. Lean theorem `field_uniform_ceiling_cubicTether` assumes `hY : ∀ s, IsLUB (range fun x => ‖ω s x‖) (Y s)`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "542c019c5e40",
+          "claimId": "theorem-24",
+          "kind": "narrower",
+          "lean": "field_uniform_ceiling_cubicTether",
+          "key": "bound:t>=0",
+          "detail": "`field_uniform_ceiling_cubicTether` restricts t ≥ 0; the claim states no such restriction.",
+          "question": "Paper claim Theorem 24 (theorem-24) states: “\\lean{fieldTetherFeedback_cubicTether}\\coined: for $T=-\\kappa|\\omega|^2\\omega$ (\\lean{cubicTether}\\coined), \\lean{FieldTetherFeedback} holds. Hence \\lean{field_uniform_ceiling_cubicTether}\\coined\\ ne…”. Lean theorem `field_uniform_ceiling_cubicTether` assumes `0 ≤ t` (restricting t ≥ 0), which the claim does not state. Is the restricted domain intentional?",
+          "weight": 0.6
+        }
+      ],
+      "drift": 0.999
+    },
+    {
+      "claim": {
+        "id": "theorem-25",
+        "number": "Theorem 25",
+        "statement": "\\lean{field_uniform_ceiling_logLoss_cubicTether}\\coined: take a solution of \\lean{ModelVorticityPDE} with the cubic tether, under the regularity and uniform-support hypotheses of \\lean{field_uniform_ceiling}. Assume the named Prop \\lean{FieldStretchingLogLoss}\\coined, $\\omega\\cdot(\\omega\\cdot\\nabla)u\\le C_1Y^3+C_2Y^3\\log(1+Y)$ at maxima. Then $\\sup|\\omega(t)|\\le\\mathrm{ceiling}(Y_0,\\,C_1+\\kappa/4+4C_2^2/\\kappa,\\,3\\kappa/4)$ for every $\\kappa>0$.",
+        "kind": "theorem",
+        "source": "paper/metriplectic-world-model.tex:86",
+        "lean": [
+          "field_uniform_ceiling_logLoss_cubicTether",
+          "ModelVorticityPDE",
+          "field_uniform_ceiling",
+          "FieldStretchingLogLoss"
+        ]
+      },
+      "matched": [
+        {
+          "name": "field_uniform_ceiling_logLoss_cubicTether",
+          "score": 0.273,
+          "explicit": true
+        },
+        {
+          "name": "ModelVorticityPDE",
+          "score": 0.201,
+          "explicit": true
+        },
+        {
+          "name": "field_uniform_ceiling",
+          "score": 0.273,
+          "explicit": true
+        },
+        {
+          "name": "FieldStretchingLogLoss",
+          "score": 0.14,
+          "explicit": true
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "86b72b07e39b",
+          "claimId": "theorem-25",
+          "kind": "conditional",
+          "lean": "field_uniform_ceiling_logLoss_cubicTether",
+          "key": "hyp:IsCompact K",
+          "detail": "`field_uniform_ceiling_logLoss_cubicTether` assumes `hK : IsCompact K`, not stated in the claim.",
+          "question": "Paper claim Theorem 25 (theorem-25) states: “\\lean{field_uniform_ceiling_logLoss_cubicTether}\\coined: take a solution of \\lean{ModelVorticityPDE} with the cubic tether, under the regularity and uniform-support hypotheses of \\lean{field_uniform_…”. Lean theorem `field_uniform_ceiling_logLoss_cubicTether` assumes `hK : IsCompact K`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "0261389afc04",
+          "claimId": "theorem-25",
+          "kind": "conditional",
+          "lean": "field_uniform_ceiling_logLoss_cubicTether",
+          "key": "hyp:K.Nonempty",
+          "detail": "`field_uniform_ceiling_logLoss_cubicTether` assumes `hne : K.Nonempty`, not stated in the claim.",
+          "question": "Paper claim Theorem 25 (theorem-25) states: “\\lean{field_uniform_ceiling_logLoss_cubicTether}\\coined: take a solution of \\lean{ModelVorticityPDE} with the cubic tether, under the regularity and uniform-support hypotheses of \\lean{field_uniform_…”. Lean theorem `field_uniform_ceiling_logLoss_cubicTether` assumes `hne : K.Nonempty`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "ff1c83043b3b",
+          "claimId": "theorem-25",
+          "kind": "conditional",
+          "lean": "field_uniform_ceiling_logLoss_cubicTether",
+          "key": "hyp:∀ t, ContDiff ℝ 2 (ω t)",
+          "detail": "`field_uniform_ceiling_logLoss_cubicTether` assumes `hreg : ∀ t, ContDiff ℝ 2 (ω t)`, not stated in the claim.",
+          "question": "Paper claim Theorem 25 (theorem-25) states: “\\lean{field_uniform_ceiling_logLoss_cubicTether}\\coined: take a solution of \\lean{ModelVorticityPDE} with the cubic tether, under the regularity and uniform-support hypotheses of \\lean{field_uniform_…”. Lean theorem `field_uniform_ceiling_logLoss_cubicTether` assumes `hreg : ∀ t, ContDiff ℝ 2 (ω t)`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "1093fcbf6d42",
+          "claimId": "theorem-25",
+          "kind": "conditional",
+          "lean": "field_uniform_ceiling_logLoss_cubicTether",
+          "key": "hyp:Continuous (Function.uncurry ω)",
+          "detail": "`field_uniform_ceiling_logLoss_cubicTether` assumes `hc : Continuous (Function.uncurry ω)`, not stated in the claim.",
+          "question": "Paper claim Theorem 25 (theorem-25) states: “\\lean{field_uniform_ceiling_logLoss_cubicTether}\\coined: take a solution of \\lean{ModelVorticityPDE} with the cubic tether, under the regularity and uniform-support hypotheses of \\lean{field_uniform_…”. Lean theorem `field_uniform_ceiling_logLoss_cubicTether` assumes `hc : Continuous (Function.uncurry ω)`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "609719ce1e2e",
+          "claimId": "theorem-25",
+          "kind": "conditional",
+          "lean": "field_uniform_ceiling_logLoss_cubicTether",
+          "key": "hyp:Continuous (Function.uncurry (time_deriv ω))",
+          "detail": "`field_uniform_ceiling_logLoss_cubicTether` assumes `hct : Continuous (Function.uncurry (time_deriv ω))`, not stated in the claim.",
+          "question": "Paper claim Theorem 25 (theorem-25) states: “\\lean{field_uniform_ceiling_logLoss_cubicTether}\\coined: take a solution of \\lean{ModelVorticityPDE} with the cubic tether, under the regularity and uniform-support hypotheses of \\lean{field_uniform_…”. Lean theorem `field_uniform_ceiling_logLoss_cubicTether` assumes `hct : Continuous (Function.uncurry (time_deriv ω))`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "fba3bf5c954f",
+          "claimId": "theorem-25",
+          "kind": "conditional",
+          "lean": "field_uniform_ceiling_logLoss_cubicTether",
+          "key": "hyp:∀ s x, HasDerivAt (fun r => ω r x) (time_deriv ω s x) s",
+          "detail": "`field_uniform_ceiling_logLoss_cubicTether` assumes `hd : ∀ s x, HasDerivAt (fun r => ω r x) (time_deriv ω s x) s`, not stated in the claim.",
+          "question": "Paper claim Theorem 25 (theorem-25) states: “\\lean{field_uniform_ceiling_logLoss_cubicTether}\\coined: take a solution of \\lean{ModelVorticityPDE} with the cubic tether, under the regularity and uniform-support hypotheses of \\lean{field_uniform_…”. Lean theorem `field_uniform_ceiling_logLoss_cubicTether` assumes `hd : ∀ s x, HasDerivAt (fun r => ω r x) (time_deriv ω s x) s`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "954159641a6e",
+          "claimId": "theorem-25",
+          "kind": "conditional",
+          "lean": "field_uniform_ceiling_logLoss_cubicTether",
+          "key": "hyp:∀ s, IsLUB (range fun x => ‖ω s x‖) (Y s)",
+          "detail": "`field_uniform_ceiling_logLoss_cubicTether` assumes `hY : ∀ s, IsLUB (range fun x => ‖ω s x‖) (Y s)`, not stated in the claim.",
+          "question": "Paper claim Theorem 25 (theorem-25) states: “\\lean{field_uniform_ceiling_logLoss_cubicTether}\\coined: take a solution of \\lean{ModelVorticityPDE} with the cubic tether, under the regularity and uniform-support hypotheses of \\lean{field_uniform_…”. Lean theorem `field_uniform_ceiling_logLoss_cubicTether` assumes `hY : ∀ s, IsLUB (range fun x => ‖ω s x‖) (Y s)`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "66a78d2d16dc",
+          "claimId": "theorem-25",
+          "kind": "narrower",
+          "lean": "field_uniform_ceiling_logLoss_cubicTether",
+          "key": "bound:t>=0",
+          "detail": "`field_uniform_ceiling_logLoss_cubicTether` restricts t ≥ 0; the claim states no such restriction.",
+          "question": "Paper claim Theorem 25 (theorem-25) states: “\\lean{field_uniform_ceiling_logLoss_cubicTether}\\coined: take a solution of \\lean{ModelVorticityPDE} with the cubic tether, under the regularity and uniform-support hypotheses of \\lean{field_uniform_…”. Lean theorem `field_uniform_ceiling_logLoss_cubicTether` assumes `0 ≤ t` (restricting t ≥ 0), which the claim does not state. Is the restricted domain intentional?",
+          "weight": 0.6
+        },
+        {
+          "id": "6e8df2b41d57",
+          "claimId": "theorem-25",
+          "kind": "conditional",
+          "lean": "field_uniform_ceiling",
+          "key": "hyp:IsCompact K",
+          "detail": "`field_uniform_ceiling` assumes `hK : IsCompact K`, not stated in the claim.",
+          "question": "Paper claim Theorem 25 (theorem-25) states: “\\lean{field_uniform_ceiling_logLoss_cubicTether}\\coined: take a solution of \\lean{ModelVorticityPDE} with the cubic tether, under the regularity and uniform-support hypotheses of \\lean{field_uniform_…”. Lean theorem `field_uniform_ceiling` assumes `hK : IsCompact K`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "5c983837e33f",
+          "claimId": "theorem-25",
+          "kind": "conditional",
+          "lean": "field_uniform_ceiling",
+          "key": "hyp:K.Nonempty",
+          "detail": "`field_uniform_ceiling` assumes `hne : K.Nonempty`, not stated in the claim.",
+          "question": "Paper claim Theorem 25 (theorem-25) states: “\\lean{field_uniform_ceiling_logLoss_cubicTether}\\coined: take a solution of \\lean{ModelVorticityPDE} with the cubic tether, under the regularity and uniform-support hypotheses of \\lean{field_uniform_…”. Lean theorem `field_uniform_ceiling` assumes `hne : K.Nonempty`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "bdecd2045007",
+          "claimId": "theorem-25",
+          "kind": "conditional",
+          "lean": "field_uniform_ceiling",
+          "key": "hyp:∀ t, ContDiff ℝ 2 (ω t)",
+          "detail": "`field_uniform_ceiling` assumes `hreg : ∀ t, ContDiff ℝ 2 (ω t)`, not stated in the claim.",
+          "question": "Paper claim Theorem 25 (theorem-25) states: “\\lean{field_uniform_ceiling_logLoss_cubicTether}\\coined: take a solution of \\lean{ModelVorticityPDE} with the cubic tether, under the regularity and uniform-support hypotheses of \\lean{field_uniform_…”. Lean theorem `field_uniform_ceiling` assumes `hreg : ∀ t, ContDiff ℝ 2 (ω t)`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "ace48304461f",
+          "claimId": "theorem-25",
+          "kind": "conditional",
+          "lean": "field_uniform_ceiling",
+          "key": "hyp:Continuous (Function.uncurry ω)",
+          "detail": "`field_uniform_ceiling` assumes `hc : Continuous (Function.uncurry ω)`, not stated in the claim.",
+          "question": "Paper claim Theorem 25 (theorem-25) states: “\\lean{field_uniform_ceiling_logLoss_cubicTether}\\coined: take a solution of \\lean{ModelVorticityPDE} with the cubic tether, under the regularity and uniform-support hypotheses of \\lean{field_uniform_…”. Lean theorem `field_uniform_ceiling` assumes `hc : Continuous (Function.uncurry ω)`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "eecca7f2d286",
+          "claimId": "theorem-25",
+          "kind": "conditional",
+          "lean": "field_uniform_ceiling",
+          "key": "hyp:Continuous (Function.uncurry (time_deriv ω))",
+          "detail": "`field_uniform_ceiling` assumes `hct : Continuous (Function.uncurry (time_deriv ω))`, not stated in the claim.",
+          "question": "Paper claim Theorem 25 (theorem-25) states: “\\lean{field_uniform_ceiling_logLoss_cubicTether}\\coined: take a solution of \\lean{ModelVorticityPDE} with the cubic tether, under the regularity and uniform-support hypotheses of \\lean{field_uniform_…”. Lean theorem `field_uniform_ceiling` assumes `hct : Continuous (Function.uncurry (time_deriv ω))`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "2084ca9f47f3",
+          "claimId": "theorem-25",
+          "kind": "conditional",
+          "lean": "field_uniform_ceiling",
+          "key": "hyp:∀ s x, HasDerivAt (fun r => ω r x) (time_deriv ω s x) s",
+          "detail": "`field_uniform_ceiling` assumes `hd : ∀ s x, HasDerivAt (fun r => ω r x) (time_deriv ω s x) s`, not stated in the claim.",
+          "question": "Paper claim Theorem 25 (theorem-25) states: “\\lean{field_uniform_ceiling_logLoss_cubicTether}\\coined: take a solution of \\lean{ModelVorticityPDE} with the cubic tether, under the regularity and uniform-support hypotheses of \\lean{field_uniform_…”. Lean theorem `field_uniform_ceiling` assumes `hd : ∀ s x, HasDerivAt (fun r => ω r x) (time_deriv ω s x) s`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "f2dfcf4664bf",
+          "claimId": "theorem-25",
+          "kind": "conditional",
+          "lean": "field_uniform_ceiling",
+          "key": "hyp:∀ s, IsLUB (range fun x => ‖ω s x‖) (Y s)",
+          "detail": "`field_uniform_ceiling` assumes `hY : ∀ s, IsLUB (range fun x => ‖ω s x‖) (Y s)`, not stated in the claim.",
+          "question": "Paper claim Theorem 25 (theorem-25) states: “\\lean{field_uniform_ceiling_logLoss_cubicTether}\\coined: take a solution of \\lean{ModelVorticityPDE} with the cubic tether, under the regularity and uniform-support hypotheses of \\lean{field_uniform_…”. Lean theorem `field_uniform_ceiling` assumes `hY : ∀ s, IsLUB (range fun x => ‖ω s x‖) (Y s)`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "471193a396e9",
+          "claimId": "theorem-25",
+          "kind": "narrower",
+          "lean": "field_uniform_ceiling",
+          "key": "bound:t>=0",
+          "detail": "`field_uniform_ceiling` restricts t ≥ 0; the claim states no such restriction.",
+          "question": "Paper claim Theorem 25 (theorem-25) states: “\\lean{field_uniform_ceiling_logLoss_cubicTether}\\coined: take a solution of \\lean{ModelVorticityPDE} with the cubic tether, under the regularity and uniform-support hypotheses of \\lean{field_uniform_…”. Lean theorem `field_uniform_ceiling` assumes `0 ≤ t` (restricting t ≥ 0), which the claim does not state. Is the restricted domain intentional?",
+          "weight": 0.6
+        }
+      ],
+      "drift": 1
+    }
+  ],
+  "unanchored": [
+    {
+      "name": "tetherKernel_degenerates_on_kinetic_energy",
+      "cites": "Lemma 2.3"
+    }
+  ],
+  "drift": 0.529,
+  "pending": [
+    {
+      "id": "6e4625e44d0d",
+      "claimId": "theorem-4",
+      "kind": "narrower",
+      "lean": "uniform_ceiling",
+      "key": "bound:t>=0",
+      "detail": "`uniform_ceiling` restricts t ≥ 0; the claim states no such restriction.",
+      "question": "Paper claim Theorem 4 (theorem-4) states: “\\lean{maxpoint_rate_logLoss}\\coined: under \\lean{EnergyIdentity}, \\lean{StretchingLogLoss}, \\lean{ViscousAtMax}, \\lean{TetherFeedback}, \\lean{CrossControlled}, \\[y'\\le\\Bigl(C_1+\\tfrac{\\kappa}{4}+\\tfr…”. Lean theorem `uniform_ceiling` assumes `∀ t, 0 ≤ t → HasDerivAt M (M' t) t` (restricting t ≥ 0), which the claim does not state. Is the restricted domain intentional?",
+      "weight": 0.6
+    },
+    {
+      "id": "6e4625e44d0d",
+      "claimId": "theorem-4",
+      "kind": "narrower",
+      "lean": "uniform_ceiling",
+      "key": "bound:t>=0",
+      "detail": "`uniform_ceiling` restricts t ≥ 0; the claim states no such restriction.",
+      "question": "Paper claim Theorem 4 (theorem-4) states: “\\lean{maxpoint_rate_logLoss}\\coined: under \\lean{EnergyIdentity}, \\lean{StretchingLogLoss}, \\lean{ViscousAtMax}, \\lean{TetherFeedback}, \\lean{CrossControlled}, \\[y'\\le\\Bigl(C_1+\\tfrac{\\kappa}{4}+\\tfr…”. Lean theorem `uniform_ceiling` assumes `∀ t, 0 ≤ t → M' t ≤ C * M t ^ 2 - κ * M t ^ 3` (restricting t ≥ 0), which the claim does not state. Is the restricted domain intentional?",
+      "weight": 0.6
+    },
+    {
+      "id": "6e4625e44d0d",
+      "claimId": "theorem-4",
+      "kind": "narrower",
+      "lean": "uniform_ceiling",
+      "key": "bound:t>=0",
+      "detail": "`uniform_ceiling` restricts t ≥ 0; the claim states no such restriction.",
+      "question": "Paper claim Theorem 4 (theorem-4) states: “\\lean{maxpoint_rate_logLoss}\\coined: under \\lean{EnergyIdentity}, \\lean{StretchingLogLoss}, \\lean{ViscousAtMax}, \\lean{TetherFeedback}, \\lean{CrossControlled}, \\[y'\\le\\Bigl(C_1+\\tfrac{\\kappa}{4}+\\tfr…”. Lean theorem `uniform_ceiling` assumes `0 ≤ t` (restricting t ≥ 0), which the claim does not state. Is the restricted domain intentional?",
+      "weight": 0.6
+    },
+    {
+      "id": "f40f0a514cb3",
+      "claimId": "theorem-5",
+      "kind": "conditional",
+      "lean": "scalarLaplacian_newtonPotential_eq",
+      "key": "hyp:ContDiff ℝ 2 g",
+      "detail": "`scalarLaplacian_newtonPotential_eq` assumes `hg : ContDiff ℝ 2 g`, not stated in the claim.",
+      "question": "Paper claim Theorem 5 (theorem-5) states: “\\lean{scalarLaplacian_newtonPotential_eq}\\coined: for $g\\in C^2_c(\\mathbb{R}^3)$ and $N(y)=1/|y|$, $\\Delta(N\\star g)(x)=-4\\pi g(x)$ for every $x$.”. Lean theorem `scalarLaplacian_newtonPotential_eq` assumes `hg : ContDiff ℝ 2 g`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "9348152d5d3e",
+      "claimId": "theorem-5",
+      "kind": "conditional",
+      "lean": "scalarLaplacian_newtonPotential_eq",
+      "key": "hyp:HasCompactSupport g",
+      "detail": "`scalarLaplacian_newtonPotential_eq` assumes `hc : HasCompactSupport g`, not stated in the claim.",
+      "question": "Paper claim Theorem 5 (theorem-5) states: “\\lean{scalarLaplacian_newtonPotential_eq}\\coined: for $g\\in C^2_c(\\mathbb{R}^3)$ and $N(y)=1/|y|$, $\\Delta(N\\star g)(x)=-4\\pi g(x)$ for every $x$.”. Lean theorem `scalarLaplacian_newtonPotential_eq` assumes `hc : HasCompactSupport g`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "eb0ac7eb4dd0",
+      "claimId": "theorem-6",
+      "kind": "conditional",
+      "lean": "newtonPotential_deriv_eq",
+      "key": "hyp:ContDiff ℝ 1 h",
+      "detail": "`newtonPotential_deriv_eq` assumes `hh : ContDiff ℝ 1 h`, not stated in the claim.",
+      "question": "Paper claim Theorem 6 (theorem-6) states: “\\lean{newtonPotential_deriv_eq}\\coined: for $h\\in C^1_c$, $N\\star\\partial_jh=-\\int G_j(t)\\,h(x-t)\\,dt$. (Regularized identity \\lean{regNewton_conv_deriv}, then $\\varepsilon\\to0$ on both sides; the ri…”. Lean theorem `newtonPotential_deriv_eq` assumes `hh : ContDiff ℝ 1 h`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "274384ae54fb",
+      "claimId": "theorem-6",
+      "kind": "conditional",
+      "lean": "newtonPotential_deriv_eq",
+      "key": "hyp:HasCompactSupport h",
+      "detail": "`newtonPotential_deriv_eq` assumes `hc : HasCompactSupport h`, not stated in the claim.",
+      "question": "Paper claim Theorem 6 (theorem-6) states: “\\lean{newtonPotential_deriv_eq}\\coined: for $h\\in C^1_c$, $N\\star\\partial_jh=-\\int G_j(t)\\,h(x-t)\\,dt$. (Regularized identity \\lean{regNewton_conv_deriv}, then $\\varepsilon\\to0$ on both sides; the ri…”. Lean theorem `newtonPotential_deriv_eq` assumes `hc : HasCompactSupport h`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "169940891af5",
+      "claimId": "theorem-6",
+      "kind": "conditional",
+      "lean": "regNewton_conv_deriv",
+      "key": "hyp:ContDiff ℝ 1 h",
+      "detail": "`regNewton_conv_deriv` assumes `hh : ContDiff ℝ 1 h`, not stated in the claim.",
+      "question": "Paper claim Theorem 6 (theorem-6) states: “\\lean{newtonPotential_deriv_eq}\\coined: for $h\\in C^1_c$, $N\\star\\partial_jh=-\\int G_j(t)\\,h(x-t)\\,dt$. (Regularized identity \\lean{regNewton_conv_deriv}, then $\\varepsilon\\to0$ on both sides; the ri…”. Lean theorem `regNewton_conv_deriv` assumes `hh : ContDiff ℝ 1 h`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "e54dae77fd01",
+      "claimId": "theorem-6",
+      "kind": "conditional",
+      "lean": "regNewton_conv_deriv",
+      "key": "hyp:HasCompactSupport h",
+      "detail": "`regNewton_conv_deriv` assumes `hc : HasCompactSupport h`, not stated in the claim.",
+      "question": "Paper claim Theorem 6 (theorem-6) states: “\\lean{newtonPotential_deriv_eq}\\coined: for $h\\in C^1_c$, $N\\star\\partial_jh=-\\int G_j(t)\\,h(x-t)\\,dt$. (Regularized identity \\lean{regNewton_conv_deriv}, then $\\varepsilon\\to0$ on both sides; the ri…”. Lean theorem `regNewton_conv_deriv` assumes `hc : HasCompactSupport h`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "e5b5c43d2a7e",
+      "claimId": "theorem-8",
+      "kind": "conditional",
+      "lean": "fderiv_fderiv_swap",
+      "key": "hyp:ContDiff ℝ 2 f",
+      "detail": "`fderiv_fderiv_swap` assumes `hf : ContDiff ℝ 2 f`, not stated in the claim.",
+      "question": "Paper claim Theorem 8 (theorem-8) states: “\\lean{curl_curl_newtonVec}\\coined: for \\lean{IsTestOrbit}~$\\omega$, $\\operatorname{curl}\\operatorname{curl}(N\\star\\omega)=4\\pi\\omega$, using symmetry of second derivatives (\\lean{fderiv_fderiv_swap})…”. Lean theorem `fderiv_fderiv_swap` assumes `hf : ContDiff ℝ 2 f`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "583b621a90ca",
+      "claimId": "theorem-9",
+      "kind": "conditional",
+      "lean": "helicity_casimir_test_closed",
+      "key": "hyp:D S = velocity_from_vorticity ω",
+      "detail": "`helicity_casimir_test_closed` assumes `hD : D S = velocity_from_vorticity ω`, not stated in the claim.",
+      "question": "Paper claim Theorem 9 (theorem-9) states: “\\lean{curlBiotSavartTest}\\coined: \\lean{CurlBiotSavartTest} holds, i.e.\\ $\\operatorname{curl}\\mathrm{BiotSavart}\\,\\omega=\\omega$ for every smooth, compactly supported, divergence-free $\\omega$. Conse…”. Lean theorem `helicity_casimir_test_closed` assumes `hD : D S = velocity_from_vorticity ω`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "512b196b0962",
+      "claimId": "theorem-12",
+      "kind": "conditional",
+      "lean": "curl_eq_of_isGateauxRepOn",
+      "key": "hyp:∀ c, ContDiff ℝ 1 (fun y => d₁ y c)",
+      "detail": "`curl_eq_of_isGateauxRepOn` assumes `h₁ : ∀ c, ContDiff ℝ 1 (fun y => d₁ y c)`, not stated in the claim.",
+      "question": "Paper claim Theorem 12 (theorem-12) states: “\\lean{curl_eq_of_isGateauxRepOn}\\coined: two $C^1$ representatives of the same functional on the test class have equal curl. Hence \\lean{helicity_casimir_of_rep}\\coined: if $D\\,S$ is any $C^1$ repres…”. Lean theorem `curl_eq_of_isGateauxRepOn` assumes `h₁ : ∀ c, ContDiff ℝ 1 (fun y => d₁ y c)`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "4c63ce7eb397",
+      "claimId": "theorem-12",
+      "kind": "conditional",
+      "lean": "curl_eq_of_isGateauxRepOn",
+      "key": "hyp:∀ c, ContDiff ℝ 1 (fun y => d₂ y c)",
+      "detail": "`curl_eq_of_isGateauxRepOn` assumes `h₂ : ∀ c, ContDiff ℝ 1 (fun y => d₂ y c)`, not stated in the claim.",
+      "question": "Paper claim Theorem 12 (theorem-12) states: “\\lean{curl_eq_of_isGateauxRepOn}\\coined: two $C^1$ representatives of the same functional on the test class have equal curl. Hence \\lean{helicity_casimir_of_rep}\\coined: if $D\\,S$ is any $C^1$ repres…”. Lean theorem `curl_eq_of_isGateauxRepOn` assumes `h₂ : ∀ c, ContDiff ℝ 1 (fun y => d₂ y c)`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "a5b4409f11d8",
+      "claimId": "theorem-12",
+      "kind": "conditional",
+      "lean": "helicity_casimir_of_rep",
+      "key": "hyp:∀ c, ContDiff ℝ 1 (fun y => D S y c)",
+      "detail": "`helicity_casimir_of_rep` assumes `hC : ∀ c, ContDiff ℝ 1 (fun y => D S y c)`, not stated in the claim.",
+      "question": "Paper claim Theorem 12 (theorem-12) states: “\\lean{curl_eq_of_isGateauxRepOn}\\coined: two $C^1$ representatives of the same functional on the test class have equal curl. Hence \\lean{helicity_casimir_of_rep}\\coined: if $D\\,S$ is any $C^1$ repres…”. Lean theorem `helicity_casimir_of_rep` assumes `hC : ∀ c, ContDiff ℝ 1 (fun y => D S y c)`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "1a28658ca9b6",
+      "claimId": "theorem-13",
+      "kind": "conditional",
+      "lean": "streamFunctionRepModGradOn_of_exists",
+      "key": "hyp:IsTestOrbit ω",
+      "detail": "`streamFunctionRepModGradOn_of_exists` assumes `hω : IsTestOrbit ω`, not stated in the claim.",
+      "question": "Paper claim Theorem 13 (theorem-13) states: “\\lean{streamFunctionRepModGradOn_of_exists}\\coined: \\lean{StreamFunctionRepModGradOn} follows from one $C^2$ kinetic-energy representative $\\psi$ with $\\operatorname{curl}\\psi=u$ and the Poincar\\'e l…”. Lean theorem `streamFunctionRepModGradOn_of_exists` assumes `hω : IsTestOrbit ω`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "ac3fa8351710",
+      "claimId": "theorem-13",
+      "kind": "conditional",
+      "lean": "streamFunctionRepModGradOn_of_exists",
+      "key": "hyp:∀ c, ContDiff ℝ 2 (fun y => ψ y c)",
+      "detail": "`streamFunctionRepModGradOn_of_exists` assumes `hψ : ∀ c, ContDiff ℝ 2 (fun y => ψ y c)`, not stated in the claim.",
+      "question": "Paper claim Theorem 13 (theorem-13) states: “\\lean{streamFunctionRepModGradOn_of_exists}\\coined: \\lean{StreamFunctionRepModGradOn} follows from one $C^2$ kinetic-energy representative $\\psi$ with $\\operatorname{curl}\\psi=u$ and the Poincar\\'e l…”. Lean theorem `streamFunctionRepModGradOn_of_exists` assumes `hψ : ∀ c, ContDiff ℝ 2 (fun y => ψ y c)`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "8226d0bd11e0",
+      "claimId": "theorem-13",
+      "kind": "conditional",
+      "lean": "StreamFunctionRepModGradOn",
+      "key": "hyp:IsTestOrbit ω",
+      "detail": "`StreamFunctionRepModGradOn` assumes `hω : IsTestOrbit ω`, not stated in the claim.",
+      "question": "Paper claim Theorem 13 (theorem-13) states: “\\lean{streamFunctionRepModGradOn_of_exists}\\coined: \\lean{StreamFunctionRepModGradOn} follows from one $C^2$ kinetic-energy representative $\\psi$ with $\\operatorname{curl}\\psi=u$ and the Poincar\\'e l…”. Lean def `StreamFunctionRepModGradOn` assumes `hω : IsTestOrbit ω`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "11344663a8b8",
+      "claimId": "theorem-13",
+      "kind": "conditional",
+      "lean": "kineticEnergy_reps_curl_eq",
+      "key": "hyp:IsTestOrbit ω",
+      "detail": "`kineticEnergy_reps_curl_eq` assumes `hω : IsTestOrbit ω`, not stated in the claim.",
+      "question": "Paper claim Theorem 13 (theorem-13) states: “\\lean{streamFunctionRepModGradOn_of_exists}\\coined: \\lean{StreamFunctionRepModGradOn} follows from one $C^2$ kinetic-energy representative $\\psi$ with $\\operatorname{curl}\\psi=u$ and the Poincar\\'e l…”. Lean theorem `kineticEnergy_reps_curl_eq` assumes `hω : IsTestOrbit ω`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "53029f75ad0d",
+      "claimId": "theorem-13",
+      "kind": "conditional",
+      "lean": "kineticEnergy_reps_curl_eq",
+      "key": "hyp:∀ c, ContDiff ℝ 1 (fun y => d₁ y c)",
+      "detail": "`kineticEnergy_reps_curl_eq` assumes `h₁ : ∀ c, ContDiff ℝ 1 (fun y => d₁ y c)`, not stated in the claim.",
+      "question": "Paper claim Theorem 13 (theorem-13) states: “\\lean{streamFunctionRepModGradOn_of_exists}\\coined: \\lean{StreamFunctionRepModGradOn} follows from one $C^2$ kinetic-energy representative $\\psi$ with $\\operatorname{curl}\\psi=u$ and the Poincar\\'e l…”. Lean theorem `kineticEnergy_reps_curl_eq` assumes `h₁ : ∀ c, ContDiff ℝ 1 (fun y => d₁ y c)`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "34468ba2e188",
+      "claimId": "theorem-13",
+      "kind": "conditional",
+      "lean": "kineticEnergy_reps_curl_eq",
+      "key": "hyp:∀ c, ContDiff ℝ 1 (fun y => d₂ y c)",
+      "detail": "`kineticEnergy_reps_curl_eq` assumes `h₂ : ∀ c, ContDiff ℝ 1 (fun y => d₂ y c)`, not stated in the claim.",
+      "question": "Paper claim Theorem 13 (theorem-13) states: “\\lean{streamFunctionRepModGradOn_of_exists}\\coined: \\lean{StreamFunctionRepModGradOn} follows from one $C^2$ kinetic-energy representative $\\psi$ with $\\operatorname{curl}\\psi=u$ and the Poincar\\'e l…”. Lean theorem `kineticEnergy_reps_curl_eq` assumes `h₂ : ∀ c, ContDiff ℝ 1 (fun y => d₂ y c)`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "f80402535217",
+      "claimId": "theorem-16",
+      "kind": "conditional",
+      "lean": "integral_pairing_curl_symm",
+      "key": "hyp:∀ i, DGood (fun x => a x i)",
+      "detail": "`integral_pairing_curl_symm` assumes `ha : ∀ i, DGood (fun x => a x i)`, not stated in the claim.",
+      "question": "Paper claim Theorem 16 (theorem-16) states: “\\lean{integral_pairing_curl_symm}\\coined: \\[\\int\\ip{a,\\curl b}\\dd x=\\int\\ip{\\curl a,b}\\dd x\\]for fields with decaying coordinates and first derivatives. Hence, with $\\psi=(4\\pi)^{-1}N\\star\\omega$ (\\l…”. Lean theorem `integral_pairing_curl_symm` assumes `ha : ∀ i, DGood (fun x => a x i)`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "8a3f918d1d3e",
+      "claimId": "theorem-16",
+      "kind": "conditional",
+      "lean": "integral_pairing_curl_symm",
+      "key": "hyp:∀ i, DGood (fun x => b x i)",
+      "detail": "`integral_pairing_curl_symm` assumes `hb : ∀ i, DGood (fun x => b x i)`, not stated in the claim.",
+      "question": "Paper claim Theorem 16 (theorem-16) states: “\\lean{integral_pairing_curl_symm}\\coined: \\[\\int\\ip{a,\\curl b}\\dd x=\\int\\ip{\\curl a,b}\\dd x\\]for fields with decaying coordinates and first derivatives. Hence, with $\\psi=(4\\pi)^{-1}N\\star\\omega$ (\\l…”. Lean theorem `integral_pairing_curl_symm` assumes `hb : ∀ i, DGood (fun x => b x i)`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "8ba8604df4e8",
+      "claimId": "theorem-16",
+      "kind": "conditional",
+      "lean": "keStream_isGateauxRep",
+      "key": "hyp:IsTestOrbit ω",
+      "detail": "`keStream_isGateauxRep` assumes `hω : IsTestOrbit ω`, not stated in the claim.",
+      "question": "Paper claim Theorem 16 (theorem-16) states: “\\lean{integral_pairing_curl_symm}\\coined: \\[\\int\\ip{a,\\curl b}\\dd x=\\int\\ip{\\curl a,b}\\dd x\\]for fields with decaying coordinates and first derivatives. Hence, with $\\psi=(4\\pi)^{-1}N\\star\\omega$ (\\l…”. Lean theorem `keStream_isGateauxRep` assumes `hω : IsTestOrbit ω`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "e4f1b2b3e5a5",
+      "claimId": "theorem-18",
+      "kind": "conditional",
+      "lean": "danskin_upper_dini",
+      "key": "hyp:K.Nonempty",
+      "detail": "`danskin_upper_dini` assumes `hne : K.Nonempty`, not stated in the claim.",
+      "question": "Paper claim Theorem 18 (theorem-18) states: “\\lean{danskin_upper_dini}\\coined: if $f,\\partial_t f$ are jointly continuous on $\\mathbb{R}\\times K$, $K$ compact, then for some maximizer $x_\\star$ of $f(t,\\cdot)$ on $K$ and every $\\varepsilon>0$, …”. Lean theorem `danskin_upper_dini` assumes `hne : K.Nonempty`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "f88207356c89",
+      "claimId": "theorem-18",
+      "kind": "conditional",
+      "lean": "danskin_upper_dini",
+      "key": "hyp:Continuous (Function.uncurry f)",
+      "detail": "`danskin_upper_dini` assumes `hf : Continuous (Function.uncurry f)`, not stated in the claim.",
+      "question": "Paper claim Theorem 18 (theorem-18) states: “\\lean{danskin_upper_dini}\\coined: if $f,\\partial_t f$ are jointly continuous on $\\mathbb{R}\\times K$, $K$ compact, then for some maximizer $x_\\star$ of $f(t,\\cdot)$ on $K$ and every $\\varepsilon>0$, …”. Lean theorem `danskin_upper_dini` assumes `hf : Continuous (Function.uncurry f)`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "ad7f644669b8",
+      "claimId": "theorem-18",
+      "kind": "conditional",
+      "lean": "danskin_upper_dini",
+      "key": "hyp:Continuous (Function.uncurry f')",
+      "detail": "`danskin_upper_dini` assumes `hf' : Continuous (Function.uncurry f')`, not stated in the claim.",
+      "question": "Paper claim Theorem 18 (theorem-18) states: “\\lean{danskin_upper_dini}\\coined: if $f,\\partial_t f$ are jointly continuous on $\\mathbb{R}\\times K$, $K$ compact, then for some maximizer $x_\\star$ of $f(t,\\cdot)$ on $K$ and every $\\varepsilon>0$, …”. Lean theorem `danskin_upper_dini` assumes `hf' : Continuous (Function.uncurry f')`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "05e6b8cd588d",
+      "claimId": "theorem-18",
+      "kind": "conditional",
+      "lean": "danskin_upper_dini",
+      "key": "hyp:∀ s x, HasDerivAt (fun r => f r x) (f' s x) s",
+      "detail": "`danskin_upper_dini` assumes `hd : ∀ s x, HasDerivAt (fun r => f r x) (f' s x) s`, not stated in the claim.",
+      "question": "Paper claim Theorem 18 (theorem-18) states: “\\lean{danskin_upper_dini}\\coined: if $f,\\partial_t f$ are jointly continuous on $\\mathbb{R}\\times K$, $K$ compact, then for some maximizer $x_\\star$ of $f(t,\\cdot)$ on $K$ and every $\\varepsilon>0$, …”. Lean theorem `danskin_upper_dini` assumes `hd : ∀ s x, HasDerivAt (fun r => f r x) (f' s x) s`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "511ca30486ec",
+      "claimId": "theorem-18",
+      "kind": "conditional",
+      "lean": "vorticity_danskin_upper_dini",
+      "key": "hyp:K.Nonempty",
+      "detail": "`vorticity_danskin_upper_dini` assumes `hne : K.Nonempty`, not stated in the claim.",
+      "question": "Paper claim Theorem 18 (theorem-18) states: “\\lean{danskin_upper_dini}\\coined: if $f,\\partial_t f$ are jointly continuous on $\\mathbb{R}\\times K$, $K$ compact, then for some maximizer $x_\\star$ of $f(t,\\cdot)$ on $K$ and every $\\varepsilon>0$, …”. Lean theorem `vorticity_danskin_upper_dini` assumes `hne : K.Nonempty`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "86c11c3cfb18",
+      "claimId": "theorem-18",
+      "kind": "conditional",
+      "lean": "vorticity_danskin_upper_dini",
+      "key": "hyp:Continuous (Function.uncurry ω)",
+      "detail": "`vorticity_danskin_upper_dini` assumes `hc : Continuous (Function.uncurry ω)`, not stated in the claim.",
+      "question": "Paper claim Theorem 18 (theorem-18) states: “\\lean{danskin_upper_dini}\\coined: if $f,\\partial_t f$ are jointly continuous on $\\mathbb{R}\\times K$, $K$ compact, then for some maximizer $x_\\star$ of $f(t,\\cdot)$ on $K$ and every $\\varepsilon>0$, …”. Lean theorem `vorticity_danskin_upper_dini` assumes `hc : Continuous (Function.uncurry ω)`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "1b702ba9428f",
+      "claimId": "theorem-18",
+      "kind": "conditional",
+      "lean": "vorticity_danskin_upper_dini",
+      "key": "hyp:Continuous (Function.uncurry (time_deriv ω))",
+      "detail": "`vorticity_danskin_upper_dini` assumes `hct : Continuous (Function.uncurry (time_deriv ω))`, not stated in the claim.",
+      "question": "Paper claim Theorem 18 (theorem-18) states: “\\lean{danskin_upper_dini}\\coined: if $f,\\partial_t f$ are jointly continuous on $\\mathbb{R}\\times K$, $K$ compact, then for some maximizer $x_\\star$ of $f(t,\\cdot)$ on $K$ and every $\\varepsilon>0$, …”. Lean theorem `vorticity_danskin_upper_dini` assumes `hct : Continuous (Function.uncurry (time_deriv ω))`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "8026f08d4749",
+      "claimId": "theorem-18",
+      "kind": "conditional",
+      "lean": "vorticity_danskin_upper_dini",
+      "key": "hyp:∀ s x, HasDerivAt (fun r => ω r x) (time_deriv ω s x) s",
+      "detail": "`vorticity_danskin_upper_dini` assumes `hd : ∀ s x, HasDerivAt (fun r => ω r x) (time_deriv ω s x) s`, not stated in the claim.",
+      "question": "Paper claim Theorem 18 (theorem-18) states: “\\lean{danskin_upper_dini}\\coined: if $f,\\partial_t f$ are jointly continuous on $\\mathbb{R}\\times K$, $K$ compact, then for some maximizer $x_\\star$ of $f(t,\\cdot)$ on $K$ and every $\\varepsilon>0$, …”. Lean theorem `vorticity_danskin_upper_dini` assumes `hd : ∀ s x, HasDerivAt (fun r => ω r x) (time_deriv ω s x) s`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "df67b304a861",
+      "claimId": "theorem-19",
+      "kind": "conditional",
+      "lean": "sup_mul_deriv_eq_inner",
+      "key": "hyp:∀ s, IsLUB (range fun x => ‖ω s x‖) (Y s)",
+      "detail": "`sup_mul_deriv_eq_inner` assumes `hY : ∀ s, IsLUB (range fun x => ‖ω s x‖) (Y s)`, not stated in the claim.",
+      "question": "Paper claim Theorem 19 (theorem-19) states: “\\lean{sup_mul_deriv_eq_inner}\\coined: if $Y=\\sup|\\omega|$ is differentiable at $t$, then $YY'=\\omega\\cdot\\partial_t\\omega$ at every global maximizer. At such a point $\\omega\\cdot(v\\cdot\\nabla)\\omega=…”. Lean theorem `sup_mul_deriv_eq_inner` assumes `hY : ∀ s, IsLUB (range fun x => ‖ω s x‖) (Y s)`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "d4a37925245d",
+      "claimId": "theorem-19",
+      "kind": "conditional",
+      "lean": "sup_mul_deriv_eq_inner",
+      "key": "hyp:HasDerivAt Y Y' t",
+      "detail": "`sup_mul_deriv_eq_inner` assumes `hYd : HasDerivAt Y Y' t`, not stated in the claim.",
+      "question": "Paper claim Theorem 19 (theorem-19) states: “\\lean{sup_mul_deriv_eq_inner}\\coined: if $Y=\\sup|\\omega|$ is differentiable at $t$, then $YY'=\\omega\\cdot\\partial_t\\omega$ at every global maximizer. At such a point $\\omega\\cdot(v\\cdot\\nabla)\\omega=…”. Lean theorem `sup_mul_deriv_eq_inner` assumes `hYd : HasDerivAt Y Y' t`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "4674fbcdc980",
+      "claimId": "theorem-19",
+      "kind": "conditional",
+      "lean": "sup_mul_deriv_eq_inner",
+      "key": "hyp:∀ x, HasDerivAt (fun r => ω r x) (time_deriv ω t x) t",
+      "detail": "`sup_mul_deriv_eq_inner` assumes `hd : ∀ x, HasDerivAt (fun r => ω r x) (time_deriv ω t x) t`, not stated in the claim.",
+      "question": "Paper claim Theorem 19 (theorem-19) states: “\\lean{sup_mul_deriv_eq_inner}\\coined: if $Y=\\sup|\\omega|$ is differentiable at $t$, then $YY'=\\omega\\cdot\\partial_t\\omega$ at every global maximizer. At such a point $\\omega\\cdot(v\\cdot\\nabla)\\omega=…”. Lean theorem `sup_mul_deriv_eq_inner` assumes `hd : ∀ x, HasDerivAt (fun r => ω r x) (time_deriv ω t x) t`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "8aac28e38def",
+      "claimId": "theorem-19",
+      "kind": "conditional",
+      "lean": "inner_laplacian_nonpos_of_max",
+      "key": "hyp:ContDiff ℝ 2 ω",
+      "detail": "`inner_laplacian_nonpos_of_max` assumes `hω : ContDiff ℝ 2 ω`, not stated in the claim.",
+      "question": "Paper claim Theorem 19 (theorem-19) states: “\\lean{sup_mul_deriv_eq_inner}\\coined: if $Y=\\sup|\\omega|$ is differentiable at $t$, then $YY'=\\omega\\cdot\\partial_t\\omega$ at every global maximizer. At such a point $\\omega\\cdot(v\\cdot\\nabla)\\omega=…”. Lean theorem `inner_laplacian_nonpos_of_max` assumes `hω : ContDiff ℝ 2 ω`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "e115c56e1496",
+      "claimId": "theorem-20",
+      "kind": "conditional",
+      "lean": "maxPointRealization_of_field",
+      "key": "hyp:∀ t, ContDiff ℝ 2 (ω t)",
+      "detail": "`maxPointRealization_of_field` assumes `hreg : ∀ t, ContDiff ℝ 2 (ω t)`, not stated in the claim.",
+      "question": "Paper claim Theorem 20 (theorem-20) states: “\\lean{maxPointRealization_of_field}\\coined: for a solution of \\lean{ModelVorticityPDE} with $\\nu\\ge0$, $\\omega(t)\\in C^2_c$, $C^1$ in time, and $Y=\\sup|\\omega|>0$ differentiable, \\lean{MaxPointRealiz…”. Lean theorem `maxPointRealization_of_field` assumes `hreg : ∀ t, ContDiff ℝ 2 (ω t)`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "af9620700716",
+      "claimId": "theorem-20",
+      "kind": "conditional",
+      "lean": "maxPointRealization_of_field",
+      "key": "hyp:∀ t, HasCompactSupport (ω t)",
+      "detail": "`maxPointRealization_of_field` assumes `hsupp : ∀ t, HasCompactSupport (ω t)`, not stated in the claim.",
+      "question": "Paper claim Theorem 20 (theorem-20) states: “\\lean{maxPointRealization_of_field}\\coined: for a solution of \\lean{ModelVorticityPDE} with $\\nu\\ge0$, $\\omega(t)\\in C^2_c$, $C^1$ in time, and $Y=\\sup|\\omega|>0$ differentiable, \\lean{MaxPointRealiz…”. Lean theorem `maxPointRealization_of_field` assumes `hsupp : ∀ t, HasCompactSupport (ω t)`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "148e4290db0f",
+      "claimId": "theorem-20",
+      "kind": "conditional",
+      "lean": "maxPointRealization_of_field",
+      "key": "hyp:∀ s x, HasDerivAt (fun r => ω r x) (time_deriv ω s x) s",
+      "detail": "`maxPointRealization_of_field` assumes `hd : ∀ s x, HasDerivAt (fun r => ω r x) (time_deriv ω s x) s`, not stated in the claim.",
+      "question": "Paper claim Theorem 20 (theorem-20) states: “\\lean{maxPointRealization_of_field}\\coined: for a solution of \\lean{ModelVorticityPDE} with $\\nu\\ge0$, $\\omega(t)\\in C^2_c$, $C^1$ in time, and $Y=\\sup|\\omega|>0$ differentiable, \\lean{MaxPointRealiz…”. Lean theorem `maxPointRealization_of_field` assumes `hd : ∀ s x, HasDerivAt (fun r => ω r x) (time_deriv ω s x) s`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "cb4640d339f5",
+      "claimId": "theorem-20",
+      "kind": "conditional",
+      "lean": "maxPointRealization_of_field",
+      "key": "hyp:∀ s, IsLUB (range fun x => ‖ω s x‖) (Y s)",
+      "detail": "`maxPointRealization_of_field` assumes `hY : ∀ s, IsLUB (range fun x => ‖ω s x‖) (Y s)`, not stated in the claim.",
+      "question": "Paper claim Theorem 20 (theorem-20) states: “\\lean{maxPointRealization_of_field}\\coined: for a solution of \\lean{ModelVorticityPDE} with $\\nu\\ge0$, $\\omega(t)\\in C^2_c$, $C^1$ in time, and $Y=\\sup|\\omega|>0$ differentiable, \\lean{MaxPointRealiz…”. Lean theorem `maxPointRealization_of_field` assumes `hY : ∀ s, IsLUB (range fun x => ‖ω s x‖) (Y s)`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "308e9677c5d7",
+      "claimId": "theorem-20",
+      "kind": "narrower",
+      "lean": "maxPointRealization_of_field",
+      "key": "bound:t>=0",
+      "detail": "`maxPointRealization_of_field` restricts t ≥ 0; the claim states no such restriction.",
+      "question": "Paper claim Theorem 20 (theorem-20) states: “\\lean{maxPointRealization_of_field}\\coined: for a solution of \\lean{ModelVorticityPDE} with $\\nu\\ge0$, $\\omega(t)\\in C^2_c$, $C^1$ in time, and $Y=\\sup|\\omega|>0$ differentiable, \\lean{MaxPointRealiz…”. Lean theorem `maxPointRealization_of_field` assumes `∀ t, 0 ≤ t → HasDerivAt Y (Y' t) t` (restricting t ≥ 0), which the claim does not state. Is the restricted domain intentional?",
+      "weight": 0.6
+    },
+    {
+      "id": "308e9677c5d7",
+      "claimId": "theorem-20",
+      "kind": "narrower",
+      "lean": "maxPointRealization_of_field",
+      "key": "bound:t>=0",
+      "detail": "`maxPointRealization_of_field` restricts t ≥ 0; the claim states no such restriction.",
+      "question": "Paper claim Theorem 20 (theorem-20) states: “\\lean{maxPointRealization_of_field}\\coined: for a solution of \\lean{ModelVorticityPDE} with $\\nu\\ge0$, $\\omega(t)\\in C^2_c$, $C^1$ in time, and $Y=\\sup|\\omega|>0$ differentiable, \\lean{MaxPointRealiz…”. Lean theorem `maxPointRealization_of_field` assumes `∀ t, 0 ≤ t → 0 < Y t` (restricting t ≥ 0), which the claim does not state. Is the restricted domain intentional?",
+      "weight": 0.6
+    },
+    {
+      "id": "356941d5bd0d",
+      "claimId": "theorem-22",
+      "kind": "narrower",
+      "lean": "ceiling_of_upper_dini",
+      "key": "bound:t>=0",
+      "detail": "`ceiling_of_upper_dini` restricts t ≥ 0; the claim states no such restriction.",
+      "question": "Paper claim Theorem 22 (theorem-22) states: “\\lean{ceiling_of_upper_dini}\\coined: if $M$ is continuous on $[0,\\infty)$, $M(t+h)\\le M(t)+h(R(t)+\\varepsilon)$ for small $h>0$, and $R(t)<0$ whenever $M(t)>B$, then $M(0)\\le B$ implies $M\\le B$ on $…”. Lean theorem `ceiling_of_upper_dini` assumes `∀ t, 0 ≤ t → ∀ ε > 0, ∃ dl > 0, ∀ h, 0 < h → h < dl → M (t + h) ≤ M t + h * (R t + ε)` (restricting t ≥ 0), which the claim does not state. Is the restricted domain intentional?",
+      "weight": 0.6
+    },
+    {
+      "id": "356941d5bd0d",
+      "claimId": "theorem-22",
+      "kind": "narrower",
+      "lean": "ceiling_of_upper_dini",
+      "key": "bound:t>=0",
+      "detail": "`ceiling_of_upper_dini` restricts t ≥ 0; the claim states no such restriction.",
+      "question": "Paper claim Theorem 22 (theorem-22) states: “\\lean{ceiling_of_upper_dini}\\coined: if $M$ is continuous on $[0,\\infty)$, $M(t+h)\\le M(t)+h(R(t)+\\varepsilon)$ for small $h>0$, and $R(t)<0$ whenever $M(t)>B$, then $M(0)\\le B$ implies $M\\le B$ on $…”. Lean theorem `ceiling_of_upper_dini` assumes `∀ t, 0 ≤ t → B < M t → R t < 0` (restricting t ≥ 0), which the claim does not state. Is the restricted domain intentional?",
+      "weight": 0.6
+    },
+    {
+      "id": "356941d5bd0d",
+      "claimId": "theorem-22",
+      "kind": "narrower",
+      "lean": "ceiling_of_upper_dini",
+      "key": "bound:t>=0",
+      "detail": "`ceiling_of_upper_dini` restricts t ≥ 0; the claim states no such restriction.",
+      "question": "Paper claim Theorem 22 (theorem-22) states: “\\lean{ceiling_of_upper_dini}\\coined: if $M$ is continuous on $[0,\\infty)$, $M(t+h)\\le M(t)+h(R(t)+\\varepsilon)$ for small $h>0$, and $R(t)<0$ whenever $M(t)>B$, then $M(0)\\le B$ implies $M\\le B$ on $…”. Lean theorem `ceiling_of_upper_dini` assumes `0 ≤ t` (restricting t ≥ 0), which the claim does not state. Is the restricted domain intentional?",
+      "weight": 0.6
+    },
+    {
+      "id": "45421bd1f4b0",
+      "claimId": "theorem-23",
+      "kind": "conditional",
+      "lean": "field_uniform_ceiling",
+      "key": "hyp:K.Nonempty",
+      "detail": "`field_uniform_ceiling` assumes `hne : K.Nonempty`, not stated in the claim.",
+      "question": "Paper claim Theorem 23 (theorem-23) states: “\\lean{field_uniform_ceiling}\\coined: take a solution of \\lean{ModelVorticityPDE} with $\\nu\\ge0$, $\\kappa>0$, $C^2$ in space, $C^1$ in time, and support in a fixed compact set. Under \\lean{FieldStretc…”. Lean theorem `field_uniform_ceiling` assumes `hne : K.Nonempty`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "ce00c0ef8ed0",
+      "claimId": "theorem-23",
+      "kind": "conditional",
+      "lean": "field_uniform_ceiling",
+      "key": "hyp:∀ t, ContDiff ℝ 2 (ω t)",
+      "detail": "`field_uniform_ceiling` assumes `hreg : ∀ t, ContDiff ℝ 2 (ω t)`, not stated in the claim.",
+      "question": "Paper claim Theorem 23 (theorem-23) states: “\\lean{field_uniform_ceiling}\\coined: take a solution of \\lean{ModelVorticityPDE} with $\\nu\\ge0$, $\\kappa>0$, $C^2$ in space, $C^1$ in time, and support in a fixed compact set. Under \\lean{FieldStretc…”. Lean theorem `field_uniform_ceiling` assumes `hreg : ∀ t, ContDiff ℝ 2 (ω t)`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "808336f5c549",
+      "claimId": "theorem-23",
+      "kind": "conditional",
+      "lean": "field_uniform_ceiling",
+      "key": "hyp:Continuous (Function.uncurry ω)",
+      "detail": "`field_uniform_ceiling` assumes `hc : Continuous (Function.uncurry ω)`, not stated in the claim.",
+      "question": "Paper claim Theorem 23 (theorem-23) states: “\\lean{field_uniform_ceiling}\\coined: take a solution of \\lean{ModelVorticityPDE} with $\\nu\\ge0$, $\\kappa>0$, $C^2$ in space, $C^1$ in time, and support in a fixed compact set. Under \\lean{FieldStretc…”. Lean theorem `field_uniform_ceiling` assumes `hc : Continuous (Function.uncurry ω)`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "37ee7ee261b8",
+      "claimId": "theorem-23",
+      "kind": "conditional",
+      "lean": "field_uniform_ceiling",
+      "key": "hyp:Continuous (Function.uncurry (time_deriv ω))",
+      "detail": "`field_uniform_ceiling` assumes `hct : Continuous (Function.uncurry (time_deriv ω))`, not stated in the claim.",
+      "question": "Paper claim Theorem 23 (theorem-23) states: “\\lean{field_uniform_ceiling}\\coined: take a solution of \\lean{ModelVorticityPDE} with $\\nu\\ge0$, $\\kappa>0$, $C^2$ in space, $C^1$ in time, and support in a fixed compact set. Under \\lean{FieldStretc…”. Lean theorem `field_uniform_ceiling` assumes `hct : Continuous (Function.uncurry (time_deriv ω))`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "e7700aaabbb7",
+      "claimId": "theorem-23",
+      "kind": "conditional",
+      "lean": "field_uniform_ceiling",
+      "key": "hyp:∀ s x, HasDerivAt (fun r => ω r x) (time_deriv ω s x) s",
+      "detail": "`field_uniform_ceiling` assumes `hd : ∀ s x, HasDerivAt (fun r => ω r x) (time_deriv ω s x) s`, not stated in the claim.",
+      "question": "Paper claim Theorem 23 (theorem-23) states: “\\lean{field_uniform_ceiling}\\coined: take a solution of \\lean{ModelVorticityPDE} with $\\nu\\ge0$, $\\kappa>0$, $C^2$ in space, $C^1$ in time, and support in a fixed compact set. Under \\lean{FieldStretc…”. Lean theorem `field_uniform_ceiling` assumes `hd : ∀ s x, HasDerivAt (fun r => ω r x) (time_deriv ω s x) s`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "468354839a67",
+      "claimId": "theorem-23",
+      "kind": "conditional",
+      "lean": "field_uniform_ceiling",
+      "key": "hyp:∀ s, IsLUB (range fun x => ‖ω s x‖) (Y s)",
+      "detail": "`field_uniform_ceiling` assumes `hY : ∀ s, IsLUB (range fun x => ‖ω s x‖) (Y s)`, not stated in the claim.",
+      "question": "Paper claim Theorem 23 (theorem-23) states: “\\lean{field_uniform_ceiling}\\coined: take a solution of \\lean{ModelVorticityPDE} with $\\nu\\ge0$, $\\kappa>0$, $C^2$ in space, $C^1$ in time, and support in a fixed compact set. Under \\lean{FieldStretc…”. Lean theorem `field_uniform_ceiling` assumes `hY : ∀ s, IsLUB (range fun x => ‖ω s x‖) (Y s)`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "edbe966b3974",
+      "claimId": "theorem-23",
+      "kind": "conditional",
+      "lean": "sup_continuous_of_uniform_support",
+      "key": "hyp:K.Nonempty",
+      "detail": "`sup_continuous_of_uniform_support` assumes `hne : K.Nonempty`, not stated in the claim.",
+      "question": "Paper claim Theorem 23 (theorem-23) states: “\\lean{field_uniform_ceiling}\\coined: take a solution of \\lean{ModelVorticityPDE} with $\\nu\\ge0$, $\\kappa>0$, $C^2$ in space, $C^1$ in time, and support in a fixed compact set. Under \\lean{FieldStretc…”. Lean theorem `sup_continuous_of_uniform_support` assumes `hne : K.Nonempty`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "5f734dbbe1a4",
+      "claimId": "theorem-23",
+      "kind": "conditional",
+      "lean": "sup_continuous_of_uniform_support",
+      "key": "hyp:Continuous (Function.uncurry ω)",
+      "detail": "`sup_continuous_of_uniform_support` assumes `hc : Continuous (Function.uncurry ω)`, not stated in the claim.",
+      "question": "Paper claim Theorem 23 (theorem-23) states: “\\lean{field_uniform_ceiling}\\coined: take a solution of \\lean{ModelVorticityPDE} with $\\nu\\ge0$, $\\kappa>0$, $C^2$ in space, $C^1$ in time, and support in a fixed compact set. Under \\lean{FieldStretc…”. Lean theorem `sup_continuous_of_uniform_support` assumes `hc : Continuous (Function.uncurry ω)`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "2c47a4a995e1",
+      "claimId": "theorem-23",
+      "kind": "conditional",
+      "lean": "sup_continuous_of_uniform_support",
+      "key": "hyp:∀ s, IsLUB (range fun x => ‖ω s x‖) (Y s)",
+      "detail": "`sup_continuous_of_uniform_support` assumes `hY : ∀ s, IsLUB (range fun x => ‖ω s x‖) (Y s)`, not stated in the claim.",
+      "question": "Paper claim Theorem 23 (theorem-23) states: “\\lean{field_uniform_ceiling}\\coined: take a solution of \\lean{ModelVorticityPDE} with $\\nu\\ge0$, $\\kappa>0$, $C^2$ in space, $C^1$ in time, and support in a fixed compact set. Under \\lean{FieldStretc…”. Lean theorem `sup_continuous_of_uniform_support` assumes `hY : ∀ s, IsLUB (range fun x => ‖ω s x‖) (Y s)`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "35a64a766837",
+      "claimId": "theorem-24",
+      "kind": "conditional",
+      "lean": "fieldTetherFeedback_cubicTether",
+      "key": "hyp:∀ s, IsLUB (range fun x => ‖ω s x‖) (Y s)",
+      "detail": "`fieldTetherFeedback_cubicTether` assumes `hY : ∀ s, IsLUB (range fun x => ‖ω s x‖) (Y s)`, not stated in the claim.",
+      "question": "Paper claim Theorem 24 (theorem-24) states: “\\lean{fieldTetherFeedback_cubicTether}\\coined: for $T=-\\kappa|\\omega|^2\\omega$ (\\lean{cubicTether}\\coined), \\lean{FieldTetherFeedback} holds. Hence \\lean{field_uniform_ceiling_cubicTether}\\coined\\ ne…”. Lean theorem `fieldTetherFeedback_cubicTether` assumes `hY : ∀ s, IsLUB (range fun x => ‖ω s x‖) (Y s)`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "b88ac2a7e6b3",
+      "claimId": "theorem-24",
+      "kind": "conditional",
+      "lean": "field_uniform_ceiling_cubicTether",
+      "key": "hyp:ModelVorticityPDE ν ω u (cubicTether κ ω)",
+      "detail": "`field_uniform_ceiling_cubicTether` assumes `hpde : ModelVorticityPDE ν ω u (cubicTether κ ω)`, not stated in the claim.",
+      "question": "Paper claim Theorem 24 (theorem-24) states: “\\lean{fieldTetherFeedback_cubicTether}\\coined: for $T=-\\kappa|\\omega|^2\\omega$ (\\lean{cubicTether}\\coined), \\lean{FieldTetherFeedback} holds. Hence \\lean{field_uniform_ceiling_cubicTether}\\coined\\ ne…”. Lean theorem `field_uniform_ceiling_cubicTether` assumes `hpde : ModelVorticityPDE ν ω u (cubicTether κ ω)`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "9049770cc544",
+      "claimId": "theorem-24",
+      "kind": "conditional",
+      "lean": "field_uniform_ceiling_cubicTether",
+      "key": "hyp:IsCompact K",
+      "detail": "`field_uniform_ceiling_cubicTether` assumes `hK : IsCompact K`, not stated in the claim.",
+      "question": "Paper claim Theorem 24 (theorem-24) states: “\\lean{fieldTetherFeedback_cubicTether}\\coined: for $T=-\\kappa|\\omega|^2\\omega$ (\\lean{cubicTether}\\coined), \\lean{FieldTetherFeedback} holds. Hence \\lean{field_uniform_ceiling_cubicTether}\\coined\\ ne…”. Lean theorem `field_uniform_ceiling_cubicTether` assumes `hK : IsCompact K`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "02c4fb96257d",
+      "claimId": "theorem-24",
+      "kind": "conditional",
+      "lean": "field_uniform_ceiling_cubicTether",
+      "key": "hyp:K.Nonempty",
+      "detail": "`field_uniform_ceiling_cubicTether` assumes `hne : K.Nonempty`, not stated in the claim.",
+      "question": "Paper claim Theorem 24 (theorem-24) states: “\\lean{fieldTetherFeedback_cubicTether}\\coined: for $T=-\\kappa|\\omega|^2\\omega$ (\\lean{cubicTether}\\coined), \\lean{FieldTetherFeedback} holds. Hence \\lean{field_uniform_ceiling_cubicTether}\\coined\\ ne…”. Lean theorem `field_uniform_ceiling_cubicTether` assumes `hne : K.Nonempty`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "954c21494fa0",
+      "claimId": "theorem-24",
+      "kind": "conditional",
+      "lean": "field_uniform_ceiling_cubicTether",
+      "key": "hyp:∀ t, ContDiff ℝ 2 (ω t)",
+      "detail": "`field_uniform_ceiling_cubicTether` assumes `hreg : ∀ t, ContDiff ℝ 2 (ω t)`, not stated in the claim.",
+      "question": "Paper claim Theorem 24 (theorem-24) states: “\\lean{fieldTetherFeedback_cubicTether}\\coined: for $T=-\\kappa|\\omega|^2\\omega$ (\\lean{cubicTether}\\coined), \\lean{FieldTetherFeedback} holds. Hence \\lean{field_uniform_ceiling_cubicTether}\\coined\\ ne…”. Lean theorem `field_uniform_ceiling_cubicTether` assumes `hreg : ∀ t, ContDiff ℝ 2 (ω t)`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "04c3cc451c5c",
+      "claimId": "theorem-24",
+      "kind": "conditional",
+      "lean": "field_uniform_ceiling_cubicTether",
+      "key": "hyp:Continuous (Function.uncurry ω)",
+      "detail": "`field_uniform_ceiling_cubicTether` assumes `hc : Continuous (Function.uncurry ω)`, not stated in the claim.",
+      "question": "Paper claim Theorem 24 (theorem-24) states: “\\lean{fieldTetherFeedback_cubicTether}\\coined: for $T=-\\kappa|\\omega|^2\\omega$ (\\lean{cubicTether}\\coined), \\lean{FieldTetherFeedback} holds. Hence \\lean{field_uniform_ceiling_cubicTether}\\coined\\ ne…”. Lean theorem `field_uniform_ceiling_cubicTether` assumes `hc : Continuous (Function.uncurry ω)`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "9f7591ae40e9",
+      "claimId": "theorem-24",
+      "kind": "conditional",
+      "lean": "field_uniform_ceiling_cubicTether",
+      "key": "hyp:Continuous (Function.uncurry (time_deriv ω))",
+      "detail": "`field_uniform_ceiling_cubicTether` assumes `hct : Continuous (Function.uncurry (time_deriv ω))`, not stated in the claim.",
+      "question": "Paper claim Theorem 24 (theorem-24) states: “\\lean{fieldTetherFeedback_cubicTether}\\coined: for $T=-\\kappa|\\omega|^2\\omega$ (\\lean{cubicTether}\\coined), \\lean{FieldTetherFeedback} holds. Hence \\lean{field_uniform_ceiling_cubicTether}\\coined\\ ne…”. Lean theorem `field_uniform_ceiling_cubicTether` assumes `hct : Continuous (Function.uncurry (time_deriv ω))`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "8afea0c125fa",
+      "claimId": "theorem-24",
+      "kind": "conditional",
+      "lean": "field_uniform_ceiling_cubicTether",
+      "key": "hyp:∀ s x, HasDerivAt (fun r => ω r x) (time_deriv ω s x) s",
+      "detail": "`field_uniform_ceiling_cubicTether` assumes `hd : ∀ s x, HasDerivAt (fun r => ω r x) (time_deriv ω s x) s`, not stated in the claim.",
+      "question": "Paper claim Theorem 24 (theorem-24) states: “\\lean{fieldTetherFeedback_cubicTether}\\coined: for $T=-\\kappa|\\omega|^2\\omega$ (\\lean{cubicTether}\\coined), \\lean{FieldTetherFeedback} holds. Hence \\lean{field_uniform_ceiling_cubicTether}\\coined\\ ne…”. Lean theorem `field_uniform_ceiling_cubicTether` assumes `hd : ∀ s x, HasDerivAt (fun r => ω r x) (time_deriv ω s x) s`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "52149584a942",
+      "claimId": "theorem-24",
+      "kind": "conditional",
+      "lean": "field_uniform_ceiling_cubicTether",
+      "key": "hyp:∀ s, IsLUB (range fun x => ‖ω s x‖) (Y s)",
+      "detail": "`field_uniform_ceiling_cubicTether` assumes `hY : ∀ s, IsLUB (range fun x => ‖ω s x‖) (Y s)`, not stated in the claim.",
+      "question": "Paper claim Theorem 24 (theorem-24) states: “\\lean{fieldTetherFeedback_cubicTether}\\coined: for $T=-\\kappa|\\omega|^2\\omega$ (\\lean{cubicTether}\\coined), \\lean{FieldTetherFeedback} holds. Hence \\lean{field_uniform_ceiling_cubicTether}\\coined\\ ne…”. Lean theorem `field_uniform_ceiling_cubicTether` assumes `hY : ∀ s, IsLUB (range fun x => ‖ω s x‖) (Y s)`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "542c019c5e40",
+      "claimId": "theorem-24",
+      "kind": "narrower",
+      "lean": "field_uniform_ceiling_cubicTether",
+      "key": "bound:t>=0",
+      "detail": "`field_uniform_ceiling_cubicTether` restricts t ≥ 0; the claim states no such restriction.",
+      "question": "Paper claim Theorem 24 (theorem-24) states: “\\lean{fieldTetherFeedback_cubicTether}\\coined: for $T=-\\kappa|\\omega|^2\\omega$ (\\lean{cubicTether}\\coined), \\lean{FieldTetherFeedback} holds. Hence \\lean{field_uniform_ceiling_cubicTether}\\coined\\ ne…”. Lean theorem `field_uniform_ceiling_cubicTether` assumes `0 ≤ t` (restricting t ≥ 0), which the claim does not state. Is the restricted domain intentional?",
+      "weight": 0.6
+    },
+    {
+      "id": "86b72b07e39b",
+      "claimId": "theorem-25",
+      "kind": "conditional",
+      "lean": "field_uniform_ceiling_logLoss_cubicTether",
+      "key": "hyp:IsCompact K",
+      "detail": "`field_uniform_ceiling_logLoss_cubicTether` assumes `hK : IsCompact K`, not stated in the claim.",
+      "question": "Paper claim Theorem 25 (theorem-25) states: “\\lean{field_uniform_ceiling_logLoss_cubicTether}\\coined: take a solution of \\lean{ModelVorticityPDE} with the cubic tether, under the regularity and uniform-support hypotheses of \\lean{field_uniform_…”. Lean theorem `field_uniform_ceiling_logLoss_cubicTether` assumes `hK : IsCompact K`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "0261389afc04",
+      "claimId": "theorem-25",
+      "kind": "conditional",
+      "lean": "field_uniform_ceiling_logLoss_cubicTether",
+      "key": "hyp:K.Nonempty",
+      "detail": "`field_uniform_ceiling_logLoss_cubicTether` assumes `hne : K.Nonempty`, not stated in the claim.",
+      "question": "Paper claim Theorem 25 (theorem-25) states: “\\lean{field_uniform_ceiling_logLoss_cubicTether}\\coined: take a solution of \\lean{ModelVorticityPDE} with the cubic tether, under the regularity and uniform-support hypotheses of \\lean{field_uniform_…”. Lean theorem `field_uniform_ceiling_logLoss_cubicTether` assumes `hne : K.Nonempty`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "ff1c83043b3b",
+      "claimId": "theorem-25",
+      "kind": "conditional",
+      "lean": "field_uniform_ceiling_logLoss_cubicTether",
+      "key": "hyp:∀ t, ContDiff ℝ 2 (ω t)",
+      "detail": "`field_uniform_ceiling_logLoss_cubicTether` assumes `hreg : ∀ t, ContDiff ℝ 2 (ω t)`, not stated in the claim.",
+      "question": "Paper claim Theorem 25 (theorem-25) states: “\\lean{field_uniform_ceiling_logLoss_cubicTether}\\coined: take a solution of \\lean{ModelVorticityPDE} with the cubic tether, under the regularity and uniform-support hypotheses of \\lean{field_uniform_…”. Lean theorem `field_uniform_ceiling_logLoss_cubicTether` assumes `hreg : ∀ t, ContDiff ℝ 2 (ω t)`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "1093fcbf6d42",
+      "claimId": "theorem-25",
+      "kind": "conditional",
+      "lean": "field_uniform_ceiling_logLoss_cubicTether",
+      "key": "hyp:Continuous (Function.uncurry ω)",
+      "detail": "`field_uniform_ceiling_logLoss_cubicTether` assumes `hc : Continuous (Function.uncurry ω)`, not stated in the claim.",
+      "question": "Paper claim Theorem 25 (theorem-25) states: “\\lean{field_uniform_ceiling_logLoss_cubicTether}\\coined: take a solution of \\lean{ModelVorticityPDE} with the cubic tether, under the regularity and uniform-support hypotheses of \\lean{field_uniform_…”. Lean theorem `field_uniform_ceiling_logLoss_cubicTether` assumes `hc : Continuous (Function.uncurry ω)`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "609719ce1e2e",
+      "claimId": "theorem-25",
+      "kind": "conditional",
+      "lean": "field_uniform_ceiling_logLoss_cubicTether",
+      "key": "hyp:Continuous (Function.uncurry (time_deriv ω))",
+      "detail": "`field_uniform_ceiling_logLoss_cubicTether` assumes `hct : Continuous (Function.uncurry (time_deriv ω))`, not stated in the claim.",
+      "question": "Paper claim Theorem 25 (theorem-25) states: “\\lean{field_uniform_ceiling_logLoss_cubicTether}\\coined: take a solution of \\lean{ModelVorticityPDE} with the cubic tether, under the regularity and uniform-support hypotheses of \\lean{field_uniform_…”. Lean theorem `field_uniform_ceiling_logLoss_cubicTether` assumes `hct : Continuous (Function.uncurry (time_deriv ω))`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "fba3bf5c954f",
+      "claimId": "theorem-25",
+      "kind": "conditional",
+      "lean": "field_uniform_ceiling_logLoss_cubicTether",
+      "key": "hyp:∀ s x, HasDerivAt (fun r => ω r x) (time_deriv ω s x) s",
+      "detail": "`field_uniform_ceiling_logLoss_cubicTether` assumes `hd : ∀ s x, HasDerivAt (fun r => ω r x) (time_deriv ω s x) s`, not stated in the claim.",
+      "question": "Paper claim Theorem 25 (theorem-25) states: “\\lean{field_uniform_ceiling_logLoss_cubicTether}\\coined: take a solution of \\lean{ModelVorticityPDE} with the cubic tether, under the regularity and uniform-support hypotheses of \\lean{field_uniform_…”. Lean theorem `field_uniform_ceiling_logLoss_cubicTether` assumes `hd : ∀ s x, HasDerivAt (fun r => ω r x) (time_deriv ω s x) s`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "954159641a6e",
+      "claimId": "theorem-25",
+      "kind": "conditional",
+      "lean": "field_uniform_ceiling_logLoss_cubicTether",
+      "key": "hyp:∀ s, IsLUB (range fun x => ‖ω s x‖) (Y s)",
+      "detail": "`field_uniform_ceiling_logLoss_cubicTether` assumes `hY : ∀ s, IsLUB (range fun x => ‖ω s x‖) (Y s)`, not stated in the claim.",
+      "question": "Paper claim Theorem 25 (theorem-25) states: “\\lean{field_uniform_ceiling_logLoss_cubicTether}\\coined: take a solution of \\lean{ModelVorticityPDE} with the cubic tether, under the regularity and uniform-support hypotheses of \\lean{field_uniform_…”. Lean theorem `field_uniform_ceiling_logLoss_cubicTether` assumes `hY : ∀ s, IsLUB (range fun x => ‖ω s x‖) (Y s)`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "66a78d2d16dc",
+      "claimId": "theorem-25",
+      "kind": "narrower",
+      "lean": "field_uniform_ceiling_logLoss_cubicTether",
+      "key": "bound:t>=0",
+      "detail": "`field_uniform_ceiling_logLoss_cubicTether` restricts t ≥ 0; the claim states no such restriction.",
+      "question": "Paper claim Theorem 25 (theorem-25) states: “\\lean{field_uniform_ceiling_logLoss_cubicTether}\\coined: take a solution of \\lean{ModelVorticityPDE} with the cubic tether, under the regularity and uniform-support hypotheses of \\lean{field_uniform_…”. Lean theorem `field_uniform_ceiling_logLoss_cubicTether` assumes `0 ≤ t` (restricting t ≥ 0), which the claim does not state. Is the restricted domain intentional?",
+      "weight": 0.6
+    },
+    {
+      "id": "6e8df2b41d57",
+      "claimId": "theorem-25",
+      "kind": "conditional",
+      "lean": "field_uniform_ceiling",
+      "key": "hyp:IsCompact K",
+      "detail": "`field_uniform_ceiling` assumes `hK : IsCompact K`, not stated in the claim.",
+      "question": "Paper claim Theorem 25 (theorem-25) states: “\\lean{field_uniform_ceiling_logLoss_cubicTether}\\coined: take a solution of \\lean{ModelVorticityPDE} with the cubic tether, under the regularity and uniform-support hypotheses of \\lean{field_uniform_…”. Lean theorem `field_uniform_ceiling` assumes `hK : IsCompact K`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "5c983837e33f",
+      "claimId": "theorem-25",
+      "kind": "conditional",
+      "lean": "field_uniform_ceiling",
+      "key": "hyp:K.Nonempty",
+      "detail": "`field_uniform_ceiling` assumes `hne : K.Nonempty`, not stated in the claim.",
+      "question": "Paper claim Theorem 25 (theorem-25) states: “\\lean{field_uniform_ceiling_logLoss_cubicTether}\\coined: take a solution of \\lean{ModelVorticityPDE} with the cubic tether, under the regularity and uniform-support hypotheses of \\lean{field_uniform_…”. Lean theorem `field_uniform_ceiling` assumes `hne : K.Nonempty`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "bdecd2045007",
+      "claimId": "theorem-25",
+      "kind": "conditional",
+      "lean": "field_uniform_ceiling",
+      "key": "hyp:∀ t, ContDiff ℝ 2 (ω t)",
+      "detail": "`field_uniform_ceiling` assumes `hreg : ∀ t, ContDiff ℝ 2 (ω t)`, not stated in the claim.",
+      "question": "Paper claim Theorem 25 (theorem-25) states: “\\lean{field_uniform_ceiling_logLoss_cubicTether}\\coined: take a solution of \\lean{ModelVorticityPDE} with the cubic tether, under the regularity and uniform-support hypotheses of \\lean{field_uniform_…”. Lean theorem `field_uniform_ceiling` assumes `hreg : ∀ t, ContDiff ℝ 2 (ω t)`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "ace48304461f",
+      "claimId": "theorem-25",
+      "kind": "conditional",
+      "lean": "field_uniform_ceiling",
+      "key": "hyp:Continuous (Function.uncurry ω)",
+      "detail": "`field_uniform_ceiling` assumes `hc : Continuous (Function.uncurry ω)`, not stated in the claim.",
+      "question": "Paper claim Theorem 25 (theorem-25) states: “\\lean{field_uniform_ceiling_logLoss_cubicTether}\\coined: take a solution of \\lean{ModelVorticityPDE} with the cubic tether, under the regularity and uniform-support hypotheses of \\lean{field_uniform_…”. Lean theorem `field_uniform_ceiling` assumes `hc : Continuous (Function.uncurry ω)`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "eecca7f2d286",
+      "claimId": "theorem-25",
+      "kind": "conditional",
+      "lean": "field_uniform_ceiling",
+      "key": "hyp:Continuous (Function.uncurry (time_deriv ω))",
+      "detail": "`field_uniform_ceiling` assumes `hct : Continuous (Function.uncurry (time_deriv ω))`, not stated in the claim.",
+      "question": "Paper claim Theorem 25 (theorem-25) states: “\\lean{field_uniform_ceiling_logLoss_cubicTether}\\coined: take a solution of \\lean{ModelVorticityPDE} with the cubic tether, under the regularity and uniform-support hypotheses of \\lean{field_uniform_…”. Lean theorem `field_uniform_ceiling` assumes `hct : Continuous (Function.uncurry (time_deriv ω))`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "2084ca9f47f3",
+      "claimId": "theorem-25",
+      "kind": "conditional",
+      "lean": "field_uniform_ceiling",
+      "key": "hyp:∀ s x, HasDerivAt (fun r => ω r x) (time_deriv ω s x) s",
+      "detail": "`field_uniform_ceiling` assumes `hd : ∀ s x, HasDerivAt (fun r => ω r x) (time_deriv ω s x) s`, not stated in the claim.",
+      "question": "Paper claim Theorem 25 (theorem-25) states: “\\lean{field_uniform_ceiling_logLoss_cubicTether}\\coined: take a solution of \\lean{ModelVorticityPDE} with the cubic tether, under the regularity and uniform-support hypotheses of \\lean{field_uniform_…”. Lean theorem `field_uniform_ceiling` assumes `hd : ∀ s x, HasDerivAt (fun r => ω r x) (time_deriv ω s x) s`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "f2dfcf4664bf",
+      "claimId": "theorem-25",
+      "kind": "conditional",
+      "lean": "field_uniform_ceiling",
+      "key": "hyp:∀ s, IsLUB (range fun x => ‖ω s x‖) (Y s)",
+      "detail": "`field_uniform_ceiling` assumes `hY : ∀ s, IsLUB (range fun x => ‖ω s x‖) (Y s)`, not stated in the claim.",
+      "question": "Paper claim Theorem 25 (theorem-25) states: “\\lean{field_uniform_ceiling_logLoss_cubicTether}\\coined: take a solution of \\lean{ModelVorticityPDE} with the cubic tether, under the regularity and uniform-support hypotheses of \\lean{field_uniform_…”. Lean theorem `field_uniform_ceiling` assumes `hY : ∀ s, IsLUB (range fun x => ‖ω s x‖) (Y s)`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "471193a396e9",
+      "claimId": "theorem-25",
+      "kind": "narrower",
+      "lean": "field_uniform_ceiling",
+      "key": "bound:t>=0",
+      "detail": "`field_uniform_ceiling` restricts t ≥ 0; the claim states no such restriction.",
+      "question": "Paper claim Theorem 25 (theorem-25) states: “\\lean{field_uniform_ceiling_logLoss_cubicTether}\\coined: take a solution of \\lean{ModelVorticityPDE} with the cubic tether, under the regularity and uniform-support hypotheses of \\lean{field_uniform_…”. Lean theorem `field_uniform_ceiling` assumes `0 ≤ t` (restricting t ≥ 0), which the claim does not state. Is the restricted domain intentional?",
+      "weight": 0.6
+    }
+  ],
+  "status": "halt",
+  "mapFile": "../../PipelineHalt/examples/metriplectic-world-model/pipelinehalt.map.json"
+}

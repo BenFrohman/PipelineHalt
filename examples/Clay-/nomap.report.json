@@ -1,0 +1,104 @@
+{
+  "tool": "pipelinehalt",
+  "version": "0.4.0",
+  "anchorTitle": "\\textbf{Fefferman Statement (B) on $\\mathbb{T",
+  "generatedAt": "2026-11-03T21:10:18.872Z",
+  "declarationsScanned": 84,
+  "claims": [
+    {
+      "claim": {
+        "id": "theorem-1",
+        "number": "Theorem 1",
+        "statement": "\\texttt{PeriodicMaximalSolutionWithBKM} and \\texttt{PeriodicBKMIntegrability} together imply Statement~(B).",
+        "kind": "theorem",
+        "source": "paper/Clay_Technical_Monograph_2026.tex:54",
+        "title": "\\texttt{feffermanStatementB\\_of\\_bkm}, kernel-checked"
+      },
+      "matched": [
+        {
+          "name": "feffermanStatementB_of_bkm",
+          "score": 0.565,
+          "explicit": false
+        },
+        {
+          "name": "statementB_of_bkmIntegralFinite",
+          "score": 0.417,
+          "explicit": false
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "26bac8740c61",
+          "claimId": "theorem-1",
+          "kind": "conditional",
+          "lean": "statementB_of_bkmIntegralFinite",
+          "key": "hyp:bkmIntegralFinite",
+          "detail": "`statementB_of_bkmIntegralFinite` assumes `h : bkmIntegralFinite`, not stated in the claim.",
+          "question": "Paper claim Theorem 1 (theorem-1) states: “\\texttt{PeriodicMaximalSolutionWithBKM} and \\texttt{PeriodicBKMIntegrability} together imply Statement~(B).”. Lean theorem `statementB_of_bkmIntegralFinite` assumes `h : bkmIntegralFinite`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        }
+      ],
+      "drift": 0.5
+    },
+    {
+      "claim": {
+        "id": "theorem-2",
+        "number": "Theorem 2",
+        "statement": "If $\\|\\omega(t)\\|_{L^\\infty}$ is bounded on every finite interval of existence, then \\texttt{PeriodicBKMIntegrability} holds.",
+        "kind": "theorem",
+        "source": "paper/Clay_Technical_Monograph_2026.tex:58",
+        "title": "\\texttt{bkmIntegralFinite\\_of\\_holographic}, kernel-checked"
+      },
+      "matched": [
+        {
+          "name": "bkmIntegralFinite_of_holographic",
+          "score": 0.367,
+          "explicit": false
+        },
+        {
+          "name": "bkmIntegralFinite_of_vortSup_le",
+          "score": 0.283,
+          "explicit": false
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "d77f3a7e4950",
+          "claimId": "theorem-2",
+          "kind": "conditional",
+          "lean": "bkmIntegralFinite_of_vortSup_le",
+          "key": "hyp:∀ t ∈ lifespanSet T, vortSup u t ≤ C",
+          "detail": "`bkmIntegralFinite_of_vortSup_le` assumes `hb : ∀ t ∈ lifespanSet T, vortSup u t ≤ C`, not stated in the claim.",
+          "question": "Paper claim Theorem 2 (theorem-2) states: “If $\\|\\omega(t)\\|_{L^\\infty}$ is bounded on every finite interval of existence, then \\texttt{PeriodicBKMIntegrability} holds.”. Lean theorem `bkmIntegralFinite_of_vortSup_le` assumes `hb : ∀ t ∈ lifespanSet T, vortSup u t ≤ C`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        }
+      ],
+      "drift": 0.5
+    }
+  ],
+  "unanchored": [],
+  "drift": 0.5,
+  "pending": [
+    {
+      "id": "26bac8740c61",
+      "claimId": "theorem-1",
+      "kind": "conditional",
+      "lean": "statementB_of_bkmIntegralFinite",
+      "key": "hyp:bkmIntegralFinite",
+      "detail": "`statementB_of_bkmIntegralFinite` assumes `h : bkmIntegralFinite`, not stated in the claim.",
+      "question": "Paper claim Theorem 1 (theorem-1) states: “\\texttt{PeriodicMaximalSolutionWithBKM} and \\texttt{PeriodicBKMIntegrability} together imply Statement~(B).”. Lean theorem `statementB_of_bkmIntegralFinite` assumes `h : bkmIntegralFinite`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "d77f3a7e4950",
+      "claimId": "theorem-2",
+      "kind": "conditional",
+      "lean": "bkmIntegralFinite_of_vortSup_le",
+      "key": "hyp:∀ t ∈ lifespanSet T, vortSup u t ≤ C",
+      "detail": "`bkmIntegralFinite_of_vortSup_le` assumes `hb : ∀ t ∈ lifespanSet T, vortSup u t ≤ C`, not stated in the claim.",
+      "question": "Paper claim Theorem 2 (theorem-2) states: “If $\\|\\omega(t)\\|_{L^\\infty}$ is bounded on every finite interval of existence, then \\texttt{PeriodicBKMIntegrability} holds.”. Lean theorem `bkmIntegralFinite_of_vortSup_le` assumes `hb : ∀ t ∈ lifespanSet T, vortSup u t ≤ C`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    }
+  ],
+  "status": "halt"
+}

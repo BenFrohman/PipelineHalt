@@ -1,0 +1,90 @@
+{
+  "tool": "pipelinehalt",
+  "version": "0.4.0",
+  "anchorTitle": "\\textbf{Exact Madelung and Bohm Quantum Potential Identities in Core Lean 4 (Zero Mathlib Dependencies)",
+  "generatedAt": "2026-11-03T21:10:22.805Z",
+  "declarationsScanned": 5,
+  "claims": [
+    {
+      "claim": {
+        "id": "theorem-1",
+        "number": "Theorem 1",
+        "statement": "For all $R, dR, c, s, dS \\in \\mathbb{Z}$: \\[ (dR \\cdot s + R \\cdot c \\cdot dS)(R \\cdot c) - (dR \\cdot c - R \\cdot s \\cdot dS)(R \\cdot s) = dS \\cdot \\bigl((R \\cdot c)^2 + (R \\cdot s)^2\\bigr). \\]",
+        "kind": "theorem",
+        "source": "Frohman_Bohm_Madelung_Identities_Lean4_2026.tex:25",
+        "title": "\\texttt{Bohm.guidance\\_cleared}"
+      },
+      "matched": [
+        {
+          "name": "guidance_cleared",
+          "score": 0.28,
+          "explicit": false
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "23ecb9fc2fd5",
+          "claimId": "theorem-1",
+          "kind": "ambiguous",
+          "key": "title-vs-statement",
+          "detail": "Title “\\texttt{Bohm.guidance\\_cleared}” shares almost no terms with the statement.",
+          "question": "Paper claim Theorem 1 (theorem-1) states: “For all $R, dR, c, s, dS \\in \\mathbb{Z}$: \\[ (dR \\cdot s + R \\cdot c \\cdot dS)(R \\cdot c) - (dR \\cdot c - R \\cdot s \\cdot dS)(R \\cdot s) = dS \\cdot \\bigl((R \\cdot c)^2 + (R \\cdot s)^2\\bigr). \\]”. Its title is “\\texttt{Bohm.guidance\\_cleared}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+          "weight": 0.3
+        }
+      ],
+      "drift": 0.3
+    },
+    {
+      "claim": {
+        "id": "theorem-2",
+        "number": "Theorem 2",
+        "statement": "For all $\\Delta R, R \\in \\mathbb{Z}$: \\[ (-\\Delta R) \\cdot (2R) = 2 \\cdot ((-\\Delta R) \\cdot R). \\]",
+        "kind": "theorem",
+        "source": "Frohman_Bohm_Madelung_Identities_Lean4_2026.tex:32",
+        "title": "\\texttt{Bohm.quantumPotential\\_cleared}"
+      },
+      "matched": [
+        {
+          "name": "quantumPotential_cleared",
+          "score": 0.45,
+          "explicit": false
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "fdae7eda3cb7",
+          "claimId": "theorem-2",
+          "kind": "ambiguous",
+          "key": "title-vs-statement",
+          "detail": "Title “\\texttt{Bohm.quantumPotential\\_cleared}” shares almost no terms with the statement.",
+          "question": "Paper claim Theorem 2 (theorem-2) states: “For all $\\Delta R, R \\in \\mathbb{Z}$: \\[ (-\\Delta R) \\cdot (2R) = 2 \\cdot ((-\\Delta R) \\cdot R). \\]”. Its title is “\\texttt{Bohm.quantumPotential\\_cleared}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+          "weight": 0.3
+        }
+      ],
+      "drift": 0.3
+    }
+  ],
+  "unanchored": [],
+  "drift": 0.3,
+  "pending": [
+    {
+      "id": "23ecb9fc2fd5",
+      "claimId": "theorem-1",
+      "kind": "ambiguous",
+      "key": "title-vs-statement",
+      "detail": "Title “\\texttt{Bohm.guidance\\_cleared}” shares almost no terms with the statement.",
+      "question": "Paper claim Theorem 1 (theorem-1) states: “For all $R, dR, c, s, dS \\in \\mathbb{Z}$: \\[ (dR \\cdot s + R \\cdot c \\cdot dS)(R \\cdot c) - (dR \\cdot c - R \\cdot s \\cdot dS)(R \\cdot s) = dS \\cdot \\bigl((R \\cdot c)^2 + (R \\cdot s)^2\\bigr). \\]”. Its title is “\\texttt{Bohm.guidance\\_cleared}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+      "weight": 0.3
+    },
+    {
+      "id": "fdae7eda3cb7",
+      "claimId": "theorem-2",
+      "kind": "ambiguous",
+      "key": "title-vs-statement",
+      "detail": "Title “\\texttt{Bohm.quantumPotential\\_cleared}” shares almost no terms with the statement.",
+      "question": "Paper claim Theorem 2 (theorem-2) states: “For all $\\Delta R, R \\in \\mathbb{Z}$: \\[ (-\\Delta R) \\cdot (2R) = 2 \\cdot ((-\\Delta R) \\cdot R). \\]”. Its title is “\\texttt{Bohm.quantumPotential\\_cleared}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+      "weight": 0.3
+    }
+  ],
+  "status": "halt"
+}

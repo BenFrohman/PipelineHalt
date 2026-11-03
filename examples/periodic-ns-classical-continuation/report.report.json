@@ -1,0 +1,931 @@
+{
+  "tool": "pipelinehalt",
+  "version": "0.4.0",
+  "generatedAt": "2026-11-03T21:11:06.837Z",
+  "declarationsScanned": 1180,
+  "claims": [
+    {
+      "claim": {
+        "id": "theorem-1",
+        "number": "Theorem 1",
+        "statement": "\\lean{periodicLocalExistence_of_nonneg}\\coined: for $\\nu\\ge0$, \\lean{PeriodicLocalExistence}~$\\nu$ holds (Galerkin method at $s=3$).",
+        "kind": "theorem",
+        "source": "paper/periodic-ns-classical-continuation.tex:48",
+        "title": "Local existence",
+        "lean": [
+          "periodicLocalExistence_of_nonneg"
+        ]
+      },
+      "matched": [
+        {
+          "name": "periodicLocalExistence_of_nonneg",
+          "score": 0.468,
+          "explicit": true
+        }
+      ],
+      "mismatches": [],
+      "drift": 0
+    },
+    {
+      "claim": {
+        "id": "theorem-2",
+        "number": "Theorem 2",
+        "statement": "\\lean{periodicEnergyDifferenceEstimate}\\coined: for $\\nu\\ge0$ and two classical solutions $u,v$ with equal data, \\[ E(t)=\\int_{[0,1]^3}\\abs{u-v}^2\\dd x \\quad\\text{satisfies}\\quad E'(t)\\le 2C\\,E(t). \\] With Gr\\\"onwall (\\lean{eq_zero_of_deriv_le_mul}\\coined, \\lean{periodicVelocityUniqueness_of_energy}\\coined) this gives uniqueness.",
+        "kind": "theorem",
+        "source": "paper/periodic-ns-classical-continuation.tex:51",
+        "title": "Energy difference / uniqueness",
+        "lean": [
+          "periodicEnergyDifferenceEstimate",
+          "eq_zero_of_deriv_le_mul",
+          "periodicVelocityUniqueness_of_energy"
+        ]
+      },
+      "matched": [
+        {
+          "name": "periodicEnergyDifferenceEstimate",
+          "score": 0.336,
+          "explicit": true
+        },
+        {
+          "name": "eq_zero_of_deriv_le_mul",
+          "score": 0.095,
+          "explicit": true
+        },
+        {
+          "name": "periodicVelocityUniqueness_of_energy",
+          "score": 0.274,
+          "explicit": true
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "b75fedb00af9",
+          "claimId": "theorem-2",
+          "kind": "conditional",
+          "lean": "eq_zero_of_deriv_le_mul",
+          "key": "hyp:ContinuousOn E (Icc 0 T)",
+          "detail": "`eq_zero_of_deriv_le_mul` assumes `hc : ContinuousOn E (Icc 0 T)`, not stated in the claim.",
+          "question": "Paper claim Theorem 2 (theorem-2) states: “\\lean{periodicEnergyDifferenceEstimate}\\coined: for $\\nu\\ge0$ and two classical solutions $u,v$ with equal data, \\[ E(t)=\\int_{[0,1]^3}\\abs{u-v}^2\\dd x \\quad\\text{satisfies}\\quad E'(t)\\le 2C\\,E(t). \\…”. Lean theorem `eq_zero_of_deriv_le_mul` assumes `hc : ContinuousOn E (Icc 0 T)`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "9eef8de7475d",
+          "claimId": "theorem-2",
+          "kind": "conditional",
+          "lean": "eq_zero_of_deriv_le_mul",
+          "key": "hyp:∀ t ∈ Ico (0 : ℝ) T, HasDerivWithinAt E (E' t) (Ici t) t",
+          "detail": "`eq_zero_of_deriv_le_mul` assumes `hd : ∀ t ∈ Ico (0 : ℝ) T, HasDerivWithinAt E (E' t) (Ici t) t`, not stated in the claim.",
+          "question": "Paper claim Theorem 2 (theorem-2) states: “\\lean{periodicEnergyDifferenceEstimate}\\coined: for $\\nu\\ge0$ and two classical solutions $u,v$ with equal data, \\[ E(t)=\\int_{[0,1]^3}\\abs{u-v}^2\\dd x \\quad\\text{satisfies}\\quad E'(t)\\le 2C\\,E(t). \\…”. Lean theorem `eq_zero_of_deriv_le_mul` assumes `hd : ∀ t ∈ Ico (0 : ℝ) T, HasDerivWithinAt E (E' t) (Ici t) t`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "a26051a8dbf8",
+          "claimId": "theorem-2",
+          "kind": "conditional",
+          "lean": "eq_zero_of_deriv_le_mul",
+          "key": "hyp:∀ t ∈ Ico (0 : ℝ) T, E' t ≤ L * E t",
+          "detail": "`eq_zero_of_deriv_le_mul` assumes `hb : ∀ t ∈ Ico (0 : ℝ) T, E' t ≤ L * E t`, not stated in the claim.",
+          "question": "Paper claim Theorem 2 (theorem-2) states: “\\lean{periodicEnergyDifferenceEstimate}\\coined: for $\\nu\\ge0$ and two classical solutions $u,v$ with equal data, \\[ E(t)=\\int_{[0,1]^3}\\abs{u-v}^2\\dd x \\quad\\text{satisfies}\\quad E'(t)\\le 2C\\,E(t). \\…”. Lean theorem `eq_zero_of_deriv_le_mul` assumes `hb : ∀ t ∈ Ico (0 : ℝ) T, E' t ≤ L * E t`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        }
+      ],
+      "drift": 0.875
+    },
+    {
+      "claim": {
+        "id": "eq:hs-identity",
+        "number": "Theorem 3",
+        "statement": "\\lean{periodicFourierCoeffODE}\\coined, \\lean{periodicFourierCoeffDecay}\\coined{} and \\lean{periodicFourierHsEnergyIdentity}\\coined{} (file \\file{CoeffODE.lean}) prove the Props \\lean{PeriodicFourierCoeffODE}, \\lean{PeriodicFourierCoeffDecay}, \\lean{PeriodicFourierHsEnergyIdentity} for every $\\nu$ (and every $s$): each Fourier coefficient $\\hat u_k(t)$ obeys the projected ODE, coefficients decay faster than any power, and \\begin{equation} \\frac{\\mathrm d}{\\mathrm dt}\\norm{u}_{H^s}^2 = -2\\nu\\sum_{k}(1+\\abs{k}^2)^s\\,4\\pi^2\\abs{k}^2\\abs{\\hat u_k}^2 + \\bigl(\\text{nonlinear rate}\\bigr). \\end{equation} The bridge is \\lean{periodicFourierHsEnergyIdentity_of_coeff}\\coined{} (\\file{HsEnergyIdentity.lean}).",
+        "kind": "theorem",
+        "source": "paper/periodic-ns-classical-continuation.tex:58",
+        "title": "Fourier coefficient ODE, decay, $H^s$ energy identity",
+        "lean": [
+          "periodicFourierCoeffODE",
+          "periodicFourierCoeffDecay",
+          "periodicFourierHsEnergyIdentity",
+          "PeriodicFourierCoeffODE",
+          "PeriodicFourierCoeffDecay",
+          "PeriodicFourierHsEnergyIdentity",
+          "periodicFourierHsEnergyIdentity_of_coeff"
+        ]
+      },
+      "matched": [
+        {
+          "name": "periodicFourierCoeffODE",
+          "score": 0.175,
+          "explicit": true
+        },
+        {
+          "name": "periodicFourierCoeffDecay",
+          "score": 0.161,
+          "explicit": true
+        },
+        {
+          "name": "periodicFourierHsEnergyIdentity",
+          "score": 0.19,
+          "explicit": true
+        },
+        {
+          "name": "PeriodicFourierCoeffODE",
+          "score": 0.188,
+          "explicit": true
+        },
+        {
+          "name": "PeriodicFourierCoeffDecay",
+          "score": 0.18,
+          "explicit": true
+        },
+        {
+          "name": "PeriodicFourierHsEnergyIdentity",
+          "score": 0.26,
+          "explicit": true
+        },
+        {
+          "name": "periodicFourierHsEnergyIdentity_of_coeff",
+          "score": 0.305,
+          "explicit": true
+        }
+      ],
+      "mismatches": [],
+      "drift": 0
+    },
+    {
+      "claim": {
+        "id": "theorem-4",
+        "number": "Theorem 4",
+        "statement": "\\lean{hasSum_prod_cubeCoeff}\\coined{} (\\file{Parseval.lean}): for continuous periodic $f,g$, \\[ \\sum_{k\\in\\Z^3}\\overline{\\hat f_k}\\,\\hat g_k = \\int_{[0,1]^3}\\bar f\\,g\\dd x, \\] via \\lean{torusLift}\\coined{} and Mathlib's torus Parseval.",
+        "kind": "theorem",
+        "source": "paper/periodic-ns-classical-continuation.tex:65",
+        "title": "Parseval on the unit cube",
+        "lean": [
+          "hasSum_prod_cubeCoeff",
+          "torusLift"
+        ]
+      },
+      "matched": [
+        {
+          "name": "hasSum_prod_cubeCoeff",
+          "score": 0.333,
+          "explicit": true
+        },
+        {
+          "name": "torusLift",
+          "score": 0.235,
+          "explicit": true
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "82a054ead188",
+          "claimId": "theorem-4",
+          "kind": "ambiguous",
+          "key": "title-vs-statement",
+          "detail": "Title “Parseval on the unit cube” shares almost no terms with the statement.",
+          "question": "Paper claim Theorem 4 (theorem-4) states: “\\lean{hasSum_prod_cubeCoeff}\\coined{} (\\file{Parseval.lean}): for continuous periodic $f,g$, \\[ \\sum_{k\\in\\Z^3}\\overline{\\hat f_k}\\,\\hat g_k = \\int_{[0,1]^3}\\bar f\\,g\\dd x, \\] via \\lean{torusLift}\\co…”. Its title is “Parseval on the unit cube”, which does not appear to describe that statement. Is the title or the statement misworded?",
+          "weight": 0.3
+        },
+        {
+          "id": "0765d86470cf",
+          "claimId": "theorem-4",
+          "kind": "conditional",
+          "lean": "hasSum_prod_cubeCoeff",
+          "key": "hyp:∀ y (n : Fin 3 → ℤ), f (y + fun j => (n j : ℝ)) = f y",
+          "detail": "`hasSum_prod_cubeCoeff` assumes `hfp : ∀ y (n : Fin 3 → ℤ), f (y + fun j => (n j : ℝ)) = f y`, not stated in the claim.",
+          "question": "Paper claim Theorem 4 (theorem-4) states: “\\lean{hasSum_prod_cubeCoeff}\\coined{} (\\file{Parseval.lean}): for continuous periodic $f,g$, \\[ \\sum_{k\\in\\Z^3}\\overline{\\hat f_k}\\,\\hat g_k = \\int_{[0,1]^3}\\bar f\\,g\\dd x, \\] via \\lean{torusLift}\\co…”. Lean theorem `hasSum_prod_cubeCoeff` assumes `hfp : ∀ y (n : Fin 3 → ℤ), f (y + fun j => (n j : ℝ)) = f y`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "9b09accb4bc1",
+          "claimId": "theorem-4",
+          "kind": "conditional",
+          "lean": "hasSum_prod_cubeCoeff",
+          "key": "hyp:∀ y (n : Fin 3 → ℤ), g (y + fun j => (n j : ℝ)) = g y",
+          "detail": "`hasSum_prod_cubeCoeff` assumes `hgp : ∀ y (n : Fin 3 → ℤ), g (y + fun j => (n j : ℝ)) = g y`, not stated in the claim.",
+          "question": "Paper claim Theorem 4 (theorem-4) states: “\\lean{hasSum_prod_cubeCoeff}\\coined{} (\\file{Parseval.lean}): for continuous periodic $f,g$, \\[ \\sum_{k\\in\\Z^3}\\overline{\\hat f_k}\\,\\hat g_k = \\int_{[0,1]^3}\\bar f\\,g\\dd x, \\] via \\lean{torusLift}\\co…”. Lean theorem `hasSum_prod_cubeCoeff` assumes `hgp : ∀ y (n : Fin 3 → ℤ), g (y + fun j => (n j : ℝ)) = g y`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        }
+      ],
+      "drift": 0.825
+    },
+    {
+      "claim": {
+        "id": "theorem-5",
+        "number": "Theorem 5",
+        "statement": "\\lean{hasSum_rate_three}\\coined: the Fourier-side $H^3$ nonlinear rate is summable and equals \\[ -2\\sum_i\\int \\Bigl(1-\\frac{\\Delta}{4\\pi^2}\\Bigr)^{3} v_i\\,\\bigl((v\\cdot\\nabla)v\\bigr)_i\\dd x . \\]",
+        "kind": "theorem",
+        "source": "paper/periodic-ns-classical-continuation.tex:72",
+        "title": "Physical form of the $H^3$ rate",
+        "lean": [
+          "hasSum_rate_three"
+        ]
+      },
+      "matched": [
+        {
+          "name": "hasSum_rate_three",
+          "score": 0.331,
+          "explicit": true
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "55cf13bac57c",
+          "claimId": "theorem-5",
+          "kind": "ambiguous",
+          "key": "title-vs-statement",
+          "detail": "Title “Physical form of the $H^3$ rate” shares almost no terms with the statement.",
+          "question": "Paper claim Theorem 5 (theorem-5) states: “\\lean{hasSum_rate_three}\\coined: the Fourier-side $H^3$ nonlinear rate is summable and equals \\[ -2\\sum_i\\int \\Bigl(1-\\frac{\\Delta}{4\\pi^2}\\Bigr)^{3} v_i\\,\\bigl((v\\cdot\\nabla)v\\bigr)_i\\dd x . \\]”. Its title is “Physical form of the $H^3$ rate”, which does not appear to describe that statement. Is the title or the statement misworded?",
+          "weight": 0.3
+        },
+        {
+          "id": "42847c4d31e2",
+          "claimId": "theorem-5",
+          "kind": "conditional",
+          "lean": "hasSum_rate_three",
+          "key": "hyp:IsPeriodicSmoothInitialData v",
+          "detail": "`hasSum_rate_three` assumes `hv : IsPeriodicSmoothInitialData v`, not stated in the claim.",
+          "question": "Paper claim Theorem 5 (theorem-5) states: “\\lean{hasSum_rate_three}\\coined: the Fourier-side $H^3$ nonlinear rate is summable and equals \\[ -2\\sum_i\\int \\Bigl(1-\\frac{\\Delta}{4\\pi^2}\\Bigr)^{3} v_i\\,\\bigl((v\\cdot\\nabla)v\\bigr)_i\\dd x . \\]”. Lean theorem `hasSum_rate_three` assumes `hv : IsPeriodicSmoothInitialData v`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        }
+      ],
+      "drift": 0.65
+    },
+    {
+      "claim": {
+        "id": "theorem-6",
+        "number": "Theorem 6",
+        "statement": "Proved: unit-cell integration by parts \\lean{cellI_ibp}\\coined, \\lean{cellI_ibp'}\\coined; Leibniz rule \\lean{DL_mul}\\coined; Gagliardo--Nirenberg on the cell \\lean{gagliardoNirenberg_cell}\\coined{} and \\lean{cellI_sq_mul_abs_le}\\coined; and • \\lean{lower_term_bound}\\coined: every lower-order Leibniz term (first factor of order $\\ge1$) satisfies \\[ \\Bigl|\\int D^L v_i\\cdot D^{p_1}v_l\\, D^{p_2}\\partial_l v_i\\dd x\\Bigr|\\le 5\\norm{\\nabla v}_{L^\\infty}\\,Q(v), \\] with $Q=$\\,\\lean{physQ}\\coined; • \\lean{top_term_zero}\\coined: $\\displaystyle\\sum_{i,l}\\int D^L v_i\\, v_l\\, D^L\\partial_l v_i\\dd x = 0$, because $\\Div v=0$ (transport cancellation).",
+        "kind": "theorem",
+        "source": "paper/periodic-ns-classical-continuation.tex:78",
+        "title": "Kato--Ponce toolkit, $s=3$; \\file{KatoPonce.lean}",
+        "lean": [
+          "cellI_ibp",
+          "cellI_ibp'",
+          "DL_mul",
+          "gagliardoNirenberg_cell",
+          "cellI_sq_mul_abs_le",
+          "lower_term_bound",
+          "physQ",
+          "top_term_zero"
+        ]
+      },
+      "matched": [
+        {
+          "name": "cellI_ibp",
+          "score": 0.101,
+          "explicit": true
+        },
+        {
+          "name": "cellI_ibp'",
+          "score": 0.042,
+          "explicit": true
+        },
+        {
+          "name": "DL_mul",
+          "score": 0.12,
+          "explicit": true
+        },
+        {
+          "name": "gagliardoNirenberg_cell",
+          "score": 0.17,
+          "explicit": true
+        },
+        {
+          "name": "cellI_sq_mul_abs_le",
+          "score": 0.13,
+          "explicit": true
+        },
+        {
+          "name": "lower_term_bound",
+          "score": 0.229,
+          "explicit": true
+        },
+        {
+          "name": "physQ",
+          "score": 0.037,
+          "explicit": true
+        },
+        {
+          "name": "top_term_zero",
+          "score": 0.167,
+          "explicit": true
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "96c8a792a778",
+          "claimId": "theorem-6",
+          "kind": "ambiguous",
+          "key": "title-vs-statement",
+          "detail": "Title “Kato--Ponce toolkit, $s=3$; \\file{KatoPonce.lean}” shares almost no terms with the statement.",
+          "question": "Paper claim Theorem 6 (theorem-6) states: “Proved: unit-cell integration by parts \\lean{cellI_ibp}\\coined, \\lean{cellI_ibp'}\\coined; Leibniz rule \\lean{DL_mul}\\coined; Gagliardo--Nirenberg on the cell \\lean{gagliardoNirenberg_cell}\\coined{} a…”. Its title is “Kato--Ponce toolkit, $s=3$; \\file{KatoPonce.lean}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+          "weight": 0.3
+        },
+        {
+          "id": "e39827538721",
+          "claimId": "theorem-6",
+          "kind": "conditional",
+          "lean": "cellI_ibp",
+          "key": "hyp:PerR φ",
+          "detail": "`cellI_ibp` assumes `h : PerR φ`, not stated in the claim.",
+          "question": "Paper claim Theorem 6 (theorem-6) states: “Proved: unit-cell integration by parts \\lean{cellI_ibp}\\coined, \\lean{cellI_ibp'}\\coined; Leibniz rule \\lean{DL_mul}\\coined; Gagliardo--Nirenberg on the cell \\lean{gagliardoNirenberg_cell}\\coined{} a…”. Lean lemma `cellI_ibp` assumes `h : PerR φ`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "55deea7148e4",
+          "claimId": "theorem-6",
+          "kind": "conditional",
+          "lean": "cellI_ibp",
+          "key": "hyp:PerR ψ",
+          "detail": "`cellI_ibp` assumes `h' : PerR ψ`, not stated in the claim.",
+          "question": "Paper claim Theorem 6 (theorem-6) states: “Proved: unit-cell integration by parts \\lean{cellI_ibp}\\coined, \\lean{cellI_ibp'}\\coined; Leibniz rule \\lean{DL_mul}\\coined; Gagliardo--Nirenberg on the cell \\lean{gagliardoNirenberg_cell}\\coined{} a…”. Lean lemma `cellI_ibp` assumes `h' : PerR ψ`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "0328a621fd36",
+          "claimId": "theorem-6",
+          "kind": "conditional",
+          "lean": "cellI_ibp'",
+          "key": "hyp:PerR φ",
+          "detail": "`cellI_ibp'` assumes `h : PerR φ`, not stated in the claim.",
+          "question": "Paper claim Theorem 6 (theorem-6) states: “Proved: unit-cell integration by parts \\lean{cellI_ibp}\\coined, \\lean{cellI_ibp'}\\coined; Leibniz rule \\lean{DL_mul}\\coined; Gagliardo--Nirenberg on the cell \\lean{gagliardoNirenberg_cell}\\coined{} a…”. Lean lemma `cellI_ibp'` assumes `h : PerR φ`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "bdd1897f0b50",
+          "claimId": "theorem-6",
+          "kind": "conditional",
+          "lean": "cellI_ibp'",
+          "key": "hyp:PerR ψ",
+          "detail": "`cellI_ibp'` assumes `h' : PerR ψ`, not stated in the claim.",
+          "question": "Paper claim Theorem 6 (theorem-6) states: “Proved: unit-cell integration by parts \\lean{cellI_ibp}\\coined, \\lean{cellI_ibp'}\\coined; Leibniz rule \\lean{DL_mul}\\coined; Gagliardo--Nirenberg on the cell \\lean{gagliardoNirenberg_cell}\\coined{} a…”. Lean lemma `cellI_ibp'` assumes `h' : PerR ψ`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "587dc559b9ad",
+          "claimId": "theorem-6",
+          "kind": "conditional",
+          "lean": "DL_mul",
+          "key": "hyp:PerR f",
+          "detail": "`DL_mul` assumes `hf : PerR f`, not stated in the claim.",
+          "question": "Paper claim Theorem 6 (theorem-6) states: “Proved: unit-cell integration by parts \\lean{cellI_ibp}\\coined, \\lean{cellI_ibp'}\\coined; Leibniz rule \\lean{DL_mul}\\coined; Gagliardo--Nirenberg on the cell \\lean{gagliardoNirenberg_cell}\\coined{} a…”. Lean lemma `DL_mul` assumes `hf : PerR f`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "71c2468601bd",
+          "claimId": "theorem-6",
+          "kind": "conditional",
+          "lean": "DL_mul",
+          "key": "hyp:PerR g",
+          "detail": "`DL_mul` assumes `hg : PerR g`, not stated in the claim.",
+          "question": "Paper claim Theorem 6 (theorem-6) states: “Proved: unit-cell integration by parts \\lean{cellI_ibp}\\coined, \\lean{cellI_ibp'}\\coined; Leibniz rule \\lean{DL_mul}\\coined; Gagliardo--Nirenberg on the cell \\lean{gagliardoNirenberg_cell}\\coined{} a…”. Lean lemma `DL_mul` assumes `hg : PerR g`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "a5407db2d716",
+          "claimId": "theorem-6",
+          "kind": "conditional",
+          "lean": "gagliardoNirenberg_cell",
+          "key": "hyp:PerR g",
+          "detail": "`gagliardoNirenberg_cell` assumes `hg : PerR g`, not stated in the claim.",
+          "question": "Paper claim Theorem 6 (theorem-6) states: “Proved: unit-cell integration by parts \\lean{cellI_ibp}\\coined, \\lean{cellI_ibp'}\\coined; Leibniz rule \\lean{DL_mul}\\coined; Gagliardo--Nirenberg on the cell \\lean{gagliardoNirenberg_cell}\\coined{} a…”. Lean theorem `gagliardoNirenberg_cell` assumes `hg : PerR g`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "0c13eb054673",
+          "claimId": "theorem-6",
+          "kind": "conditional",
+          "lean": "cellI_sq_mul_abs_le",
+          "key": "hyp:PerR g",
+          "detail": "`cellI_sq_mul_abs_le` assumes `hg : PerR g`, not stated in the claim.",
+          "question": "Paper claim Theorem 6 (theorem-6) states: “Proved: unit-cell integration by parts \\lean{cellI_ibp}\\coined, \\lean{cellI_ibp'}\\coined; Leibniz rule \\lean{DL_mul}\\coined; Gagliardo--Nirenberg on the cell \\lean{gagliardoNirenberg_cell}\\coined{} a…”. Lean theorem `cellI_sq_mul_abs_le` assumes `hg : PerR g`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "0924c12998b0",
+          "claimId": "theorem-6",
+          "kind": "conditional",
+          "lean": "cellI_sq_mul_abs_le",
+          "key": "hyp:PerR R",
+          "detail": "`cellI_sq_mul_abs_le` assumes `hR : PerR R`, not stated in the claim.",
+          "question": "Paper claim Theorem 6 (theorem-6) states: “Proved: unit-cell integration by parts \\lean{cellI_ibp}\\coined, \\lean{cellI_ibp'}\\coined; Leibniz rule \\lean{DL_mul}\\coined; Gagliardo--Nirenberg on the cell \\lean{gagliardoNirenberg_cell}\\coined{} a…”. Lean theorem `cellI_sq_mul_abs_le` assumes `hR : PerR R`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "5b0ddbffef18",
+          "claimId": "theorem-6",
+          "kind": "conditional",
+          "lean": "lower_term_bound",
+          "key": "hyp:IsPeriodicSmoothInitialData v",
+          "detail": "`lower_term_bound` assumes `hv : IsPeriodicSmoothInitialData v`, not stated in the claim.",
+          "question": "Paper claim Theorem 6 (theorem-6) states: “Proved: unit-cell integration by parts \\lean{cellI_ibp}\\coined, \\lean{cellI_ibp'}\\coined; Leibniz rule \\lean{DL_mul}\\coined; Gagliardo--Nirenberg on the cell \\lean{gagliardoNirenberg_cell}\\coined{} a…”. Lean theorem `lower_term_bound` assumes `hv : IsPeriodicSmoothInitialData v`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "8025e4c49ace",
+          "claimId": "theorem-6",
+          "kind": "conditional",
+          "lean": "lower_term_bound",
+          "key": "hyp:L.length ≤ 3",
+          "detail": "`lower_term_bound` assumes `hL : L.length ≤ 3`, not stated in the claim.",
+          "question": "Paper claim Theorem 6 (theorem-6) states: “Proved: unit-cell integration by parts \\lean{cellI_ibp}\\coined, \\lean{cellI_ibp'}\\coined; Leibniz rule \\lean{DL_mul}\\coined; Gagliardo--Nirenberg on the cell \\lean{gagliardoNirenberg_cell}\\coined{} a…”. Lean theorem `lower_term_bound` assumes `hL : L.length ≤ 3`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "2e5188d562b6",
+          "claimId": "theorem-6",
+          "kind": "conditional",
+          "lean": "lower_term_bound",
+          "key": "hyp:p.1.length + p.2.length = L.length",
+          "detail": "`lower_term_bound` assumes `hp : p.1.length + p.2.length = L.length`, not stated in the claim.",
+          "question": "Paper claim Theorem 6 (theorem-6) states: “Proved: unit-cell integration by parts \\lean{cellI_ibp}\\coined, \\lean{cellI_ibp'}\\coined; Leibniz rule \\lean{DL_mul}\\coined; Gagliardo--Nirenberg on the cell \\lean{gagliardoNirenberg_cell}\\coined{} a…”. Lean theorem `lower_term_bound` assumes `hp : p.1.length + p.2.length = L.length`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "60dba2a5060d",
+          "claimId": "theorem-6",
+          "kind": "conditional",
+          "lean": "top_term_zero",
+          "key": "hyp:IsPeriodicSmoothInitialData v",
+          "detail": "`top_term_zero` assumes `hv : IsPeriodicSmoothInitialData v`, not stated in the claim.",
+          "question": "Paper claim Theorem 6 (theorem-6) states: “Proved: unit-cell integration by parts \\lean{cellI_ibp}\\coined, \\lean{cellI_ibp'}\\coined; Leibniz rule \\lean{DL_mul}\\coined; Gagliardo--Nirenberg on the cell \\lean{gagliardoNirenberg_cell}\\coined{} a…”. Lean theorem `top_term_zero` assumes `hv : IsPeriodicSmoothInitialData v`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        }
+      ],
+      "drift": 1
+    },
+    {
+      "claim": {
+        "id": "theorem-7",
+        "number": "Theorem 7",
+        "statement": "\\lean{periodicBKMCriterion_of_hsControl}\\coined: for $\\nu\\ge0$, $s>5/2$, \\lean{PeriodicBKMHsControl}~$\\nu\\ s$ implies \\lean{PeriodicBKMCriterion}~$\\nu$ (the $H^s$ blow-up alternative is proved).",
+        "kind": "theorem",
+        "source": "paper/periodic-ns-classical-continuation.tex:89",
+        "title": "Continuation alternative",
+        "lean": [
+          "periodicBKMCriterion_of_hsControl",
+          "PeriodicBKMHsControl"
+        ]
+      },
+      "matched": [
+        {
+          "name": "periodicBKMCriterion_of_hsControl",
+          "score": 0.565,
+          "explicit": true
+        },
+        {
+          "name": "PeriodicBKMHsControl",
+          "score": 0.254,
+          "explicit": true
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "c71cdcffbcfe",
+          "claimId": "theorem-7",
+          "kind": "narrower",
+          "lean": "periodicBKMCriterion_of_hsControl",
+          "key": "bound:s>=3vs6",
+          "detail": "`periodicBKMCriterion_of_hsControl` uses s ≥ 3 where the claim says s ≥ 6 (could be an indexing shift; direction not decidable syntactically).",
+          "question": "Paper claim Theorem 7 (theorem-7) states: “\\lean{periodicBKMCriterion_of_hsControl}\\coined: for $\\nu\\ge0$, $s>5/2$, \\lean{PeriodicBKMHsControl}~$\\nu\\ s$ implies \\lean{PeriodicBKMCriterion}~$\\nu$ (the $H^s$ blow-up alternative is proved).”. Lean theorem `periodicBKMCriterion_of_hsControl` assumes `5 / 2 < s` (s ≥ 3), but the claim says s ≥ 6. Is this an intentional indexing convention or a genuine change of domain?",
+          "weight": 0.6
+        }
+      ],
+      "drift": 0.6
+    },
+    {
+      "claim": {
+        "id": "proposition-8",
+        "number": "Proposition 8",
+        "statement": "\\lean{periodicFourierCommutatorBound_of_physical}\\coined: \\lean{PeriodicPhysicalCommutatorBound}~$C$ $\\Rightarrow$ \\lean{PeriodicFourierCommutatorBound}~$3$~$C$. \\lean{periodicBKMHsControl_of_physical_lowFreq}\\coined: $(\\exists C\\ge0,$ \\lean{PeriodicPhysicalCommutatorBound}~$C$$)$ and \\lean{PeriodicLowFreqVorticityBound} give \\lean{PeriodicBKMHsControl}~$\\nu$~3. Combined with the proved bound: \\lean{periodicBKMHsControl_three_of_lowFreq}\\coined{} gives \\lean{PeriodicBKMHsControl}~$\\nu$~3 from \\lean{PeriodicLowFreqVorticityBound} alone.",
+        "kind": "proposition",
+        "source": "paper/periodic-ns-classical-continuation.tex:117",
+        "lean": [
+          "periodicFourierCommutatorBound_of_physical",
+          "PeriodicPhysicalCommutatorBound",
+          "PeriodicFourierCommutatorBound",
+          "periodicBKMHsControl_of_physical_lowFreq",
+          "PeriodicLowFreqVorticityBound",
+          "PeriodicBKMHsControl",
+          "periodicBKMHsControl_three_of_lowFreq"
+        ]
+      },
+      "matched": [
+        {
+          "name": "periodicFourierCommutatorBound_of_physical",
+          "score": 0.378,
+          "explicit": true
+        },
+        {
+          "name": "PeriodicPhysicalCommutatorBound",
+          "score": 0.32,
+          "explicit": true
+        },
+        {
+          "name": "PeriodicFourierCommutatorBound",
+          "score": 0.236,
+          "explicit": true
+        },
+        {
+          "name": "periodicBKMHsControl_of_physical_lowFreq",
+          "score": 0.555,
+          "explicit": true
+        },
+        {
+          "name": "PeriodicLowFreqVorticityBound",
+          "score": 0.258,
+          "explicit": true
+        },
+        {
+          "name": "PeriodicBKMHsControl",
+          "score": 0.211,
+          "explicit": true
+        },
+        {
+          "name": "periodicBKMHsControl_three_of_lowFreq",
+          "score": 0.428,
+          "explicit": true
+        }
+      ],
+      "mismatches": [],
+      "drift": 0
+    },
+    {
+      "claim": {
+        "id": "theorem-9",
+        "number": "Theorem 9",
+        "statement": "\\lean{periodicBKMHsControl_three}\\coined: \\lean{PeriodicBKMHsControl}~$\\nu$~3 for every $\\nu$, with no hypotheses. \\lean{periodicBKMCriterion}\\coined: \\lean{PeriodicBKMCriterion}~$\\nu$ for every $\\nu$, with no hypotheses.",
+        "kind": "theorem",
+        "source": "paper/periodic-ns-classical-continuation.tex:120",
+        "title": "Unconditional corollaries, \\file{BKMFinal.lean}",
+        "lean": [
+          "periodicBKMHsControl_three",
+          "PeriodicBKMHsControl",
+          "periodicBKMCriterion"
+        ]
+      },
+      "matched": [
+        {
+          "name": "periodicBKMHsControl_three",
+          "score": 0.337,
+          "explicit": true
+        },
+        {
+          "name": "PeriodicBKMHsControl",
+          "score": 0.231,
+          "explicit": true
+        },
+        {
+          "name": "periodicBKMCriterion",
+          "score": 0.226,
+          "explicit": true
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "ed241820404d",
+          "claimId": "theorem-9",
+          "kind": "ambiguous",
+          "key": "title-vs-statement",
+          "detail": "Title “Unconditional corollaries, \\file{BKMFinal.lean}” shares almost no terms with the statement.",
+          "question": "Paper claim Theorem 9 (theorem-9) states: “\\lean{periodicBKMHsControl_three}\\coined: \\lean{PeriodicBKMHsControl}~$\\nu$~3 for every $\\nu$, with no hypotheses. \\lean{periodicBKMCriterion}\\coined: \\lean{PeriodicBKMCriterion}~$\\nu$ for every $\\nu…”. Its title is “Unconditional corollaries, \\file{BKMFinal.lean}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+          "weight": 0.3
+        }
+      ],
+      "drift": 0.3
+    },
+    {
+      "claim": {
+        "id": "proposition-10",
+        "number": "Proposition 10",
+        "statement": "\\lean{clay_B_exact_of_hsControl}\\coined: for $s>5/2$, \\lean{PeriodicBKMHsControl}~$\\nu\\ s$ and \\lean{PeriodicBKMIntegrability}~$\\nu$ give \\lean{Clay_B_exact}~$\\nu$. Also \\lean{clay_B_exact_of_corrected_route'}\\coined{} and \\lean{clay_B_exact_of_bkm}\\coined. The final form, \\lean{clay_B_exact_of_integrability}\\coined, is conditional \\emph{only} on the open \\lean{PeriodicBKMIntegrability}~$\\nu$.",
+        "kind": "proposition",
+        "source": "paper/periodic-ns-classical-continuation.tex:123",
+        "title": "Statement (B), conditional",
+        "lean": [
+          "clay_B_exact_of_hsControl",
+          "PeriodicBKMHsControl",
+          "clay_B_exact_of_corrected_route'",
+          "clay_B_exact_of_bkm",
+          "clay_B_exact_of_integrability"
+        ]
+      },
+      "matched": [
+        {
+          "name": "clay_B_exact_of_hsControl",
+          "score": 0.449,
+          "explicit": true
+        },
+        {
+          "name": "PeriodicBKMHsControl",
+          "score": 0.151,
+          "explicit": true
+        },
+        {
+          "name": "clay_B_exact_of_corrected_route'",
+          "score": 0.191,
+          "explicit": true
+        },
+        {
+          "name": "clay_B_exact_of_bkm",
+          "score": 0.189,
+          "explicit": true
+        },
+        {
+          "name": "clay_B_exact_of_integrability",
+          "score": 0.284,
+          "explicit": true
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "ea86e5089690",
+          "claimId": "proposition-10",
+          "kind": "narrower",
+          "lean": "clay_B_exact_of_hsControl",
+          "key": "bound:s>=3vs6",
+          "detail": "`clay_B_exact_of_hsControl` uses s ≥ 3 where the claim says s ≥ 6 (could be an indexing shift; direction not decidable syntactically).",
+          "question": "Paper claim Proposition 10 (proposition-10) states: “\\lean{clay_B_exact_of_hsControl}\\coined: for $s>5/2$, \\lean{PeriodicBKMHsControl}~$\\nu\\ s$ and \\lean{PeriodicBKMIntegrability}~$\\nu$ give \\lean{Clay_B_exact}~$\\nu$. Also \\lean{clay_B_exact_of_correct…”. Lean theorem `clay_B_exact_of_hsControl` assumes `5 / 2 < s` (s ≥ 3), but the claim says s ≥ 6. Is this an intentional indexing convention or a genuine change of domain?",
+          "weight": 0.6
+        },
+        {
+          "id": "63b1dbdbcbcc",
+          "claimId": "proposition-10",
+          "kind": "conditional",
+          "lean": "clay_B_exact_of_corrected_route'",
+          "key": "hyp:PeriodicLocalExistence ν",
+          "detail": "`clay_B_exact_of_corrected_route'` assumes `hloc : PeriodicLocalExistence ν`, not stated in the claim.",
+          "question": "Paper claim Proposition 10 (proposition-10) states: “\\lean{clay_B_exact_of_hsControl}\\coined: for $s>5/2$, \\lean{PeriodicBKMHsControl}~$\\nu\\ s$ and \\lean{PeriodicBKMIntegrability}~$\\nu$ give \\lean{Clay_B_exact}~$\\nu$. Also \\lean{clay_B_exact_of_correct…”. Lean theorem `clay_B_exact_of_corrected_route'` assumes `hloc : PeriodicLocalExistence ν`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        }
+      ],
+      "drift": 0.8
+    }
+  ],
+  "unanchored": [
+    {
+      "name": "periodicNonlinearEnergyCancellation",
+      "cites": "Lemma 1.3"
+    }
+  ],
+  "drift": 0.505,
+  "pending": [
+    {
+      "id": "b75fedb00af9",
+      "claimId": "theorem-2",
+      "kind": "conditional",
+      "lean": "eq_zero_of_deriv_le_mul",
+      "key": "hyp:ContinuousOn E (Icc 0 T)",
+      "detail": "`eq_zero_of_deriv_le_mul` assumes `hc : ContinuousOn E (Icc 0 T)`, not stated in the claim.",
+      "question": "Paper claim Theorem 2 (theorem-2) states: “\\lean{periodicEnergyDifferenceEstimate}\\coined: for $\\nu\\ge0$ and two classical solutions $u,v$ with equal data, \\[ E(t)=\\int_{[0,1]^3}\\abs{u-v}^2\\dd x \\quad\\text{satisfies}\\quad E'(t)\\le 2C\\,E(t). \\…”. Lean theorem `eq_zero_of_deriv_le_mul` assumes `hc : ContinuousOn E (Icc 0 T)`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "9eef8de7475d",
+      "claimId": "theorem-2",
+      "kind": "conditional",
+      "lean": "eq_zero_of_deriv_le_mul",
+      "key": "hyp:∀ t ∈ Ico (0 : ℝ) T, HasDerivWithinAt E (E' t) (Ici t) t",
+      "detail": "`eq_zero_of_deriv_le_mul` assumes `hd : ∀ t ∈ Ico (0 : ℝ) T, HasDerivWithinAt E (E' t) (Ici t) t`, not stated in the claim.",
+      "question": "Paper claim Theorem 2 (theorem-2) states: “\\lean{periodicEnergyDifferenceEstimate}\\coined: for $\\nu\\ge0$ and two classical solutions $u,v$ with equal data, \\[ E(t)=\\int_{[0,1]^3}\\abs{u-v}^2\\dd x \\quad\\text{satisfies}\\quad E'(t)\\le 2C\\,E(t). \\…”. Lean theorem `eq_zero_of_deriv_le_mul` assumes `hd : ∀ t ∈ Ico (0 : ℝ) T, HasDerivWithinAt E (E' t) (Ici t) t`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "a26051a8dbf8",
+      "claimId": "theorem-2",
+      "kind": "conditional",
+      "lean": "eq_zero_of_deriv_le_mul",
+      "key": "hyp:∀ t ∈ Ico (0 : ℝ) T, E' t ≤ L * E t",
+      "detail": "`eq_zero_of_deriv_le_mul` assumes `hb : ∀ t ∈ Ico (0 : ℝ) T, E' t ≤ L * E t`, not stated in the claim.",
+      "question": "Paper claim Theorem 2 (theorem-2) states: “\\lean{periodicEnergyDifferenceEstimate}\\coined: for $\\nu\\ge0$ and two classical solutions $u,v$ with equal data, \\[ E(t)=\\int_{[0,1]^3}\\abs{u-v}^2\\dd x \\quad\\text{satisfies}\\quad E'(t)\\le 2C\\,E(t). \\…”. Lean theorem `eq_zero_of_deriv_le_mul` assumes `hb : ∀ t ∈ Ico (0 : ℝ) T, E' t ≤ L * E t`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "82a054ead188",
+      "claimId": "theorem-4",
+      "kind": "ambiguous",
+      "key": "title-vs-statement",
+      "detail": "Title “Parseval on the unit cube” shares almost no terms with the statement.",
+      "question": "Paper claim Theorem 4 (theorem-4) states: “\\lean{hasSum_prod_cubeCoeff}\\coined{} (\\file{Parseval.lean}): for continuous periodic $f,g$, \\[ \\sum_{k\\in\\Z^3}\\overline{\\hat f_k}\\,\\hat g_k = \\int_{[0,1]^3}\\bar f\\,g\\dd x, \\] via \\lean{torusLift}\\co…”. Its title is “Parseval on the unit cube”, which does not appear to describe that statement. Is the title or the statement misworded?",
+      "weight": 0.3
+    },
+    {
+      "id": "0765d86470cf",
+      "claimId": "theorem-4",
+      "kind": "conditional",
+      "lean": "hasSum_prod_cubeCoeff",
+      "key": "hyp:∀ y (n : Fin 3 → ℤ), f (y + fun j => (n j : ℝ)) = f y",
+      "detail": "`hasSum_prod_cubeCoeff` assumes `hfp : ∀ y (n : Fin 3 → ℤ), f (y + fun j => (n j : ℝ)) = f y`, not stated in the claim.",
+      "question": "Paper claim Theorem 4 (theorem-4) states: “\\lean{hasSum_prod_cubeCoeff}\\coined{} (\\file{Parseval.lean}): for continuous periodic $f,g$, \\[ \\sum_{k\\in\\Z^3}\\overline{\\hat f_k}\\,\\hat g_k = \\int_{[0,1]^3}\\bar f\\,g\\dd x, \\] via \\lean{torusLift}\\co…”. Lean theorem `hasSum_prod_cubeCoeff` assumes `hfp : ∀ y (n : Fin 3 → ℤ), f (y + fun j => (n j : ℝ)) = f y`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "9b09accb4bc1",
+      "claimId": "theorem-4",
+      "kind": "conditional",
+      "lean": "hasSum_prod_cubeCoeff",
+      "key": "hyp:∀ y (n : Fin 3 → ℤ), g (y + fun j => (n j : ℝ)) = g y",
+      "detail": "`hasSum_prod_cubeCoeff` assumes `hgp : ∀ y (n : Fin 3 → ℤ), g (y + fun j => (n j : ℝ)) = g y`, not stated in the claim.",
+      "question": "Paper claim Theorem 4 (theorem-4) states: “\\lean{hasSum_prod_cubeCoeff}\\coined{} (\\file{Parseval.lean}): for continuous periodic $f,g$, \\[ \\sum_{k\\in\\Z^3}\\overline{\\hat f_k}\\,\\hat g_k = \\int_{[0,1]^3}\\bar f\\,g\\dd x, \\] via \\lean{torusLift}\\co…”. Lean theorem `hasSum_prod_cubeCoeff` assumes `hgp : ∀ y (n : Fin 3 → ℤ), g (y + fun j => (n j : ℝ)) = g y`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "55cf13bac57c",
+      "claimId": "theorem-5",
+      "kind": "ambiguous",
+      "key": "title-vs-statement",
+      "detail": "Title “Physical form of the $H^3$ rate” shares almost no terms with the statement.",
+      "question": "Paper claim Theorem 5 (theorem-5) states: “\\lean{hasSum_rate_three}\\coined: the Fourier-side $H^3$ nonlinear rate is summable and equals \\[ -2\\sum_i\\int \\Bigl(1-\\frac{\\Delta}{4\\pi^2}\\Bigr)^{3} v_i\\,\\bigl((v\\cdot\\nabla)v\\bigr)_i\\dd x . \\]”. Its title is “Physical form of the $H^3$ rate”, which does not appear to describe that statement. Is the title or the statement misworded?",
+      "weight": 0.3
+    },
+    {
+      "id": "42847c4d31e2",
+      "claimId": "theorem-5",
+      "kind": "conditional",
+      "lean": "hasSum_rate_three",
+      "key": "hyp:IsPeriodicSmoothInitialData v",
+      "detail": "`hasSum_rate_three` assumes `hv : IsPeriodicSmoothInitialData v`, not stated in the claim.",
+      "question": "Paper claim Theorem 5 (theorem-5) states: “\\lean{hasSum_rate_three}\\coined: the Fourier-side $H^3$ nonlinear rate is summable and equals \\[ -2\\sum_i\\int \\Bigl(1-\\frac{\\Delta}{4\\pi^2}\\Bigr)^{3} v_i\\,\\bigl((v\\cdot\\nabla)v\\bigr)_i\\dd x . \\]”. Lean theorem `hasSum_rate_three` assumes `hv : IsPeriodicSmoothInitialData v`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "96c8a792a778",
+      "claimId": "theorem-6",
+      "kind": "ambiguous",
+      "key": "title-vs-statement",
+      "detail": "Title “Kato--Ponce toolkit, $s=3$; \\file{KatoPonce.lean}” shares almost no terms with the statement.",
+      "question": "Paper claim Theorem 6 (theorem-6) states: “Proved: unit-cell integration by parts \\lean{cellI_ibp}\\coined, \\lean{cellI_ibp'}\\coined; Leibniz rule \\lean{DL_mul}\\coined; Gagliardo--Nirenberg on the cell \\lean{gagliardoNirenberg_cell}\\coined{} a…”. Its title is “Kato--Ponce toolkit, $s=3$; \\file{KatoPonce.lean}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+      "weight": 0.3
+    },
+    {
+      "id": "e39827538721",
+      "claimId": "theorem-6",
+      "kind": "conditional",
+      "lean": "cellI_ibp",
+      "key": "hyp:PerR φ",
+      "detail": "`cellI_ibp` assumes `h : PerR φ`, not stated in the claim.",
+      "question": "Paper claim Theorem 6 (theorem-6) states: “Proved: unit-cell integration by parts \\lean{cellI_ibp}\\coined, \\lean{cellI_ibp'}\\coined; Leibniz rule \\lean{DL_mul}\\coined; Gagliardo--Nirenberg on the cell \\lean{gagliardoNirenberg_cell}\\coined{} a…”. Lean lemma `cellI_ibp` assumes `h : PerR φ`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "55deea7148e4",
+      "claimId": "theorem-6",
+      "kind": "conditional",
+      "lean": "cellI_ibp",
+      "key": "hyp:PerR ψ",
+      "detail": "`cellI_ibp` assumes `h' : PerR ψ`, not stated in the claim.",
+      "question": "Paper claim Theorem 6 (theorem-6) states: “Proved: unit-cell integration by parts \\lean{cellI_ibp}\\coined, \\lean{cellI_ibp'}\\coined; Leibniz rule \\lean{DL_mul}\\coined; Gagliardo--Nirenberg on the cell \\lean{gagliardoNirenberg_cell}\\coined{} a…”. Lean lemma `cellI_ibp` assumes `h' : PerR ψ`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "0328a621fd36",
+      "claimId": "theorem-6",
+      "kind": "conditional",
+      "lean": "cellI_ibp'",
+      "key": "hyp:PerR φ",
+      "detail": "`cellI_ibp'` assumes `h : PerR φ`, not stated in the claim.",
+      "question": "Paper claim Theorem 6 (theorem-6) states: “Proved: unit-cell integration by parts \\lean{cellI_ibp}\\coined, \\lean{cellI_ibp'}\\coined; Leibniz rule \\lean{DL_mul}\\coined; Gagliardo--Nirenberg on the cell \\lean{gagliardoNirenberg_cell}\\coined{} a…”. Lean lemma `cellI_ibp'` assumes `h : PerR φ`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "bdd1897f0b50",
+      "claimId": "theorem-6",
+      "kind": "conditional",
+      "lean": "cellI_ibp'",
+      "key": "hyp:PerR ψ",
+      "detail": "`cellI_ibp'` assumes `h' : PerR ψ`, not stated in the claim.",
+      "question": "Paper claim Theorem 6 (theorem-6) states: “Proved: unit-cell integration by parts \\lean{cellI_ibp}\\coined, \\lean{cellI_ibp'}\\coined; Leibniz rule \\lean{DL_mul}\\coined; Gagliardo--Nirenberg on the cell \\lean{gagliardoNirenberg_cell}\\coined{} a…”. Lean lemma `cellI_ibp'` assumes `h' : PerR ψ`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "587dc559b9ad",
+      "claimId": "theorem-6",
+      "kind": "conditional",
+      "lean": "DL_mul",
+      "key": "hyp:PerR f",
+      "detail": "`DL_mul` assumes `hf : PerR f`, not stated in the claim.",
+      "question": "Paper claim Theorem 6 (theorem-6) states: “Proved: unit-cell integration by parts \\lean{cellI_ibp}\\coined, \\lean{cellI_ibp'}\\coined; Leibniz rule \\lean{DL_mul}\\coined; Gagliardo--Nirenberg on the cell \\lean{gagliardoNirenberg_cell}\\coined{} a…”. Lean lemma `DL_mul` assumes `hf : PerR f`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "71c2468601bd",
+      "claimId": "theorem-6",
+      "kind": "conditional",
+      "lean": "DL_mul",
+      "key": "hyp:PerR g",
+      "detail": "`DL_mul` assumes `hg : PerR g`, not stated in the claim.",
+      "question": "Paper claim Theorem 6 (theorem-6) states: “Proved: unit-cell integration by parts \\lean{cellI_ibp}\\coined, \\lean{cellI_ibp'}\\coined; Leibniz rule \\lean{DL_mul}\\coined; Gagliardo--Nirenberg on the cell \\lean{gagliardoNirenberg_cell}\\coined{} a…”. Lean lemma `DL_mul` assumes `hg : PerR g`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "a5407db2d716",
+      "claimId": "theorem-6",
+      "kind": "conditional",
+      "lean": "gagliardoNirenberg_cell",
+      "key": "hyp:PerR g",
+      "detail": "`gagliardoNirenberg_cell` assumes `hg : PerR g`, not stated in the claim.",
+      "question": "Paper claim Theorem 6 (theorem-6) states: “Proved: unit-cell integration by parts \\lean{cellI_ibp}\\coined, \\lean{cellI_ibp'}\\coined; Leibniz rule \\lean{DL_mul}\\coined; Gagliardo--Nirenberg on the cell \\lean{gagliardoNirenberg_cell}\\coined{} a…”. Lean theorem `gagliardoNirenberg_cell` assumes `hg : PerR g`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "0c13eb054673",
+      "claimId": "theorem-6",
+      "kind": "conditional",
+      "lean": "cellI_sq_mul_abs_le",
+      "key": "hyp:PerR g",
+      "detail": "`cellI_sq_mul_abs_le` assumes `hg : PerR g`, not stated in the claim.",
+      "question": "Paper claim Theorem 6 (theorem-6) states: “Proved: unit-cell integration by parts \\lean{cellI_ibp}\\coined, \\lean{cellI_ibp'}\\coined; Leibniz rule \\lean{DL_mul}\\coined; Gagliardo--Nirenberg on the cell \\lean{gagliardoNirenberg_cell}\\coined{} a…”. Lean theorem `cellI_sq_mul_abs_le` assumes `hg : PerR g`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "0924c12998b0",
+      "claimId": "theorem-6",
+      "kind": "conditional",
+      "lean": "cellI_sq_mul_abs_le",
+      "key": "hyp:PerR R",
+      "detail": "`cellI_sq_mul_abs_le` assumes `hR : PerR R`, not stated in the claim.",
+      "question": "Paper claim Theorem 6 (theorem-6) states: “Proved: unit-cell integration by parts \\lean{cellI_ibp}\\coined, \\lean{cellI_ibp'}\\coined; Leibniz rule \\lean{DL_mul}\\coined; Gagliardo--Nirenberg on the cell \\lean{gagliardoNirenberg_cell}\\coined{} a…”. Lean theorem `cellI_sq_mul_abs_le` assumes `hR : PerR R`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "5b0ddbffef18",
+      "claimId": "theorem-6",
+      "kind": "conditional",
+      "lean": "lower_term_bound",
+      "key": "hyp:IsPeriodicSmoothInitialData v",
+      "detail": "`lower_term_bound` assumes `hv : IsPeriodicSmoothInitialData v`, not stated in the claim.",
+      "question": "Paper claim Theorem 6 (theorem-6) states: “Proved: unit-cell integration by parts \\lean{cellI_ibp}\\coined, \\lean{cellI_ibp'}\\coined; Leibniz rule \\lean{DL_mul}\\coined; Gagliardo--Nirenberg on the cell \\lean{gagliardoNirenberg_cell}\\coined{} a…”. Lean theorem `lower_term_bound` assumes `hv : IsPeriodicSmoothInitialData v`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "8025e4c49ace",
+      "claimId": "theorem-6",
+      "kind": "conditional",
+      "lean": "lower_term_bound",
+      "key": "hyp:L.length ≤ 3",
+      "detail": "`lower_term_bound` assumes `hL : L.length ≤ 3`, not stated in the claim.",
+      "question": "Paper claim Theorem 6 (theorem-6) states: “Proved: unit-cell integration by parts \\lean{cellI_ibp}\\coined, \\lean{cellI_ibp'}\\coined; Leibniz rule \\lean{DL_mul}\\coined; Gagliardo--Nirenberg on the cell \\lean{gagliardoNirenberg_cell}\\coined{} a…”. Lean theorem `lower_term_bound` assumes `hL : L.length ≤ 3`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "2e5188d562b6",
+      "claimId": "theorem-6",
+      "kind": "conditional",
+      "lean": "lower_term_bound",
+      "key": "hyp:p.1.length + p.2.length = L.length",
+      "detail": "`lower_term_bound` assumes `hp : p.1.length + p.2.length = L.length`, not stated in the claim.",
+      "question": "Paper claim Theorem 6 (theorem-6) states: “Proved: unit-cell integration by parts \\lean{cellI_ibp}\\coined, \\lean{cellI_ibp'}\\coined; Leibniz rule \\lean{DL_mul}\\coined; Gagliardo--Nirenberg on the cell \\lean{gagliardoNirenberg_cell}\\coined{} a…”. Lean theorem `lower_term_bound` assumes `hp : p.1.length + p.2.length = L.length`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "60dba2a5060d",
+      "claimId": "theorem-6",
+      "kind": "conditional",
+      "lean": "top_term_zero",
+      "key": "hyp:IsPeriodicSmoothInitialData v",
+      "detail": "`top_term_zero` assumes `hv : IsPeriodicSmoothInitialData v`, not stated in the claim.",
+      "question": "Paper claim Theorem 6 (theorem-6) states: “Proved: unit-cell integration by parts \\lean{cellI_ibp}\\coined, \\lean{cellI_ibp'}\\coined; Leibniz rule \\lean{DL_mul}\\coined; Gagliardo--Nirenberg on the cell \\lean{gagliardoNirenberg_cell}\\coined{} a…”. Lean theorem `top_term_zero` assumes `hv : IsPeriodicSmoothInitialData v`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "c71cdcffbcfe",
+      "claimId": "theorem-7",
+      "kind": "narrower",
+      "lean": "periodicBKMCriterion_of_hsControl",
+      "key": "bound:s>=3vs6",
+      "detail": "`periodicBKMCriterion_of_hsControl` uses s ≥ 3 where the claim says s ≥ 6 (could be an indexing shift; direction not decidable syntactically).",
+      "question": "Paper claim Theorem 7 (theorem-7) states: “\\lean{periodicBKMCriterion_of_hsControl}\\coined: for $\\nu\\ge0$, $s>5/2$, \\lean{PeriodicBKMHsControl}~$\\nu\\ s$ implies \\lean{PeriodicBKMCriterion}~$\\nu$ (the $H^s$ blow-up alternative is proved).”. Lean theorem `periodicBKMCriterion_of_hsControl` assumes `5 / 2 < s` (s ≥ 3), but the claim says s ≥ 6. Is this an intentional indexing convention or a genuine change of domain?",
+      "weight": 0.6
+    },
+    {
+      "id": "ed241820404d",
+      "claimId": "theorem-9",
+      "kind": "ambiguous",
+      "key": "title-vs-statement",
+      "detail": "Title “Unconditional corollaries, \\file{BKMFinal.lean}” shares almost no terms with the statement.",
+      "question": "Paper claim Theorem 9 (theorem-9) states: “\\lean{periodicBKMHsControl_three}\\coined: \\lean{PeriodicBKMHsControl}~$\\nu$~3 for every $\\nu$, with no hypotheses. \\lean{periodicBKMCriterion}\\coined: \\lean{PeriodicBKMCriterion}~$\\nu$ for every $\\nu…”. Its title is “Unconditional corollaries, \\file{BKMFinal.lean}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+      "weight": 0.3
+    },
+    {
+      "id": "ea86e5089690",
+      "claimId": "proposition-10",
+      "kind": "narrower",
+      "lean": "clay_B_exact_of_hsControl",
+      "key": "bound:s>=3vs6",
+      "detail": "`clay_B_exact_of_hsControl` uses s ≥ 3 where the claim says s ≥ 6 (could be an indexing shift; direction not decidable syntactically).",
+      "question": "Paper claim Proposition 10 (proposition-10) states: “\\lean{clay_B_exact_of_hsControl}\\coined: for $s>5/2$, \\lean{PeriodicBKMHsControl}~$\\nu\\ s$ and \\lean{PeriodicBKMIntegrability}~$\\nu$ give \\lean{Clay_B_exact}~$\\nu$. Also \\lean{clay_B_exact_of_correct…”. Lean theorem `clay_B_exact_of_hsControl` assumes `5 / 2 < s` (s ≥ 3), but the claim says s ≥ 6. Is this an intentional indexing convention or a genuine change of domain?",
+      "weight": 0.6
+    },
+    {
+      "id": "63b1dbdbcbcc",
+      "claimId": "proposition-10",
+      "kind": "conditional",
+      "lean": "clay_B_exact_of_corrected_route'",
+      "key": "hyp:PeriodicLocalExistence ν",
+      "detail": "`clay_B_exact_of_corrected_route'` assumes `hloc : PeriodicLocalExistence ν`, not stated in the claim.",
+      "question": "Paper claim Proposition 10 (proposition-10) states: “\\lean{clay_B_exact_of_hsControl}\\coined: for $s>5/2$, \\lean{PeriodicBKMHsControl}~$\\nu\\ s$ and \\lean{PeriodicBKMIntegrability}~$\\nu$ give \\lean{Clay_B_exact}~$\\nu$. Also \\lean{clay_B_exact_of_correct…”. Lean theorem `clay_B_exact_of_corrected_route'` assumes `hloc : PeriodicLocalExistence ν`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    }
+  ],
+  "status": "halt",
+  "mapFile": "../../PipelineHalt/examples/periodic-ns-classical-continuation/pipelinehalt.map.json"
+}

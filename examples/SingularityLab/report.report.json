@@ -1,0 +1,53 @@
+{
+  "tool": "pipelinehalt",
+  "version": "0.4.0",
+  "anchorTitle": "\\textbf{The Chain Atom $W=u^5v+v^6$, the Missing Leading Term $v^{11",
+  "generatedAt": "2026-11-03T21:11:07.180Z",
+  "declarationsScanned": 66,
+  "claims": [
+    {
+      "claim": {
+        "id": "theorem-1",
+        "number": "Theorem 1",
+        "statement": "For $W = u^5v + v^6$ with exponent matrix $A = \\bigl(\\begin{smallmatrix}5 & 1\\\\ 0 & 6\\end{smallmatrix}\\bigr)$ and transpose $W^T = u^5 + uv^6$ with $A^T = \\bigl(\\begin{smallmatrix}5 & 0\\\\ 1 & 6\\end{smallmatrix}\\bigr)$: • $|\\det A| = |\\det A^T| = |\\mathrm{Aut}(W)| = |\\mathrm{Aut}(W^T)| = 30$, and central charge $\\hat{c}(W) = \\hat{c}(W^T) = 4/3$. • $\\mu(W) = (6-1)^2 = 25$, whereas $W^T$ is quasihomogeneous of weights $(3,2)$ and degree $15$ with $\\mu(W^T) = (15/3 - 1)(15/2 - 1) = 26$. • In $\\mathbb{C}[u,v]/(\\partial W^T)$ where $\\partial_u W^T = 5u^4 + v^6$ and $\\partial_v W^T = 6uv^5$, the relation $v^6 \\equiv -5u^4$ implies $v^{12} \\equiv 25u^8$ and $u v^5 = 0 \\implies v^{11} = v^5(-5u^4) = -5u^3(uv^5) \\equiv 0$, cutting the monomial box at $v^{11}$ to yield dimension $26$.",
+        "kind": "theorem",
+        "source": "Frohman_SingularityLab_ChainAtom_and_Transpose_2026.tex:31",
+        "title": "Chain Atom vs.\\ Berglund--H\\\"ubsch Transpose"
+      },
+      "matched": [
+        {
+          "name": "detA_eq_aut",
+          "score": 0.225,
+          "explicit": false
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "23ecb9fc2fd5",
+          "claimId": "theorem-1",
+          "kind": "ambiguous",
+          "key": "title-vs-statement",
+          "detail": "Title “Chain Atom vs.\\ Berglund--H\\\"ubsch Transpose” shares almost no terms with the statement.",
+          "question": "Paper claim Theorem 1 (theorem-1) states: “For $W = u^5v + v^6$ with exponent matrix $A = \\bigl(\\begin{smallmatrix}5 & 1\\\\ 0 & 6\\end{smallmatrix}\\bigr)$ and transpose $W^T = u^5 + uv^6$ with $A^T = \\bigl(\\begin{smallmatrix}5 & 0\\\\ 1 & 6\\end{s…”. Its title is “Chain Atom vs.\\ Berglund--H\\\"ubsch Transpose”, which does not appear to describe that statement. Is the title or the statement misworded?",
+          "weight": 0.3
+        }
+      ],
+      "drift": 0.3
+    }
+  ],
+  "unanchored": [],
+  "drift": 0.3,
+  "pending": [
+    {
+      "id": "23ecb9fc2fd5",
+      "claimId": "theorem-1",
+      "kind": "ambiguous",
+      "key": "title-vs-statement",
+      "detail": "Title “Chain Atom vs.\\ Berglund--H\\\"ubsch Transpose” shares almost no terms with the statement.",
+      "question": "Paper claim Theorem 1 (theorem-1) states: “For $W = u^5v + v^6$ with exponent matrix $A = \\bigl(\\begin{smallmatrix}5 & 1\\\\ 0 & 6\\end{smallmatrix}\\bigr)$ and transpose $W^T = u^5 + uv^6$ with $A^T = \\bigl(\\begin{smallmatrix}5 & 0\\\\ 1 & 6\\end{s…”. Its title is “Chain Atom vs.\\ Berglund--H\\\"ubsch Transpose”, which does not appear to describe that statement. Is the title or the statement misworded?",
+      "weight": 0.3
+    }
+  ],
+  "status": "halt",
+  "mapFile": "../../PipelineHalt/examples/SingularityLab/pipelinehalt.map.json"
+}

@@ -1,0 +1,559 @@
+{
+  "tool": "pipelinehalt",
+  "version": "0.4.0",
+  "anchorTitle": "Fourier Lemmas on the Three-Torus: Heat Smoothing, the $L^2$ Strain Identity,\\\\ and the Curl of the Energy Derivative, Formalised in Lean~4",
+  "generatedAt": "2026-11-03T21:11:06.697Z",
+  "declarationsScanned": 276,
+  "claims": [
+    {
+      "claim": {
+        "id": "lemma-1",
+        "number": "Lemma 1",
+        "statement": "$\\|f\\|_2^2=\\sum_n|\\hat f(n)|^2$.",
+        "kind": "lemma",
+        "source": "paper/main.tex:33",
+        "title": "Parseval, \\texttt{parseval\\_norm\\_sq}",
+        "lean": [
+          "parseval_norm_sq"
+        ]
+      },
+      "matched": [
+        {
+          "name": "parseval_norm_sq",
+          "score": 0.529,
+          "explicit": true
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "6b895c5da671",
+          "claimId": "lemma-1",
+          "kind": "ambiguous",
+          "key": "title-vs-statement",
+          "detail": "Title “Parseval, \\texttt{parseval\\_norm\\_sq}” shares almost no terms with the statement.",
+          "question": "Paper claim Lemma 1 (lemma-1) states: “$\\|f\\|_2^2=\\sum_n|\\hat f(n)|^2$.”. Its title is “Parseval, \\texttt{parseval\\_norm\\_sq}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+          "weight": 0.3,
+          "clarification": {
+            "claimId": "lemma-1",
+            "kind": "ambiguous",
+            "question": "Paper claim Lemma 1 (lemma-1) states: “$\\|f\\|_2^2=\\sum_n|\\hat f(n)|^2$.”. Its title is “Parseval, \\texttt{parseval\\_norm\\_sq}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+            "answer": "harmless wording (strict, mechanical): the title cites Lean name(s) parseval_norm_sq, each an existing declaration mapped to this claim; the title makes no further assertion.",
+            "verdict": "intentional",
+            "answeredAt": "2026-11-03T21:11:06.528Z"
+          }
+        }
+      ],
+      "drift": 0
+    },
+    {
+      "claim": {
+        "id": "lemma-2",
+        "number": "Lemma 2",
+        "statement": "If $|m(n)|\\le1$ for all $n$, then $T_m f=\\sum m(n)\\hat f(n)e_n$ defines $T_m:L^2\\to L^2$ with $\\|T_mf\\|_2\\le\\|f\\|_2$.",
+        "kind": "lemma",
+        "source": "paper/main.tex:36",
+        "title": "\\texttt{norm\\_multiplier\\_le}",
+        "lean": [
+          "norm_multiplier_le"
+        ]
+      },
+      "matched": [
+        {
+          "name": "norm_multiplier_le",
+          "score": 0.306,
+          "explicit": true
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "76d4a6a87f7e",
+          "claimId": "lemma-2",
+          "kind": "ambiguous",
+          "key": "title-vs-statement",
+          "detail": "Title “\\texttt{norm\\_multiplier\\_le}” shares almost no terms with the statement.",
+          "question": "Paper claim Lemma 2 (lemma-2) states: “If $|m(n)|\\le1$ for all $n$, then $T_m f=\\sum m(n)\\hat f(n)e_n$ defines $T_m:L^2\\to L^2$ with $\\|T_mf\\|_2\\le\\|f\\|_2$.”. Its title is “\\texttt{norm\\_multiplier\\_le}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+          "weight": 0.3,
+          "clarification": {
+            "claimId": "lemma-2",
+            "kind": "ambiguous",
+            "question": "Paper claim Lemma 2 (lemma-2) states: “If $|m(n)|\\le1$ for all $n$, then $T_m f=\\sum m(n)\\hat f(n)e_n$ defines $T_m:L^2\\to L^2$ with $\\|T_mf\\|_2\\le\\|f\\|_2$.”. Its title is “\\texttt{norm\\_multiplier\\_le}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+            "answer": "harmless wording (strict, mechanical): the title cites Lean name(s) norm_multiplier_le, each an existing declaration mapped to this claim; the title makes no further assertion.",
+            "verdict": "intentional",
+            "answeredAt": "2026-11-03T21:11:06.567Z"
+          }
+        }
+      ],
+      "drift": 0
+    },
+    {
+      "claim": {
+        "id": "theorem-3",
+        "number": "Theorem 3",
+        "statement": "For $\\nu,s,t\\ge0$: $\\widehat{e^{t\\nu\\Delta}f}(n)=e^{-\\nu|n|^2t}\\hat f(n)$, $e^{0}=\\mathrm{id}$, $e^{s\\nu\\Delta}e^{t\\nu\\Delta}=e^{(s+t)\\nu\\Delta}$, $\\|e^{t\\nu\\Delta}f\\|_2\\le\\|f\\|_2$.",
+        "kind": "theorem",
+        "source": "paper/main.tex:49"
+      },
+      "matched": [
+        {
+          "name": "heat_zero",
+          "score": 0.32,
+          "explicit": false
+        },
+        {
+          "name": "galerkinTameEnergyInequality_of_gt",
+          "score": 0.275,
+          "explicit": false
+        },
+        {
+          "name": "inHs_zero",
+          "score": 0.246,
+          "explicit": false
+        },
+        {
+          "name": "ennCS",
+          "score": 0.246,
+          "explicit": false
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "6b8198593c17",
+          "claimId": "theorem-3",
+          "kind": "narrower",
+          "lean": "galerkinTameEnergyInequality_of_gt",
+          "key": "bound:s>=3",
+          "detail": "`galerkinTameEnergyInequality_of_gt` restricts s ≥ 3; the claim states no such restriction.",
+          "question": "Paper claim Theorem 3 (theorem-3) states: “For $\\nu,s,t\\ge0$: $\\widehat{e^{t\\nu\\Delta}f}(n)=e^{-\\nu|n|^2t}\\hat f(n)$, $e^{0}=\\mathrm{id}$, $e^{s\\nu\\Delta}e^{t\\nu\\Delta}=e^{(s+t)\\nu\\Delta}$, $\\|e^{t\\nu\\Delta}f\\|_2\\le\\|f\\|_2$.”. Lean theorem `galerkinTameEnergyInequality_of_gt` assumes `5 / 2 < s₀` (restricting s ≥ 3), which the claim does not state. Is the restricted domain intentional?",
+          "weight": 0.6
+        },
+        {
+          "id": "993daebb9399",
+          "claimId": "theorem-3",
+          "kind": "narrower",
+          "lean": "galerkinTameEnergyInequality_of_gt",
+          "key": "bound:s>=2",
+          "detail": "`galerkinTameEnergyInequality_of_gt` restricts s ≥ 2; the claim states no such restriction.",
+          "question": "Paper claim Theorem 3 (theorem-3) states: “For $\\nu,s,t\\ge0$: $\\widehat{e^{t\\nu\\Delta}f}(n)=e^{-\\nu|n|^2t}\\hat f(n)$, $e^{0}=\\mathrm{id}$, $e^{s\\nu\\Delta}e^{t\\nu\\Delta}=e^{(s+t)\\nu\\Delta}$, $\\|e^{t\\nu\\Delta}f\\|_2\\le\\|f\\|_2$.”. Lean theorem `galerkinTameEnergyInequality_of_gt` assumes `2 ≤ s` (restricting s ≥ 2), which the claim does not state. Is the restricted domain intentional?",
+          "weight": 0.6
+        }
+      ],
+      "drift": 0.84
+    },
+    {
+      "claim": {
+        "id": "lemma-4",
+        "number": "Lemma 4",
+        "statement": "For $k\\in\\mathbb N$, $a>0$, $x\\ge0$: $(1+x)^ke^{-ax}\\le k!\\,e^a a^{-k}$.",
+        "kind": "lemma",
+        "source": "paper/main.tex:62"
+      },
+      "matched": [
+        {
+          "name": "one_add_pow_mul_exp_le",
+          "score": 0.349,
+          "explicit": false
+        },
+        {
+          "name": "rpow_sub_rpow_le_of_le",
+          "score": 0.313,
+          "explicit": false
+        },
+        {
+          "name": "one_le_sobW",
+          "score": 0.24,
+          "explicit": false
+        },
+        {
+          "name": "young_l2_l1",
+          "score": 0.24,
+          "explicit": false
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "ef4fe9efd048",
+          "claimId": "lemma-4",
+          "kind": "narrower",
+          "lean": "rpow_sub_rpow_le_of_le",
+          "key": "bound:p>=1",
+          "detail": "`rpow_sub_rpow_le_of_le` restricts p ≥ 1; the claim states no such restriction.",
+          "question": "Paper claim Lemma 4 (lemma-4) states: “For $k\\in\\mathbb N$, $a>0$, $x\\ge0$: $(1+x)^ke^{-ax}\\le k!\\,e^a a^{-k}$.”. Lean lemma `rpow_sub_rpow_le_of_le` assumes `1 ≤ p` (restricting p ≥ 1), which the claim does not state. Is the restricted domain intentional?",
+          "weight": 0.6
+        },
+        {
+          "id": "03016963038d",
+          "claimId": "lemma-4",
+          "kind": "narrower",
+          "lean": "rpow_sub_rpow_le_of_le",
+          "key": "bound:x>=1vs0",
+          "detail": "`rpow_sub_rpow_le_of_le` uses x ≥ 1 where the claim says x ≥ 0 (Lean is narrower).",
+          "question": "Paper claim Lemma 4 (lemma-4) states: “For $k\\in\\mathbb N$, $a>0$, $x\\ge0$: $(1+x)^ke^{-ax}\\le k!\\,e^a a^{-k}$.”. Lean lemma `rpow_sub_rpow_le_of_le` assumes `0 < x` (x ≥ 1), but the claim says x ≥ 0. Is this an intentional indexing convention or a genuine change of domain?",
+          "weight": 0.6
+        },
+        {
+          "id": "3299d8c43637",
+          "claimId": "lemma-4",
+          "kind": "narrower",
+          "lean": "one_le_sobW",
+          "key": "bound:s>=0",
+          "detail": "`one_le_sobW` restricts s ≥ 0; the claim states no such restriction.",
+          "question": "Paper claim Lemma 4 (lemma-4) states: “For $k\\in\\mathbb N$, $a>0$, $x\\ge0$: $(1+x)^ke^{-ax}\\le k!\\,e^a a^{-k}$.”. Lean lemma `one_le_sobW` assumes `0 ≤ s` (restricting s ≥ 0), which the claim does not state. Is the restricted domain intentional?",
+          "weight": 0.6
+        },
+        {
+          "id": "d0576e323355",
+          "claimId": "lemma-4",
+          "kind": "conditional",
+          "lean": "young_l2_l1",
+          "key": "hyp:Mode → ℝ≥0∞",
+          "detail": "`young_l2_l1` assumes `F G : Mode → ℝ≥0∞`, not stated in the claim.",
+          "question": "Paper claim Lemma 4 (lemma-4) states: “For $k\\in\\mathbb N$, $a>0$, $x\\ge0$: $(1+x)^ke^{-ax}\\le k!\\,e^a a^{-k}$.”. Lean theorem `young_l2_l1` assumes `F G : Mode → ℝ≥0∞`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        }
+      ],
+      "drift": 0.968
+    },
+    {
+      "claim": {
+        "id": "theorem-5",
+        "number": "Theorem 5",
+        "statement": "For $\\nu,t>0$, $s\\in\\mathbb R$, $k\\in\\mathbb N$, $f\\in H^s$: $e^{t\\nu\\Delta}f\\in H^{s+k}$ and $\\|e^{t\\nu\\Delta}f\\|_{H^{s+k}}^2\\le k!\\,e^{2\\nu t}(2\\nu t)^{-k}\\|f\\|_{H^s}^2$.",
+        "kind": "theorem",
+        "source": "paper/main.tex:64",
+        "title": "\\texttt{heat\\_smoothing}",
+        "lean": [
+          "heat_smoothing"
+        ]
+      },
+      "matched": [
+        {
+          "name": "heat_smoothing",
+          "score": 0.425,
+          "explicit": true
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "55cf13bac57c",
+          "claimId": "theorem-5",
+          "kind": "ambiguous",
+          "key": "title-vs-statement",
+          "detail": "Title “\\texttt{heat\\_smoothing}” shares almost no terms with the statement.",
+          "question": "Paper claim Theorem 5 (theorem-5) states: “For $\\nu,t>0$, $s\\in\\mathbb R$, $k\\in\\mathbb N$, $f\\in H^s$: $e^{t\\nu\\Delta}f\\in H^{s+k}$ and $\\|e^{t\\nu\\Delta}f\\|_{H^{s+k}}^2\\le k!\\,e^{2\\nu t}(2\\nu t)^{-k}\\|f\\|_{H^s}^2$.”. Its title is “\\texttt{heat\\_smoothing}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+          "weight": 0.3,
+          "clarification": {
+            "claimId": "theorem-5",
+            "kind": "ambiguous",
+            "question": "Paper claim Theorem 5 (theorem-5) states: “For $\\nu,t>0$, $s\\in\\mathbb R$, $k\\in\\mathbb N$, $f\\in H^s$: $e^{t\\nu\\Delta}f\\in H^{s+k}$ and $\\|e^{t\\nu\\Delta}f\\|_{H^{s+k}}^2\\le k!\\,e^{2\\nu t}(2\\nu t)^{-k}\\|f\\|_{H^s}^2$.”. Its title is “\\texttt{heat\\_smoothing}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+            "answer": "harmless wording (strict, mechanical): the title cites Lean name(s) heat_smoothing, each an existing declaration mapped to this claim; the title makes no further assertion.",
+            "verdict": "intentional",
+            "answeredAt": "2026-11-03T21:11:06.605Z"
+          }
+        },
+        {
+          "id": "25140358fd60",
+          "claimId": "theorem-5",
+          "kind": "conditional",
+          "lean": "heat_smoothing",
+          "key": "hyp:InHs s f",
+          "detail": "`heat_smoothing` assumes `hf : InHs s f`, not stated in the claim.",
+          "question": "Paper claim Theorem 5 (theorem-5) states: “For $\\nu,t>0$, $s\\in\\mathbb R$, $k\\in\\mathbb N$, $f\\in H^s$: $e^{t\\nu\\Delta}f\\in H^{s+k}$ and $\\|e^{t\\nu\\Delta}f\\|_{H^{s+k}}^2\\le k!\\,e^{2\\nu t}(2\\nu t)^{-k}\\|f\\|_{H^s}^2$.”. Lean theorem `heat_smoothing` assumes `hf : InHs s f`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        }
+      ],
+      "drift": 0.5
+    },
+    {
+      "claim": {
+        "id": "theorem-6",
+        "number": "Theorem 6",
+        "statement": "The same holds for every real $k\\ge0$ with $k!$ replaced by $\\lceil k\\rceil!$.",
+        "kind": "theorem",
+        "source": "paper/main.tex:69",
+        "title": "\\texttt{heat\\_smoothing\\_real}",
+        "lean": [
+          "heat_smoothing_real"
+        ]
+      },
+      "matched": [
+        {
+          "name": "heat_smoothing_real",
+          "score": 0.369,
+          "explicit": true
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "cc354a154ccd",
+          "claimId": "theorem-6",
+          "kind": "narrower",
+          "lean": "heat_smoothing_real",
+          "key": "bound:t>=1",
+          "detail": "`heat_smoothing_real` restricts t ≥ 1; the claim states no such restriction.",
+          "question": "Paper claim Theorem 6 (theorem-6) states: “The same holds for every real $k\\ge0$ with $k!$ replaced by $\\lceil k\\rceil!$.”. Lean theorem `heat_smoothing_real` assumes `0 < t` (restricting t ≥ 1), which the claim does not state. Is the restricted domain intentional?",
+          "weight": 0.6
+        },
+        {
+          "id": "02ae93ec2160",
+          "claimId": "theorem-6",
+          "kind": "conditional",
+          "lean": "heat_smoothing_real",
+          "key": "hyp:InHs s f",
+          "detail": "`heat_smoothing_real` assumes `hf : InHs s f`, not stated in the claim.",
+          "question": "Paper claim Theorem 6 (theorem-6) states: “The same holds for every real $k\\ge0$ with $k!$ replaced by $\\lceil k\\rceil!$.”. Lean theorem `heat_smoothing_real` assumes `hf : InHs s f`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        }
+      ],
+      "drift": 0.8
+    },
+    {
+      "claim": {
+        "id": "lemma-7",
+        "number": "Lemma 7",
+        "statement": "$\\sum_{ij}|\\hat S_{ij}|^2=\\tfrac12|\\hat\\omega|^2$ and $|\\hat\\omega|^2=4\\pi^2|k|^2|\\hat u|^2$.",
+        "kind": "lemma",
+        "source": "paper/main.tex:80"
+      },
+      "matched": [
+        {
+          "name": "curl_sq_eq",
+          "score": 0.225,
+          "explicit": false
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "f16200262bf9",
+          "claimId": "lemma-7",
+          "kind": "conditional",
+          "lean": "curl_sq_eq",
+          "key": "hyp:dot k u = 0",
+          "detail": "`curl_sq_eq` assumes `hdiv : dot k u = 0`, not stated in the claim.",
+          "question": "Paper claim Lemma 7 (lemma-7) states: “$\\sum_{ij}|\\hat S_{ij}|^2=\\tfrac12|\\hat\\omega|^2$ and $|\\hat\\omega|^2=4\\pi^2|k|^2|\\hat u|^2$.”. Lean theorem `curl_sq_eq` assumes `hdiv : dot k u = 0`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        }
+      ],
+      "drift": 0.5
+    },
+    {
+      "claim": {
+        "id": "theorem-8",
+        "number": "Theorem 8",
+        "statement": "For $L^2$ fields with these coefficients, $\\|S\\|_2^2=\\tfrac12\\|\\omega\\|_2^2\\le\\|\\omega\\|_2^2$.",
+        "kind": "theorem",
+        "source": "paper/main.tex:84",
+        "title": "\\texttt{L2\\_strain\\_eq}",
+        "lean": [
+          "L2_strain_eq"
+        ]
+      },
+      "matched": [
+        {
+          "name": "L2_strain_eq",
+          "score": 0.266,
+          "explicit": true
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "2408b2d1ad5a",
+          "claimId": "theorem-8",
+          "kind": "conditional",
+          "lean": "L2_strain_eq",
+          "key": "hyp:∀ n, dot (kvec n) (fun j => coeff (u j) n) = 0",
+          "detail": "`L2_strain_eq` assumes `hdiv : ∀ n, dot (kvec n) (fun j => coeff (u j) n) = 0`, not stated in the claim.",
+          "question": "Paper claim Theorem 8 (theorem-8) states: “For $L^2$ fields with these coefficients, $\\|S\\|_2^2=\\tfrac12\\|\\omega\\|_2^2\\le\\|\\omega\\|_2^2$.”. Lean theorem `L2_strain_eq` assumes `hdiv : ∀ n, dot (kvec n) (fun j => coeff (u j) n) = 0`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "0fb92af2a8d6",
+          "claimId": "theorem-8",
+          "kind": "conditional",
+          "lean": "L2_strain_eq",
+          "key": "hyp:∀ n i, coeff (ω i) n = curlSym (kvec n) (fun j => coeff (u j) n) i",
+          "detail": "`L2_strain_eq` assumes `hω : ∀ n i, coeff (ω i) n = curlSym (kvec n) (fun j => coeff (u j) n) i`, not stated in the claim.",
+          "question": "Paper claim Theorem 8 (theorem-8) states: “For $L^2$ fields with these coefficients, $\\|S\\|_2^2=\\tfrac12\\|\\omega\\|_2^2\\le\\|\\omega\\|_2^2$.”. Lean theorem `L2_strain_eq` assumes `hω : ∀ n i, coeff (ω i) n = curlSym (kvec n) (fun j => coeff (u j) n) i`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "b4307a42321b",
+          "claimId": "theorem-8",
+          "kind": "conditional",
+          "lean": "L2_strain_eq",
+          "key": "hyp:∀ n i j, coeff (S i j) n = strainSym (kvec n) (fun j => coeff (u j) n) i j",
+          "detail": "`L2_strain_eq` assumes `hS : ∀ n i j, coeff (S i j) n = strainSym (kvec n) (fun j => coeff (u j) n) i j`, not stated in the claim.",
+          "question": "Paper claim Theorem 8 (theorem-8) states: “For $L^2$ fields with these coefficients, $\\|S\\|_2^2=\\tfrac12\\|\\omega\\|_2^2\\le\\|\\omega\\|_2^2$.”. Lean theorem `L2_strain_eq` assumes `hS : ∀ n i j, coeff (S i j) n = strainSym (kvec n) (fun j => coeff (u j) n) i j`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        }
+      ],
+      "drift": 0.875
+    },
+    {
+      "claim": {
+        "id": "theorem-9",
+        "number": "Theorem 9",
+        "statement": "For $k\\ne0$, $k\\cdot\\hat u=0$: $H(\\mathrm{curl}\\,\\hat u)=\\tfrac12|\\hat u|^2$; $H(\\omega+\\varepsilon\\eta)=H(\\omega)+\\varepsilon\\,\\mathrm{Re}\\langle\\hat\\psi,\\eta\\rangle+\\varepsilon^2H(\\eta)$, so $\\delta H/\\delta\\omega=\\hat\\psi$; and $2\\pi i\\,k\\times\\hat\\psi=\\hat u$, i.e.\\ $\\mathrm{curl}(\\delta H/\\delta\\omega)=u$.",
+        "kind": "theorem",
+        "source": "paper/main.tex:89"
+      },
+      "matched": [],
+      "mismatches": [
+        {
+          "id": "df440186114b",
+          "claimId": "theorem-9",
+          "kind": "silent",
+          "key": "no-match",
+          "detail": "No Lean declaration matches this claim. Closest candidate: `modeEnergy_curl` (score 0.19, below threshold 0.2).",
+          "question": "Paper claim Theorem 9 (theorem-9) states: “For $k\\ne0$, $k\\cdot\\hat u=0$: $H(\\mathrm{curl}\\,\\hat u)=\\tfrac12|\\hat u|^2$; $H(\\omega+\\varepsilon\\eta)=H(\\omega)+\\varepsilon\\,\\mathrm{Re}\\langle\\hat\\psi,\\eta\\rangle+\\varepsilon^2H(\\eta)$, so $\\delt…”. No Lean declaration matching it was found among 199 candidates. Closest candidate: `modeEnergy_curl` (score 0.19, below threshold 0.2). Is this claim intentionally not formalized, or which declaration should it map to?",
+          "weight": 1
+        }
+      ],
+      "drift": 1
+    }
+  ],
+  "unanchored": [],
+  "drift": 0.609,
+  "pending": [
+    {
+      "id": "6b8198593c17",
+      "claimId": "theorem-3",
+      "kind": "narrower",
+      "lean": "galerkinTameEnergyInequality_of_gt",
+      "key": "bound:s>=3",
+      "detail": "`galerkinTameEnergyInequality_of_gt` restricts s ≥ 3; the claim states no such restriction.",
+      "question": "Paper claim Theorem 3 (theorem-3) states: “For $\\nu,s,t\\ge0$: $\\widehat{e^{t\\nu\\Delta}f}(n)=e^{-\\nu|n|^2t}\\hat f(n)$, $e^{0}=\\mathrm{id}$, $e^{s\\nu\\Delta}e^{t\\nu\\Delta}=e^{(s+t)\\nu\\Delta}$, $\\|e^{t\\nu\\Delta}f\\|_2\\le\\|f\\|_2$.”. Lean theorem `galerkinTameEnergyInequality_of_gt` assumes `5 / 2 < s₀` (restricting s ≥ 3), which the claim does not state. Is the restricted domain intentional?",
+      "weight": 0.6
+    },
+    {
+      "id": "993daebb9399",
+      "claimId": "theorem-3",
+      "kind": "narrower",
+      "lean": "galerkinTameEnergyInequality_of_gt",
+      "key": "bound:s>=2",
+      "detail": "`galerkinTameEnergyInequality_of_gt` restricts s ≥ 2; the claim states no such restriction.",
+      "question": "Paper claim Theorem 3 (theorem-3) states: “For $\\nu,s,t\\ge0$: $\\widehat{e^{t\\nu\\Delta}f}(n)=e^{-\\nu|n|^2t}\\hat f(n)$, $e^{0}=\\mathrm{id}$, $e^{s\\nu\\Delta}e^{t\\nu\\Delta}=e^{(s+t)\\nu\\Delta}$, $\\|e^{t\\nu\\Delta}f\\|_2\\le\\|f\\|_2$.”. Lean theorem `galerkinTameEnergyInequality_of_gt` assumes `2 ≤ s` (restricting s ≥ 2), which the claim does not state. Is the restricted domain intentional?",
+      "weight": 0.6
+    },
+    {
+      "id": "ef4fe9efd048",
+      "claimId": "lemma-4",
+      "kind": "narrower",
+      "lean": "rpow_sub_rpow_le_of_le",
+      "key": "bound:p>=1",
+      "detail": "`rpow_sub_rpow_le_of_le` restricts p ≥ 1; the claim states no such restriction.",
+      "question": "Paper claim Lemma 4 (lemma-4) states: “For $k\\in\\mathbb N$, $a>0$, $x\\ge0$: $(1+x)^ke^{-ax}\\le k!\\,e^a a^{-k}$.”. Lean lemma `rpow_sub_rpow_le_of_le` assumes `1 ≤ p` (restricting p ≥ 1), which the claim does not state. Is the restricted domain intentional?",
+      "weight": 0.6
+    },
+    {
+      "id": "03016963038d",
+      "claimId": "lemma-4",
+      "kind": "narrower",
+      "lean": "rpow_sub_rpow_le_of_le",
+      "key": "bound:x>=1vs0",
+      "detail": "`rpow_sub_rpow_le_of_le` uses x ≥ 1 where the claim says x ≥ 0 (Lean is narrower).",
+      "question": "Paper claim Lemma 4 (lemma-4) states: “For $k\\in\\mathbb N$, $a>0$, $x\\ge0$: $(1+x)^ke^{-ax}\\le k!\\,e^a a^{-k}$.”. Lean lemma `rpow_sub_rpow_le_of_le` assumes `0 < x` (x ≥ 1), but the claim says x ≥ 0. Is this an intentional indexing convention or a genuine change of domain?",
+      "weight": 0.6
+    },
+    {
+      "id": "3299d8c43637",
+      "claimId": "lemma-4",
+      "kind": "narrower",
+      "lean": "one_le_sobW",
+      "key": "bound:s>=0",
+      "detail": "`one_le_sobW` restricts s ≥ 0; the claim states no such restriction.",
+      "question": "Paper claim Lemma 4 (lemma-4) states: “For $k\\in\\mathbb N$, $a>0$, $x\\ge0$: $(1+x)^ke^{-ax}\\le k!\\,e^a a^{-k}$.”. Lean lemma `one_le_sobW` assumes `0 ≤ s` (restricting s ≥ 0), which the claim does not state. Is the restricted domain intentional?",
+      "weight": 0.6
+    },
+    {
+      "id": "d0576e323355",
+      "claimId": "lemma-4",
+      "kind": "conditional",
+      "lean": "young_l2_l1",
+      "key": "hyp:Mode → ℝ≥0∞",
+      "detail": "`young_l2_l1` assumes `F G : Mode → ℝ≥0∞`, not stated in the claim.",
+      "question": "Paper claim Lemma 4 (lemma-4) states: “For $k\\in\\mathbb N$, $a>0$, $x\\ge0$: $(1+x)^ke^{-ax}\\le k!\\,e^a a^{-k}$.”. Lean theorem `young_l2_l1` assumes `F G : Mode → ℝ≥0∞`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "25140358fd60",
+      "claimId": "theorem-5",
+      "kind": "conditional",
+      "lean": "heat_smoothing",
+      "key": "hyp:InHs s f",
+      "detail": "`heat_smoothing` assumes `hf : InHs s f`, not stated in the claim.",
+      "question": "Paper claim Theorem 5 (theorem-5) states: “For $\\nu,t>0$, $s\\in\\mathbb R$, $k\\in\\mathbb N$, $f\\in H^s$: $e^{t\\nu\\Delta}f\\in H^{s+k}$ and $\\|e^{t\\nu\\Delta}f\\|_{H^{s+k}}^2\\le k!\\,e^{2\\nu t}(2\\nu t)^{-k}\\|f\\|_{H^s}^2$.”. Lean theorem `heat_smoothing` assumes `hf : InHs s f`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "cc354a154ccd",
+      "claimId": "theorem-6",
+      "kind": "narrower",
+      "lean": "heat_smoothing_real",
+      "key": "bound:t>=1",
+      "detail": "`heat_smoothing_real` restricts t ≥ 1; the claim states no such restriction.",
+      "question": "Paper claim Theorem 6 (theorem-6) states: “The same holds for every real $k\\ge0$ with $k!$ replaced by $\\lceil k\\rceil!$.”. Lean theorem `heat_smoothing_real` assumes `0 < t` (restricting t ≥ 1), which the claim does not state. Is the restricted domain intentional?",
+      "weight": 0.6
+    },
+    {
+      "id": "02ae93ec2160",
+      "claimId": "theorem-6",
+      "kind": "conditional",
+      "lean": "heat_smoothing_real",
+      "key": "hyp:InHs s f",
+      "detail": "`heat_smoothing_real` assumes `hf : InHs s f`, not stated in the claim.",
+      "question": "Paper claim Theorem 6 (theorem-6) states: “The same holds for every real $k\\ge0$ with $k!$ replaced by $\\lceil k\\rceil!$.”. Lean theorem `heat_smoothing_real` assumes `hf : InHs s f`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "f16200262bf9",
+      "claimId": "lemma-7",
+      "kind": "conditional",
+      "lean": "curl_sq_eq",
+      "key": "hyp:dot k u = 0",
+      "detail": "`curl_sq_eq` assumes `hdiv : dot k u = 0`, not stated in the claim.",
+      "question": "Paper claim Lemma 7 (lemma-7) states: “$\\sum_{ij}|\\hat S_{ij}|^2=\\tfrac12|\\hat\\omega|^2$ and $|\\hat\\omega|^2=4\\pi^2|k|^2|\\hat u|^2$.”. Lean theorem `curl_sq_eq` assumes `hdiv : dot k u = 0`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "2408b2d1ad5a",
+      "claimId": "theorem-8",
+      "kind": "conditional",
+      "lean": "L2_strain_eq",
+      "key": "hyp:∀ n, dot (kvec n) (fun j => coeff (u j) n) = 0",
+      "detail": "`L2_strain_eq` assumes `hdiv : ∀ n, dot (kvec n) (fun j => coeff (u j) n) = 0`, not stated in the claim.",
+      "question": "Paper claim Theorem 8 (theorem-8) states: “For $L^2$ fields with these coefficients, $\\|S\\|_2^2=\\tfrac12\\|\\omega\\|_2^2\\le\\|\\omega\\|_2^2$.”. Lean theorem `L2_strain_eq` assumes `hdiv : ∀ n, dot (kvec n) (fun j => coeff (u j) n) = 0`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "0fb92af2a8d6",
+      "claimId": "theorem-8",
+      "kind": "conditional",
+      "lean": "L2_strain_eq",
+      "key": "hyp:∀ n i, coeff (ω i) n = curlSym (kvec n) (fun j => coeff (u j) n) i",
+      "detail": "`L2_strain_eq` assumes `hω : ∀ n i, coeff (ω i) n = curlSym (kvec n) (fun j => coeff (u j) n) i`, not stated in the claim.",
+      "question": "Paper claim Theorem 8 (theorem-8) states: “For $L^2$ fields with these coefficients, $\\|S\\|_2^2=\\tfrac12\\|\\omega\\|_2^2\\le\\|\\omega\\|_2^2$.”. Lean theorem `L2_strain_eq` assumes `hω : ∀ n i, coeff (ω i) n = curlSym (kvec n) (fun j => coeff (u j) n) i`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "b4307a42321b",
+      "claimId": "theorem-8",
+      "kind": "conditional",
+      "lean": "L2_strain_eq",
+      "key": "hyp:∀ n i j, coeff (S i j) n = strainSym (kvec n) (fun j => coeff (u j) n) i j",
+      "detail": "`L2_strain_eq` assumes `hS : ∀ n i j, coeff (S i j) n = strainSym (kvec n) (fun j => coeff (u j) n) i j`, not stated in the claim.",
+      "question": "Paper claim Theorem 8 (theorem-8) states: “For $L^2$ fields with these coefficients, $\\|S\\|_2^2=\\tfrac12\\|\\omega\\|_2^2\\le\\|\\omega\\|_2^2$.”. Lean theorem `L2_strain_eq` assumes `hS : ∀ n i j, coeff (S i j) n = strainSym (kvec n) (fun j => coeff (u j) n) i j`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "df440186114b",
+      "claimId": "theorem-9",
+      "kind": "silent",
+      "key": "no-match",
+      "detail": "No Lean declaration matches this claim. Closest candidate: `modeEnergy_curl` (score 0.19, below threshold 0.2).",
+      "question": "Paper claim Theorem 9 (theorem-9) states: “For $k\\ne0$, $k\\cdot\\hat u=0$: $H(\\mathrm{curl}\\,\\hat u)=\\tfrac12|\\hat u|^2$; $H(\\omega+\\varepsilon\\eta)=H(\\omega)+\\varepsilon\\,\\mathrm{Re}\\langle\\hat\\psi,\\eta\\rangle+\\varepsilon^2H(\\eta)$, so $\\delt…”. No Lean declaration matching it was found among 199 candidates. Closest candidate: `modeEnergy_curl` (score 0.19, below threshold 0.2). Is this claim intentionally not formalized, or which declaration should it map to?",
+      "weight": 1
+    }
+  ],
+  "status": "halt",
+  "mapFile": "../../PipelineHalt/examples/torus-fourier-ns-lemmas/pipelinehalt.map.json"
+}

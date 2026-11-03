@@ -1,0 +1,35 @@
+{
+  "tool": "pipelinehalt",
+  "anchor": "/workspace/PipelineHalt/examples/triadic-homogenization-lean/anchor.json",
+  "instructions": "Fill in `answer` for each question (start with yes/intentional or no/unintended, optionally followed by an explanation), then run `pipelinehalt answer --anchor <anchor> --from <this file>`. Blank answers stay open.",
+  "questions": [
+    {
+      "id": "97f9dda3f0d1",
+      "claimId": "definition-1",
+      "kind": "silent",
+      "question": "Paper claim Definition 1 (definition-1) states: “For $d \\in \\mathbb{N}$, scale exponent $m \\in \\mathbb{N}$, and center $z \\in \\mathbb{R}^d$, the triadic cube $\\mathrm{cube}(m,z) \\subset \\mathbb{R}^d$ is defined coordinatewise by \\[ \\mathrm{cube}(m,…”. No Lean declaration matching it was found among 0 candidates. Is this claim intentionally not formalized, or which declaration should it map to?",
+      "answer": ""
+    },
+    {
+      "id": "a39f434f7495",
+      "claimId": "lemma-3",
+      "kind": "silent",
+      "question": "Paper claim Lemma 3 (lemma-3) states: “Let $\\mathrm{cubeAvg}(m,z,g) := \\mu_{\\mathbb{R}}(\\mathrm{cube}(m,z))^{-1} \\int_{x \\in \\mathrm{cube}(m,z)} g(x)\\,d\\mu(x)$. Then: • For $g_1, g_2$ integrable on $\\mathrm{cube}(m,z)$, $\\mathrm{cubeAvg}(…”. No Lean declaration matching it was found among 20 candidates. Closest candidate: `cubeAverage_const` (score 0.15, below threshold 0.2). Is this claim intentionally not formalized, or which declaration should it map to?",
+      "answer": ""
+    },
+    {
+      "id": "5c95292644f4",
+      "claimId": "theorem-4",
+      "kind": "silent",
+      "question": "Paper claim Theorem 4 (theorem-4) states: “For every $m, K \\in \\mathbb{N}$, $z \\in \\mathbb{R}^d$, and field $g : \\mathbb{R}^d \\to E$: \\[ \\mathrm{cubeAvg}(m+K,z,g) - \\mathrm{cubeAvg}(m,z,g) = \\sum_{k=0}^{K-1} \\bigl(\\mathrm{cubeAvg}(m+k+1,z,g) …”. No Lean declaration matching it was found among 20 candidates. Closest candidate: `cubeIncrement_succ_const` (score 0.17, below threshold 0.2). Is this claim intentionally not formalized, or which declaration should it map to?",
+      "answer": ""
+    },
+    {
+      "id": "82a054ead188",
+      "claimId": "theorem-4",
+      "kind": "ambiguous",
+      "question": "Paper claim Theorem 4 (theorem-4) states: “For every $m, K \\in \\mathbb{N}$, $z \\in \\mathbb{R}^d$, and field $g : \\mathbb{R}^d \\to E$: \\[ \\mathrm{cubeAvg}(m+K,z,g) - \\mathrm{cubeAvg}(m,z,g) = \\sum_{k=0}^{K-1} \\bigl(\\mathrm{cubeAvg}(m+k+1,z,g) …”. Its title is “Multi-Scale Telescoping Increment Identity and Norm Bound -- \\texttt{telescoping\\_increments} \\& \\texttt{norm\\_Increment\\_le\\_sum}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+      "answer": ""
+    }
+  ]
+}

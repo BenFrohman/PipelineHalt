@@ -1,0 +1,14 @@
+{
+  "tool": "pipelinehalt",
+  "anchor": "/workspace/PipelineHalt/examples/SingularityLab/anchor.json",
+  "instructions": "Fill in `answer` for each question (start with yes/intentional or no/unintended, optionally followed by an explanation), then run `pipelinehalt answer --anchor <anchor> --from <this file>`. Blank answers stay open.",
+  "questions": [
+    {
+      "id": "23ecb9fc2fd5",
+      "claimId": "theorem-1",
+      "kind": "ambiguous",
+      "question": "Paper claim Theorem 1 (theorem-1) states: “For $W = u^5v + v^6$ with exponent matrix $A = \\bigl(\\begin{smallmatrix}5 & 1\\\\ 0 & 6\\end{smallmatrix}\\bigr)$ and transpose $W^T = u^5 + uv^6$ with $A^T = \\bigl(\\begin{smallmatrix}5 & 0\\\\ 1 & 6\\end{s…”. Its title is “Chain Atom vs.\\ Berglund--H\\\"ubsch Transpose”, which does not appear to describe that statement. Is the title or the statement misworded?",
+      "answer": ""
+    }
+  ]
+}

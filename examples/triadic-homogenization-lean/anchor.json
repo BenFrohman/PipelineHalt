@@ -1,0 +1,39 @@
+{
+  "title": "\\textbf{Homogenization: Triadic Partition, Cube Measure, Cube Average, and Telescoping Increment Lemmas in Lean 4",
+  "source": "Triadic_Homogenization_Lean4_Frohman_2026.tex",
+  "claims": [
+    {
+      "id": "definition-1",
+      "number": "Definition 1",
+      "statement": "For $d \\in \\mathbb{N}$, scale exponent $m \\in \\mathbb{N}$, and center $z \\in \\mathbb{R}^d$, the triadic cube $\\mathrm{cube}(m,z) \\subset \\mathbb{R}^d$ is defined coordinatewise by \\[ \\mathrm{cube}(m,z) = \\bigcap_{i \\in \\mathrm{Fin}\\,d} \\Bigl\\{ x \\in \\mathbb{R}^d \\;\\Big|\\; z_i - \\frac{3^m}{2} \\le x_i < z_i + \\frac{3^m}{2} \\Bigr\\}. \\]",
+      "kind": "definition",
+      "source": "Triadic_Homogenization_Lean4_Frohman_2026.tex:39",
+      "title": "Half-Open Triadic Cube"
+    },
+    {
+      "id": "lemma-2",
+      "number": "Lemma 2",
+      "statement": "For every $d, m \\in \\mathbb{N}$ and $z \\in \\mathbb{R}^d$, the set $\\mathrm{cube}(m,z)$ is measurable and its Lebesgue volume satisfies \\[ \\mu(\\mathrm{cube}(m,z)) = (3^m)^d > 0, \\qquad \\mu_{\\mathbb{R}}(\\mathrm{cube}(m,z)) = 3^{md} > 0. \\]",
+      "kind": "lemma",
+      "source": "Triadic_Homogenization_Lean4_Frohman_2026.tex:46",
+      "title": "Exact Lebesgue Measure of the Triadic Cube -- \\texttt{measure\\_cube} \\& \\texttt{measureReal\\_cube\\_eq}"
+    },
+    {
+      "id": "lemma-3",
+      "number": "Lemma 3",
+      "statement": "Let $\\mathrm{cubeAvg}(m,z,g) := \\mu_{\\mathbb{R}}(\\mathrm{cube}(m,z))^{-1} \\int_{x \\in \\mathrm{cube}(m,z)} g(x)\\,d\\mu(x)$. Then: • For $g_1, g_2$ integrable on $\\mathrm{cube}(m,z)$, $\\mathrm{cubeAvg}(m,z,g_1 + g_2) = \\mathrm{cubeAvg}(m,z,g_1) + \\mathrm{cubeAvg}(m,z,g_2)$. • For $c \\in \\mathbb{R}$, $\\mathrm{cubeAvg}(m,z, c \\cdot g) = c \\cdot \\mathrm{cubeAvg}(m,z,g)$. • For constant $c \\in E$, $\\mathrm{cubeAvg}(m,z, x \\mapsto c) = c$.",
+      "kind": "lemma",
+      "source": "Triadic_Homogenization_Lean4_Frohman_2026.tex:53",
+      "title": "Normalized Cube Average Properties -- \\texttt{cubeAvg\\_add}, \\texttt{cubeAvg\\_smul}, \\texttt{cubeAvg\\_const}"
+    },
+    {
+      "id": "theorem-4",
+      "number": "Theorem 4",
+      "statement": "For every $m, K \\in \\mathbb{N}$, $z \\in \\mathbb{R}^d$, and field $g : \\mathbb{R}^d \\to E$: \\[ \\mathrm{cubeAvg}(m+K,z,g) - \\mathrm{cubeAvg}(m,z,g) = \\sum_{k=0}^{K-1} \\bigl(\\mathrm{cubeAvg}(m+k+1,z,g) - \\mathrm{cubeAvg}(m+k,z,g)\\bigr), \\] and consequently \\[ \\bigl\\|\\mathrm{cubeAvg}(m+K,z,g) - \\mathrm{cubeAvg}(m,z,g)\\bigr\\| \\le \\sum_{k=0}^{K-1} \\bigl\\|\\mathrm{cubeAvg}(m+k+1,z,g) - \\mathrm{cubeAvg}(m+k,z,g)\\bigr\\|. \\]",
+      "kind": "theorem",
+      "source": "Triadic_Homogenization_Lean4_Frohman_2026.tex:62",
+      "title": "Multi-Scale Telescoping Increment Identity and Norm Bound -- \\texttt{telescoping\\_increments} \\& \\texttt{norm\\_Increment\\_le\\_sum}"
+    }
+  ],
+  "clarifications": {}
+}

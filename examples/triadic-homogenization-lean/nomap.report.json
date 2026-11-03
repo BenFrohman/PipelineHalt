@@ -1,0 +1,152 @@
+{
+  "tool": "pipelinehalt",
+  "version": "0.4.0",
+  "anchorTitle": "\\textbf{Homogenization: Triadic Partition, Cube Measure, Cube Average, and Telescoping Increment Lemmas in Lean 4",
+  "generatedAt": "2026-11-03T21:10:22.582Z",
+  "declarationsScanned": 20,
+  "claims": [
+    {
+      "claim": {
+        "id": "definition-1",
+        "number": "Definition 1",
+        "statement": "For $d \\in \\mathbb{N}$, scale exponent $m \\in \\mathbb{N}$, and center $z \\in \\mathbb{R}^d$, the triadic cube $\\mathrm{cube}(m,z) \\subset \\mathbb{R}^d$ is defined coordinatewise by \\[ \\mathrm{cube}(m,z) = \\bigcap_{i \\in \\mathrm{Fin}\\,d} \\Bigl\\{ x \\in \\mathbb{R}^d \\;\\Big|\\; z_i - \\frac{3^m}{2} \\le x_i < z_i + \\frac{3^m}{2} \\Bigr\\}. \\]",
+        "kind": "definition",
+        "source": "Triadic_Homogenization_Lean4_Frohman_2026.tex:39",
+        "title": "Half-Open Triadic Cube"
+      },
+      "matched": [],
+      "mismatches": [
+        {
+          "id": "97f9dda3f0d1",
+          "claimId": "definition-1",
+          "kind": "silent",
+          "key": "no-match",
+          "detail": "No Lean declaration matches this claim.",
+          "question": "Paper claim Definition 1 (definition-1) states: “For $d \\in \\mathbb{N}$, scale exponent $m \\in \\mathbb{N}$, and center $z \\in \\mathbb{R}^d$, the triadic cube $\\mathrm{cube}(m,z) \\subset \\mathbb{R}^d$ is defined coordinatewise by \\[ \\mathrm{cube}(m,…”. No Lean declaration matching it was found among 0 candidates. Is this claim intentionally not formalized, or which declaration should it map to?",
+          "weight": 1
+        }
+      ],
+      "drift": 1
+    },
+    {
+      "claim": {
+        "id": "lemma-2",
+        "number": "Lemma 2",
+        "statement": "For every $d, m \\in \\mathbb{N}$ and $z \\in \\mathbb{R}^d$, the set $\\mathrm{cube}(m,z)$ is measurable and its Lebesgue volume satisfies \\[ \\mu(\\mathrm{cube}(m,z)) = (3^m)^d > 0, \\qquad \\mu_{\\mathbb{R}}(\\mathrm{cube}(m,z)) = 3^{md} > 0. \\]",
+        "kind": "lemma",
+        "source": "Triadic_Homogenization_Lean4_Frohman_2026.tex:46",
+        "title": "Exact Lebesgue Measure of the Triadic Cube -- \\texttt{measure\\_cube} \\& \\texttt{measureReal\\_cube\\_eq}"
+      },
+      "matched": [
+        {
+          "name": "cubeProjection_eq_zero_of_not_mem_cubeSet",
+          "score": 0.214,
+          "explicit": false
+        },
+        {
+          "name": "cubeIncrement_eq_zero_of_not_mem_cubeSet",
+          "score": 0.214,
+          "explicit": false
+        }
+      ],
+      "mismatches": [],
+      "drift": 0
+    },
+    {
+      "claim": {
+        "id": "lemma-3",
+        "number": "Lemma 3",
+        "statement": "Let $\\mathrm{cubeAvg}(m,z,g) := \\mu_{\\mathbb{R}}(\\mathrm{cube}(m,z))^{-1} \\int_{x \\in \\mathrm{cube}(m,z)} g(x)\\,d\\mu(x)$. Then: • For $g_1, g_2$ integrable on $\\mathrm{cube}(m,z)$, $\\mathrm{cubeAvg}(m,z,g_1 + g_2) = \\mathrm{cubeAvg}(m,z,g_1) + \\mathrm{cubeAvg}(m,z,g_2)$. • For $c \\in \\mathbb{R}$, $\\mathrm{cubeAvg}(m,z, c \\cdot g) = c \\cdot \\mathrm{cubeAvg}(m,z,g)$. • For constant $c \\in E$, $\\mathrm{cubeAvg}(m,z, x \\mapsto c) = c$.",
+        "kind": "lemma",
+        "source": "Triadic_Homogenization_Lean4_Frohman_2026.tex:53",
+        "title": "Normalized Cube Average Properties -- \\texttt{cubeAvg\\_add}, \\texttt{cubeAvg\\_smul}, \\texttt{cubeAvg\\_const}"
+      },
+      "matched": [],
+      "mismatches": [
+        {
+          "id": "a39f434f7495",
+          "claimId": "lemma-3",
+          "kind": "silent",
+          "key": "no-match",
+          "detail": "No Lean declaration matches this claim. Closest candidate: `cubeAverage_const` (score 0.15, below threshold 0.2).",
+          "question": "Paper claim Lemma 3 (lemma-3) states: “Let $\\mathrm{cubeAvg}(m,z,g) := \\mu_{\\mathbb{R}}(\\mathrm{cube}(m,z))^{-1} \\int_{x \\in \\mathrm{cube}(m,z)} g(x)\\,d\\mu(x)$. Then: • For $g_1, g_2$ integrable on $\\mathrm{cube}(m,z)$, $\\mathrm{cubeAvg}(…”. No Lean declaration matching it was found among 20 candidates. Closest candidate: `cubeAverage_const` (score 0.15, below threshold 0.2). Is this claim intentionally not formalized, or which declaration should it map to?",
+          "weight": 1
+        }
+      ],
+      "drift": 1
+    },
+    {
+      "claim": {
+        "id": "theorem-4",
+        "number": "Theorem 4",
+        "statement": "For every $m, K \\in \\mathbb{N}$, $z \\in \\mathbb{R}^d$, and field $g : \\mathbb{R}^d \\to E$: \\[ \\mathrm{cubeAvg}(m+K,z,g) - \\mathrm{cubeAvg}(m,z,g) = \\sum_{k=0}^{K-1} \\bigl(\\mathrm{cubeAvg}(m+k+1,z,g) - \\mathrm{cubeAvg}(m+k,z,g)\\bigr), \\] and consequently \\[ \\bigl\\|\\mathrm{cubeAvg}(m+K,z,g) - \\mathrm{cubeAvg}(m,z,g)\\bigr\\| \\le \\sum_{k=0}^{K-1} \\bigl\\|\\mathrm{cubeAvg}(m+k+1,z,g) - \\mathrm{cubeAvg}(m+k,z,g)\\bigr\\|. \\]",
+        "kind": "theorem",
+        "source": "Triadic_Homogenization_Lean4_Frohman_2026.tex:62",
+        "title": "Multi-Scale Telescoping Increment Identity and Norm Bound -- \\texttt{telescoping\\_increments} \\& \\texttt{norm\\_Increment\\_le\\_sum}"
+      },
+      "matched": [],
+      "mismatches": [
+        {
+          "id": "5c95292644f4",
+          "claimId": "theorem-4",
+          "kind": "silent",
+          "key": "no-match",
+          "detail": "No Lean declaration matches this claim. Closest candidate: `cubeIncrement_succ_const` (score 0.17, below threshold 0.2).",
+          "question": "Paper claim Theorem 4 (theorem-4) states: “For every $m, K \\in \\mathbb{N}$, $z \\in \\mathbb{R}^d$, and field $g : \\mathbb{R}^d \\to E$: \\[ \\mathrm{cubeAvg}(m+K,z,g) - \\mathrm{cubeAvg}(m,z,g) = \\sum_{k=0}^{K-1} \\bigl(\\mathrm{cubeAvg}(m+k+1,z,g) …”. No Lean declaration matching it was found among 20 candidates. Closest candidate: `cubeIncrement_succ_const` (score 0.17, below threshold 0.2). Is this claim intentionally not formalized, or which declaration should it map to?",
+          "weight": 1
+        },
+        {
+          "id": "82a054ead188",
+          "claimId": "theorem-4",
+          "kind": "ambiguous",
+          "key": "title-vs-statement",
+          "detail": "Title “Multi-Scale Telescoping Increment Identity and Norm Bound -- \\texttt{telescoping\\_increments} \\& \\texttt{norm\\_Increment\\_le\\_sum}” shares almost no terms with the statement.",
+          "question": "Paper claim Theorem 4 (theorem-4) states: “For every $m, K \\in \\mathbb{N}$, $z \\in \\mathbb{R}^d$, and field $g : \\mathbb{R}^d \\to E$: \\[ \\mathrm{cubeAvg}(m+K,z,g) - \\mathrm{cubeAvg}(m,z,g) = \\sum_{k=0}^{K-1} \\bigl(\\mathrm{cubeAvg}(m+k+1,z,g) …”. Its title is “Multi-Scale Telescoping Increment Identity and Norm Bound -- \\texttt{telescoping\\_increments} \\& \\texttt{norm\\_Increment\\_le\\_sum}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+          "weight": 0.3
+        }
+      ],
+      "drift": 1
+    }
+  ],
+  "unanchored": [],
+  "drift": 0.75,
+  "pending": [
+    {
+      "id": "97f9dda3f0d1",
+      "claimId": "definition-1",
+      "kind": "silent",
+      "key": "no-match",
+      "detail": "No Lean declaration matches this claim.",
+      "question": "Paper claim Definition 1 (definition-1) states: “For $d \\in \\mathbb{N}$, scale exponent $m \\in \\mathbb{N}$, and center $z \\in \\mathbb{R}^d$, the triadic cube $\\mathrm{cube}(m,z) \\subset \\mathbb{R}^d$ is defined coordinatewise by \\[ \\mathrm{cube}(m,…”. No Lean declaration matching it was found among 0 candidates. Is this claim intentionally not formalized, or which declaration should it map to?",
+      "weight": 1
+    },
+    {
+      "id": "a39f434f7495",
+      "claimId": "lemma-3",
+      "kind": "silent",
+      "key": "no-match",
+      "detail": "No Lean declaration matches this claim. Closest candidate: `cubeAverage_const` (score 0.15, below threshold 0.2).",
+      "question": "Paper claim Lemma 3 (lemma-3) states: “Let $\\mathrm{cubeAvg}(m,z,g) := \\mu_{\\mathbb{R}}(\\mathrm{cube}(m,z))^{-1} \\int_{x \\in \\mathrm{cube}(m,z)} g(x)\\,d\\mu(x)$. Then: • For $g_1, g_2$ integrable on $\\mathrm{cube}(m,z)$, $\\mathrm{cubeAvg}(…”. No Lean declaration matching it was found among 20 candidates. Closest candidate: `cubeAverage_const` (score 0.15, below threshold 0.2). Is this claim intentionally not formalized, or which declaration should it map to?",
+      "weight": 1
+    },
+    {
+      "id": "5c95292644f4",
+      "claimId": "theorem-4",
+      "kind": "silent",
+      "key": "no-match",
+      "detail": "No Lean declaration matches this claim. Closest candidate: `cubeIncrement_succ_const` (score 0.17, below threshold 0.2).",
+      "question": "Paper claim Theorem 4 (theorem-4) states: “For every $m, K \\in \\mathbb{N}$, $z \\in \\mathbb{R}^d$, and field $g : \\mathbb{R}^d \\to E$: \\[ \\mathrm{cubeAvg}(m+K,z,g) - \\mathrm{cubeAvg}(m,z,g) = \\sum_{k=0}^{K-1} \\bigl(\\mathrm{cubeAvg}(m+k+1,z,g) …”. No Lean declaration matching it was found among 20 candidates. Closest candidate: `cubeIncrement_succ_const` (score 0.17, below threshold 0.2). Is this claim intentionally not formalized, or which declaration should it map to?",
+      "weight": 1
+    },
+    {
+      "id": "82a054ead188",
+      "claimId": "theorem-4",
+      "kind": "ambiguous",
+      "key": "title-vs-statement",
+      "detail": "Title “Multi-Scale Telescoping Increment Identity and Norm Bound -- \\texttt{telescoping\\_increments} \\& \\texttt{norm\\_Increment\\_le\\_sum}” shares almost no terms with the statement.",
+      "question": "Paper claim Theorem 4 (theorem-4) states: “For every $m, K \\in \\mathbb{N}$, $z \\in \\mathbb{R}^d$, and field $g : \\mathbb{R}^d \\to E$: \\[ \\mathrm{cubeAvg}(m+K,z,g) - \\mathrm{cubeAvg}(m,z,g) = \\sum_{k=0}^{K-1} \\bigl(\\mathrm{cubeAvg}(m+k+1,z,g) …”. Its title is “Multi-Scale Telescoping Increment Identity and Norm Bound -- \\texttt{telescoping\\_increments} \\& \\texttt{norm\\_Increment\\_le\\_sum}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+      "weight": 0.3
+    }
+  ],
+  "status": "halt"
+}

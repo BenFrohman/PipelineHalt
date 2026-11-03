@@ -1,0 +1,1619 @@
+{
+  "tool": "pipelinehalt",
+  "version": "0.4.0",
+  "anchorTitle": "Enstrophy and Weighted-Enstrophy Balance Identities on $\\mathbb{T",
+  "generatedAt": "2026-11-03T21:11:06.455Z",
+  "declarationsScanned": 117,
+  "claims": [
+    {
+      "claim": {
+        "id": "definition-1",
+        "number": "Definition 1",
+        "statement": "A commutative $K$-algebra $A$ with $K$-derivations $\\partial_1,\\partial_2,\\partial_3,\\partial_t$, a $K$-module $B$, a $K$-linear map $I:A\\to B$ and a map $D_t:B\\to B$ such that $I(\\partial_k f)=0$ for all $k,f$ and $I(\\partial_t f)=D_t(If)$.",
+        "kind": "definition",
+        "source": "paper/main.tex:41",
+        "title": "Periodic setting, \\texttt{PeriodicSetting}",
+        "lean": [
+          "PeriodicSetting"
+        ]
+      },
+      "matched": [
+        {
+          "name": "PeriodicSetting",
+          "score": 0.32,
+          "explicit": true
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "9492e08adf3e",
+          "claimId": "definition-1",
+          "kind": "ambiguous",
+          "key": "title-vs-statement",
+          "detail": "Title “Periodic setting, \\texttt{PeriodicSetting}” shares almost no terms with the statement.",
+          "question": "Paper claim Definition 1 (definition-1) states: “A commutative $K$-algebra $A$ with $K$-derivations $\\partial_1,\\partial_2,\\partial_3,\\partial_t$, a $K$-module $B$, a $K$-linear map $I:A\\to B$ and a map $D_t:B\\to B$ such that $I(\\partial_k f)=0$ fo…”. Its title is “Periodic setting, \\texttt{PeriodicSetting}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+          "weight": 0.3,
+          "clarification": {
+            "claimId": "definition-1",
+            "kind": "ambiguous",
+            "question": "Paper claim Definition 1 (definition-1) states: “A commutative $K$-algebra $A$ with $K$-derivations $\\partial_1,\\partial_2,\\partial_3,\\partial_t$, a $K$-module $B$, a $K$-linear map $I:A\\to B$ and a map $D_t:B\\to B$ such that $I(\\partial_k f)=0$ fo…”. Its title is “Periodic setting, \\texttt{PeriodicSetting}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+            "answer": "harmless wording (strict, mechanical): the title cites Lean name(s) PeriodicSetting, each an existing declaration mapped to this claim; the title makes no further assertion.",
+            "verdict": "intentional",
+            "answeredAt": "2026-11-03T21:11:05.661Z"
+          }
+        }
+      ],
+      "drift": 0
+    },
+    {
+      "claim": {
+        "id": "definition-2",
+        "number": "Definition 2",
+        "statement": "$A=R[\\mathbb{Z}^3]$ (finite sums $\\sum_n f_n e^{2\\pi i n\\cdot x}$, $f_n\\in R$), where $R$ is a commutative $\\mathbb{C}$-algebra with a derivation $D$. Set $\\partial_k(\\sum f_n e_n)=\\sum 2\\pi i n_k f_n e_n$, $\\partial_t(\\sum f_n e_n)=\\sum D(f_n)e_n$, $I(f)=f_0$, $D_t=D$.",
+        "kind": "definition",
+        "source": "paper/main.tex:48",
+        "title": "Trigonometric model, \\texttt{Trig.setting}",
+        "lean": [
+          "setting"
+        ]
+      },
+      "matched": [
+        {
+          "name": "setting",
+          "score": 0.107,
+          "explicit": true
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "c6fc7db3b999",
+          "claimId": "definition-2",
+          "kind": "ambiguous",
+          "key": "title-vs-statement",
+          "detail": "Title “Trigonometric model, \\texttt{Trig.setting}” shares almost no terms with the statement.",
+          "question": "Paper claim Definition 2 (definition-2) states: “$A=R[\\mathbb{Z}^3]$ (finite sums $\\sum_n f_n e^{2\\pi i n\\cdot x}$, $f_n\\in R$), where $R$ is a commutative $\\mathbb{C}$-algebra with a derivation $D$. Set $\\partial_k(\\sum f_n e_n)=\\sum 2\\pi i n_k f_…”. Its title is “Trigonometric model, \\texttt{Trig.setting}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+          "weight": 0.3,
+          "clarification": {
+            "claimId": "definition-2",
+            "kind": "ambiguous",
+            "question": "Paper claim Definition 2 (definition-2) states: “$A=R[\\mathbb{Z}^3]$ (finite sums $\\sum_n f_n e^{2\\pi i n\\cdot x}$, $f_n\\in R$), where $R$ is a commutative $\\mathbb{C}$-algebra with a derivation $D$. Set $\\partial_k(\\sum f_n e_n)=\\sum 2\\pi i n_k f_…”. Its title is “Trigonometric model, \\texttt{Trig.setting}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+            "answer": "harmless wording (strict, mechanical): the title cites Lean name(s) setting, each an existing declaration mapped to this claim; the title makes no further assertion.",
+            "verdict": "intentional",
+            "answeredAt": "2026-11-03T21:11:05.700Z"
+          }
+        }
+      ],
+      "drift": 0
+    },
+    {
+      "claim": {
+        "id": "lemma-3",
+        "number": "Lemma 3",
+        "statement": "$\\partial_k$ and $\\partial_t$ are derivations of $R[\\mathbb{Z}^3]$.",
+        "kind": "lemma",
+        "source": "paper/main.tex:55",
+        "title": "\\texttt{dx}, \\texttt{dt}",
+        "lean": [
+          "dx",
+          "dt"
+        ]
+      },
+      "matched": [
+        {
+          "name": "dx",
+          "score": 0.389,
+          "explicit": true
+        },
+        {
+          "name": "dt",
+          "score": 0.307,
+          "explicit": true
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "7ea0f1767f07",
+          "claimId": "lemma-3",
+          "kind": "ambiguous",
+          "key": "title-vs-statement",
+          "detail": "Title “\\texttt{dx}, \\texttt{dt}” shares almost no terms with the statement.",
+          "question": "Paper claim Lemma 3 (lemma-3) states: “$\\partial_k$ and $\\partial_t$ are derivations of $R[\\mathbb{Z}^3]$.”. Its title is “\\texttt{dx}, \\texttt{dt}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+          "weight": 0.3,
+          "clarification": {
+            "claimId": "lemma-3",
+            "kind": "ambiguous",
+            "question": "Paper claim Lemma 3 (lemma-3) states: “$\\partial_k$ and $\\partial_t$ are derivations of $R[\\mathbb{Z}^3]$.”. Its title is “\\texttt{dx}, \\texttt{dt}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+            "answer": "harmless wording (strict, mechanical): the title cites Lean name(s) dx, dt, each an existing declaration mapped to this claim; the title makes no further assertion.",
+            "verdict": "intentional",
+            "answeredAt": "2026-11-03T21:11:05.737Z"
+          }
+        }
+      ],
+      "drift": 0
+    },
+    {
+      "claim": {
+        "id": "lemma-4",
+        "number": "Lemma 4",
+        "statement": "$I(\\partial_k f)=2\\pi i\\cdot 0\\cdot f_0=0$ and $I(\\partial_t f)=D(f_0)=D(If)$.",
+        "kind": "lemma",
+        "source": "paper/main.tex:64",
+        "title": "Torus divergence lemma, \\texttt{integral\\_dx}, \\texttt{integral\\_dt}",
+        "lean": [
+          "integral_dx",
+          "integral_dt"
+        ]
+      },
+      "matched": [
+        {
+          "name": "integral_dx",
+          "score": 0.378,
+          "explicit": true
+        },
+        {
+          "name": "integral_dt",
+          "score": 0.15,
+          "explicit": true
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "05b77a1e3714",
+          "claimId": "lemma-4",
+          "kind": "ambiguous",
+          "key": "title-vs-statement",
+          "detail": "Title “Torus divergence lemma, \\texttt{integral\\_dx}, \\texttt{integral\\_dt}” shares almost no terms with the statement.",
+          "question": "Paper claim Lemma 4 (lemma-4) states: “$I(\\partial_k f)=2\\pi i\\cdot 0\\cdot f_0=0$ and $I(\\partial_t f)=D(f_0)=D(If)$.”. Its title is “Torus divergence lemma, \\texttt{integral\\_dx}, \\texttt{integral\\_dt}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+          "weight": 0.3,
+          "clarification": {
+            "claimId": "lemma-4",
+            "kind": "ambiguous",
+            "question": "Paper claim Lemma 4 (lemma-4) states: “$I(\\partial_k f)=2\\pi i\\cdot 0\\cdot f_0=0$ and $I(\\partial_t f)=D(f_0)=D(If)$.”. Its title is “Torus divergence lemma, \\texttt{integral\\_dx}, \\texttt{integral\\_dt}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+            "answer": "harmless wording (strict, mechanical): the title cites Lean name(s) integral_dx, integral_dt, each an existing declaration mapped to this claim; the title makes no further assertion.",
+            "verdict": "intentional",
+            "answeredAt": "2026-11-03T21:11:05.776Z"
+          }
+        }
+      ],
+      "drift": 0
+    },
+    {
+      "claim": {
+        "id": "lemma-5",
+        "number": "Lemma 5",
+        "statement": "$u_k\\partial_k g=\\partial_k(u_k g)-(\\partial_k u_k)g$. Hence (\\texttt{int\\_adv\\_eq\\_zero}) if (\\ref{div}) holds, $I(u_k\\partial_k g)=0$.",
+        "kind": "lemma",
+        "source": "paper/main.tex:70",
+        "title": "\\texttt{adv\\_eq}",
+        "lean": [
+          "adv_eq",
+          "int_adv_eq_zero"
+        ]
+      },
+      "matched": [
+        {
+          "name": "adv_eq",
+          "score": 0.307,
+          "explicit": true
+        },
+        {
+          "name": "int_adv_eq_zero",
+          "score": 0.5,
+          "explicit": true
+        }
+      ],
+      "mismatches": [],
+      "drift": 0
+    },
+    {
+      "claim": {
+        "id": "lemma-6",
+        "number": "Lemma 6",
+        "statement": "$\\omega_i\\partial_k\\partial_k\\omega_i=\\partial_k(\\omega_i\\partial_k\\omega_i)-\\partial_k\\omega_i\\,\\partial_k\\omega_i$.",
+        "kind": "lemma",
+        "source": "paper/main.tex:76",
+        "title": "\\texttt{wLapW\\_eq}",
+        "lean": [
+          "wLapW_eq"
+        ]
+      },
+      "matched": [
+        {
+          "name": "wLapW_eq",
+          "score": 0.218,
+          "explicit": true
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "ca6497ef1904",
+          "claimId": "lemma-6",
+          "kind": "ambiguous",
+          "key": "title-vs-statement",
+          "detail": "Title “\\texttt{wLapW\\_eq}” shares almost no terms with the statement.",
+          "question": "Paper claim Lemma 6 (lemma-6) states: “$\\omega_i\\partial_k\\partial_k\\omega_i=\\partial_k(\\omega_i\\partial_k\\omega_i)-\\partial_k\\omega_i\\,\\partial_k\\omega_i$.”. Its title is “\\texttt{wLapW\\_eq}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+          "weight": 0.3,
+          "clarification": {
+            "claimId": "lemma-6",
+            "kind": "ambiguous",
+            "question": "Paper claim Lemma 6 (lemma-6) states: “$\\omega_i\\partial_k\\partial_k\\omega_i=\\partial_k(\\omega_i\\partial_k\\omega_i)-\\partial_k\\omega_i\\,\\partial_k\\omega_i$.”. Its title is “\\texttt{wLapW\\_eq}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+            "answer": "harmless wording (strict, mechanical): the title cites Lean name(s) wLapW_eq, each an existing declaration mapped to this claim; the title makes no further assertion.",
+            "verdict": "intentional",
+            "answeredAt": "2026-11-03T21:11:05.813Z"
+          }
+        }
+      ],
+      "drift": 0
+    },
+    {
+      "claim": {
+        "id": "lemma-7",
+        "number": "Lemma 7",
+        "statement": "$2\\,\\omega_i\\,u_k\\partial_k\\omega_i=u_k\\partial_k|\\omega|^2$.",
+        "kind": "lemma",
+        "source": "paper/main.tex:80",
+        "title": "\\texttt{two\\_w\\_adv}",
+        "lean": [
+          "two_w_adv"
+        ]
+      },
+      "matched": [
+        {
+          "name": "two_w_adv",
+          "score": 0.357,
+          "explicit": true
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "2a4bdd4d1d83",
+          "claimId": "lemma-7",
+          "kind": "ambiguous",
+          "key": "title-vs-statement",
+          "detail": "Title “\\texttt{two\\_w\\_adv}” shares almost no terms with the statement.",
+          "question": "Paper claim Lemma 7 (lemma-7) states: “$2\\,\\omega_i\\,u_k\\partial_k\\omega_i=u_k\\partial_k|\\omega|^2$.”. Its title is “\\texttt{two\\_w\\_adv}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+          "weight": 0.3,
+          "clarification": {
+            "claimId": "lemma-7",
+            "kind": "ambiguous",
+            "question": "Paper claim Lemma 7 (lemma-7) states: “$2\\,\\omega_i\\,u_k\\partial_k\\omega_i=u_k\\partial_k|\\omega|^2$.”. Its title is “\\texttt{two\\_w\\_adv}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+            "answer": "harmless wording (strict, mechanical): the title cites Lean name(s) two_w_adv, each an existing declaration mapped to this claim; the title makes no further assertion.",
+            "verdict": "intentional",
+            "answeredAt": "2026-11-03T21:11:05.856Z"
+          }
+        }
+      ],
+      "drift": 0
+    },
+    {
+      "claim": {
+        "id": "lemma-8",
+        "number": "Lemma 8",
+        "statement": "$\\omega_i\\omega_j\\partial_ju_i=\\omega\\cdot(\\omega\\cdot\\nabla)u$.",
+        "kind": "lemma",
+        "source": "paper/main.tex:84",
+        "title": "\\texttt{stretch\\_eq}",
+        "lean": [
+          "stretch_eq"
+        ]
+      },
+      "matched": [
+        {
+          "name": "stretch_eq",
+          "score": 0.242,
+          "explicit": true
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "72d3156e36e8",
+          "claimId": "lemma-8",
+          "kind": "ambiguous",
+          "key": "title-vs-statement",
+          "detail": "Title “\\texttt{stretch\\_eq}” shares almost no terms with the statement.",
+          "question": "Paper claim Lemma 8 (lemma-8) states: “$\\omega_i\\omega_j\\partial_ju_i=\\omega\\cdot(\\omega\\cdot\\nabla)u$.”. Its title is “\\texttt{stretch\\_eq}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+          "weight": 0.3,
+          "clarification": {
+            "claimId": "lemma-8",
+            "kind": "ambiguous",
+            "question": "Paper claim Lemma 8 (lemma-8) states: “$\\omega_i\\omega_j\\partial_ju_i=\\omega\\cdot(\\omega\\cdot\\nabla)u$.”. Its title is “\\texttt{stretch\\_eq}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+            "answer": "harmless wording (strict, mechanical): the title cites Lean name(s) stretch_eq, each an existing declaration mapped to this claim; the title makes no further assertion.",
+            "verdict": "intentional",
+            "answeredAt": "2026-11-03T21:11:05.932Z"
+          }
+        }
+      ],
+      "drift": 0
+    },
+    {
+      "claim": {
+        "id": "lemma-9",
+        "number": "Lemma 9",
+        "statement": "Under (\\ref{div}), (\\ref{vort}): \\[\\partial_t|\\omega|^2=2\\,\\omega_i\\omega_j\\partial_ju_i-2\\nu\\,|\\nabla\\omega|^2 +\\partial_k\\big(2\\nu\\,\\omega_i\\partial_k\\omega_i-u_k|\\omega|^2\\big).\\]",
+        "kind": "lemma",
+        "source": "paper/main.tex:89",
+        "title": "\\texttt{dt\\_half\\_sq}, \\texttt{dt\\_vsq\\_div}",
+        "lean": [
+          "dt_half_sq",
+          "dt_vsq_div"
+        ]
+      },
+      "matched": [
+        {
+          "name": "dt_half_sq",
+          "score": 0.2,
+          "explicit": true
+        },
+        {
+          "name": "dt_vsq_div",
+          "score": 0.214,
+          "explicit": true
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "202a6b8050c1",
+          "claimId": "lemma-9",
+          "kind": "ambiguous",
+          "key": "title-vs-statement",
+          "detail": "Title “\\texttt{dt\\_half\\_sq}, \\texttt{dt\\_vsq\\_div}” shares almost no terms with the statement.",
+          "question": "Paper claim Lemma 9 (lemma-9) states: “Under (\\ref{div}), (\\ref{vort}): \\[\\partial_t|\\omega|^2=2\\,\\omega_i\\omega_j\\partial_ju_i-2\\nu\\,|\\nabla\\omega|^2 +\\partial_k\\big(2\\nu\\,\\omega_i\\partial_k\\omega_i-u_k|\\omega|^2\\big).\\]”. Its title is “\\texttt{dt\\_half\\_sq}, \\texttt{dt\\_vsq\\_div}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+          "weight": 0.3,
+          "clarification": {
+            "claimId": "lemma-9",
+            "kind": "ambiguous",
+            "question": "Paper claim Lemma 9 (lemma-9) states: “Under (\\ref{div}), (\\ref{vort}): \\[\\partial_t|\\omega|^2=2\\,\\omega_i\\omega_j\\partial_ju_i-2\\nu\\,|\\nabla\\omega|^2 +\\partial_k\\big(2\\nu\\,\\omega_i\\partial_k\\omega_i-u_k|\\omega|^2\\big).\\]”. Its title is “\\texttt{dt\\_half\\_sq}, \\texttt{dt\\_vsq\\_div}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+            "answer": "harmless wording (strict, mechanical): the title cites Lean name(s) dt_half_sq, dt_vsq_div, each an existing declaration mapped to this claim; the title makes no further assertion.",
+            "verdict": "intentional",
+            "answeredAt": "2026-11-03T21:11:05.971Z"
+          }
+        },
+        {
+          "id": "ec4fe234645e",
+          "claimId": "lemma-9",
+          "kind": "conditional",
+          "lean": "dt_half_sq",
+          "key": "hyp:VorticityEq S ν u w",
+          "detail": "`dt_half_sq` assumes `hw : VorticityEq S ν u w`, not stated in the claim.",
+          "question": "Paper claim Lemma 9 (lemma-9) states: “Under (\\ref{div}), (\\ref{vort}): \\[\\partial_t|\\omega|^2=2\\,\\omega_i\\omega_j\\partial_ju_i-2\\nu\\,|\\nabla\\omega|^2 +\\partial_k\\big(2\\nu\\,\\omega_i\\partial_k\\omega_i-u_k|\\omega|^2\\big).\\]”. Lean lemma `dt_half_sq` assumes `hw : VorticityEq S ν u w`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "3938922e37e4",
+          "claimId": "lemma-9",
+          "kind": "conditional",
+          "lean": "dt_vsq_div",
+          "key": "hyp:VorticityEq S ν u w",
+          "detail": "`dt_vsq_div` assumes `hw : VorticityEq S ν u w`, not stated in the claim.",
+          "question": "Paper claim Lemma 9 (lemma-9) states: “Under (\\ref{div}), (\\ref{vort}): \\[\\partial_t|\\omega|^2=2\\,\\omega_i\\omega_j\\partial_ju_i-2\\nu\\,|\\nabla\\omega|^2 +\\partial_k\\big(2\\nu\\,\\omega_i\\partial_k\\omega_i-u_k|\\omega|^2\\big).\\]”. Lean lemma `dt_vsq_div` assumes `hw : VorticityEq S ν u w`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        }
+      ],
+      "drift": 0.75
+    },
+    {
+      "claim": {
+        "id": "theorem-10",
+        "number": "Theorem 10",
+        "statement": "With $E=\\frac12\\int|\\omega|^2$ and $P=\\int\\omega_i\\omega_j\\partial_ju_i$, \\[\\frac{dE}{dt}=P-\\nu\\int_{\\mathbb{T}^3}|\\nabla\\omega|^2 .\\] (Formalized as $D_t\\,I(|\\omega|^2)=2\\,I(\\omega_i\\omega_j\\partial_ju_i)-2\\nu\\,I(|\\nabla\\omega|^2)$.)",
+        "kind": "theorem",
+        "source": "paper/main.tex:103",
+        "title": "Identity (1), \\texttt{enstrophy\\_identity}, \\texttt{enstrophy\\_identity\\_T3}",
+        "lean": [
+          "enstrophy_identity",
+          "enstrophy_identity_T3"
+        ]
+      },
+      "matched": [
+        {
+          "name": "enstrophy_identity",
+          "score": 0.339,
+          "explicit": true
+        },
+        {
+          "name": "enstrophy_identity_T3",
+          "score": 0.217,
+          "explicit": true
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "f47b9509bc27",
+          "claimId": "theorem-10",
+          "kind": "ambiguous",
+          "key": "title-vs-statement",
+          "detail": "Title “Identity (1), \\texttt{enstrophy\\_identity}, \\texttt{enstrophy\\_identity\\_T3}” shares almost no terms with the statement.",
+          "question": "Paper claim Theorem 10 (theorem-10) states: “With $E=\\frac12\\int|\\omega|^2$ and $P=\\int\\omega_i\\omega_j\\partial_ju_i$, \\[\\frac{dE}{dt}=P-\\nu\\int_{\\mathbb{T}^3}|\\nabla\\omega|^2 .\\] (Formalized as $D_t\\,I(|\\omega|^2)=2\\,I(\\omega_i\\omega_j\\partial…”. Its title is “Identity (1), \\texttt{enstrophy\\_identity}, \\texttt{enstrophy\\_identity\\_T3}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+          "weight": 0.3,
+          "clarification": {
+            "claimId": "theorem-10",
+            "kind": "ambiguous",
+            "question": "Paper claim Theorem 10 (theorem-10) states: “With $E=\\frac12\\int|\\omega|^2$ and $P=\\int\\omega_i\\omega_j\\partial_ju_i$, \\[\\frac{dE}{dt}=P-\\nu\\int_{\\mathbb{T}^3}|\\nabla\\omega|^2 .\\] (Formalized as $D_t\\,I(|\\omega|^2)=2\\,I(\\omega_i\\omega_j\\partial…”. Its title is “Identity (1), \\texttt{enstrophy\\_identity}, \\texttt{enstrophy\\_identity\\_T3}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+            "answer": "harmless wording (strict, mechanical): the title cites Lean name(s) enstrophy_identity, enstrophy_identity_T3, each an existing declaration mapped to this claim; the title makes no further assertion.",
+            "verdict": "intentional",
+            "answeredAt": "2026-11-03T21:11:06.008Z"
+          }
+        },
+        {
+          "id": "cdd70bd9e9d3",
+          "claimId": "theorem-10",
+          "kind": "conditional",
+          "lean": "enstrophy_identity",
+          "key": "hyp:div S u = 0",
+          "detail": "`enstrophy_identity` assumes `hu : div S u = 0`, not stated in the claim.",
+          "question": "Paper claim Theorem 10 (theorem-10) states: “With $E=\\frac12\\int|\\omega|^2$ and $P=\\int\\omega_i\\omega_j\\partial_ju_i$, \\[\\frac{dE}{dt}=P-\\nu\\int_{\\mathbb{T}^3}|\\nabla\\omega|^2 .\\] (Formalized as $D_t\\,I(|\\omega|^2)=2\\,I(\\omega_i\\omega_j\\partial…”. Lean theorem `enstrophy_identity` assumes `hu : div S u = 0`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "6825fce7bb9f",
+          "claimId": "theorem-10",
+          "kind": "conditional",
+          "lean": "enstrophy_identity",
+          "key": "hyp:VorticityEq S ν u w",
+          "detail": "`enstrophy_identity` assumes `hw : VorticityEq S ν u w`, not stated in the claim.",
+          "question": "Paper claim Theorem 10 (theorem-10) states: “With $E=\\frac12\\int|\\omega|^2$ and $P=\\int\\omega_i\\omega_j\\partial_ju_i$, \\[\\frac{dE}{dt}=P-\\nu\\int_{\\mathbb{T}^3}|\\nabla\\omega|^2 .\\] (Formalized as $D_t\\,I(|\\omega|^2)=2\\,I(\\omega_i\\omega_j\\partial…”. Lean theorem `enstrophy_identity` assumes `hw : VorticityEq S ν u w`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "34da75125ddb",
+          "claimId": "theorem-10",
+          "kind": "conditional",
+          "lean": "enstrophy_identity_T3",
+          "key": "hyp:div (setting D) u = 0",
+          "detail": "`enstrophy_identity_T3` assumes `hu : div (setting D) u = 0`, not stated in the claim.",
+          "question": "Paper claim Theorem 10 (theorem-10) states: “With $E=\\frac12\\int|\\omega|^2$ and $P=\\int\\omega_i\\omega_j\\partial_ju_i$, \\[\\frac{dE}{dt}=P-\\nu\\int_{\\mathbb{T}^3}|\\nabla\\omega|^2 .\\] (Formalized as $D_t\\,I(|\\omega|^2)=2\\,I(\\omega_i\\omega_j\\partial…”. Lean theorem `enstrophy_identity_T3` assumes `hu : div (setting D) u = 0`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "c800f3355d34",
+          "claimId": "theorem-10",
+          "kind": "conditional",
+          "lean": "enstrophy_identity_T3",
+          "key": "hyp:VorticityEq (setting D) ν u w",
+          "detail": "`enstrophy_identity_T3` assumes `hw : VorticityEq (setting D) ν u w`, not stated in the claim.",
+          "question": "Paper claim Theorem 10 (theorem-10) states: “With $E=\\frac12\\int|\\omega|^2$ and $P=\\int\\omega_i\\omega_j\\partial_ju_i$, \\[\\frac{dE}{dt}=P-\\nu\\int_{\\mathbb{T}^3}|\\nabla\\omega|^2 .\\] (Formalized as $D_t\\,I(|\\omega|^2)=2\\,I(\\omega_i\\omega_j\\partial…”. Lean theorem `enstrophy_identity_T3` assumes `hw : VorticityEq (setting D) ν u w`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        }
+      ],
+      "drift": 0.938
+    },
+    {
+      "claim": {
+        "id": "lemma-11",
+        "number": "Lemma 11",
+        "statement": "Under (\\ref{vort}), (\\ref{wt}): \\[\\partial_t(s^2\\phi)=4s\\phi\\,\\omega_i\\omega_j\\partial_ju_i+4\\nu\\,s\\phi\\,\\omega\\cdot\\Delta\\omega+s^3-u_k\\partial_k(s^2\\phi).\\]",
+        "kind": "lemma",
+        "source": "paper/main.tex:113",
+        "title": "\\texttt{dt\\_weighted}",
+        "lean": [
+          "dt_weighted"
+        ]
+      },
+      "matched": [
+        {
+          "name": "dt_weighted",
+          "score": 0.198,
+          "explicit": true
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "f103508f9e6c",
+          "claimId": "lemma-11",
+          "kind": "ambiguous",
+          "key": "title-vs-statement",
+          "detail": "Title “\\texttt{dt\\_weighted}” shares almost no terms with the statement.",
+          "question": "Paper claim Lemma 11 (lemma-11) states: “Under (\\ref{vort}), (\\ref{wt}): \\[\\partial_t(s^2\\phi)=4s\\phi\\,\\omega_i\\omega_j\\partial_ju_i+4\\nu\\,s\\phi\\,\\omega\\cdot\\Delta\\omega+s^3-u_k\\partial_k(s^2\\phi).\\]”. Its title is “\\texttt{dt\\_weighted}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+          "weight": 0.3,
+          "clarification": {
+            "claimId": "lemma-11",
+            "kind": "ambiguous",
+            "question": "Paper claim Lemma 11 (lemma-11) states: “Under (\\ref{vort}), (\\ref{wt}): \\[\\partial_t(s^2\\phi)=4s\\phi\\,\\omega_i\\omega_j\\partial_ju_i+4\\nu\\,s\\phi\\,\\omega\\cdot\\Delta\\omega+s^3-u_k\\partial_k(s^2\\phi).\\]”. Its title is “\\texttt{dt\\_weighted}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+            "answer": "harmless wording (strict, mechanical): the title cites Lean name(s) dt_weighted, each an existing declaration mapped to this claim; the title makes no further assertion.",
+            "verdict": "intentional",
+            "answeredAt": "2026-11-03T21:11:06.048Z"
+          }
+        },
+        {
+          "id": "548ed5118e6b",
+          "claimId": "lemma-11",
+          "kind": "conditional",
+          "lean": "dt_weighted",
+          "key": "hyp:VorticityEq S ν u w",
+          "detail": "`dt_weighted` assumes `hw : VorticityEq S ν u w`, not stated in the claim.",
+          "question": "Paper claim Lemma 11 (lemma-11) states: “Under (\\ref{vort}), (\\ref{wt}): \\[\\partial_t(s^2\\phi)=4s\\phi\\,\\omega_i\\omega_j\\partial_ju_i+4\\nu\\,s\\phi\\,\\omega\\cdot\\Delta\\omega+s^3-u_k\\partial_k(s^2\\phi).\\]”. Lean lemma `dt_weighted` assumes `hw : VorticityEq S ν u w`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        }
+      ],
+      "drift": 0.5
+    },
+    {
+      "claim": {
+        "id": "lemma-12",
+        "number": "Lemma 12",
+        "statement": "Under (\\ref{div}) as well, $\\partial_t(s^2\\phi)=4s\\phi\\,\\omega_i\\omega_j\\partial_ju_i+4\\nu s\\phi\\,\\omega\\cdot\\Delta\\omega+s^3-\\partial_k(u_ks^2\\phi)$.",
+        "kind": "lemma",
+        "source": "paper/main.tex:128",
+        "title": "\\texttt{dt\\_weighted\\_div}",
+        "lean": [
+          "dt_weighted_div"
+        ]
+      },
+      "matched": [
+        {
+          "name": "dt_weighted_div",
+          "score": 0.238,
+          "explicit": true
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "efe456ccb420",
+          "claimId": "lemma-12",
+          "kind": "ambiguous",
+          "key": "title-vs-statement",
+          "detail": "Title “\\texttt{dt\\_weighted\\_div}” shares almost no terms with the statement.",
+          "question": "Paper claim Lemma 12 (lemma-12) states: “Under (\\ref{div}) as well, $\\partial_t(s^2\\phi)=4s\\phi\\,\\omega_i\\omega_j\\partial_ju_i+4\\nu s\\phi\\,\\omega\\cdot\\Delta\\omega+s^3-\\partial_k(u_ks^2\\phi)$.”. Its title is “\\texttt{dt\\_weighted\\_div}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+          "weight": 0.3,
+          "clarification": {
+            "claimId": "lemma-12",
+            "kind": "ambiguous",
+            "question": "Paper claim Lemma 12 (lemma-12) states: “Under (\\ref{div}) as well, $\\partial_t(s^2\\phi)=4s\\phi\\,\\omega_i\\omega_j\\partial_ju_i+4\\nu s\\phi\\,\\omega\\cdot\\Delta\\omega+s^3-\\partial_k(u_ks^2\\phi)$.”. Its title is “\\texttt{dt\\_weighted\\_div}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+            "answer": "harmless wording (strict, mechanical): the title cites Lean name(s) dt_weighted_div, each an existing declaration mapped to this claim; the title makes no further assertion.",
+            "verdict": "intentional",
+            "answeredAt": "2026-11-03T21:11:06.084Z"
+          }
+        },
+        {
+          "id": "140a6bd7bdcf",
+          "claimId": "lemma-12",
+          "kind": "conditional",
+          "lean": "dt_weighted_div",
+          "key": "hyp:VorticityEq S ν u w",
+          "detail": "`dt_weighted_div` assumes `hw : VorticityEq S ν u w`, not stated in the claim.",
+          "question": "Paper claim Lemma 12 (lemma-12) states: “Under (\\ref{div}) as well, $\\partial_t(s^2\\phi)=4s\\phi\\,\\omega_i\\omega_j\\partial_ju_i+4\\nu s\\phi\\,\\omega\\cdot\\Delta\\omega+s^3-\\partial_k(u_ks^2\\phi)$.”. Lean lemma `dt_weighted_div` assumes `hw : VorticityEq S ν u w`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        }
+      ],
+      "drift": 0.5
+    },
+    {
+      "claim": {
+        "id": "theorem-13",
+        "number": "Theorem 13",
+        "statement": "With $Q=\\int|\\omega|^4\\phi$, \\[\\frac{dQ}{dt}=4\\int|\\omega|^2\\phi\\,\\omega\\cdot(\\omega\\cdot\\nabla)u+4\\nu\\int|\\omega|^2\\phi\\,\\omega\\cdot\\Delta\\omega+\\int|\\omega|^6 .\\]",
+        "kind": "theorem",
+        "source": "paper/main.tex:133",
+        "title": "Identity (2), \\texttt{weighted\\_identity}, \\texttt{weighted\\_identity\\_T3}",
+        "lean": [
+          "weighted_identity",
+          "weighted_identity_T3"
+        ]
+      },
+      "matched": [
+        {
+          "name": "weighted_identity",
+          "score": 0.367,
+          "explicit": true
+        },
+        {
+          "name": "weighted_identity_T3",
+          "score": 0.23,
+          "explicit": true
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "0c5e2d0f1c0e",
+          "claimId": "theorem-13",
+          "kind": "ambiguous",
+          "key": "title-vs-statement",
+          "detail": "Title “Identity (2), \\texttt{weighted\\_identity}, \\texttt{weighted\\_identity\\_T3}” shares almost no terms with the statement.",
+          "question": "Paper claim Theorem 13 (theorem-13) states: “With $Q=\\int|\\omega|^4\\phi$, \\[\\frac{dQ}{dt}=4\\int|\\omega|^2\\phi\\,\\omega\\cdot(\\omega\\cdot\\nabla)u+4\\nu\\int|\\omega|^2\\phi\\,\\omega\\cdot\\Delta\\omega+\\int|\\omega|^6 .\\]”. Its title is “Identity (2), \\texttt{weighted\\_identity}, \\texttt{weighted\\_identity\\_T3}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+          "weight": 0.3,
+          "clarification": {
+            "claimId": "theorem-13",
+            "kind": "ambiguous",
+            "question": "Paper claim Theorem 13 (theorem-13) states: “With $Q=\\int|\\omega|^4\\phi$, \\[\\frac{dQ}{dt}=4\\int|\\omega|^2\\phi\\,\\omega\\cdot(\\omega\\cdot\\nabla)u+4\\nu\\int|\\omega|^2\\phi\\,\\omega\\cdot\\Delta\\omega+\\int|\\omega|^6 .\\]”. Its title is “Identity (2), \\texttt{weighted\\_identity}, \\texttt{weighted\\_identity\\_T3}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+            "answer": "harmless wording (strict, mechanical): the title cites Lean name(s) weighted_identity, weighted_identity_T3, each an existing declaration mapped to this claim; the title makes no further assertion.",
+            "verdict": "intentional",
+            "answeredAt": "2026-11-03T21:11:06.120Z"
+          }
+        },
+        {
+          "id": "be8c2a20f0db",
+          "claimId": "theorem-13",
+          "kind": "conditional",
+          "lean": "weighted_identity",
+          "key": "hyp:div S u = 0",
+          "detail": "`weighted_identity` assumes `hu : div S u = 0`, not stated in the claim.",
+          "question": "Paper claim Theorem 13 (theorem-13) states: “With $Q=\\int|\\omega|^4\\phi$, \\[\\frac{dQ}{dt}=4\\int|\\omega|^2\\phi\\,\\omega\\cdot(\\omega\\cdot\\nabla)u+4\\nu\\int|\\omega|^2\\phi\\,\\omega\\cdot\\Delta\\omega+\\int|\\omega|^6 .\\]”. Lean theorem `weighted_identity` assumes `hu : div S u = 0`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "5816da43c624",
+          "claimId": "theorem-13",
+          "kind": "conditional",
+          "lean": "weighted_identity",
+          "key": "hyp:VorticityEq S ν u w",
+          "detail": "`weighted_identity` assumes `hw : VorticityEq S ν u w`, not stated in the claim.",
+          "question": "Paper claim Theorem 13 (theorem-13) states: “With $Q=\\int|\\omega|^4\\phi$, \\[\\frac{dQ}{dt}=4\\int|\\omega|^2\\phi\\,\\omega\\cdot(\\omega\\cdot\\nabla)u+4\\nu\\int|\\omega|^2\\phi\\,\\omega\\cdot\\Delta\\omega+\\int|\\omega|^6 .\\]”. Lean theorem `weighted_identity` assumes `hw : VorticityEq S ν u w`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "6c04df4a15f6",
+          "claimId": "theorem-13",
+          "kind": "conditional",
+          "lean": "weighted_identity_T3",
+          "key": "hyp:div (setting D) u = 0",
+          "detail": "`weighted_identity_T3` assumes `hu : div (setting D) u = 0`, not stated in the claim.",
+          "question": "Paper claim Theorem 13 (theorem-13) states: “With $Q=\\int|\\omega|^4\\phi$, \\[\\frac{dQ}{dt}=4\\int|\\omega|^2\\phi\\,\\omega\\cdot(\\omega\\cdot\\nabla)u+4\\nu\\int|\\omega|^2\\phi\\,\\omega\\cdot\\Delta\\omega+\\int|\\omega|^6 .\\]”. Lean theorem `weighted_identity_T3` assumes `hu : div (setting D) u = 0`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "886b474c7a6d",
+          "claimId": "theorem-13",
+          "kind": "conditional",
+          "lean": "weighted_identity_T3",
+          "key": "hyp:VorticityEq (setting D) ν u w",
+          "detail": "`weighted_identity_T3` assumes `hw : VorticityEq (setting D) ν u w`, not stated in the claim.",
+          "question": "Paper claim Theorem 13 (theorem-13) states: “With $Q=\\int|\\omega|^4\\phi$, \\[\\frac{dQ}{dt}=4\\int|\\omega|^2\\phi\\,\\omega\\cdot(\\omega\\cdot\\nabla)u+4\\nu\\int|\\omega|^2\\phi\\,\\omega\\cdot\\Delta\\omega+\\int|\\omega|^6 .\\]”. Lean theorem `weighted_identity_T3` assumes `hw : VorticityEq (setting D) ν u w`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "5cd66503f29f",
+          "claimId": "theorem-13",
+          "kind": "conditional",
+          "lean": "weighted_identity_T3",
+          "key": "hyp:WeightEq (setting D) u w φ",
+          "detail": "`weighted_identity_T3` assumes `hφ : WeightEq (setting D) u w φ`, not stated in the claim.",
+          "question": "Paper claim Theorem 13 (theorem-13) states: “With $Q=\\int|\\omega|^4\\phi$, \\[\\frac{dQ}{dt}=4\\int|\\omega|^2\\phi\\,\\omega\\cdot(\\omega\\cdot\\nabla)u+4\\nu\\int|\\omega|^2\\phi\\,\\omega\\cdot\\Delta\\omega+\\int|\\omega|^6 .\\]”. Lean theorem `weighted_identity_T3` assumes `hφ : WeightEq (setting D) u w φ`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        }
+      ],
+      "drift": 0.969
+    },
+    {
+      "claim": {
+        "id": "definition-14",
+        "number": "Definition 14",
+        "statement": "$A$ is the algebra of $f\\in C^\\infty(\\mathbb{R}\\times\\mathbb{R}^3,\\mathbb{R})$, $f=f(t,a,b,c)$, with $f(p+e_k)=f(p)$ for the unit spatial vectors $e_1,e_2,e_3$. $\\partial_k f(p)=Df(p)e_k$, $\\partial_tf(p)=Df(p)e_t$, $I(f)(t)=\\int_0^1\\!\\int_0^1\\!\\int_0^1 f(t,a,b,c)\\,dc\\,db\\,da$, $D_t=\\frac{d}{dt}$.",
+        "kind": "definition",
+        "source": "paper/main.tex:141",
+        "title": "\\texttt{Smooth.A}, \\texttt{Smooth.setting}",
+        "lean": [
+          "A",
+          "setting"
+        ]
+      },
+      "matched": [
+        {
+          "name": "A",
+          "score": 0.03,
+          "explicit": true
+        },
+        {
+          "name": "setting",
+          "score": 0.1,
+          "explicit": true
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "335418dfd19a",
+          "claimId": "definition-14",
+          "kind": "ambiguous",
+          "key": "title-vs-statement",
+          "detail": "Title “\\texttt{Smooth.A}, \\texttt{Smooth.setting}” shares almost no terms with the statement.",
+          "question": "Paper claim Definition 14 (definition-14) states: “$A$ is the algebra of $f\\in C^\\infty(\\mathbb{R}\\times\\mathbb{R}^3,\\mathbb{R})$, $f=f(t,a,b,c)$, with $f(p+e_k)=f(p)$ for the unit spatial vectors $e_1,e_2,e_3$. $\\partial_k f(p)=Df(p)e_k$, $\\partial_…”. Its title is “\\texttt{Smooth.A}, \\texttt{Smooth.setting}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+          "weight": 0.3,
+          "clarification": {
+            "claimId": "definition-14",
+            "kind": "ambiguous",
+            "question": "Paper claim Definition 14 (definition-14) states: “$A$ is the algebra of $f\\in C^\\infty(\\mathbb{R}\\times\\mathbb{R}^3,\\mathbb{R})$, $f=f(t,a,b,c)$, with $f(p+e_k)=f(p)$ for the unit spatial vectors $e_1,e_2,e_3$. $\\partial_k f(p)=Df(p)e_k$, $\\partial_…”. Its title is “\\texttt{Smooth.A}, \\texttt{Smooth.setting}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+            "answer": "harmless wording (strict, mechanical): the title cites Lean name(s) A, setting, each an existing declaration mapped to this claim; the title makes no further assertion.",
+            "verdict": "intentional",
+            "answeredAt": "2026-11-03T21:11:06.158Z"
+          }
+        }
+      ],
+      "drift": 0
+    },
+    {
+      "claim": {
+        "id": "lemma-15",
+        "number": "Lemma 15",
+        "statement": "If $F,\\partial_sF$ are jointly continuous on $\\mathbb{R}\\times\\mathbb{R}$, then $\\frac{d}{ds}\\int_0^1F(s,x)\\,dx=\\int_0^1\\partial_sF(s,x)\\,dx$.",
+        "kind": "lemma",
+        "source": "paper/main.tex:146",
+        "title": "\\texttt{Torus.hasDerivAt\\_integral01}",
+        "lean": [
+          "hasDerivAt_integral01"
+        ]
+      },
+      "matched": [
+        {
+          "name": "hasDerivAt_integral01",
+          "score": 0.436,
+          "explicit": true
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "ec2624b11cbe",
+          "claimId": "lemma-15",
+          "kind": "ambiguous",
+          "key": "title-vs-statement",
+          "detail": "Title “\\texttt{Torus.hasDerivAt\\_integral01}” shares almost no terms with the statement.",
+          "question": "Paper claim Lemma 15 (lemma-15) states: “If $F,\\partial_sF$ are jointly continuous on $\\mathbb{R}\\times\\mathbb{R}$, then $\\frac{d}{ds}\\int_0^1F(s,x)\\,dx=\\int_0^1\\partial_sF(s,x)\\,dx$.”. Its title is “\\texttt{Torus.hasDerivAt\\_integral01}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+          "weight": 0.3,
+          "clarification": {
+            "claimId": "lemma-15",
+            "kind": "ambiguous",
+            "question": "Paper claim Lemma 15 (lemma-15) states: “If $F,\\partial_sF$ are jointly continuous on $\\mathbb{R}\\times\\mathbb{R}$, then $\\frac{d}{ds}\\int_0^1F(s,x)\\,dx=\\int_0^1\\partial_sF(s,x)\\,dx$.”. Its title is “\\texttt{Torus.hasDerivAt\\_integral01}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+            "answer": "harmless wording (strict, mechanical): the title cites Lean name(s) hasDerivAt_integral01, each an existing declaration mapped to this claim; the title makes no further assertion.",
+            "verdict": "intentional",
+            "answeredAt": "2026-11-03T21:11:06.199Z"
+          }
+        },
+        {
+          "id": "80312e1f9c73",
+          "claimId": "lemma-15",
+          "kind": "conditional",
+          "lean": "hasDerivAt_integral01",
+          "key": "hyp:Continuous (Function.uncurry F)",
+          "detail": "`hasDerivAt_integral01` assumes `hF : Continuous (Function.uncurry F)`, not stated in the claim.",
+          "question": "Paper claim Lemma 15 (lemma-15) states: “If $F,\\partial_sF$ are jointly continuous on $\\mathbb{R}\\times\\mathbb{R}$, then $\\frac{d}{ds}\\int_0^1F(s,x)\\,dx=\\int_0^1\\partial_sF(s,x)\\,dx$.”. Lean theorem `hasDerivAt_integral01` assumes `hF : Continuous (Function.uncurry F)`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "eb30fdb8bdc1",
+          "claimId": "lemma-15",
+          "kind": "conditional",
+          "lean": "hasDerivAt_integral01",
+          "key": "hyp:Continuous (Function.uncurry F')",
+          "detail": "`hasDerivAt_integral01` assumes `hF' : Continuous (Function.uncurry F')`, not stated in the claim.",
+          "question": "Paper claim Lemma 15 (lemma-15) states: “If $F,\\partial_sF$ are jointly continuous on $\\mathbb{R}\\times\\mathbb{R}$, then $\\frac{d}{ds}\\int_0^1F(s,x)\\,dx=\\int_0^1\\partial_sF(s,x)\\,dx$.”. Lean theorem `hasDerivAt_integral01` assumes `hF' : Continuous (Function.uncurry F')`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        }
+      ],
+      "drift": 0.75
+    },
+    {
+      "claim": {
+        "id": "lemma-16",
+        "number": "Lemma 16",
+        "statement": "If $f,\\partial_tf$ are jointly continuous, then $\\frac{d}{dt}\\int_{\\mathbb{T}^3}f=\\int_{\\mathbb{T}^3}\\partial_tf$.",
+        "kind": "lemma",
+        "source": "paper/main.tex:152",
+        "title": "\\texttt{Torus.hasDerivAt\\_torusIntegral}; (b)",
+        "lean": [
+          "hasDerivAt_torusIntegral"
+        ]
+      },
+      "matched": [
+        {
+          "name": "hasDerivAt_torusIntegral",
+          "score": 0.419,
+          "explicit": true
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "8cbf18684e05",
+          "claimId": "lemma-16",
+          "kind": "ambiguous",
+          "key": "title-vs-statement",
+          "detail": "Title “\\texttt{Torus.hasDerivAt\\_torusIntegral}; (b)” shares almost no terms with the statement.",
+          "question": "Paper claim Lemma 16 (lemma-16) states: “If $f,\\partial_tf$ are jointly continuous, then $\\frac{d}{dt}\\int_{\\mathbb{T}^3}f=\\int_{\\mathbb{T}^3}\\partial_tf$.”. Its title is “\\texttt{Torus.hasDerivAt\\_torusIntegral}; (b)”, which does not appear to describe that statement. Is the title or the statement misworded?",
+          "weight": 0.3,
+          "clarification": {
+            "claimId": "lemma-16",
+            "kind": "ambiguous",
+            "question": "Paper claim Lemma 16 (lemma-16) states: “If $f,\\partial_tf$ are jointly continuous, then $\\frac{d}{dt}\\int_{\\mathbb{T}^3}f=\\int_{\\mathbb{T}^3}\\partial_tf$.”. Its title is “\\texttt{Torus.hasDerivAt\\_torusIntegral}; (b)”, which does not appear to describe that statement. Is the title or the statement misworded?",
+            "answer": "harmless wording (strict, mechanical): the title cites Lean name(s) hasDerivAt_torusIntegral, each an existing declaration mapped to this claim; the title makes no further assertion.",
+            "verdict": "intentional",
+            "answeredAt": "2026-11-03T21:11:06.240Z"
+          }
+        }
+      ],
+      "drift": 0
+    },
+    {
+      "claim": {
+        "id": "lemma-17",
+        "number": "Lemma 17",
+        "statement": "If $f$ is $C^1$ and $1$-periodic in the differentiated variable, then $\\int_{\\mathbb{T}^3}\\partial_kf=0$.",
+        "kind": "lemma",
+        "source": "paper/main.tex:156",
+        "title": "\\texttt{Torus.torusIntegral\\_deriv\\_a/b/c}; (a)"
+      },
+      "matched": [
+        {
+          "name": "torusIntegral_deriv_c",
+          "score": 0.438,
+          "explicit": false
+        },
+        {
+          "name": "integral01_deriv_periodic",
+          "score": 0.406,
+          "explicit": false
+        },
+        {
+          "name": "torusIntegral_deriv_b",
+          "score": 0.33,
+          "explicit": false
+        },
+        {
+          "name": "torusIntegral_deriv_a",
+          "score": 0.33,
+          "explicit": false
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "68c3f3bb5fa1",
+          "claimId": "lemma-17",
+          "kind": "ambiguous",
+          "key": "title-vs-statement",
+          "detail": "Title “\\texttt{Torus.torusIntegral\\_deriv\\_a/b/c}; (a)” shares almost no terms with the statement.",
+          "question": "Paper claim Lemma 17 (lemma-17) states: “If $f$ is $C^1$ and $1$-periodic in the differentiated variable, then $\\int_{\\mathbb{T}^3}\\partial_kf=0$.”. Its title is “\\texttt{Torus.torusIntegral\\_deriv\\_a/b/c}; (a)”, which does not appear to describe that statement. Is the title or the statement misworded?",
+          "weight": 0.3
+        },
+        {
+          "id": "4b3039a89d6b",
+          "claimId": "lemma-17",
+          "kind": "conditional",
+          "lean": "torusIntegral_deriv_c",
+          "key": "hyp:Continuous f'",
+          "detail": "`torusIntegral_deriv_c` assumes `hf' : Continuous f'`, not stated in the claim.",
+          "question": "Paper claim Lemma 17 (lemma-17) states: “If $f$ is $C^1$ and $1$-periodic in the differentiated variable, then $\\int_{\\mathbb{T}^3}\\partial_kf=0$.”. Lean theorem `torusIntegral_deriv_c` assumes `hf' : Continuous f'`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "5c4df1b1887a",
+          "claimId": "lemma-17",
+          "kind": "conditional",
+          "lean": "integral01_deriv_periodic",
+          "key": "hyp:Continuous g'",
+          "detail": "`integral01_deriv_periodic` assumes `hg' : Continuous g'`, not stated in the claim.",
+          "question": "Paper claim Lemma 17 (lemma-17) states: “If $f$ is $C^1$ and $1$-periodic in the differentiated variable, then $\\int_{\\mathbb{T}^3}\\partial_kf=0$.”. Lean theorem `integral01_deriv_periodic` assumes `hg' : Continuous g'`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "4cdbda5586e4",
+          "claimId": "lemma-17",
+          "kind": "conditional",
+          "lean": "torusIntegral_deriv_b",
+          "key": "hyp:Continuous f",
+          "detail": "`torusIntegral_deriv_b` assumes `hf : Continuous f`, not stated in the claim.",
+          "question": "Paper claim Lemma 17 (lemma-17) states: “If $f$ is $C^1$ and $1$-periodic in the differentiated variable, then $\\int_{\\mathbb{T}^3}\\partial_kf=0$.”. Lean theorem `torusIntegral_deriv_b` assumes `hf : Continuous f`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "8e599c9a704e",
+          "claimId": "lemma-17",
+          "kind": "conditional",
+          "lean": "torusIntegral_deriv_b",
+          "key": "hyp:Continuous f'",
+          "detail": "`torusIntegral_deriv_b` assumes `hf' : Continuous f'`, not stated in the claim.",
+          "question": "Paper claim Lemma 17 (lemma-17) states: “If $f$ is $C^1$ and $1$-periodic in the differentiated variable, then $\\int_{\\mathbb{T}^3}\\partial_kf=0$.”. Lean theorem `torusIntegral_deriv_b` assumes `hf' : Continuous f'`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "52a6decf6c7e",
+          "claimId": "lemma-17",
+          "kind": "conditional",
+          "lean": "torusIntegral_deriv_a",
+          "key": "hyp:Continuous f",
+          "detail": "`torusIntegral_deriv_a` assumes `hf : Continuous f`, not stated in the claim.",
+          "question": "Paper claim Lemma 17 (lemma-17) states: “If $f$ is $C^1$ and $1$-periodic in the differentiated variable, then $\\int_{\\mathbb{T}^3}\\partial_kf=0$.”. Lean theorem `torusIntegral_deriv_a` assumes `hf : Continuous f`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "37b493288330",
+          "claimId": "lemma-17",
+          "kind": "conditional",
+          "lean": "torusIntegral_deriv_a",
+          "key": "hyp:Continuous f'",
+          "detail": "`torusIntegral_deriv_a` assumes `hf' : Continuous f'`, not stated in the claim.",
+          "question": "Paper claim Lemma 17 (lemma-17) states: “If $f$ is $C^1$ and $1$-periodic in the differentiated variable, then $\\int_{\\mathbb{T}^3}\\partial_kf=0$.”. Lean theorem `torusIntegral_deriv_a` assumes `hf' : Continuous f'`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        }
+      ],
+      "drift": 0.989
+    },
+    {
+      "claim": {
+        "id": "theorem-18",
+        "number": "Theorem 18",
+        "statement": "The smooth model is a periodic setting. Hence identities (1) and (2) hold for all $u,\\omega,\\phi\\in A$ satisfying (\\ref{div})--(\\ref{wt}).",
+        "kind": "theorem",
+        "source": "paper/main.tex:161",
+        "title": "\\texttt{Smooth.int\\_d}, \\texttt{Smooth.int\\_dt}, \\texttt{Smooth.enstrophy\\_identity\\_smooth}, \\texttt{Smooth.weighted\\_identity\\_smooth}",
+        "lean": [
+          "int_d",
+          "int_dt",
+          "enstrophy_identity_smooth",
+          "weighted_identity_smooth"
+        ]
+      },
+      "matched": [
+        {
+          "name": "int_d",
+          "score": 0.052,
+          "explicit": true
+        },
+        {
+          "name": "int_dt",
+          "score": 0.109,
+          "explicit": true
+        },
+        {
+          "name": "enstrophy_identity_smooth",
+          "score": 0.386,
+          "explicit": true
+        },
+        {
+          "name": "weighted_identity_smooth",
+          "score": 0.336,
+          "explicit": true
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "fb29d25ec321",
+          "claimId": "theorem-18",
+          "kind": "ambiguous",
+          "key": "title-vs-statement",
+          "detail": "Title “\\texttt{Smooth.int\\_d}, \\texttt{Smooth.int\\_dt}, \\texttt{Smooth.enstrophy\\_identity\\_smooth}, \\texttt{Smooth.weighted\\_identity\\_smooth}” shares almost no terms with the statement.",
+          "question": "Paper claim Theorem 18 (theorem-18) states: “The smooth model is a periodic setting. Hence identities (1) and (2) hold for all $u,\\omega,\\phi\\in A$ satisfying (\\ref{div})--(\\ref{wt}).”. Its title is “\\texttt{Smooth.int\\_d}, \\texttt{Smooth.int\\_dt}, \\texttt{Smooth.enstrophy\\_identity\\_smooth}, \\texttt{Smooth.weighted\\_identity\\_smooth}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+          "weight": 0.3,
+          "clarification": {
+            "claimId": "theorem-18",
+            "kind": "ambiguous",
+            "question": "Paper claim Theorem 18 (theorem-18) states: “The smooth model is a periodic setting. Hence identities (1) and (2) hold for all $u,\\omega,\\phi\\in A$ satisfying (\\ref{div})--(\\ref{wt}).”. Its title is “\\texttt{Smooth.int\\_d}, \\texttt{Smooth.int\\_dt}, \\texttt{Smooth.enstrophy\\_identity\\_smooth}, \\texttt{Smooth.weighted\\_identity\\_smooth}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+            "answer": "harmless wording (strict, mechanical): the title cites Lean name(s) int_d, int_dt, enstrophy_identity_smooth, weighted_identity_smooth, each an existing declaration mapped to this claim; the title makes no further assertion.",
+            "verdict": "intentional",
+            "answeredAt": "2026-11-03T21:11:06.278Z"
+          }
+        },
+        {
+          "id": "397d75dd4151",
+          "claimId": "theorem-18",
+          "kind": "conditional",
+          "lean": "enstrophy_identity_smooth",
+          "key": "hyp:VorticityEq setting ν u w",
+          "detail": "`enstrophy_identity_smooth` assumes `hw : VorticityEq setting ν u w`, not stated in the claim.",
+          "question": "Paper claim Theorem 18 (theorem-18) states: “The smooth model is a periodic setting. Hence identities (1) and (2) hold for all $u,\\omega,\\phi\\in A$ satisfying (\\ref{div})--(\\ref{wt}).”. Lean theorem `enstrophy_identity_smooth` assumes `hw : VorticityEq setting ν u w`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "7aa7d6bef3f5",
+          "claimId": "theorem-18",
+          "kind": "conditional",
+          "lean": "weighted_identity_smooth",
+          "key": "hyp:VorticityEq setting ν u w",
+          "detail": "`weighted_identity_smooth` assumes `hw : VorticityEq setting ν u w`, not stated in the claim.",
+          "question": "Paper claim Theorem 18 (theorem-18) states: “The smooth model is a periodic setting. Hence identities (1) and (2) hold for all $u,\\omega,\\phi\\in A$ satisfying (\\ref{div})--(\\ref{wt}).”. Lean theorem `weighted_identity_smooth` assumes `hw : VorticityEq setting ν u w`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        }
+      ],
+      "drift": 0.75
+    },
+    {
+      "claim": {
+        "id": "theorem-19",
+        "number": "Theorem 19",
+        "statement": "Take $u,\\omega,S\\in L^2(\\mathbb{T}^3)$ whose Fourier coefficients are those of a divergence-free velocity, its curl, and $S=\\frac12(\\nabla u+\\nabla u^T)$. Then $\\sum_{ij}\\|S_{ij}\\|_2^2=\\frac12\\sum_i\\|\\omega_i\\|_2^2$, so $\\|S\\|_2\\le\\|\\omega\\|_2$.",
+        "kind": "theorem",
+        "source": "paper/main.tex:167",
+        "title": "\\texttt{Fourier.L2\\_strain\\_eq}, \\texttt{Fourier.L2\\_strain\\_le}",
+        "lean": [
+          "L2_strain_eq",
+          "L2_strain_le"
+        ]
+      },
+      "matched": [
+        {
+          "name": "L2_strain_eq",
+          "score": 0.383,
+          "explicit": true
+        },
+        {
+          "name": "L2_strain_le",
+          "score": 0.176,
+          "explicit": true
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "32588a1c4fca",
+          "claimId": "theorem-19",
+          "kind": "conditional",
+          "lean": "L2_strain_eq",
+          "key": "hyp:∀ n, dot (kvec n) (fun j => coeff (u j) n) = 0",
+          "detail": "`L2_strain_eq` assumes `hdiv : ∀ n, dot (kvec n) (fun j => coeff (u j) n) = 0`, not stated in the claim.",
+          "question": "Paper claim Theorem 19 (theorem-19) states: “Take $u,\\omega,S\\in L^2(\\mathbb{T}^3)$ whose Fourier coefficients are those of a divergence-free velocity, its curl, and $S=\\frac12(\\nabla u+\\nabla u^T)$. Then $\\sum_{ij}\\|S_{ij}\\|_2^2=\\frac12\\sum_i\\…”. Lean theorem `L2_strain_eq` assumes `hdiv : ∀ n, dot (kvec n) (fun j => coeff (u j) n) = 0`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "ec962bb66cc7",
+          "claimId": "theorem-19",
+          "kind": "conditional",
+          "lean": "L2_strain_eq",
+          "key": "hyp:∀ n i, coeff (ω i) n = curlSym (kvec n) (fun j => coeff (u j) n) i",
+          "detail": "`L2_strain_eq` assumes `hω : ∀ n i, coeff (ω i) n = curlSym (kvec n) (fun j => coeff (u j) n) i`, not stated in the claim.",
+          "question": "Paper claim Theorem 19 (theorem-19) states: “Take $u,\\omega,S\\in L^2(\\mathbb{T}^3)$ whose Fourier coefficients are those of a divergence-free velocity, its curl, and $S=\\frac12(\\nabla u+\\nabla u^T)$. Then $\\sum_{ij}\\|S_{ij}\\|_2^2=\\frac12\\sum_i\\…”. Lean theorem `L2_strain_eq` assumes `hω : ∀ n i, coeff (ω i) n = curlSym (kvec n) (fun j => coeff (u j) n) i`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "cbceafcefc1e",
+          "claimId": "theorem-19",
+          "kind": "conditional",
+          "lean": "L2_strain_eq",
+          "key": "hyp:∀ n i j, coeff (S i j) n = strainSym (kvec n) (fun j => coeff (u j) n) i j",
+          "detail": "`L2_strain_eq` assumes `hS : ∀ n i j, coeff (S i j) n = strainSym (kvec n) (fun j => coeff (u j) n) i j`, not stated in the claim.",
+          "question": "Paper claim Theorem 19 (theorem-19) states: “Take $u,\\omega,S\\in L^2(\\mathbb{T}^3)$ whose Fourier coefficients are those of a divergence-free velocity, its curl, and $S=\\frac12(\\nabla u+\\nabla u^T)$. Then $\\sum_{ij}\\|S_{ij}\\|_2^2=\\frac12\\sum_i\\…”. Lean theorem `L2_strain_eq` assumes `hS : ∀ n i j, coeff (S i j) n = strainSym (kvec n) (fun j => coeff (u j) n) i j`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "73d03ad35e96",
+          "claimId": "theorem-19",
+          "kind": "conditional",
+          "lean": "L2_strain_le",
+          "key": "hyp:∀ n, dot (kvec n) (fun j => coeff (u j) n) = 0",
+          "detail": "`L2_strain_le` assumes `hdiv : ∀ n, dot (kvec n) (fun j => coeff (u j) n) = 0`, not stated in the claim.",
+          "question": "Paper claim Theorem 19 (theorem-19) states: “Take $u,\\omega,S\\in L^2(\\mathbb{T}^3)$ whose Fourier coefficients are those of a divergence-free velocity, its curl, and $S=\\frac12(\\nabla u+\\nabla u^T)$. Then $\\sum_{ij}\\|S_{ij}\\|_2^2=\\frac12\\sum_i\\…”. Lean theorem `L2_strain_le` assumes `hdiv : ∀ n, dot (kvec n) (fun j => coeff (u j) n) = 0`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "219c2aef5466",
+          "claimId": "theorem-19",
+          "kind": "conditional",
+          "lean": "L2_strain_le",
+          "key": "hyp:∀ n i, coeff (ω i) n = curlSym (kvec n) (fun j => coeff (u j) n) i",
+          "detail": "`L2_strain_le` assumes `hω : ∀ n i, coeff (ω i) n = curlSym (kvec n) (fun j => coeff (u j) n) i`, not stated in the claim.",
+          "question": "Paper claim Theorem 19 (theorem-19) states: “Take $u,\\omega,S\\in L^2(\\mathbb{T}^3)$ whose Fourier coefficients are those of a divergence-free velocity, its curl, and $S=\\frac12(\\nabla u+\\nabla u^T)$. Then $\\sum_{ij}\\|S_{ij}\\|_2^2=\\frac12\\sum_i\\…”. Lean theorem `L2_strain_le` assumes `hω : ∀ n i, coeff (ω i) n = curlSym (kvec n) (fun j => coeff (u j) n) i`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "cd55fa7a2c0b",
+          "claimId": "theorem-19",
+          "kind": "conditional",
+          "lean": "L2_strain_le",
+          "key": "hyp:∀ n i j, coeff (S i j) n = strainSym (kvec n) (fun j => coeff (u j) n) i j",
+          "detail": "`L2_strain_le` assumes `hS : ∀ n i j, coeff (S i j) n = strainSym (kvec n) (fun j => coeff (u j) n) i j`, not stated in the claim.",
+          "question": "Paper claim Theorem 19 (theorem-19) states: “Take $u,\\omega,S\\in L^2(\\mathbb{T}^3)$ whose Fourier coefficients are those of a divergence-free velocity, its curl, and $S=\\frac12(\\nabla u+\\nabla u^T)$. Then $\\sum_{ij}\\|S_{ij}\\|_2^2=\\frac12\\sum_i\\…”. Lean theorem `L2_strain_le` assumes `hS : ∀ n i j, coeff (S i j) n = strainSym (kvec n) (fun j => coeff (u j) n) i j`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        }
+      ],
+      "drift": 0.984
+    },
+    {
+      "claim": {
+        "id": "theorem-20",
+        "number": "Theorem 20",
+        "statement": "Let $S=\\frac12\\int|\\omega|^2-\\frac{\\kappa}{2}\\int|\\omega|^4\\phi$. For smooth periodic solutions of (\\ref{div})--(\\ref{wt}), \\[S'=\\int\\omega_i\\omega_j\\partial_ju_i-\\nu\\int|\\nabla\\omega|^2-\\tfrac{\\kappa}{2}\\Big(4\\int|\\omega|^2\\phi\\,\\omega_i\\omega_j\\partial_ju_i+4\\nu\\int|\\omega|^2\\phi\\,\\omega\\cdot\\Delta\\omega+\\int|\\omega|^6\\Big).\\]",
+        "kind": "theorem",
+        "source": "paper/main.tex:173",
+        "title": "\\texttt{Lyapunov.dS\\_identity\\_smooth}",
+        "lean": [
+          "dS_identity_smooth"
+        ]
+      },
+      "matched": [
+        {
+          "name": "dS_identity_smooth",
+          "score": 0.269,
+          "explicit": true
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "021a04368c50",
+          "claimId": "theorem-20",
+          "kind": "ambiguous",
+          "key": "title-vs-statement",
+          "detail": "Title “\\texttt{Lyapunov.dS\\_identity\\_smooth}” shares almost no terms with the statement.",
+          "question": "Paper claim Theorem 20 (theorem-20) states: “Let $S=\\frac12\\int|\\omega|^2-\\frac{\\kappa}{2}\\int|\\omega|^4\\phi$. For smooth periodic solutions of (\\ref{div})--(\\ref{wt}), \\[S'=\\int\\omega_i\\omega_j\\partial_ju_i-\\nu\\int|\\nabla\\omega|^2-\\tfrac{\\kapp…”. Its title is “\\texttt{Lyapunov.dS\\_identity\\_smooth}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+          "weight": 0.3,
+          "clarification": {
+            "claimId": "theorem-20",
+            "kind": "ambiguous",
+            "question": "Paper claim Theorem 20 (theorem-20) states: “Let $S=\\frac12\\int|\\omega|^2-\\frac{\\kappa}{2}\\int|\\omega|^4\\phi$. For smooth periodic solutions of (\\ref{div})--(\\ref{wt}), \\[S'=\\int\\omega_i\\omega_j\\partial_ju_i-\\nu\\int|\\nabla\\omega|^2-\\tfrac{\\kapp…”. Its title is “\\texttt{Lyapunov.dS\\_identity\\_smooth}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+            "answer": "harmless wording (strict, mechanical): the title cites Lean name(s) dS_identity_smooth, each an existing declaration mapped to this claim; the title makes no further assertion.",
+            "verdict": "intentional",
+            "answeredAt": "2026-11-03T21:11:06.317Z"
+          }
+        },
+        {
+          "id": "be0ae03c88ef",
+          "claimId": "theorem-20",
+          "kind": "conditional",
+          "lean": "dS_identity_smooth",
+          "key": "hyp:VorticityEq setting ν u w",
+          "detail": "`dS_identity_smooth` assumes `hw : VorticityEq setting ν u w`, not stated in the claim.",
+          "question": "Paper claim Theorem 20 (theorem-20) states: “Let $S=\\frac12\\int|\\omega|^2-\\frac{\\kappa}{2}\\int|\\omega|^4\\phi$. For smooth periodic solutions of (\\ref{div})--(\\ref{wt}), \\[S'=\\int\\omega_i\\omega_j\\partial_ju_i-\\nu\\int|\\nabla\\omega|^2-\\tfrac{\\kapp…”. Lean theorem `dS_identity_smooth` assumes `hw : VorticityEq setting ν u w`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "c2da3a6e2637",
+          "claimId": "theorem-20",
+          "kind": "conditional",
+          "lean": "dS_identity_smooth",
+          "key": "hyp:WeightEq setting u w φ",
+          "detail": "`dS_identity_smooth` assumes `hφ : WeightEq setting u w φ`, not stated in the claim.",
+          "question": "Paper claim Theorem 20 (theorem-20) states: “Let $S=\\frac12\\int|\\omega|^2-\\frac{\\kappa}{2}\\int|\\omega|^4\\phi$. For smooth periodic solutions of (\\ref{div})--(\\ref{wt}), \\[S'=\\int\\omega_i\\omega_j\\partial_ju_i-\\nu\\int|\\nabla\\omega|^2-\\tfrac{\\kapp…”. Lean theorem `dS_identity_smooth` assumes `hφ : WeightEq setting u w φ`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        }
+      ],
+      "drift": 0.75
+    },
+    {
+      "claim": {
+        "id": "theorem-21",
+        "number": "Theorem 21",
+        "statement": "Let $h,M$ be continuous, $g(0)=0$, and $g'=h\\le M^2$ on $[0,t]$. Then $g(t)\\le\\int_0^tM^2$.",
+        "kind": "theorem",
+        "source": "paper/main.tex:177",
+        "title": "\\texttt{Lyapunov.le\\_integral\\_sq\\_of\\_deriv}",
+        "lean": [
+          "le_integral_sq_of_deriv"
+        ]
+      },
+      "matched": [
+        {
+          "name": "le_integral_sq_of_deriv",
+          "score": 0.514,
+          "explicit": true
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "6bc505068064",
+          "claimId": "theorem-21",
+          "kind": "ambiguous",
+          "key": "title-vs-statement",
+          "detail": "Title “\\texttt{Lyapunov.le\\_integral\\_sq\\_of\\_deriv}” shares almost no terms with the statement.",
+          "question": "Paper claim Theorem 21 (theorem-21) states: “Let $h,M$ be continuous, $g(0)=0$, and $g'=h\\le M^2$ on $[0,t]$. Then $g(t)\\le\\int_0^tM^2$.”. Its title is “\\texttt{Lyapunov.le\\_integral\\_sq\\_of\\_deriv}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+          "weight": 0.3,
+          "clarification": {
+            "claimId": "theorem-21",
+            "kind": "ambiguous",
+            "question": "Paper claim Theorem 21 (theorem-21) states: “Let $h,M$ be continuous, $g(0)=0$, and $g'=h\\le M^2$ on $[0,t]$. Then $g(t)\\le\\int_0^tM^2$.”. Its title is “\\texttt{Lyapunov.le\\_integral\\_sq\\_of\\_deriv}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+            "answer": "harmless wording (strict, mechanical): the title cites Lean name(s) le_integral_sq_of_deriv, each an existing declaration mapped to this claim; the title makes no further assertion.",
+            "verdict": "intentional",
+            "answeredAt": "2026-11-03T21:11:06.355Z"
+          }
+        },
+        {
+          "id": "29191cf16453",
+          "claimId": "theorem-21",
+          "kind": "narrower",
+          "lean": "le_integral_sq_of_deriv",
+          "key": "bound:t>=0",
+          "detail": "`le_integral_sq_of_deriv` restricts t ≥ 0; the claim states no such restriction.",
+          "question": "Paper claim Theorem 21 (theorem-21) states: “Let $h,M$ be continuous, $g(0)=0$, and $g'=h\\le M^2$ on $[0,t]$. Then $g(t)\\le\\int_0^tM^2$.”. Lean theorem `le_integral_sq_of_deriv` assumes `0 ≤ t` (restricting t ≥ 0), which the claim does not state. Is the restricted domain intentional?",
+          "weight": 0.6
+        },
+        {
+          "id": "2bb5308c02f1",
+          "claimId": "theorem-21",
+          "kind": "conditional",
+          "lean": "le_integral_sq_of_deriv",
+          "key": "hyp:∀ s ∈ Icc 0 t, h s ≤ M s ^ 2",
+          "detail": "`le_integral_sq_of_deriv` assumes `hle : ∀ s ∈ Icc 0 t, h s ≤ M s ^ 2`, not stated in the claim.",
+          "question": "Paper claim Theorem 21 (theorem-21) states: “Let $h,M$ be continuous, $g(0)=0$, and $g'=h\\le M^2$ on $[0,t]$. Then $g(t)\\le\\int_0^tM^2$.”. Lean theorem `le_integral_sq_of_deriv` assumes `hle : ∀ s ∈ Icc 0 t, h s ≤ M s ^ 2`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        }
+      ],
+      "drift": 0.8
+    },
+    {
+      "claim": {
+        "id": "theorem-22",
+        "number": "Theorem 22",
+        "statement": "Let $\\kappa>0$, and let $y'=y^2(C-\\kappa y)$ on $[0,T]$. Then $\\min(y_0,C/\\kappa,0)\\le y(t)\\le\\max(y_0,C/\\kappa,0)$.",
+        "kind": "theorem",
+        "source": "paper/main.tex:182",
+        "title": "\\texttt{Lyapunov.ode\\_bounded}",
+        "lean": [
+          "ode_bounded"
+        ]
+      },
+      "matched": [
+        {
+          "name": "ode_bounded",
+          "score": 0.508,
+          "explicit": true
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "417eec335892",
+          "claimId": "theorem-22",
+          "kind": "ambiguous",
+          "key": "title-vs-statement",
+          "detail": "Title “\\texttt{Lyapunov.ode\\_bounded}” shares almost no terms with the statement.",
+          "question": "Paper claim Theorem 22 (theorem-22) states: “Let $\\kappa>0$, and let $y'=y^2(C-\\kappa y)$ on $[0,T]$. Then $\\min(y_0,C/\\kappa,0)\\le y(t)\\le\\max(y_0,C/\\kappa,0)$.”. Its title is “\\texttt{Lyapunov.ode\\_bounded}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+          "weight": 0.3,
+          "clarification": {
+            "claimId": "theorem-22",
+            "kind": "ambiguous",
+            "question": "Paper claim Theorem 22 (theorem-22) states: “Let $\\kappa>0$, and let $y'=y^2(C-\\kappa y)$ on $[0,T]$. Then $\\min(y_0,C/\\kappa,0)\\le y(t)\\le\\max(y_0,C/\\kappa,0)$.”. Its title is “\\texttt{Lyapunov.ode\\_bounded}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+            "answer": "harmless wording (strict, mechanical): the title cites Lean name(s) ode_bounded, each an existing declaration mapped to this claim; the title makes no further assertion.",
+            "verdict": "intentional",
+            "answeredAt": "2026-11-03T21:11:06.398Z"
+          }
+        },
+        {
+          "id": "596249bfd365",
+          "claimId": "theorem-22",
+          "kind": "conditional",
+          "lean": "ode_bounded",
+          "key": "hyp:∀ t ∈ Icc 0 T, HasDerivAt y (y t ^ 2 * (C - κ * y t)) t",
+          "detail": "`ode_bounded` assumes `hy : ∀ t ∈ Icc 0 T, HasDerivAt y (y t ^ 2 * (C - κ * y t)) t`, not stated in the claim.",
+          "question": "Paper claim Theorem 22 (theorem-22) states: “Let $\\kappa>0$, and let $y'=y^2(C-\\kappa y)$ on $[0,T]$. Then $\\min(y_0,C/\\kappa,0)\\le y(t)\\le\\max(y_0,C/\\kappa,0)$.”. Lean theorem `ode_bounded` assumes `hy : ∀ t ∈ Icc 0 T, HasDerivAt y (y t ^ 2 * (C - κ * y t)) t`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        }
+      ],
+      "drift": 0.5
+    }
+  ],
+  "unanchored": [],
+  "drift": 0.417,
+  "pending": [
+    {
+      "id": "ec4fe234645e",
+      "claimId": "lemma-9",
+      "kind": "conditional",
+      "lean": "dt_half_sq",
+      "key": "hyp:VorticityEq S ν u w",
+      "detail": "`dt_half_sq` assumes `hw : VorticityEq S ν u w`, not stated in the claim.",
+      "question": "Paper claim Lemma 9 (lemma-9) states: “Under (\\ref{div}), (\\ref{vort}): \\[\\partial_t|\\omega|^2=2\\,\\omega_i\\omega_j\\partial_ju_i-2\\nu\\,|\\nabla\\omega|^2 +\\partial_k\\big(2\\nu\\,\\omega_i\\partial_k\\omega_i-u_k|\\omega|^2\\big).\\]”. Lean lemma `dt_half_sq` assumes `hw : VorticityEq S ν u w`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "3938922e37e4",
+      "claimId": "lemma-9",
+      "kind": "conditional",
+      "lean": "dt_vsq_div",
+      "key": "hyp:VorticityEq S ν u w",
+      "detail": "`dt_vsq_div` assumes `hw : VorticityEq S ν u w`, not stated in the claim.",
+      "question": "Paper claim Lemma 9 (lemma-9) states: “Under (\\ref{div}), (\\ref{vort}): \\[\\partial_t|\\omega|^2=2\\,\\omega_i\\omega_j\\partial_ju_i-2\\nu\\,|\\nabla\\omega|^2 +\\partial_k\\big(2\\nu\\,\\omega_i\\partial_k\\omega_i-u_k|\\omega|^2\\big).\\]”. Lean lemma `dt_vsq_div` assumes `hw : VorticityEq S ν u w`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "cdd70bd9e9d3",
+      "claimId": "theorem-10",
+      "kind": "conditional",
+      "lean": "enstrophy_identity",
+      "key": "hyp:div S u = 0",
+      "detail": "`enstrophy_identity` assumes `hu : div S u = 0`, not stated in the claim.",
+      "question": "Paper claim Theorem 10 (theorem-10) states: “With $E=\\frac12\\int|\\omega|^2$ and $P=\\int\\omega_i\\omega_j\\partial_ju_i$, \\[\\frac{dE}{dt}=P-\\nu\\int_{\\mathbb{T}^3}|\\nabla\\omega|^2 .\\] (Formalized as $D_t\\,I(|\\omega|^2)=2\\,I(\\omega_i\\omega_j\\partial…”. Lean theorem `enstrophy_identity` assumes `hu : div S u = 0`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "6825fce7bb9f",
+      "claimId": "theorem-10",
+      "kind": "conditional",
+      "lean": "enstrophy_identity",
+      "key": "hyp:VorticityEq S ν u w",
+      "detail": "`enstrophy_identity` assumes `hw : VorticityEq S ν u w`, not stated in the claim.",
+      "question": "Paper claim Theorem 10 (theorem-10) states: “With $E=\\frac12\\int|\\omega|^2$ and $P=\\int\\omega_i\\omega_j\\partial_ju_i$, \\[\\frac{dE}{dt}=P-\\nu\\int_{\\mathbb{T}^3}|\\nabla\\omega|^2 .\\] (Formalized as $D_t\\,I(|\\omega|^2)=2\\,I(\\omega_i\\omega_j\\partial…”. Lean theorem `enstrophy_identity` assumes `hw : VorticityEq S ν u w`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "34da75125ddb",
+      "claimId": "theorem-10",
+      "kind": "conditional",
+      "lean": "enstrophy_identity_T3",
+      "key": "hyp:div (setting D) u = 0",
+      "detail": "`enstrophy_identity_T3` assumes `hu : div (setting D) u = 0`, not stated in the claim.",
+      "question": "Paper claim Theorem 10 (theorem-10) states: “With $E=\\frac12\\int|\\omega|^2$ and $P=\\int\\omega_i\\omega_j\\partial_ju_i$, \\[\\frac{dE}{dt}=P-\\nu\\int_{\\mathbb{T}^3}|\\nabla\\omega|^2 .\\] (Formalized as $D_t\\,I(|\\omega|^2)=2\\,I(\\omega_i\\omega_j\\partial…”. Lean theorem `enstrophy_identity_T3` assumes `hu : div (setting D) u = 0`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "c800f3355d34",
+      "claimId": "theorem-10",
+      "kind": "conditional",
+      "lean": "enstrophy_identity_T3",
+      "key": "hyp:VorticityEq (setting D) ν u w",
+      "detail": "`enstrophy_identity_T3` assumes `hw : VorticityEq (setting D) ν u w`, not stated in the claim.",
+      "question": "Paper claim Theorem 10 (theorem-10) states: “With $E=\\frac12\\int|\\omega|^2$ and $P=\\int\\omega_i\\omega_j\\partial_ju_i$, \\[\\frac{dE}{dt}=P-\\nu\\int_{\\mathbb{T}^3}|\\nabla\\omega|^2 .\\] (Formalized as $D_t\\,I(|\\omega|^2)=2\\,I(\\omega_i\\omega_j\\partial…”. Lean theorem `enstrophy_identity_T3` assumes `hw : VorticityEq (setting D) ν u w`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "548ed5118e6b",
+      "claimId": "lemma-11",
+      "kind": "conditional",
+      "lean": "dt_weighted",
+      "key": "hyp:VorticityEq S ν u w",
+      "detail": "`dt_weighted` assumes `hw : VorticityEq S ν u w`, not stated in the claim.",
+      "question": "Paper claim Lemma 11 (lemma-11) states: “Under (\\ref{vort}), (\\ref{wt}): \\[\\partial_t(s^2\\phi)=4s\\phi\\,\\omega_i\\omega_j\\partial_ju_i+4\\nu\\,s\\phi\\,\\omega\\cdot\\Delta\\omega+s^3-u_k\\partial_k(s^2\\phi).\\]”. Lean lemma `dt_weighted` assumes `hw : VorticityEq S ν u w`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "140a6bd7bdcf",
+      "claimId": "lemma-12",
+      "kind": "conditional",
+      "lean": "dt_weighted_div",
+      "key": "hyp:VorticityEq S ν u w",
+      "detail": "`dt_weighted_div` assumes `hw : VorticityEq S ν u w`, not stated in the claim.",
+      "question": "Paper claim Lemma 12 (lemma-12) states: “Under (\\ref{div}) as well, $\\partial_t(s^2\\phi)=4s\\phi\\,\\omega_i\\omega_j\\partial_ju_i+4\\nu s\\phi\\,\\omega\\cdot\\Delta\\omega+s^3-\\partial_k(u_ks^2\\phi)$.”. Lean lemma `dt_weighted_div` assumes `hw : VorticityEq S ν u w`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "be8c2a20f0db",
+      "claimId": "theorem-13",
+      "kind": "conditional",
+      "lean": "weighted_identity",
+      "key": "hyp:div S u = 0",
+      "detail": "`weighted_identity` assumes `hu : div S u = 0`, not stated in the claim.",
+      "question": "Paper claim Theorem 13 (theorem-13) states: “With $Q=\\int|\\omega|^4\\phi$, \\[\\frac{dQ}{dt}=4\\int|\\omega|^2\\phi\\,\\omega\\cdot(\\omega\\cdot\\nabla)u+4\\nu\\int|\\omega|^2\\phi\\,\\omega\\cdot\\Delta\\omega+\\int|\\omega|^6 .\\]”. Lean theorem `weighted_identity` assumes `hu : div S u = 0`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "5816da43c624",
+      "claimId": "theorem-13",
+      "kind": "conditional",
+      "lean": "weighted_identity",
+      "key": "hyp:VorticityEq S ν u w",
+      "detail": "`weighted_identity` assumes `hw : VorticityEq S ν u w`, not stated in the claim.",
+      "question": "Paper claim Theorem 13 (theorem-13) states: “With $Q=\\int|\\omega|^4\\phi$, \\[\\frac{dQ}{dt}=4\\int|\\omega|^2\\phi\\,\\omega\\cdot(\\omega\\cdot\\nabla)u+4\\nu\\int|\\omega|^2\\phi\\,\\omega\\cdot\\Delta\\omega+\\int|\\omega|^6 .\\]”. Lean theorem `weighted_identity` assumes `hw : VorticityEq S ν u w`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "6c04df4a15f6",
+      "claimId": "theorem-13",
+      "kind": "conditional",
+      "lean": "weighted_identity_T3",
+      "key": "hyp:div (setting D) u = 0",
+      "detail": "`weighted_identity_T3` assumes `hu : div (setting D) u = 0`, not stated in the claim.",
+      "question": "Paper claim Theorem 13 (theorem-13) states: “With $Q=\\int|\\omega|^4\\phi$, \\[\\frac{dQ}{dt}=4\\int|\\omega|^2\\phi\\,\\omega\\cdot(\\omega\\cdot\\nabla)u+4\\nu\\int|\\omega|^2\\phi\\,\\omega\\cdot\\Delta\\omega+\\int|\\omega|^6 .\\]”. Lean theorem `weighted_identity_T3` assumes `hu : div (setting D) u = 0`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "886b474c7a6d",
+      "claimId": "theorem-13",
+      "kind": "conditional",
+      "lean": "weighted_identity_T3",
+      "key": "hyp:VorticityEq (setting D) ν u w",
+      "detail": "`weighted_identity_T3` assumes `hw : VorticityEq (setting D) ν u w`, not stated in the claim.",
+      "question": "Paper claim Theorem 13 (theorem-13) states: “With $Q=\\int|\\omega|^4\\phi$, \\[\\frac{dQ}{dt}=4\\int|\\omega|^2\\phi\\,\\omega\\cdot(\\omega\\cdot\\nabla)u+4\\nu\\int|\\omega|^2\\phi\\,\\omega\\cdot\\Delta\\omega+\\int|\\omega|^6 .\\]”. Lean theorem `weighted_identity_T3` assumes `hw : VorticityEq (setting D) ν u w`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "5cd66503f29f",
+      "claimId": "theorem-13",
+      "kind": "conditional",
+      "lean": "weighted_identity_T3",
+      "key": "hyp:WeightEq (setting D) u w φ",
+      "detail": "`weighted_identity_T3` assumes `hφ : WeightEq (setting D) u w φ`, not stated in the claim.",
+      "question": "Paper claim Theorem 13 (theorem-13) states: “With $Q=\\int|\\omega|^4\\phi$, \\[\\frac{dQ}{dt}=4\\int|\\omega|^2\\phi\\,\\omega\\cdot(\\omega\\cdot\\nabla)u+4\\nu\\int|\\omega|^2\\phi\\,\\omega\\cdot\\Delta\\omega+\\int|\\omega|^6 .\\]”. Lean theorem `weighted_identity_T3` assumes `hφ : WeightEq (setting D) u w φ`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "80312e1f9c73",
+      "claimId": "lemma-15",
+      "kind": "conditional",
+      "lean": "hasDerivAt_integral01",
+      "key": "hyp:Continuous (Function.uncurry F)",
+      "detail": "`hasDerivAt_integral01` assumes `hF : Continuous (Function.uncurry F)`, not stated in the claim.",
+      "question": "Paper claim Lemma 15 (lemma-15) states: “If $F,\\partial_sF$ are jointly continuous on $\\mathbb{R}\\times\\mathbb{R}$, then $\\frac{d}{ds}\\int_0^1F(s,x)\\,dx=\\int_0^1\\partial_sF(s,x)\\,dx$.”. Lean theorem `hasDerivAt_integral01` assumes `hF : Continuous (Function.uncurry F)`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "eb30fdb8bdc1",
+      "claimId": "lemma-15",
+      "kind": "conditional",
+      "lean": "hasDerivAt_integral01",
+      "key": "hyp:Continuous (Function.uncurry F')",
+      "detail": "`hasDerivAt_integral01` assumes `hF' : Continuous (Function.uncurry F')`, not stated in the claim.",
+      "question": "Paper claim Lemma 15 (lemma-15) states: “If $F,\\partial_sF$ are jointly continuous on $\\mathbb{R}\\times\\mathbb{R}$, then $\\frac{d}{ds}\\int_0^1F(s,x)\\,dx=\\int_0^1\\partial_sF(s,x)\\,dx$.”. Lean theorem `hasDerivAt_integral01` assumes `hF' : Continuous (Function.uncurry F')`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "68c3f3bb5fa1",
+      "claimId": "lemma-17",
+      "kind": "ambiguous",
+      "key": "title-vs-statement",
+      "detail": "Title “\\texttt{Torus.torusIntegral\\_deriv\\_a/b/c}; (a)” shares almost no terms with the statement.",
+      "question": "Paper claim Lemma 17 (lemma-17) states: “If $f$ is $C^1$ and $1$-periodic in the differentiated variable, then $\\int_{\\mathbb{T}^3}\\partial_kf=0$.”. Its title is “\\texttt{Torus.torusIntegral\\_deriv\\_a/b/c}; (a)”, which does not appear to describe that statement. Is the title or the statement misworded?",
+      "weight": 0.3
+    },
+    {
+      "id": "4b3039a89d6b",
+      "claimId": "lemma-17",
+      "kind": "conditional",
+      "lean": "torusIntegral_deriv_c",
+      "key": "hyp:Continuous f'",
+      "detail": "`torusIntegral_deriv_c` assumes `hf' : Continuous f'`, not stated in the claim.",
+      "question": "Paper claim Lemma 17 (lemma-17) states: “If $f$ is $C^1$ and $1$-periodic in the differentiated variable, then $\\int_{\\mathbb{T}^3}\\partial_kf=0$.”. Lean theorem `torusIntegral_deriv_c` assumes `hf' : Continuous f'`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "5c4df1b1887a",
+      "claimId": "lemma-17",
+      "kind": "conditional",
+      "lean": "integral01_deriv_periodic",
+      "key": "hyp:Continuous g'",
+      "detail": "`integral01_deriv_periodic` assumes `hg' : Continuous g'`, not stated in the claim.",
+      "question": "Paper claim Lemma 17 (lemma-17) states: “If $f$ is $C^1$ and $1$-periodic in the differentiated variable, then $\\int_{\\mathbb{T}^3}\\partial_kf=0$.”. Lean theorem `integral01_deriv_periodic` assumes `hg' : Continuous g'`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "4cdbda5586e4",
+      "claimId": "lemma-17",
+      "kind": "conditional",
+      "lean": "torusIntegral_deriv_b",
+      "key": "hyp:Continuous f",
+      "detail": "`torusIntegral_deriv_b` assumes `hf : Continuous f`, not stated in the claim.",
+      "question": "Paper claim Lemma 17 (lemma-17) states: “If $f$ is $C^1$ and $1$-periodic in the differentiated variable, then $\\int_{\\mathbb{T}^3}\\partial_kf=0$.”. Lean theorem `torusIntegral_deriv_b` assumes `hf : Continuous f`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "8e599c9a704e",
+      "claimId": "lemma-17",
+      "kind": "conditional",
+      "lean": "torusIntegral_deriv_b",
+      "key": "hyp:Continuous f'",
+      "detail": "`torusIntegral_deriv_b` assumes `hf' : Continuous f'`, not stated in the claim.",
+      "question": "Paper claim Lemma 17 (lemma-17) states: “If $f$ is $C^1$ and $1$-periodic in the differentiated variable, then $\\int_{\\mathbb{T}^3}\\partial_kf=0$.”. Lean theorem `torusIntegral_deriv_b` assumes `hf' : Continuous f'`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "52a6decf6c7e",
+      "claimId": "lemma-17",
+      "kind": "conditional",
+      "lean": "torusIntegral_deriv_a",
+      "key": "hyp:Continuous f",
+      "detail": "`torusIntegral_deriv_a` assumes `hf : Continuous f`, not stated in the claim.",
+      "question": "Paper claim Lemma 17 (lemma-17) states: “If $f$ is $C^1$ and $1$-periodic in the differentiated variable, then $\\int_{\\mathbb{T}^3}\\partial_kf=0$.”. Lean theorem `torusIntegral_deriv_a` assumes `hf : Continuous f`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "37b493288330",
+      "claimId": "lemma-17",
+      "kind": "conditional",
+      "lean": "torusIntegral_deriv_a",
+      "key": "hyp:Continuous f'",
+      "detail": "`torusIntegral_deriv_a` assumes `hf' : Continuous f'`, not stated in the claim.",
+      "question": "Paper claim Lemma 17 (lemma-17) states: “If $f$ is $C^1$ and $1$-periodic in the differentiated variable, then $\\int_{\\mathbb{T}^3}\\partial_kf=0$.”. Lean theorem `torusIntegral_deriv_a` assumes `hf' : Continuous f'`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "397d75dd4151",
+      "claimId": "theorem-18",
+      "kind": "conditional",
+      "lean": "enstrophy_identity_smooth",
+      "key": "hyp:VorticityEq setting ν u w",
+      "detail": "`enstrophy_identity_smooth` assumes `hw : VorticityEq setting ν u w`, not stated in the claim.",
+      "question": "Paper claim Theorem 18 (theorem-18) states: “The smooth model is a periodic setting. Hence identities (1) and (2) hold for all $u,\\omega,\\phi\\in A$ satisfying (\\ref{div})--(\\ref{wt}).”. Lean theorem `enstrophy_identity_smooth` assumes `hw : VorticityEq setting ν u w`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "7aa7d6bef3f5",
+      "claimId": "theorem-18",
+      "kind": "conditional",
+      "lean": "weighted_identity_smooth",
+      "key": "hyp:VorticityEq setting ν u w",
+      "detail": "`weighted_identity_smooth` assumes `hw : VorticityEq setting ν u w`, not stated in the claim.",
+      "question": "Paper claim Theorem 18 (theorem-18) states: “The smooth model is a periodic setting. Hence identities (1) and (2) hold for all $u,\\omega,\\phi\\in A$ satisfying (\\ref{div})--(\\ref{wt}).”. Lean theorem `weighted_identity_smooth` assumes `hw : VorticityEq setting ν u w`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "32588a1c4fca",
+      "claimId": "theorem-19",
+      "kind": "conditional",
+      "lean": "L2_strain_eq",
+      "key": "hyp:∀ n, dot (kvec n) (fun j => coeff (u j) n) = 0",
+      "detail": "`L2_strain_eq` assumes `hdiv : ∀ n, dot (kvec n) (fun j => coeff (u j) n) = 0`, not stated in the claim.",
+      "question": "Paper claim Theorem 19 (theorem-19) states: “Take $u,\\omega,S\\in L^2(\\mathbb{T}^3)$ whose Fourier coefficients are those of a divergence-free velocity, its curl, and $S=\\frac12(\\nabla u+\\nabla u^T)$. Then $\\sum_{ij}\\|S_{ij}\\|_2^2=\\frac12\\sum_i\\…”. Lean theorem `L2_strain_eq` assumes `hdiv : ∀ n, dot (kvec n) (fun j => coeff (u j) n) = 0`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "ec962bb66cc7",
+      "claimId": "theorem-19",
+      "kind": "conditional",
+      "lean": "L2_strain_eq",
+      "key": "hyp:∀ n i, coeff (ω i) n = curlSym (kvec n) (fun j => coeff (u j) n) i",
+      "detail": "`L2_strain_eq` assumes `hω : ∀ n i, coeff (ω i) n = curlSym (kvec n) (fun j => coeff (u j) n) i`, not stated in the claim.",
+      "question": "Paper claim Theorem 19 (theorem-19) states: “Take $u,\\omega,S\\in L^2(\\mathbb{T}^3)$ whose Fourier coefficients are those of a divergence-free velocity, its curl, and $S=\\frac12(\\nabla u+\\nabla u^T)$. Then $\\sum_{ij}\\|S_{ij}\\|_2^2=\\frac12\\sum_i\\…”. Lean theorem `L2_strain_eq` assumes `hω : ∀ n i, coeff (ω i) n = curlSym (kvec n) (fun j => coeff (u j) n) i`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "cbceafcefc1e",
+      "claimId": "theorem-19",
+      "kind": "conditional",
+      "lean": "L2_strain_eq",
+      "key": "hyp:∀ n i j, coeff (S i j) n = strainSym (kvec n) (fun j => coeff (u j) n) i j",
+      "detail": "`L2_strain_eq` assumes `hS : ∀ n i j, coeff (S i j) n = strainSym (kvec n) (fun j => coeff (u j) n) i j`, not stated in the claim.",
+      "question": "Paper claim Theorem 19 (theorem-19) states: “Take $u,\\omega,S\\in L^2(\\mathbb{T}^3)$ whose Fourier coefficients are those of a divergence-free velocity, its curl, and $S=\\frac12(\\nabla u+\\nabla u^T)$. Then $\\sum_{ij}\\|S_{ij}\\|_2^2=\\frac12\\sum_i\\…”. Lean theorem `L2_strain_eq` assumes `hS : ∀ n i j, coeff (S i j) n = strainSym (kvec n) (fun j => coeff (u j) n) i j`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "73d03ad35e96",
+      "claimId": "theorem-19",
+      "kind": "conditional",
+      "lean": "L2_strain_le",
+      "key": "hyp:∀ n, dot (kvec n) (fun j => coeff (u j) n) = 0",
+      "detail": "`L2_strain_le` assumes `hdiv : ∀ n, dot (kvec n) (fun j => coeff (u j) n) = 0`, not stated in the claim.",
+      "question": "Paper claim Theorem 19 (theorem-19) states: “Take $u,\\omega,S\\in L^2(\\mathbb{T}^3)$ whose Fourier coefficients are those of a divergence-free velocity, its curl, and $S=\\frac12(\\nabla u+\\nabla u^T)$. Then $\\sum_{ij}\\|S_{ij}\\|_2^2=\\frac12\\sum_i\\…”. Lean theorem `L2_strain_le` assumes `hdiv : ∀ n, dot (kvec n) (fun j => coeff (u j) n) = 0`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "219c2aef5466",
+      "claimId": "theorem-19",
+      "kind": "conditional",
+      "lean": "L2_strain_le",
+      "key": "hyp:∀ n i, coeff (ω i) n = curlSym (kvec n) (fun j => coeff (u j) n) i",
+      "detail": "`L2_strain_le` assumes `hω : ∀ n i, coeff (ω i) n = curlSym (kvec n) (fun j => coeff (u j) n) i`, not stated in the claim.",
+      "question": "Paper claim Theorem 19 (theorem-19) states: “Take $u,\\omega,S\\in L^2(\\mathbb{T}^3)$ whose Fourier coefficients are those of a divergence-free velocity, its curl, and $S=\\frac12(\\nabla u+\\nabla u^T)$. Then $\\sum_{ij}\\|S_{ij}\\|_2^2=\\frac12\\sum_i\\…”. Lean theorem `L2_strain_le` assumes `hω : ∀ n i, coeff (ω i) n = curlSym (kvec n) (fun j => coeff (u j) n) i`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "cd55fa7a2c0b",
+      "claimId": "theorem-19",
+      "kind": "conditional",
+      "lean": "L2_strain_le",
+      "key": "hyp:∀ n i j, coeff (S i j) n = strainSym (kvec n) (fun j => coeff (u j) n) i j",
+      "detail": "`L2_strain_le` assumes `hS : ∀ n i j, coeff (S i j) n = strainSym (kvec n) (fun j => coeff (u j) n) i j`, not stated in the claim.",
+      "question": "Paper claim Theorem 19 (theorem-19) states: “Take $u,\\omega,S\\in L^2(\\mathbb{T}^3)$ whose Fourier coefficients are those of a divergence-free velocity, its curl, and $S=\\frac12(\\nabla u+\\nabla u^T)$. Then $\\sum_{ij}\\|S_{ij}\\|_2^2=\\frac12\\sum_i\\…”. Lean theorem `L2_strain_le` assumes `hS : ∀ n i j, coeff (S i j) n = strainSym (kvec n) (fun j => coeff (u j) n) i j`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "be0ae03c88ef",
+      "claimId": "theorem-20",
+      "kind": "conditional",
+      "lean": "dS_identity_smooth",
+      "key": "hyp:VorticityEq setting ν u w",
+      "detail": "`dS_identity_smooth` assumes `hw : VorticityEq setting ν u w`, not stated in the claim.",
+      "question": "Paper claim Theorem 20 (theorem-20) states: “Let $S=\\frac12\\int|\\omega|^2-\\frac{\\kappa}{2}\\int|\\omega|^4\\phi$. For smooth periodic solutions of (\\ref{div})--(\\ref{wt}), \\[S'=\\int\\omega_i\\omega_j\\partial_ju_i-\\nu\\int|\\nabla\\omega|^2-\\tfrac{\\kapp…”. Lean theorem `dS_identity_smooth` assumes `hw : VorticityEq setting ν u w`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "c2da3a6e2637",
+      "claimId": "theorem-20",
+      "kind": "conditional",
+      "lean": "dS_identity_smooth",
+      "key": "hyp:WeightEq setting u w φ",
+      "detail": "`dS_identity_smooth` assumes `hφ : WeightEq setting u w φ`, not stated in the claim.",
+      "question": "Paper claim Theorem 20 (theorem-20) states: “Let $S=\\frac12\\int|\\omega|^2-\\frac{\\kappa}{2}\\int|\\omega|^4\\phi$. For smooth periodic solutions of (\\ref{div})--(\\ref{wt}), \\[S'=\\int\\omega_i\\omega_j\\partial_ju_i-\\nu\\int|\\nabla\\omega|^2-\\tfrac{\\kapp…”. Lean theorem `dS_identity_smooth` assumes `hφ : WeightEq setting u w φ`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "29191cf16453",
+      "claimId": "theorem-21",
+      "kind": "narrower",
+      "lean": "le_integral_sq_of_deriv",
+      "key": "bound:t>=0",
+      "detail": "`le_integral_sq_of_deriv` restricts t ≥ 0; the claim states no such restriction.",
+      "question": "Paper claim Theorem 21 (theorem-21) states: “Let $h,M$ be continuous, $g(0)=0$, and $g'=h\\le M^2$ on $[0,t]$. Then $g(t)\\le\\int_0^tM^2$.”. Lean theorem `le_integral_sq_of_deriv` assumes `0 ≤ t` (restricting t ≥ 0), which the claim does not state. Is the restricted domain intentional?",
+      "weight": 0.6
+    },
+    {
+      "id": "2bb5308c02f1",
+      "claimId": "theorem-21",
+      "kind": "conditional",
+      "lean": "le_integral_sq_of_deriv",
+      "key": "hyp:∀ s ∈ Icc 0 t, h s ≤ M s ^ 2",
+      "detail": "`le_integral_sq_of_deriv` assumes `hle : ∀ s ∈ Icc 0 t, h s ≤ M s ^ 2`, not stated in the claim.",
+      "question": "Paper claim Theorem 21 (theorem-21) states: “Let $h,M$ be continuous, $g(0)=0$, and $g'=h\\le M^2$ on $[0,t]$. Then $g(t)\\le\\int_0^tM^2$.”. Lean theorem `le_integral_sq_of_deriv` assumes `hle : ∀ s ∈ Icc 0 t, h s ≤ M s ^ 2`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "596249bfd365",
+      "claimId": "theorem-22",
+      "kind": "conditional",
+      "lean": "ode_bounded",
+      "key": "hyp:∀ t ∈ Icc 0 T, HasDerivAt y (y t ^ 2 * (C - κ * y t)) t",
+      "detail": "`ode_bounded` assumes `hy : ∀ t ∈ Icc 0 T, HasDerivAt y (y t ^ 2 * (C - κ * y t)) t`, not stated in the claim.",
+      "question": "Paper claim Theorem 22 (theorem-22) states: “Let $\\kappa>0$, and let $y'=y^2(C-\\kappa y)$ on $[0,T]$. Then $\\min(y_0,C/\\kappa,0)\\le y(t)\\le\\max(y_0,C/\\kappa,0)$.”. Lean theorem `ode_bounded` assumes `hy : ∀ t ∈ Icc 0 T, HasDerivAt y (y t ^ 2 * (C - κ * y t)) t`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    }
+  ],
+  "status": "halt",
+  "mapFile": "../../PipelineHalt/examples/weighted-enstrophy-identities/pipelinehalt.map.json"
+}

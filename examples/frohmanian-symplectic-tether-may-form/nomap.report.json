@@ -1,0 +1,1751 @@
+{
+  "tool": "pipelinehalt",
+  "version": "0.4.0",
+  "anchorTitle": "The Frohmanian Symplectic Tether $\\T$:\\\\ Written Proofs Companion to the Lean~4 Formalization",
+  "generatedAt": "2026-11-03T21:10:20.753Z",
+  "declarationsScanned": 428,
+  "claims": [
+    {
+      "claim": {
+        "id": "definition-2.1",
+        "number": "Definition 2.1",
+        "statement": "$\\T[\\kappa,w,u](F,G):=-(\\kappa w)\\ip{\\Pi_uF}{\\Pi_uG}$. \\LeanRef{Frohman.Tether.frohmanianTether; frohmanianTether_apply}",
+        "kind": "definition",
+        "source": "paper/companion.tex:63"
+      },
+      "matched": [
+        {
+          "name": "frohmanianTether",
+          "score": 0.244,
+          "explicit": false
+        }
+      ],
+      "mismatches": [],
+      "drift": 0
+    },
+    {
+      "claim": {
+        "id": "lemma-2.2",
+        "number": "Lemma 2.2",
+        "statement": "(a) $\\T$ is symmetric. (b) $\\T(F,F)\\le0$ whenever $\\kappa w\\ge0$. (c) It is degenerate with respect to the kinetic-energy gradient: $\\T(F,u)=0$ for all $F$. (d) It is invariant under every isometry commuting with $\\Pi_u$.",
+        "kind": "lemma",
+        "source": "paper/companion.tex:67",
+        "title": "Basic properties"
+      },
+      "matched": [
+        {
+          "name": "degeneracy_verification",
+          "score": 0.236,
+          "explicit": false
+        }
+      ],
+      "mismatches": [],
+      "drift": 0
+    },
+    {
+      "claim": {
+        "id": "thm:unique",
+        "number": "Theorem 2.3",
+        "statement": "Let $B$ be a symmetric bilinear form that is (C1) invariant under the coadjoint isometries fixing $u$ and (C2) degenerate with respect to $u$. Then $B=\\T[c,1,u]$ for some $c\\in\\mathbb R$. If, in addition, (C3) fixes the coefficient ($C3(\\T[c,1,u])\\Rightarrow c=\\kappa w$), then $B=\\T[\\kappa,w,u]$.",
+        "kind": "theorem",
+        "source": "paper/companion.tex:78",
+        "title": "Uniqueness up to scale"
+      },
+      "matched": [
+        {
+          "name": "admissible_eq_smul_frohmanianTether",
+          "score": 0.279,
+          "explicit": false
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "cd7541d5e2fb",
+          "claimId": "thm:unique",
+          "kind": "ambiguous",
+          "key": "title-vs-statement",
+          "detail": "Title “Uniqueness up to scale” shares almost no terms with the statement.",
+          "question": "Paper claim Theorem 2.3 (thm:unique) states: “Let $B$ be a symmetric bilinear form that is (C1) invariant under the coadjoint isometries fixing $u$ and (C2) degenerate with respect to $u$. Then $B=\\T[c,1,u]$ for some $c\\in\\mathbb R$. If, in addi…”. Its title is “Uniqueness up to scale”, which does not appear to describe that statement. Is the title or the statement misworded?",
+          "weight": 0.3
+        },
+        {
+          "id": "d1da3cc1e119",
+          "claimId": "thm:unique",
+          "kind": "conditional",
+          "lean": "admissible_eq_smul_frohmanianTether",
+          "key": "hyp:3 ≤ Module.finrank ℝ H",
+          "detail": "`admissible_eq_smul_frohmanianTether` assumes `hdim : 3 ≤ Module.finrank ℝ H`, not stated in the claim.",
+          "question": "Paper claim Theorem 2.3 (thm:unique) states: “Let $B$ be a symmetric bilinear form that is (C1) invariant under the coadjoint isometries fixing $u$ and (C2) degenerate with respect to $u$. Then $B=\\T[c,1,u]$ for some $c\\in\\mathbb R$. If, in addi…”. Lean theorem `admissible_eq_smul_frohmanianTether` assumes `hdim : 3 ≤ Module.finrank ℝ H`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "afbf776c6966",
+          "claimId": "thm:unique",
+          "kind": "conditional",
+          "lean": "admissible_eq_smul_frohmanianTether",
+          "key": "hyp:DegenerateWRTKineticEnergy u B",
+          "detail": "`admissible_eq_smul_frohmanianTether` assumes `hC2 : DegenerateWRTKineticEnergy u B`, not stated in the claim.",
+          "question": "Paper claim Theorem 2.3 (thm:unique) states: “Let $B$ be a symmetric bilinear form that is (C1) invariant under the coadjoint isometries fixing $u$ and (C2) degenerate with respect to $u$. Then $B=\\T[c,1,u]$ for some $c\\in\\mathbb R$. If, in addi…”. Lean theorem `admissible_eq_smul_frohmanianTether` assumes `hC2 : DegenerateWRTKineticEnergy u B`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        }
+      ],
+      "drift": 0.825
+    },
+    {
+      "claim": {
+        "id": "thm:routeA",
+        "number": "Theorem 2.4",
+        "statement": "Let $\\omega\\perp u$, $\\|\\omega\\|=1$, $w\\neq0$. Suppose $\\T[\\kappa,w,u]$ matches the stretching coefficient $S$ in the sense $\\T[\\kappa,w,u](\\omega,\\omega)+S w=0$. Then $\\kappa=S$. Consequently, in $\\dim\\ge3$ with $S\\ge0$, $w>0$, a correction is admissible for Route~A iff $B=\\T[\\kappa,w,u]$ with $\\kappa=S$.",
+        "kind": "theorem",
+        "source": "paper/companion.tex:93",
+        "title": "Route A determines $\\kappa$"
+      },
+      "matched": [
+        {
+          "name": "uniqueness_routeA_iff",
+          "score": 0.387,
+          "explicit": false
+        },
+        {
+          "name": "kappa_eq_stretching_of_admissible",
+          "score": 0.341,
+          "explicit": false
+        },
+        {
+          "name": "frohmanian_symplectic_tether_theorem",
+          "score": 0.328,
+          "explicit": false
+        },
+        {
+          "name": "routeA_determines_kappa",
+          "score": 0.305,
+          "explicit": false
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "0351ad80e81e",
+          "claimId": "thm:routeA",
+          "kind": "conditional",
+          "lean": "uniqueness_routeA_iff",
+          "key": "hyp:3 ≤ Module.finrank ℝ H",
+          "detail": "`uniqueness_routeA_iff` assumes `hdim : 3 ≤ Module.finrank ℝ H`, not stated in the claim.",
+          "question": "Paper claim Theorem 2.4 (thm:routeA) states: “Let $\\omega\\perp u$, $\\|\\omega\\|=1$, $w\\neq0$. Suppose $\\T[\\kappa,w,u]$ matches the stretching coefficient $S$ in the sense $\\T[\\kappa,w,u](\\omega,\\omega)+S w=0$. Then $\\kappa=S$. Consequently, in $\\…”. Lean theorem `uniqueness_routeA_iff` assumes `hdim : 3 ≤ Module.finrank ℝ H`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "f1d97b1153ef",
+          "claimId": "thm:routeA",
+          "kind": "narrower",
+          "lean": "uniqueness_routeA_iff",
+          "key": "bound:w>=0vs1",
+          "detail": "`uniqueness_routeA_iff` uses w ≥ 0 where the claim says w ≥ 1 (could be an indexing shift; direction not decidable syntactically).",
+          "question": "Paper claim Theorem 2.4 (thm:routeA) states: “Let $\\omega\\perp u$, $\\|\\omega\\|=1$, $w\\neq0$. Suppose $\\T[\\kappa,w,u]$ matches the stretching coefficient $S$ in the sense $\\T[\\kappa,w,u](\\omega,\\omega)+S w=0$. Then $\\kappa=S$. Consequently, in $\\…”. Lean theorem `uniqueness_routeA_iff` assumes `0 ≤ w` (w ≥ 0), but the claim says w ≥ 1. Is this an intentional indexing convention or a genuine change of domain?",
+          "weight": 0.6
+        },
+        {
+          "id": "ffbeabec45dd",
+          "claimId": "thm:routeA",
+          "kind": "conditional",
+          "lean": "frohmanian_symplectic_tether_theorem",
+          "key": "hyp:3 ≤ Module.finrank ℝ H",
+          "detail": "`frohmanian_symplectic_tether_theorem` assumes `hdim : 3 ≤ Module.finrank ℝ H`, not stated in the claim.",
+          "question": "Paper claim Theorem 2.4 (thm:routeA) states: “Let $\\omega\\perp u$, $\\|\\omega\\|=1$, $w\\neq0$. Suppose $\\T[\\kappa,w,u]$ matches the stretching coefficient $S$ in the sense $\\T[\\kappa,w,u](\\omega,\\omega)+S w=0$. Then $\\kappa=S$. Consequently, in $\\…”. Lean theorem `frohmanian_symplectic_tether_theorem` assumes `hdim : 3 ≤ Module.finrank ℝ H`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        }
+      ],
+      "drift": 0.9
+    },
+    {
+      "claim": {
+        "id": "thm:jacobi",
+        "number": "Theorem 2.5",
+        "statement": "For a classical (Jacobi) bracket $P$ and the tethered bracket $P+\\T$, the Jacobiator expands into nine terms. The three purely classical ones cancel by Jacobi of $P$, and the three purely tether terms vanish. So the Jacobiator equals the cyclic sum of the mixed terms, and Jacobi holds on a set $R$ iff that cyclic sum vanishes on $R$. It vanishes when $u$ is central for $P$, $P$ is homogeneous in its first slot, and $\\Pi_u P(a,b)=0$.",
+        "kind": "theorem",
+        "source": "paper/companion.tex:105",
+        "title": "Nine-term Jacobi"
+      },
+      "matched": [
+        {
+          "name": "jacobi_iff_mixed_cancel",
+          "score": 0.47,
+          "explicit": false
+        },
+        {
+          "name": "mixedTerm_eq_zero",
+          "score": 0.326,
+          "explicit": false
+        },
+        {
+          "name": "jacT_eq_mixedSum",
+          "score": 0.315,
+          "explicit": false
+        },
+        {
+          "name": "jacobiator_eq_mixed",
+          "score": 0.289,
+          "explicit": false
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "b8c9e3d7247a",
+          "claimId": "thm:jacobi",
+          "kind": "conditional",
+          "lean": "jacT_eq_mixedSum",
+          "key": "hyp:pr u u ≠ 0",
+          "detail": "`jacT_eq_mixedSum` assumes `hu : pr u u ≠ 0`, not stated in the claim.",
+          "question": "Paper claim Theorem 2.5 (thm:jacobi) states: “For a classical (Jacobi) bracket $P$ and the tethered bracket $P+\\T$, the Jacobiator expands into nine terms. The three purely classical ones cancel by Jacobi of $P$, and the three purely tether term…”. Lean theorem `jacT_eq_mixedSum` assumes `hu : pr u u ≠ 0`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        }
+      ],
+      "drift": 0.5
+    },
+    {
+      "claim": {
+        "id": "theorem-2.6",
+        "number": "Theorem 2.6",
+        "statement": "Every bilinear form splits uniquely into symmetric and antisymmetric parts. $\\T$ is purely symmetric, and the metriplectic bracket $P+\\T$ with $P$ antisymmetric conserves kinetic energy: $\\{E,E\\}=0$ and $\\T(F,\\nabla E)=0$.",
+        "kind": "theorem",
+        "source": "paper/companion.tex:121",
+        "title": "Metriplectic split"
+      },
+      "matched": [
+        {
+          "name": "metriplectic_energy_conserved",
+          "score": 0.395,
+          "explicit": false
+        },
+        {
+          "name": "metriplecticBracket_split",
+          "score": 0.376,
+          "explicit": false
+        },
+        {
+          "name": "split_unique",
+          "score": 0.253,
+          "explicit": false
+        }
+      ],
+      "mismatches": [],
+      "drift": 0
+    },
+    {
+      "claim": {
+        "id": "prop:ce",
+        "number": "Proposition 2.7",
+        "statement": "(a) $d_2\\circ d_1=0$ on 1-cochains of any Lie algebra. (b) Coboundaries are cocycles. (c) If $2$ is invertible and the symmetric part of $\\beta$ is alternating, it is zero. So a nonzero symmetric correction such as $\\T$ is never a CE 2-cochain.",
+        "kind": "proposition",
+        "source": "paper/companion.tex:132",
+        "title": "Chevalley--Eilenberg"
+      },
+      "matched": [
+        {
+          "name": "symPart_not_cochain",
+          "score": 0.407,
+          "explicit": false
+        },
+        {
+          "name": "d2_d1",
+          "score": 0.279,
+          "explicit": false
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "676b9bd04e2a",
+          "claimId": "prop:ce",
+          "kind": "conditional",
+          "lean": "symPart_not_cochain",
+          "key": "hyp:IsAlt (symPart β)",
+          "detail": "`symPart_not_cochain` assumes `h : IsAlt (symPart β)`, not stated in the claim.",
+          "question": "Paper claim Proposition 2.7 (prop:ce) states: “(a) $d_2\\circ d_1=0$ on 1-cochains of any Lie algebra. (b) Coboundaries are cocycles. (c) If $2$ is invertible and the symmetric part of $\\beta$ is alternating, it is zero. So a nonzero symmetric cor…”. Lean theorem `symPart_not_cochain` assumes `h : IsAlt (symPart β)`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        }
+      ],
+      "drift": 0.5
+    },
+    {
+      "claim": {
+        "id": "prop:shear",
+        "number": "Proposition 2.8",
+        "statement": "$\\mathrm{div}(\\sin y,0,0)\\equiv0$, whereas $\\mathrm{div}(\\sin x,0,0)=\\cos x$, which equals $1$ at the origin.",
+        "kind": "proposition",
+        "source": "paper/companion.tex:143",
+        "title": "$T^3$ shear"
+      },
+      "matched": [
+        {
+          "name": "div_mode",
+          "score": 0.352,
+          "explicit": false
+        },
+        {
+          "name": "shearX_mixed_coeff",
+          "score": 0.317,
+          "explicit": false
+        },
+        {
+          "name": "shearBad_div",
+          "score": 0.313,
+          "explicit": false
+        },
+        {
+          "name": "shearBad_not_divFree",
+          "score": 0.309,
+          "explicit": false
+        }
+      ],
+      "mismatches": [],
+      "drift": 0
+    },
+    {
+      "claim": {
+        "id": "thm:fieldjacobi",
+        "number": "Theorem 2.9",
+        "statement": "•[(a)] The field bracket satisfies Jacobi. So the Arnold (Lie--Poisson) bracket on linear functionals is classical. •[(b)] If $\\langle u,u\\rangle\\neq0$, the Jacobiator of the tethered bracket equals the cyclic sum of the mixed terms $[T(a,b),c]+T([a,b],c)$. •[(c)] Divergence-free fields along $e_x$ (parallel shears $f(y,z)e_x$) commute pairwise. Hence at $u=(\\sin y,0,0)$ the mixed terms cancel, and Jacobi holds, for every triple in that class. •[(d)] At $u=(\\sin x,0,0)$, which is not divergence-free, take the divergence-free triple $a=b=c=(1,0,0)$. The $e^{ix}$, $x$-component coefficient of the mixed sum is $\\tfrac32\\kappa w$. So Jacobi fails whenever $\\kappa w\\ne0$. •[(e)] At $u=(\\sin y,0,0)$ with the divergence-free triple $a=b=c=(0,0,\\sin x)$, the $e^{i(x+y)}$, $z$-component coefficient is $\\tfrac{3i}{8}\\kappa w\\neq0$. So Jacobi fails here too.",
+        "kind": "theorem",
+        "source": "paper/companion.tex:162",
+        "title": "Field-level Jacobi"
+      },
+      "matched": [
+        {
+          "name": "shearY_mixed_cancel",
+          "score": 0.274,
+          "explicit": false
+        },
+        {
+          "name": "shearY_transverse_coeff",
+          "score": 0.268,
+          "explicit": false
+        },
+        {
+          "name": "shearY_jacobi_fails_transverse",
+          "score": 0.232,
+          "explicit": false
+        },
+        {
+          "name": "mixedF_eq_zero_of_shear",
+          "score": 0.23,
+          "explicit": false
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "d566201c7924",
+          "claimId": "thm:fieldjacobi",
+          "kind": "ambiguous",
+          "key": "title-vs-statement",
+          "detail": "Title “Field-level Jacobi” shares almost no terms with the statement.",
+          "question": "Paper claim Theorem 2.9 (thm:fieldjacobi) states: “•[(a)] The field bracket satisfies Jacobi. So the Arnold (Lie--Poisson) bracket on linear functionals is classical. •[(b)] If $\\langle u,u\\rangle\\neq0$, the Jacobiator of the tethered bracket equals …”. Its title is “Field-level Jacobi”, which does not appear to describe that statement. Is the title or the statement misworded?",
+          "weight": 0.3
+        },
+        {
+          "id": "a8c4bd46600f",
+          "claimId": "thm:fieldjacobi",
+          "kind": "conditional",
+          "lean": "shearY_mixed_cancel",
+          "key": "hyp:XOnly a",
+          "detail": "`shearY_mixed_cancel` assumes `ha : XOnly a`, not stated in the claim.",
+          "question": "Paper claim Theorem 2.9 (thm:fieldjacobi) states: “•[(a)] The field bracket satisfies Jacobi. So the Arnold (Lie--Poisson) bracket on linear functionals is classical. •[(b)] If $\\langle u,u\\rangle\\neq0$, the Jacobiator of the tethered bracket equals …”. Lean theorem `shearY_mixed_cancel` assumes `ha : XOnly a`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "82b752d3fd43",
+          "claimId": "thm:fieldjacobi",
+          "kind": "conditional",
+          "lean": "shearY_mixed_cancel",
+          "key": "hyp:XOnly b",
+          "detail": "`shearY_mixed_cancel` assumes `hb : XOnly b`, not stated in the claim.",
+          "question": "Paper claim Theorem 2.9 (thm:fieldjacobi) states: “•[(a)] The field bracket satisfies Jacobi. So the Arnold (Lie--Poisson) bracket on linear functionals is classical. •[(b)] If $\\langle u,u\\rangle\\neq0$, the Jacobiator of the tethered bracket equals …”. Lean theorem `shearY_mixed_cancel` assumes `hb : XOnly b`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "c0774d45de21",
+          "claimId": "thm:fieldjacobi",
+          "kind": "conditional",
+          "lean": "shearY_mixed_cancel",
+          "key": "hyp:XOnly c",
+          "detail": "`shearY_mixed_cancel` assumes `hc : XOnly c`, not stated in the claim.",
+          "question": "Paper claim Theorem 2.9 (thm:fieldjacobi) states: “•[(a)] The field bracket satisfies Jacobi. So the Arnold (Lie--Poisson) bracket on linear functionals is classical. •[(b)] If $\\langle u,u\\rangle\\neq0$, the Jacobiator of the tethered bracket equals …”. Lean theorem `shearY_mixed_cancel` assumes `hc : XOnly c`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "9cec6a6765ae",
+          "claimId": "thm:fieldjacobi",
+          "kind": "conditional",
+          "lean": "mixedF_eq_zero_of_shear",
+          "key": "hyp:XOnly u",
+          "detail": "`mixedF_eq_zero_of_shear` assumes `hu : XOnly u`, not stated in the claim.",
+          "question": "Paper claim Theorem 2.9 (thm:fieldjacobi) states: “•[(a)] The field bracket satisfies Jacobi. So the Arnold (Lie--Poisson) bracket on linear functionals is classical. •[(b)] If $\\langle u,u\\rangle\\neq0$, the Jacobiator of the tethered bracket equals …”. Lean theorem `mixedF_eq_zero_of_shear` assumes `hu : XOnly u`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "0443b401b86e",
+          "claimId": "thm:fieldjacobi",
+          "kind": "conditional",
+          "lean": "mixedF_eq_zero_of_shear",
+          "key": "hyp:XOnly a",
+          "detail": "`mixedF_eq_zero_of_shear` assumes `ha : XOnly a`, not stated in the claim.",
+          "question": "Paper claim Theorem 2.9 (thm:fieldjacobi) states: “•[(a)] The field bracket satisfies Jacobi. So the Arnold (Lie--Poisson) bracket on linear functionals is classical. •[(b)] If $\\langle u,u\\rangle\\neq0$, the Jacobiator of the tethered bracket equals …”. Lean theorem `mixedF_eq_zero_of_shear` assumes `ha : XOnly a`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "1e60cb20ac26",
+          "claimId": "thm:fieldjacobi",
+          "kind": "conditional",
+          "lean": "mixedF_eq_zero_of_shear",
+          "key": "hyp:XOnly b",
+          "detail": "`mixedF_eq_zero_of_shear` assumes `hb : XOnly b`, not stated in the claim.",
+          "question": "Paper claim Theorem 2.9 (thm:fieldjacobi) states: “•[(a)] The field bracket satisfies Jacobi. So the Arnold (Lie--Poisson) bracket on linear functionals is classical. •[(b)] If $\\langle u,u\\rangle\\neq0$, the Jacobiator of the tethered bracket equals …”. Lean theorem `mixedF_eq_zero_of_shear` assumes `hb : XOnly b`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "42969de792c8",
+          "claimId": "thm:fieldjacobi",
+          "kind": "conditional",
+          "lean": "mixedF_eq_zero_of_shear",
+          "key": "hyp:XOnly c",
+          "detail": "`mixedF_eq_zero_of_shear` assumes `hc : XOnly c`, not stated in the claim.",
+          "question": "Paper claim Theorem 2.9 (thm:fieldjacobi) states: “•[(a)] The field bracket satisfies Jacobi. So the Arnold (Lie--Poisson) bracket on linear functionals is classical. •[(b)] If $\\langle u,u\\rangle\\neq0$, the Jacobiator of the tethered bracket equals …”. Lean theorem `mixedF_eq_zero_of_shear` assumes `hc : XOnly c`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        }
+      ],
+      "drift": 0.995
+    },
+    {
+      "claim": {
+        "id": "theorem-3.1",
+        "number": "Theorem 3.1",
+        "statement": "If $(u,p)$ is a classical smooth solution of $\\partial_tu+(u\\cdot\\nabla)u=-\\nabla p+\\nu\\Delta u+F$ with $\\mathrm{div}\\,u=0$, then $\\omega=\\mathrm{curl}\\,u$ satisfies $\\partial_t\\omega+(u\\cdot\\nabla)\\omega=(\\omega\\cdot\\nabla)u+\\nu\\Delta\\omega+\\mathrm{curl}\\,F$.",
+        "kind": "theorem",
+        "source": "paper/companion.tex:196",
+        "title": "Curl of forced NS"
+      },
+      "matched": [
+        {
+          "name": "curlOfForcedNS",
+          "score": 0.297,
+          "explicit": false
+        },
+        {
+          "name": "classicalSolutionOn_zero",
+          "score": 0.281,
+          "explicit": false
+        },
+        {
+          "name": "classicalSolutionOn_of_nonpos",
+          "score": 0.26,
+          "explicit": false
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "92afe540c9d8",
+          "claimId": "theorem-3.1",
+          "kind": "ambiguous",
+          "key": "title-vs-statement",
+          "detail": "Title “Curl of forced NS” shares almost no terms with the statement.",
+          "question": "Paper claim Theorem 3.1 (theorem-3.1) states: “If $(u,p)$ is a classical smooth solution of $\\partial_tu+(u\\cdot\\nabla)u=-\\nabla p+\\nu\\Delta u+F$ with $\\mathrm{div}\\,u=0$, then $\\omega=\\mathrm{curl}\\,u$ satisfies $\\partial_t\\omega+(u\\cdot\\nabla)\\…”. Its title is “Curl of forced NS”, which does not appear to describe that statement. Is the title or the statement misworded?",
+          "weight": 0.3
+        }
+      ],
+      "drift": 0.3
+    },
+    {
+      "claim": {
+        "id": "theorem-3.2",
+        "number": "Theorem 3.2",
+        "statement": "For each nonzero wavevector $k$ and amplitude $a\\perp k$, the mode $b=\\frac{ik\\times a}{|k|^2}e^{ik\\cdot x}$ satisfies $\\mathrm{curl}\\,b=a\\,e^{ik\\cdot x}$ and $\\mathrm{div}\\,b=0$, and it is the unique such divergence-free mode. Summing gives a right inverse of curl on mean-zero divergence-free trigonometric polynomials.",
+        "kind": "theorem",
+        "source": "paper/companion.tex:208",
+        "title": "Biot--Savart on trigonometric polynomials"
+      },
+      "matched": [
+        {
+          "name": "div_bsMode",
+          "score": 0.244,
+          "explicit": false
+        },
+        {
+          "name": "curlRightInverse_trig",
+          "score": 0.217,
+          "explicit": false
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "9fc421062aad",
+          "claimId": "theorem-3.2",
+          "kind": "ambiguous",
+          "key": "title-vs-statement",
+          "detail": "Title “Biot--Savart on trigonometric polynomials” shares almost no terms with the statement.",
+          "question": "Paper claim Theorem 3.2 (theorem-3.2) states: “For each nonzero wavevector $k$ and amplitude $a\\perp k$, the mode $b=\\frac{ik\\times a}{|k|^2}e^{ik\\cdot x}$ satisfies $\\mathrm{curl}\\,b=a\\,e^{ik\\cdot x}$ and $\\mathrm{div}\\,b=0$, and it is the uniqu…”. Its title is “Biot--Savart on trigonometric polynomials”, which does not appear to describe that statement. Is the title or the statement misworded?",
+          "weight": 0.3
+        }
+      ],
+      "drift": 0.3
+    },
+    {
+      "claim": {
+        "id": "corollary-3.3",
+        "number": "Corollary 3.3",
+        "statement": "If $\\mathrm{curl}^{-1}$ is a right inverse of curl on the admissible class containing $-\\kappa P(|\\omega|^2\\omega)$, then every velocity solution of the tethered NS solves \\eqref{eq:tv}.",
+        "kind": "corollary",
+        "source": "paper/companion.tex:218",
+        "title": "Velocity form $\\Rightarrow$ vorticity form"
+      },
+      "matched": [
+        {
+          "name": "tetheredVorticity_of_velocity",
+          "score": 0.414,
+          "explicit": false
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "2f0c78c673b8",
+          "claimId": "corollary-3.3",
+          "kind": "ambiguous",
+          "key": "title-vs-statement",
+          "detail": "Title “Velocity form $\\Rightarrow$ vorticity form” shares almost no terms with the statement.",
+          "question": "Paper claim Corollary 3.3 (corollary-3.3) states: “If $\\mathrm{curl}^{-1}$ is a right inverse of curl on the admissible class containing $-\\kappa P(|\\omega|^2\\omega)$, then every velocity solution of the tethered NS solves \\eqref{eq:tv}.”. Its title is “Velocity form $\\Rightarrow$ vorticity form”, which does not appear to describe that statement. Is the title or the statement misworded?",
+          "weight": 0.3
+        },
+        {
+          "id": "57dd9f3f7724",
+          "claimId": "corollary-3.3",
+          "kind": "conditional",
+          "lean": "tetheredVorticity_of_velocity",
+          "key": "hyp:∀ t, Adm (fun y => -κ • P (cubic (vorticity u t)) y)",
+          "detail": "`tetheredVorticity_of_velocity` assumes `hadm : ∀ t, Adm (fun y => -κ • P (cubic (vorticity u t)) y)`, not stated in the claim.",
+          "question": "Paper claim Corollary 3.3 (corollary-3.3) states: “If $\\mathrm{curl}^{-1}$ is a right inverse of curl on the admissible class containing $-\\kappa P(|\\omega|^2\\omega)$, then every velocity solution of the tethered NS solves \\eqref{eq:tv}.”. Lean theorem `tetheredVorticity_of_velocity` assumes `hadm : ∀ t, Adm (fun y => -κ • P (cubic (vorticity u t)) y)`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        }
+      ],
+      "drift": 0.65
+    },
+    {
+      "claim": {
+        "id": "lemma-3.4",
+        "number": "Lemma 3.4",
+        "statement": "If $P$ is a symmetric idempotent and $P\\omega=\\omega$, then $\\ip{\\omega}{-\\kappa Pg}=-\\kappa\\ip{\\omega}{g}$. With $g=|\\omega|^2\\omega$ this equals $-\\kappa\\|\\omega\\|_4^4$.",
+        "kind": "lemma",
+        "source": "paper/companion.tex:225"
+      },
+      "matched": [
+        {
+          "name": "young_kappa_quarter",
+          "score": 0.295,
+          "explicit": false
+        },
+        {
+          "name": "young_lam",
+          "score": 0.244,
+          "explicit": false
+        }
+      ],
+      "mismatches": [],
+      "drift": 0
+    },
+    {
+      "claim": {
+        "id": "thm:L2",
+        "number": "Theorem 3.5",
+        "statement": "Let $E=\\tfrac12\\|\\omega\\|_2^2$ and $Q=\\|\\omega\\|_4^4$. Assume $E'=S-\\nu D-\\kappa Q$ (Cited Prop.~\\ref{cp:EI}), $S\\le C\\sqrt{2E}\\sqrt Q$ (Cited Prop.~\\ref{cp:CZ}), and $(2E)^2\\le Q$ (Cited Prop.~\\ref{cp:Holder}). Then for $\\kappa>0$, $E(t)\\le\\max(E_0,\\,C^2/(2\\kappa^2))$ on $[0,T]$.",
+        "kind": "theorem",
+        "source": "paper/companion.tex:230"
+      },
+      "matched": [
+        {
+          "name": "tethered_L2_vorticity_bounded",
+          "score": 0.305,
+          "explicit": false
+        },
+        {
+          "name": "tethered_enstrophy_uniform",
+          "score": 0.3,
+          "explicit": false
+        },
+        {
+          "name": "young_absorption",
+          "score": 0.24,
+          "explicit": false
+        },
+        {
+          "name": "routeA_layer2_bound",
+          "score": 0.231,
+          "explicit": false
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "d758bf272889",
+          "claimId": "thm:L2",
+          "kind": "conditional",
+          "lean": "tethered_L2_vorticity_bounded",
+          "key": "hyp:∀ x ∈ Ico 0 T, 0 ≤ D x",
+          "detail": "`tethered_L2_vorticity_bounded` assumes `hD : ∀ x ∈ Ico 0 T, 0 ≤ D x`, not stated in the claim.",
+          "question": "Paper claim Theorem 3.5 (thm:L2) states: “Let $E=\\tfrac12\\|\\omega\\|_2^2$ and $Q=\\|\\omega\\|_4^4$. Assume $E'=S-\\nu D-\\kappa Q$ (Cited Prop.~\\ref{cp:EI}), $S\\le C\\sqrt{2E}\\sqrt Q$ (Cited Prop.~\\ref{cp:CZ}), and $(2E)^2\\le Q$ (Cited Prop.~\\ref{…”. Lean theorem `tethered_L2_vorticity_bounded` assumes `hD : ∀ x ∈ Ico 0 T, 0 ≤ D x`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "b3dd16401dfc",
+          "claimId": "thm:L2",
+          "kind": "conditional",
+          "lean": "tethered_L2_vorticity_bounded",
+          "key": "hyp:∀ x ∈ Ico 0 T, 0 ≤ E x",
+          "detail": "`tethered_L2_vorticity_bounded` assumes `hE : ∀ x ∈ Ico 0 T, 0 ≤ E x`, not stated in the claim.",
+          "question": "Paper claim Theorem 3.5 (thm:L2) states: “Let $E=\\tfrac12\\|\\omega\\|_2^2$ and $Q=\\|\\omega\\|_4^4$. Assume $E'=S-\\nu D-\\kappa Q$ (Cited Prop.~\\ref{cp:EI}), $S\\le C\\sqrt{2E}\\sqrt Q$ (Cited Prop.~\\ref{cp:CZ}), and $(2E)^2\\le Q$ (Cited Prop.~\\ref{…”. Lean theorem `tethered_L2_vorticity_bounded` assumes `hE : ∀ x ∈ Ico 0 T, 0 ≤ E x`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "ca7aa5d3cd78",
+          "claimId": "thm:L2",
+          "kind": "conditional",
+          "lean": "tethered_L2_vorticity_bounded",
+          "key": "hyp:∀ x ∈ Ico 0 T, 0 ≤ Q x",
+          "detail": "`tethered_L2_vorticity_bounded` assumes `hQ : ∀ x ∈ Ico 0 T, 0 ≤ Q x`, not stated in the claim.",
+          "question": "Paper claim Theorem 3.5 (thm:L2) states: “Let $E=\\tfrac12\\|\\omega\\|_2^2$ and $Q=\\|\\omega\\|_4^4$. Assume $E'=S-\\nu D-\\kappa Q$ (Cited Prop.~\\ref{cp:EI}), $S\\le C\\sqrt{2E}\\sqrt Q$ (Cited Prop.~\\ref{cp:CZ}), and $(2E)^2\\le Q$ (Cited Prop.~\\ref{…”. Lean theorem `tethered_L2_vorticity_bounded` assumes `hQ : ∀ x ∈ Ico 0 T, 0 ≤ Q x`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "d0d649ab7d98",
+          "claimId": "thm:L2",
+          "kind": "conditional",
+          "lean": "tethered_enstrophy_uniform",
+          "key": "hyp:∀ x ∈ Ico 0 T, 0 ≤ D x",
+          "detail": "`tethered_enstrophy_uniform` assumes `hD : ∀ x ∈ Ico 0 T, 0 ≤ D x`, not stated in the claim.",
+          "question": "Paper claim Theorem 3.5 (thm:L2) states: “Let $E=\\tfrac12\\|\\omega\\|_2^2$ and $Q=\\|\\omega\\|_4^4$. Assume $E'=S-\\nu D-\\kappa Q$ (Cited Prop.~\\ref{cp:EI}), $S\\le C\\sqrt{2E}\\sqrt Q$ (Cited Prop.~\\ref{cp:CZ}), and $(2E)^2\\le Q$ (Cited Prop.~\\ref{…”. Lean theorem `tethered_enstrophy_uniform` assumes `hD : ∀ x ∈ Ico 0 T, 0 ≤ D x`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "1750ae7470d2",
+          "claimId": "thm:L2",
+          "kind": "conditional",
+          "lean": "tethered_enstrophy_uniform",
+          "key": "hyp:∀ x ∈ Ico 0 T, 0 ≤ E x",
+          "detail": "`tethered_enstrophy_uniform` assumes `hE : ∀ x ∈ Ico 0 T, 0 ≤ E x`, not stated in the claim.",
+          "question": "Paper claim Theorem 3.5 (thm:L2) states: “Let $E=\\tfrac12\\|\\omega\\|_2^2$ and $Q=\\|\\omega\\|_4^4$. Assume $E'=S-\\nu D-\\kappa Q$ (Cited Prop.~\\ref{cp:EI}), $S\\le C\\sqrt{2E}\\sqrt Q$ (Cited Prop.~\\ref{cp:CZ}), and $(2E)^2\\le Q$ (Cited Prop.~\\ref{…”. Lean theorem `tethered_enstrophy_uniform` assumes `hE : ∀ x ∈ Ico 0 T, 0 ≤ E x`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "fd6fb15983d6",
+          "claimId": "thm:L2",
+          "kind": "conditional",
+          "lean": "tethered_enstrophy_uniform",
+          "key": "hyp:∀ x ∈ Ico 0 T, 0 ≤ Q x",
+          "detail": "`tethered_enstrophy_uniform` assumes `hQ : ∀ x ∈ Ico 0 T, 0 ≤ Q x`, not stated in the claim.",
+          "question": "Paper claim Theorem 3.5 (thm:L2) states: “Let $E=\\tfrac12\\|\\omega\\|_2^2$ and $Q=\\|\\omega\\|_4^4$. Assume $E'=S-\\nu D-\\kappa Q$ (Cited Prop.~\\ref{cp:EI}), $S\\le C\\sqrt{2E}\\sqrt Q$ (Cited Prop.~\\ref{cp:CZ}), and $(2E)^2\\le Q$ (Cited Prop.~\\ref{…”. Lean theorem `tethered_enstrophy_uniform` assumes `hQ : ∀ x ∈ Ico 0 T, 0 ≤ Q x`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "744fedfd6502",
+          "claimId": "thm:L2",
+          "kind": "conditional",
+          "lean": "routeA_layer2_bound",
+          "key": "hyp:RouteAFeedback S w u ω 𝔗_F[κ, w, u]",
+          "detail": "`routeA_layer2_bound` assumes `hA : RouteAFeedback S w u ω 𝔗_F[κ, w, u]`, not stated in the claim.",
+          "question": "Paper claim Theorem 3.5 (thm:L2) states: “Let $E=\\tfrac12\\|\\omega\\|_2^2$ and $Q=\\|\\omega\\|_4^4$. Assume $E'=S-\\nu D-\\kappa Q$ (Cited Prop.~\\ref{cp:EI}), $S\\le C\\sqrt{2E}\\sqrt Q$ (Cited Prop.~\\ref{cp:CZ}), and $(2E)^2\\le Q$ (Cited Prop.~\\ref{…”. Lean theorem `routeA_layer2_bound` assumes `hA : RouteAFeedback S w u ω 𝔗_F[κ, w, u]`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "270d6d8d843e",
+          "claimId": "thm:L2",
+          "kind": "narrower",
+          "lean": "routeA_layer2_bound",
+          "key": "bound:y>=0",
+          "detail": "`routeA_layer2_bound` restricts y ≥ 0; the claim states no such restriction.",
+          "question": "Paper claim Theorem 3.5 (thm:L2) states: “Let $E=\\tfrac12\\|\\omega\\|_2^2$ and $Q=\\|\\omega\\|_4^4$. Assume $E'=S-\\nu D-\\kappa Q$ (Cited Prop.~\\ref{cp:EI}), $S\\le C\\sqrt{2E}\\sqrt Q$ (Cited Prop.~\\ref{cp:CZ}), and $(2E)^2\\le Q$ (Cited Prop.~\\ref{…”. Lean theorem `routeA_layer2_bound` assumes `0 ≤ y 0` (restricting y ≥ 0), which the claim does not state. Is the restricted domain intentional?",
+          "weight": 0.6
+        },
+        {
+          "id": "c3644725c9b0",
+          "claimId": "thm:L2",
+          "kind": "conditional",
+          "lean": "routeA_layer2_bound",
+          "key": "hyp:ContinuousOn y (Set.Icc 0 T)",
+          "detail": "`routeA_layer2_bound` assumes `hc : ContinuousOn y (Set.Icc 0 T)`, not stated in the claim.",
+          "question": "Paper claim Theorem 3.5 (thm:L2) states: “Let $E=\\tfrac12\\|\\omega\\|_2^2$ and $Q=\\|\\omega\\|_4^4$. Assume $E'=S-\\nu D-\\kappa Q$ (Cited Prop.~\\ref{cp:EI}), $S\\le C\\sqrt{2E}\\sqrt Q$ (Cited Prop.~\\ref{cp:CZ}), and $(2E)^2\\le Q$ (Cited Prop.~\\ref{…”. Lean theorem `routeA_layer2_bound` assumes `hc : ContinuousOn y (Set.Icc 0 T)`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "aaaad56ba215",
+          "claimId": "thm:L2",
+          "kind": "conditional",
+          "lean": "routeA_layer2_bound",
+          "key": "hyp:∀ x ∈ Set.Ico 0 T, HasDerivWithinAt y (y' x) (Set.Ici x) x",
+          "detail": "`routeA_layer2_bound` assumes `hd : ∀ x ∈ Set.Ico 0 T, HasDerivWithinAt y (y' x) (Set.Ici x) x`, not stated in the claim.",
+          "question": "Paper claim Theorem 3.5 (thm:L2) states: “Let $E=\\tfrac12\\|\\omega\\|_2^2$ and $Q=\\|\\omega\\|_4^4$. Assume $E'=S-\\nu D-\\kappa Q$ (Cited Prop.~\\ref{cp:EI}), $S\\le C\\sqrt{2E}\\sqrt Q$ (Cited Prop.~\\ref{cp:CZ}), and $(2E)^2\\le Q$ (Cited Prop.~\\ref{…”. Lean theorem `routeA_layer2_bound` assumes `hd : ∀ x ∈ Set.Ico 0 T, HasDerivWithinAt y (y' x) (Set.Ici x) x`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "bba57c330fb5",
+          "claimId": "thm:L2",
+          "kind": "conditional",
+          "lean": "routeA_layer2_bound",
+          "key": "hyp:∀ x ∈ Set.Ico 0 T, y' x ≤ C * y x ^ 2 - kappaDD κ Cabs * y x ^ 3",
+          "detail": "`routeA_layer2_bound` assumes `hineq : ∀ x ∈ Set.Ico 0 T, y' x ≤ C * y x ^ 2 - kappaDD κ Cabs * y x ^ 3`, not stated in the claim.",
+          "question": "Paper claim Theorem 3.5 (thm:L2) states: “Let $E=\\tfrac12\\|\\omega\\|_2^2$ and $Q=\\|\\omega\\|_4^4$. Assume $E'=S-\\nu D-\\kappa Q$ (Cited Prop.~\\ref{cp:EI}), $S\\le C\\sqrt{2E}\\sqrt Q$ (Cited Prop.~\\ref{cp:CZ}), and $(2E)^2\\le Q$ (Cited Prop.~\\ref{…”. Lean theorem `routeA_layer2_bound` assumes `hineq : ∀ x ∈ Set.Ico 0 T, y' x ≤ C * y x ^ 2 - kappaDD κ Cabs * y x ^ 3`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        }
+      ],
+      "drift": 1
+    },
+    {
+      "claim": {
+        "id": "lemma-3.6",
+        "number": "Lemma 3.6",
+        "statement": "For $\\omega\\in\\mathbb R^3$ and $D=\\nabla\\omega$, $\\sum_{ij}D_{ij}\\,\\partial_j(|\\omega|^2\\omega_i)=|\\omega|^2|D|^2+\\tfrac12\\sum_j(2\\sum_k\\omega_kD_{kj})^2\\ge0$, with no alignment assumption.",
+        "kind": "lemma",
+        "source": "paper/companion.tex:244",
+        "title": "Tether is sign-definite at $H^1$"
+      },
+      "matched": [
+        {
+          "name": "tether_H1_density_nonneg'",
+          "score": 0.296,
+          "explicit": false
+        },
+        {
+          "name": "lp_absorb",
+          "score": 0.263,
+          "explicit": false
+        },
+        {
+          "name": "tether_H1_density_nonneg",
+          "score": 0.254,
+          "explicit": false
+        },
+        {
+          "name": "frohmanianTether_feedback",
+          "score": 0.248,
+          "explicit": false
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "52d0f336b86b",
+          "claimId": "lemma-3.6",
+          "kind": "ambiguous",
+          "key": "title-vs-statement",
+          "detail": "Title “Tether is sign-definite at $H^1$” shares almost no terms with the statement.",
+          "question": "Paper claim Lemma 3.6 (lemma-3.6) states: “For $\\omega\\in\\mathbb R^3$ and $D=\\nabla\\omega$, $\\sum_{ij}D_{ij}\\,\\partial_j(|\\omega|^2\\omega_i)=|\\omega|^2|D|^2+\\tfrac12\\sum_j(2\\sum_k\\omega_kD_{kj})^2\\ge0$, with no alignment assumption.”. Its title is “Tether is sign-definite at $H^1$”, which does not appear to describe that statement. Is the title or the statement misworded?",
+          "weight": 0.3
+        },
+        {
+          "id": "c7d019645598",
+          "claimId": "lemma-3.6",
+          "kind": "conditional",
+          "lean": "frohmanianTether_feedback",
+          "key": "hyp:2 ≤ Module.finrank ℝ H",
+          "detail": "`frohmanianTether_feedback` assumes `hdim : 2 ≤ Module.finrank ℝ H`, not stated in the claim.",
+          "question": "Paper claim Lemma 3.6 (lemma-3.6) states: “For $\\omega\\in\\mathbb R^3$ and $D=\\nabla\\omega$, $\\sum_{ij}D_{ij}\\,\\partial_j(|\\omega|^2\\omega_i)=|\\omega|^2|D|^2+\\tfrac12\\sum_j(2\\sum_k\\omega_kD_{kj})^2\\ge0$, with no alignment assumption.”. Lean theorem `frohmanianTether_feedback` assumes `hdim : 2 ≤ Module.finrank ℝ H`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "efff76fbf218",
+          "claimId": "lemma-3.6",
+          "kind": "narrower",
+          "lean": "frohmanianTether_feedback",
+          "key": "bound:w>=0",
+          "detail": "`frohmanianTether_feedback` restricts w ≥ 0; the claim states no such restriction.",
+          "question": "Paper claim Lemma 3.6 (lemma-3.6) states: “For $\\omega\\in\\mathbb R^3$ and $D=\\nabla\\omega$, $\\sum_{ij}D_{ij}\\,\\partial_j(|\\omega|^2\\omega_i)=|\\omega|^2|D|^2+\\tfrac12\\sum_j(2\\sum_k\\omega_kD_{kj})^2\\ge0$, with no alignment assumption.”. Lean theorem `frohmanianTether_feedback` assumes `0 ≤ w` (restricting w ≥ 0), which the claim does not state. Is the restricted domain intentional?",
+          "weight": 0.6
+        }
+      ],
+      "drift": 0.86
+    },
+    {
+      "claim": {
+        "id": "thm:H1",
+        "number": "Theorem 3.7",
+        "statement": "Let $G=\\|\\nabla\\omega\\|_2^2$, $L=\\|\\Delta\\omega\\|_2$. Assume $G'=2(-\\nu L^2-\\kappa J+N)$ with $J\\ge0$ (Cited Prop.~\\ref{cp:H1I}) and $N\\le A\\,G^{1/4}L^{3/2}$ (Cited Prop.~\\ref{cp:NL}). Then $G(t)\\le G(0)\\exp\\!\\big(\\tfrac{27A^4}{16\\nu^3}t\\big)$.",
+        "kind": "theorem",
+        "source": "paper/companion.tex:250"
+      },
+      "matched": [
+        {
+          "name": "tethered_palinstrophy_gronwall",
+          "score": 0.304,
+          "explicit": false
+        },
+        {
+          "name": "palin_deriv_le",
+          "score": 0.302,
+          "explicit": false
+        },
+        {
+          "name": "young_43",
+          "score": 0.281,
+          "explicit": false
+        },
+        {
+          "name": "l4l2Holder_torus",
+          "score": 0.257,
+          "explicit": false
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "92d5dd28110a",
+          "claimId": "thm:H1",
+          "kind": "conditional",
+          "lean": "tethered_palinstrophy_gronwall",
+          "key": "hyp:∀ x ∈ Ico 0 T, 0 ≤ P x",
+          "detail": "`tethered_palinstrophy_gronwall` assumes `hP : ∀ x ∈ Ico 0 T, 0 ≤ P x`, not stated in the claim.",
+          "question": "Paper claim Theorem 3.7 (thm:H1) states: “Let $G=\\|\\nabla\\omega\\|_2^2$, $L=\\|\\Delta\\omega\\|_2$. Assume $G'=2(-\\nu L^2-\\kappa J+N)$ with $J\\ge0$ (Cited Prop.~\\ref{cp:H1I}) and $N\\le A\\,G^{1/4}L^{3/2}$ (Cited Prop.~\\ref{cp:NL}). Then $G(t)\\le …”. Lean theorem `tethered_palinstrophy_gronwall` assumes `hP : ∀ x ∈ Ico 0 T, 0 ≤ P x`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "b069093d036f",
+          "claimId": "thm:H1",
+          "kind": "conditional",
+          "lean": "tethered_palinstrophy_gronwall",
+          "key": "hyp:∀ x ∈ Ico 0 T, 0 ≤ L x",
+          "detail": "`tethered_palinstrophy_gronwall` assumes `hL : ∀ x ∈ Ico 0 T, 0 ≤ L x`, not stated in the claim.",
+          "question": "Paper claim Theorem 3.7 (thm:H1) states: “Let $G=\\|\\nabla\\omega\\|_2^2$, $L=\\|\\Delta\\omega\\|_2$. Assume $G'=2(-\\nu L^2-\\kappa J+N)$ with $J\\ge0$ (Cited Prop.~\\ref{cp:H1I}) and $N\\le A\\,G^{1/4}L^{3/2}$ (Cited Prop.~\\ref{cp:NL}). Then $G(t)\\le …”. Lean theorem `tethered_palinstrophy_gronwall` assumes `hL : ∀ x ∈ Ico 0 T, 0 ≤ L x`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "556052bf156f",
+          "claimId": "thm:H1",
+          "kind": "conditional",
+          "lean": "tethered_palinstrophy_gronwall",
+          "key": "hyp:∀ x ∈ Ico 0 T, 0 ≤ J x",
+          "detail": "`tethered_palinstrophy_gronwall` assumes `hJ : ∀ x ∈ Ico 0 T, 0 ≤ J x`, not stated in the claim.",
+          "question": "Paper claim Theorem 3.7 (thm:H1) states: “Let $G=\\|\\nabla\\omega\\|_2^2$, $L=\\|\\Delta\\omega\\|_2$. Assume $G'=2(-\\nu L^2-\\kappa J+N)$ with $J\\ge0$ (Cited Prop.~\\ref{cp:H1I}) and $N\\le A\\,G^{1/4}L^{3/2}$ (Cited Prop.~\\ref{cp:NL}). Then $G(t)\\le …”. Lean theorem `tethered_palinstrophy_gronwall` assumes `hJ : ∀ x ∈ Ico 0 T, 0 ≤ J x`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "cb7220e3b75a",
+          "claimId": "thm:H1",
+          "kind": "narrower",
+          "lean": "palin_deriv_le",
+          "key": "bound:p>=0",
+          "detail": "`palin_deriv_le` restricts p ≥ 0; the claim states no such restriction.",
+          "question": "Paper claim Theorem 3.7 (thm:H1) states: “Let $G=\\|\\nabla\\omega\\|_2^2$, $L=\\|\\Delta\\omega\\|_2$. Assume $G'=2(-\\nu L^2-\\kappa J+N)$ with $J\\ge0$ (Cited Prop.~\\ref{cp:H1I}) and $N\\le A\\,G^{1/4}L^{3/2}$ (Cited Prop.~\\ref{cp:NL}). Then $G(t)\\le …”. Lean theorem `palin_deriv_le` assumes `0 ≤ p` (restricting p ≥ 0), which the claim does not state. Is the restricted domain intentional?",
+          "weight": 0.6
+        },
+        {
+          "id": "0df7d6a021a4",
+          "claimId": "thm:H1",
+          "kind": "narrower",
+          "lean": "palin_deriv_le",
+          "key": "bound:l>=0",
+          "detail": "`palin_deriv_le` restricts l ≥ 0; the claim states no such restriction.",
+          "question": "Paper claim Theorem 3.7 (thm:H1) states: “Let $G=\\|\\nabla\\omega\\|_2^2$, $L=\\|\\Delta\\omega\\|_2$. Assume $G'=2(-\\nu L^2-\\kappa J+N)$ with $J\\ge0$ (Cited Prop.~\\ref{cp:H1I}) and $N\\le A\\,G^{1/4}L^{3/2}$ (Cited Prop.~\\ref{cp:NL}). Then $G(t)\\le …”. Lean theorem `palin_deriv_le` assumes `0 ≤ l` (restricting l ≥ 0), which the claim does not state. Is the restricted domain intentional?",
+          "weight": 0.6
+        },
+        {
+          "id": "43d84ce4e585",
+          "claimId": "thm:H1",
+          "kind": "narrower",
+          "lean": "palin_deriv_le",
+          "key": "bound:j>=0",
+          "detail": "`palin_deriv_le` restricts j ≥ 0; the claim states no such restriction.",
+          "question": "Paper claim Theorem 3.7 (thm:H1) states: “Let $G=\\|\\nabla\\omega\\|_2^2$, $L=\\|\\Delta\\omega\\|_2$. Assume $G'=2(-\\nu L^2-\\kappa J+N)$ with $J\\ge0$ (Cited Prop.~\\ref{cp:H1I}) and $N\\le A\\,G^{1/4}L^{3/2}$ (Cited Prop.~\\ref{cp:NL}). Then $G(t)\\le …”. Lean theorem `palin_deriv_le` assumes `0 ≤ j` (restricting j ≥ 0), which the claim does not state. Is the restricted domain intentional?",
+          "weight": 0.6
+        },
+        {
+          "id": "0d7b17f0390f",
+          "claimId": "thm:H1",
+          "kind": "conditional",
+          "lean": "palin_deriv_le",
+          "key": "hyp:n ≤ A * Real.sqrt (Real.sqrt p) * Real.sqrt l ^ 3",
+          "detail": "`palin_deriv_le` assumes `hn : n ≤ A * Real.sqrt (Real.sqrt p) * Real.sqrt l ^ 3`, not stated in the claim.",
+          "question": "Paper claim Theorem 3.7 (thm:H1) states: “Let $G=\\|\\nabla\\omega\\|_2^2$, $L=\\|\\Delta\\omega\\|_2$. Assume $G'=2(-\\nu L^2-\\kappa J+N)$ with $J\\ge0$ (Cited Prop.~\\ref{cp:H1I}) and $N\\le A\\,G^{1/4}L^{3/2}$ (Cited Prop.~\\ref{cp:NL}). Then $G(t)\\le …”. Lean theorem `palin_deriv_le` assumes `hn : n ≤ A * Real.sqrt (Real.sqrt p) * Real.sqrt l ^ 3`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "df87c98c97c9",
+          "claimId": "thm:H1",
+          "kind": "narrower",
+          "lean": "young_43",
+          "key": "bound:x>=0",
+          "detail": "`young_43` restricts x ≥ 0; the claim states no such restriction.",
+          "question": "Paper claim Theorem 3.7 (thm:H1) states: “Let $G=\\|\\nabla\\omega\\|_2^2$, $L=\\|\\Delta\\omega\\|_2$. Assume $G'=2(-\\nu L^2-\\kappa J+N)$ with $J\\ge0$ (Cited Prop.~\\ref{cp:H1I}) and $N\\le A\\,G^{1/4}L^{3/2}$ (Cited Prop.~\\ref{cp:NL}). Then $G(t)\\le …”. Lean theorem `young_43` assumes `0 ≤ x` (restricting x ≥ 0), which the claim does not state. Is the restricted domain intentional?",
+          "weight": 0.6
+        },
+        {
+          "id": "43c2fc74fe60",
+          "claimId": "thm:H1",
+          "kind": "narrower",
+          "lean": "young_43",
+          "key": "bound:w>=0",
+          "detail": "`young_43` restricts w ≥ 0; the claim states no such restriction.",
+          "question": "Paper claim Theorem 3.7 (thm:H1) states: “Let $G=\\|\\nabla\\omega\\|_2^2$, $L=\\|\\Delta\\omega\\|_2$. Assume $G'=2(-\\nu L^2-\\kappa J+N)$ with $J\\ge0$ (Cited Prop.~\\ref{cp:H1I}) and $N\\le A\\,G^{1/4}L^{3/2}$ (Cited Prop.~\\ref{cp:NL}). Then $G(t)\\le …”. Lean theorem `young_43` assumes `0 ≤ w` (restricting w ≥ 0), which the claim does not state. Is the restricted domain intentional?",
+          "weight": 0.6
+        },
+        {
+          "id": "6fd223daa211",
+          "claimId": "thm:H1",
+          "kind": "conditional",
+          "lean": "l4l2Holder_torus",
+          "key": "hyp:∀ x, MemLp (g x) 2 torusMeasure",
+          "detail": "`l4l2Holder_torus` assumes `hg : ∀ x, MemLp (g x) 2 torusMeasure`, not stated in the claim.",
+          "question": "Paper claim Theorem 3.7 (thm:H1) states: “Let $G=\\|\\nabla\\omega\\|_2^2$, $L=\\|\\Delta\\omega\\|_2$. Assume $G'=2(-\\nu L^2-\\kappa J+N)$ with $J\\ge0$ (Cited Prop.~\\ref{cp:H1I}) and $N\\le A\\,G^{1/4}L^{3/2}$ (Cited Prop.~\\ref{cp:NL}). Then $G(t)\\le …”. Lean theorem `l4l2Holder_torus` assumes `hg : ∀ x, MemLp (g x) 2 torusMeasure`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        }
+      ],
+      "drift": 1
+    },
+    {
+      "claim": {
+        "id": "theorem-3.8",
+        "number": "Theorem 3.8",
+        "statement": "Assume the tethered log inequality (Cited Prop.~\\ref{cp:NSlog}), higher-norm control, BKM continuation (Cited Prop.~\\ref{cp:BKM}) and local continuation (Cited Prop.~\\ref{cp:LC}). Then the solution is smooth on $[0,T]$ for every $T$. Higher-norm control is itself discharged by Theorems~\\ref{thm:L2} and \\ref{thm:H1} together with Cited Prop.~\\ref{cp:boot}.",
+        "kind": "theorem",
+        "source": "paper/companion.tex:269",
+        "title": "Global smoothness of the tethered system, conditional"
+      },
+      "matched": [
+        {
+          "name": "global_regularity_logloss",
+          "score": 0.5,
+          "explicit": false
+        },
+        {
+          "name": "higherNormControl_tethered",
+          "score": 0.353,
+          "explicit": false
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "421e6c7db723",
+          "claimId": "theorem-3.8",
+          "kind": "ambiguous",
+          "key": "title-vs-statement",
+          "detail": "Title “Global smoothness of the tethered system, conditional” shares almost no terms with the statement.",
+          "question": "Paper claim Theorem 3.8 (theorem-3.8) states: “Assume the tethered log inequality (Cited Prop.~\\ref{cp:NSlog}), higher-norm control, BKM continuation (Cited Prop.~\\ref{cp:BKM}) and local continuation (Cited Prop.~\\ref{cp:LC}). Then the solution i…”. Its title is “Global smoothness of the tethered system, conditional”, which does not appear to describe that statement. Is the title or the statement misworded?",
+          "weight": 0.3
+        },
+        {
+          "id": "4598b6f5584c",
+          "claimId": "theorem-3.8",
+          "kind": "narrower",
+          "lean": "higherNormControl_tethered",
+          "key": "bound:x>=0",
+          "detail": "`higherNormControl_tethered` restricts x ≥ 0; the claim states no such restriction.",
+          "question": "Paper claim Theorem 3.8 (theorem-3.8) states: “Assume the tethered log inequality (Cited Prop.~\\ref{cp:NSlog}), higher-norm control, BKM continuation (Cited Prop.~\\ref{cp:BKM}) and local continuation (Cited Prop.~\\ref{cp:LC}). Then the solution i…”. Lean theorem `higherNormControl_tethered` assumes `∃ Z0b, 0 ≤ Z0b ∧ ∀ x, 0 ≤ x → Z0 x ≤ Z0b` (restricting x ≥ 0), which the claim does not state. Is the restricted domain intentional?",
+          "weight": 0.6
+        },
+        {
+          "id": "eb9651e361a1",
+          "claimId": "theorem-3.8",
+          "kind": "conditional",
+          "lean": "higherNormControl_tethered",
+          "key": "hyp:∀ T, 0 < T → (∀ T' < T, SmoothOn T') → ∃ Gb, ∀ x ∈ Ico 0 T, G x ≤ Gb",
+          "detail": "`higherNormControl_tethered` assumes `hH1 : ∀ T, 0 < T → (∀ T' < T, SmoothOn T') → ∃ Gb, ∀ x ∈ Ico 0 T, G x ≤ Gb`, not stated in the claim.",
+          "question": "Paper claim Theorem 3.8 (theorem-3.8) states: “Assume the tethered log inequality (Cited Prop.~\\ref{cp:NSlog}), higher-norm control, BKM continuation (Cited Prop.~\\ref{cp:BKM}) and local continuation (Cited Prop.~\\ref{cp:LC}). Then the solution i…”. Lean theorem `higherNormControl_tethered` assumes `hH1 : ∀ T, 0 < T → (∀ T' < T, SmoothOn T') → ∃ Gb, ∀ x ∈ Ico 0 T, G x ≤ Gb`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        }
+      ],
+      "drift": 0.86
+    },
+    {
+      "claim": {
+        "id": "cp:EI",
+        "number": "Hypothesis 3.9",
+        "statement": "Integrated enstrophy identity for \\eqref{eq:tv}. It follows from multiplying by $\\omega$, integrating by parts on $T^3$, and the lemma above.",
+        "kind": "hypothesis",
+        "source": "paper/companion.tex:282",
+        "title": "\\lean{TetheredEnstrophyIdentity}"
+      },
+      "matched": [
+        {
+          "name": "TetheredEnstrophyIdentity",
+          "score": 0.325,
+          "explicit": false
+        }
+      ],
+      "mismatches": [],
+      "drift": 0
+    },
+    {
+      "claim": {
+        "id": "cp:CZ",
+        "number": "Hypothesis 3.10",
+        "statement": "$\\int\\omega\\cdot S\\omega\\le C\\|\\omega\\|_2\\|\\omega\\|_4^2$: Calder\\'on--Zygmund / Biot--Savart, classical.",
+        "kind": "hypothesis",
+        "source": "paper/companion.tex:283",
+        "title": "\\lean{StrainL2Bound}"
+      },
+      "matched": [
+        {
+          "name": "StrainL2Bound",
+          "score": 0.452,
+          "explicit": false
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "cd0bdcad3c76",
+          "claimId": "cp:CZ",
+          "kind": "ambiguous",
+          "key": "title-vs-statement",
+          "detail": "Title “\\lean{StrainL2Bound}” shares almost no terms with the statement.",
+          "question": "Paper claim Hypothesis 3.10 (cp:CZ) states: “$\\int\\omega\\cdot S\\omega\\le C\\|\\omega\\|_2\\|\\omega\\|_4^2$: Calder\\'on--Zygmund / Biot--Savart, classical.”. Its title is “\\lean{StrainL2Bound}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+          "weight": 0.3
+        }
+      ],
+      "drift": 0.3
+    },
+    {
+      "claim": {
+        "id": "cp:Holder",
+        "number": "Hypothesis 3.11",
+        "statement": "$\\|\\omega\\|_2^4\\le\\|\\omega\\|_4^4$ on the unit-volume torus (H\\\"older). \\textbf{Now proved} for every probability space with $E=\\tfrac12\\int g$, $Q=\\int g^2$, $g=|\\omega|^2\\in L^2$ (\\lean{l4l2Holder_of_prob}, via nonnegativity of variance).",
+        "kind": "hypothesis",
+        "source": "paper/companion.tex:284",
+        "title": "\\lean{L4L2Holder}"
+      },
+      "matched": [
+        {
+          "name": "L4L2Holder",
+          "score": 0.208,
+          "explicit": false
+        }
+      ],
+      "mismatches": [],
+      "drift": 0
+    },
+    {
+      "claim": {
+        "id": "cp:H1I",
+        "number": "Hypothesis 3.12",
+        "statement": "The $H^1$ energy identity (Majda--Bertozzi~\\cite{MB} \\S3.2 for the NS part).",
+        "kind": "hypothesis",
+        "source": "paper/companion.tex:285",
+        "title": "\\lean{TetheredH1Identity}"
+      },
+      "matched": [
+        {
+          "name": "TetheredH1Identity",
+          "score": 0.405,
+          "explicit": false
+        }
+      ],
+      "mismatches": [],
+      "drift": 0
+    },
+    {
+      "claim": {
+        "id": "cp:NL",
+        "number": "Hypothesis 3.13",
+        "statement": "Sobolev/Gagliardo--Nirenberg bound of the nonlinear term~\\cite{Temam,CF}.",
+        "kind": "hypothesis",
+        "source": "paper/companion.tex:286",
+        "title": "\\lean{NonlinH1Bound}"
+      },
+      "matched": [
+        {
+          "name": "NonlinH1Bound",
+          "score": 0.41,
+          "explicit": false
+        }
+      ],
+      "mismatches": [],
+      "drift": 0
+    },
+    {
+      "claim": {
+        "id": "cp:boot",
+        "number": "Hypothesis 3.14",
+        "statement": "$H^1$ bounds on $[0,T)$ imply $H^s$ bounds for all $s$. For plain NS this is classical parabolic regularity~\\cite{Temam,CF,MB}. \\textbf{The tether-specific step (controlling $\\kappa P(|\\omega|^2\\omega)$ in $H^s$, which is plausible since $H^2\\subset L^\\infty$ in 3D) is not in the literature and remains to be proved.}",
+        "kind": "hypothesis",
+        "source": "paper/companion.tex:287",
+        "title": "\\lean{H1ToHsBootstrap}"
+      },
+      "matched": [
+        {
+          "name": "H1ToHsBootstrap",
+          "score": 0.262,
+          "explicit": false
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "46d843337285",
+          "claimId": "cp:boot",
+          "kind": "ambiguous",
+          "key": "title-vs-statement",
+          "detail": "Title “\\lean{H1ToHsBootstrap}” shares almost no terms with the statement.",
+          "question": "Paper claim Hypothesis 3.14 (cp:boot) states: “$H^1$ bounds on $[0,T)$ imply $H^s$ bounds for all $s$. For plain NS this is classical parabolic regularity~\\cite{Temam,CF,MB}. \\textbf{The tether-specific step (controlling $\\kappa P(|\\omega|^2\\omeg…”. Its title is “\\lean{H1ToHsBootstrap}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+          "weight": 0.3
+        }
+      ],
+      "drift": 0.3
+    },
+    {
+      "claim": {
+        "id": "cp:SbS",
+        "number": "Hypothesis 3.15",
+        "statement": "Pointwise evolution at the maximum, and stretching $\\le\\|S\\|_\\infty y^2$.",
+        "kind": "hypothesis",
+        "source": "paper/companion.tex:288",
+        "title": "\\lean{EnergyIdentity}, \\lean{StretchingByStrain}"
+      },
+      "matched": [],
+      "mismatches": [
+        {
+          "id": "31218b0141e8",
+          "claimId": "cp:SbS",
+          "kind": "silent",
+          "key": "no-match",
+          "detail": "No Lean declaration matches this claim. Closest candidate: `StrainL2Bound` (score 0.22, but it matches claim cp:CZ better).",
+          "question": "Paper claim Hypothesis 3.15 (cp:SbS) states: “Pointwise evolution at the maximum, and stretching $\\le\\|S\\|_\\infty y^2$.”. No Lean declaration matching it was found among 138 candidates. Closest candidate: `StrainL2Bound` (score 0.22, but it matches claim cp:CZ better). Is this claim intentionally not formalized, or which declaration should it map to?",
+          "weight": 1
+        }
+      ],
+      "drift": 1
+    },
+    {
+      "claim": {
+        "id": "cp:BKMlog",
+        "number": "Hypothesis 3.16",
+        "statement": "$\\|S\\|_\\infty\\le C(1+\\|\\omega\\|_2+\\|\\omega\\|_\\infty\\log(e+\\|\\omega\\|_{H^s}))$~\\cite{BKM}; see also Brezis--Gallou\\\"et and Kozono--Taniuchi~\\cite{KT}.",
+        "kind": "hypothesis",
+        "source": "paper/companion.tex:289",
+        "title": "\\lean{BKMLogInequality}"
+      },
+      "matched": [
+        {
+          "name": "BKMLogInequality",
+          "score": 0.363,
+          "explicit": false
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "a01c12ef4309",
+          "claimId": "cp:BKMlog",
+          "kind": "ambiguous",
+          "key": "title-vs-statement",
+          "detail": "Title “\\lean{BKMLogInequality}” shares almost no terms with the statement.",
+          "question": "Paper claim Hypothesis 3.16 (cp:BKMlog) states: “$\\|S\\|_\\infty\\le C(1+\\|\\omega\\|_2+\\|\\omega\\|_\\infty\\log(e+\\|\\omega\\|_{H^s}))$~\\cite{BKM}; see also Brezis--Gallou\\\"et and Kozono--Taniuchi~\\cite{KT}.”. Its title is “\\lean{BKMLogInequality}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+          "weight": 0.3
+        }
+      ],
+      "drift": 0.3
+    },
+    {
+      "claim": {
+        "id": "cp:cross",
+        "number": "Hypothesis 3.17",
+        "statement": "The cross term at the maximum is absorbed with constant $C_{abs}$.",
+        "kind": "hypothesis",
+        "source": "paper/companion.tex:290",
+        "title": "\\lean{CrossControlled}"
+      },
+      "matched": [
+        {
+          "name": "CrossControlled",
+          "score": 0.305,
+          "explicit": false
+        }
+      ],
+      "mismatches": [],
+      "drift": 0
+    },
+    {
+      "claim": {
+        "id": "cp:NSlog",
+        "number": "Hypothesis 3.18",
+        "statement": "The integrated (time-continuous) form of the pointwise inequality along the solution.",
+        "kind": "hypothesis",
+        "source": "paper/companion.tex:291",
+        "title": "\\lean{NSTetherLogInequality}, \\lean{NSTetherEnstrophyInequality}"
+      },
+      "matched": [
+        {
+          "name": "NSTetherLogInequality",
+          "score": 0.473,
+          "explicit": false
+        },
+        {
+          "name": "NSTetherEnstrophyInequality",
+          "score": 0.349,
+          "explicit": false
+        }
+      ],
+      "mismatches": [],
+      "drift": 0
+    },
+    {
+      "claim": {
+        "id": "cp:BKM",
+        "number": "Hypothesis 3.19",
+        "statement": "Beale--Kato--Majda~\\cite{BKM}: bounded $\\|\\omega\\|_\\infty$ on $[0,T)$ implies continuation. Stated for plain NS; its extension to \\eqref{eq:tv} is assumed.",
+        "kind": "hypothesis",
+        "source": "paper/companion.tex:292",
+        "title": "\\lean{BKMContinuation}"
+      },
+      "matched": [],
+      "mismatches": [
+        {
+          "id": "7189e4ca56f3",
+          "claimId": "cp:BKM",
+          "kind": "silent",
+          "key": "no-match",
+          "detail": "No Lean declaration matches this claim. Closest candidate: `BKMContinuation` (score 0.14, below threshold 0.2).",
+          "question": "Paper claim Hypothesis 3.19 (cp:BKM) states: “Beale--Kato--Majda~\\cite{BKM}: bounded $\\|\\omega\\|_\\infty$ on $[0,T)$ implies continuation. Stated for plain NS; its extension to \\eqref{eq:tv} is assumed.”. No Lean declaration matching it was found among 138 candidates. Closest candidate: `BKMContinuation` (score 0.14, below threshold 0.2). Is this claim intentionally not formalized, or which declaration should it map to?",
+          "weight": 1
+        }
+      ],
+      "drift": 1
+    },
+    {
+      "claim": {
+        "id": "cp:LC",
+        "number": "Hypothesis 3.20",
+        "statement": "Local existence for smooth periodic data (Fujita--Kato~\\cite{FK}, Kato~\\cite{Kato}).",
+        "kind": "hypothesis",
+        "source": "paper/companion.tex:293",
+        "title": "\\lean{LocalContinuation}"
+      },
+      "matched": [
+        {
+          "name": "LocalContinuation",
+          "score": 0.269,
+          "explicit": false
+        }
+      ],
+      "mismatches": [],
+      "drift": 0
+    },
+    {
+      "claim": {
+        "id": "cp:BS",
+        "number": "Hypothesis 3.21",
+        "statement": "Proved on trigonometric polynomials. The extension to the smooth admissible class requires a density/continuity argument not yet formalized.",
+        "kind": "hypothesis",
+        "source": "paper/companion.tex:294",
+        "title": "\\lean{CurlRightInverse} beyond trigonometric polynomials"
+      },
+      "matched": [
+        {
+          "name": "CurlRightInverse",
+          "score": 0.248,
+          "explicit": false
+        }
+      ],
+      "mismatches": [],
+      "drift": 0
+    }
+  ],
+  "unanchored": [],
+  "drift": 0.386,
+  "pending": [
+    {
+      "id": "cd7541d5e2fb",
+      "claimId": "thm:unique",
+      "kind": "ambiguous",
+      "key": "title-vs-statement",
+      "detail": "Title “Uniqueness up to scale” shares almost no terms with the statement.",
+      "question": "Paper claim Theorem 2.3 (thm:unique) states: “Let $B$ be a symmetric bilinear form that is (C1) invariant under the coadjoint isometries fixing $u$ and (C2) degenerate with respect to $u$. Then $B=\\T[c,1,u]$ for some $c\\in\\mathbb R$. If, in addi…”. Its title is “Uniqueness up to scale”, which does not appear to describe that statement. Is the title or the statement misworded?",
+      "weight": 0.3
+    },
+    {
+      "id": "d1da3cc1e119",
+      "claimId": "thm:unique",
+      "kind": "conditional",
+      "lean": "admissible_eq_smul_frohmanianTether",
+      "key": "hyp:3 ≤ Module.finrank ℝ H",
+      "detail": "`admissible_eq_smul_frohmanianTether` assumes `hdim : 3 ≤ Module.finrank ℝ H`, not stated in the claim.",
+      "question": "Paper claim Theorem 2.3 (thm:unique) states: “Let $B$ be a symmetric bilinear form that is (C1) invariant under the coadjoint isometries fixing $u$ and (C2) degenerate with respect to $u$. Then $B=\\T[c,1,u]$ for some $c\\in\\mathbb R$. If, in addi…”. Lean theorem `admissible_eq_smul_frohmanianTether` assumes `hdim : 3 ≤ Module.finrank ℝ H`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "afbf776c6966",
+      "claimId": "thm:unique",
+      "kind": "conditional",
+      "lean": "admissible_eq_smul_frohmanianTether",
+      "key": "hyp:DegenerateWRTKineticEnergy u B",
+      "detail": "`admissible_eq_smul_frohmanianTether` assumes `hC2 : DegenerateWRTKineticEnergy u B`, not stated in the claim.",
+      "question": "Paper claim Theorem 2.3 (thm:unique) states: “Let $B$ be a symmetric bilinear form that is (C1) invariant under the coadjoint isometries fixing $u$ and (C2) degenerate with respect to $u$. Then $B=\\T[c,1,u]$ for some $c\\in\\mathbb R$. If, in addi…”. Lean theorem `admissible_eq_smul_frohmanianTether` assumes `hC2 : DegenerateWRTKineticEnergy u B`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "0351ad80e81e",
+      "claimId": "thm:routeA",
+      "kind": "conditional",
+      "lean": "uniqueness_routeA_iff",
+      "key": "hyp:3 ≤ Module.finrank ℝ H",
+      "detail": "`uniqueness_routeA_iff` assumes `hdim : 3 ≤ Module.finrank ℝ H`, not stated in the claim.",
+      "question": "Paper claim Theorem 2.4 (thm:routeA) states: “Let $\\omega\\perp u$, $\\|\\omega\\|=1$, $w\\neq0$. Suppose $\\T[\\kappa,w,u]$ matches the stretching coefficient $S$ in the sense $\\T[\\kappa,w,u](\\omega,\\omega)+S w=0$. Then $\\kappa=S$. Consequently, in $\\…”. Lean theorem `uniqueness_routeA_iff` assumes `hdim : 3 ≤ Module.finrank ℝ H`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "f1d97b1153ef",
+      "claimId": "thm:routeA",
+      "kind": "narrower",
+      "lean": "uniqueness_routeA_iff",
+      "key": "bound:w>=0vs1",
+      "detail": "`uniqueness_routeA_iff` uses w ≥ 0 where the claim says w ≥ 1 (could be an indexing shift; direction not decidable syntactically).",
+      "question": "Paper claim Theorem 2.4 (thm:routeA) states: “Let $\\omega\\perp u$, $\\|\\omega\\|=1$, $w\\neq0$. Suppose $\\T[\\kappa,w,u]$ matches the stretching coefficient $S$ in the sense $\\T[\\kappa,w,u](\\omega,\\omega)+S w=0$. Then $\\kappa=S$. Consequently, in $\\…”. Lean theorem `uniqueness_routeA_iff` assumes `0 ≤ w` (w ≥ 0), but the claim says w ≥ 1. Is this an intentional indexing convention or a genuine change of domain?",
+      "weight": 0.6
+    },
+    {
+      "id": "ffbeabec45dd",
+      "claimId": "thm:routeA",
+      "kind": "conditional",
+      "lean": "frohmanian_symplectic_tether_theorem",
+      "key": "hyp:3 ≤ Module.finrank ℝ H",
+      "detail": "`frohmanian_symplectic_tether_theorem` assumes `hdim : 3 ≤ Module.finrank ℝ H`, not stated in the claim.",
+      "question": "Paper claim Theorem 2.4 (thm:routeA) states: “Let $\\omega\\perp u$, $\\|\\omega\\|=1$, $w\\neq0$. Suppose $\\T[\\kappa,w,u]$ matches the stretching coefficient $S$ in the sense $\\T[\\kappa,w,u](\\omega,\\omega)+S w=0$. Then $\\kappa=S$. Consequently, in $\\…”. Lean theorem `frohmanian_symplectic_tether_theorem` assumes `hdim : 3 ≤ Module.finrank ℝ H`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "b8c9e3d7247a",
+      "claimId": "thm:jacobi",
+      "kind": "conditional",
+      "lean": "jacT_eq_mixedSum",
+      "key": "hyp:pr u u ≠ 0",
+      "detail": "`jacT_eq_mixedSum` assumes `hu : pr u u ≠ 0`, not stated in the claim.",
+      "question": "Paper claim Theorem 2.5 (thm:jacobi) states: “For a classical (Jacobi) bracket $P$ and the tethered bracket $P+\\T$, the Jacobiator expands into nine terms. The three purely classical ones cancel by Jacobi of $P$, and the three purely tether term…”. Lean theorem `jacT_eq_mixedSum` assumes `hu : pr u u ≠ 0`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "676b9bd04e2a",
+      "claimId": "prop:ce",
+      "kind": "conditional",
+      "lean": "symPart_not_cochain",
+      "key": "hyp:IsAlt (symPart β)",
+      "detail": "`symPart_not_cochain` assumes `h : IsAlt (symPart β)`, not stated in the claim.",
+      "question": "Paper claim Proposition 2.7 (prop:ce) states: “(a) $d_2\\circ d_1=0$ on 1-cochains of any Lie algebra. (b) Coboundaries are cocycles. (c) If $2$ is invertible and the symmetric part of $\\beta$ is alternating, it is zero. So a nonzero symmetric cor…”. Lean theorem `symPart_not_cochain` assumes `h : IsAlt (symPart β)`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "d566201c7924",
+      "claimId": "thm:fieldjacobi",
+      "kind": "ambiguous",
+      "key": "title-vs-statement",
+      "detail": "Title “Field-level Jacobi” shares almost no terms with the statement.",
+      "question": "Paper claim Theorem 2.9 (thm:fieldjacobi) states: “•[(a)] The field bracket satisfies Jacobi. So the Arnold (Lie--Poisson) bracket on linear functionals is classical. •[(b)] If $\\langle u,u\\rangle\\neq0$, the Jacobiator of the tethered bracket equals …”. Its title is “Field-level Jacobi”, which does not appear to describe that statement. Is the title or the statement misworded?",
+      "weight": 0.3
+    },
+    {
+      "id": "a8c4bd46600f",
+      "claimId": "thm:fieldjacobi",
+      "kind": "conditional",
+      "lean": "shearY_mixed_cancel",
+      "key": "hyp:XOnly a",
+      "detail": "`shearY_mixed_cancel` assumes `ha : XOnly a`, not stated in the claim.",
+      "question": "Paper claim Theorem 2.9 (thm:fieldjacobi) states: “•[(a)] The field bracket satisfies Jacobi. So the Arnold (Lie--Poisson) bracket on linear functionals is classical. •[(b)] If $\\langle u,u\\rangle\\neq0$, the Jacobiator of the tethered bracket equals …”. Lean theorem `shearY_mixed_cancel` assumes `ha : XOnly a`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "82b752d3fd43",
+      "claimId": "thm:fieldjacobi",
+      "kind": "conditional",
+      "lean": "shearY_mixed_cancel",
+      "key": "hyp:XOnly b",
+      "detail": "`shearY_mixed_cancel` assumes `hb : XOnly b`, not stated in the claim.",
+      "question": "Paper claim Theorem 2.9 (thm:fieldjacobi) states: “•[(a)] The field bracket satisfies Jacobi. So the Arnold (Lie--Poisson) bracket on linear functionals is classical. •[(b)] If $\\langle u,u\\rangle\\neq0$, the Jacobiator of the tethered bracket equals …”. Lean theorem `shearY_mixed_cancel` assumes `hb : XOnly b`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "c0774d45de21",
+      "claimId": "thm:fieldjacobi",
+      "kind": "conditional",
+      "lean": "shearY_mixed_cancel",
+      "key": "hyp:XOnly c",
+      "detail": "`shearY_mixed_cancel` assumes `hc : XOnly c`, not stated in the claim.",
+      "question": "Paper claim Theorem 2.9 (thm:fieldjacobi) states: “•[(a)] The field bracket satisfies Jacobi. So the Arnold (Lie--Poisson) bracket on linear functionals is classical. •[(b)] If $\\langle u,u\\rangle\\neq0$, the Jacobiator of the tethered bracket equals …”. Lean theorem `shearY_mixed_cancel` assumes `hc : XOnly c`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "9cec6a6765ae",
+      "claimId": "thm:fieldjacobi",
+      "kind": "conditional",
+      "lean": "mixedF_eq_zero_of_shear",
+      "key": "hyp:XOnly u",
+      "detail": "`mixedF_eq_zero_of_shear` assumes `hu : XOnly u`, not stated in the claim.",
+      "question": "Paper claim Theorem 2.9 (thm:fieldjacobi) states: “•[(a)] The field bracket satisfies Jacobi. So the Arnold (Lie--Poisson) bracket on linear functionals is classical. •[(b)] If $\\langle u,u\\rangle\\neq0$, the Jacobiator of the tethered bracket equals …”. Lean theorem `mixedF_eq_zero_of_shear` assumes `hu : XOnly u`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "0443b401b86e",
+      "claimId": "thm:fieldjacobi",
+      "kind": "conditional",
+      "lean": "mixedF_eq_zero_of_shear",
+      "key": "hyp:XOnly a",
+      "detail": "`mixedF_eq_zero_of_shear` assumes `ha : XOnly a`, not stated in the claim.",
+      "question": "Paper claim Theorem 2.9 (thm:fieldjacobi) states: “•[(a)] The field bracket satisfies Jacobi. So the Arnold (Lie--Poisson) bracket on linear functionals is classical. •[(b)] If $\\langle u,u\\rangle\\neq0$, the Jacobiator of the tethered bracket equals …”. Lean theorem `mixedF_eq_zero_of_shear` assumes `ha : XOnly a`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "1e60cb20ac26",
+      "claimId": "thm:fieldjacobi",
+      "kind": "conditional",
+      "lean": "mixedF_eq_zero_of_shear",
+      "key": "hyp:XOnly b",
+      "detail": "`mixedF_eq_zero_of_shear` assumes `hb : XOnly b`, not stated in the claim.",
+      "question": "Paper claim Theorem 2.9 (thm:fieldjacobi) states: “•[(a)] The field bracket satisfies Jacobi. So the Arnold (Lie--Poisson) bracket on linear functionals is classical. •[(b)] If $\\langle u,u\\rangle\\neq0$, the Jacobiator of the tethered bracket equals …”. Lean theorem `mixedF_eq_zero_of_shear` assumes `hb : XOnly b`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "42969de792c8",
+      "claimId": "thm:fieldjacobi",
+      "kind": "conditional",
+      "lean": "mixedF_eq_zero_of_shear",
+      "key": "hyp:XOnly c",
+      "detail": "`mixedF_eq_zero_of_shear` assumes `hc : XOnly c`, not stated in the claim.",
+      "question": "Paper claim Theorem 2.9 (thm:fieldjacobi) states: “•[(a)] The field bracket satisfies Jacobi. So the Arnold (Lie--Poisson) bracket on linear functionals is classical. •[(b)] If $\\langle u,u\\rangle\\neq0$, the Jacobiator of the tethered bracket equals …”. Lean theorem `mixedF_eq_zero_of_shear` assumes `hc : XOnly c`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "92afe540c9d8",
+      "claimId": "theorem-3.1",
+      "kind": "ambiguous",
+      "key": "title-vs-statement",
+      "detail": "Title “Curl of forced NS” shares almost no terms with the statement.",
+      "question": "Paper claim Theorem 3.1 (theorem-3.1) states: “If $(u,p)$ is a classical smooth solution of $\\partial_tu+(u\\cdot\\nabla)u=-\\nabla p+\\nu\\Delta u+F$ with $\\mathrm{div}\\,u=0$, then $\\omega=\\mathrm{curl}\\,u$ satisfies $\\partial_t\\omega+(u\\cdot\\nabla)\\…”. Its title is “Curl of forced NS”, which does not appear to describe that statement. Is the title or the statement misworded?",
+      "weight": 0.3
+    },
+    {
+      "id": "9fc421062aad",
+      "claimId": "theorem-3.2",
+      "kind": "ambiguous",
+      "key": "title-vs-statement",
+      "detail": "Title “Biot--Savart on trigonometric polynomials” shares almost no terms with the statement.",
+      "question": "Paper claim Theorem 3.2 (theorem-3.2) states: “For each nonzero wavevector $k$ and amplitude $a\\perp k$, the mode $b=\\frac{ik\\times a}{|k|^2}e^{ik\\cdot x}$ satisfies $\\mathrm{curl}\\,b=a\\,e^{ik\\cdot x}$ and $\\mathrm{div}\\,b=0$, and it is the uniqu…”. Its title is “Biot--Savart on trigonometric polynomials”, which does not appear to describe that statement. Is the title or the statement misworded?",
+      "weight": 0.3
+    },
+    {
+      "id": "2f0c78c673b8",
+      "claimId": "corollary-3.3",
+      "kind": "ambiguous",
+      "key": "title-vs-statement",
+      "detail": "Title “Velocity form $\\Rightarrow$ vorticity form” shares almost no terms with the statement.",
+      "question": "Paper claim Corollary 3.3 (corollary-3.3) states: “If $\\mathrm{curl}^{-1}$ is a right inverse of curl on the admissible class containing $-\\kappa P(|\\omega|^2\\omega)$, then every velocity solution of the tethered NS solves \\eqref{eq:tv}.”. Its title is “Velocity form $\\Rightarrow$ vorticity form”, which does not appear to describe that statement. Is the title or the statement misworded?",
+      "weight": 0.3
+    },
+    {
+      "id": "57dd9f3f7724",
+      "claimId": "corollary-3.3",
+      "kind": "conditional",
+      "lean": "tetheredVorticity_of_velocity",
+      "key": "hyp:∀ t, Adm (fun y => -κ • P (cubic (vorticity u t)) y)",
+      "detail": "`tetheredVorticity_of_velocity` assumes `hadm : ∀ t, Adm (fun y => -κ • P (cubic (vorticity u t)) y)`, not stated in the claim.",
+      "question": "Paper claim Corollary 3.3 (corollary-3.3) states: “If $\\mathrm{curl}^{-1}$ is a right inverse of curl on the admissible class containing $-\\kappa P(|\\omega|^2\\omega)$, then every velocity solution of the tethered NS solves \\eqref{eq:tv}.”. Lean theorem `tetheredVorticity_of_velocity` assumes `hadm : ∀ t, Adm (fun y => -κ • P (cubic (vorticity u t)) y)`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "d758bf272889",
+      "claimId": "thm:L2",
+      "kind": "conditional",
+      "lean": "tethered_L2_vorticity_bounded",
+      "key": "hyp:∀ x ∈ Ico 0 T, 0 ≤ D x",
+      "detail": "`tethered_L2_vorticity_bounded` assumes `hD : ∀ x ∈ Ico 0 T, 0 ≤ D x`, not stated in the claim.",
+      "question": "Paper claim Theorem 3.5 (thm:L2) states: “Let $E=\\tfrac12\\|\\omega\\|_2^2$ and $Q=\\|\\omega\\|_4^4$. Assume $E'=S-\\nu D-\\kappa Q$ (Cited Prop.~\\ref{cp:EI}), $S\\le C\\sqrt{2E}\\sqrt Q$ (Cited Prop.~\\ref{cp:CZ}), and $(2E)^2\\le Q$ (Cited Prop.~\\ref{…”. Lean theorem `tethered_L2_vorticity_bounded` assumes `hD : ∀ x ∈ Ico 0 T, 0 ≤ D x`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "b3dd16401dfc",
+      "claimId": "thm:L2",
+      "kind": "conditional",
+      "lean": "tethered_L2_vorticity_bounded",
+      "key": "hyp:∀ x ∈ Ico 0 T, 0 ≤ E x",
+      "detail": "`tethered_L2_vorticity_bounded` assumes `hE : ∀ x ∈ Ico 0 T, 0 ≤ E x`, not stated in the claim.",
+      "question": "Paper claim Theorem 3.5 (thm:L2) states: “Let $E=\\tfrac12\\|\\omega\\|_2^2$ and $Q=\\|\\omega\\|_4^4$. Assume $E'=S-\\nu D-\\kappa Q$ (Cited Prop.~\\ref{cp:EI}), $S\\le C\\sqrt{2E}\\sqrt Q$ (Cited Prop.~\\ref{cp:CZ}), and $(2E)^2\\le Q$ (Cited Prop.~\\ref{…”. Lean theorem `tethered_L2_vorticity_bounded` assumes `hE : ∀ x ∈ Ico 0 T, 0 ≤ E x`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "ca7aa5d3cd78",
+      "claimId": "thm:L2",
+      "kind": "conditional",
+      "lean": "tethered_L2_vorticity_bounded",
+      "key": "hyp:∀ x ∈ Ico 0 T, 0 ≤ Q x",
+      "detail": "`tethered_L2_vorticity_bounded` assumes `hQ : ∀ x ∈ Ico 0 T, 0 ≤ Q x`, not stated in the claim.",
+      "question": "Paper claim Theorem 3.5 (thm:L2) states: “Let $E=\\tfrac12\\|\\omega\\|_2^2$ and $Q=\\|\\omega\\|_4^4$. Assume $E'=S-\\nu D-\\kappa Q$ (Cited Prop.~\\ref{cp:EI}), $S\\le C\\sqrt{2E}\\sqrt Q$ (Cited Prop.~\\ref{cp:CZ}), and $(2E)^2\\le Q$ (Cited Prop.~\\ref{…”. Lean theorem `tethered_L2_vorticity_bounded` assumes `hQ : ∀ x ∈ Ico 0 T, 0 ≤ Q x`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "d0d649ab7d98",
+      "claimId": "thm:L2",
+      "kind": "conditional",
+      "lean": "tethered_enstrophy_uniform",
+      "key": "hyp:∀ x ∈ Ico 0 T, 0 ≤ D x",
+      "detail": "`tethered_enstrophy_uniform` assumes `hD : ∀ x ∈ Ico 0 T, 0 ≤ D x`, not stated in the claim.",
+      "question": "Paper claim Theorem 3.5 (thm:L2) states: “Let $E=\\tfrac12\\|\\omega\\|_2^2$ and $Q=\\|\\omega\\|_4^4$. Assume $E'=S-\\nu D-\\kappa Q$ (Cited Prop.~\\ref{cp:EI}), $S\\le C\\sqrt{2E}\\sqrt Q$ (Cited Prop.~\\ref{cp:CZ}), and $(2E)^2\\le Q$ (Cited Prop.~\\ref{…”. Lean theorem `tethered_enstrophy_uniform` assumes `hD : ∀ x ∈ Ico 0 T, 0 ≤ D x`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "1750ae7470d2",
+      "claimId": "thm:L2",
+      "kind": "conditional",
+      "lean": "tethered_enstrophy_uniform",
+      "key": "hyp:∀ x ∈ Ico 0 T, 0 ≤ E x",
+      "detail": "`tethered_enstrophy_uniform` assumes `hE : ∀ x ∈ Ico 0 T, 0 ≤ E x`, not stated in the claim.",
+      "question": "Paper claim Theorem 3.5 (thm:L2) states: “Let $E=\\tfrac12\\|\\omega\\|_2^2$ and $Q=\\|\\omega\\|_4^4$. Assume $E'=S-\\nu D-\\kappa Q$ (Cited Prop.~\\ref{cp:EI}), $S\\le C\\sqrt{2E}\\sqrt Q$ (Cited Prop.~\\ref{cp:CZ}), and $(2E)^2\\le Q$ (Cited Prop.~\\ref{…”. Lean theorem `tethered_enstrophy_uniform` assumes `hE : ∀ x ∈ Ico 0 T, 0 ≤ E x`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "fd6fb15983d6",
+      "claimId": "thm:L2",
+      "kind": "conditional",
+      "lean": "tethered_enstrophy_uniform",
+      "key": "hyp:∀ x ∈ Ico 0 T, 0 ≤ Q x",
+      "detail": "`tethered_enstrophy_uniform` assumes `hQ : ∀ x ∈ Ico 0 T, 0 ≤ Q x`, not stated in the claim.",
+      "question": "Paper claim Theorem 3.5 (thm:L2) states: “Let $E=\\tfrac12\\|\\omega\\|_2^2$ and $Q=\\|\\omega\\|_4^4$. Assume $E'=S-\\nu D-\\kappa Q$ (Cited Prop.~\\ref{cp:EI}), $S\\le C\\sqrt{2E}\\sqrt Q$ (Cited Prop.~\\ref{cp:CZ}), and $(2E)^2\\le Q$ (Cited Prop.~\\ref{…”. Lean theorem `tethered_enstrophy_uniform` assumes `hQ : ∀ x ∈ Ico 0 T, 0 ≤ Q x`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "744fedfd6502",
+      "claimId": "thm:L2",
+      "kind": "conditional",
+      "lean": "routeA_layer2_bound",
+      "key": "hyp:RouteAFeedback S w u ω 𝔗_F[κ, w, u]",
+      "detail": "`routeA_layer2_bound` assumes `hA : RouteAFeedback S w u ω 𝔗_F[κ, w, u]`, not stated in the claim.",
+      "question": "Paper claim Theorem 3.5 (thm:L2) states: “Let $E=\\tfrac12\\|\\omega\\|_2^2$ and $Q=\\|\\omega\\|_4^4$. Assume $E'=S-\\nu D-\\kappa Q$ (Cited Prop.~\\ref{cp:EI}), $S\\le C\\sqrt{2E}\\sqrt Q$ (Cited Prop.~\\ref{cp:CZ}), and $(2E)^2\\le Q$ (Cited Prop.~\\ref{…”. Lean theorem `routeA_layer2_bound` assumes `hA : RouteAFeedback S w u ω 𝔗_F[κ, w, u]`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "270d6d8d843e",
+      "claimId": "thm:L2",
+      "kind": "narrower",
+      "lean": "routeA_layer2_bound",
+      "key": "bound:y>=0",
+      "detail": "`routeA_layer2_bound` restricts y ≥ 0; the claim states no such restriction.",
+      "question": "Paper claim Theorem 3.5 (thm:L2) states: “Let $E=\\tfrac12\\|\\omega\\|_2^2$ and $Q=\\|\\omega\\|_4^4$. Assume $E'=S-\\nu D-\\kappa Q$ (Cited Prop.~\\ref{cp:EI}), $S\\le C\\sqrt{2E}\\sqrt Q$ (Cited Prop.~\\ref{cp:CZ}), and $(2E)^2\\le Q$ (Cited Prop.~\\ref{…”. Lean theorem `routeA_layer2_bound` assumes `0 ≤ y 0` (restricting y ≥ 0), which the claim does not state. Is the restricted domain intentional?",
+      "weight": 0.6
+    },
+    {
+      "id": "c3644725c9b0",
+      "claimId": "thm:L2",
+      "kind": "conditional",
+      "lean": "routeA_layer2_bound",
+      "key": "hyp:ContinuousOn y (Set.Icc 0 T)",
+      "detail": "`routeA_layer2_bound` assumes `hc : ContinuousOn y (Set.Icc 0 T)`, not stated in the claim.",
+      "question": "Paper claim Theorem 3.5 (thm:L2) states: “Let $E=\\tfrac12\\|\\omega\\|_2^2$ and $Q=\\|\\omega\\|_4^4$. Assume $E'=S-\\nu D-\\kappa Q$ (Cited Prop.~\\ref{cp:EI}), $S\\le C\\sqrt{2E}\\sqrt Q$ (Cited Prop.~\\ref{cp:CZ}), and $(2E)^2\\le Q$ (Cited Prop.~\\ref{…”. Lean theorem `routeA_layer2_bound` assumes `hc : ContinuousOn y (Set.Icc 0 T)`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "aaaad56ba215",
+      "claimId": "thm:L2",
+      "kind": "conditional",
+      "lean": "routeA_layer2_bound",
+      "key": "hyp:∀ x ∈ Set.Ico 0 T, HasDerivWithinAt y (y' x) (Set.Ici x) x",
+      "detail": "`routeA_layer2_bound` assumes `hd : ∀ x ∈ Set.Ico 0 T, HasDerivWithinAt y (y' x) (Set.Ici x) x`, not stated in the claim.",
+      "question": "Paper claim Theorem 3.5 (thm:L2) states: “Let $E=\\tfrac12\\|\\omega\\|_2^2$ and $Q=\\|\\omega\\|_4^4$. Assume $E'=S-\\nu D-\\kappa Q$ (Cited Prop.~\\ref{cp:EI}), $S\\le C\\sqrt{2E}\\sqrt Q$ (Cited Prop.~\\ref{cp:CZ}), and $(2E)^2\\le Q$ (Cited Prop.~\\ref{…”. Lean theorem `routeA_layer2_bound` assumes `hd : ∀ x ∈ Set.Ico 0 T, HasDerivWithinAt y (y' x) (Set.Ici x) x`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "bba57c330fb5",
+      "claimId": "thm:L2",
+      "kind": "conditional",
+      "lean": "routeA_layer2_bound",
+      "key": "hyp:∀ x ∈ Set.Ico 0 T, y' x ≤ C * y x ^ 2 - kappaDD κ Cabs * y x ^ 3",
+      "detail": "`routeA_layer2_bound` assumes `hineq : ∀ x ∈ Set.Ico 0 T, y' x ≤ C * y x ^ 2 - kappaDD κ Cabs * y x ^ 3`, not stated in the claim.",
+      "question": "Paper claim Theorem 3.5 (thm:L2) states: “Let $E=\\tfrac12\\|\\omega\\|_2^2$ and $Q=\\|\\omega\\|_4^4$. Assume $E'=S-\\nu D-\\kappa Q$ (Cited Prop.~\\ref{cp:EI}), $S\\le C\\sqrt{2E}\\sqrt Q$ (Cited Prop.~\\ref{cp:CZ}), and $(2E)^2\\le Q$ (Cited Prop.~\\ref{…”. Lean theorem `routeA_layer2_bound` assumes `hineq : ∀ x ∈ Set.Ico 0 T, y' x ≤ C * y x ^ 2 - kappaDD κ Cabs * y x ^ 3`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "52d0f336b86b",
+      "claimId": "lemma-3.6",
+      "kind": "ambiguous",
+      "key": "title-vs-statement",
+      "detail": "Title “Tether is sign-definite at $H^1$” shares almost no terms with the statement.",
+      "question": "Paper claim Lemma 3.6 (lemma-3.6) states: “For $\\omega\\in\\mathbb R^3$ and $D=\\nabla\\omega$, $\\sum_{ij}D_{ij}\\,\\partial_j(|\\omega|^2\\omega_i)=|\\omega|^2|D|^2+\\tfrac12\\sum_j(2\\sum_k\\omega_kD_{kj})^2\\ge0$, with no alignment assumption.”. Its title is “Tether is sign-definite at $H^1$”, which does not appear to describe that statement. Is the title or the statement misworded?",
+      "weight": 0.3
+    },
+    {
+      "id": "c7d019645598",
+      "claimId": "lemma-3.6",
+      "kind": "conditional",
+      "lean": "frohmanianTether_feedback",
+      "key": "hyp:2 ≤ Module.finrank ℝ H",
+      "detail": "`frohmanianTether_feedback` assumes `hdim : 2 ≤ Module.finrank ℝ H`, not stated in the claim.",
+      "question": "Paper claim Lemma 3.6 (lemma-3.6) states: “For $\\omega\\in\\mathbb R^3$ and $D=\\nabla\\omega$, $\\sum_{ij}D_{ij}\\,\\partial_j(|\\omega|^2\\omega_i)=|\\omega|^2|D|^2+\\tfrac12\\sum_j(2\\sum_k\\omega_kD_{kj})^2\\ge0$, with no alignment assumption.”. Lean theorem `frohmanianTether_feedback` assumes `hdim : 2 ≤ Module.finrank ℝ H`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "efff76fbf218",
+      "claimId": "lemma-3.6",
+      "kind": "narrower",
+      "lean": "frohmanianTether_feedback",
+      "key": "bound:w>=0",
+      "detail": "`frohmanianTether_feedback` restricts w ≥ 0; the claim states no such restriction.",
+      "question": "Paper claim Lemma 3.6 (lemma-3.6) states: “For $\\omega\\in\\mathbb R^3$ and $D=\\nabla\\omega$, $\\sum_{ij}D_{ij}\\,\\partial_j(|\\omega|^2\\omega_i)=|\\omega|^2|D|^2+\\tfrac12\\sum_j(2\\sum_k\\omega_kD_{kj})^2\\ge0$, with no alignment assumption.”. Lean theorem `frohmanianTether_feedback` assumes `0 ≤ w` (restricting w ≥ 0), which the claim does not state. Is the restricted domain intentional?",
+      "weight": 0.6
+    },
+    {
+      "id": "92d5dd28110a",
+      "claimId": "thm:H1",
+      "kind": "conditional",
+      "lean": "tethered_palinstrophy_gronwall",
+      "key": "hyp:∀ x ∈ Ico 0 T, 0 ≤ P x",
+      "detail": "`tethered_palinstrophy_gronwall` assumes `hP : ∀ x ∈ Ico 0 T, 0 ≤ P x`, not stated in the claim.",
+      "question": "Paper claim Theorem 3.7 (thm:H1) states: “Let $G=\\|\\nabla\\omega\\|_2^2$, $L=\\|\\Delta\\omega\\|_2$. Assume $G'=2(-\\nu L^2-\\kappa J+N)$ with $J\\ge0$ (Cited Prop.~\\ref{cp:H1I}) and $N\\le A\\,G^{1/4}L^{3/2}$ (Cited Prop.~\\ref{cp:NL}). Then $G(t)\\le …”. Lean theorem `tethered_palinstrophy_gronwall` assumes `hP : ∀ x ∈ Ico 0 T, 0 ≤ P x`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "b069093d036f",
+      "claimId": "thm:H1",
+      "kind": "conditional",
+      "lean": "tethered_palinstrophy_gronwall",
+      "key": "hyp:∀ x ∈ Ico 0 T, 0 ≤ L x",
+      "detail": "`tethered_palinstrophy_gronwall` assumes `hL : ∀ x ∈ Ico 0 T, 0 ≤ L x`, not stated in the claim.",
+      "question": "Paper claim Theorem 3.7 (thm:H1) states: “Let $G=\\|\\nabla\\omega\\|_2^2$, $L=\\|\\Delta\\omega\\|_2$. Assume $G'=2(-\\nu L^2-\\kappa J+N)$ with $J\\ge0$ (Cited Prop.~\\ref{cp:H1I}) and $N\\le A\\,G^{1/4}L^{3/2}$ (Cited Prop.~\\ref{cp:NL}). Then $G(t)\\le …”. Lean theorem `tethered_palinstrophy_gronwall` assumes `hL : ∀ x ∈ Ico 0 T, 0 ≤ L x`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "556052bf156f",
+      "claimId": "thm:H1",
+      "kind": "conditional",
+      "lean": "tethered_palinstrophy_gronwall",
+      "key": "hyp:∀ x ∈ Ico 0 T, 0 ≤ J x",
+      "detail": "`tethered_palinstrophy_gronwall` assumes `hJ : ∀ x ∈ Ico 0 T, 0 ≤ J x`, not stated in the claim.",
+      "question": "Paper claim Theorem 3.7 (thm:H1) states: “Let $G=\\|\\nabla\\omega\\|_2^2$, $L=\\|\\Delta\\omega\\|_2$. Assume $G'=2(-\\nu L^2-\\kappa J+N)$ with $J\\ge0$ (Cited Prop.~\\ref{cp:H1I}) and $N\\le A\\,G^{1/4}L^{3/2}$ (Cited Prop.~\\ref{cp:NL}). Then $G(t)\\le …”. Lean theorem `tethered_palinstrophy_gronwall` assumes `hJ : ∀ x ∈ Ico 0 T, 0 ≤ J x`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "cb7220e3b75a",
+      "claimId": "thm:H1",
+      "kind": "narrower",
+      "lean": "palin_deriv_le",
+      "key": "bound:p>=0",
+      "detail": "`palin_deriv_le` restricts p ≥ 0; the claim states no such restriction.",
+      "question": "Paper claim Theorem 3.7 (thm:H1) states: “Let $G=\\|\\nabla\\omega\\|_2^2$, $L=\\|\\Delta\\omega\\|_2$. Assume $G'=2(-\\nu L^2-\\kappa J+N)$ with $J\\ge0$ (Cited Prop.~\\ref{cp:H1I}) and $N\\le A\\,G^{1/4}L^{3/2}$ (Cited Prop.~\\ref{cp:NL}). Then $G(t)\\le …”. Lean theorem `palin_deriv_le` assumes `0 ≤ p` (restricting p ≥ 0), which the claim does not state. Is the restricted domain intentional?",
+      "weight": 0.6
+    },
+    {
+      "id": "0df7d6a021a4",
+      "claimId": "thm:H1",
+      "kind": "narrower",
+      "lean": "palin_deriv_le",
+      "key": "bound:l>=0",
+      "detail": "`palin_deriv_le` restricts l ≥ 0; the claim states no such restriction.",
+      "question": "Paper claim Theorem 3.7 (thm:H1) states: “Let $G=\\|\\nabla\\omega\\|_2^2$, $L=\\|\\Delta\\omega\\|_2$. Assume $G'=2(-\\nu L^2-\\kappa J+N)$ with $J\\ge0$ (Cited Prop.~\\ref{cp:H1I}) and $N\\le A\\,G^{1/4}L^{3/2}$ (Cited Prop.~\\ref{cp:NL}). Then $G(t)\\le …”. Lean theorem `palin_deriv_le` assumes `0 ≤ l` (restricting l ≥ 0), which the claim does not state. Is the restricted domain intentional?",
+      "weight": 0.6
+    },
+    {
+      "id": "43d84ce4e585",
+      "claimId": "thm:H1",
+      "kind": "narrower",
+      "lean": "palin_deriv_le",
+      "key": "bound:j>=0",
+      "detail": "`palin_deriv_le` restricts j ≥ 0; the claim states no such restriction.",
+      "question": "Paper claim Theorem 3.7 (thm:H1) states: “Let $G=\\|\\nabla\\omega\\|_2^2$, $L=\\|\\Delta\\omega\\|_2$. Assume $G'=2(-\\nu L^2-\\kappa J+N)$ with $J\\ge0$ (Cited Prop.~\\ref{cp:H1I}) and $N\\le A\\,G^{1/4}L^{3/2}$ (Cited Prop.~\\ref{cp:NL}). Then $G(t)\\le …”. Lean theorem `palin_deriv_le` assumes `0 ≤ j` (restricting j ≥ 0), which the claim does not state. Is the restricted domain intentional?",
+      "weight": 0.6
+    },
+    {
+      "id": "0d7b17f0390f",
+      "claimId": "thm:H1",
+      "kind": "conditional",
+      "lean": "palin_deriv_le",
+      "key": "hyp:n ≤ A * Real.sqrt (Real.sqrt p) * Real.sqrt l ^ 3",
+      "detail": "`palin_deriv_le` assumes `hn : n ≤ A * Real.sqrt (Real.sqrt p) * Real.sqrt l ^ 3`, not stated in the claim.",
+      "question": "Paper claim Theorem 3.7 (thm:H1) states: “Let $G=\\|\\nabla\\omega\\|_2^2$, $L=\\|\\Delta\\omega\\|_2$. Assume $G'=2(-\\nu L^2-\\kappa J+N)$ with $J\\ge0$ (Cited Prop.~\\ref{cp:H1I}) and $N\\le A\\,G^{1/4}L^{3/2}$ (Cited Prop.~\\ref{cp:NL}). Then $G(t)\\le …”. Lean theorem `palin_deriv_le` assumes `hn : n ≤ A * Real.sqrt (Real.sqrt p) * Real.sqrt l ^ 3`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "df87c98c97c9",
+      "claimId": "thm:H1",
+      "kind": "narrower",
+      "lean": "young_43",
+      "key": "bound:x>=0",
+      "detail": "`young_43` restricts x ≥ 0; the claim states no such restriction.",
+      "question": "Paper claim Theorem 3.7 (thm:H1) states: “Let $G=\\|\\nabla\\omega\\|_2^2$, $L=\\|\\Delta\\omega\\|_2$. Assume $G'=2(-\\nu L^2-\\kappa J+N)$ with $J\\ge0$ (Cited Prop.~\\ref{cp:H1I}) and $N\\le A\\,G^{1/4}L^{3/2}$ (Cited Prop.~\\ref{cp:NL}). Then $G(t)\\le …”. Lean theorem `young_43` assumes `0 ≤ x` (restricting x ≥ 0), which the claim does not state. Is the restricted domain intentional?",
+      "weight": 0.6
+    },
+    {
+      "id": "43c2fc74fe60",
+      "claimId": "thm:H1",
+      "kind": "narrower",
+      "lean": "young_43",
+      "key": "bound:w>=0",
+      "detail": "`young_43` restricts w ≥ 0; the claim states no such restriction.",
+      "question": "Paper claim Theorem 3.7 (thm:H1) states: “Let $G=\\|\\nabla\\omega\\|_2^2$, $L=\\|\\Delta\\omega\\|_2$. Assume $G'=2(-\\nu L^2-\\kappa J+N)$ with $J\\ge0$ (Cited Prop.~\\ref{cp:H1I}) and $N\\le A\\,G^{1/4}L^{3/2}$ (Cited Prop.~\\ref{cp:NL}). Then $G(t)\\le …”. Lean theorem `young_43` assumes `0 ≤ w` (restricting w ≥ 0), which the claim does not state. Is the restricted domain intentional?",
+      "weight": 0.6
+    },
+    {
+      "id": "6fd223daa211",
+      "claimId": "thm:H1",
+      "kind": "conditional",
+      "lean": "l4l2Holder_torus",
+      "key": "hyp:∀ x, MemLp (g x) 2 torusMeasure",
+      "detail": "`l4l2Holder_torus` assumes `hg : ∀ x, MemLp (g x) 2 torusMeasure`, not stated in the claim.",
+      "question": "Paper claim Theorem 3.7 (thm:H1) states: “Let $G=\\|\\nabla\\omega\\|_2^2$, $L=\\|\\Delta\\omega\\|_2$. Assume $G'=2(-\\nu L^2-\\kappa J+N)$ with $J\\ge0$ (Cited Prop.~\\ref{cp:H1I}) and $N\\le A\\,G^{1/4}L^{3/2}$ (Cited Prop.~\\ref{cp:NL}). Then $G(t)\\le …”. Lean theorem `l4l2Holder_torus` assumes `hg : ∀ x, MemLp (g x) 2 torusMeasure`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "421e6c7db723",
+      "claimId": "theorem-3.8",
+      "kind": "ambiguous",
+      "key": "title-vs-statement",
+      "detail": "Title “Global smoothness of the tethered system, conditional” shares almost no terms with the statement.",
+      "question": "Paper claim Theorem 3.8 (theorem-3.8) states: “Assume the tethered log inequality (Cited Prop.~\\ref{cp:NSlog}), higher-norm control, BKM continuation (Cited Prop.~\\ref{cp:BKM}) and local continuation (Cited Prop.~\\ref{cp:LC}). Then the solution i…”. Its title is “Global smoothness of the tethered system, conditional”, which does not appear to describe that statement. Is the title or the statement misworded?",
+      "weight": 0.3
+    },
+    {
+      "id": "4598b6f5584c",
+      "claimId": "theorem-3.8",
+      "kind": "narrower",
+      "lean": "higherNormControl_tethered",
+      "key": "bound:x>=0",
+      "detail": "`higherNormControl_tethered` restricts x ≥ 0; the claim states no such restriction.",
+      "question": "Paper claim Theorem 3.8 (theorem-3.8) states: “Assume the tethered log inequality (Cited Prop.~\\ref{cp:NSlog}), higher-norm control, BKM continuation (Cited Prop.~\\ref{cp:BKM}) and local continuation (Cited Prop.~\\ref{cp:LC}). Then the solution i…”. Lean theorem `higherNormControl_tethered` assumes `∃ Z0b, 0 ≤ Z0b ∧ ∀ x, 0 ≤ x → Z0 x ≤ Z0b` (restricting x ≥ 0), which the claim does not state. Is the restricted domain intentional?",
+      "weight": 0.6
+    },
+    {
+      "id": "eb9651e361a1",
+      "claimId": "theorem-3.8",
+      "kind": "conditional",
+      "lean": "higherNormControl_tethered",
+      "key": "hyp:∀ T, 0 < T → (∀ T' < T, SmoothOn T') → ∃ Gb, ∀ x ∈ Ico 0 T, G x ≤ Gb",
+      "detail": "`higherNormControl_tethered` assumes `hH1 : ∀ T, 0 < T → (∀ T' < T, SmoothOn T') → ∃ Gb, ∀ x ∈ Ico 0 T, G x ≤ Gb`, not stated in the claim.",
+      "question": "Paper claim Theorem 3.8 (theorem-3.8) states: “Assume the tethered log inequality (Cited Prop.~\\ref{cp:NSlog}), higher-norm control, BKM continuation (Cited Prop.~\\ref{cp:BKM}) and local continuation (Cited Prop.~\\ref{cp:LC}). Then the solution i…”. Lean theorem `higherNormControl_tethered` assumes `hH1 : ∀ T, 0 < T → (∀ T' < T, SmoothOn T') → ∃ Gb, ∀ x ∈ Ico 0 T, G x ≤ Gb`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "cd0bdcad3c76",
+      "claimId": "cp:CZ",
+      "kind": "ambiguous",
+      "key": "title-vs-statement",
+      "detail": "Title “\\lean{StrainL2Bound}” shares almost no terms with the statement.",
+      "question": "Paper claim Hypothesis 3.10 (cp:CZ) states: “$\\int\\omega\\cdot S\\omega\\le C\\|\\omega\\|_2\\|\\omega\\|_4^2$: Calder\\'on--Zygmund / Biot--Savart, classical.”. Its title is “\\lean{StrainL2Bound}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+      "weight": 0.3
+    },
+    {
+      "id": "46d843337285",
+      "claimId": "cp:boot",
+      "kind": "ambiguous",
+      "key": "title-vs-statement",
+      "detail": "Title “\\lean{H1ToHsBootstrap}” shares almost no terms with the statement.",
+      "question": "Paper claim Hypothesis 3.14 (cp:boot) states: “$H^1$ bounds on $[0,T)$ imply $H^s$ bounds for all $s$. For plain NS this is classical parabolic regularity~\\cite{Temam,CF,MB}. \\textbf{The tether-specific step (controlling $\\kappa P(|\\omega|^2\\omeg…”. Its title is “\\lean{H1ToHsBootstrap}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+      "weight": 0.3
+    },
+    {
+      "id": "31218b0141e8",
+      "claimId": "cp:SbS",
+      "kind": "silent",
+      "key": "no-match",
+      "detail": "No Lean declaration matches this claim. Closest candidate: `StrainL2Bound` (score 0.22, but it matches claim cp:CZ better).",
+      "question": "Paper claim Hypothesis 3.15 (cp:SbS) states: “Pointwise evolution at the maximum, and stretching $\\le\\|S\\|_\\infty y^2$.”. No Lean declaration matching it was found among 138 candidates. Closest candidate: `StrainL2Bound` (score 0.22, but it matches claim cp:CZ better). Is this claim intentionally not formalized, or which declaration should it map to?",
+      "weight": 1
+    },
+    {
+      "id": "a01c12ef4309",
+      "claimId": "cp:BKMlog",
+      "kind": "ambiguous",
+      "key": "title-vs-statement",
+      "detail": "Title “\\lean{BKMLogInequality}” shares almost no terms with the statement.",
+      "question": "Paper claim Hypothesis 3.16 (cp:BKMlog) states: “$\\|S\\|_\\infty\\le C(1+\\|\\omega\\|_2+\\|\\omega\\|_\\infty\\log(e+\\|\\omega\\|_{H^s}))$~\\cite{BKM}; see also Brezis--Gallou\\\"et and Kozono--Taniuchi~\\cite{KT}.”. Its title is “\\lean{BKMLogInequality}”, which does not appear to describe that statement. Is the title or the statement misworded?",
+      "weight": 0.3
+    },
+    {
+      "id": "7189e4ca56f3",
+      "claimId": "cp:BKM",
+      "kind": "silent",
+      "key": "no-match",
+      "detail": "No Lean declaration matches this claim. Closest candidate: `BKMContinuation` (score 0.14, below threshold 0.2).",
+      "question": "Paper claim Hypothesis 3.19 (cp:BKM) states: “Beale--Kato--Majda~\\cite{BKM}: bounded $\\|\\omega\\|_\\infty$ on $[0,T)$ implies continuation. Stated for plain NS; its extension to \\eqref{eq:tv} is assumed.”. No Lean declaration matching it was found among 138 candidates. Closest candidate: `BKMContinuation` (score 0.14, below threshold 0.2). Is this claim intentionally not formalized, or which declaration should it map to?",
+      "weight": 1
+    }
+  ],
+  "status": "halt"
+}

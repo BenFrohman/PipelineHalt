@@ -1,0 +1,16 @@
+{
+  "claims": {
+    "theorem-1": {
+      "lean": [
+        "guidance_cleared"
+      ],
+      "note": "auto: \\lean/\\texttt names cited in the claim that exist as declarations"
+    },
+    "theorem-2": {
+      "lean": [
+        "quantumPotential_cleared"
+      ],
+      "note": "auto: \\lean/\\texttt names cited in the claim that exist as declarations"
+    }
+  }
+}

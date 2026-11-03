@@ -40,8 +40,12 @@ export async function askInteractive(
   let n = 0;
   try {
     for (const [i, m] of pending.entries()) {
-      output.write(`\n[${i + 1}/${pending.length}] ${m.kind.toUpperCase()} · ${m.id}\n${m.question}\n`);
-      output.write("answer (yes=intentional / no=unintended / free text; blank=skip): ");
+      output.write(
+        `\n[${i + 1}/${pending.length}] ${m.kind.toUpperCase()} · ${m.id}\n${m.question}\n`,
+      );
+      output.write(
+        "answer (yes=intentional / no=unintended / free text; blank=skip): ",
+      );
       const next = await lines.next();
       if (next.done) break;
       const a: string = next.value;
@@ -59,10 +63,19 @@ export interface PendingFile {
   tool: "pipelinehalt";
   anchor: string;
   instructions: string;
-  questions: { id: string; claimId: string; kind: string; question: string; answer: string }[];
+  questions: {
+    id: string;
+    claimId: string;
+    kind: string;
+    question: string;
+    answer: string;
+  }[];
 }
 
-export function pendingFile(anchorPath: string, pending: Mismatch[]): PendingFile {
+export function pendingFile(
+  anchorPath: string,
+  pending: Mismatch[],
+): PendingFile {
   return {
     tool: "pipelinehalt",
     anchor: anchorPath,

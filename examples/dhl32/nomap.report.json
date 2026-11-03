@@ -1,7 +1,8 @@
 {
   "tool": "pipelinehalt",
-  "version": "0.3.0",
-  "generatedAt": "2026-11-03T18:14:15.839Z",
+  "version": "0.4.0",
+  "anchorTitle": "Resolving a category error: DHL[3,2] yields H1 <= 6, not H1 = 2 (B. S. Frohman, 2026)",
+  "generatedAt": "2026-11-03T19:41:14.602Z",
   "declarationsScanned": 34,
   "claims": [
     {

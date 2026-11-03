@@ -2,8 +2,10 @@
 export function stem(w: string): string {
   if (w.length > 5 && w.endsWith("ing")) return w.slice(0, -3);
   if (w.length > 4 && w.endsWith("ed")) return w.slice(0, -2);
-  if (w.length > 4 && w.endsWith("es") && !w.endsWith("ses")) return w.slice(0, -1);
-  if (w.length > 3 && w.endsWith("s") && !w.endsWith("ss")) return w.slice(0, -1);
+  if (w.length > 4 && w.endsWith("es") && !w.endsWith("ses"))
+    return w.slice(0, -1);
+  if (w.length > 3 && w.endsWith("s") && !w.endsWith("ss"))
+    return w.slice(0, -1);
   return w;
 }
 
@@ -18,7 +20,8 @@ export function normalizeMath(s: string): string {
   return s
     .replace(
       /\\cref\{([^}]*)\}|\\ref\{([^}]*)\}/g,
-      (_m, a: string | undefined, b: string | undefined) => ` ${(a ?? b ?? "").replace(/[:_-]/g, " ")} `,
+      (_m, a: string | undefined, b: string | undefined) =>
+        ` ${(a ?? b ?? "").replace(/[:_-]/g, " ")} `,
     )
     .replace(/\\leq?(?![a-zA-Z])/g, "≤")
     .replace(/\\geq?(?![a-zA-Z])/g, "≥")
@@ -74,7 +77,8 @@ export function setLiterals(s: string): string[] {
 /** Lower bounds on single-letter variables: "n ≥ 2", "1 ≤ n", "n > 1". */
 export function lowerBounds(s: string): Map<string, number> {
   const out = new Map<string, number>();
-  const put = (v: string, n: number) => out.set(v, Math.max(out.get(v) ?? -Infinity, n));
+  const put = (v: string, n: number) =>
+    out.set(v, Math.max(out.get(v) ?? -Infinity, n));
   for (const m of s.matchAll(/(?<![\w.])([a-z])\s*(≥|>)\s*(\d+)/g))
     put(m[1]!, Number(m[3]) + (m[2] === ">" ? 1 : 0));
   for (const m of s.matchAll(/(\d+)\s*(≤|<)\s*([a-z])(?![\w.])/g))

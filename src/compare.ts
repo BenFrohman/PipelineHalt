@@ -1,9 +1,25 @@
 import { createHash } from "node:crypto";
-import type { Anchor, Claim, ClaimResult, LeanDecl, Mismatch, MismatchKind, Report } from "./types.js";
-import { clip, dice, lowerBounds, normalizeMath, setLiterals, tokenSet, tokens } from "./text.js";
+import type {
+  Anchor,
+  Claim,
+  ClaimResult,
+  LeanDecl,
+  Mismatch,
+  MismatchKind,
+  Report,
+} from "./types.js";
+import {
+  clip,
+  dice,
+  lowerBounds,
+  normalizeMath,
+  setLiterals,
+  tokenSet,
+  tokens,
+} from "./text.js";
 import { splitTop } from "./lean.js";
 
-export const VERSION = "0.3.0";
+export const VERSION = "0.4.0";
 
 export const WEIGHTS: Record<MismatchKind, number> = {
   silent: 1,
@@ -24,9 +40,16 @@ export interface CompareOptions {
 }
 
 const inPool = (c: Claim, d: LeanDecl) =>
-  c.kind === "definition" || c.kind === "hypothesis" ? !PROVABLE.has(d.kind) : PROVABLE.has(d.kind);
+  c.kind === "definition" || c.kind === "hypothesis"
+    ? !PROVABLE.has(d.kind)
+    : PROVABLE.has(d.kind);
 
-export function mismatchId(claimId: string, kind: string, lean: string | undefined, key: string): string {
+export function mismatchId(
+  claimId: string,
+  kind: string,
+  lean: string | undefined,
+  key: string,
+): string {
   return createHash("sha256")
     .update(`${claimId}\u0000${kind}\u0000${lean ?? ""}\u0000${key}`)
     .digest("hex")
@@ -38,13 +61,23 @@ const declWord = (d: LeanDecl) => `Lean ${d.kind}`;
 
 const citedNumber = (doc?: string) =>
   /\b(Theorem|Lemma|Proposition|Corollary)\s+(\d+(?:\.\d+)?)/.exec(doc ?? "");
+const norm = (s: string) =>
+  s
+    .toLowerCase()
+    .replace(/[^a-z0-9.]+/g, " ")
+    .trim();
+/** A docstring label such as "Theorem 1" that the mapping file declares equivalent to this claim. */
+const isAlias = (c: Claim, cited: string) =>
+  (c.aliases ?? []).some((a) => norm(a) === norm(cited));
 const claimDigits = (c: Claim) => /(\d+(?:\.\d+)?)/.exec(c.number ?? "")?.[1];
 
 /** Score a declaration against a claim. Heuristic: 0.6 x term overlap with the signature (name, binders,
  *  type) + 0.4 x overlap with the docstring, plus 0.3 if the docstring cites exactly the claim's number. */
 export function score(c: Claim, d: LeanDecl): number {
   const ct = tokenSet(normalizeMath([c.title ?? "", c.statement].join(" ")));
-  const sig = tokenSet([d.name, d.type, ...d.binders.map((b) => b.type)].join(" "));
+  const sig = tokenSet(
+    [d.name, d.type, ...d.binders.map((b) => b.type)].join(" "),
+  );
   let s = 0.6 * dice(ct, sig) + 0.4 * dice(ct, tokenSet(d.doc ?? ""));
   const cited = citedNumber(d.doc);
   if (cited && c.number && cited[2] === claimDigits(c)) s += 0.3;
@@ -65,11 +98,14 @@ export function hypotheses(d: LeanDecl): { text: string; name?: string }[] {
   for (const b of d.binders) {
     if (b.bracket === "[") continue; // instance arguments are not mathematical hypotheses
     const named = b.names.some((n) => /^_?h/.test(n));
-    if (named || /[≤≥<>=≠∈∉∧∨¬↔]/.test(b.type)) hyps.push({ text: b.type, name: b.names.join(" ") });
+    if (named || /[≤≥<>=≠∈∉∧∨¬↔]/.test(b.type))
+      hyps.push({ text: b.type, name: b.names.join(" ") });
   }
   let t = d.type;
-  while (/^∀/.test(t) && t.includes(",")) t = t.slice(t.indexOf(",") + 1).trim();
-  if (!/^[∃¬]/.test(t)) for (const p of splitTop(t, "→").slice(0, -1)) hyps.push({ text: p });
+  while (/^∀/.test(t) && t.includes(","))
+    t = t.slice(t.indexOf(",") + 1).trim();
+  if (!/^[∃¬]/.test(t))
+    for (const p of splitTop(t, "→").slice(0, -1)) hyps.push({ text: p });
   return hyps;
 }
 
@@ -82,7 +118,16 @@ function mk(
   question: string,
   weight = WEIGHTS[kind],
 ): Mismatch {
-  return { id: mismatchId(c.id, kind, lean, key), claimId: c.id, kind, lean, key, detail, question, weight };
+  return {
+    id: mismatchId(c.id, kind, lean, key),
+    claimId: c.id,
+    kind,
+    lean,
+    key,
+    detail,
+    question,
+    weight,
+  };
 }
 
 export function compareClaim(
@@ -102,8 +147,15 @@ export function compareClaim(
   let matched: ClaimResult["matched"] = [];
   if (c.lean?.length) {
     for (const n of c.lean) {
-      const d = decls.find((x) => x.name === n || x.fullName === n || x.fullName.endsWith(`.${n}`));
-      if (d) matched.push({ name: d.name, score: Number(score(c, d).toFixed(3)), explicit: true });
+      const d = decls.find(
+        (x) => x.name === n || x.fullName === n || x.fullName.endsWith(`.${n}`),
+      );
+      if (d)
+        matched.push({
+          name: d.name,
+          score: Number(score(c, d).toFixed(3)),
+          explicit: true,
+        });
       else
         mismatches.push(
           mk(
@@ -117,14 +169,22 @@ export function compareClaim(
         );
     }
   } else {
-    const ranked = pool.map((d) => ({ d, s: score(c, d) })).sort((a, b) => b.s - a.s);
+    const ranked = pool
+      .map((d) => ({ d, s: score(c, d) }))
+      .sort((a, b) => b.s - a.s);
     // a declaration is offered only to the claim it scores highest against (heuristic exclusivity)
-    const mine = ranked.filter((r) => !owner || (owner.get(r.d.fullName) ?? c.id) === c.id);
+    const mine = ranked.filter(
+      (r) => !owner || (owner.get(r.d.fullName) ?? c.id) === c.id,
+    );
     const best = ranked[0]?.s ?? 0;
     matched = mine
       .filter((r) => r.s >= minScore && r.s >= 0.6 * best)
       .slice(0, 4)
-      .map((r) => ({ name: r.d.name, score: Number(r.s.toFixed(3)), explicit: false }));
+      .map((r) => ({
+        name: r.d.name,
+        score: Number(r.s.toFixed(3)),
+        explicit: false,
+      }));
     if (!matched.length) {
       const top = ranked[0];
       const cand = top
@@ -192,10 +252,14 @@ export function compareClaim(
     ...tokens(c.title ?? ""),
     ...(c.assumptions ?? []).flatMap((a) => tokens(normalizeMath(a))),
     // titles of claims this statement cross-references (\\cref{hyp:parity} -> "Parity barrier")
-    ...[...c.statement.matchAll(/\\c?ref\{([^}]*)\}/gi)].flatMap((m) => tokens(titles.get(m[1]!) ?? "")),
+    ...[...c.statement.matchAll(/\\c?ref\{([^}]*)\}/gi)].flatMap((m) =>
+      tokens(titles.get(m[1]!) ?? ""),
+    ),
   ]);
   const leanSets = new Set(
-    md.flatMap((d) => setLiterals(`${d.type} ${d.binders.map((b) => b.type).join(" ")}`)),
+    md.flatMap((d) =>
+      setLiterals(`${d.type} ${d.binders.map((b) => b.type).join(" ")}`),
+    ),
   );
   for (const s of claimSets)
     if (md.length && !leanSets.has(s))
@@ -282,9 +346,12 @@ export function compareClaim(
         }
         continue;
       }
-      const ht = tokens(h.text).filter((t) => !/^\d+$/.test(t) && t.length > 1 && !varTok.has(t));
+      const ht = tokens(h.text).filter(
+        (t) => !/^\d+$/.test(t) && t.length > 1 && !varTok.has(t),
+      );
       if (!ht.length) continue; // a relation among the declaration's own quantified variables
-      const has = (t: string) => claimTok.has(t) || (SYNONYMS[t] ?? []).some((x) => claimTok.has(x));
+      const has = (t: string) =>
+        claimTok.has(t) || (SYNONYMS[t] ?? []).some((x) => claimTok.has(x));
       const covered = ht.filter(has).length / ht.length;
       if (covered < 0.5) {
         const shown = h.name ? `${h.name} : ${h.text}` : h.text;
@@ -306,7 +373,9 @@ export function compareClaim(
   const num = claimDigits(c);
   const other = md
     .map((d) => ({ d, cited: citedNumber(d.doc) }))
-    .find((x) => x.cited && num && x.cited[2] !== num);
+    .find(
+      (x) => x.cited && num && x.cited[2] !== num && !isAlias(c, x.cited[0]),
+    );
   if (other)
     mismatches.push(
       mk(
@@ -324,9 +393,15 @@ export function compareClaim(
 }
 
 /** Compare every claim; attach recorded clarifications; compute pending questions and status. */
-export function compare(anchor: Anchor, decls: LeanDecl[], opts: CompareOptions = {}): Report {
+export function compare(
+  anchor: Anchor,
+  decls: LeanDecl[],
+  opts: CompareOptions = {},
+): Report {
   const maxDrift = opts.maxDrift ?? 0.25;
-  const titles = new Map(anchor.claims.filter((c) => c.title).map((c) => [c.id, c.title!]));
+  const titles = new Map(
+    anchor.claims.filter((c) => c.title).map((c) => [c.id, c.title!]),
+  );
   const owner = new Map<string, string>();
   for (const d of decls) {
     let best = -1;
@@ -339,7 +414,9 @@ export function compare(anchor: Anchor, decls: LeanDecl[], opts: CompareOptions 
       }
     }
   }
-  const claims = anchor.claims.map((c) => compareClaim(c, decls, opts, titles, owner));
+  const claims = anchor.claims.map((c) =>
+    compareClaim(c, decls, opts, titles, owner),
+  );
   const ids = new Map<string, number>();
   for (const c of anchor.claims) ids.set(c.id, (ids.get(c.id) ?? 0) + 1);
   for (const [id, n] of ids)
@@ -363,7 +440,12 @@ export function compare(anchor: Anchor, decls: LeanDecl[], opts: CompareOptions 
       const cl = anchor.clarifications[m.id];
       if (cl) {
         m.clarification = cl;
-        const w = cl.verdict === "intentional" ? 0 : cl.verdict === "other" ? m.weight / 2 : m.weight;
+        const w =
+          cl.verdict === "intentional"
+            ? 0
+            : cl.verdict === "other"
+              ? m.weight / 2
+              : m.weight;
         keep *= 1 - w;
       } else {
         pending.push(m);
@@ -375,12 +457,23 @@ export function compare(anchor: Anchor, decls: LeanDecl[], opts: CompareOptions 
   const unanchored = decls
     .filter((d) => PROVABLE.has(d.kind))
     .map((d) => ({ d, cited: citedNumber(d.doc) }))
-    .filter((x) => x.cited && !claims.some((r) => r.matched.some((m) => m.name === x.d.name)))
+    .filter((x) => !anchor.unclaimed?.[x.d.name])
+    .filter(
+      (x) =>
+        x.cited &&
+        !claims.some((r) => r.matched.some((m) => m.name === x.d.name)),
+    )
     .map((x) => ({ name: x.d.name, cites: x.cited![0] }));
   const drift = claims.length
-    ? Number((claims.reduce((s, r) => s + r.drift, 0) / claims.length).toFixed(3))
+    ? Number(
+        (claims.reduce((s, r) => s + r.drift, 0) / claims.length).toFixed(3),
+      )
     : 0;
-  const status = pending.length ? "halt" : drift > maxDrift ? "drift" : "aligned";
+  const status = pending.length
+    ? "halt"
+    : drift > maxDrift
+      ? "drift"
+      : "aligned";
   return {
     tool: "pipelinehalt",
     version: VERSION,

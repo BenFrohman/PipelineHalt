@@ -14,26 +14,47 @@ export function toJson(r: Report): string {
 /** Markdown report: drift scores per claim, each difference with its status, and realignment notes. */
 export function toMarkdown(r: Report): string {
   const L: string[] = [];
-  L.push(`# PipelineHalt report${r.anchorTitle ? `: ${r.anchorTitle}` : ""}`, "");
+  L.push(
+    `# PipelineHalt report${r.anchorTitle ? `: ${r.anchorTitle}` : ""}`,
+    "",
+  );
   L.push(
     `Status: **${r.status.toUpperCase()}** · overall drift **${r.drift.toFixed(3)}** · ${r.claims.length} claims · ${r.declarationsScanned} Lean declarations scanned · ${r.pending.length} open question(s)`,
     "",
   );
   L.push(
+    r.mapFile
+      ? `Mapping file: \`${r.mapFile}\` (human-authored claim → Lean pairing; mapped claims skip heuristic matching).`
+      : "Mapping file: none (heuristic pairing only).",
+    "",
+  );
+  for (const w of r.mapWarnings ?? []) L.push(`> Mapping warning: ${w}`, "");
+  L.push(
     "> PipelineHalt surfaces syntactic differences between paper claims and Lean statements and asks about them. Matching is heuristic. It does not decide what the author meant; recorded answers are the author's.",
     "",
   );
-  L.push("| Claim | Matched Lean | Drift | Open | Answered |", "|---|---|---|---|---|");
+  L.push(
+    "| Claim | Matched Lean | Drift | Open | Answered |",
+    "|---|---|---|---|---|",
+  );
   for (const c of r.claims) {
     const open = c.mismatches.filter((m) => !m.clarification).length;
     const ans = c.mismatches.length - open;
-    const lean = c.matched.map((m) => `\`${m.name}\`${m.explicit ? "" : ` (${m.score})`}`).join(", ") || "—";
-    L.push(`| ${c.claim.number ?? c.claim.id} | ${lean} | ${c.drift.toFixed(3)} | ${open} | ${ans} |`);
+    const lean =
+      c.matched
+        .map((m) => `\`${m.name}\`${m.explicit ? "" : ` (${m.score})`}`)
+        .join(", ") || "—";
+    L.push(
+      `| ${c.claim.number ?? c.claim.id} | ${lean} | ${c.drift.toFixed(3)} | ${open} | ${ans} |`,
+    );
   }
   L.push("");
   for (const c of r.claims) {
     if (!c.mismatches.length) continue;
-    L.push(`## ${c.claim.number ?? c.claim.id}${c.claim.title ? ` — ${c.claim.title}` : ""}`, "");
+    L.push(
+      `## ${c.claim.number ?? c.claim.id}${c.claim.title ? ` — ${c.claim.title}` : ""}`,
+      "",
+    );
     for (const m of c.mismatches) {
       const st = m.clarification
         ? `answered (${m.clarification.verdict}): “${m.clarification.answer}”`
@@ -47,12 +68,16 @@ export function toMarkdown(r: Report): string {
   for (const c of r.claims)
     for (const m of c.mismatches) {
       const who = `${c.claim.number ?? c.claim.id}`;
-      if (!m.clarification) notes.push(`- ${who}: answer \`${m.id}\` — ${m.question}`);
+      if (!m.clarification)
+        notes.push(`- ${who}: answer \`${m.id}\` — ${m.question}`);
       else if (m.clarification.verdict === "unintended")
         notes.push(
           `- ${who}: author marked \`${m.id}\` as unintended. Fix the Lean statement or the paper by hand (PipelineHalt does not auto-correct).`,
         );
-      else if (m.clarification.verdict === "intentional" && m.kind !== "ambiguous")
+      else if (
+        m.clarification.verdict === "intentional" &&
+        m.kind !== "ambiguous"
+      )
         notes.push(
           `- ${who}: difference \`${m.id}\` is intentional per the author; consider stating it in the paper text so readers see it too.`,
         );
@@ -64,7 +89,12 @@ export function toMarkdown(r: Report): string {
           `- Lean \`${u.name}\` cites “${u.cites}” in its docstring but is not matched to any anchor claim (informational).`,
       ),
     );
-  L.push(...(notes.length ? notes : ["- None. All recorded differences are answered as intentional."]), "");
+  L.push(
+    ...(notes.length
+      ? notes
+      : ["- None. All recorded differences are answered as intentional."]),
+    "",
+  );
   return L.join("\n");
 }
 

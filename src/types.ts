@@ -7,11 +7,20 @@ export interface Claim {
   title?: string;
   statement: string;
   kind?:
-    "theorem" | "lemma" | "proposition" | "corollary" | "definition" | "conjecture" | "claim" | "hypothesis";
+    | "theorem"
+    | "lemma"
+    | "proposition"
+    | "corollary"
+    | "definition"
+    | "conjecture"
+    | "claim"
+    | "hypothesis";
   /** Explicit Lean declaration names this claim maps to. When absent, matching is heuristic. */
   lean?: string[];
   /** Assumptions the paper states explicitly (free text). Used when checking Lean hypotheses. */
   assumptions?: string[];
+  /** Other numberings that mean this claim, e.g. "Theorem 1" in Lean docstrings for paper Theorem 3.1. Usually set by the mapping file. */
+  aliases?: string[];
   /** Source location, e.g. "paper/note.tex:86". */
   source?: string;
 }
@@ -33,6 +42,8 @@ export interface Anchor {
   claims: Claim[];
   /** Recorded user answers keyed by stable mismatch id. Never rewritten automatically. */
   clarifications: Record<string, Clarification>;
+  /** Lean names deliberately not mapped to any claim (name → reason). Usually from the mapping file. */
+  unclaimed?: Record<string, string>;
 }
 
 export interface Binder {
@@ -81,6 +92,10 @@ export interface ClaimResult {
 
 export interface Report {
   tool: "pipelinehalt";
+  /** Mapping file used, if any. */
+  mapFile?: string;
+  /** Problems with the mapping file (e.g. unknown claim ids). */
+  mapWarnings?: string[];
   version: string;
   anchorTitle?: string;
   generatedAt: string;

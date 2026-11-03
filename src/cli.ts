@@ -2,10 +2,21 @@ import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import type { Readable, Writable } from "node:stream";
-import { extractLatex, extractPdf, loadAnchor, saveClarifications } from "./anchor.js";
+import {
+  extractLatex,
+  extractPdf,
+  loadAnchor,
+  saveClarifications,
+} from "./anchor.js";
 import { compare, VERSION } from "./compare.js";
-import { askInteractive, pendingFile, record, type PendingFile } from "./halt.js";
+import {
+  askInteractive,
+  pendingFile,
+  record,
+  type PendingFile,
+} from "./halt.js";
 import { loadLean } from "./lean.js";
+import { resolveMap } from "./map.js";
 import { exitCodeFor, handle, type AgentRequest } from "./protocol.js";
 import { toAnnotations, toJson, toMarkdown } from "./report.js";
 import type { Verdict } from "./types.js";
@@ -26,6 +37,8 @@ check options:
   --ci                  print GitHub annotations and a one-line summary; never prompt
   --max-drift <x>       drift threshold for exit 1 once all questions are answered (default 0.25)
   --min-score <x>       heuristic match threshold (default 0.2)
+  --map <file>          claim→Lean mapping file (default: pipelinehalt.map.json beside the anchor or up to the repo root)
+  --no-map              ignore any mapping file (pure heuristic pairing)
 
 Exit codes: 0 aligned · 1 drift above threshold (all answered) · 2 halted with open questions · 3 usage error.
 PipelineHalt surfaces differences and forces clarification. It does not recover unwritten intent and never edits claims or Lean code.`;
@@ -36,7 +49,10 @@ export interface Io {
   stderr: Writable;
 }
 
-export function parseArgs(argv: string[]): { cmd: string; flags: Record<string, string[]> } {
+export function parseArgs(argv: string[]): {
+  cmd: string;
+  flags: Record<string, string[]>;
+} {
   const [cmd = "help", ...rest] = argv;
   const flags: Record<string, string[]> = {};
   let key = "_";
@@ -52,7 +68,13 @@ export function parseArgs(argv: string[]): { cmd: string; flags: Record<string, 
 const one = (f: Record<string, string[]>, k: string) => f[k]?.[0];
 
 export function templatePath(): string {
-  return join(dirname(fileURLToPath(import.meta.url)), "..", "..", "templates", "chat-protocol.md");
+  return join(
+    dirname(fileURLToPath(import.meta.url)),
+    "..",
+    "..",
+    "templates",
+    "chat-protocol.md",
+  );
 }
 
 async function readAll(s: Readable): Promise<string> {
@@ -65,7 +87,8 @@ export async function run(argv: string[], io: Io): Promise<number> {
   const { cmd, flags } = parseArgs(argv);
   const say = (s: string) => io.stdout.write(s.endsWith("\n") ? s : s + "\n");
   try {
-    if (cmd === "help" || cmd === "--help" || cmd === "-h") return (say(HELP), 0);
+    if (cmd === "help" || cmd === "--help" || cmd === "-h")
+      return (say(HELP), 0);
     if (cmd === "prompt") return (say(readFileSync(templatePath(), "utf8")), 0);
     if (cmd === "agent") {
       const req = JSON.parse(await readAll(io.stdin)) as AgentRequest;
@@ -76,7 +99,9 @@ export async function run(argv: string[], io: Io): Promise<number> {
     if (cmd === "extract") {
       const from = one(flags, "from");
       if (!from) throw new Usage("extract needs --from");
-      const a = from.endsWith(".pdf") ? extractPdf(from) : extractLatex(readFileSync(from, "utf8"), from);
+      const a = from.endsWith(".pdf")
+        ? extractPdf(from)
+        : extractLatex(readFileSync(from, "utf8"), from);
       const out = JSON.stringify(a, null, 2) + "\n";
       const o = one(flags, "out");
       if (o) {
@@ -87,16 +112,29 @@ export async function run(argv: string[], io: Io): Promise<number> {
     }
     const anchorPath = one(flags, "anchor");
     if (!anchorPath) throw new Usage(`${cmd} needs --anchor`);
+    const mapped = () => {
+      const r = resolveMap(
+        loadAnchor(anchorPath),
+        anchorPath,
+        "no-map" in flags ? false : one(flags, "map"),
+      );
+      for (const w of r.warnings) io.stderr.write(`pipelinehalt: ${w}\n`);
+      return r;
+    };
     if (cmd === "answer") {
-      const anchor = loadAnchor(anchorPath);
+      const { anchor } = mapped();
       const lean = flags.lean ?? [];
       const report = compare(anchor, lean.length ? loadLean(lean) : []);
-      const known = new Map(report.claims.flatMap((c) => c.mismatches).map((m) => [m.id, m]));
+      const known = new Map(
+        report.claims.flatMap((c) => c.mismatches).map((m) => [m.id, m]),
+      );
       const items: { id: string; answer: string; verdict?: Verdict }[] = [];
       const from = one(flags, "from");
       if (from)
         items.push(
-          ...(JSON.parse(readFileSync(from, "utf8")) as PendingFile).questions.filter((q) => q.answer.trim()),
+          ...(
+            JSON.parse(readFileSync(from, "utf8")) as PendingFile
+          ).questions.filter((q) => q.answer.trim()),
         );
       else if (one(flags, "id"))
         items.push({
@@ -126,23 +164,45 @@ export async function run(argv: string[], io: Io): Promise<number> {
     const lean = flags.lean ?? [];
     if (!lean.length) throw new Usage("check needs --lean <path>");
     const opts = {
-      maxDrift: one(flags, "max-drift") ? Number(one(flags, "max-drift")) : undefined,
-      minScore: one(flags, "min-score") ? Number(one(flags, "min-score")) : undefined,
+      maxDrift: one(flags, "max-drift")
+        ? Number(one(flags, "max-drift"))
+        : undefined,
+      minScore: one(flags, "min-score")
+        ? Number(one(flags, "min-score"))
+        : undefined,
     };
-    const anchor = loadAnchor(anchorPath);
+    const { anchor, mapFile, warnings } = mapped();
     const decls = loadLean(lean);
-    let report = compare(anchor, decls, opts);
+    const withMap = (r: ReturnType<typeof compare>) => ({
+      ...r,
+      mapFile,
+      mapWarnings: warnings.length ? warnings : undefined,
+    });
+    let report = withMap(compare(anchor, decls, opts));
     if ("interactive" in flags && report.pending.length) {
-      const n = await askInteractive(anchor, report.pending, io.stdin, io.stdout);
-      if (n) say(`recorded ${n} answer(s) in ${saveClarifications(anchorPath, anchor.clarifications)}`);
-      report = compare(anchor, decls, opts);
+      const n = await askInteractive(
+        anchor,
+        report.pending,
+        io.stdin,
+        io.stdout,
+      );
+      if (n)
+        say(
+          `recorded ${n} answer(s) in ${saveClarifications(anchorPath, anchor.clarifications)}`,
+        );
+      report = withMap(compare(anchor, decls, opts));
     }
-    if (one(flags, "report-md")) writeFileSync(one(flags, "report-md")!, toMarkdown(report));
-    if (one(flags, "report-json")) writeFileSync(one(flags, "report-json")!, toJson(report));
+    if (one(flags, "report-md"))
+      writeFileSync(one(flags, "report-md")!, toMarkdown(report));
+    if (one(flags, "report-json"))
+      writeFileSync(one(flags, "report-json")!, toJson(report));
     const pendingPath = one(flags, "pending") ?? ".pipelinehalt/pending.json";
     if (report.pending.length) {
       mkdirSync(dirname(pendingPath), { recursive: true });
-      writeFileSync(pendingPath, JSON.stringify(pendingFile(anchorPath, report.pending), null, 2) + "\n");
+      writeFileSync(
+        pendingPath,
+        JSON.stringify(pendingFile(anchorPath, report.pending), null, 2) + "\n",
+      );
     }
     if ("ci" in flags) {
       const ann = toAnnotations(report);
@@ -159,7 +219,9 @@ export async function run(argv: string[], io: Io): Promise<number> {
     }
     return exitCodeFor(report.status);
   } catch (e) {
-    io.stderr.write(`pipelinehalt: ${(e as Error).message}\n${e instanceof Usage ? "\n" + HELP + "\n" : ""}`);
+    io.stderr.write(
+      `pipelinehalt: ${(e as Error).message}\n${e instanceof Usage ? "\n" + HELP + "\n" : ""}`,
+    );
     return 3;
   }
 }

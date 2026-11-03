@@ -7,7 +7,10 @@ const DECL_RE =
 const SCOPE_RE = /^(namespace|section|end)\b[ \t]*([^\s]*)/gm;
 
 /** Replace comments by spaces (preserving offsets) and collect docstrings by end offset. */
-export function stripComments(src: string): { code: string; docs: { end: number; text: string }[] } {
+export function stripComments(src: string): {
+  code: string;
+  docs: { end: number; text: string }[];
+} {
   const out = src.split("");
   const docs: { end: number; text: string }[] = [];
   let i = 0;
@@ -27,7 +30,8 @@ export function stripComments(src: string): { code: string; docs: { end: number;
           i += 2;
         } else i++;
       } while (depth > 0 && i < src.length);
-      if (isDoc && src[start + 2] === "-") docs.push({ end: i, text: src.slice(start + 3, i - 2).trim() });
+      if (isDoc && src[start + 2] === "-")
+        docs.push({ end: i, text: src.slice(start + 3, i - 2).trim() });
       for (let k = start; k < i; k++) if (out[k] !== "\n") out[k] = " ";
     } else if (src[i] === '"') {
       i++;
@@ -47,7 +51,8 @@ export function topLevelIndex(s: string, toks: string[], from = 0): number {
     const c = s[i]!;
     if (c in OPEN || c === "⟨") depth++;
     else if (")}]⦄⟩".includes(c)) depth--;
-    else if (depth === 0) for (const t of toks) if (s.startsWith(t, i)) return i;
+    else if (depth === 0)
+      for (const t of toks) if (s.startsWith(t, i)) return i;
   }
   return -1;
 }
@@ -100,12 +105,24 @@ const norm = (s: string) => s.replace(/\s+/g, " ").trim();
 
 export function parseLean(src: string, file = "<memory>"): LeanDecl[] {
   const { code, docs } = stripComments(src);
-  const starts: { idx: number; kind: string; name: string; nameEnd: number }[] = [];
+  const starts: { idx: number; kind: string; name: string; nameEnd: number }[] =
+    [];
   for (const m of code.matchAll(DECL_RE)) {
-    starts.push({ idx: m.index!, kind: m[1]!, name: m[2] ?? "", nameEnd: m.index! + m[0].length });
+    starts.push({
+      idx: m.index!,
+      kind: m[1]!,
+      name: m[2] ?? "",
+      nameEnd: m.index! + m[0].length,
+    });
   }
-  const scopes = [...code.matchAll(SCOPE_RE)].map((m) => ({ idx: m.index!, kind: m[1]!, name: m[2] ?? "" }));
-  const axiomNames = starts.filter((s) => s.kind === "axiom").map((s) => s.name);
+  const scopes = [...code.matchAll(SCOPE_RE)].map((m) => ({
+    idx: m.index!,
+    kind: m[1]!,
+    name: m[2] ?? "",
+  }));
+  const axiomNames = starts
+    .filter((s) => s.kind === "axiom")
+    .map((s) => s.name);
   const decls: LeanDecl[] = [];
   starts.forEach((st, k) => {
     const nextDecl = starts[k + 1]?.idx ?? code.length;
@@ -125,7 +142,9 @@ export function parseLean(src: string, file = "<memory>"): LeanDecl[] {
     const body = assign >= 0 ? text.slice(assign) : "";
     const { binders, rest } = parseBinders(header);
     const type = rest.startsWith(":") ? norm(rest.slice(1)) : "";
-    const doc = docs.find((d) => d.end <= st.idx && src.slice(d.end, st.idx).trim() === "")?.text;
+    const doc = docs.find(
+      (d) => d.end <= st.idx && src.slice(d.end, st.idx).trim() === "",
+    )?.text;
     const prefix = stack.filter(Boolean).join(".");
     decls.push({
       kind: st.kind,
@@ -138,7 +157,9 @@ export function parseLean(src: string, file = "<memory>"): LeanDecl[] {
       type,
       usesSorry: /\b(sorry|admit)\b/.test(body) || /\bsorry\b/.test(type),
       usesAxioms: axiomNames.filter(
-        (a) => a !== st.name && new RegExp(`(^|[^\\w.])${escape(a)}([^\\w]|$)`).test(text),
+        (a) =>
+          a !== st.name &&
+          new RegExp(`(^|[^\\w.])${escape(a)}([^\\w]|$)`).test(text),
       ),
     });
   });
@@ -174,7 +195,9 @@ export function loadLean(paths: string[]): LeanDecl[] {
         const stop = seg.slice(1).search(DECL_START_LINE);
         const text = stop >= 0 ? seg.slice(0, stop + 1) : seg;
         d.usesAxioms = axioms.filter(
-          (a) => a !== d.name && new RegExp(`(^|[^\\w.])${escape(a)}([^\\w]|$)`).test(text),
+          (a) =>
+            a !== d.name &&
+            new RegExp(`(^|[^\\w.])${escape(a)}([^\\w]|$)`).test(text),
         );
       }
     }

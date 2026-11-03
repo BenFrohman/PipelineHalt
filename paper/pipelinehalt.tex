@@ -22,7 +22,9 @@ Call the \emph{residual gap} the set of differences between what the paper asser
 \section{Design}
 \paragraph{Inputs.} The anchor is a list of claims (id, printed number, title, statement, optional explicit \texttt{lean:} mapping and stated assumptions), read from JSON, Markdown, or LaTeX theorem environments (with amsthm section numbering reproduced); PDF is supported best-effort via \texttt{pdftotext}. Lean files are parsed with a lightweight bracket-aware scanner extracting declarations, binders, type, docstring, \texttt{sorry}, and use of project axioms.
 
-\paragraph{Matching.} Without an explicit mapping, each declaration is assigned to the claim maximizing
+\paragraph{Mapping file.} The practical way to cut first-run noise is a small, hand-written \emph{mapping file}, \texttt{pipelinehalt.map.json}, kept separate from the extracted claims. It maps each claim id to Lean declaration names, optionally lists \emph{aliases} (e.g.\ a docstring's ``Theorem~1'' for the paper's Theorem~3.1), and may list declarations deliberately left unmapped. It is found by default beside the anchor or in a parent directory up to the repository root, and can be overridden (\texttt{--map}) or disabled (\texttt{--no-map}). Mapped claims skip heuristic pairing, and aliases suppress numbering questions; all other checks still run on the mapped declarations. The mapping is human-authored: it says \emph{where to look}, reduces pairing noise, and is not validated semantically. A wrong mapping yields wrong findings.
+
+\paragraph{Matching.} Without a mapping, each declaration is assigned to the claim maximizing
 $0.6\,D(\text{sig}) + 0.4\,D(\text{doc}) + 0.3\,[\text{doc cites the claim's number}]$,
 where $D$ is the Dice coefficient~\cite{dice1945} over stemmed tokens; definitions match definition-like claims only. This is a heuristic and is the main source of error.
 
@@ -39,29 +41,27 @@ Each mismatch has an id $=\mathrm{sha256}(\text{claim},\text{kind},\text{decl},\
 Unanswered mismatches yield status \textsc{halt} (exit code 2). Interactively, questions are asked on the terminal; non-interactively, they are written to a pending file to be filled in and imported. An answer is stored verbatim with a verdict parsed from its first word: \emph{intentional} (weight 0), \emph{unintended} (full weight), or other (half weight). Since ids are stable, an answered question is never re-asked; if the Lean changes so that the key changes, a new question appears. For agents, a JSON protocol (\texttt{pipelinehalt/1}) returns the questions and accepts answers; the accompanying prompt template instructs agents to relay questions unchanged and never answer them. A CI mode emits GitHub annotations and fails on halts or drift above a threshold.
 
 \section{Example: DHL[3,2] and prime gaps}
-We ran PipelineHalt 0.3.0 on the repository for \cite{frohman2026dhl} (commit \texttt{69a13d3}): 9 claims extracted from \texttt{paper/DHL32\_note.tex}, 34 Lean declarations.
-
-\paragraph{With explicit mappings.} Status \textsc{halt}, overall drift 0.245, 7 open questions (Table~\ref{tab:explicit}). Lemma~2.4, the three definitions and Hypothesis~3.5 reported no differences.
+We ran PipelineHalt 0.4.0 on the repository for \cite{frohman2026dhl} (commit \texttt{69a13d3}): 9 claims extracted verbatim from \texttt{paper/DHL32\_note.tex}, 34 Lean declarations. Table~\ref{tab:runs} compares a run without a mapping with a run using the mapping file shipped in \texttt{examples/dhl32/}, which we drafted from the Lean docstrings.
 \begin{table}[h]\centering\small
-\begin{tabular}{llp{9cm}}\toprule
-Claim & Kind & Finding \\\midrule
-Thm 3.1 & narrower & \texttt{two\_le\_gap} assumes $1\le n$; paper says $n\ge2$ (possibly an indexing shift) \\
-Thm 3.1 & narrower & same for \texttt{gap\_even} \\
-Thm 3.1 & ambiguous & docstring says ``Theorem 1'' \\
-Thm 3.2 & ambiguous & \texttt{dhl32\_H1Le\_six} docstring says ``Theorem 2'' \\
-Thm 3.3 & narrower & paper's $\{0,1\}$ appears in no matched statement (Lean uses \texttt{n \% 4 < 2}) \\
-Thm 3.3 & ambiguous & docstring says ``Theorem 3'' \\
-Thm 3.6 & ambiguous & \texttt{parity\_two\_needs\_three} docstring says ``Theorem 4'' \\\bottomrule
+\begin{tabular}{lcccc}\toprule
+Run & Status & Drift & Open questions & Unmatched-citation notes \\\midrule
+No mapping (\texttt{--no-map}) & \textsc{halt} & 0.267 & 5 & 3 \\
+Mapping file (default) & \textsc{halt} & 0.160 & 3 & 0 \\\bottomrule
 \end{tabular}
-\caption{Real output, explicit mappings.}\label{tab:explicit}
+\caption{Real output on the DHL[3,2] development.}\label{tab:runs}
 \end{table}
 
-The $\{0,1\}$ finding illustrates the limits of the method: $n \bmod 4 \in \{0,1\}$ and $n \% 4 < 2$ are equivalent over $\mathbb{N}$, so this is very likely a false positive, but the tool cannot decide it and asks. Similarly, whether $1\le n$ vs.\ $n\ge2$ is a convention is left to the author. These questions remain unanswered in the published example; we did not answer them on the author's behalf.
+\paragraph{Without a mapping.} The heuristic paired \texttt{Ptoy\_DHL32} with Theorem~3.2. This produced a \emph{false} ``silent'' finding for Theorem~3.3 and a spurious unstated-hypothesis question (\texttt{H.card = 3}) from a wrongly paired declaration. It also asked three docstring-numbering questions (``Theorem 1/2/4''). It \emph{missed} the $n\ge1$ vs.\ $n\ge2$ difference, because \texttt{two\_le\_gap} was not paired with Theorem~3.1.
 
-\paragraph{Heuristic only.} Status \textsc{halt}, drift 0.267, 5 questions. The matcher assigned \texttt{Ptoy\_DHL32} to Theorem~3.2, producing a \emph{false} ``silent'' for Theorem~3.3, and it missed the $n\ge1$/$n\ge2$ finding because it did not match \texttt{two\_le\_gap} to Theorem~3.1. It also flagged an unstated hypothesis \texttt{H.card = 3} on \texttt{min\_diam\_admissible\_three} under Lemma~2.4, an artifact of the mis-assignment. Explicit mappings are therefore recommended.
+\paragraph{With the mapping file.} Three questions remain:
+\begin{itemize}
+\item Theorem~3.1: \texttt{two\_le\_gap} and \texttt{gap\_even} assume $1\le n$, while the paper says $n\ge2$ (two questions);
+\item Theorem~3.3: the paper's $\{0,1\}$ appears in no mapped Lean statement.
+\end{itemize}
+The second is very likely a false positive: \texttt{Ptoy} is defined by \texttt{n \% 4 < 2}, which is equivalent to $n \bmod 4\in\{0,1\}$ over $\mathbb{N}$, but a syntactic check cannot establish that. The first may be an indexing convention; only the author can say. The mapping removed pairing and numbering noise; it did not, and cannot, resolve these. They remain unanswered in the published example; we did not answer them on the author's behalf.
 
 \section{Limitations}
-PipelineHalt is syntactic. It does not understand mathematics, does not check proofs, and does not recover unstated intent; an aligned report means only that these checks found nothing. Token matching mis-assigns declarations; bound and set checks miss equivalent encodings and miss differences expressed otherwise; LaTeX macro normalization is partial; PDF extraction is fragile. Drift weights are arbitrary conventions, not measurements. The evaluation is a single small example.
+PipelineHalt is syntactic. It does not understand mathematics, does not check proofs, and does not recover unstated intent; an aligned report means only that these checks found nothing. Token matching mis-assigns declarations unless a mapping file is supplied, and the mapping itself is unverified; bound and set checks miss equivalent encodings and miss differences expressed otherwise; LaTeX macro normalization is partial; PDF extraction is fragile. Drift weights are arbitrary conventions, not measurements. The evaluation is a single small example.
 
 \section{Conclusion}
 PipelineHalt turns paper--Lean drift into explicit, recorded questions with stable ids, and refuses to resolve them itself. The value lies not in the detection heuristics, which are modest, but in the discipline: differences are surfaced, the pipeline halts, and the author's answer becomes part of the record.

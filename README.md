@@ -13,7 +13,7 @@ PipelineHalt is a standalone companion to [RecurringAlignment](https://github.co
 
 ## What it does not do
 
-It does not recover intent the author never wrote down. Matching is token-based and heuristic, with no semantic or proof-level checking. A clean report means "no differences found by these checks", not "the formalization is faithful". Explicit `lean:` mappings in the anchor make results much more reliable than heuristic matching (see the example below).
+It does not recover intent the author never wrote down. Matching is token-based and heuristic, with no semantic or proof-level checking. A clean report means "no differences found by these checks", not "the formalization is faithful". A hand-written [mapping file](#the-mapping-file-pipelinehaltmapjson) makes results much more reliable than heuristic matching. It is still human-authored and does not validate meaning.
 
 ## Usage
 
@@ -25,6 +25,7 @@ pipelinehalt check --anchor claims.json --lean src/ --interactive  # ask on the 
 pipelinehalt answer --anchor claims.json --from .pipelinehalt/pending.json
 pipelinehalt answer --anchor claims.json --lean src/ --id 56d42291f91e --text "yes, 0-indexed primes"
 pipelinehalt check ... --ci --max-drift 0.25                     # GitHub ::warning annotations
+pipelinehalt check ... --map other.map.json   # or --no-map  (default: auto-discover pipelinehalt.map.json)
 pipelinehalt agent < request.json                                # JSON protocol pipelinehalt/1
 pipelinehalt prompt                                              # chat/agent prompt template
 ```
@@ -49,21 +50,70 @@ Drift weights per mismatch: silent 1.0, narrower 0.6, conditional 0.5 (sorry 0.8
 - **Markdown**: one `## Claim <id> (<number>): <title>` section per claim, followed by the statement and optional `- lean:`, `- assumes:` and `- kind:` lines. Answers go into a fenced `json pipelinehalt-clarifications` block.
 - **LaTeX/PDF**: claims are extracted, and a `% lean: name1, name2` comment inside an environment maps it explicitly. Answers go to the `<file>.pipelinehalt.json` sidecar; the source file is never edited.
 
+## The mapping file (`pipelinehalt.map.json`)
+
+On a first run, most of the noise comes from **pairing**: the heuristic attaches a Lean declaration to the wrong claim, or it flags Lean docstrings that use their own numbering ("Theorem 1") while the paper prints "Theorem 3.1". The mapping file fixes that. It is a small hand-written JSON file kept **separate from the paper claims**, so re-extracting the anchor from LaTeX never loses it.
+
+**Where it lives.** PipelineHalt looks for `pipelinehalt.map.json` first beside the anchor file, then in each parent directory up to the repository root (the first directory containing `.git`). The first file found is used **by default**.
+- `--map <file>` uses a specific file.
+- `--no-map` disables mapping entirely (pure heuristic pairing).
+- In the agent protocol, pass `"map": "<path>"`, an inline map object, or `false`.
+
+The report names the mapping file it used, if any.
+
+**Format:**
+
+```json
+{
+  "version": 1,
+  "note": "optional free text",
+  "claims": {
+    "<claim id>": {
+      "lean": ["LeanDeclName", "..."],
+      "aliases": ["Theorem 1"],
+      "note": "optional"
+    }
+  },
+  "unclaimed": { "SomeLeanDecl": "why it is deliberately not mapped" }
+}
+```
+
+- `claims.<id>.lean` (required): the Lean declarations for that claim. The id must match an anchor claim id, for example the LaTeX `\label`. Unknown ids produce a warning. A map entry overrides any `lean` list in the anchor. Mapped claims **skip heuristic pairing**; a mapped name that doesn't exist is reported as SILENT.
+- `aliases`: other labels that mean this claim, matched case-insensitively. A docstring citing an alias does not raise the "docstring calls itself Theorem N" question.
+- `unclaimed`: Lean declarations deliberately not tied to any claim. They suppress the informational "cites X but is not matched" line.
+
+**What it does not do.** The mapping is the author's assertion of *where to look*. PipelineHalt still runs all of its bound, set, hypothesis, `sorry` and axiom checks on the mapped declarations, and it never checks that a mapping is semantically right. A wrong mapping gives wrong results.
+
+**Concrete example:** `examples/dhl32/pipelinehalt.map.json` (excerpt).
+
+```json
+"thm:gaps": {
+  "lean": ["two_le_gap", "gap_even", "not_H1Le_one", "H1Le_three_iff_two", "H1Le_three_iff_twin"],
+  "aliases": ["Theorem 1"],
+  "note": "Lean docstrings number the main results 1-4; the paper prints 3.1, 3.2, 3.3, 3.6."
+},
+"thm:main": { "lean": ["dhl32_H1Le_six"], "aliases": ["Theorem 2"] },
+```
+
 ## Worked example: DHL[3,2] ⇒ liminf gap ≤ 6
 
-`examples/dhl32/` runs PipelineHalt on [BenFrohman/DHL-3-2-implies-liminf-prime-gap-le-6](https://github.com/BenFrohman/DHL-3-2-implies-liminf-prime-gap-le-6) at commit `69a13d3`. Inputs are the paper `paper/DHL32_note.tex` (9 claims) and `DHL32/*.lean` (34 declarations).
+`examples/dhl32/` runs PipelineHalt on [BenFrohman/DHL-3-2-implies-liminf-prime-gap-le-6](https://github.com/BenFrohman/DHL-3-2-implies-liminf-prime-gap-le-6) at commit `69a13d3`. The inputs are the paper `paper/DHL32_note.tex` (9 claims, extracted verbatim into `anchor.json`, with no Lean names) and `DHL32/*.lean` (34 declarations).
 
-**With explicit mappings** (`anchor.json`), the result is HALT with drift 0.245 and 7 open questions. The output is in `report.md` and `pending.json`.
+| Run | Files | Status | Drift | Open questions | Unmatched-citation notes |
+|---|---|---|---|---|---|
+| No mapping (`--no-map`) | `nomap.*` | HALT | 0.267 | 5 (1 false SILENT, 3 numbering, 1 spurious hypothesis) | 3 |
+| Mapping file (default) | `report.*`, `pending.json` | HALT | 0.160 | 3 | 0 |
 
-- Theorem 3.1: `two_le_gap` and `gap_even` assume `1 ≤ n`, but the paper says n ≥ 2. This may be an indexing shift; the tool cannot tell, so it asks.
-- Docstrings say "Theorem 1/2/3/4", but the paper prints 3.1, 3.2, 3.3 and 3.6.
-- Theorem 3.3: the paper defines P via n mod 4 ∈ {0,1}, and no matched Lean statement mentions `{0,1}`. The Lean may phrase this as `n % 4 < 2`, which the syntactic check cannot equate.
+Without the mapping, the heuristic gets several things wrong, and the results are kept as-is:
+- `Ptoy_DHL32` is paired with Theorem 3.2, giving a **false SILENT** for Theorem 3.3.
+- It asks about an `H.card = 3` hypothesis that comes from pairing the wrong declaration.
+- It misses the n ≥ 1 vs n ≥ 2 difference entirely.
 
-**Heuristic only** (`anchor.extracted.json`, the `heuristic.*` files), the result is HALT with 5 questions, and it includes a **false SILENT** for Theorem 3.3: `Ptoy_DHL32` was assigned to Theorem 3.2 instead. The run also misses the n ≥ 1 vs n ≥ 2 finding. This is the main limitation: use explicit mappings.
+With the mapping file, three questions remain. They are real syntactic differences that **still need the author's answer**, and the tool does not decide them:
+- Theorem 3.1: `two_le_gap` and `gap_even` assume `1 ≤ n`, but the paper says n ≥ 2. This may be the 0- vs 1-indexing of primes, but that is the author's call.
+- Theorem 3.3: the paper defines P by n mod 4 ∈ {0,1}, and no mapped Lean statement mentions `{0,1}`. `Ptoy` is defined as `n % 4 < 2`, which is equivalent over ℕ, so this is probably a false positive that the syntactic check cannot rule out.
 
-The open questions above have **not** been answered. Only the author can answer them.
-
-To reproduce: `node dist/src/bin.js check --anchor examples/dhl32/anchor.json --lean <clone>/DHL32`.
+None of these questions has been answered here. To reproduce, from `examples/dhl32/`: `node ../../dist/src/bin.js check --anchor anchor.json --lean <clone>/DHL32`; add `--no-map` for the baseline.
 
 ## Development
 

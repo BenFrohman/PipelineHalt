@@ -1,20 +1,22 @@
-# PipelineHalt report
+# PipelineHalt report: Resolving a category error: DHL[3,2] yields H1 <= 6, not H1 = 2 (B. S. Frohman, 2026)
 
 Status: **HALT** · overall drift **0.267** · 9 claims · 34 Lean declarations scanned · 5 open question(s)
 
+Mapping file: none (heuristic pairing only).
+
 > PipelineHalt surfaces syntactic differences between paper claims and Lean statements and asks about them. Matching is heuristic. It does not decide what the author meant; recorded answers are the author's.
 
-| Claim          | Matched Lean                                                                                                     | Drift | Open | Answered |
-| -------------- | ---------------------------------------------------------------------------------------------------------------- | ----- | ---- | -------- |
-| Definition 2.1 | `Admissible` (0.304)                                                                                             | 0.000 | 0    | 0        |
-| Definition 2.2 | `DHL` (0.252)                                                                                                    | 0.000 | 0    | 0        |
-| Definition 2.3 | `H1Le` (0.272)                                                                                                   | 0.000 | 0    | 0        |
-| Lemma 2.4      | `admissible_046` (0.756), `admissible_026` (0.756), `admissible_02` (0.627), `min_diam_admissible_three` (0.518) | 0.500 | 1    | 0        |
-| Theorem 3.1    | `H1Le_three_iff_twin` (0.386), `not_H1Le_one` (0.297)                                                            | 0.300 | 1    | 0        |
-| Theorem 3.2    | `dhl32_H1Le_six` (0.762), `H1Le_three_iff_two` (0.495)                                                           | 0.300 | 1    | 0        |
-| Theorem 3.3    | —                                                                                                                | 1.000 | 1    | 0        |
-| Hypothesis 3.5 | `ParityBarrier` (0.346)                                                                                          | 0.000 | 0    | 0        |
-| Theorem 3.6    | `admissible_three_diam_ge_six` (0.289)                                                                           | 0.300 | 1    | 0        |
+| Claim | Matched Lean | Drift | Open | Answered |
+|---|---|---|---|---|
+| Definition 2.1 | `Admissible` (0.304) | 0.000 | 0 | 0 |
+| Definition 2.2 | `DHL` (0.252) | 0.000 | 0 | 0 |
+| Definition 2.3 | `H1Le` (0.272) | 0.000 | 0 | 0 |
+| Lemma 2.4 | `admissible_046` (0.756), `admissible_026` (0.756), `admissible_02` (0.627), `min_diam_admissible_three` (0.518) | 0.500 | 1 | 0 |
+| Theorem 3.1 | `H1Le_three_iff_twin` (0.386), `not_H1Le_one` (0.297) | 0.300 | 1 | 0 |
+| Theorem 3.2 | `dhl32_H1Le_six` (0.762), `H1Le_three_iff_two` (0.495) | 0.300 | 1 | 0 |
+| Theorem 3.3 | — | 1.000 | 1 | 0 |
+| Hypothesis 3.5 | `ParityBarrier` (0.346) | 0.000 | 0 | 0 |
+| Theorem 3.6 | `admissible_three_diam_ge_six` (0.289) | 0.300 | 1 | 0 |
 
 ## Lemma 2.4
 

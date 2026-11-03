@@ -1,6 +1,12 @@
 import { test, describe } from "node:test";
 import assert from "node:assert/strict";
-import { mkdtempSync, writeFileSync, readFileSync, existsSync } from "node:fs";
+import {
+  mkdtempSync,
+  mkdirSync,
+  writeFileSync,
+  readFileSync,
+  existsSync,
+} from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { PassThrough, Writable } from "node:stream";
@@ -27,6 +33,11 @@ import {
   toAnnotations,
   hypotheses,
   run,
+  parseMap,
+  applyMap,
+  discoverMap,
+  MAP_FILE,
+  type ClaimMap,
   type Anchor,
 } from "../src/index.js";
 
@@ -73,7 +84,15 @@ describe("lean parser", () => {
   test("finds declarations, namespaces and lines, ignores comments", () => {
     assert.deepEqual(
       decls.map((d) => d.name),
-      ["gap", "two_le_gap", "magic", "gap_eq", "main_bound", "sets_ok", "premise_form"],
+      [
+        "gap",
+        "two_le_gap",
+        "magic",
+        "gap_eq",
+        "main_bound",
+        "sets_ok",
+        "premise_form",
+      ],
     );
     assert.equal(get("two_le_gap").fullName, "Demo.two_le_gap");
     assert.equal(get("two_le_gap").line, 8);
@@ -114,7 +133,10 @@ describe("lean parser", () => {
 
 describe("text helpers", () => {
   test("normalizeMath", () => {
-    assert.equal(normalizeMath("$n\\ge2$ and $\\{0,2\\}$, $H_1\\le6$"), "n≥2 and {0,2} , H1≤6");
+    assert.equal(
+      normalizeMath("$n\\ge2$ and $\\{0,2\\}$, $H_1\\le6$"),
+      "n≥2 and {0,2} , H1≤6",
+    );
   });
   test("bounds and sets", () => {
     assert.deepEqual(
@@ -133,12 +155,19 @@ describe("comparison", () => {
   const decls = parseLean(LEAN, "Demo.lean");
   test("silent: explicit mapping to a missing name, and no heuristic match", () => {
     const r = compareClaim(
-      { id: "c1", statement: "Zeta zeros lie on the critical line.", lean: ["riemann"] },
+      {
+        id: "c1",
+        statement: "Zeta zeros lie on the critical line.",
+        lean: ["riemann"],
+      },
       decls,
     );
     assert.equal(r.mismatches[0]!.kind, "silent");
     assert.match(r.mismatches[0]!.question, /`riemann`/);
-    const h = compareClaim({ id: "c2", statement: "Quantum chromodynamics confines quarks." }, decls);
+    const h = compareClaim(
+      { id: "c2", statement: "Quantum chromodynamics confines quarks." },
+      decls,
+    );
     assert.equal(h.mismatches[0]!.kind, "silent");
     assert.equal(h.drift, 1);
   });
@@ -157,7 +186,11 @@ describe("comparison", () => {
     assert.ok(kinds.includes("conditional:sorry"));
     assert.ok(kinds.some((k) => k.startsWith("ambiguous:label:")));
     const s = compareClaim(
-      { id: "L", statement: "The sets $\\{0,4,6\\}$ and $\\{0,2,6\\}$ are Adm.", lean: ["sets_ok"] },
+      {
+        id: "L",
+        statement: "The sets $\\{0,4,6\\}$ and $\\{0,2,6\\}$ are Adm.",
+        lean: ["sets_ok"],
+      },
       decls,
     );
     assert.deepEqual(
@@ -166,12 +199,21 @@ describe("comparison", () => {
     );
   });
   test("conditional: unstated hypothesis and axiom; stated hypothesis is fine", () => {
-    const r = compareClaim({ id: "2", statement: "Bar holds at 6.", lean: ["main_bound"] }, decls);
+    const r = compareClaim(
+      { id: "2", statement: "Bar holds at 6.", lean: ["main_bound"] },
+      decls,
+    );
     assert.equal(r.mismatches[0]!.kind, "conditional");
     assert.match(r.mismatches[0]!.question, /assumes `h : Foo 3 2`/);
-    const ok = compareClaim({ id: "2", statement: "Foo[3,2] implies Bar 6.", lean: ["main_bound"] }, decls);
+    const ok = compareClaim(
+      { id: "2", statement: "Foo[3,2] implies Bar 6.", lean: ["main_bound"] },
+      decls,
+    );
     assert.deepEqual(ok.mismatches, []);
-    const ax = compareClaim({ id: "3", statement: "gap n equals n", lean: ["gap_eq"] }, decls);
+    const ax = compareClaim(
+      { id: "3", statement: "gap n equals n", lean: ["gap_eq"] },
+      decls,
+    );
     assert.ok(ax.mismatches.some((m) => m.key === "axiom:magic"));
   });
   test("ambiguous: hedged wording, misworded title, duplicate ids", () => {
@@ -200,7 +242,10 @@ describe("comparison", () => {
     assert.ok(rep.claims[0]!.mismatches.some((m) => m.key === "duplicate-id"));
   });
   test("heuristic matching finds the right theorem", () => {
-    const r = compareClaim({ id: "t", statement: "Every gap after the first is at least two" }, decls);
+    const r = compareClaim(
+      { id: "t", statement: "Every gap after the first is at least two" },
+      decls,
+    );
     assert.equal(r.matched[0]!.name, "two_le_gap");
   });
   test("ids are stable and answered questions are not re-asked", () => {
@@ -212,12 +257,22 @@ describe("comparison", () => {
     assert.equal(a.status, "halt");
     const b = compare(anchor, decls);
     assert.equal(a.pending[0]!.id, b.pending[0]!.id);
-    assert.equal(a.pending[0]!.id, mismatchId("2", "conditional", "main_bound", "hyp:Foo 3 2"));
-    record(anchor, a.pending[0]!, "yes, Foo is the standing hypothesis of section 2");
+    assert.equal(
+      a.pending[0]!.id,
+      mismatchId("2", "conditional", "main_bound", "hyp:Foo 3 2"),
+    );
+    record(
+      anchor,
+      a.pending[0]!,
+      "yes, Foo is the standing hypothesis of section 2",
+    );
     const c = compare(anchor, decls);
     assert.equal(c.pending.length, 0);
     assert.equal(c.status, "aligned");
-    assert.equal(c.claims[0]!.mismatches[0]!.clarification!.verdict, "intentional");
+    assert.equal(
+      c.claims[0]!.mismatches[0]!.clarification!.verdict,
+      "intentional",
+    );
     // claims are never modified
     assert.equal(anchor.claims[0]!.statement, "Bar holds at 6.");
     record(anchor, a.pending[0]!, "no, that is a bug");
@@ -312,9 +367,13 @@ describe("anchors", () => {
       tex,
       "\\documentclass{article}\\begin{document}\\noindent Theorem 1. Every gap is at least two.\n\nProof. Trivial.\n\\end{document}",
     );
-    execFileSync("pdflatex", ["-interaction=nonstopmode", "-output-directory", dir, tex], {
-      stdio: "ignore",
-    });
+    execFileSync(
+      "pdflatex",
+      ["-interaction=nonstopmode", "-output-directory", dir, tex],
+      {
+        stdio: "ignore",
+      },
+    );
     const a = extractPdf(join(dir, "doc.pdf"));
     assert.equal(a.claims[0]!.id, "theorem-1");
     assert.match(a.claims[0]!.statement, /Every gap is at least two/);
@@ -325,7 +384,13 @@ describe("halt protocol", () => {
   const decls = parseLean(LEAN, "Demo.lean");
   test("interactive prompt records answers, blank skips", async () => {
     const anchor: Anchor = {
-      claims: [{ id: "2", statement: "Bar holds at 6.", lean: ["main_bound", "gap_eq"] }],
+      claims: [
+        {
+          id: "2",
+          statement: "Bar holds at 6.",
+          lean: ["main_bound", "gap_eq"],
+        },
+      ],
       clarifications: {},
     };
     const r = compare(anchor, decls);
@@ -341,7 +406,10 @@ describe("halt protocol", () => {
   });
   test("agent JSON protocol: halt, then answers recorded and aligned", () => {
     const req = {
-      anchor: { claims: [{ id: "2", statement: "Bar holds at 6." }], clarifications: {} },
+      anchor: {
+        claims: [{ id: "2", statement: "Bar holds at 6." }],
+        clarifications: {},
+      },
       leanSources: { "Demo.lean": LEAN },
     };
     const r1 = handle(req);
@@ -349,18 +417,32 @@ describe("halt protocol", () => {
     assert.equal(r1.exitCode, 2);
     assert.ok(r1.questions.length >= 1);
     const answers = Object.fromEntries(r1.questions.map((q) => [q.id, "yes"]));
-    const r2 = handle({ ...req, answers: { ...answers, deadbeef0000: "ignored" } });
+    const r2 = handle({
+      ...req,
+      answers: { ...answers, deadbeef0000: "ignored" },
+    });
     assert.equal(r2.status, "aligned");
     assert.equal(r2.exitCode, 0);
     assert.deepEqual(r2.recorded.sort(), Object.keys(answers).sort());
-    assert.equal(Object.keys(r2.anchor!.clarifications).length, r1.questions.length);
+    assert.equal(
+      Object.keys(r2.anchor!.clarifications).length,
+      r1.questions.length,
+    );
   });
   test("annotations", () => {
     const r = compare(
-      { claims: [{ id: "2", statement: "Bar holds at 6.", lean: ["main_bound"] }], clarifications: {} },
+      {
+        claims: [
+          { id: "2", statement: "Bar holds at 6.", lean: ["main_bound"] },
+        ],
+        clarifications: {},
+      },
       decls,
     );
-    assert.match(toAnnotations(r), /^::warning title=PipelineHalt conditional \(2\)::/);
+    assert.match(
+      toAnnotations(r),
+      /^::warning title=PipelineHalt conditional \(2\)::/,
+    );
   });
 });
 
@@ -369,18 +451,28 @@ describe("cli", () => {
   const lean = join(dir, "Demo.lean");
   writeFileSync(lean, LEAN);
   const anchor = join(dir, "claims.md");
-  writeFileSync(anchor, "# Demo\n\n## Claim 2: Bar\nBar holds at 6.\n- lean: main_bound\n");
+  writeFileSync(
+    anchor,
+    "# Demo\n\n## Claim 2: Bar\nBar holds at 6.\n- lean: main_bound\n",
+  );
   const cli = async (argv: string[], stdin = "") => {
     const o = io();
     const e = io();
     const input = new PassThrough();
     input.end(stdin);
-    const code = await run(argv, { stdin: input, stdout: o.out, stderr: e.out });
+    const code = await run(argv, {
+      stdin: input,
+      stdout: o.out,
+      stderr: e.out,
+    });
     return { code, out: o.text(), err: e.text() };
   };
   test("help, prompt, usage errors", async () => {
     assert.match((await cli(["help"])).out, /Exit codes/);
-    assert.match((await cli(["prompt"])).out, /Never answer a question yourself/);
+    assert.match(
+      (await cli(["prompt"])).out,
+      /Never answer a question yourself/,
+    );
     assert.equal((await cli(["check"])).code, 3);
     assert.equal((await cli(["check", "--anchor", anchor])).code, 3);
     assert.equal((await cli(["bogus", "--anchor", anchor])).code, 3);
@@ -410,7 +502,15 @@ describe("cli", () => {
     const pf = JSON.parse(readFileSync(pending, "utf8"));
     pf.questions[0].answer = "yes, standing hypothesis";
     writeFileSync(pending, JSON.stringify(pf));
-    const a = await cli(["answer", "--anchor", anchor, "--lean", lean, "--from", pending]);
+    const a = await cli([
+      "answer",
+      "--anchor",
+      anchor,
+      "--lean",
+      lean,
+      "--from",
+      pending,
+    ]);
     assert.match(a.out, /recorded 1 answer/);
     assert.match(readFileSync(anchor, "utf8"), /pipelinehalt-clarifications/);
     const c = await cli(["check", "--anchor", anchor, "--lean", lean, "--ci"]);
@@ -421,13 +521,37 @@ describe("cli", () => {
     const j = join(dir, "c.json");
     writeFileSync(
       j,
-      JSON.stringify({ claims: [{ id: "2", statement: "Bar holds at 6.", lean: ["main_bound"] }] }),
+      JSON.stringify({
+        claims: [
+          { id: "2", statement: "Bar holds at 6.", lean: ["main_bound"] },
+        ],
+      }),
     );
-    const r = await cli(["check", "--anchor", j, "--lean", lean, "--ci", "--pending", join(dir, "p2.json")]);
+    const r = await cli([
+      "check",
+      "--anchor",
+      j,
+      "--lean",
+      lean,
+      "--ci",
+      "--pending",
+      join(dir, "p2.json"),
+    ]);
     assert.equal(r.code, 2);
     assert.match(r.out, /::warning/);
-    const id = JSON.parse(readFileSync(join(dir, "p2.json"), "utf8")).questions[0].id;
-    const u = await cli(["answer", "--anchor", j, "--lean", lean, "--id", "nope", "--text", "x"]);
+    const id = JSON.parse(readFileSync(join(dir, "p2.json"), "utf8"))
+      .questions[0].id;
+    const u = await cli([
+      "answer",
+      "--anchor",
+      j,
+      "--lean",
+      lean,
+      "--id",
+      "nope",
+      "--text",
+      "x",
+    ]);
     assert.match(u.err, /unknown or stale/);
     await cli([
       "answer",
@@ -445,18 +569,43 @@ describe("cli", () => {
       "--verdict",
       "unintended",
     ]);
-    const c = await cli(["check", "--anchor", j, "--lean", lean, "--ci", "--max-drift", "0.1"]);
+    const c = await cli([
+      "check",
+      "--anchor",
+      j,
+      "--lean",
+      lean,
+      "--ci",
+      "--max-drift",
+      "0.1",
+    ]);
     assert.equal(c.code, 1);
-    assert.equal(JSON.parse(readFileSync(j, "utf8")).clarifications[id].answer, "it is a bug");
+    assert.equal(
+      JSON.parse(readFileSync(j, "utf8")).clarifications[id].answer,
+      "it is a bug",
+    );
   });
   test("interactive check records into the anchor", async () => {
     const j = join(dir, "i.json");
     writeFileSync(
       j,
-      JSON.stringify({ claims: [{ id: "2", statement: "Bar holds at 6.", lean: ["main_bound"] }] }),
+      JSON.stringify({
+        claims: [
+          { id: "2", statement: "Bar holds at 6.", lean: ["main_bound"] },
+        ],
+      }),
     );
     const r = await cli(
-      ["check", "--anchor", j, "--lean", lean, "--interactive", "--pending", join(dir, "p3.json")],
+      [
+        "check",
+        "--anchor",
+        j,
+        "--lean",
+        lean,
+        "--interactive",
+        "--pending",
+        join(dir, "p3.json"),
+      ],
       "yes\n",
     );
     assert.equal(r.code, 0);
@@ -469,6 +618,132 @@ describe("cli", () => {
     writeFileSync(tex, "\\begin{theorem}\\label{t}Bar 6\\end{theorem}");
     assert.match((await cli(["extract", "--from", tex])).out, /"id": "t"/);
     const out = join(dir, "x.json");
-    assert.match((await cli(["extract", "--from", tex, "--out", out])).out, /wrote 1 claims/);
+    assert.match(
+      (await cli(["extract", "--from", tex, "--out", out])).out,
+      /wrote 1 claims/,
+    );
+  });
+});
+
+describe("mapping file", () => {
+  const decls = parseLean(LEAN, "Demo.lean");
+  const claim = {
+    id: "t1",
+    number: "Theorem 3.1",
+    statement: "For all $n\\ge1$, $2\\le gap(n)$.",
+  };
+  test("parse validates shape", () => {
+    assert.throws(() => parseMap("{}"), /"claims"/);
+    assert.throws(() => parseMap('{"claims":{"a":{"lean":"x"}}}'), /array/);
+  });
+  test("mapped claims skip heuristics; aliases suppress numbering; unclaimed suppresses info; unknown ids warn", () => {
+    const anchor: Anchor = { claims: [claim], clarifications: {} };
+    const bare = compare(anchor, decls);
+    assert.ok(
+      bare.claims[0]!.mismatches.some((m) => m.key.startsWith("label:")),
+    );
+    const map: ClaimMap = {
+      claims: {
+        t1: { lean: ["two_le_gap"], aliases: ["theorem 1"] },
+        ghost: { lean: ["x"] },
+      },
+      unclaimed: { main_bound: "not in the paper" },
+    };
+    const { anchor: a, warnings } = applyMap(anchor, map);
+    assert.deepEqual(warnings, [
+      'mapping file names claim "ghost", which is not in the anchor',
+    ]);
+    assert.equal(
+      anchor.claims[0]!.lean,
+      undefined,
+      "original anchor is not modified",
+    );
+    assert.equal(
+      a.clarifications,
+      anchor.clarifications,
+      "answers still land in the same anchor",
+    );
+    const r = compare(a, decls);
+    assert.deepEqual(
+      r.claims[0]!.matched.map((m) => [m.name, m.explicit]),
+      [["two_le_gap", true]],
+    );
+    assert.ok(!r.claims[0]!.mismatches.some((m) => m.key.startsWith("label:")));
+    assert.ok(
+      r.claims[0]!.mismatches.some((m) => m.key === "sorry"),
+      "real differences still reported",
+    );
+  });
+  test("discovery beside the anchor or up to the repo root; --map and --no-map", async () => {
+    const root = mkdtempSync(join(tmpdir(), "ph-map-"));
+    mkdirSync(join(root, ".git"));
+    mkdirSync(join(root, "paper"));
+    const anchorPath = join(root, "paper", "claims.json");
+    writeFileSync(anchorPath, JSON.stringify({ claims: [claim] }));
+    assert.equal(discoverMap(anchorPath), undefined);
+    writeFileSync(
+      join(root, MAP_FILE),
+      JSON.stringify({
+        claims: { t1: { lean: ["two_le_gap"], aliases: ["Theorem 1"] } },
+      }),
+    );
+    assert.equal(discoverMap(anchorPath), join(root, MAP_FILE));
+    writeFileSync(
+      join(root, "paper", MAP_FILE),
+      JSON.stringify({ claims: { t1: { lean: ["gap_eq"] } } }),
+    );
+    assert.equal(
+      discoverMap(anchorPath),
+      join(root, "paper", MAP_FILE),
+      "beside the anchor wins",
+    );
+    const lean = join(root, "Demo.lean");
+    writeFileSync(lean, LEAN);
+    const json = async (extra: string[]) => {
+      const js = join(root, "r.json");
+      const o = new Writable({
+        write(_c, _e, cb) {
+          cb();
+        },
+      });
+      await run(
+        [
+          "check",
+          "--anchor",
+          anchorPath,
+          "--lean",
+          lean,
+          "--pending",
+          join(root, "p.json"),
+          "--report-json",
+          js,
+          ...extra,
+        ],
+        { stdin: new PassThrough(), stdout: o, stderr: o },
+      );
+      return JSON.parse(readFileSync(js, "utf8"));
+    };
+    assert.deepEqual(
+      (await json([])).claims[0].matched.map((m: { name: string }) => m.name),
+      ["gap_eq"],
+    );
+    const viaFlag = await json(["--map", join(root, MAP_FILE)]);
+    assert.deepEqual(
+      viaFlag.claims[0].matched.map((m: { name: string }) => m.name),
+      ["two_le_gap"],
+    );
+    assert.ok(viaFlag.mapFile.endsWith(MAP_FILE));
+    const none = await json(["--no-map"]);
+    assert.equal(none.mapFile, undefined);
+    assert.ok(
+      none.claims[0].matched.every((m: { explicit: boolean }) => !m.explicit),
+    );
+    const agent = handle({ anchor: anchorPath, lean: [lean], map: false });
+    assert.equal(agent.report.mapFile, undefined);
+    assert.equal(
+      handle({ anchor: anchorPath, lean: [lean] }).report.claims[0]!.matched[0]!
+        .name,
+      "gap_eq",
+    );
   });
 });

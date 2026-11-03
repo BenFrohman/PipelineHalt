@@ -1,4 +1,5 @@
 import { loadAnchor, saveClarifications } from "./anchor.js";
+import { resolveMap, type ClaimMap } from "./map.js";
 import { compare, type CompareOptions } from "./compare.js";
 import { record } from "./halt.js";
 import { loadLean, parseLean } from "./lean.js";
@@ -8,6 +9,8 @@ import type { Anchor, LeanDecl, Report, Verdict } from "./types.js";
 export interface AgentRequest {
   /** Path to an anchor (.json/.md/.tex/.pdf) or an inline anchor object. */
   anchor: string | Anchor;
+  /** Mapping file path, inline map, or false to disable. Default: auto-discover beside a file anchor. */
+  map?: string | ClaimMap | false;
   /** Paths to .lean files or directories. */
   lean?: string[];
   /** Inline Lean sources, as an alternative to paths: {"File.lean": "theorem ..."}. */
@@ -37,15 +40,30 @@ export function exitCodeFor(status: Report["status"]): 0 | 1 | 2 {
 }
 
 export function handle(req: AgentRequest): AgentResponse {
-  const anchor =
+  const base =
     typeof req.anchor === "string"
       ? loadAnchor(req.anchor)
-      : { ...req.anchor, clarifications: { ...(req.anchor.clarifications ?? {}) } };
+      : {
+          ...req.anchor,
+          clarifications: { ...(req.anchor.clarifications ?? {}) },
+        };
+  const { anchor, mapFile, warnings } = resolveMap(
+    base,
+    typeof req.anchor === "string" ? req.anchor : undefined,
+    req.map,
+  );
+  const tag = (r: Report): Report => ({
+    ...r,
+    mapFile,
+    mapWarnings: warnings.length ? warnings : undefined,
+  });
   const decls: LeanDecl[] = [
     ...(req.lean?.length ? loadLean(req.lean) : []),
-    ...Object.entries(req.leanSources ?? {}).flatMap(([f, s]) => parseLean(s, f)),
+    ...Object.entries(req.leanSources ?? {}).flatMap(([f, s]) =>
+      parseLean(s, f),
+    ),
   ];
-  let report = compare(anchor, decls, req.options);
+  let report = tag(compare(anchor, decls, req.options));
   const recorded: string[] = [];
   if (req.answers && Object.keys(req.answers).length) {
     const all = report.claims.flatMap((c) => c.mismatches);
@@ -57,7 +75,7 @@ export function handle(req: AgentRequest): AgentResponse {
       record(anchor, m, text, typeof a === "string" ? undefined : a.verdict);
       recorded.push(id);
     }
-    report = compare(anchor, decls, req.options);
+    report = tag(compare(anchor, decls, req.options));
   }
   let savedTo: string | undefined;
   if (recorded.length && typeof req.anchor === "string")
@@ -75,7 +93,9 @@ export function handle(req: AgentRequest): AgentResponse {
     })),
     recorded,
     ...(savedTo ? { savedTo } : {}),
-    ...(typeof req.anchor === "string" ? {} : { anchor }),
+    ...(typeof req.anchor === "string"
+      ? {}
+      : { anchor: { ...base, clarifications: anchor.clarifications } }),
     report,
   };
 }

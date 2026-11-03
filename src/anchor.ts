@@ -17,10 +17,9 @@ export function parseMarkdownAnchor(md: string): Anchor {
   const fence = md.indexOf(CLAR_FENCE);
   if (fence >= 0) {
     const end = md.indexOf("```", fence + CLAR_FENCE.length);
-    anchor.clarifications = JSON.parse(md.slice(fence + CLAR_FENCE.length, end)) as Record<
-      string,
-      Clarification
-    >;
+    anchor.clarifications = JSON.parse(
+      md.slice(fence + CLAR_FENCE.length, end),
+    ) as Record<string, Clarification>;
     md = md.slice(0, fence);
   }
   const title = /^#\s+(.+)$/m.exec(md);
@@ -28,7 +27,9 @@ export function parseMarkdownAnchor(md: string): Anchor {
   const parts = md.split(/^##\s+/m).slice(1);
   for (const p of parts) {
     const [head, ...lines] = p.split("\n");
-    const h = /^Claim\s+(\S+?)(?:\s+\(([^)]+)\))?\s*(?::\s*(.*))?$/.exec(head!.trim());
+    const h = /^Claim\s+(\S+?)(?:\s+\(([^)]+)\))?\s*(?::\s*(.*))?$/.exec(
+      head!.trim(),
+    );
     if (!h) continue;
     const claim: Claim = { id: h[1]!, statement: "" };
     if (h[2]) claim.number = h[2];
@@ -57,13 +58,17 @@ export function parseMarkdownAnchor(md: string): Anchor {
   return anchor;
 }
 
-export function renderMarkdownClarifications(md: string, clar: Record<string, Clarification>): string {
+export function renderMarkdownClarifications(
+  md: string,
+  clar: Record<string, Clarification>,
+): string {
   const fence = md.indexOf(CLAR_FENCE);
   const base = (fence >= 0 ? md.slice(0, fence) : md).trimEnd();
   return `${base}\n\n${CLAR_FENCE}\n${JSON.stringify(clar, null, 2)}\n\`\`\`\n`;
 }
 
-const ENV = "theorem|lemma|proposition|corollary|definition|conjecture|claim|hypothesis";
+const ENV =
+  "theorem|lemma|proposition|corollary|definition|conjecture|claim|hypothesis";
 
 /** Extract claims from LaTeX theorem-like environments. Best effort; numbering follows a shared counter.
  *  A comment `% lean: a, b` inside the environment gives an explicit mapping. */
@@ -76,7 +81,10 @@ export function extractLatex(tex: string, source = "<tex>"): Anchor {
   const claims: Claim[] = [];
   // Shared amsthm-style counter, reset per \section when any \newtheorem uses [section].
   const perSection = /\\newtheorem\{[^}]+\}\{[^}]+\}\[section\]/.test(tex);
-  const counted = new RegExp(`\\\\begin\\{(${ENV}|remark|example)\\}|\\\\section\\*?\\{`, "g");
+  const counted = new RegExp(
+    `\\\\begin\\{(${ENV}|remark|example)\\}|\\\\section\\*?\\{`,
+    "g",
+  );
   const numberAt = new Map<number, string>();
   let sec = 0;
   let n = 0;
@@ -117,7 +125,9 @@ export function extractLatex(tex: string, source = "<tex>"): Anchor {
 
 /** Best-effort PDF extraction via `pdftotext` (poppler). Splits on "Theorem N." style headings. */
 export function extractPdf(path: string): Anchor {
-  const txt = execFileSync("pdftotext", ["-layout", path, "-"], { encoding: "utf8" });
+  const txt = execFileSync("pdftotext", ["-layout", path, "-"], {
+    encoding: "utf8",
+  });
   const re =
     /^\s*(Theorem|Lemma|Proposition|Corollary|Definition|Conjecture|Hypothesis)\s+(\d+(?:\.\d+)*)\.?\s*(?:\(([^)]*)\))?\s*([\s\S]*?)(?=^\s*(?:Proof|Theorem|Lemma|Proposition|Corollary|Definition|Conjecture|Hypothesis)\b|^\s*\d+\s+[A-Z][a-z]+|$(?![\s\S]))/gm;
   const claims: Claim[] = [];
@@ -142,20 +152,30 @@ export function loadAnchor(path: string): Anchor {
   if (path.endsWith(".json")) {
     a = JSON.parse(readFileSync(path, "utf8")) as Anchor;
     a.clarifications ??= {};
-  } else if (path.endsWith(".md")) a = parseMarkdownAnchor(readFileSync(path, "utf8"));
-  else if (path.endsWith(".tex")) a = extractLatex(readFileSync(path, "utf8"), path);
+  } else if (path.endsWith(".md"))
+    a = parseMarkdownAnchor(readFileSync(path, "utf8"));
+  else if (path.endsWith(".tex"))
+    a = extractLatex(readFileSync(path, "utf8"), path);
   else if (path.endsWith(".pdf")) a = extractPdf(path);
   else throw new Error(`unsupported anchor format: ${path}`);
   if (!a.claims?.length) throw new Error(`anchor ${path} contains no claims`);
-  if ((path.endsWith(".tex") || path.endsWith(".pdf")) && existsSync(sidecar(path))) {
-    a.clarifications = (JSON.parse(readFileSync(sidecar(path), "utf8")) as Anchor).clarifications ?? {};
+  if (
+    (path.endsWith(".tex") || path.endsWith(".pdf")) &&
+    existsSync(sidecar(path))
+  ) {
+    a.clarifications =
+      (JSON.parse(readFileSync(sidecar(path), "utf8")) as Anchor)
+        .clarifications ?? {};
   }
   return a;
 }
 
 /** Persist clarifications into the anchor (inline for JSON/Markdown, sidecar for LaTeX/PDF).
  *  Only the clarifications block is written; claim text is never modified. */
-export function saveClarifications(path: string, clar: Record<string, Clarification>): string {
+export function saveClarifications(
+  path: string,
+  clar: Record<string, Clarification>,
+): string {
   if (path.endsWith(".json")) {
     const a = JSON.parse(readFileSync(path, "utf8")) as Anchor;
     a.clarifications = clar;
@@ -163,9 +183,15 @@ export function saveClarifications(path: string, clar: Record<string, Clarificat
     return path;
   }
   if (path.endsWith(".md")) {
-    writeFileSync(path, renderMarkdownClarifications(readFileSync(path, "utf8"), clar));
+    writeFileSync(
+      path,
+      renderMarkdownClarifications(readFileSync(path, "utf8"), clar),
+    );
     return path;
   }
-  writeFileSync(sidecar(path), JSON.stringify({ clarifications: clar }, null, 2) + "\n");
+  writeFileSync(
+    sidecar(path),
+    JSON.stringify({ clarifications: clar }, null, 2) + "\n",
+  );
   return sidecar(path);
 }

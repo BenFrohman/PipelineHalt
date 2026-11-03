@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: "If you use PipelineHalt, please cite it as below."
 title: "PipelineHalt: Halting on Paper–Lean Drift and Asking Instead of Guessing"
-version: 0.3.0
+version: 0.4.0
 license: MIT
 repository-code: "https://github.com/BenFrohman/PipelineHalt"
 authors:

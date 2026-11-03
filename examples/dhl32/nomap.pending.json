@@ -1,6 +1,6 @@
 {
   "tool": "pipelinehalt",
-  "anchor": "heuristic.anchor.json",
+  "anchor": "anchor.json",
   "instructions": "Fill in `answer` for each question (start with yes/intentional or no/unintended, optionally followed by an explanation), then run `pipelinehalt answer --anchor <anchor> --from <this file>`. Blank answers stay open.",
   "questions": [
     {

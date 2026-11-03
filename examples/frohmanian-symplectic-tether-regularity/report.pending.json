@@ -18,6 +18,13 @@
       "answer": ""
     },
     {
+      "id": "9b109eb0f9d5",
+      "claimId": "theorem-2.2",
+      "kind": "conditional",
+      "question": "Paper claim Theorem 2.2 (theorem-2.2) states: “Let $\\kappa > 0$, $\\omega \\in \\mathfrak{g}^*$, and $v : \\mathbb{T}^3 \\to \\mathbb{R}^3$. Define the pointwise tether density $d_{\\mathrm{FT}}(\\kappa, \\omega, v, x) = -\\kappa \\|\\omega(x)\\|^2 \\|P_{\\delt…”. Lean theorem `tetherPointwiseDensity_strict_neg_of_noncasimir` assumes `hPi : Pi_u (velocity_from_vorticity ω) (FunctionalDerivative F ω) x ≠ 0`, which the claim does not state. Is this extra hypothesis intentional?",
+      "answer": ""
+    },
+    {
       "id": "11f927ba5751",
       "claimId": "theorem-3.1",
       "kind": "conditional",

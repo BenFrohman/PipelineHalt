@@ -2,7 +2,7 @@
   "tool": "pipelinehalt",
   "version": "0.4.0",
   "anchorTitle": "\\textbf{The Frohmanian Symplectic Tether: Canonical Uniqueness on Coadjoint Orbits of $\\mathrm{SDiff",
-  "generatedAt": "2026-11-03T19:59:44.685Z",
+  "generatedAt": "2026-11-03T20:17:41.504Z",
   "declarationsScanned": 723,
   "claims": [
     {
@@ -166,15 +166,7 @@
           "key": "hyp:Pi_u (velocity_from_vorticity ω) (FunctionalDerivative F ω) x ≠ 0",
           "detail": "`tetherPointwiseDensity_strict_neg_of_noncasimir` assumes `hPi : Pi_u (velocity_from_vorticity ω) (FunctionalDerivative F ω) x ≠ 0`, not stated in the claim.",
           "question": "Paper claim Theorem 2.2 (theorem-2.2) states: “Let $\\kappa > 0$, $\\omega \\in \\mathfrak{g}^*$, and $v : \\mathbb{T}^3 \\to \\mathbb{R}^3$. Define the pointwise tether density $d_{\\mathrm{FT}}(\\kappa, \\omega, v, x) = -\\kappa \\|\\omega(x)\\|^2 \\|P_{\\delt…”. Lean theorem `tetherPointwiseDensity_strict_neg_of_noncasimir` assumes `hPi : Pi_u (velocity_from_vorticity ω) (FunctionalDerivative F ω) x ≠ 0`, which the claim does not state. Is this extra hypothesis intentional?",
-          "weight": 0.5,
-          "clarification": {
-            "claimId": "theorem-2.2",
-            "kind": "conditional",
-            "question": "Paper claim Theorem 2.2 (theorem-2.2) states: “Let $\\kappa > 0$, $\\omega \\in \\mathfrak{g}^*$, and $v : \\mathbb{T}^3 \\to \\mathbb{R}^3$. Define the pointwise tether density $d_{\\mathrm{FT}}(\\kappa, \\omega, v, x) = -\\kappa \\|\\omega(x)\\|^2 \\|P_{\\delt…”. Lean theorem `tetherPointwiseDensity_strict_neg_of_noncasimir` assumes `hPi : Pi_u (velocity_from_vorticity ω) (FunctionalDerivative F ω) x ≠ 0`, which the claim does not state. Is this extra hypothesis intentional?",
-            "answer": "stated in the claim: the paper says '… and P_{δC}^⊥ v(x) ≠ 0'; hPi : Pi_u (velocity_from_vorticity ω) (FunctionalDerivative F ω) x ≠ 0 is that hypothesis with v instantiated as δF/δω and P^⊥ as Pi_u (SymplecticTether.lean:1170-1175 docstring).",
-            "verdict": "intentional",
-            "answeredAt": "2026-11-03T19:59:44.532Z"
-          }
+          "weight": 0.5
         }
       ],
       "drift": 1
@@ -325,6 +317,16 @@
       "detail": "Anchor maps this claim to `tether_preserves_casimirs`, but no such declaration exists.",
       "question": "Paper claim Theorem 2.2 (theorem-2.2) states: “Let $\\kappa > 0$, $\\omega \\in \\mathfrak{g}^*$, and $v : \\mathbb{T}^3 \\to \\mathbb{R}^3$. Define the pointwise tether density $d_{\\mathrm{FT}}(\\kappa, \\omega, v, x) = -\\kappa \\|\\omega(x)\\|^2 \\|P_{\\delt…”. The anchor maps it to Lean declaration `tether_preserves_casimirs`, which was not found in the scanned files. Was it renamed or removed, or is the claim intentionally unformalized?",
       "weight": 1
+    },
+    {
+      "id": "9b109eb0f9d5",
+      "claimId": "theorem-2.2",
+      "kind": "conditional",
+      "lean": "tetherPointwiseDensity_strict_neg_of_noncasimir",
+      "key": "hyp:Pi_u (velocity_from_vorticity ω) (FunctionalDerivative F ω) x ≠ 0",
+      "detail": "`tetherPointwiseDensity_strict_neg_of_noncasimir` assumes `hPi : Pi_u (velocity_from_vorticity ω) (FunctionalDerivative F ω) x ≠ 0`, not stated in the claim.",
+      "question": "Paper claim Theorem 2.2 (theorem-2.2) states: “Let $\\kappa > 0$, $\\omega \\in \\mathfrak{g}^*$, and $v : \\mathbb{T}^3 \\to \\mathbb{R}^3$. Define the pointwise tether density $d_{\\mathrm{FT}}(\\kappa, \\omega, v, x) = -\\kappa \\|\\omega(x)\\|^2 \\|P_{\\delt…”. Lean theorem `tetherPointwiseDensity_strict_neg_of_noncasimir` assumes `hPi : Pi_u (velocity_from_vorticity ω) (FunctionalDerivative F ω) x ≠ 0`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
     },
     {
       "id": "11f927ba5751",

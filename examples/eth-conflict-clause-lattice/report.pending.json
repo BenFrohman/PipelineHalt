@@ -4,10 +4,24 @@
   "instructions": "Fill in `answer` for each question (start with yes/intentional or no/unintended, optionally followed by an explanation), then run `pipelinehalt answer --anchor <anchor> --from <this file>`. Blank answers stay open.",
   "questions": [
     {
+      "id": "d6ae4141e14d",
+      "claimId": "eq:subexp_bound",
+      "kind": "narrower",
+      "question": "Paper claim Equation (eq:subexp_bound), Section 4 (eq:subexp_bound) states: “Applying the block-triangularization theorem and spectral gap bounds over the decomposed sub-complexes yields a strict reduction in the depth of required branching steps. The runtime complexity $T(n,…”. Lean theorem `simulateBlockHomologicalTraversal_at_logBlockSize_bound` assumes `n ≥ 2` (restricting n ≥ 2), which the claim does not state. Is the restricted domain intentional?",
+      "answer": ""
+    },
+    {
       "id": "3ab5e3de2475",
       "claimId": "eq:subexp_bound",
       "kind": "conditional",
       "question": "Paper claim Equation (eq:subexp_bound), Section 4 (eq:subexp_bound) states: “Applying the block-triangularization theorem and spectral gap bounds over the decomposed sub-complexes yields a strict reduction in the depth of required branching steps. The runtime complexity $T(n,…”. Lean theorem `simulateBlockHomologicalTraversal_at_logBlockSize_bound` assumes `hrun : (simulateBlockHomologicalTraversal n m (logBlockSize n ε)).run { steps := 0 } = (res, finalState)`, which the claim does not state. Is this extra hypothesis intentional?",
+      "answer": ""
+    },
+    {
+      "id": "27b751af9317",
+      "claimId": "eq:subexp_bound",
+      "kind": "narrower",
+      "question": "Paper claim Equation (eq:subexp_bound), Section 4 (eq:subexp_bound) states: “Applying the block-triangularization theorem and spectral gap bounds over the decomposed sub-complexes yields a strict reduction in the depth of required branching steps. The runtime complexity $T(n,…”. Lean theorem `block_homological_traversal_real_log_bound` assumes `n ≥ 2` (restricting n ≥ 2), which the claim does not state. Is the restricted domain intentional?",
       "answer": ""
     },
     {

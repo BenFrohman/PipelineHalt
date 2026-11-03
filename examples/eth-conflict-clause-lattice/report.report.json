@@ -2,7 +2,7 @@
   "tool": "pipelinehalt",
   "version": "0.4.0",
   "anchorTitle": "\\textbf{Homological Certificate Topologies on Conflict-Clause Poset Lattices: A Lean 4--Verified Step-Counting Framework for Sub-Exponential 3-SAT Cost Bounds",
-  "generatedAt": "2026-11-03T19:55:33.429Z",
+  "generatedAt": "2026-11-03T20:17:40.786Z",
   "declarationsScanned": 94,
   "claims": [
     {
@@ -108,15 +108,7 @@
           "key": "bound:n>=2",
           "detail": "`simulateBlockHomologicalTraversal_at_logBlockSize_bound` restricts n ≥ 2; the claim states no such restriction.",
           "question": "Paper claim Equation (eq:subexp_bound), Section 4 (eq:subexp_bound) states: “Applying the block-triangularization theorem and spectral gap bounds over the decomposed sub-complexes yields a strict reduction in the depth of required branching steps. The runtime complexity $T(n,…”. Lean theorem `simulateBlockHomologicalTraversal_at_logBlockSize_bound` assumes `n ≥ 2` (restricting n ≥ 2), which the claim does not state. Is the restricted domain intentional?",
-          "weight": 0.6,
-          "clarification": {
-            "claimId": "eq:subexp_bound",
-            "kind": "narrower",
-            "question": "Paper claim Equation (eq:subexp_bound), Section 4 (eq:subexp_bound) states: “Applying the block-triangularization theorem and spectral gap bounds over the decomposed sub-complexes yields a strict reduction in the depth of required branching steps. The runtime complexity $T(n,…”. Lean theorem `simulateBlockHomologicalTraversal_at_logBlockSize_bound` assumes `n ≥ 2` (restricting n ≥ 2), which the claim does not state. Is the restricted domain intentional?",
-            "answer": "harmless: the paper's expression divides by (log n)^{1/2+o(1)}, which is 0 or undefined for n ≤ 1, so the asymptotic bound is only meaningful for n ≥ 2; the Lean n ≥ 2 restriction matches that domain.",
-            "verdict": "intentional",
-            "answeredAt": "2026-11-03T19:55:33.317Z"
-          }
+          "weight": 0.6
         },
         {
           "id": "3ab5e3de2475",
@@ -136,15 +128,7 @@
           "key": "bound:n>=2",
           "detail": "`block_homological_traversal_real_log_bound` restricts n ≥ 2; the claim states no such restriction.",
           "question": "Paper claim Equation (eq:subexp_bound), Section 4 (eq:subexp_bound) states: “Applying the block-triangularization theorem and spectral gap bounds over the decomposed sub-complexes yields a strict reduction in the depth of required branching steps. The runtime complexity $T(n,…”. Lean theorem `block_homological_traversal_real_log_bound` assumes `n ≥ 2` (restricting n ≥ 2), which the claim does not state. Is the restricted domain intentional?",
-          "weight": 0.6,
-          "clarification": {
-            "claimId": "eq:subexp_bound",
-            "kind": "narrower",
-            "question": "Paper claim Equation (eq:subexp_bound), Section 4 (eq:subexp_bound) states: “Applying the block-triangularization theorem and spectral gap bounds over the decomposed sub-complexes yields a strict reduction in the depth of required branching steps. The runtime complexity $T(n,…”. Lean theorem `block_homological_traversal_real_log_bound` assumes `n ≥ 2` (restricting n ≥ 2), which the claim does not state. Is the restricted domain intentional?",
-            "answer": "harmless: the paper's expression divides by (log n)^{1/2+o(1)}, which is 0 or undefined for n ≤ 1, so the asymptotic bound is only meaningful for n ≥ 2; the Lean n ≥ 2 restriction matches that domain.",
-            "verdict": "intentional",
-            "answeredAt": "2026-11-03T19:55:33.378Z"
-          }
+          "weight": 0.6
         },
         {
           "id": "e3f2e53cb248",
@@ -157,7 +141,7 @@
           "weight": 0.5
         }
       ],
-      "drift": 0.75
+      "drift": 0.96
     }
   ],
   "unanchored": [
@@ -166,8 +150,18 @@
       "cites": "Theorem 1"
     }
   ],
-  "drift": 0.375,
+  "drift": 0.48,
   "pending": [
+    {
+      "id": "d6ae4141e14d",
+      "claimId": "eq:subexp_bound",
+      "kind": "narrower",
+      "lean": "simulateBlockHomologicalTraversal_at_logBlockSize_bound",
+      "key": "bound:n>=2",
+      "detail": "`simulateBlockHomologicalTraversal_at_logBlockSize_bound` restricts n ≥ 2; the claim states no such restriction.",
+      "question": "Paper claim Equation (eq:subexp_bound), Section 4 (eq:subexp_bound) states: “Applying the block-triangularization theorem and spectral gap bounds over the decomposed sub-complexes yields a strict reduction in the depth of required branching steps. The runtime complexity $T(n,…”. Lean theorem `simulateBlockHomologicalTraversal_at_logBlockSize_bound` assumes `n ≥ 2` (restricting n ≥ 2), which the claim does not state. Is the restricted domain intentional?",
+      "weight": 0.6
+    },
     {
       "id": "3ab5e3de2475",
       "claimId": "eq:subexp_bound",
@@ -177,6 +171,16 @@
       "detail": "`simulateBlockHomologicalTraversal_at_logBlockSize_bound` assumes `hrun : (simulateBlockHomologicalTraversal n m (logBlockSize n ε)).run { steps := 0 } = (res, finalState)`, not stated in the claim.",
       "question": "Paper claim Equation (eq:subexp_bound), Section 4 (eq:subexp_bound) states: “Applying the block-triangularization theorem and spectral gap bounds over the decomposed sub-complexes yields a strict reduction in the depth of required branching steps. The runtime complexity $T(n,…”. Lean theorem `simulateBlockHomologicalTraversal_at_logBlockSize_bound` assumes `hrun : (simulateBlockHomologicalTraversal n m (logBlockSize n ε)).run { steps := 0 } = (res, finalState)`, which the claim does not state. Is this extra hypothesis intentional?",
       "weight": 0.5
+    },
+    {
+      "id": "27b751af9317",
+      "claimId": "eq:subexp_bound",
+      "kind": "narrower",
+      "lean": "block_homological_traversal_real_log_bound",
+      "key": "bound:n>=2",
+      "detail": "`block_homological_traversal_real_log_bound` restricts n ≥ 2; the claim states no such restriction.",
+      "question": "Paper claim Equation (eq:subexp_bound), Section 4 (eq:subexp_bound) states: “Applying the block-triangularization theorem and spectral gap bounds over the decomposed sub-complexes yields a strict reduction in the depth of required branching steps. The runtime complexity $T(n,…”. Lean theorem `block_homological_traversal_real_log_bound` assumes `n ≥ 2` (restricting n ≥ 2), which the claim does not state. Is the restricted domain intentional?",
+      "weight": 0.6
     },
     {
       "id": "e3f2e53cb248",

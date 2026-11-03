@@ -164,14 +164,6 @@
       "verdict": "intentional",
       "answeredAt": "2026-11-03T20:00:54.277Z"
     },
-    "5f8484fca91e": {
-      "claimId": "lem:localmax",
-      "kind": "conditional",
-      "question": "Paper claim Lemma 4.1 (lem:localmax) states: “Let $x$ satisfy $\\|\\omega(x)\\|=\\|\\omega\\|_{L^\\infty}$ and suppose $\\|\\nabla u(x)\\|\\le\\CZ\\|\\omega\\|_{L^\\infty}$ (\\lean{hCZ}). Then \\[ \\langle\\omega(x),(\\omega\\cdot\\nabla)u(x)\\rangle\\le\\CZ\\,\\|\\omega\\|_…”. Lean theorem `stretching_inner_le_at_max` assumes `hu : DifferentiableAt ℝ u x`, which the claim does not state. Is this extra hypothesis intentional?",
-      "answer": "harmless: the claim's ∇u(x) and (ω·∇)u(x) presuppose u differentiable at x; hu : DifferentiableAt ℝ u x makes that explicit.",
-      "verdict": "intentional",
-      "answeredAt": "2026-11-03T20:00:54.411Z"
-    },
     "0f8e0f448864": {
       "claimId": "lem:transport",
       "kind": "conditional",

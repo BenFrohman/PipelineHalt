@@ -2,7 +2,7 @@
   "tool": "pipelinehalt",
   "version": "0.4.0",
   "anchorTitle": "Global Regularity for the 3D Incompressible Navier--Stokes Equations via the Frohmanian Symplectic Tether\\\\[4pt]\n\\large Complete Original Conjectured Framework and Kernel-Verified Non-Vacuous Conditional Formalization in Lean~4",
-  "generatedAt": "2026-11-03T20:00:54.965Z",
+  "generatedAt": "2026-11-03T20:17:41.149Z",
   "declarationsScanned": 622,
   "claims": [
     {
@@ -271,15 +271,7 @@
           "key": "hyp:DifferentiableAt ℝ u x",
           "detail": "`stretching_inner_le_at_max` assumes `hu : DifferentiableAt ℝ u x`, not stated in the claim.",
           "question": "Paper claim Lemma 4.1 (lem:localmax) states: “Let $x$ satisfy $\\|\\omega(x)\\|=\\|\\omega\\|_{L^\\infty}$ and suppose $\\|\\nabla u(x)\\|\\le\\CZ\\|\\omega\\|_{L^\\infty}$ (\\lean{hCZ}). Then \\[ \\langle\\omega(x),(\\omega\\cdot\\nabla)u(x)\\rangle\\le\\CZ\\,\\|\\omega\\|_…”. Lean theorem `stretching_inner_le_at_max` assumes `hu : DifferentiableAt ℝ u x`, which the claim does not state. Is this extra hypothesis intentional?",
-          "weight": 0.5,
-          "clarification": {
-            "claimId": "lem:localmax",
-            "kind": "conditional",
-            "question": "Paper claim Lemma 4.1 (lem:localmax) states: “Let $x$ satisfy $\\|\\omega(x)\\|=\\|\\omega\\|_{L^\\infty}$ and suppose $\\|\\nabla u(x)\\|\\le\\CZ\\|\\omega\\|_{L^\\infty}$ (\\lean{hCZ}). Then \\[ \\langle\\omega(x),(\\omega\\cdot\\nabla)u(x)\\rangle\\le\\CZ\\,\\|\\omega\\|_…”. Lean theorem `stretching_inner_le_at_max` assumes `hu : DifferentiableAt ℝ u x`, which the claim does not state. Is this extra hypothesis intentional?",
-            "answer": "harmless: the claim's ∇u(x) and (ω·∇)u(x) presuppose u differentiable at x; hu : DifferentiableAt ℝ u x makes that explicit.",
-            "verdict": "intentional",
-            "answeredAt": "2026-11-03T20:00:54.411Z"
-          }
+          "weight": 0.5
         },
         {
           "id": "f1ab07f604ab",
@@ -318,7 +310,7 @@
           }
         }
       ],
-      "drift": 0
+      "drift": 0.5
     },
     {
       "claim": {
@@ -558,7 +550,7 @@
       "cites": "Theorem 2"
     }
   ],
-  "drift": 0.331,
+  "drift": 0.394,
   "pending": [
     {
       "id": "8ebcefda1a1c",
@@ -589,6 +581,16 @@
       "detail": "Anchor maps this claim to `tetherKernel_C2`, but no such declaration exists.",
       "question": "Paper claim Proposition 3.2 (prop:degen) states: “Whenever $\\delta H/\\delta\\omega=u$, $\\nabla\\cdot u=0$, and $u\\in L^2$, one has $\\Pi_u u=0$ (\\lean{projection_orthogonal_to_u}) and hence \\[ B(F,H)(\\omega)=0\\qquad\\text{for every functional }F. \\]”. The anchor maps it to Lean declaration `tetherKernel_C2`, which was not found in the scanned files. Was it renamed or removed, or is the claim intentionally unformalized?",
       "weight": 1
+    },
+    {
+      "id": "5f8484fca91e",
+      "claimId": "lem:localmax",
+      "kind": "conditional",
+      "lean": "stretching_inner_le_at_max",
+      "key": "hyp:DifferentiableAt ℝ u x",
+      "detail": "`stretching_inner_le_at_max` assumes `hu : DifferentiableAt ℝ u x`, not stated in the claim.",
+      "question": "Paper claim Lemma 4.1 (lem:localmax) states: “Let $x$ satisfy $\\|\\omega(x)\\|=\\|\\omega\\|_{L^\\infty}$ and suppose $\\|\\nabla u(x)\\|\\le\\CZ\\|\\omega\\|_{L^\\infty}$ (\\lean{hCZ}). Then \\[ \\langle\\omega(x),(\\omega\\cdot\\nabla)u(x)\\rangle\\le\\CZ\\,\\|\\omega\\|_…”. Lean theorem `stretching_inner_le_at_max` assumes `hu : DifferentiableAt ℝ u x`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
     },
     {
       "id": "09213ae4a264",

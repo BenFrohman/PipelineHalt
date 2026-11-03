@@ -34,22 +34,6 @@
       "answer": "equivalent, intentional: k ∈ {2,3} is proved case by case — k = 2 is boundary1_comp_boundary2_eq_zero (HomologicalCertificate.lean:38), k = 3 is boundary2_comp_boundary3_eq_zero (:53).",
       "verdict": "intentional",
       "answeredAt": "2026-11-03T19:55:33.266Z"
-    },
-    "d6ae4141e14d": {
-      "claimId": "eq:subexp_bound",
-      "kind": "narrower",
-      "question": "Paper claim Equation (eq:subexp_bound), Section 4 (eq:subexp_bound) states: “Applying the block-triangularization theorem and spectral gap bounds over the decomposed sub-complexes yields a strict reduction in the depth of required branching steps. The runtime complexity $T(n,…”. Lean theorem `simulateBlockHomologicalTraversal_at_logBlockSize_bound` assumes `n ≥ 2` (restricting n ≥ 2), which the claim does not state. Is the restricted domain intentional?",
-      "answer": "harmless: the paper's expression divides by (log n)^{1/2+o(1)}, which is 0 or undefined for n ≤ 1, so the asymptotic bound is only meaningful for n ≥ 2; the Lean n ≥ 2 restriction matches that domain.",
-      "verdict": "intentional",
-      "answeredAt": "2026-11-03T19:55:33.317Z"
-    },
-    "27b751af9317": {
-      "claimId": "eq:subexp_bound",
-      "kind": "narrower",
-      "question": "Paper claim Equation (eq:subexp_bound), Section 4 (eq:subexp_bound) states: “Applying the block-triangularization theorem and spectral gap bounds over the decomposed sub-complexes yields a strict reduction in the depth of required branching steps. The runtime complexity $T(n,…”. Lean theorem `block_homological_traversal_real_log_bound` assumes `n ≥ 2` (restricting n ≥ 2), which the claim does not state. Is the restricted domain intentional?",
-      "answer": "harmless: the paper's expression divides by (log n)^{1/2+o(1)}, which is 0 or undefined for n ≤ 1, so the asymptotic bound is only meaningful for n ≥ 2; the Lean n ≥ 2 restriction matches that domain.",
-      "verdict": "intentional",
-      "answeredAt": "2026-11-03T19:55:33.378Z"
     }
   }
 }

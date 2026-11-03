@@ -1,7 +1,7 @@
 # PipelineHalt report: Global Regularity for the 3D Incompressible Navier--Stokes Equations via the Frohmanian Symplectic Tether\\[4pt]
 \large Complete Original Conjectured Framework and Kernel-Verified Non-Vacuous Conditional Formalization in Lean~4
 
-Status: **HALT** · overall drift **0.331** · 8 claims · 622 Lean declarations scanned · 6 open question(s)
+Status: **HALT** · overall drift **0.394** · 8 claims · 622 Lean declarations scanned · 7 open question(s)
 
 Mapping file: `../../PipelineHalt/examples/NS_Millennium_Proof/pipelinehalt.map.json` (human-authored claim → Lean pairing; mapped claims skip heuristic matching).
 
@@ -12,7 +12,7 @@ Mapping file: `../../PipelineHalt/examples/NS_Millennium_Proof/pipelinehalt.map.
 | Theorem 1.1 | `frohmanian_tether_theorem`, `global_regularity_for_NS` | 0.750 | 2 | 3 |
 | Definition 3.1 | `TetherKernel`, `Pi_u` | 0.000 | 0 | 0 |
 | Proposition 3.2 | `tetherKernel_degenerates_on_kinetic_energy` | 1.000 | 1 | 3 |
-| Lemma 4.1 | `stretching_inner_le_at_max` | 0.000 | 0 | 4 |
+| Lemma 4.1 | `stretching_inner_le_at_max` | 0.500 | 1 | 3 |
 | Lemma 4.2 | `time_pairing_le_stretching_at_max` | 0.900 | 3 | 2 |
 | Lemma 4.3 | `comparison_ode_stability` | 0.000 | 0 | 2 |
 | Lemma 4.4 | `comparison_majorant_global_bound` | 0.000 | 0 | 1 |
@@ -36,7 +36,7 @@ Mapping file: `../../PipelineHalt/examples/NS_Millennium_Proof/pipelinehalt.map.
 ## Lemma 4.1 — Stretching at a spatial maximum; proved, \lean{stretching_inner_le_at_max}
 
 - `5e5d552b0287` AMBIGUOUS: Title “Stretching at a spatial maximum; proved, \lean{stretching_inner_le_at_max}” shares almost no terms with the statement. — answered (intentional): “harmless wording: the title is a short description plus \lean{} names that exist and are the mapped declarations.”
-- `5f8484fca91e` CONDITIONAL: `stretching_inner_le_at_max` assumes `hu : DifferentiableAt ℝ u x`, not stated in the claim. — answered (intentional): “harmless: the claim's ∇u(x) and (ω·∇)u(x) presuppose u differentiable at x; hu : DifferentiableAt ℝ u x makes that explicit.”
+- `5f8484fca91e` CONDITIONAL: `stretching_inner_le_at_max` assumes `hu : DifferentiableAt ℝ u x`, not stated in the claim. — **OPEN**
 - `f1ab07f604ab` CONDITIONAL: `stretching_inner_le_at_max` assumes `hCZ : PointwiseStrainSupBound u ω C_CZ x`, not stated in the claim. — answered (intentional): “stated in the claim: 'suppose ‖∇u(x)‖ ≤ C_CZ‖ω‖_{L^∞} (\lean{hCZ})'; PointwiseStrainSupBound u ω C x := ‖fderiv ℝ u x‖ ≤ C * vorticity_sup_norm ω (NS_Equations.lean:2826).”
 - `41b6ca9092d3` CONDITIONAL: `stretching_inner_le_at_max` assumes `hmax : ‖ω x‖ = vorticity_sup_norm ω`, not stated in the claim. — answered (intentional): “stated in the claim: 'Let x satisfy ‖ω(x)‖ = ‖ω‖_{L^∞}'; hmax is that hypothesis.”
 
@@ -71,7 +71,7 @@ Mapping file: `../../PipelineHalt/examples/NS_Millennium_Proof/pipelinehalt.map.
 - Proposition 3.2: difference `18f967d287c5` is intentional per the author; consider stating it in the paper text so readers see it too.
 - Proposition 3.2: difference `21ee103563e5` is intentional per the author; consider stating it in the paper text so readers see it too.
 - Proposition 3.2: difference `cb75c079e949` is intentional per the author; consider stating it in the paper text so readers see it too.
-- Lemma 4.1: difference `5f8484fca91e` is intentional per the author; consider stating it in the paper text so readers see it too.
+- Lemma 4.1: answer `5f8484fca91e` — Paper claim Lemma 4.1 (lem:localmax) states: “Let $x$ satisfy $\|\omega(x)\|=\|\omega\|_{L^\infty}$ and suppose $\|\nabla u(x)\|\le\CZ\|\omega\|_{L^\infty}$ (\lean{hCZ}). Then \[ \langle\omega(x),(\omega\cdot\nabla)u(x)\rangle\le\CZ\,\|\omega\|_…”. Lean theorem `stretching_inner_le_at_max` assumes `hu : DifferentiableAt ℝ u x`, which the claim does not state. Is this extra hypothesis intentional?
 - Lemma 4.1: difference `f1ab07f604ab` is intentional per the author; consider stating it in the paper text so readers see it too.
 - Lemma 4.1: difference `41b6ca9092d3` is intentional per the author; consider stating it in the paper text so readers see it too.
 - Lemma 4.2: answer `09213ae4a264` — Paper claim Lemma 4.2 (lem:transport) states: “At a spatial maximum where the convective transport pairing $\langle\omega,(u\cdot\nabla)\omega\rangle(x)$ vanishes and $\langle\omega,\Delta\omega\rangle(x)\le0$, along any solution of \eqref{eq:vor…”. Lean theorem `time_pairing_le_stretching_at_max` assumes `0 ≤ t` (restricting t ≥ 0), which the claim does not state. Is the restricted domain intentional?

@@ -1,6 +1,6 @@
 # PipelineHalt report: \textbf{The Frohmanian Symplectic Tether: Canonical Uniqueness on Coadjoint Orbits of $\mathrm{SDiff
 
-Status: **HALT** · overall drift **0.688** · 5 claims · 723 Lean declarations scanned · 7 open question(s)
+Status: **HALT** · overall drift **0.688** · 5 claims · 723 Lean declarations scanned · 8 open question(s)
 
 Mapping file: `../../PipelineHalt/examples/frohmanian-symplectic-tether-regularity/pipelinehalt.map.json` (human-authored claim → Lean pairing; mapped claims skip heuristic matching).
 
@@ -10,7 +10,7 @@ Mapping file: `../../PipelineHalt/examples/frohmanian-symplectic-tether-regulari
 |---|---|---|---|---|
 | Theorem 1.1 | `frohmanian_metriplectic_system_canonical_uniqueness_and_global_regularity_product_theorem` | 0.000 | 0 | 1 |
 | Definition 2.1 | — | 1.000 | 1 | 1 |
-| Theorem 2.2 | `tetherPointwiseDensity_nonpos`, `tetherKernel_diagonal_nonpos`, `tetherPointwiseDensity_strict_neg_of_noncasimir`, `tetherKernel_strict_neg_of_orthogonal_component`, `tetherKernel_nondegenerate_on_casimir_defect` | 1.000 | 1 | 2 |
+| Theorem 2.2 | `tetherPointwiseDensity_nonpos`, `tetherKernel_diagonal_nonpos`, `tetherPointwiseDensity_strict_neg_of_noncasimir`, `tetherKernel_strict_neg_of_orthogonal_component`, `tetherKernel_nondegenerate_on_casimir_defect` | 1.000 | 2 | 1 |
 | Theorem 3.1 | `uniqueness_of_minimal_tether`, `uniqueness_of_kernel_density` | 0.938 | 4 | 0 |
 | Theorem 4.1 | `youngs_absorption_elimination` | 0.500 | 1 | 1 |
 
@@ -27,7 +27,7 @@ Mapping file: `../../PipelineHalt/examples/frohmanian-symplectic-tether-regulari
 
 - `d5dc6333da80` SILENT: Anchor maps this claim to `tether_preserves_casimirs`, but no such declaration exists. — **OPEN**
 - `77453ba2c6fe` CONDITIONAL: `tetherPointwiseDensity_strict_neg_of_noncasimir` assumes `hω : ω.val x ≠ 0`, not stated in the claim. — answered (intentional): “stated in the claim: the paper says 'Whenever ω(x) ≠ 0 …' (theorem-2.2, third bullet); hω : ω.val x ≠ 0 is that hypothesis.”
-- `9b109eb0f9d5` CONDITIONAL: `tetherPointwiseDensity_strict_neg_of_noncasimir` assumes `hPi : Pi_u (velocity_from_vorticity ω) (FunctionalDerivative F ω) x ≠ 0`, not stated in the claim. — answered (intentional): “stated in the claim: the paper says '… and P_{δC}^⊥ v(x) ≠ 0'; hPi : Pi_u (velocity_from_vorticity ω) (FunctionalDerivative F ω) x ≠ 0 is that hypothesis with v instantiated as δF/δω and P^⊥ as Pi_u (SymplecticTether.lean:1170-1175 docstring).”
+- `9b109eb0f9d5` CONDITIONAL: `tetherPointwiseDensity_strict_neg_of_noncasimir` assumes `hPi : Pi_u (velocity_from_vorticity ω) (FunctionalDerivative F ω) x ≠ 0`, not stated in the claim. — **OPEN**
 
 ## Theorem 3.1 — Canonical Uniqueness: \texttt{uniqueness\_of\_minimal\_tether} and \texttt{uniqueness\_of\_kernel\_density}
 
@@ -46,7 +46,7 @@ Mapping file: `../../PipelineHalt/examples/frohmanian-symplectic-tether-regulari
 - Definition 2.1: answer `4328d2dc605b` — Paper claim Definition 2.1 (eq:kappa-def) states: “For $\nu > 0$ and $C_{\mathrm{CZ}} = 3/2$, define the canonical coupling constant and symmetric bilinear kernel: \begin{align} \kappa(\nu) &= \frac{27 C_{\mathrm{CZ}}^4}{4 \nu^3} = \frac{2187}{64 \nu…”. No Lean declaration matching it was found among 192 candidates. Closest candidate: `kksSymplecticForm` (score 0.17, below threshold 0.2). Is this claim intentionally not formalized, or which declaration should it map to?
 - Theorem 2.2: answer `d5dc6333da80` — Paper claim Theorem 2.2 (theorem-2.2) states: “Let $\kappa > 0$, $\omega \in \mathfrak{g}^*$, and $v : \mathbb{T}^3 \to \mathbb{R}^3$. Define the pointwise tether density $d_{\mathrm{FT}}(\kappa, \omega, v, x) = -\kappa \|\omega(x)\|^2 \|P_{\delt…”. The anchor maps it to Lean declaration `tether_preserves_casimirs`, which was not found in the scanned files. Was it renamed or removed, or is the claim intentionally unformalized?
 - Theorem 2.2: difference `77453ba2c6fe` is intentional per the author; consider stating it in the paper text so readers see it too.
-- Theorem 2.2: difference `9b109eb0f9d5` is intentional per the author; consider stating it in the paper text so readers see it too.
+- Theorem 2.2: answer `9b109eb0f9d5` — Paper claim Theorem 2.2 (theorem-2.2) states: “Let $\kappa > 0$, $\omega \in \mathfrak{g}^*$, and $v : \mathbb{T}^3 \to \mathbb{R}^3$. Define the pointwise tether density $d_{\mathrm{FT}}(\kappa, \omega, v, x) = -\kappa \|\omega(x)\|^2 \|P_{\delt…”. Lean theorem `tetherPointwiseDensity_strict_neg_of_noncasimir` assumes `hPi : Pi_u (velocity_from_vorticity ω) (FunctionalDerivative F ω) x ≠ 0`, which the claim does not state. Is this extra hypothesis intentional?
 - Theorem 3.1: answer `11f927ba5751` — Paper claim Theorem 3.1 (theorem-3.1) states: “Let $\mathcal{K}(v, w; \omega) = \int_{\mathbb{T}^3} k(\omega(x), v(x), w(x))\,dx$ be any local bilinear symmetric form on $\mathfrak{g}^*$ whose pointwise density $k(\omega, v, w)$ satisfies C1 (Cas…”. Lean theorem `uniqueness_of_minimal_tether` assumes `hC1 : InvariantUnderCoadjointAction B`, which the claim does not state. Is this extra hypothesis intentional?
 - Theorem 3.1: answer `a62c3f5904be` — Paper claim Theorem 3.1 (theorem-3.1) states: “Let $\mathcal{K}(v, w; \omega) = \int_{\mathbb{T}^3} k(\omega(x), v(x), w(x))\,dx$ be any local bilinear symmetric form on $\mathfrak{g}^*$ whose pointwise density $k(\omega, v, w)$ satisfies C1 (Cas…”. Lean theorem `uniqueness_of_minimal_tether` assumes `hC2 : DegenerateWRTKineticEnergy B`, which the claim does not state. Is this extra hypothesis intentional?
 - Theorem 3.1: answer `de917572943a` — Paper claim Theorem 3.1 (theorem-3.1) states: “Let $\mathcal{K}(v, w; \omega) = \int_{\mathbb{T}^3} k(\omega(x), v(x), w(x))\,dx$ be any local bilinear symmetric form on $\mathfrak{g}^*$ whose pointwise density $k(\omega, v, w)$ satisfies C1 (Cas…”. Lean theorem `uniqueness_of_minimal_tether` assumes `hC3 : ProducesControllableNegativeFeedback kappa B`, which the claim does not state. Is this extra hypothesis intentional?

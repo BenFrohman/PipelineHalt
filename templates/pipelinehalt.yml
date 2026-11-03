@@ -1,0 +1,21 @@
+# Sample GitHub Actions workflow (copy to .github/workflows/ in a Lean+paper repo).
+name: pipelinehalt
+on: [push, pull_request]
+jobs:
+  alignment:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm install -g @recurring-alignment/pipelinehalt
+      # Exit 0 aligned, 1 drift above --max-drift, 2 open clarification questions (HALT), 3 usage error.
+      - run: pipelinehalt check --anchor paper/claims.json --lean . --ci --max-drift 0.25 --pending pipelinehalt-pending.json --report-md pipelinehalt.md
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pipelinehalt
+          path: |
+            pipelinehalt.md
+            pipelinehalt-pending.json
+          if-no-files-found: ignore

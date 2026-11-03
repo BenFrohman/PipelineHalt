@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use PipelineHalt, please cite it as below."
+title: "PipelineHalt: Halting on Paper–Lean Drift and Asking Instead of Guessing"
+version: 0.3.0
+license: MIT
+repository-code: "https://github.com/BenFrohman/PipelineHalt"
+authors:
+  - family-names: Frohman
+    given-names: Benjamin Stanley
+    email: frohmanbenjamin@gmail.com
+    orcid: "https://orcid.org/0009-0006-7068-3718"

@@ -1,0 +1,73 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,booktabs,hyperref,xcolor,listings}
+\lstset{basicstyle=\ttfamily\small,breaklines=true,columns=fullflexible}
+\title{PipelineHalt: Halting on Paper--Lean Drift and Asking Instead of Guessing}
+\author{Benjamin Stanley Frohman\\\texttt{frohmanbenjamin@gmail.com}\\ORCID: \href{https://orcid.org/0009-0006-7068-3718}{0009-0006-7068-3718}}
+\date{November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+A formalization is only as faithful as the match between the statements it proves and the claims the accompanying paper makes. These two artifacts drift: indices shift, hypotheses are added, sets are re-encoded, numbering diverges. We describe PipelineHalt, a small open-source tool that treats the paper's claims as an anchor and the Lean statements as the live artifact, flags places where the Lean is \emph{silent}, \emph{narrower}, or \emph{conditional} relative to the paper, or where the paper itself is \emph{ambiguous}, and then halts with a precise clarification question rather than correcting anything. Answers are recorded verbatim in the anchor under stable identifiers so questions are not re-asked. The tool does not and cannot recover intent that was never written down; its matching is heuristic and syntactic. We report its real output on a small Lean development, including a false positive.
+\end{abstract}
+
+\section{Introduction}
+Machine-checked proofs in Lean~4~\cite{moura2021lean4} with Mathlib~\cite{mathlib2020} certify that a \emph{Lean statement} holds. Readers, however, consume the \emph{paper}. Whether the paper's Theorem~3.1 and the Lean \texttt{two\_le\_gap} say the same thing is a question the kernel does not ask. Large-language-model agents that write or revise either artifact make the problem sharper: they will happily ``fix'' a mismatch in whichever direction is locally convenient.
+
+PipelineHalt is an extension of RecurringAlignment~\cite{frohman2026ra}. Its design principle is simple: \textbf{on a detected difference, stop and ask the author}. It never edits a claim or a Lean file.
+
+\section{The residual-gap problem}
+Call the \emph{residual gap} the set of differences between what the paper asserts and what the Lean proves that survive compilation. Some are benign conventions (0- vs.\ 1-indexed primes); some change the mathematics (an extra hypothesis). Syntactically the two cases often look identical, and distinguishing them requires information that lives only in the author's head. A tool can therefore at best \emph{surface} the gap and \emph{elicit} a decision; it cannot close it alone. We make that limitation the interface.
+
+\section{Design}
+\paragraph{Inputs.} The anchor is a list of claims (id, printed number, title, statement, optional explicit \texttt{lean:} mapping and stated assumptions), read from JSON, Markdown, or LaTeX theorem environments (with amsthm section numbering reproduced); PDF is supported best-effort via \texttt{pdftotext}. Lean files are parsed with a lightweight bracket-aware scanner extracting declarations, binders, type, docstring, \texttt{sorry}, and use of project axioms.
+
+\paragraph{Matching.} Without an explicit mapping, each declaration is assigned to the claim maximizing
+$0.6\,D(\text{sig}) + 0.4\,D(\text{doc}) + 0.3\,[\text{doc cites the claim's number}]$,
+where $D$ is the Dice coefficient~\cite{dice1945} over stemmed tokens; definitions match definition-like claims only. This is a heuristic and is the main source of error.
+
+\paragraph{Checks.} Per claim:
+\begin{itemize}
+\item \textbf{Silent}: a mapped name is missing, or nothing matches.
+\item \textbf{Narrower}: a Lean lower bound on a variable differs from the claim's, or a set literal in the claim appears in no matched statement.
+\item \textbf{Conditional}: a hypothesis binder or premise not covered by the claim text or its stated assumptions; \texttt{sorry}; a project axiom.
+\item \textbf{Ambiguous}: hedging words, empty statement, title unrelated to statement, duplicate ids, or a docstring theorem number disagreeing with the printed one.
+\end{itemize}
+Each mismatch has an id $=\mathrm{sha256}(\text{claim},\text{kind},\text{decl},\text{key})$ truncated to 12 hex digits, and a weight (silent 1, narrower 0.6, conditional 0.5, sorry 0.8, axiom 0.7, ambiguous 0.3); claim drift is the capped sum.
+
+\section{Clarification protocol}
+Unanswered mismatches yield status \textsc{halt} (exit code 2). Interactively, questions are asked on the terminal; non-interactively, they are written to a pending file to be filled in and imported. An answer is stored verbatim with a verdict parsed from its first word: \emph{intentional} (weight 0), \emph{unintended} (full weight), or other (half weight). Since ids are stable, an answered question is never re-asked; if the Lean changes so that the key changes, a new question appears. For agents, a JSON protocol (\texttt{pipelinehalt/1}) returns the questions and accepts answers; the accompanying prompt template instructs agents to relay questions unchanged and never answer them. A CI mode emits GitHub annotations and fails on halts or drift above a threshold.
+
+\section{Example: DHL[3,2] and prime gaps}
+We ran PipelineHalt 0.3.0 on the repository for \cite{frohman2026dhl} (commit \texttt{69a13d3}): 9 claims extracted from \texttt{paper/DHL32\_note.tex}, 34 Lean declarations.
+
+\paragraph{With explicit mappings.} Status \textsc{halt}, overall drift 0.245, 7 open questions (Table~\ref{tab:explicit}). Lemma~2.4, the three definitions and Hypothesis~3.5 reported no differences.
+\begin{table}[h]\centering\small
+\begin{tabular}{llp{9cm}}\toprule
+Claim & Kind & Finding \\\midrule
+Thm 3.1 & narrower & \texttt{two\_le\_gap} assumes $1\le n$; paper says $n\ge2$ (possibly an indexing shift) \\
+Thm 3.1 & narrower & same for \texttt{gap\_even} \\
+Thm 3.1 & ambiguous & docstring says ``Theorem 1'' \\
+Thm 3.2 & ambiguous & \texttt{dhl32\_H1Le\_six} docstring says ``Theorem 2'' \\
+Thm 3.3 & narrower & paper's $\{0,1\}$ appears in no matched statement (Lean uses \texttt{n \% 4 < 2}) \\
+Thm 3.3 & ambiguous & docstring says ``Theorem 3'' \\
+Thm 3.6 & ambiguous & \texttt{parity\_two\_needs\_three} docstring says ``Theorem 4'' \\\bottomrule
+\end{tabular}
+\caption{Real output, explicit mappings.}\label{tab:explicit}
+\end{table}
+
+The $\{0,1\}$ finding illustrates the limits of the method: $n \bmod 4 \in \{0,1\}$ and $n \% 4 < 2$ are equivalent over $\mathbb{N}$, so this is very likely a false positive, but the tool cannot decide it and asks. Similarly, whether $1\le n$ vs.\ $n\ge2$ is a convention is left to the author. These questions remain unanswered in the published example; we did not answer them on the author's behalf.
+
+\paragraph{Heuristic only.} Status \textsc{halt}, drift 0.267, 5 questions. The matcher assigned \texttt{Ptoy\_DHL32} to Theorem~3.2, producing a \emph{false} ``silent'' for Theorem~3.3, and it missed the $n\ge1$/$n\ge2$ finding because it did not match \texttt{two\_le\_gap} to Theorem~3.1. It also flagged an unstated hypothesis \texttt{H.card = 3} on \texttt{min\_diam\_admissible\_three} under Lemma~2.4, an artifact of the mis-assignment. Explicit mappings are therefore recommended.
+
+\section{Limitations}
+PipelineHalt is syntactic. It does not understand mathematics, does not check proofs, and does not recover unstated intent; an aligned report means only that these checks found nothing. Token matching mis-assigns declarations; bound and set checks miss equivalent encodings and miss differences expressed otherwise; LaTeX macro normalization is partial; PDF extraction is fragile. Drift weights are arbitrary conventions, not measurements. The evaluation is a single small example.
+
+\section{Conclusion}
+PipelineHalt turns paper--Lean drift into explicit, recorded questions with stable ids, and refuses to resolve them itself. The value lies not in the detection heuristics, which are modest, but in the discipline: differences are surfaced, the pipeline halts, and the author's answer becomes part of the record.
+
+\paragraph{Availability.} Source, tests and example outputs: \url{https://github.com/BenFrohman/PipelineHalt} (code MIT; paper CC BY 4.0), derived from \texttt{packages/pipelinehalt} in \cite{frohman2026ra}.
+
+\bibliographystyle{plain}
+\bibliography{pipelinehalt}
+\end{document}

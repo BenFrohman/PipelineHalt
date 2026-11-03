@@ -1,0 +1,385 @@
+{
+  "tool": "pipelinehalt",
+  "version": "0.3.0",
+  "anchorTitle": "Resolving a category error: DHL[3,2] yields H1 <= 6, not H1 = 2 (B. S. Frohman, 2026)",
+  "generatedAt": "2026-11-03T18:14:15.773Z",
+  "declarationsScanned": 34,
+  "claims": [
+    {
+      "claim": {
+        "id": "def:admissible",
+        "number": "Definition 2.1",
+        "statement": "A finite set $\\mathcal H\\subset\\mathbb N$ is \\emph{admissible} if for every prime $q$ there is a residue class modulo $q$ containing no element of $\\mathcal H$.",
+        "kind": "definition",
+        "source": "paper/DHL32_note.tex:58",
+        "lean": ["Admissible"]
+      },
+      "matched": [
+        {
+          "name": "Admissible",
+          "score": 0.304,
+          "explicit": true
+        }
+      ],
+      "mismatches": [],
+      "drift": 0
+    },
+    {
+      "claim": {
+        "id": "def:dhl",
+        "number": "Definition 2.2",
+        "statement": "For a predicate $P$ on $\\mathbb N$ and $k\\ge j\\ge1$, let $\\DHL_P[k,j]$ be the statement: for every admissible $\\mathcal H$ with $|\\mathcal H|=k$ there are infinitely many $n$ such that $\\#\\{h\\in\\mathcal H: P(n+h)\\}\\ge j$. Write $\\DHL[k,j]$ for $\\DHL_P[k,j]$ with $P$ = primality.",
+        "kind": "definition",
+        "source": "paper/DHL32_note.tex:62",
+        "lean": ["DHL", "DHLfor"]
+      },
+      "matched": [
+        {
+          "name": "DHL",
+          "score": 0.252,
+          "explicit": true
+        },
+        {
+          "name": "DHLfor",
+          "score": 0.15,
+          "explicit": true
+        }
+      ],
+      "mismatches": [],
+      "drift": 0
+    },
+    {
+      "claim": {
+        "id": "def:H1le",
+        "number": "Definition 2.3",
+        "statement": "For $c\\in\\mathbb N$ write $H_1\\le c$ for the statement that $p_{n+1}-p_n\\le c$ for infinitely many $n$. For an integer-valued sequence this is equivalent to $\\liminf_{n}(p_{n+1}-p_n)\\le c$.",
+        "kind": "definition",
+        "source": "paper/DHL32_note.tex:66",
+        "lean": ["H1Le"]
+      },
+      "matched": [
+        {
+          "name": "H1Le",
+          "score": 0.272,
+          "explicit": true
+        }
+      ],
+      "mismatches": [],
+      "drift": 0
+    },
+    {
+      "claim": {
+        "id": "lem:adm",
+        "number": "Lemma 2.4",
+        "statement": "The sets $\\{0,2\\}$, $\\{0,2,6\\}$ and $\\{0,4,6\\}$ are admissible.",
+        "kind": "lemma",
+        "source": "paper/DHL32_note.tex:70",
+        "lean": ["admissible_02", "admissible_026", "admissible_046"]
+      },
+      "matched": [
+        {
+          "name": "admissible_02",
+          "score": 0.627,
+          "explicit": true
+        },
+        {
+          "name": "admissible_026",
+          "score": 0.756,
+          "explicit": true
+        },
+        {
+          "name": "admissible_046",
+          "score": 0.756,
+          "explicit": true
+        }
+      ],
+      "mismatches": [],
+      "drift": 0
+    },
+    {
+      "claim": {
+        "id": "thm:gaps",
+        "number": "Theorem 3.1",
+        "statement": "For all $n\\ge2$, $p_{n+1}-p_n\\ge2$ and $p_{n+1}-p_n$ is even. Consequently $H_1\\ge2$, and $H_1\\le3$ if and only if $p_{n+1}-p_n=2$ for infinitely many $n$.",
+        "kind": "theorem",
+        "source": "paper/DHL32_note.tex:79",
+        "lean": ["two_le_gap", "gap_even", "not_H1Le_one", "H1Le_three_iff_twin"]
+      },
+      "matched": [
+        {
+          "name": "two_le_gap",
+          "score": 0.305,
+          "explicit": true
+        },
+        {
+          "name": "gap_even",
+          "score": 0.2,
+          "explicit": true
+        },
+        {
+          "name": "not_H1Le_one",
+          "score": 0.297,
+          "explicit": true
+        },
+        {
+          "name": "H1Le_three_iff_twin",
+          "score": 0.386,
+          "explicit": true
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "56d42291f91e",
+          "claimId": "thm:gaps",
+          "kind": "narrower",
+          "lean": "two_le_gap",
+          "key": "bound:n>=1vs2",
+          "detail": "`two_le_gap` uses n ≥ 1 where the claim says n ≥ 2 (could be an indexing shift; direction not decidable syntactically).",
+          "question": "Paper claim Theorem 3.1 (thm:gaps) states: “For all $n\\ge2$, $p_{n+1}-p_n\\ge2$ and $p_{n+1}-p_n$ is even. Consequently $H_1\\ge2$, and $H_1\\le3$ if and only if $p_{n+1}-p_n=2$ for infinitely many $n$.”. Lean theorem `two_le_gap` assumes `1 ≤ n` (n ≥ 1), but the claim says n ≥ 2. Is this an intentional indexing convention or a genuine change of domain?",
+          "weight": 0.6
+        },
+        {
+          "id": "cc5e051f3e37",
+          "claimId": "thm:gaps",
+          "kind": "narrower",
+          "lean": "gap_even",
+          "key": "bound:n>=1vs2",
+          "detail": "`gap_even` uses n ≥ 1 where the claim says n ≥ 2 (could be an indexing shift; direction not decidable syntactically).",
+          "question": "Paper claim Theorem 3.1 (thm:gaps) states: “For all $n\\ge2$, $p_{n+1}-p_n\\ge2$ and $p_{n+1}-p_n$ is even. Consequently $H_1\\ge2$, and $H_1\\le3$ if and only if $p_{n+1}-p_n=2$ for infinitely many $n$.”. Lean lemma `gap_even` assumes `1 ≤ n` (n ≥ 1), but the claim says n ≥ 2. Is this an intentional indexing convention or a genuine change of domain?",
+          "weight": 0.6
+        },
+        {
+          "id": "d954590373a1",
+          "claimId": "thm:gaps",
+          "kind": "ambiguous",
+          "lean": "two_le_gap",
+          "key": "label:Theorem 1",
+          "detail": "`two_le_gap`'s docstring calls itself “Theorem 1”, but the paper prints Theorem 3.1.",
+          "question": "Paper claim Theorem 3.1 (thm:gaps) states: “For all $n\\ge2$, $p_{n+1}-p_n\\ge2$ and $p_{n+1}-p_n$ is even. Consequently $H_1\\ge2$, and $H_1\\le3$ if and only if $p_{n+1}-p_n=2$ for infinitely many $n$.”. Lean theorem `two_le_gap` is documented as “Theorem 1”, while the paper numbers this claim Theorem 3.1. Which numbering should readers and tools use?",
+          "weight": 0.3
+        }
+      ],
+      "drift": 0.888
+    },
+    {
+      "claim": {
+        "id": "thm:main",
+        "number": "Theorem 3.2",
+        "statement": "$\\DHL[3,2]$ implies $H_1\\le6$.",
+        "kind": "theorem",
+        "source": "paper/DHL32_note.tex:86",
+        "lean": ["dhl32_H1Le_six"]
+      },
+      "matched": [
+        {
+          "name": "dhl32_H1Le_six",
+          "score": 0.762,
+          "explicit": true
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "914b1b84bfe9",
+          "claimId": "thm:main",
+          "kind": "ambiguous",
+          "lean": "dhl32_H1Le_six",
+          "key": "label:Theorem 2",
+          "detail": "`dhl32_H1Le_six`'s docstring calls itself “Theorem 2”, but the paper prints Theorem 3.2.",
+          "question": "Paper claim Theorem 3.2 (thm:main) states: “$\\DHL[3,2]$ implies $H_1\\le6$.”. Lean theorem `dhl32_H1Le_six` is documented as “Theorem 2”, while the paper numbers this claim Theorem 3.2. Which numbering should readers and tools use?",
+          "weight": 0.3
+        }
+      ],
+      "drift": 0.3
+    },
+    {
+      "claim": {
+        "id": "thm:model",
+        "number": "Theorem 3.3",
+        "statement": "Let $P(n)$ hold if and only if $n\\bmod4\\in\\{0,1\\}$. Then $\\DHL_P[3,2]$ holds (indeed for every $3$-element set), but $P(n)\\wedge P(n+2)$ holds for no $n$; in particular $\\DHL_P[2,2]$ fails.",
+        "kind": "theorem",
+        "source": "paper/DHL32_note.tex:93",
+        "lean": ["Ptoy_DHL32", "Ptoy_no_twin", "dhl32_not_implies_dhl22_combinatorially"]
+      },
+      "matched": [
+        {
+          "name": "Ptoy_DHL32",
+          "score": 0.415,
+          "explicit": true
+        },
+        {
+          "name": "Ptoy_no_twin",
+          "score": 0.08,
+          "explicit": true
+        },
+        {
+          "name": "dhl32_not_implies_dhl22_combinatorially",
+          "score": 0.32,
+          "explicit": true
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "382682972d36",
+          "claimId": "thm:model",
+          "kind": "narrower",
+          "lean": "Ptoy_DHL32,Ptoy_no_twin,dhl32_not_implies_dhl22_combinatorially",
+          "key": "omits-set:0,1",
+          "detail": "Claim mentions {0,1}; no matched Lean statement mentions it.",
+          "question": "Paper claim Theorem 3.3 (thm:model) states: “Let $P(n)$ hold if and only if $n\\bmod4\\in\\{0,1\\}$. Then $\\DHL_P[3,2]$ holds (indeed for every $3$-element set), but $P(n)\\wedge P(n+2)$ holds for no $n$; in particular $\\DHL_P[2,2]$ fails.”. The matched Lean statement(s) `Ptoy_DHL32`, `Ptoy_no_twin`, `dhl32_not_implies_dhl22_combinatorially` do not mention the set {0,1}. Is the omission intentional, or is it covered by a declaration the matcher missed?",
+          "weight": 0.6
+        },
+        {
+          "id": "25cb35ac0d5b",
+          "claimId": "thm:model",
+          "kind": "ambiguous",
+          "lean": "dhl32_not_implies_dhl22_combinatorially",
+          "key": "label:Theorem 3",
+          "detail": "`dhl32_not_implies_dhl22_combinatorially`'s docstring calls itself “Theorem 3”, but the paper prints Theorem 3.3.",
+          "question": "Paper claim Theorem 3.3 (thm:model) states: “Let $P(n)$ hold if and only if $n\\bmod4\\in\\{0,1\\}$. Then $\\DHL_P[3,2]$ holds (indeed for every $3$-element set), but $P(n)\\wedge P(n+2)$ holds for no $n$; in particular $\\DHL_P[2,2]$ fails.”. Lean theorem `dhl32_not_implies_dhl22_combinatorially` is documented as “Theorem 3”, while the paper numbers this claim Theorem 3.3. Which numbering should readers and tools use?",
+          "weight": 0.3
+        }
+      ],
+      "drift": 0.72
+    },
+    {
+      "claim": {
+        "id": "hyp:parity",
+        "number": "Hypothesis 3.5",
+        "statement": "A given sieve method establishes $\\DHL[k,j]$ only if $j\\le\\lceil k/2\\rceil$.",
+        "kind": "hypothesis",
+        "source": "paper/DHL32_note.tex:104",
+        "title": "Parity barrier",
+        "lean": ["ParityBarrier"]
+      },
+      "matched": [
+        {
+          "name": "ParityBarrier",
+          "score": 0.346,
+          "explicit": true
+        }
+      ],
+      "mismatches": [],
+      "drift": 0
+    },
+    {
+      "claim": {
+        "id": "thm:parity",
+        "number": "Theorem 3.6",
+        "statement": "\\begin{enumerate} \\item Under \\cref{hyp:parity}, a sieve method establishing $\\DHL[k,2]$ has $k\\ge3$. \\item (Unconditional.) No admissible $3$-element set is contained in an interval $[a,a+5]$. Together with \\cref{lem:adm}, the minimal diameter of an admissible $3$-set is exactly $6$. \\end{enumerate}",
+        "kind": "theorem",
+        "source": "paper/DHL32_note.tex:110",
+        "lean": ["parity_two_needs_three", "admissible_three_diam_ge_six", "min_diam_admissible_three"]
+      },
+      "matched": [
+        {
+          "name": "parity_two_needs_three",
+          "score": 0.189,
+          "explicit": true
+        },
+        {
+          "name": "admissible_three_diam_ge_six",
+          "score": 0.289,
+          "explicit": true
+        },
+        {
+          "name": "min_diam_admissible_three",
+          "score": 0.295,
+          "explicit": true
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "8c42a0eae510",
+          "claimId": "thm:parity",
+          "kind": "ambiguous",
+          "lean": "parity_two_needs_three",
+          "key": "label:Theorem 4",
+          "detail": "`parity_two_needs_three`'s docstring calls itself “Theorem 4”, but the paper prints Theorem 3.6.",
+          "question": "Paper claim Theorem 3.6 (thm:parity) states: “\\begin{enumerate} \\item Under \\cref{hyp:parity}, a sieve method establishing $\\DHL[k,2]$ has $k\\ge3$. \\item (Unconditional.) No admissible $3$-element set is contained in an interval $[a,a+5]$. Toget…”. Lean theorem `parity_two_needs_three` is documented as “Theorem 4”, while the paper numbers this claim Theorem 3.6. Which numbering should readers and tools use?",
+          "weight": 0.3
+        }
+      ],
+      "drift": 0.3
+    }
+  ],
+  "unanchored": [
+    {
+      "name": "H1Le_three_iff_two",
+      "cites": "Theorem 1"
+    }
+  ],
+  "drift": 0.245,
+  "pending": [
+    {
+      "id": "56d42291f91e",
+      "claimId": "thm:gaps",
+      "kind": "narrower",
+      "lean": "two_le_gap",
+      "key": "bound:n>=1vs2",
+      "detail": "`two_le_gap` uses n ≥ 1 where the claim says n ≥ 2 (could be an indexing shift; direction not decidable syntactically).",
+      "question": "Paper claim Theorem 3.1 (thm:gaps) states: “For all $n\\ge2$, $p_{n+1}-p_n\\ge2$ and $p_{n+1}-p_n$ is even. Consequently $H_1\\ge2$, and $H_1\\le3$ if and only if $p_{n+1}-p_n=2$ for infinitely many $n$.”. Lean theorem `two_le_gap` assumes `1 ≤ n` (n ≥ 1), but the claim says n ≥ 2. Is this an intentional indexing convention or a genuine change of domain?",
+      "weight": 0.6
+    },
+    {
+      "id": "cc5e051f3e37",
+      "claimId": "thm:gaps",
+      "kind": "narrower",
+      "lean": "gap_even",
+      "key": "bound:n>=1vs2",
+      "detail": "`gap_even` uses n ≥ 1 where the claim says n ≥ 2 (could be an indexing shift; direction not decidable syntactically).",
+      "question": "Paper claim Theorem 3.1 (thm:gaps) states: “For all $n\\ge2$, $p_{n+1}-p_n\\ge2$ and $p_{n+1}-p_n$ is even. Consequently $H_1\\ge2$, and $H_1\\le3$ if and only if $p_{n+1}-p_n=2$ for infinitely many $n$.”. Lean lemma `gap_even` assumes `1 ≤ n` (n ≥ 1), but the claim says n ≥ 2. Is this an intentional indexing convention or a genuine change of domain?",
+      "weight": 0.6
+    },
+    {
+      "id": "d954590373a1",
+      "claimId": "thm:gaps",
+      "kind": "ambiguous",
+      "lean": "two_le_gap",
+      "key": "label:Theorem 1",
+      "detail": "`two_le_gap`'s docstring calls itself “Theorem 1”, but the paper prints Theorem 3.1.",
+      "question": "Paper claim Theorem 3.1 (thm:gaps) states: “For all $n\\ge2$, $p_{n+1}-p_n\\ge2$ and $p_{n+1}-p_n$ is even. Consequently $H_1\\ge2$, and $H_1\\le3$ if and only if $p_{n+1}-p_n=2$ for infinitely many $n$.”. Lean theorem `two_le_gap` is documented as “Theorem 1”, while the paper numbers this claim Theorem 3.1. Which numbering should readers and tools use?",
+      "weight": 0.3
+    },
+    {
+      "id": "914b1b84bfe9",
+      "claimId": "thm:main",
+      "kind": "ambiguous",
+      "lean": "dhl32_H1Le_six",
+      "key": "label:Theorem 2",
+      "detail": "`dhl32_H1Le_six`'s docstring calls itself “Theorem 2”, but the paper prints Theorem 3.2.",
+      "question": "Paper claim Theorem 3.2 (thm:main) states: “$\\DHL[3,2]$ implies $H_1\\le6$.”. Lean theorem `dhl32_H1Le_six` is documented as “Theorem 2”, while the paper numbers this claim Theorem 3.2. Which numbering should readers and tools use?",
+      "weight": 0.3
+    },
+    {
+      "id": "382682972d36",
+      "claimId": "thm:model",
+      "kind": "narrower",
+      "lean": "Ptoy_DHL32,Ptoy_no_twin,dhl32_not_implies_dhl22_combinatorially",
+      "key": "omits-set:0,1",
+      "detail": "Claim mentions {0,1}; no matched Lean statement mentions it.",
+      "question": "Paper claim Theorem 3.3 (thm:model) states: “Let $P(n)$ hold if and only if $n\\bmod4\\in\\{0,1\\}$. Then $\\DHL_P[3,2]$ holds (indeed for every $3$-element set), but $P(n)\\wedge P(n+2)$ holds for no $n$; in particular $\\DHL_P[2,2]$ fails.”. The matched Lean statement(s) `Ptoy_DHL32`, `Ptoy_no_twin`, `dhl32_not_implies_dhl22_combinatorially` do not mention the set {0,1}. Is the omission intentional, or is it covered by a declaration the matcher missed?",
+      "weight": 0.6
+    },
+    {
+      "id": "25cb35ac0d5b",
+      "claimId": "thm:model",
+      "kind": "ambiguous",
+      "lean": "dhl32_not_implies_dhl22_combinatorially",
+      "key": "label:Theorem 3",
+      "detail": "`dhl32_not_implies_dhl22_combinatorially`'s docstring calls itself “Theorem 3”, but the paper prints Theorem 3.3.",
+      "question": "Paper claim Theorem 3.3 (thm:model) states: “Let $P(n)$ hold if and only if $n\\bmod4\\in\\{0,1\\}$. Then $\\DHL_P[3,2]$ holds (indeed for every $3$-element set), but $P(n)\\wedge P(n+2)$ holds for no $n$; in particular $\\DHL_P[2,2]$ fails.”. Lean theorem `dhl32_not_implies_dhl22_combinatorially` is documented as “Theorem 3”, while the paper numbers this claim Theorem 3.3. Which numbering should readers and tools use?",
+      "weight": 0.3
+    },
+    {
+      "id": "8c42a0eae510",
+      "claimId": "thm:parity",
+      "kind": "ambiguous",
+      "lean": "parity_two_needs_three",
+      "key": "label:Theorem 4",
+      "detail": "`parity_two_needs_three`'s docstring calls itself “Theorem 4”, but the paper prints Theorem 3.6.",
+      "question": "Paper claim Theorem 3.6 (thm:parity) states: “\\begin{enumerate} \\item Under \\cref{hyp:parity}, a sieve method establishing $\\DHL[k,2]$ has $k\\ge3$. \\item (Unconditional.) No admissible $3$-element set is contained in an interval $[a,a+5]$. Toget…”. Lean theorem `parity_two_needs_three` is documented as “Theorem 4”, while the paper numbers this claim Theorem 3.6. Which numbering should readers and tools use?",
+      "weight": 0.3
+    }
+  ],
+  "status": "halt"
+}

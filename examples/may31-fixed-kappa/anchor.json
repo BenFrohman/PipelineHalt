@@ -1,0 +1,69 @@
+{
+  "title": "Frohmanian symplectic tether, May 31 fixed-kappa T3 form",
+  "source": "Tether.lean @ 3582a57 (May 31 2026)",
+  "claims": [
+    {
+      "id": "c-proj",
+      "number": "Lemma",
+      "statement": "projectionOrthogonalToU: Pi_u u = 0.",
+      "kind": "lemma",
+      "source": "Tether.lean @ 3582a57 (May 31 2026) L128"
+    },
+    {
+      "id": "c-degen",
+      "number": "Lemma",
+      "statement": "Degeneracy: the tether with kappa = C_CZ(3) satisfies B(F, H) = 0 for the kinetic-energy Hamiltonian H (C2).",
+      "kind": "lemma",
+      "source": "Tether.lean @ 3582a57 (May 31 2026) L82-85, L102-119"
+    },
+    {
+      "id": "c-kappa",
+      "number": "Definition",
+      "statement": "kappa := C_CZ(3), the universal 3D Calderon-Zygmund constant, with C_CZ(3) > 0.",
+      "kind": "definition",
+      "source": "Tether.lean @ 3582a57 (May 31 2026) L50-53"
+    },
+    {
+      "id": "c-step4",
+      "number": "Lemma",
+      "statement": "Step 4: the feedback coefficient is fixed by C3; kappa = C_CZ(3) is the minimal strength absorbing the stretching term +C_CZ M^2 (Young, eps = kappa/4).",
+      "kind": "lemma",
+      "source": "Tether.lean @ 3582a57 (May 31 2026) L195"
+    },
+    {
+      "id": "c-thm23",
+      "number": "Theorem",
+      "statement": "Theorem 2.3: any antisymmetric B that is invariant under the coadjoint action of volume-preserving diffeomorphisms of T3 (C1), degenerate w.r.t. kinetic energy (C2), and produces controllable negative feedback with coefficient exactly -kappa M^2 (C3) equals the TetherKernel with kappa = C_CZ(3).",
+      "kind": "theorem",
+      "source": "Tether.lean @ 3582a57 (May 31 2026) L219-236"
+    },
+    {
+      "id": "c-exist",
+      "number": "Proposition",
+      "statement": "The TetherKernel with kappa = C_CZ(3) satisfies C1, C2, C3.",
+      "kind": "proposition",
+      "source": "Tether.lean @ 3582a57 (May 31 2026) L56-93"
+    },
+    {
+      "id": "c-main3",
+      "number": "Theorem",
+      "statement": "Tether bounding inequality: d/dt ||omega||_inf <= C - kappa ||omega||_inf^2 with kappa > 0, hence ||omega||_inf stays bounded.",
+      "kind": "theorem",
+      "source": "Tether.lean @ 3582a57 (May 31 2026) main3 (May 2)"
+    },
+    {
+      "id": "c-kernel",
+      "number": "Definition",
+      "statement": "TetherKernel is the Biot-Savart double integral weighted by pointwise |omega(x)|^2.",
+      "kind": "definition",
+      "source": "Tether.lean @ 3582a57 (May 31 2026) L56-64"
+    },
+    {
+      "id": "c-ns",
+      "number": "Theorem",
+      "statement": "Navier-Stokes vorticity on T3 obeys the tether bounding inequality (estimates layer).",
+      "kind": "theorem",
+      "source": "Tether.lean @ 3582a57 (May 31 2026) L87-93, L152-217"
+    }
+  ]
+}

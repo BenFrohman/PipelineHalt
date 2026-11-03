@@ -1,0 +1,250 @@
+{
+  "tool": "pipelinehalt",
+  "version": "0.4.0",
+  "anchorTitle": "Frohmanian symplectic tether, May 31 fixed-kappa T3 form",
+  "generatedAt": "2026-11-03T21:32:11.373Z",
+  "declarationsScanned": 28,
+  "claims": [
+    {
+      "claim": {
+        "id": "c-proj",
+        "number": "Lemma",
+        "statement": "projectionOrthogonalToU: Pi_u u = 0.",
+        "kind": "lemma",
+        "source": "Tether.lean @ 3582a57 (May 31 2026) L128",
+        "lean": [
+          "projection"
+        ]
+      },
+      "matched": [
+        {
+          "name": "projection",
+          "score": 0.28,
+          "explicit": true
+        }
+      ],
+      "mismatches": [],
+      "drift": 0
+    },
+    {
+      "claim": {
+        "id": "c-degen",
+        "number": "Lemma",
+        "statement": "Degeneracy: the tether with kappa = C_CZ(3) satisfies B(F, H) = 0 for the kinetic-energy Hamiltonian H (C2).",
+        "kind": "lemma",
+        "source": "Tether.lean @ 3582a57 (May 31 2026) L82-85, L102-119",
+        "lean": [
+          "degeneracy"
+        ]
+      },
+      "matched": [
+        {
+          "name": "degeneracy",
+          "score": 0.172,
+          "explicit": true
+        }
+      ],
+      "mismatches": [],
+      "drift": 0
+    },
+    {
+      "claim": {
+        "id": "c-kappa",
+        "number": "Definition",
+        "statement": "kappa := C_CZ(3), the universal 3D Calderon-Zygmund constant, with C_CZ(3) > 0.",
+        "kind": "definition",
+        "source": "Tether.lean @ 3582a57 (May 31 2026) L50-53",
+        "lean": [
+          "CZConstant3D",
+          "kappa"
+        ]
+      },
+      "matched": [
+        {
+          "name": "CZConstant3D",
+          "score": 0.204,
+          "explicit": true
+        },
+        {
+          "name": "kappa",
+          "score": 0.406,
+          "explicit": true
+        }
+      ],
+      "mismatches": [],
+      "drift": 0
+    },
+    {
+      "claim": {
+        "id": "c-step4",
+        "number": "Lemma",
+        "statement": "Step 4: the feedback coefficient is fixed by C3; kappa = C_CZ(3) is the minimal strength absorbing the stretching term +C_CZ M^2 (Young, eps = kappa/4).",
+        "kind": "lemma",
+        "source": "Tether.lean @ 3582a57 (May 31 2026) L195",
+        "lean": [
+          "step4"
+        ]
+      },
+      "matched": [
+        {
+          "name": "step4",
+          "score": 0.26,
+          "explicit": true
+        }
+      ],
+      "mismatches": [],
+      "drift": 0
+    },
+    {
+      "claim": {
+        "id": "c-thm23",
+        "number": "Theorem",
+        "statement": "Theorem 2.3: any antisymmetric B that is invariant under the coadjoint action of volume-preserving diffeomorphisms of T3 (C1), degenerate w.r.t. kinetic energy (C2), and produces controllable negative feedback with coefficient exactly -kappa M^2 (C3) equals the TetherKernel with kappa = C_CZ(3).",
+        "kind": "theorem",
+        "source": "Tether.lean @ 3582a57 (May 31 2026) L219-236",
+        "lean": [
+          "thm23_literal_vacuous",
+          "thm23_symmetric",
+          "thm23_symmetric_isometries"
+        ]
+      },
+      "matched": [
+        {
+          "name": "thm23_literal_vacuous",
+          "score": 0.141,
+          "explicit": true
+        },
+        {
+          "name": "thm23_symmetric",
+          "score": 0.067,
+          "explicit": true
+        },
+        {
+          "name": "thm23_symmetric_isometries",
+          "score": 0.199,
+          "explicit": true
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "17ee7eea9e88",
+          "claimId": "c-thm23",
+          "kind": "conditional",
+          "lean": "thm23_symmetric_isometries",
+          "key": "hyp:MayC3 cz ω u B",
+          "detail": "`thm23_symmetric_isometries` assumes `hC3 : MayC3 cz ω u B`, not stated in the claim.",
+          "question": "Paper claim Theorem (c-thm23) states: “Theorem 2.3: any antisymmetric B that is invariant under the coadjoint action of volume-preserving diffeomorphisms of T3 (C1), degenerate w.r.t. kinetic energy (C2), and produces controllable negativ…”. Lean theorem `thm23_symmetric_isometries` assumes `hC3 : MayC3 cz ω u B`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        }
+      ],
+      "drift": 0.5
+    },
+    {
+      "claim": {
+        "id": "c-exist",
+        "number": "Proposition",
+        "statement": "The TetherKernel with kappa = C_CZ(3) satisfies C1, C2, C3.",
+        "kind": "proposition",
+        "source": "Tether.lean @ 3582a57 (May 31 2026) L56-93",
+        "lean": [
+          "existence"
+        ]
+      },
+      "matched": [
+        {
+          "name": "existence",
+          "score": 0.188,
+          "explicit": true
+        }
+      ],
+      "mismatches": [],
+      "drift": 0
+    },
+    {
+      "claim": {
+        "id": "c-main3",
+        "number": "Theorem",
+        "statement": "Tether bounding inequality: d/dt ||omega||_inf <= C - kappa ||omega||_inf^2 with kappa > 0, hence ||omega||_inf stays bounded.",
+        "kind": "theorem",
+        "source": "Tether.lean @ 3582a57 (May 31 2026) main3 (May 2)",
+        "lean": [
+          "main3_bound"
+        ]
+      },
+      "matched": [
+        {
+          "name": "main3_bound",
+          "score": 0.206,
+          "explicit": true
+        }
+      ],
+      "mismatches": [],
+      "drift": 0
+    },
+    {
+      "claim": {
+        "id": "c-kernel",
+        "number": "Definition",
+        "statement": "TetherKernel is the Biot-Savart double integral weighted by pointwise |omega(x)|^2.",
+        "kind": "definition",
+        "source": "Tether.lean @ 3582a57 (May 31 2026) L56-64"
+      },
+      "matched": [],
+      "mismatches": [
+        {
+          "id": "096a0a1135f6",
+          "claimId": "c-kernel",
+          "kind": "silent",
+          "key": "no-match",
+          "detail": "No Lean declaration matches this claim. Closest candidate: `mayTether` (score 0.18, below threshold 0.2).",
+          "question": "Paper claim Definition (c-kernel) states: “TetherKernel is the Biot-Savart double integral weighted by pointwise |omega(x)|^2.”. No Lean declaration matching it was found among 17 candidates. Closest candidate: `mayTether` (score 0.18, below threshold 0.2). Is this claim intentionally not formalized, or which declaration should it map to?",
+          "weight": 1
+        }
+      ],
+      "drift": 1
+    },
+    {
+      "claim": {
+        "id": "c-ns",
+        "number": "Theorem",
+        "statement": "Navier-Stokes vorticity on T3 obeys the tether bounding inequality (estimates layer).",
+        "kind": "theorem",
+        "source": "Tether.lean @ 3582a57 (May 31 2026) L87-93, L152-217"
+      },
+      "matched": [
+        {
+          "name": "main3_bound",
+          "score": 0.26,
+          "explicit": false
+        }
+      ],
+      "mismatches": [],
+      "drift": 0
+    }
+  ],
+  "unanchored": [],
+  "drift": 0.167,
+  "pending": [
+    {
+      "id": "17ee7eea9e88",
+      "claimId": "c-thm23",
+      "kind": "conditional",
+      "lean": "thm23_symmetric_isometries",
+      "key": "hyp:MayC3 cz ω u B",
+      "detail": "`thm23_symmetric_isometries` assumes `hC3 : MayC3 cz ω u B`, not stated in the claim.",
+      "question": "Paper claim Theorem (c-thm23) states: “Theorem 2.3: any antisymmetric B that is invariant under the coadjoint action of volume-preserving diffeomorphisms of T3 (C1), degenerate w.r.t. kinetic energy (C2), and produces controllable negativ…”. Lean theorem `thm23_symmetric_isometries` assumes `hC3 : MayC3 cz ω u B`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "096a0a1135f6",
+      "claimId": "c-kernel",
+      "kind": "silent",
+      "key": "no-match",
+      "detail": "No Lean declaration matches this claim. Closest candidate: `mayTether` (score 0.18, below threshold 0.2).",
+      "question": "Paper claim Definition (c-kernel) states: “TetherKernel is the Biot-Savart double integral weighted by pointwise |omega(x)|^2.”. No Lean declaration matching it was found among 17 candidates. Closest candidate: `mayTether` (score 0.18, below threshold 0.2). Is this claim intentionally not formalized, or which declaration should it map to?",
+      "weight": 1
+    }
+  ],
+  "status": "halt",
+  "mapFile": "pipelinehalt.map.json"
+}

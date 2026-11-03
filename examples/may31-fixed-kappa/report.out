@@ -1,0 +1,33 @@
+# PipelineHalt report: Frohmanian symplectic tether, May 31 fixed-kappa T3 form
+
+Status: **HALT** · overall drift **0.167** · 9 claims · 28 Lean declarations scanned · 2 open question(s)
+
+Mapping file: `pipelinehalt.map.json` (human-authored claim → Lean pairing; mapped claims skip heuristic matching).
+
+> PipelineHalt surfaces syntactic differences between paper claims and Lean statements and asks about them. Matching is heuristic. It does not decide what the author meant; recorded answers are the author's.
+
+| Claim | Matched Lean | Drift | Open | Answered |
+|---|---|---|---|---|
+| Lemma | `projection` | 0.000 | 0 | 0 |
+| Lemma | `degeneracy` | 0.000 | 0 | 0 |
+| Definition | `CZConstant3D`, `kappa` | 0.000 | 0 | 0 |
+| Lemma | `step4` | 0.000 | 0 | 0 |
+| Theorem | `thm23_literal_vacuous`, `thm23_symmetric`, `thm23_symmetric_isometries` | 0.500 | 1 | 0 |
+| Proposition | `existence` | 0.000 | 0 | 0 |
+| Theorem | `main3_bound` | 0.000 | 0 | 0 |
+| Definition | — | 1.000 | 1 | 0 |
+| Theorem | `main3_bound` (0.26) | 0.000 | 0 | 0 |
+
+## Theorem
+
+- `17ee7eea9e88` CONDITIONAL: `thm23_symmetric_isometries` assumes `hC3 : MayC3 cz ω u B`, not stated in the claim. — **OPEN**
+
+## Definition
+
+- `096a0a1135f6` SILENT: No Lean declaration matches this claim. Closest candidate: `mayTether` (score 0.18, below threshold 0.2). — **OPEN**
+
+## Realignment notes
+
+- Theorem: answer `17ee7eea9e88` — Paper claim Theorem (c-thm23) states: “Theorem 2.3: any antisymmetric B that is invariant under the coadjoint action of volume-preserving diffeomorphisms of T3 (C1), degenerate w.r.t. kinetic energy (C2), and produces controllable negativ…”. Lean theorem `thm23_symmetric_isometries` assumes `hC3 : MayC3 cz ω u B`, which the claim does not state. Is this extra hypothesis intentional?
+- Definition: answer `096a0a1135f6` — Paper claim Definition (c-kernel) states: “TetherKernel is the Biot-Savart double integral weighted by pointwise |omega(x)|^2.”. No Lean declaration matching it was found among 17 candidates. Closest candidate: `mayTether` (score 0.18, below threshold 0.2). Is this claim intentionally not formalized, or which declaration should it map to?
+HALT: 2 open question(s) written to .pipelinehalt/pending.json. Answer them (pipelinehalt answer ...) before continuing; nothing was auto-corrected.

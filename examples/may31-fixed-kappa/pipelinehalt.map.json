@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "note": "Hand-written map pairing May 31 claims with MayForm31 declarations; it does not assert the meanings match.",
+  "claims": {
+    "c-proj": {
+      "lean": [
+        "projection"
+      ]
+    },
+    "c-degen": {
+      "lean": [
+        "degeneracy"
+      ]
+    },
+    "c-kappa": {
+      "lean": [
+        "CZConstant3D",
+        "kappa"
+      ]
+    },
+    "c-step4": {
+      "lean": [
+        "step4"
+      ]
+    },
+    "c-thm23": {
+      "lean": [
+        "thm23_literal_vacuous",
+        "thm23_symmetric",
+        "thm23_symmetric_isometries"
+      ]
+    },
+    "c-exist": {
+      "lean": [
+        "existence"
+      ]
+    },
+    "c-main3": {
+      "lean": [
+        "main3_bound"
+      ]
+    }
+  }
+}

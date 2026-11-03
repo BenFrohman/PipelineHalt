@@ -1,0 +1,21 @@
+{
+  "tool": "pipelinehalt",
+  "anchor": "anchor.json",
+  "instructions": "Fill in `answer` for each question (start with yes/intentional or no/unintended, optionally followed by an explanation), then run `pipelinehalt answer --anchor <anchor> --from <this file>`. Blank answers stay open.",
+  "questions": [
+    {
+      "id": "17ee7eea9e88",
+      "claimId": "c-thm23",
+      "kind": "conditional",
+      "question": "Paper claim Theorem (c-thm23) states: “Theorem 2.3: any antisymmetric B that is invariant under the coadjoint action of volume-preserving diffeomorphisms of T3 (C1), degenerate w.r.t. kinetic energy (C2), and produces controllable negativ…”. Lean theorem `thm23_symmetric_isometries` assumes `hC3 : MayC3 cz ω u B`, which the claim does not state. Is this extra hypothesis intentional?",
+      "answer": ""
+    },
+    {
+      "id": "096a0a1135f6",
+      "claimId": "c-kernel",
+      "kind": "silent",
+      "question": "Paper claim Definition (c-kernel) states: “TetherKernel is the Biot-Savart double integral weighted by pointwise |omega(x)|^2.”. No Lean declaration matching it was found among 17 candidates. Closest candidate: `mayTether` (score 0.18, below threshold 0.2). Is this claim intentionally not formalized, or which declaration should it map to?",
+      "answer": ""
+    }
+  ]
+}

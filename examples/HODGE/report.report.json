@@ -1,0 +1,89 @@
+{
+  "tool": "pipelinehalt",
+  "version": "0.4.0",
+  "anchorTitle": "\\textbf{The Cycle Class Map, the Reverse Arrow,\\\\[0.25em]\nand a Classical Constructor on Three Fourfolds",
+  "generatedAt": "2026-11-03T19:57:51.641Z",
+  "declarationsScanned": 382,
+  "claims": [
+    {
+      "claim": {
+        "id": "lemma-1",
+        "number": "Lemma 1",
+        "statement": "\\(\\gamma=a[\\Pi]+b[\\Pi']\\).",
+        "kind": "lemma",
+        "source": "docs/CYCLE_CLASS_AND_CONSTRUCTOR.tex:262",
+        "lean": [
+          "expansion",
+          "constructQ_coeff"
+        ]
+      },
+      "matched": [
+        {
+          "name": "expansion",
+          "score": 0,
+          "explicit": true
+        },
+        {
+          "name": "constructQ_coeff",
+          "score": 0.24,
+          "explicit": true
+        }
+      ],
+      "mismatches": [],
+      "drift": 0
+    },
+    {
+      "claim": {
+        "id": "lemma-2",
+        "number": "Lemma 2",
+        "statement": "The same procedure works for every \\(\\gamma\\in\\mathrm{Hdg}^2(Q)\\).",
+        "kind": "lemma",
+        "source": "docs/CYCLE_CLASS_AND_CONSTRUCTOR.tex:268",
+        "lean": [
+          "construct_recovers"
+        ]
+      },
+      "matched": [
+        {
+          "name": "construct_recovers",
+          "score": 0,
+          "explicit": true
+        }
+      ],
+      "mismatches": [],
+      "drift": 0
+    },
+    {
+      "claim": {
+        "id": "thm:quadric",
+        "number": "Theorem 3",
+        "statement": "Let \\(Q\\subset\\Pspace^5\\) be the Klein quadric \\eqref{eq:plucker}. The assignment \\[ \\gamma\\;\\longmapsto\\;\\bigl(\\Pi,\\,\\Pi',\\,\\gamma\\cdot[\\Pi],\\,\\gamma\\cdot[\\Pi']\\bigr) \\] is a section of \\(\\mathrm{cl}:Z^2(Q)_{\\Q}\\to\\mathrm{Hdg}^2(Q)\\).",
+        "kind": "theorem",
+        "source": "docs/CYCLE_CLASS_AND_CONSTRUCTOR.tex:274",
+        "lean": [
+          "construct_recovers",
+          "constructQ_recovers"
+        ]
+      },
+      "matched": [
+        {
+          "name": "construct_recovers",
+          "score": 0.138,
+          "explicit": true
+        },
+        {
+          "name": "constructQ_recovers",
+          "score": 0.178,
+          "explicit": true
+        }
+      ],
+      "mismatches": [],
+      "drift": 0
+    }
+  ],
+  "unanchored": [],
+  "drift": 0,
+  "pending": [],
+  "status": "aligned",
+  "mapFile": "../../PipelineHalt/examples/HODGE/pipelinehalt.map.json"
+}

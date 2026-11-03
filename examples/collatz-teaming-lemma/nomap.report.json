@@ -1,0 +1,92 @@
+{
+  "tool": "pipelinehalt",
+  "version": "0.4.0",
+  "anchorTitle": "Frohman, Collatz Teaming Lemma and Eliahou Windows (2026)",
+  "generatedAt": "2026-11-03T19:58:38.305Z",
+  "declarationsScanned": 209,
+  "claims": [
+    {
+      "claim": {
+        "id": "remaining-iff-collatz",
+        "number": "Abstract claim 1",
+        "kind": "claim",
+        "statement": "proving the logical equivalence \\texttt{RemainingLemma $\\leftrightarrow$ CollatzConjecture}",
+        "source": "Frohman_Collatz_Teaming_Lemma_and_Eliahou_Windows_2026.tex:24 (hand-added verbatim)"
+      },
+      "matched": [
+        {
+          "name": "remaining_lemma_from_assumption",
+          "score": 0.366,
+          "explicit": false
+        },
+        {
+          "name": "remaining_lemma",
+          "score": 0.364,
+          "explicit": false
+        },
+        {
+          "name": "remaining_lemma_iff_collatz",
+          "score": 0.343,
+          "explicit": false
+        },
+        {
+          "name": "remaining_lemma_forward",
+          "score": 0.294,
+          "explicit": false
+        }
+      ],
+      "mismatches": [],
+      "drift": 0
+    },
+    {
+      "claim": {
+        "id": "trivial-cycle",
+        "number": "Abstract claim 2",
+        "kind": "claim",
+        "statement": "certifying the trivial cycle $C_0 = (1 \\to 4 \\to 2 \\to 1)$",
+        "source": "Frohman_Collatz_Teaming_Lemma_and_Eliahou_Windows_2026.tex:24 (hand-added verbatim)"
+      },
+      "matched": [
+        {
+          "name": "trivial_cycle",
+          "score": 0.5,
+          "explicit": false
+        },
+        {
+          "name": "one_reaches_trivial_at_zero",
+          "score": 0.3,
+          "explicit": false
+        }
+      ],
+      "mismatches": [],
+      "drift": 0
+    },
+    {
+      "claim": {
+        "id": "model-mean-observation",
+        "number": "Abstract claim 3 (Frohman Model Mean observation)",
+        "kind": "claim",
+        "statement": "the Syracuse logarithmic drift $\\mu_F = \\log(3/4) < 0$ is identical for $3n+1$ and $3n-1$, yet $3n-1$ possesses three distinct positive cycles ($1$, $5$, and $17$)",
+        "source": "Frohman_Collatz_Teaming_Lemma_and_Eliahou_Windows_2026.tex:24 (hand-added verbatim; the paper says this is established in companion notes, not Lean)"
+      },
+      "matched": [
+        {
+          "name": "syracuse_not_injective",
+          "score": 0.267,
+          "explicit": false
+        },
+        {
+          "name": "syracuse_not_injective",
+          "score": 0.256,
+          "explicit": false
+        }
+      ],
+      "mismatches": [],
+      "drift": 0
+    }
+  ],
+  "unanchored": [],
+  "drift": 0,
+  "pending": [],
+  "status": "aligned"
+}

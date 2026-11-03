@@ -79,6 +79,10 @@ const io = () => {
 };
 
 describe("lean parser", () => {
+  test("recognises Lean module-system `public` declarations", () => {
+    const d = parseLean("public theorem pub_thm (n : Nat) : n = n := rfl\n@[simp] public lemma pub_lem : True := trivial\n", "Pub.lean");
+    assert.deepEqual(d.map((x) => x.name), ["pub_thm", "pub_lem"]);
+  });
   const decls = parseLean(LEAN, "Demo.lean");
   const get = (n: string) => decls.find((d) => d.name === n)!;
   test("finds declarations, namespaces and lines, ignores comments", () => {

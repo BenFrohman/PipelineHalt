@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "note": "Hand-written by the PipelineHalt run of 2026-11-03 from README.md:28. It pairs claims with declarations; it does not assert that the meanings match.",
+  "claims": {
+    "theorem-28": {"lean": ["theorem28_from_paper"], "note": "README.md:28: Theorem28 is a Prop, not proved; theorem28_from_paper takes it as a hypothesis."},
+    "g-ge-six": {"lean": ["g_ge_six"]}
+  }
+}

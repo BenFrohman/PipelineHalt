@@ -1,0 +1,14 @@
+{
+  "tool": "pipelinehalt",
+  "anchor": "../../PipelineHalt/examples/p2q-jumps-lean/anchor.json",
+  "instructions": "Fill in `answer` for each question (start with yes/intentional or no/unintended, optionally followed by an explanation), then run `pipelinehalt answer --anchor <anchor> --from <this file>`. Blank answers stay open.",
+  "questions": [
+    {
+      "id": "f6ad53c0e186",
+      "claimId": "theorem-28",
+      "kind": "conditional",
+      "question": "Paper claim Theorem 28 (theorem-28) states: “If both jumps hold and `n = p^2 q`, then `N = n + 12` is not a product of three distinct primes.”. Lean theorem `theorem28_from_paper` assumes `h : Theorem28`, which the claim does not state. Is this extra hypothesis intentional?",
+      "answer": ""
+    }
+  ]
+}

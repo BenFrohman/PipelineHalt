@@ -1,0 +1,15 @@
+{
+  "title": "Frohman, Collatz Teaming Lemma and Eliahou Windows (2026)",
+  "source": "Frohman_Collatz_Teaming_Lemma_and_Eliahou_Windows_2026.tex (hand-built verbatim: the paper has no theorem environments; claims taken from the abstract, lines 23-25)",
+  "claims": [
+    {"id": "remaining-iff-collatz", "number": "Abstract claim 1", "kind": "claim",
+     "statement": "proving the logical equivalence \\texttt{RemainingLemma $\\leftrightarrow$ CollatzConjecture}",
+     "source": "Frohman_Collatz_Teaming_Lemma_and_Eliahou_Windows_2026.tex:24 (hand-added verbatim)"},
+    {"id": "trivial-cycle", "number": "Abstract claim 2", "kind": "claim",
+     "statement": "certifying the trivial cycle $C_0 = (1 \\to 4 \\to 2 \\to 1)$",
+     "source": "Frohman_Collatz_Teaming_Lemma_and_Eliahou_Windows_2026.tex:24 (hand-added verbatim)"},
+    {"id": "model-mean-observation", "number": "Abstract claim 3 (Frohman Model Mean observation)", "kind": "claim",
+     "statement": "the Syracuse logarithmic drift $\\mu_F = \\log(3/4) < 0$ is identical for $3n+1$ and $3n-1$, yet $3n-1$ possesses three distinct positive cycles ($1$, $5$, and $17$)",
+     "source": "Frohman_Collatz_Teaming_Lemma_and_Eliahou_Windows_2026.tex:24 (hand-added verbatim; the paper says this is established in companion notes, not Lean)"}
+  ]
+}

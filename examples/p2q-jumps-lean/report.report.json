@@ -1,0 +1,83 @@
+{
+  "tool": "pipelinehalt",
+  "version": "0.4.0",
+  "anchorTitle": "p2q-jumps-lean: Frohman, Theorem 28 (former Hypothesis R1)",
+  "generatedAt": "2026-11-03T19:56:24.896Z",
+  "declarationsScanned": 8,
+  "claims": [
+    {
+      "claim": {
+        "id": "theorem-28",
+        "number": "Theorem 28",
+        "kind": "theorem",
+        "statement": "If both jumps hold and `n = p^2 q`, then `N = n + 12` is not a product of three distinct primes.",
+        "source": "README.md:9 (hand-added verbatim)",
+        "lean": [
+          "theorem28_from_paper"
+        ]
+      },
+      "matched": [
+        {
+          "name": "theorem28_from_paper",
+          "score": 0.6,
+          "explicit": true
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "f6ad53c0e186",
+          "claimId": "theorem-28",
+          "kind": "conditional",
+          "lean": "theorem28_from_paper",
+          "key": "hyp:Theorem28",
+          "detail": "`theorem28_from_paper` assumes `h : Theorem28`, not stated in the claim.",
+          "question": "Paper claim Theorem 28 (theorem-28) states: “If both jumps hold and `n = p^2 q`, then `N = n + 12` is not a product of three distinct primes.”. Lean theorem `theorem28_from_paper` assumes `h : Theorem28`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        }
+      ],
+      "drift": 0.5
+    },
+    {
+      "claim": {
+        "id": "g-ge-six",
+        "number": "Leading-form lemma",
+        "kind": "lemma",
+        "statement": "`g t ≥ 6` for the leading form `g(t) = 4t^4+4t^3+11t^2+6t+7`",
+        "source": "README.md:19 (hand-added verbatim)",
+        "lean": [
+          "g_ge_six"
+        ]
+      },
+      "matched": [
+        {
+          "name": "g_ge_six",
+          "score": 0.281,
+          "explicit": true
+        }
+      ],
+      "mismatches": [],
+      "drift": 0
+    }
+  ],
+  "unanchored": [
+    {
+      "name": "g_sub_six_eq",
+      "cites": "Theorem 28"
+    }
+  ],
+  "drift": 0.25,
+  "pending": [
+    {
+      "id": "f6ad53c0e186",
+      "claimId": "theorem-28",
+      "kind": "conditional",
+      "lean": "theorem28_from_paper",
+      "key": "hyp:Theorem28",
+      "detail": "`theorem28_from_paper` assumes `h : Theorem28`, not stated in the claim.",
+      "question": "Paper claim Theorem 28 (theorem-28) states: “If both jumps hold and `n = p^2 q`, then `N = n + 12` is not a product of three distinct primes.”. Lean theorem `theorem28_from_paper` assumes `h : Theorem28`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    }
+  ],
+  "status": "halt",
+  "mapFile": "../../PipelineHalt/examples/p2q-jumps-lean/pipelinehalt.map.json"
+}

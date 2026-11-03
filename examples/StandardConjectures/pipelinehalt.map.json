@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "note": "Hand-written by the PipelineHalt run of 2026-11-03 from the Lean name the paper cites in its theorem title. It pairs claims with declarations; it does not assert that the meanings match.",
+  "claims": {
+    "theorem-1": { "lean": ["hodge_on_product_implies_lefschetz_B"], "note": "Cited in the theorem title (Frohman_StandardConjectures_LefschetzB_2026.tex:27)." }
+  },
+  "unclaimed": ["hodge_on_product_implies_B_for_all_Hodge", "L_is_algebraic"]
+}

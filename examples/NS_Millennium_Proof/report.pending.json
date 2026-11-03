@@ -1,0 +1,49 @@
+{
+  "tool": "pipelinehalt",
+  "anchor": "../../PipelineHalt/examples/NS_Millennium_Proof/anchor.json",
+  "instructions": "Fill in `answer` for each question (start with yes/intentional or no/unintended, optionally followed by an explanation), then run `pipelinehalt answer --anchor <anchor> --from <this file>`. Blank answers stay open.",
+  "questions": [
+    {
+      "id": "8ebcefda1a1c",
+      "claimId": "thm:main",
+      "kind": "conditional",
+      "question": "Paper claim Theorem 1.1 (thm:main) states: “Let $\\nu>0$ and let $u_0$ be smooth (\\lean{ContDiff ℝ ⊤}), divergence-free, and of finite $L^2$ energy. Assume within the class of physical solutions (\\lean{IsPhysicalNSSolution}): •[(K)] \\emph{Kato …”. Lean theorem `frohmanian_tether_theorem` assumes `hTlb : ∀ u₁ ν (hsm : ContDiff ℝ (⊤ : ℕ∞) u₁) (hdiv : ∀ x, div u₁ x = 0) (hE : Integrable (fun x : T3 => ‖u₁ x‖ ^ 2)) (hν : 0 < ν), τ ≤ (hKato u₁ ν hsm hdiv hE hν).T`, which the claim does not state. Is this extra hypothesis intentional?",
+      "answer": ""
+    },
+    {
+      "id": "80734625660e",
+      "claimId": "thm:main",
+      "kind": "conditional",
+      "question": "Paper claim Theorem 1.1 (thm:main) states: “Let $\\nu>0$ and let $u_0$ be smooth (\\lean{ContDiff ℝ ⊤}), divergence-free, and of finite $L^2$ energy. Assume within the class of physical solutions (\\lean{IsPhysicalNSSolution}): •[(K)] \\emph{Kato …”. Lean theorem `frohmanian_tether_theorem` assumes `hInt : ∀ u₀ ν (_hν : 0 < ν) (T : ℝ) (v : TimeDependentVelocity) (q : TimeDependentPressure), T ∈ existenceTimes u₀ ν → v 0 = u₀ → NS_PDE v q ν → (∀ t ∈ Set.Icc (0 : ℝ) T, ContDiff ℝ (⊤ : ℕ∞) (v t)) → IsPhysicalNSSolution v → ∀ t ∈ Set.Icc (0 : ℝ) T, Integrable (fun x : T3 => ‖v t x‖ ^ 2)`, which the claim does not state. Is this extra hypothesis intentional?",
+      "answer": ""
+    },
+    {
+      "id": "7410a6a3d05c",
+      "claimId": "prop:degen",
+      "kind": "silent",
+      "question": "Paper claim Proposition 3.2 (prop:degen) states: “Whenever $\\delta H/\\delta\\omega=u$, $\\nabla\\cdot u=0$, and $u\\in L^2$, one has $\\Pi_u u=0$ (\\lean{projection_orthogonal_to_u}) and hence \\[ B(F,H)(\\omega)=0\\qquad\\text{for every functional }F. \\]”. The anchor maps it to Lean declaration `tetherKernel_C2`, which was not found in the scanned files. Was it renamed or removed, or is the claim intentionally unformalized?",
+      "answer": ""
+    },
+    {
+      "id": "09213ae4a264",
+      "claimId": "lem:transport",
+      "kind": "narrower",
+      "question": "Paper claim Lemma 4.2 (lem:transport) states: “At a spatial maximum where the convective transport pairing $\\langle\\omega,(u\\cdot\\nabla)\\omega\\rangle(x)$ vanishes and $\\langle\\omega,\\Delta\\omega\\rangle(x)\\le0$, along any solution of \\eqref{eq:vor…”. Lean theorem `time_pairing_le_stretching_at_max` assumes `0 ≤ t` (restricting t ≥ 0), which the claim does not state. Is the restricted domain intentional?",
+      "answer": ""
+    },
+    {
+      "id": "cb6fd1289359",
+      "claimId": "lem:transport",
+      "kind": "conditional",
+      "question": "Paper claim Lemma 4.2 (lem:transport) states: “At a spatial maximum where the convective transport pairing $\\langle\\omega,(u\\cdot\\nabla)\\omega\\rangle(x)$ vanishes and $\\langle\\omega,\\Delta\\omega\\rangle(x)\\le0$, along any solution of \\eqref{eq:vor…”. Lean theorem `time_pairing_le_stretching_at_max` assumes `hNS : NS_PDE u p ν`, which the claim does not state. Is this extra hypothesis intentional?",
+      "answer": ""
+    },
+    {
+      "id": "351738efb54a",
+      "claimId": "lem:transport",
+      "kind": "conditional",
+      "question": "Paper claim Lemma 4.2 (lem:transport) states: “At a spatial maximum where the convective transport pairing $\\langle\\omega,(u\\cdot\\nabla)\\omega\\rangle(x)$ vanishes and $\\langle\\omega,\\Delta\\omega\\rangle(x)\\le0$, along any solution of \\eqref{eq:vor…”. Lean theorem `time_pairing_le_stretching_at_max` assumes `hreg : VorticityTransportRegularity u p t x`, which the claim does not state. Is this extra hypothesis intentional?",
+      "answer": ""
+    }
+  ]
+}

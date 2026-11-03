@@ -1,0 +1,14 @@
+{
+  "tool": "pipelinehalt",
+  "anchor": "../../PipelineHalt/examples/collatz-teaming-lemma/anchor.json",
+  "instructions": "Fill in `answer` for each question (start with yes/intentional or no/unintended, optionally followed by an explanation), then run `pipelinehalt answer --anchor <anchor> --from <this file>`. Blank answers stay open.",
+  "questions": [
+    {
+      "id": "6e04d3febb43",
+      "claimId": "model-mean-observation",
+      "kind": "narrower",
+      "question": "Paper claim Abstract claim 3 (Frohman Model Mean observation) (model-mean-observation) states: “the Syracuse logarithmic drift $\\mu_F = \\log(3/4) < 0$ is identical for $3n+1$ and $3n-1$, yet $3n-1$ possesses three distinct positive cycles ($1$, $5$, and $17$)”. Lean theorem `residue_count_for_terras` assumes `0 < c` (restricting c ≥ 1), which the claim does not state. Is the restricted domain intentional?",
+      "answer": ""
+    }
+  ]
+}

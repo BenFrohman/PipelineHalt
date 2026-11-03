@@ -1,0 +1,144 @@
+{
+  "title": "The unique monodromy-invariant alternating form of type $(1,6)$\\\\\non a $(3,4,\\infty)$ lattice representation,\\\\\nand the restriction of a functorial symplectic structure",
+  "source": "Frohman_Omega0_Type16_Monodromy.tex",
+  "claims": [
+    {
+      "id": "proposition-1",
+      "number": "Proposition 1",
+      "statement": "$\\det T_1=\\det T_2=\\det T_0=1$. Hence $\\rho_V$ lands in $\\mathrm{SL}(4,\\Z)$.",
+      "kind": "proposition",
+      "source": "Frohman_Omega0_Type16_Monodromy.tex:124"
+    },
+    {
+      "id": "proposition-2",
+      "number": "Proposition 2",
+      "statement": "$T_1^3=I$ and $T_1\\neq I$, $T_1^2\\neq I$. $T_2^4=I$ and $T_2^k\\neq I$ for $k=1,2,3$. Thus the orders of the generators are exactly $3$ and $4$.",
+      "kind": "proposition",
+      "source": "Frohman_Omega0_Type16_Monodromy.tex:128"
+    },
+    {
+      "id": "proposition-3",
+      "number": "Proposition 3",
+      "statement": "$T_0(T_1T_2)=(T_1T_2)T_0=I$ and $N^2=0$, $N\\neq 0$.",
+      "kind": "proposition",
+      "source": "Frohman_Omega0_Type16_Monodromy.tex:132"
+    },
+    {
+      "id": "thm:A",
+      "number": "Theorem 4",
+      "statement": "The $\\Q$-vector space of alternating forms on $V_{\\Q}$ invariant under $T_1$ and $T_2$ is one-dimensional, spanned by $\\omega_0$ with Gram matrix \\[ \\Omega_0=\\begin{pmatrix}0&0&0&1\\\\0&0&6&0\\\\0&-6&0&0\\\\-1&0&0&0\\end{pmatrix}. \\] Equivalently, $\\omega_0(\\gamma,\\delta)=1$, $\\omega_0(u,w)=6$, and all other unordered pairings of basis vectors vanish. The $\\Z$-module of integral such forms is $\\Z\\cdot\\omega_0$. The form is nondegenerate, of elementary-divisor type $(1,6)$.",
+      "kind": "theorem",
+      "source": "Frohman_Omega0_Type16_Monodromy.tex:165",
+      "title": "Existence and uniqueness"
+    },
+    {
+      "id": "lem:T1res",
+      "number": "Lemma 5",
+      "statement": "The independent upper-triangular entries of $T_1^T\\Omega T_1-\\Omega$ are \\begin{align*} (1,2)&:\\quad -2a-b,\\\\ (1,3)&:\\quad a-b,\\\\ (1,4)&:\\quad a+b,\\\\ (2,3)&:\\quad -6(a+b),\\\\ (2,4)&:\\quad 2a+2b-2e-f,\\\\ (3,4)&:\\quad -8a-6b-6c+d+e-f. \\end{align*}",
+      "kind": "lemma",
+      "source": "Frohman_Omega0_Type16_Monodromy.tex:182"
+    },
+    {
+      "id": "lem:T2res",
+      "number": "Lemma 6",
+      "statement": "The independent upper-triangular entries of $T_2^T\\Omega T_2-\\Omega$ are \\begin{align*} (1,2)&:\\quad -a+b,\\\\ (1,3)&:\\quad -a-b,\\\\ (1,4)&:\\quad a,\\\\ (2,3)&:\\quad -6a,\\\\ (2,4)&:\\quad 6a+3b+6c-d-e+f,\\\\ (3,4)&:\\quad -3a-e-f. \\end{align*}",
+      "kind": "lemma",
+      "source": "Frohman_Omega0_Type16_Monodromy.tex:238"
+    },
+    {
+      "id": "prop:kernel",
+      "number": "Proposition 7",
+      "statement": "The twelve residual entries of Lemmas~\\ref{lem:T1res} and~\\ref{lem:T2res} vanish if and only if \\[ a=b=e=f=0\\qquad\\text{and}\\qquad c=\\frac{d}{6}. \\]",
+      "kind": "proposition",
+      "source": "Frohman_Omega0_Type16_Monodromy.tex:273"
+    },
+    {
+      "id": "thm:B",
+      "number": "Theorem 8",
+      "statement": "$N\\in\\spq(V_{\\Q},\\omega_0)$ and $\\ker N=\\mathrm{im}\\,N=\\mathrm{span}_{\\Z}\\{\\gamma,u\\}$ is $\\omega_0$-isotropic.",
+      "kind": "theorem",
+      "source": "Frohman_Omega0_Type16_Monodromy.tex:345",
+      "title": "Cusp"
+    },
+    {
+      "id": "thm:C",
+      "number": "Theorem 9",
+      "statement": "Assume H1--H3 for the family of complex $2$-tori in~\\cite{AlpogeS6}, and assume the identification of the fibrewise first homology lattice with the module $V=\\Z^4$ of Section~3. Then there exists a unique $\\lambda\\in\\Q^\\times$ such that \\[ \\teth\\big|_{V_{\\Q}}=\\lambda\\,\\omega_0. \\] If H1 produces an integral pairing, then $\\lambda\\in\\Z\\setminus\\{0\\}$.",
+      "kind": "theorem",
+      "source": "Frohman_Omega0_Type16_Monodromy.tex:376",
+      "title": "Restriction, conditional"
+    },
+    {
+      "id": "corollary-10",
+      "number": "Corollary 10",
+      "statement": "Under the same hypotheses, the monodromy representation lands in $\\Aut(V,\\omega_0)$ for categorical reasons (H3). The a-posteriori matrix check is Theorem~\\ref{thm:A}.",
+      "kind": "corollary",
+      "source": "Frohman_Omega0_Type16_Monodromy.tex:388"
+    },
+    {
+      "id": "corollary-11",
+      "number": "Corollary 11",
+      "statement": "The unipotent logarithm $N$ of the cusp monodromy satisfies $N\\in\\spq(\\omega_0)$, and the vanishing plane $\\ker N$ is $\\omega_0$-isotropic. These are the linear-algebraic inputs of a Mumford-type cusp filling, stated in the unique symplectic structure available on this lattice.",
+      "kind": "corollary",
+      "source": "Frohman_Omega0_Type16_Monodromy.tex:392"
+    }
+  ],
+  "clarifications": {
+    "ef489ed7b249": {
+      "claimId": "thm:A",
+      "kind": "conditional",
+      "question": "Paper claim Theorem 4 (thm:A) states: “The $\\Q$-vector space of alternating forms on $V_{\\Q}$ invariant under $T_1$ and $T_2$ is one-dimensional, spanned by $\\omega_0$ with Gram matrix \\[ \\Omega_0=\\begin{pmatrix}0&0&0&1\\\\0&0&6&0\\\\0&-6&0&0…”. Lean theorem `uniqueness_over_Q` assumes `hsk : transpose Ψ = -Ψ`, which the claim does not state. Is this extra hypothesis intentional?",
+      "answer": "equivalent formulation: the paper's space is 'alternating forms on V_Q invariant under T1 and T2'; the hypotheses hsk (Ψᵀ = -Ψ), h1, h2 (TᵢᵀΨTᵢ = Ψ) are exactly membership in that space (ofParams is the general alternating 4×4 form, Form.lean/ForMathlib skewFour), and the conclusion Ψ = Ψ 0 3 • Ω0R is 'spanned by ω0' (Uniqueness.lean:106).",
+      "verdict": "intentional",
+      "answeredAt": "2026-11-03T19:57:09.919Z"
+    },
+    "07c6e57cedd3": {
+      "claimId": "thm:A",
+      "kind": "conditional",
+      "question": "Paper claim Theorem 4 (thm:A) states: “The $\\Q$-vector space of alternating forms on $V_{\\Q}$ invariant under $T_1$ and $T_2$ is one-dimensional, spanned by $\\omega_0$ with Gram matrix \\[ \\Omega_0=\\begin{pmatrix}0&0&0&1\\\\0&0&6&0\\\\0&-6&0&0…”. Lean theorem `uniqueness_over_Q` assumes `h1 : transpose T1R * Ψ * T1R = Ψ`, which the claim does not state. Is this extra hypothesis intentional?",
+      "answer": "equivalent formulation: the paper's space is 'alternating forms on V_Q invariant under T1 and T2'; the hypotheses hsk (Ψᵀ = -Ψ), h1, h2 (TᵢᵀΨTᵢ = Ψ) are exactly membership in that space (ofParams is the general alternating 4×4 form, Form.lean/ForMathlib skewFour), and the conclusion Ψ = Ψ 0 3 • Ω0R is 'spanned by ω0' (Uniqueness.lean:106).",
+      "verdict": "intentional",
+      "answeredAt": "2026-11-03T19:57:09.984Z"
+    },
+    "a13d06cce759": {
+      "claimId": "thm:A",
+      "kind": "conditional",
+      "question": "Paper claim Theorem 4 (thm:A) states: “The $\\Q$-vector space of alternating forms on $V_{\\Q}$ invariant under $T_1$ and $T_2$ is one-dimensional, spanned by $\\omega_0$ with Gram matrix \\[ \\Omega_0=\\begin{pmatrix}0&0&0&1\\\\0&0&6&0\\\\0&-6&0&0…”. Lean theorem `uniqueness_over_Q` assumes `h2 : transpose T2R * Ψ * T2R = Ψ`, which the claim does not state. Is this extra hypothesis intentional?",
+      "answer": "equivalent formulation: the paper's space is 'alternating forms on V_Q invariant under T1 and T2'; the hypotheses hsk (Ψᵀ = -Ψ), h1, h2 (TᵢᵀΨTᵢ = Ψ) are exactly membership in that space (ofParams is the general alternating 4×4 form, Form.lean/ForMathlib skewFour), and the conclusion Ψ = Ψ 0 3 • Ω0R is 'spanned by ω0' (Uniqueness.lean:106).",
+      "verdict": "intentional",
+      "answeredAt": "2026-11-03T19:57:10.038Z"
+    },
+    "78ffcf43fbdb": {
+      "claimId": "thm:A",
+      "kind": "conditional",
+      "question": "Paper claim Theorem 4 (thm:A) states: “The $\\Q$-vector space of alternating forms on $V_{\\Q}$ invariant under $T_1$ and $T_2$ is one-dimensional, spanned by $\\omega_0$ with Gram matrix \\[ \\Omega_0=\\begin{pmatrix}0&0&0&1\\\\0&0&6&0\\\\0&-6&0&0…”. Lean theorem `invariant_ofParams_eq_smul` assumes `h1 : transpose T1R * ofParams a b c d e f * T1R = ofParams a b c d e f`, which the claim does not state. Is this extra hypothesis intentional?",
+      "answer": "equivalent formulation: the paper's space is 'alternating forms on V_Q invariant under T1 and T2'; the hypotheses hsk (Ψᵀ = -Ψ), h1, h2 (TᵢᵀΨTᵢ = Ψ) are exactly membership in that space (ofParams is the general alternating 4×4 form, Form.lean/ForMathlib skewFour), and the conclusion Ψ = Ψ 0 3 • Ω0R is 'spanned by ω0' (Uniqueness.lean:106).",
+      "verdict": "intentional",
+      "answeredAt": "2026-11-03T19:57:10.091Z"
+    },
+    "5cd9419efa8a": {
+      "claimId": "thm:A",
+      "kind": "conditional",
+      "question": "Paper claim Theorem 4 (thm:A) states: “The $\\Q$-vector space of alternating forms on $V_{\\Q}$ invariant under $T_1$ and $T_2$ is one-dimensional, spanned by $\\omega_0$ with Gram matrix \\[ \\Omega_0=\\begin{pmatrix}0&0&0&1\\\\0&0&6&0\\\\0&-6&0&0…”. Lean theorem `invariant_ofParams_eq_smul` assumes `h2 : transpose T2R * ofParams a b c d e f * T2R = ofParams a b c d e f`, which the claim does not state. Is this extra hypothesis intentional?",
+      "answer": "equivalent formulation: the paper's space is 'alternating forms on V_Q invariant under T1 and T2'; the hypotheses hsk (Ψᵀ = -Ψ), h1, h2 (TᵢᵀΨTᵢ = Ψ) are exactly membership in that space (ofParams is the general alternating 4×4 form, Form.lean/ForMathlib skewFour), and the conclusion Ψ = Ψ 0 3 • Ω0R is 'spanned by ω0' (Uniqueness.lean:106).",
+      "verdict": "intentional",
+      "answeredAt": "2026-11-03T19:57:10.146Z"
+    },
+    "a99e94d97673": {
+      "claimId": "prop:kernel",
+      "kind": "conditional",
+      "question": "Paper claim Proposition 7 (prop:kernel) states: “The twelve residual entries of Lemmas~\\ref{lem:T1res} and~\\ref{lem:T2res} vanish if and only if \\[ a=b=e=f=0\\qquad\\text{and}\\qquad c=\\frac{d}{6}. \\]”. Lean theorem `invariant_params` assumes `h1 : transpose T1R * ofParams a b c d e f * T1R = ofParams a b c d e f`, which the claim does not state. Is this extra hypothesis intentional?",
+      "answer": "equivalent formulation: 'the residual entries of TᵢᵀΩTᵢ - Ω vanish' is TᵢᵀΩTᵢ = Ω, i.e. h1/h2 (Uniqueness.lean:49); conclusion d = 6*c is c = d/6 over ℚ. (Only the forward direction of the paper's iff is this theorem; see NOTES.md.)",
+      "verdict": "intentional",
+      "answeredAt": "2026-11-03T19:57:10.196Z"
+    },
+    "b08f9da1ad04": {
+      "claimId": "prop:kernel",
+      "kind": "conditional",
+      "question": "Paper claim Proposition 7 (prop:kernel) states: “The twelve residual entries of Lemmas~\\ref{lem:T1res} and~\\ref{lem:T2res} vanish if and only if \\[ a=b=e=f=0\\qquad\\text{and}\\qquad c=\\frac{d}{6}. \\]”. Lean theorem `invariant_params` assumes `h2 : transpose T2R * ofParams a b c d e f * T2R = ofParams a b c d e f`, which the claim does not state. Is this extra hypothesis intentional?",
+      "answer": "equivalent formulation: 'the residual entries of TᵢᵀΩTᵢ - Ω vanish' is TᵢᵀΩTᵢ = Ω, i.e. h1/h2 (Uniqueness.lean:49); conclusion d = 6*c is c = d/6 over ℚ. (Only the forward direction of the paper's iff is this theorem; see NOTES.md.)",
+      "verdict": "intentional",
+      "answeredAt": "2026-11-03T19:57:10.248Z"
+    }
+  }
+}

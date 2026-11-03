@@ -1,0 +1,36 @@
+{
+  "tool": "pipelinehalt",
+  "version": "0.4.0",
+  "anchorTitle": "\\textbf{Hodge on $X \\times X$ Implies Grothendieck's Lefschetz Standard Conjecture B: Lean 4 Formalization",
+  "generatedAt": "2026-11-03T20:01:04.448Z",
+  "declarationsScanned": 8,
+  "claims": [
+    {
+      "claim": {
+        "id": "theorem-1",
+        "number": "Theorem 1",
+        "statement": "Let $\\Lambda : \\mathrm{Class}$ represent the K\\\"unneth/correspondence class of the inverse Lefschetz operator on $X \\times X$. Under the hypotheses $\\mathrm{h\\Lambda} : \\mathrm{IsHodge}(\\Lambda)$ and $\\mathrm{hHC} : \\forall \\gamma,\\, \\mathrm{IsHodge}(\\gamma) \\to \\mathrm{IsAlgebraic}(\\gamma)$ on $X \\times X$: \\[ \\mathrm{IsHodge}(\\Lambda) \\;\\wedge\\; \\mathrm{HodgeOnProduct} \\implies \\mathrm{LefschetzB}(\\Lambda). \\]",
+        "kind": "theorem",
+        "source": "Frohman_StandardConjectures_LefschetzB_2026.tex:27",
+        "title": "\\texttt{hodge\\_on\\_product\\_implies\\_lefschetz\\_B}",
+        "lean": [
+          "hodge_on_product_implies_lefschetz_B"
+        ]
+      },
+      "matched": [
+        {
+          "name": "hodge_on_product_implies_lefschetz_B",
+          "score": 0.31,
+          "explicit": true
+        }
+      ],
+      "mismatches": [],
+      "drift": 0
+    }
+  ],
+  "unanchored": [],
+  "drift": 0,
+  "pending": [],
+  "status": "aligned",
+  "mapFile": "../../PipelineHalt/examples/StandardConjectures/pipelinehalt.map.json"
+}

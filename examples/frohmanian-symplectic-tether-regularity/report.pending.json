@@ -1,0 +1,56 @@
+{
+  "tool": "pipelinehalt",
+  "anchor": "../../PipelineHalt/examples/frohmanian-symplectic-tether-regularity/anchor.json",
+  "instructions": "Fill in `answer` for each question (start with yes/intentional or no/unintended, optionally followed by an explanation), then run `pipelinehalt answer --anchor <anchor> --from <this file>`. Blank answers stay open.",
+  "questions": [
+    {
+      "id": "4328d2dc605b",
+      "claimId": "eq:kappa-def",
+      "kind": "silent",
+      "question": "Paper claim Definition 2.1 (eq:kappa-def) states: “For $\\nu > 0$ and $C_{\\mathrm{CZ}} = 3/2$, define the canonical coupling constant and symmetric bilinear kernel: \\begin{align} \\kappa(\\nu) &= \\frac{27 C_{\\mathrm{CZ}}^4}{4 \\nu^3} = \\frac{2187}{64 \\nu…”. No Lean declaration matching it was found among 192 candidates. Closest candidate: `kksSymplecticForm` (score 0.17, below threshold 0.2). Is this claim intentionally not formalized, or which declaration should it map to?",
+      "answer": ""
+    },
+    {
+      "id": "d5dc6333da80",
+      "claimId": "theorem-2.2",
+      "kind": "silent",
+      "question": "Paper claim Theorem 2.2 (theorem-2.2) states: “Let $\\kappa > 0$, $\\omega \\in \\mathfrak{g}^*$, and $v : \\mathbb{T}^3 \\to \\mathbb{R}^3$. Define the pointwise tether density $d_{\\mathrm{FT}}(\\kappa, \\omega, v, x) = -\\kappa \\|\\omega(x)\\|^2 \\|P_{\\delt…”. The anchor maps it to Lean declaration `tether_preserves_casimirs`, which was not found in the scanned files. Was it renamed or removed, or is the claim intentionally unformalized?",
+      "answer": ""
+    },
+    {
+      "id": "11f927ba5751",
+      "claimId": "theorem-3.1",
+      "kind": "conditional",
+      "question": "Paper claim Theorem 3.1 (theorem-3.1) states: “Let $\\mathcal{K}(v, w; \\omega) = \\int_{\\mathbb{T}^3} k(\\omega(x), v(x), w(x))\\,dx$ be any local bilinear symmetric form on $\\mathfrak{g}^*$ whose pointwise density $k(\\omega, v, w)$ satisfies C1 (Cas…”. Lean theorem `uniqueness_of_minimal_tether` assumes `hC1 : InvariantUnderCoadjointAction B`, which the claim does not state. Is this extra hypothesis intentional?",
+      "answer": ""
+    },
+    {
+      "id": "a62c3f5904be",
+      "claimId": "theorem-3.1",
+      "kind": "conditional",
+      "question": "Paper claim Theorem 3.1 (theorem-3.1) states: “Let $\\mathcal{K}(v, w; \\omega) = \\int_{\\mathbb{T}^3} k(\\omega(x), v(x), w(x))\\,dx$ be any local bilinear symmetric form on $\\mathfrak{g}^*$ whose pointwise density $k(\\omega, v, w)$ satisfies C1 (Cas…”. Lean theorem `uniqueness_of_minimal_tether` assumes `hC2 : DegenerateWRTKineticEnergy B`, which the claim does not state. Is this extra hypothesis intentional?",
+      "answer": ""
+    },
+    {
+      "id": "de917572943a",
+      "claimId": "theorem-3.1",
+      "kind": "conditional",
+      "question": "Paper claim Theorem 3.1 (theorem-3.1) states: “Let $\\mathcal{K}(v, w; \\omega) = \\int_{\\mathbb{T}^3} k(\\omega(x), v(x), w(x))\\,dx$ be any local bilinear symmetric form on $\\mathfrak{g}^*$ whose pointwise density $k(\\omega, v, w)$ satisfies C1 (Cas…”. Lean theorem `uniqueness_of_minimal_tether` assumes `hC3 : ProducesControllableNegativeFeedback kappa B`, which the claim does not state. Is this extra hypothesis intentional?",
+      "answer": ""
+    },
+    {
+      "id": "9a0b0e86b9a5",
+      "claimId": "theorem-3.1",
+      "kind": "conditional",
+      "question": "Paper claim Theorem 3.1 (theorem-3.1) states: “Let $\\mathcal{K}(v, w; \\omega) = \\int_{\\mathbb{T}^3} k(\\omega(x), v(x), w(x))\\,dx$ be any local bilinear symmetric form on $\\mathfrak{g}^*$ whose pointwise density $k(\\omega, v, w)$ satisfies C1 (Cas…”. Lean theorem `uniqueness_of_minimal_tether` assumes `h_polarB : Polarizes B`, which the claim does not state. Is this extra hypothesis intentional?",
+      "answer": ""
+    },
+    {
+      "id": "cc7f26795e36",
+      "claimId": "eq:young-4-eq-4",
+      "kind": "conditional",
+      "question": "Paper claim Theorem 4.1 (eq:young-4-eq-4) states: “For every $\\nu > 0$, $C_{\\mathrm{CZ}} > 0$, and $x = |\\omega| \\ge 0$, with $\\kappa = \\frac{27 C_{\\mathrm{CZ}}^4}{4\\nu^3}$, \\begin{equation} C_{\\mathrm{CZ}} x^3 - \\frac{\\nu}{3} x^2 - \\frac{\\kappa}{4} …”. Lean theorem `youngs_absorption_elimination` assumes `h_young : 4 * CalderonZygmundConstant3D * M * I₄ ≤ (kappa / 4) * I₆ + C_abs * (M ^ 3 * phi_norm ^ ((3 : ℝ) / 2))`, which the claim does not state. Is this extra hypothesis intentional?",
+      "answer": ""
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "tool": "pipelinehalt",
+  "anchor": "../../PipelineHalt/examples/HODGE/anchor.json",
+  "instructions": "Fill in `answer` for each question (start with yes/intentional or no/unintended, optionally followed by an explanation), then run `pipelinehalt answer --anchor <anchor> --from <this file>`. Blank answers stay open.",
+  "questions": [
+    {
+      "id": "b8edf22dbb00",
+      "claimId": "lemma-2",
+      "kind": "silent",
+      "question": "Paper claim Lemma 2 (lemma-2) states: “The same procedure works for every \\(\\gamma\\in\\mathrm{Hdg}^2(Q)\\).”. No Lean declaration matching it was found among 198 candidates. Closest candidate: `construct_h2_section` (score 0.16, below threshold 0.2). Is this claim intentionally not formalized, or which declaration should it map to?",
+      "answer": ""
+    }
+  ]
+}

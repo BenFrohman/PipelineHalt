@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "note": "Hand-written by the PipelineHalt run of 2026-11-03 by reading OmegaZero34/*.lean against Frohman_Omega0_Type16_Monodromy.tex (the paper has no \\lean{} references). It pairs claims with declarations; it does not assert that the meanings match.",
+  "claims": {
+    "proposition-1": {
+      "lean": [
+        "T1_det",
+        "T2_det",
+        "T0_det"
+      ]
+    },
+    "proposition-2": {
+      "lean": [
+        "T1_pow_three",
+        "T1_ne_one",
+        "T1_pow_two_ne_one",
+        "T2_pow_four",
+        "T2_ne_one",
+        "T2_pow_two_ne_one",
+        "T2_pow_three_ne_one"
+      ]
+    },
+    "proposition-3": {
+      "lean": [
+        "T0_mul_T1T2",
+        "T1T2_mul_T0",
+        "N_sq",
+        "N_ne_zero"
+      ]
+    },
+    "thm:A": {
+      "lean": [
+        "T1_preserves_Ω0",
+        "T2_preserves_Ω0",
+        "uniqueness_over_Q",
+        "invariant_ofParams_eq_smul"
+      ]
+    },
+    "lem:T1res": {
+      "lean": [
+        "T1_conj_ofParams"
+      ]
+    },
+    "lem:T2res": {
+      "lean": [
+        "T2_conj_ofParams"
+      ]
+    },
+    "prop:kernel": {
+      "lean": [
+        "invariant_params"
+      ]
+    },
+    "thm:B": {
+      "lean": [
+        "N_sp",
+        "im_N_eq_ker_N",
+        "vanishing_plane_isotropic"
+      ]
+    },
+    "thm:C": {
+      "lean": [
+        "restriction_lemma",
+        "restriction_scalar_unique"
+      ],
+      "aliases": [
+        "Theorem 7.1"
+      ],
+      "note": "Lean docstrings number by section: the Restriction section is §7 of the tex (Scope=1 … Restriction=7), so Theorem 7.1 = printed Theorem 9."
+    },
+    "corollary-10": {
+      "lean": [
+        "generators_preserve_Ω0"
+      ],
+      "aliases": [
+        "Corollary 7.2"
+      ],
+      "note": "Corollary 7.2 (section numbering, §7) = printed Corollary 10."
+    },
+    "corollary-11": {
+      "lean": [
+        "N_sp",
+        "vanishing_plane_isotropic"
+      ]
+    }
+  }
+}

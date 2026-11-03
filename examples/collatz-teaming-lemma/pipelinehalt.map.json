@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "note": "Hand-written by the PipelineHalt run of 2026-11-03. It pairs claims with declarations; it does not assert that the meanings match. model-mean-observation is mapped to no declarations: no Lean declaration was found for the 3n-1 cycles.",
+  "claims": {
+    "remaining-iff-collatz": {
+      "lean": [
+        "remaining_lemma_iff_collatz"
+      ]
+    },
+    "trivial-cycle": {
+      "lean": [
+        "trivial_cycle"
+      ]
+    },
+    "model-mean-observation": {
+      "lean": [],
+      "note": "No Lean declaration found; the paper places this in companion notes (MU_F_SLOGAN_NOTE.md, ELIAHOU_WINDOWS.md, RHIN_DERIVATION.md)."
+    }
+  }
+}

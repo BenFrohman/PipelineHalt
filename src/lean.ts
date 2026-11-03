@@ -3,7 +3,7 @@ import { join } from "node:path";
 import type { Binder, LeanDecl } from "./types.js";
 
 const DECL_RE =
-  /^[ \t]*(?:@\[[^\]]*\][ \t\n]*)?(?:(?:private|protected|noncomputable|nonrec|partial|unsafe)\s+)*(theorem|lemma|def|abbrev|axiom|structure|class|instance|example|opaque|inductive)\b[ \t]*([^\s:({[⦃]*)/gm;
+  /^[ \t]*(?:@\[[^\]]*\][ \t\n]*)?(?:(?:public|private|protected|noncomputable|nonrec|partial|unsafe|meta)\s+)*(theorem|lemma|def|abbrev|axiom|structure|class|instance|example|opaque|inductive)\b[ \t]*([^\s:({[⦃]*)/gm;
 const SCOPE_RE = /^(namespace|section|end)\b[ \t]*([^\s]*)/gm;
 
 /** Replace comments by spaces (preserving offsets) and collect docstrings by end offset. */
@@ -205,4 +205,4 @@ export function loadLean(paths: string[]): LeanDecl[] {
   return decls;
 }
 const DECL_START_LINE =
-  /\n[ \t]*(?:@\[|private |protected |noncomputable |theorem |lemma |def |axiom |structure |end |namespace )/;
+  /\n[ \t]*(?:@\[|public |private |protected |noncomputable |theorem |lemma |def |axiom |structure |end |namespace )/;

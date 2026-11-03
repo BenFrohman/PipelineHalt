@@ -1,0 +1,86 @@
+{
+  "tool": "pipelinehalt",
+  "version": "0.4.0",
+  "anchorTitle": "\\textbf{The Cycle Class Map, the Reverse Arrow,\\\\[0.25em]\nand a Classical Constructor on Three Fourfolds",
+  "generatedAt": "2026-11-03T19:57:27.481Z",
+  "declarationsScanned": 382,
+  "claims": [
+    {
+      "claim": {
+        "id": "lemma-1",
+        "number": "Lemma 1",
+        "statement": "\\(\\gamma=a[\\Pi]+b[\\Pi']\\).",
+        "kind": "lemma",
+        "source": "docs/CYCLE_CLASS_AND_CONSTRUCTOR.tex:262"
+      },
+      "matched": [
+        {
+          "name": "constructQ_coeff",
+          "score": 0.24,
+          "explicit": false
+        },
+        {
+          "name": "cycleOf_coeff",
+          "score": 0.24,
+          "explicit": false
+        }
+      ],
+      "mismatches": [],
+      "drift": 0
+    },
+    {
+      "claim": {
+        "id": "lemma-2",
+        "number": "Lemma 2",
+        "statement": "The same procedure works for every \\(\\gamma\\in\\mathrm{Hdg}^2(Q)\\).",
+        "kind": "lemma",
+        "source": "docs/CYCLE_CLASS_AND_CONSTRUCTOR.tex:268"
+      },
+      "matched": [],
+      "mismatches": [
+        {
+          "id": "b8edf22dbb00",
+          "claimId": "lemma-2",
+          "kind": "silent",
+          "key": "no-match",
+          "detail": "No Lean declaration matches this claim. Closest candidate: `construct_h2_section` (score 0.16, below threshold 0.2).",
+          "question": "Paper claim Lemma 2 (lemma-2) states: “The same procedure works for every \\(\\gamma\\in\\mathrm{Hdg}^2(Q)\\).”. No Lean declaration matching it was found among 198 candidates. Closest candidate: `construct_h2_section` (score 0.16, below threshold 0.2). Is this claim intentionally not formalized, or which declaration should it map to?",
+          "weight": 1
+        }
+      ],
+      "drift": 1
+    },
+    {
+      "claim": {
+        "id": "thm:quadric",
+        "number": "Theorem 3",
+        "statement": "Let \\(Q\\subset\\Pspace^5\\) be the Klein quadric \\eqref{eq:plucker}. The assignment \\[ \\gamma\\;\\longmapsto\\;\\bigl(\\Pi,\\,\\Pi',\\,\\gamma\\cdot[\\Pi],\\,\\gamma\\cdot[\\Pi']\\bigr) \\] is a section of \\(\\mathrm{cl}:Z^2(Q)_{\\Q}\\to\\mathrm{Hdg}^2(Q)\\).",
+        "kind": "theorem",
+        "source": "docs/CYCLE_CLASS_AND_CONSTRUCTOR.tex:274"
+      },
+      "matched": [
+        {
+          "name": "construct_h2_section",
+          "score": 0.203,
+          "explicit": false
+        }
+      ],
+      "mismatches": [],
+      "drift": 0
+    }
+  ],
+  "unanchored": [],
+  "drift": 0.333,
+  "pending": [
+    {
+      "id": "b8edf22dbb00",
+      "claimId": "lemma-2",
+      "kind": "silent",
+      "key": "no-match",
+      "detail": "No Lean declaration matches this claim. Closest candidate: `construct_h2_section` (score 0.16, below threshold 0.2).",
+      "question": "Paper claim Lemma 2 (lemma-2) states: “The same procedure works for every \\(\\gamma\\in\\mathrm{Hdg}^2(Q)\\).”. No Lean declaration matching it was found among 198 candidates. Closest candidate: `construct_h2_section` (score 0.16, below threshold 0.2). Is this claim intentionally not formalized, or which declaration should it map to?",
+      "weight": 1
+    }
+  ],
+  "status": "halt"
+}

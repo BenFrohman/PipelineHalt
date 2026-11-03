@@ -1,0 +1,107 @@
+{
+  "tool": "pipelinehalt",
+  "version": "0.4.0",
+  "anchorTitle": "Frohman, Collatz Teaming Lemma and Eliahou Windows (2026)",
+  "generatedAt": "2026-11-03T19:58:44.999Z",
+  "declarationsScanned": 209,
+  "claims": [
+    {
+      "claim": {
+        "id": "remaining-iff-collatz",
+        "number": "Abstract claim 1",
+        "kind": "claim",
+        "statement": "proving the logical equivalence \\texttt{RemainingLemma $\\leftrightarrow$ CollatzConjecture}",
+        "source": "Frohman_Collatz_Teaming_Lemma_and_Eliahou_Windows_2026.tex:24 (hand-added verbatim)",
+        "lean": [
+          "remaining_lemma_iff_collatz"
+        ]
+      },
+      "matched": [
+        {
+          "name": "remaining_lemma_iff_collatz",
+          "score": 0.343,
+          "explicit": true
+        }
+      ],
+      "mismatches": [],
+      "drift": 0
+    },
+    {
+      "claim": {
+        "id": "trivial-cycle",
+        "number": "Abstract claim 2",
+        "kind": "claim",
+        "statement": "certifying the trivial cycle $C_0 = (1 \\to 4 \\to 2 \\to 1)$",
+        "source": "Frohman_Collatz_Teaming_Lemma_and_Eliahou_Windows_2026.tex:24 (hand-added verbatim)",
+        "lean": [
+          "trivial_cycle"
+        ]
+      },
+      "matched": [
+        {
+          "name": "trivial_cycle",
+          "score": 0.5,
+          "explicit": true
+        }
+      ],
+      "mismatches": [],
+      "drift": 0
+    },
+    {
+      "claim": {
+        "id": "model-mean-observation",
+        "number": "Abstract claim 3 (Frohman Model Mean observation)",
+        "kind": "claim",
+        "statement": "the Syracuse logarithmic drift $\\mu_F = \\log(3/4) < 0$ is identical for $3n+1$ and $3n-1$, yet $3n-1$ possesses three distinct positive cycles ($1$, $5$, and $17$)",
+        "source": "Frohman_Collatz_Teaming_Lemma_and_Eliahou_Windows_2026.tex:24 (hand-added verbatim; the paper says this is established in companion notes, not Lean)",
+        "lean": []
+      },
+      "matched": [
+        {
+          "name": "syracuse_not_injective",
+          "score": 0.267,
+          "explicit": false
+        },
+        {
+          "name": "residue_count_for_terras",
+          "score": 0.266,
+          "explicit": false
+        },
+        {
+          "name": "syracuse_not_injective",
+          "score": 0.256,
+          "explicit": false
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "6e04d3febb43",
+          "claimId": "model-mean-observation",
+          "kind": "narrower",
+          "lean": "residue_count_for_terras",
+          "key": "bound:c>=1",
+          "detail": "`residue_count_for_terras` restricts c ≥ 1; the claim states no such restriction.",
+          "question": "Paper claim Abstract claim 3 (Frohman Model Mean observation) (model-mean-observation) states: “the Syracuse logarithmic drift $\\mu_F = \\log(3/4) < 0$ is identical for $3n+1$ and $3n-1$, yet $3n-1$ possesses three distinct positive cycles ($1$, $5$, and $17$)”. Lean theorem `residue_count_for_terras` assumes `0 < c` (restricting c ≥ 1), which the claim does not state. Is the restricted domain intentional?",
+          "weight": 0.6
+        }
+      ],
+      "drift": 0.6
+    }
+  ],
+  "unanchored": [],
+  "drift": 0.2,
+  "pending": [
+    {
+      "id": "6e04d3febb43",
+      "claimId": "model-mean-observation",
+      "kind": "narrower",
+      "lean": "residue_count_for_terras",
+      "key": "bound:c>=1",
+      "detail": "`residue_count_for_terras` restricts c ≥ 1; the claim states no such restriction.",
+      "question": "Paper claim Abstract claim 3 (Frohman Model Mean observation) (model-mean-observation) states: “the Syracuse logarithmic drift $\\mu_F = \\log(3/4) < 0$ is identical for $3n+1$ and $3n-1$, yet $3n-1$ possesses three distinct positive cycles ($1$, $5$, and $17$)”. Lean theorem `residue_count_for_terras` assumes `0 < c` (restricting c ≥ 1), which the claim does not state. Is the restricted domain intentional?",
+      "weight": 0.6
+    }
+  ],
+  "status": "halt",
+  "mapFile": "../../PipelineHalt/examples/collatz-teaming-lemma/pipelinehalt.map.json"
+}

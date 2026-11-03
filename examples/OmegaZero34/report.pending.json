@@ -1,0 +1,70 @@
+{
+  "tool": "pipelinehalt",
+  "anchor": "../../PipelineHalt/examples/OmegaZero34/anchor.json",
+  "instructions": "Fill in `answer` for each question (start with yes/intentional or no/unintended, optionally followed by an explanation), then run `pipelinehalt answer --anchor <anchor> --from <this file>`. Blank answers stay open.",
+  "questions": [
+    {
+      "id": "ef489ed7b249",
+      "claimId": "thm:A",
+      "kind": "conditional",
+      "question": "Paper claim Theorem 4 (thm:A) states: “The $\\Q$-vector space of alternating forms on $V_{\\Q}$ invariant under $T_1$ and $T_2$ is one-dimensional, spanned by $\\omega_0$ with Gram matrix \\[ \\Omega_0=\\begin{pmatrix}0&0&0&1\\\\0&0&6&0\\\\0&-6&0&0…”. Lean theorem `uniqueness_over_Q` assumes `hsk : transpose Ψ = -Ψ`, which the claim does not state. Is this extra hypothesis intentional?",
+      "answer": ""
+    },
+    {
+      "id": "07c6e57cedd3",
+      "claimId": "thm:A",
+      "kind": "conditional",
+      "question": "Paper claim Theorem 4 (thm:A) states: “The $\\Q$-vector space of alternating forms on $V_{\\Q}$ invariant under $T_1$ and $T_2$ is one-dimensional, spanned by $\\omega_0$ with Gram matrix \\[ \\Omega_0=\\begin{pmatrix}0&0&0&1\\\\0&0&6&0\\\\0&-6&0&0…”. Lean theorem `uniqueness_over_Q` assumes `h1 : transpose T1R * Ψ * T1R = Ψ`, which the claim does not state. Is this extra hypothesis intentional?",
+      "answer": ""
+    },
+    {
+      "id": "a13d06cce759",
+      "claimId": "thm:A",
+      "kind": "conditional",
+      "question": "Paper claim Theorem 4 (thm:A) states: “The $\\Q$-vector space of alternating forms on $V_{\\Q}$ invariant under $T_1$ and $T_2$ is one-dimensional, spanned by $\\omega_0$ with Gram matrix \\[ \\Omega_0=\\begin{pmatrix}0&0&0&1\\\\0&0&6&0\\\\0&-6&0&0…”. Lean theorem `uniqueness_over_Q` assumes `h2 : transpose T2R * Ψ * T2R = Ψ`, which the claim does not state. Is this extra hypothesis intentional?",
+      "answer": ""
+    },
+    {
+      "id": "78ffcf43fbdb",
+      "claimId": "thm:A",
+      "kind": "conditional",
+      "question": "Paper claim Theorem 4 (thm:A) states: “The $\\Q$-vector space of alternating forms on $V_{\\Q}$ invariant under $T_1$ and $T_2$ is one-dimensional, spanned by $\\omega_0$ with Gram matrix \\[ \\Omega_0=\\begin{pmatrix}0&0&0&1\\\\0&0&6&0\\\\0&-6&0&0…”. Lean theorem `invariant_ofParams_eq_smul` assumes `h1 : transpose T1R * ofParams a b c d e f * T1R = ofParams a b c d e f`, which the claim does not state. Is this extra hypothesis intentional?",
+      "answer": ""
+    },
+    {
+      "id": "5cd9419efa8a",
+      "claimId": "thm:A",
+      "kind": "conditional",
+      "question": "Paper claim Theorem 4 (thm:A) states: “The $\\Q$-vector space of alternating forms on $V_{\\Q}$ invariant under $T_1$ and $T_2$ is one-dimensional, spanned by $\\omega_0$ with Gram matrix \\[ \\Omega_0=\\begin{pmatrix}0&0&0&1\\\\0&0&6&0\\\\0&-6&0&0…”. Lean theorem `invariant_ofParams_eq_smul` assumes `h2 : transpose T2R * ofParams a b c d e f * T2R = ofParams a b c d e f`, which the claim does not state. Is this extra hypothesis intentional?",
+      "answer": ""
+    },
+    {
+      "id": "a99e94d97673",
+      "claimId": "prop:kernel",
+      "kind": "conditional",
+      "question": "Paper claim Proposition 7 (prop:kernel) states: “The twelve residual entries of Lemmas~\\ref{lem:T1res} and~\\ref{lem:T2res} vanish if and only if \\[ a=b=e=f=0\\qquad\\text{and}\\qquad c=\\frac{d}{6}. \\]”. Lean theorem `invariant_params` assumes `h1 : transpose T1R * ofParams a b c d e f * T1R = ofParams a b c d e f`, which the claim does not state. Is this extra hypothesis intentional?",
+      "answer": ""
+    },
+    {
+      "id": "b08f9da1ad04",
+      "claimId": "prop:kernel",
+      "kind": "conditional",
+      "question": "Paper claim Proposition 7 (prop:kernel) states: “The twelve residual entries of Lemmas~\\ref{lem:T1res} and~\\ref{lem:T2res} vanish if and only if \\[ a=b=e=f=0\\qquad\\text{and}\\qquad c=\\frac{d}{6}. \\]”. Lean theorem `invariant_params` assumes `h2 : transpose T2R * ofParams a b c d e f * T2R = ofParams a b c d e f`, which the claim does not state. Is this extra hypothesis intentional?",
+      "answer": ""
+    },
+    {
+      "id": "742d4b73fdbb",
+      "claimId": "thm:C",
+      "kind": "ambiguous",
+      "question": "Paper claim Theorem 9 (thm:C) states: “Assume H1--H3 for the family of complex $2$-tori in~\\cite{AlpogeS6}, and assume the identification of the fibrewise first homology lattice with the module $V=\\Z^4$ of Section~3. Then there exists a u…”. Lean theorem `restriction_lemma` is documented as “Theorem 7.1”, while the paper numbers this claim Theorem 9. Which numbering should readers and tools use?",
+      "answer": ""
+    },
+    {
+      "id": "058086bdfd6f",
+      "claimId": "corollary-10",
+      "kind": "ambiguous",
+      "question": "Paper claim Corollary 10 (corollary-10) states: “Under the same hypotheses, the monodromy representation lands in $\\Aut(V,\\omega_0)$ for categorical reasons (H3). The a-posteriori matrix check is Theorem~\\ref{thm:A}.”. Lean theorem `generators_preserve_Ω0` is documented as “Corollary 7.2”, while the paper numbers this claim Corollary 10. Which numbering should readers and tools use?",
+      "answer": ""
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "note": "Hand-written by the PipelineHalt run of 2026-11-03 by reading Hodge/Classical.lean and Hodge/Cubic.lean against docs/CYCLE_CLASS_AND_CONSTRUCTOR.tex §(Klein quadric). It pairs claims with declarations; it does not assert that the meanings match.",
+  "claims": {
+    "lemma-1": {"lean": ["expansion", "constructQ_coeff"]},
+    "lemma-2": {"lean": ["construct_recovers"], "note": "'every γ ∈ Hdg²(Q)': construct_recovers is stated for all γ : ℚ × ℚ."},
+    "thm:quadric": {"lean": ["construct_recovers", "constructQ_recovers"]}
+  }
+}

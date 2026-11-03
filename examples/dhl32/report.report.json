@@ -2,7 +2,7 @@
   "tool": "pipelinehalt",
   "version": "0.4.0",
   "anchorTitle": "Resolving a category error: DHL[3,2] yields H1 <= 6, not H1 = 2 (B. S. Frohman, 2026)",
-  "generatedAt": "2026-11-03T20:01:04.387Z",
+  "generatedAt": "2026-11-03T20:39:47.391Z",
   "declarationsScanned": 35,
   "claims": [
     {
@@ -226,7 +226,8 @@
         "lean": [
           "Ptoy_DHL32",
           "Ptoy_no_twin",
-          "dhl32_not_implies_dhl22_combinatorially"
+          "dhl32_not_implies_dhl22_combinatorially",
+          "Ptoy_iff_mod_four_mem"
         ],
         "aliases": [
           "Theorem 3"
@@ -247,28 +248,14 @@
           "name": "dhl32_not_implies_dhl22_combinatorially",
           "score": 0.32,
           "explicit": true
-        }
-      ],
-      "mismatches": [
+        },
         {
-          "id": "382682972d36",
-          "claimId": "thm:model",
-          "kind": "narrower",
-          "lean": "Ptoy_DHL32,Ptoy_no_twin,dhl32_not_implies_dhl22_combinatorially",
-          "key": "omits-set:0,1",
-          "detail": "Claim mentions {0,1}; no matched Lean statement mentions it.",
-          "question": "Paper claim Theorem 3.3 (thm:model) states: “Let $P(n)$ hold if and only if $n\\bmod4\\in\\{0,1\\}$. Then $\\DHL_P[3,2]$ holds (indeed for every $3$-element set), but $P(n)\\wedge P(n+2)$ holds for no $n$; in particular $\\DHL_P[2,2]$ fails.”. The matched Lean statement(s) `Ptoy_DHL32`, `Ptoy_no_twin`, `dhl32_not_implies_dhl22_combinatorially` do not mention the set {0,1}. Is the omission intentional, or is it covered by a declaration the matcher missed?",
-          "weight": 0.6,
-          "clarification": {
-            "claimId": "thm:model",
-            "kind": "narrower",
-            "question": "Paper claim Theorem 3.3 (thm:model) states: “Let $P(n)$ hold if and only if $n\\bmod4\\in\\{0,1\\}$. Then $\\DHL_P[3,2]$ holds (indeed for every $3$-element set), but $P(n)\\wedge P(n+2)$ holds for no $n$; in particular $\\DHL_P[2,2]$ fails.”. The matched Lean statement(s) `Ptoy_DHL32`, `Ptoy_no_twin`, `dhl32_not_implies_dhl22_combinatorially` do not mention the set {0,1}. Is the omission intentional, or is it covered by a declaration the matcher missed?",
-            "answer": "equivalent, intentional: for n : ℕ, n % 4 ∈ {0,1,2,3}, so n % 4 < 2 ↔ n % 4 ∈ {0,1}; the paper's P(n) :⇔ n mod 4 ∈ {0,1} (DHL32_note.tex:94) is Lean's Ptoy (Theorems34.lean:25). Local branch pipelinehalt/align-wording adds Ptoy_iff_mod_four_mem stating this equivalence.",
-            "verdict": "intentional",
-            "answeredAt": "2026-11-03T19:54:02.364Z"
-          }
+          "name": "Ptoy_iff_mod_four_mem",
+          "score": 0.617,
+          "explicit": true
         }
       ],
+      "mismatches": [],
       "drift": 0
     },
     {
@@ -330,12 +317,7 @@
       "drift": 0
     }
   ],
-  "unanchored": [
-    {
-      "name": "Ptoy_iff_mod_four_mem",
-      "cites": "Theorem 3.3"
-    }
-  ],
+  "unanchored": [],
   "drift": 0,
   "pending": [],
   "status": "aligned",

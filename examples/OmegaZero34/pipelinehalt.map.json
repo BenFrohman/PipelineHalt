@@ -48,8 +48,10 @@
     },
     "prop:kernel": {
       "lean": [
-        "invariant_params"
-      ]
+        "invariant_params",
+        "invariant_params_iff"
+      ],
+      "note": "`invariant_params_iff` lives on branch https://github.com/BenFrohman/OmegaZero34/tree/pipelinehalt/iff-converse (not on the default branch); this map is checked against that branch."
     },
     "thm:B": {
       "lean": [

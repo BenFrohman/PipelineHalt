@@ -2,7 +2,7 @@
 on a $(3,4,\infty)$ lattice representation,\\
 and the restriction of a functorial symplectic structure
 
-Status: **ALIGNED** · overall drift **0.000** · 11 claims · 171 Lean declarations scanned · 0 open question(s)
+Status: **ALIGNED** · overall drift **0.000** · 11 claims · 173 Lean declarations scanned · 0 open question(s)
 
 Mapping file: `../../PipelineHalt/examples/OmegaZero34/pipelinehalt.map.json` (human-authored claim → Lean pairing; mapped claims skip heuristic matching).
 
@@ -16,7 +16,7 @@ Mapping file: `../../PipelineHalt/examples/OmegaZero34/pipelinehalt.map.json` (h
 | Theorem 4 | `T1_preserves_Ω0`, `T2_preserves_Ω0`, `uniqueness_over_Q`, `invariant_ofParams_eq_smul` | 0.000 | 0 | 5 |
 | Lemma 5 | `T1_conj_ofParams` | 0.000 | 0 | 0 |
 | Lemma 6 | `T2_conj_ofParams` | 0.000 | 0 | 0 |
-| Proposition 7 | `invariant_params` | 0.000 | 0 | 2 |
+| Proposition 7 | `invariant_params`, `invariant_params_iff` | 0.000 | 0 | 2 |
 | Theorem 8 | `N_sp`, `im_N_eq_ker_N`, `vanishing_plane_isotropic` | 0.000 | 0 | 0 |
 | Theorem 9 | `restriction_lemma`, `restriction_scalar_unique` | 0.000 | 0 | 0 |
 | Corollary 10 | `generators_preserve_Ω0` | 0.000 | 0 | 0 |

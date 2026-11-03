@@ -8,3 +8,6 @@
 ## Strict pass (2026-11-03)
 - Kept all closures. For thm:A, skew-symmetry plus ofParams is a proved equivalence (`skew_eq_ofParams`, Uniqueness.lean:99). For prop:kernel, the hypotheses h1/h2 are literally the residual equations, computed by `T1_conj_ofParams`/`T2_conj_ofParams`.
 - Converse of prop:kernel: PROVED on local branch `pipelinehalt/iff-converse` (commit 4ee0dce, not pushed). It adds `invariant_params_converse` and `invariant_params_iff`, which is the paper's statement with both directions over ℚ, with no weakening. A full `lake build` passed (3297 jobs) with no sorry. `#print axioms invariant_params_iff` gives propext, Classical.choice, Quot.sound. The harness on that branch reports aligned, 0 open (branch-iff.*). The map still points prop:kernel at `invariant_params`, because the iff only exists on the unpushed branch.
+
+## Branch pushed (2026-11-03)
+- pipelinehalt/iff-converse pushed (4ee0dce). Map prop:kernel now includes invariant_params_iff; report is against that branch: aligned, 7 flags, 0 open.

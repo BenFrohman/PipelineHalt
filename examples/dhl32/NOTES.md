@@ -4,3 +4,6 @@
 
 ## Strict pass (2026-11-03)
 - Kept the two index-shift closures. The equivalence follows directly from the definitions: Lean `p n := Nat.nth Nat.Prime n` (Basic.lean:10, so p 0 = 2) and paper p_1 = 2 (tex:48) give Lean `gap n` = paper p_{n+2} − p_{n+1}, so Lean n ≥ 1 ⇔ paper n ≥ 2. Kept the {0,1} closure, which is proved by `Ptoy_iff_mod_four_mem` (local branch, build-verified).
+
+## Branches pushed (2026-11-03)
+- pipelinehalt/align-wording pushed (bad1a3f). Map thm:model now includes Ptoy_iff_mod_four_mem; the {0,1} flag no longer fires (2 flags, both closed).

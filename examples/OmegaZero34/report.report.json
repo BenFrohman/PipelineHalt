@@ -2,8 +2,8 @@
   "tool": "pipelinehalt",
   "version": "0.4.0",
   "anchorTitle": "The unique monodromy-invariant alternating form of type $(1,6)$\\\\\non a $(3,4,\\infty)$ lattice representation,\\\\\nand the restriction of a functorial symplectic structure",
-  "generatedAt": "2026-11-03T19:57:10.302Z",
-  "declarationsScanned": 171,
+  "generatedAt": "2026-11-03T20:39:47.301Z",
+  "declarationsScanned": 173,
   "claims": [
     {
       "claim": {
@@ -315,13 +315,19 @@
         "kind": "proposition",
         "source": "Frohman_Omega0_Type16_Monodromy.tex:273",
         "lean": [
-          "invariant_params"
+          "invariant_params",
+          "invariant_params_iff"
         ]
       },
       "matched": [
         {
           "name": "invariant_params",
           "score": 0.218,
+          "explicit": true
+        },
+        {
+          "name": "invariant_params_iff",
+          "score": 0.209,
           "explicit": true
         }
       ],

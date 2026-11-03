@@ -1,5 +1,7 @@
 # PipelineHalt
 
+[![ci.yml](https://github.com/BenFrohman/PipelineHalt/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/BenFrohman/PipelineHalt/actions/workflows/ci.yml)
+
 PipelineHalt is a standalone companion to [RecurringAlignment](https://github.com/BenFrohman/RecurringAlignment). It compares the claims a paper makes with the Lean statements that are supposed to formalize them. When the two differ, it **halts and asks a precise clarification question** instead of guessing.
 
 - **Anchor**: the paper's claims, in JSON, Markdown, or LaTeX (`\begin{theorem}...`). PDF is supported on a best-effort basis through `pdftotext`.

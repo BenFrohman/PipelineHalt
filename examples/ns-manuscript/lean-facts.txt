@@ -23,10 +23,12 @@ PH_MOD	NS_Millennium_Proof.Modules.ClayStatements	20	36
 PH_MOD	NS_Millennium_Proof.Modules.MainTheorem	1	2
 PH_REF	tether_kernel_uniqueness	ClosureBlueprint.tether_kernel_uniqueness	theorem	propext,Classical.choice,Quot.sound	SDiff,inst._@.NS_Millennium_Proof.Modules.ClosureBlueprint.1738404555._hygCtx._hyg.3,inst._@.NS_Millennium_Proof.Modules.ClosureBlueprint.1738404555._hygCtx._hyg.6,B,hB,h_sat,h_polarB,h_polarT,ω,F,G
 PH_REF	tetherKernel_degenerates_on_kinetic_energy	FrohmanianTether.tetherKernel_degenerates_on_kinetic_energy	theorem	propext,Classical.choice,Quot.sound	F,ω,hδH,hdiv,hInt
+PH_REF	vorticity_sup_norm	ConditionalRegularity.vorticity_sup_norm	def	propext,Classical.choice,Quot.sound	ω
+PH_REF	vorticity_sup_norm	NavierStokes3D.vorticity_sup_norm	def	propext,Classical.choice,Quot.sound	ω
+PH_REF	IsPhysicalNSSolution	NavierStokes3D.IsPhysicalNSSolution	def	propext,Classical.choice,Quot.sound	u
 PH_REF	frohmanian_tether_theorem	ConditionalRegularity.frohmanian_tether_theorem	theorem	propext,Classical.choice,Quot.sound	hKato,hDI,τ,hτ,hTlb,hInt,huniq_shift,huniq
 PH_REF	conditional_regularity_of_open_hyps	ClosureBlueprint.conditional_regularity_of_open_hyps	theorem	propext,Classical.choice,Quot.sound	u₀,ν,h_divfree,h_smooth,h_finite_energy,h_pos_ν,w,hRiccati,hcrit,huniq
 PH_REF	conditional_regularity_of_open_hyps	ConditionalRegularity.conditional_regularity_of_open_hyps	theorem	propext,Classical.choice,Quot.sound	u0,h_div_free,h_smooth,h_finite_energy,ν,h_ν_pos,w,hRiccati,hcrit,huniq
-PH_REF	IsPhysicalNSSolution	NavierStokes3D.IsPhysicalNSSolution	def	propext,Classical.choice,Quot.sound	u
 PH_REF	FrohmanianTetherRate	FrohmanianTether.FrohmanianTetherRate	def	propext,Classical.choice,Quot.sound	u₀,ν
 PH_REF	comparison_ode_stability	ClosureBlueprint.comparison_ode_stability	theorem	propext,Classical.choice,Quot.sound	C,κ'',hC,hκ,y,hdiff,hy_dot,t,ht
 PH_REF	comparison_ode_stability	AnalyticPipeline.comparison_ode_stability	theorem	propext,Classical.choice,Quot.sound	C,κ'',hC,hκ,y,hdiff,hy_dot,t,ht
@@ -44,6 +46,10 @@ PH_REF	tether_coadjoint_invariance_of_integral_eq	FrohmanianTether.tether_coadjo
 PH_REF	ConjecturedSDiffPushforwardInvariance	FrohmanianTether.ConjecturedSDiffPushforwardInvariance	def	propext,Classical.choice,Quot.sound	act
 PH_REF	uniqueness_of_minimal_tether	FrohmanianTether.uniqueness_of_minimal_tether	theorem	propext,Classical.choice,Quot.sound	SDiff,inst._@.NS_Millennium_Proof.Modules.Uniqueness.3820313032._hygCtx._hyg.3,inst._@.NS_Millennium_Proof.Modules.Uniqueness.3820313032._hygCtx._hyg.6,_hyp,B,h_sym,hC1,hC2,hC3,h_sat,h_polarB,h_polarT,ω,F,G
 PH_REF	uniqueness_of_minimal_symmetric_tether	FrohmanianTether.uniqueness_of_minimal_symmetric_tether	theorem	propext,Classical.choice,Quot.sound	SDiff,inst._@.NS_Millennium_Proof.Modules.Uniqueness.3932853939._hygCtx._hyg.3,inst._@.NS_Millennium_Proof.Modules.Uniqueness.3932853939._hygCtx._hyg.6,B,_h_sym,_hC1,_hC2,_hC3,h_sat,h_polarB,h_polarT,ω,F,G
+PH_REF	tetherKernel_symmetric	FrohmanianTether.tetherKernel_symmetric	theorem	propext,Classical.choice,Quot.sound	ω,F,G
+PH_REF	tetherKernel_diagonal_nonpos	FrohmanianTether.tetherKernel_diagonal_nonpos	theorem	propext,Classical.choice,Quot.sound	ωx,ωy,grad_orth
+PH_REF	tetherKernel_left_H_zero	Combined.tetherKernel_left_H_zero	theorem	propext,Classical.choice,Quot.sound	hC2,ω,M
+PH_REF	NS_PDE	NavierStokes3D.NS_PDE	def	propext,Classical.choice,Quot.sound	u,p,ν
 PH_REF	TetherKernel	FrohmanianTether.TetherKernel	def	propext,Classical.choice,Quot.sound	ω,F,G
 PH_REF	Pi_u	ForMathlib.Pi_u	def	propext,Classical.choice,Quot.sound	u,v
 PH_REF	ProducesControllableNegativeFeedback	FrohmanianTether.ProducesControllableNegativeFeedback	def	propext,Classical.choice,Quot.sound	B
@@ -54,12 +60,11 @@ PH_REF	riccati_ceiling_of_vorticity_di	TetheredLyapunov.riccati_ceiling_of_vorti
 PH_REF	ContDiff	ContDiff	def	propext,Classical.choice,Quot.sound	𝕜,inst._@.Mathlib.Analysis.Calculus.ContDiff.Defs.1134813782._hygCtx._hyg.3,E,inst._@.Mathlib.Analysis.Calculus.ContDiff.Defs.1134813782._hygCtx._hyg.7,inst._@.Mathlib.Analysis.Calculus.ContDiff.Defs.1134813782._hygCtx._hyg.10,F,inst._@.Mathlib.Analysis.Calculus.ContDiff.Defs.1134813782._hygCtx._hyg.15,inst._@.Mathlib.Analysis.Calculus.ContDiff.Defs.1134813782._hygCtx._hyg.18,n,f
 PH_REF	KatoLocalWitness	NavierStokes3D.KatoLocalWitness	inductive	propext,Classical.choice,Quot.sound	u₀,ν
 PH_REF	deriv	TetheredLyapunov.IsComparisonODESolution.deriv	theorem	propext,Classical.choice,Quot.sound	C,κ'',y0,y,self,t,a._@._internal._hyg.0
-PH_REF	vorticity_sup_norm	ConditionalRegularity.vorticity_sup_norm	def	propext,Classical.choice,Quot.sound	ω
-PH_REF	vorticity_sup_norm	NavierStokes3D.vorticity_sup_norm	def	propext,Classical.choice,Quot.sound	ω
-PH_REF	NS_PDE	NavierStokes3D.NS_PDE	def	propext,Classical.choice,Quot.sound	u,p,ν
+PH_REF	Combined.combined_conditional_capstone	Combined.combined_conditional_capstone	theorem	propext,Classical.choice,Quot.sound	SDiff,inst._@.NS_Millennium_Proof.Modules.Combined.3916560026._hygCtx._hyg.3,inst._@.NS_Millennium_Proof.Modules.Combined.3916560026._hygCtx._hyg.6,hyp,h_density,hδ,hdivω,hIntω,ωt,hω,B,h_sym,h_proj,h_dens,h_weight,h_sat,h_nondeg,u₀,ν,h_divfree,h_smooth,h_finite_energy,h_pos_ν,w,hRate,hClose,hcrit,huniq
 PH_REF	bkm_regularity_pipeline	ClosureBlueprint.bkm_regularity_pipeline	theorem	propext,Classical.choice,Quot.sound	u,p,ν,hν,hNS,Y,hbound,hcont,hloc,hcrit,hbelow,τ,a._@._internal._hyg.0
 PH_REF	bkm_regularity_pipeline	AnalyticPipeline.bkm_regularity_pipeline	theorem	propext,Classical.choice,Quot.sound	u,p,ν,hν,hNS,Y,hbound,hcont,hloc,hcrit,hbelow,τ,a._@._internal._hyg.0
 PH_REF	uniqueness_of_existence_times_of_energy_gronwall	NavierStokes3D.uniqueness_of_existence_times_of_energy_gronwall	theorem	propext,Classical.choice,Quot.sound	u₀,ν,w,K,hgron,T',v,q,a._@._internal._hyg.0,a._@._internal._hyg.0,a._@._internal._hyg.0,a._@._internal._hyg.0,a._@._internal._hyg.0,t,a._@._internal._hyg.0
+PH_REF	ClassicalBracket	ArnoldGeometric.ClassicalBracket	def	propext,Classical.choice,Quot.sound	F,G,ω
 PH_REF	classical_bracket_reproduces_Euler	ArnoldGeometric.classical_bracket_reproduces_Euler	theorem	propext,Classical.choice,Quot.sound	u,p,hEuler,hreg,t,a._@._internal._hyg.0,x
 PH_REF	ForMathlib.Pi_u	ForMathlib.Pi_u	def	propext,Classical.choice,Quot.sound	u,v
 PH_REF	kappa_eq_three_halves	FrohmanianTether.kappa_eq_three_halves	theorem	propext,Classical.choice,Quot.sound	
@@ -67,7 +72,7 @@ PH_REF	Enstrophy	ArnoldGeometric.Enstrophy	def	propext,Classical.choice,Quot.sou
 PH_REF	projection_orthogonal_to_u	ForMathlib.projection_orthogonal_to_u	theorem	propext,Classical.choice,Quot.sound	u,_h_div,hE
 PH_REF	Pi_u_zero	ForMathlib.Pi_u_zero	theorem	propext,Classical.choice,Quot.sound	u
 PH_REF	tetherKernel_comm	FrohmanianTether.tetherKernel_comm	theorem	propext,Classical.choice,Quot.sound	ω,F,G
-PH_REF	tetherKernel_symmetric	FrohmanianTether.tetherKernel_symmetric	theorem	propext,Classical.choice,Quot.sound	ω,F,G
+PH_REF	tetherKernel_strict_neg_of_orthogonal_component	FrohmanianTether.tetherKernel_strict_neg_of_orthogonal_component	theorem	propext,Classical.choice,Quot.sound	ωx,ωy,grad_orth,h_orth
 PH_REF	SaturatesTetherQuadratic	FrohmanianTether.SaturatesTetherQuadratic	def	propext,Classical.choice,Quot.sound	B
 PH_REF	Polarizes	FrohmanianTether.Polarizes	def	propext,Classical.choice,Quot.sound	B
 PH_REF	uniqueness_of_minimal_tether_core	FrohmanianTether.uniqueness_of_minimal_tether_core	theorem	propext,Classical.choice,Quot.sound	B,h_sym,h_proj,h_density,h_weight,h_sat,h_nondeg,ω,F,G
@@ -99,6 +104,7 @@ PH_REF	ConditionalRegularity.conditional_regularity_of_open_hyps	ConditionalRegu
 PH_REF	ClosureBlueprint.conditional_regularity_of_open_hyps	ClosureBlueprint.conditional_regularity_of_open_hyps	theorem	propext,Classical.choice,Quot.sound	u₀,ν,h_divfree,h_smooth,h_finite_energy,h_pos_ν,w,hRiccati,hcrit,huniq
 PH_REF	repaired_huniq_shift_at_zero	FrohmanianTether.ClayStatements.repaired_huniq_shift_at_zero	theorem	propext,Classical.choice,Quot.sound	ν,T,v,q,a._@._internal._hyg.0,a._@._internal._hyg.0,a._@._internal._hyg.0,a._@._internal._hyg.0,a._@._internal._hyg.0,t,a._@._internal._hyg.0,w',s,a._@._internal._hyg.0
 PH_REF	FrohmanianTether.TetherKernel	FrohmanianTether.TetherKernel	def	propext,Classical.choice,Quot.sound	ω,F,G
+PH_REF	FunctionalDerivative	ArnoldGeometric.FunctionalDerivative	def	propext,Classical.choice,Quot.sound	F,ω,a._@._internal._hyg.0
 PH_REF	PeriodicTetherClosingBound	FrohmanianTether.ClayStatements.PeriodicTetherClosingBound	def	propext,Classical.choice,Quot.sound	ν
 PH_MISSING	hcancels
 PH_REF	AnalyticPipeline.holderConjugate_three_halves_three	AnalyticPipeline.holderConjugate_three_halves_three	theorem	propext,Classical.choice,Quot.sound	
@@ -108,11 +114,13 @@ PH_REF	vorticity_transport_equation	NavierStokes3D.vorticity_transport_equation	
 PH_REF	VorticityField	NavierStokes3D.VorticityField	def	propext,Classical.choice,Quot.sound	
 PH_REF	Functional	FrohmanianTether.Functional	def	propext,Classical.choice,Quot.sound	
 PH_REF	CoadjointAction	ArnoldGeometric.CoadjointAction	def	propext,Classical.choice,Quot.sound	SDiff,inst._@.NS_Millennium_Proof.Modules.ArnoldGeometric.1624197399._hygCtx._hyg.3,inst._@.NS_Millennium_Proof.Modules.ArnoldGeometric.1624197399._hygCtx._hyg.6,g,ω
-PH_REF	ClassicalBracket	ArnoldGeometric.ClassicalBracket	def	propext,Classical.choice,Quot.sound	F,G,ω
 PH_REF	projector_orthogonality	ForMathlib.projector_orthogonality	theorem	propext,Classical.choice,Quot.sound	v,u,_h_div_u,hE
 PH_REF	pressure_energy_pairing_vanishes	NavierStokes3D.pressure_energy_pairing_vanishes	theorem	propext,Classical.choice,Quot.sound	u,p,hdiv,hu,hp,hInt_pair,hInt_div,hflux
 PH_REF	Clay_B_exact	FrohmanianTether.ClayStatements.Clay_B_exact	def	propext,Classical.choice,Quot.sound	
 PH_REF	PeriodicBKMContinuation	FrohmanianTether.ClayStatements.PeriodicBKMContinuation	def	propext,Classical.choice,Quot.sound	ν
+PH_REF	navier_stokes_vorticity_dt_scaling_exponent	FrohmanianTether.TorusStrainExclusion.navier_stokes_vorticity_dt_scaling_exponent	theorem	propext,Classical.choice,Quot.sound	lam
+PH_REF	unnormalized_quartic_scaling_mismatch	FrohmanianTether.TorusStrainExclusion.unnormalized_quartic_scaling_mismatch	theorem	propext,Classical.choice,Quot.sound	lam,M
+PH_MISSING	hCZ
 PH_REF	Combined.tetherKernel_C2_of_KEDeriv	Combined.tetherKernel_C2_of_KEDeriv	theorem	propext,Classical.choice,Quot.sound	hδ,hdiv,hInt
 PH_REF	KineticEnergyDerivIsVelocity	PlanSteps.KineticEnergyDerivIsVelocity	def	propext,Classical.choice,Quot.sound	
 PH_REF	Combined.tetherKernel_C1_of_casimir	Combined.tetherKernel_C1_of_casimir	theorem	propext,Classical.choice,Quot.sound	SDiff,inst._@.NS_Millennium_Proof.Modules.Combined.699968377._hygCtx._hyg.3,inst._@.NS_Millennium_Proof.Modules.Combined.699968377._hygCtx._hyg.6,hyp,h_density
@@ -121,7 +129,6 @@ PH_REF	isPhysicalNSSolution_zero	NavierStokes3D.isPhysicalNSSolution_zero	theore
 PH_REF	closing_bound_uniqueness_family_unsatisfiable	FrohmanianTether.ClayStatements.closing_bound_uniqueness_family_unsatisfiable	theorem	propext,Classical.choice,Quot.sound	ν,hKato
 PH_REF	IsPeriodicSmoothSolution	FrohmanianTether.ClayStatements.IsPeriodicSmoothSolution	def	propext,Classical.choice,Quot.sound	ν,u₀,f,u,p
 PH_REF	clay_B_exact_of_periodic_tether_bound	FrohmanianTether.ClayStatements.clay_B_exact_of_periodic_tether_bound	theorem	propext,Classical.choice,Quot.sound	hclose,hBKM
-PH_REF	Combined.combined_conditional_capstone	Combined.combined_conditional_capstone	theorem	propext,Classical.choice,Quot.sound	SDiff,inst._@.NS_Millennium_Proof.Modules.Combined.3916560026._hygCtx._hyg.3,inst._@.NS_Millennium_Proof.Modules.Combined.3916560026._hygCtx._hyg.6,hyp,h_density,hδ,hdivω,hIntω,ωt,hω,B,h_sym,h_proj,h_dens,h_weight,h_sat,h_nondeg,u₀,ν,h_divfree,h_smooth,h_finite_energy,h_pos_ν,w,hRate,hClose,hcrit,huniq
 PH_REF	FrohmanianTetherClosingBound	FrohmanianTether.ClayStatements.FrohmanianTetherClosingBound	def	propext,Classical.choice,Quot.sound	ν
 PH_REF	IsCoadjointMotion	PlanSteps.IsCoadjointMotion	def	propext,Classical.choice,Quot.sound	SDiff,inst._@.NS_Millennium_Proof.Modules.PlanSteps.1012913675._hygCtx._hyg.3,inst._@.NS_Millennium_Proof.Modules.PlanSteps.1012913675._hygCtx._hyg.6,ω
 PH_REF	PhysicalBKMContinuationCriterionFor	TetheredLyapunov.PhysicalBKMContinuationCriterionFor	def	propext,Classical.choice,Quot.sound	u₀,ν

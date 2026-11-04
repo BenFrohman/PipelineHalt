@@ -1,17 +1,17 @@
 {
   "source": "examples/ns-manuscript/main.tex",
   "counts": {
-    "verified": 104,
+    "verified": 133,
     "verified-audit": 0,
     "build-ok": 2,
     "build-mismatch": 0,
     "broken": 0,
-    "open": 18,
-    "silent": 49,
-    "non-claim": 123
+    "open": 39,
+    "silent": 0,
+    "non-claim": 124
   },
-  "total": 296,
-  "classified": 296,
+  "total": 298,
+  "classified": 298,
   "coverage": 1,
   "real": {
     "theorems": 532,
@@ -49,14 +49,19 @@
       ]
     },
     {
-      "id": "b374ab7c4f",
+      "id": "5b1b2a1b63",
       "kind": "sentence",
       "line": 86,
-      "text": "Let $M(t)=\\|\\omega(t)\\|_{L^\\infty}$ denote the vorticity sup-norm along a physical solution of the three-dimensional incompressible Navier--Stokes equations with smooth, divergence-free, finite-energy initial data and viscosity $\\nu>0$.",
-      "refs": [],
-      "status": "silent",
+      "text": "Let $M(t)=\\|\\omega(t)\\|_{L^\\infty}$ denote the vorticity sup-norm (\\lean{vorticity_sup_norm}) along a physical solution (\\lean{IsPhysicalNSSolution}) of the three-dimensional incompressible Navier--Stokes equations with smooth, divergence-free, finite-energy initial data and viscosity $\\nu>0$.",
+      "refs": [
+        "vorticity_sup_norm",
+        "IsPhysicalNSSolution"
+      ],
+      "status": "verified",
       "notes": [
-        "mathematical content with no Lean mapping"
+        "\\lean{vorticity_sup_norm} ambiguous: ConditionalRegularity.vorticity_sup_norm, NavierStokes3D.vorticity_sup_norm",
+        "ConditionalRegularity.vorticity_sup_norm | NavierStokes3D.vorticity_sup_norm [def] axioms: propext, Classical.choice, Quot.sound",
+        "NavierStokes3D.IsPhysicalNSSolution [def] axioms: propext, Classical.choice, Quot.sound"
       ]
     },
     {
@@ -176,14 +181,19 @@
       "notes": []
     },
     {
-      "id": "d3fecb1c0b",
+      "id": "4d4df64900",
       "kind": "sentence",
       "line": 93,
-      "text": "The full tethered bracket $\\{F,G\\}_{\\Tf}=\\{F,G\\}_{\\mathrm{cl}}+T(F,G)$ is of \\emph{metriplectic type}: an antisymmetric Lie--Poisson part plus a symmetric, negative-semidefinite tether $T$.",
-      "refs": [],
-      "status": "silent",
+      "text": "The full tethered bracket $\\{F,G\\}_{\\Tf}=\\{F,G\\}_{\\mathrm{cl}}+T(F,G)$ is of \\emph{metriplectic type}: an antisymmetric Lie--Poisson part plus a symmetric (\\lean{tetherKernel_symmetric}), negative-semidefinite (\\lean{tetherKernel_diagonal_nonpos}) tether $T$; antisymmetry of the Lie--Poisson part is cited from \\cite{Arnold1966}, not formalized.",
+      "refs": [
+        "tetherKernel_symmetric",
+        "tetherKernel_diagonal_nonpos"
+      ],
+      "status": "open",
       "notes": [
-        "mathematical content with no Lean mapping"
+        "FrohmanianTether.tetherKernel_symmetric [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.tetherKernel_diagonal_nonpos [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "open: not formalized"
       ]
     },
     {
@@ -196,14 +206,16 @@
       "notes": []
     },
     {
-      "id": "b25bff4fea",
+      "id": "b4033c8102",
       "kind": "sentence",
       "line": 93,
-      "text": "Because $T$ is symmetric and degenerate on the kinetic energy (C2), $T(M,H)=0$ for every functional $M$, so the bracket contributes \\emph{no} damping to the evolution of any functional, including $M(t)=\\|\\omega\\|_{L^\\infty}$: the damping coefficient derived from the bracket is $0$.",
-      "refs": [],
-      "status": "silent",
+      "text": "Because $T$ is symmetric and degenerate on the kinetic energy (C2), $T(M,H)=0$ for every functional $M$ (\\lean{tetherKernel_left_H_zero}), so the bracket contributes \\emph{no} damping to the evolution of any functional, including $M(t)=\\|\\omega\\|_{L^\\infty}$: the damping coefficient derived from the bracket is $0$.",
+      "refs": [
+        "tetherKernel_left_H_zero"
+      ],
+      "status": "verified",
       "notes": [
-        "mathematical content with no Lean mapping"
+        "Combined.tetherKernel_left_H_zero [theorem] axioms: propext, Classical.choice, Quot.sound"
       ]
     },
     {
@@ -252,48 +264,52 @@
       "notes": []
     },
     {
-      "id": "d4aad09f42",
+      "id": "f4ef5554ea",
       "kind": "sentence",
       "line": 101,
-      "text": "The incompressible Navier--Stokes equations on $\\T=\\R^3/\\mathbb{Z}^3$ (or on $\\R^3$ with finite energy) are \\begin{equation}\\label{eq:NS} \\partial_t u+(u\\cdot\\nabla)u+\\nabla p=\\nu\\Delta u,\\qquad \\nabla\\cdot u=0,\\qquad u(0)=u_0, \\end{equation} with $\\nu>0$.",
-      "refs": [],
-      "status": "silent",
+      "text": "The incompressible Navier--Stokes equations on $\\T=\\R^3/\\mathbb{Z}^3$ (or on $\\R^3$ with finite energy) are (Lean: \\lean{NS_PDE}) \\begin{equation}\\label{eq:NS} \\partial_t u+(u\\cdot\\nabla)u+\\nabla p=\\nu\\Delta u,\\qquad \\nabla\\cdot u=0,\\qquad u(0)=u_0,\\qquad\\text{(\\lean{NS_PDE})} \\end{equation} with $\\nu>0$.",
+      "refs": [
+        "NS_PDE"
+      ],
+      "status": "verified",
       "notes": [
-        "mathematical content with no Lean mapping"
+        "NavierStokes3D.NS_PDE [def] axioms: propext, Classical.choice, Quot.sound"
       ]
     },
     {
-      "id": "ebc889f262",
+      "id": "13f4b870a0",
       "kind": "display",
       "line": 101,
-      "text": "\\begin{equation}\\label{eq:NS} \\partial_t u+(u\\cdot\\nabla)u+\\nabla p=\\nu\\Delta u,\\qquad \\nabla\\cdot u=0,\\qquad u(0)=u_0, \\end{equation}",
-      "refs": [],
+      "text": "\\begin{equation}\\label{eq:NS} \\partial_t u+(u\\cdot\\nabla)u+\\nabla p=\\nu\\Delta u,\\qquad \\nabla\\cdot u=0,\\qquad u(0)=u_0,\\qquad\\text{(\\lean{NS_PDE})} \\end{equation}",
+      "refs": [
+        "NS_PDE"
+      ],
       "env": "equation",
-      "status": "silent",
+      "status": "verified",
       "notes": [
-        "mathematical content with no Lean mapping"
+        "NavierStokes3D.NS_PDE [def] axioms: propext, Classical.choice, Quot.sound"
       ]
     },
     {
-      "id": "32b42d8743",
+      "id": "86b7472692",
       "kind": "sentence",
       "line": 105,
-      "text": "Taking the curl yields the vorticity transport equation for $\\omega=\\nabla\\times u$: \\begin{equation}\\label{eq:vort} \\partial_t\\omega+(u\\cdot\\nabla)\\omega=(\\omega\\cdot\\nabla)u+\\nu\\Delta\\omega .",
+      "text": "Taking the curl yields (standard calculation, not formalized here) the vorticity transport equation for $\\omega=\\nabla\\times u$: \\begin{equation}\\label{eq:vort} \\partial_t\\omega+(u\\cdot\\nabla)\\omega=(\\omega\\cdot\\nabla)u+\\nu\\Delta\\omega .",
       "refs": [],
-      "status": "silent",
+      "status": "open",
       "notes": [
-        "mathematical content with no Lean mapping"
+        "open: not formalized"
       ]
     },
     {
-      "id": "522aee6d32",
+      "id": "1a071f8635",
       "kind": "sentence",
       "line": 108,
-      "text": "\\end{equation} By the Beale--Kato--Majda theorem \\cite{BKM1984}, a smooth solution can be continued past $T$ whenever $\\int_0^T\\|\\omega(t)\\|_{L^\\infty}\\,dt<\\infty$.",
+      "text": "\\end{equation} By the Beale--Kato--Majda theorem \\cite{BKM1984} (cited, not formalized), a smooth solution can be continued past $T$ whenever $\\int_0^T\\|\\omega(t)\\|_{L^\\infty}\\,dt<\\infty$.",
       "refs": [],
-      "status": "silent",
+      "status": "open",
       "notes": [
-        "mathematical content with no Lean mapping"
+        "open: not formalized"
       ]
     },
     {
@@ -308,26 +324,26 @@
       ]
     },
     {
-      "id": "4646b44276",
+      "id": "c39ee01ab5",
       "kind": "sentence",
       "line": 109,
-      "text": "Obtaining such a bound for arbitrary large smooth data is the core difficulty of the Clay Millennium Problem \\cite{Fefferman2006}: the vortex-stretching term $(\\omega\\cdot\\nabla)u$ is supercritical with respect to the natural parabolic scaling \\begin{equation}\\label{eq:scaling} u_\\lambda(x,t)=\\lambda u(\\lambda x,\\lambda^2t),\\qquad \\omega_\\lambda(x,t)=\\lambda^2\\omega(\\lambda x,\\lambda^2 t), \\end{equation} which leaves \\eqref{eq:NS} invariant at fixed $\\nu$.",
+      "text": "Obtaining such a bound for arbitrary large smooth data is the core difficulty of the Clay Millennium Problem \\cite{Fefferman2006} (background, not formalized): the vortex-stretching term $(\\omega\\cdot\\nabla)u$ is supercritical with respect to the natural parabolic scaling \\begin{equation}\\label{eq:scaling} u_\\lambda(x,t)=\\lambda u(\\lambda x,\\lambda^2t),\\qquad \\omega_\\lambda(x,t)=\\lambda^2\\omega(\\lambda x,\\lambda^2 t),\\qquad\\text{(standard; not formalized)} \\end{equation} which leaves \\eqref{eq:NS} invariant at fixed $\\nu$.",
       "refs": [],
-      "status": "silent",
+      "status": "open",
       "notes": [
-        "mathematical content with no Lean mapping"
+        "open: not formalized"
       ]
     },
     {
-      "id": "b867b1ffac",
+      "id": "b8d20f7dc2",
       "kind": "display",
       "line": 109,
-      "text": "\\begin{equation}\\label{eq:scaling} u_\\lambda(x,t)=\\lambda u(\\lambda x,\\lambda^2t),\\qquad \\omega_\\lambda(x,t)=\\lambda^2\\omega(\\lambda x,\\lambda^2 t), \\end{equation}",
+      "text": "\\begin{equation}\\label{eq:scaling} u_\\lambda(x,t)=\\lambda u(\\lambda x,\\lambda^2t),\\qquad \\omega_\\lambda(x,t)=\\lambda^2\\omega(\\lambda x,\\lambda^2 t),\\qquad\\text{(standard; not formalized)} \\end{equation}",
       "refs": [],
       "env": "equation",
-      "status": "silent",
+      "status": "open",
       "notes": [
-        "mathematical content with no Lean mapping"
+        "open: not formalized"
       ]
     },
     {
@@ -370,14 +386,16 @@
       ]
     },
     {
-      "id": "d9fc1b403c",
+      "id": "3091716c58",
       "kind": "sentence",
       "line": 117,
-      "text": "The same degeneracy implies that the tether induces no damping of $M(t)$ (Section~\\ref{sec:damping}).",
-      "refs": [],
-      "status": "silent",
+      "text": "The same degeneracy implies that the tether induces no damping of $M(t)$ (Section~\\ref{sec:damping}; \\lean{tetherKernel_left_H_zero}).",
+      "refs": [
+        "tetherKernel_left_H_zero"
+      ],
+      "status": "verified",
       "notes": [
-        "mathematical content with no Lean mapping"
+        "Combined.tetherKernel_left_H_zero [theorem] axioms: propext, Classical.choice, Quot.sound"
       ]
     },
     {
@@ -501,14 +519,16 @@
       "notes": []
     },
     {
-      "id": "6194b9d095",
+      "id": "bbc44b4120",
       "kind": "sentence",
       "line": 139,
-      "text": "\\textbf{Clear separation of proved implications vs.\\ open premises:} The implication $\\text{(K)}+\\text{(R)}+\\text{(U)}\\implies\\text{(the conclusion of Theorem~\\ref{thm:main})}$ is kernel-verified \\emph{as an implication}.",
-      "refs": [],
-      "status": "silent",
+      "text": "\\textbf{Clear separation of proved implications vs.\\ open premises:} The implication $\\text{(K)}+\\text{(R)}+\\text{(U)}\\implies\\text{(the conclusion of Theorem~\\ref{thm:main})}$ is kernel-verified \\emph{as an implication} (\\lean{Combined.combined_conditional_capstone}).",
+      "refs": [
+        "Combined.combined_conditional_capstone"
+      ],
+      "status": "verified",
       "notes": [
-        "mathematical content with no Lean mapping"
+        "Combined.combined_conditional_capstone [theorem] axioms: propext, Classical.choice, Quot.sound"
       ]
     },
     {
@@ -523,14 +543,16 @@
       ]
     },
     {
-      "id": "09e0686ec3",
+      "id": "22d877f0a2",
       "kind": "sentence",
       "line": 139,
-      "text": "Non-vacuity at $u_0=0$ shows only that the hypotheses are jointly satisfiable in a trivial case.",
-      "refs": [],
-      "status": "silent",
+      "text": "Non-vacuity at $u_0=0$ shows only that the hypotheses are jointly satisfiable in a trivial case (\\lean{conditional_regularity_nonvacuous_at_zero}).",
+      "refs": [
+        "conditional_regularity_nonvacuous_at_zero"
+      ],
+      "status": "verified",
       "notes": [
-        "mathematical content with no Lean mapping"
+        "FrohmanianTether.ClayStatements.conditional_regularity_nonvacuous_at_zero [theorem] axioms: propext, Classical.choice, Quot.sound"
       ]
     },
     {
@@ -635,47 +657,55 @@
       ]
     },
     {
-      "id": "078aab0b45",
+      "id": "a133cb60da",
       "kind": "sentence",
       "line": 151,
-      "text": "$s\\mapsto u(s,x)$ is pointwise differentiable at $t$ for every $x\\in\\R^3$;",
-      "refs": [],
-      "status": "silent",
+      "text": "$s\\mapsto u(s,x)$ is pointwise differentiable at $t$ for every $x\\in\\R^3$ (field of \\lean{IsPhysicalNSSolution});",
+      "refs": [
+        "IsPhysicalNSSolution"
+      ],
+      "status": "verified",
       "notes": [
-        "mathematical content with no Lean mapping"
+        "NavierStokes3D.IsPhysicalNSSolution [def] axioms: propext, Classical.choice, Quot.sound"
       ]
     },
     {
-      "id": "77f3069d7d",
+      "id": "fc93780c64",
       "kind": "sentence",
       "line": 152,
-      "text": "$x\\mapsto u(t,x)$ is continuous and has finite kinetic energy $\\int_{\\R^3}\\|u(t,x)\\|^2\\,dx<\\infty$;",
-      "refs": [],
-      "status": "silent",
+      "text": "$x\\mapsto u(t,x)$ is continuous and has finite kinetic energy $\\int_{\\R^3}\\|u(t,x)\\|^2\\,dx<\\infty$ (field of \\lean{IsPhysicalNSSolution});",
+      "refs": [
+        "IsPhysicalNSSolution"
+      ],
+      "status": "verified",
       "notes": [
-        "mathematical content with no Lean mapping"
+        "NavierStokes3D.IsPhysicalNSSolution [def] axioms: propext, Classical.choice, Quot.sound"
       ]
     },
     {
-      "id": "33467a08fe",
+      "id": "d8278dbf73",
       "kind": "sentence",
       "line": 153,
-      "text": "$u$ obeys the classical Leray $L^2$ energy inequality $\\int_{\\R^3}\\|u(t,x)\\|^2\\,dx\\le\\int_{\\R^3}\\|u(0,x)\\|^2\\,dx$;",
-      "refs": [],
-      "status": "silent",
+      "text": "$u$ obeys the classical Leray $L^2$ energy inequality $\\int_{\\R^3}\\|u(t,x)\\|^2\\,dx\\le\\int_{\\R^3}\\|u(0,x)\\|^2\\,dx$ (field of \\lean{IsPhysicalNSSolution});",
+      "refs": [
+        "IsPhysicalNSSolution"
+      ],
+      "status": "verified",
       "notes": [
-        "mathematical content with no Lean mapping"
+        "NavierStokes3D.IsPhysicalNSSolution [def] axioms: propext, Classical.choice, Quot.sound"
       ]
     },
     {
-      "id": "c34dbd4a79",
+      "id": "dbb8f67693",
       "kind": "sentence",
       "line": 154,
-      "text": "$u(t)=u(0)$ for $t\\le0$ (initial-value convention on $(-\\infty,0]$).",
-      "refs": [],
-      "status": "silent",
+      "text": "$u(t)=u(0)$ for $t\\le0$ (initial-value convention on $(-\\infty,0]$; field of \\lean{IsPhysicalNSSolution}).",
+      "refs": [
+        "IsPhysicalNSSolution"
+      ],
+      "status": "verified",
       "notes": [
-        "mathematical content with no Lean mapping"
+        "NavierStokes3D.IsPhysicalNSSolution [def] axioms: propext, Classical.choice, Quot.sound"
       ]
     },
     {
@@ -758,14 +788,16 @@
       "notes": []
     },
     {
-      "id": "ccf6034796",
+      "id": "373c0fdf36",
       "kind": "sentence",
       "line": 168,
-      "text": "On the coadjoint orbit $\\mathcal O$ of the group $\\mathrm{SDiff}(\\T)$ of volume-preserving diffeomorphisms, the classical Kirillov--Kostant--Souriau / Arnold Lie--Poisson bracket \\cite{Arnold1966,ArnoldKhesin1998} is \\[ \\{F,G\\}_{\\mathrm{cl}}(\\omega)=\\int_{\\T}\\omega\\cdot\\Bigl(\\frac{\\delta F}{\\delta\\omega}\\times\\frac{\\delta G}{\\delta\\omega}\\Bigr)\\,dV .",
-      "refs": [],
-      "status": "silent",
+      "text": "On the coadjoint orbit $\\mathcal O$ of the group $\\mathrm{SDiff}(\\T)$ of volume-preserving diffeomorphisms, the classical Kirillov--Kostant--Souriau / Arnold Lie--Poisson bracket \\cite{Arnold1966,ArnoldKhesin1998} (Lean: \\lean{ClassicalBracket}) is \\[ \\{F,G\\}_{\\mathrm{cl}}(\\omega)=\\int_{\\T}\\omega\\cdot\\Bigl(\\frac{\\delta F}{\\delta\\omega}\\times\\frac{\\delta G}{\\delta\\omega}\\Bigr)\\,dV .",
+      "refs": [
+        "ClassicalBracket"
+      ],
+      "status": "verified",
       "notes": [
-        "mathematical content with no Lean mapping"
+        "ArnoldGeometric.ClassicalBracket [def] axioms: propext, Classical.choice, Quot.sound"
       ]
     },
     {
@@ -833,14 +865,16 @@
       ]
     },
     {
-      "id": "e0bef77fea",
+      "id": "c0397190a0",
       "kind": "sentence",
       "line": 194,
-      "text": "If $\\|u\\|_{L^2}\\ne0$, $\\Pi_u u=u-(\\langle u,u\\rangle_{L^2}/\\|u\\|_{L^2}^2)u=0$, so the projected factor $\\Pi_u(\\delta H/\\delta\\omega)$ vanishes pointwise.",
-      "refs": [],
-      "status": "silent",
+      "text": "If $\\|u\\|_{L^2}\\ne0$, $\\Pi_u u=u-(\\langle u,u\\rangle_{L^2}/\\|u\\|_{L^2}^2)u=0$, so the projected factor $\\Pi_u(\\delta H/\\delta\\omega)$ vanishes pointwise (\\lean{projection_orthogonal_to_u}).",
+      "refs": [
+        "projection_orthogonal_to_u"
+      ],
+      "status": "verified",
       "notes": [
-        "mathematical content with no Lean mapping"
+        "ForMathlib.projection_orthogonal_to_u [theorem] axioms: propext, Classical.choice, Quot.sound"
       ]
     },
     {
@@ -857,14 +891,16 @@
       ]
     },
     {
-      "id": "644a356774",
+      "id": "4359011f28",
       "kind": "sentence",
       "line": 194,
-      "text": "Thus $\\{F,H\\}_{\\Tf}=\\{F,H\\}_{\\mathrm{cl}}$ for all $F$: the reversible Euler vector field generated by $H$ is preserved unmodified.",
-      "refs": [],
-      "status": "silent",
+      "text": "Thus $\\{F,H\\}_{\\Tf}=\\{F,H\\}_{\\mathrm{cl}}$ for all $F$: the reversible Euler vector field generated by $H$ is preserved unmodified (\\lean{tetherKernel_degenerates_on_kinetic_energy}).",
+      "refs": [
+        "tetherKernel_degenerates_on_kinetic_energy"
+      ],
+      "status": "verified",
       "notes": [
-        "mathematical content with no Lean mapping"
+        "FrohmanianTether.tetherKernel_degenerates_on_kinetic_energy [theorem] axioms: propext, Classical.choice, Quot.sound"
       ]
     },
     {
@@ -894,36 +930,58 @@
       ]
     },
     {
-      "id": "4b5e7122de",
+      "id": "dcc859b3c1",
       "kind": "sentence",
       "line": 198,
-      "text": "Hence \\[ \\{F,G\\}_{\\Tf}=\\underbrace{\\{F,G\\}_{\\mathrm{cl}}}_{\\text{antisymmetric, Lie--Poisson}}+\\underbrace{T(F,G)}_{\\text{symmetric, }\\le0} \\] is a bracket of \\emph{metriplectic type} in the sense of Morrison \\cite{Morrison1986}.",
-      "refs": [],
-      "status": "silent",
+      "text": "Hence \\[ \\{F,G\\}_{\\Tf}=\\underbrace{\\{F,G\\}_{\\mathrm{cl}}}_{\\text{antisymmetric, Lie--Poisson}}+\\underbrace{T(F,G)}_{\\text{symmetric, }\\le0}\\qquad\\text{(\\lean{tetherKernel_symmetric}, \\lean{tetherKernel_diagonal_nonpos})} \\] is a bracket of \\emph{metriplectic type} in the sense of Morrison \\cite{Morrison1986} (symmetry and sign: \\lean{tetherKernel_symmetric}, \\lean{tetherKernel_diagonal_nonpos}; antisymmetry of the classical part is cited, not formalized).",
+      "refs": [
+        "tetherKernel_symmetric",
+        "tetherKernel_diagonal_nonpos"
+      ],
+      "status": "open",
       "notes": [
-        "mathematical content with no Lean mapping"
+        "FrohmanianTether.tetherKernel_symmetric [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.tetherKernel_diagonal_nonpos [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "open: not formalized"
       ]
     },
     {
-      "id": "f4b54a2b48",
+      "id": "c0c63ff0a6",
       "kind": "display",
       "line": 198,
-      "text": "\\[ \\{F,G\\}_{\\Tf}=\\underbrace{\\{F,G\\}_{\\mathrm{cl}}}_{\\text{antisymmetric, Lie--Poisson}}+\\underbrace{T(F,G)}_{\\text{symmetric, }\\le0} \\]",
-      "refs": [],
-      "status": "silent",
+      "text": "\\[ \\{F,G\\}_{\\Tf}=\\underbrace{\\{F,G\\}_{\\mathrm{cl}}}_{\\text{antisymmetric, Lie--Poisson}}+\\underbrace{T(F,G)}_{\\text{symmetric, }\\le0}\\qquad\\text{(\\lean{tetherKernel_symmetric}, \\lean{tetherKernel_diagonal_nonpos})} \\]",
+      "refs": [
+        "tetherKernel_symmetric",
+        "tetherKernel_diagonal_nonpos"
+      ],
+      "status": "verified",
       "notes": [
-        "mathematical content with no Lean mapping"
+        "FrohmanianTether.tetherKernel_symmetric [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.tetherKernel_diagonal_nonpos [theorem] axioms: propext, Classical.choice, Quot.sound"
       ]
     },
     {
-      "id": "26eae40b56",
+      "id": "396b00f262",
       "kind": "sentence",
       "line": 202,
-      "text": "The full bracket is \\textbf{not} antisymmetric, and \\textbf{no Jacobi identity is claimed for it}; only its antisymmetric part $\\{\\cdot,\\cdot\\}_{\\mathrm{cl}}$ is a Lie--Poisson bracket.",
+      "text": "The full bracket is \\textbf{not} antisymmetric, and \\textbf{no Jacobi identity is claimed for it}; only its antisymmetric part $\\{\\cdot,\\cdot\\}_{\\mathrm{cl}}$ is a Lie--Poisson bracket (cited, not formalized).",
       "refs": [],
-      "status": "silent",
+      "status": "open",
       "notes": [
-        "mathematical content with no Lean mapping"
+        "open: not formalized"
+      ]
+    },
+    {
+      "id": "f47d187369",
+      "kind": "sentence",
+      "line": 202,
+      "text": "The symmetric part is nonzero off $H$ (\\lean{tetherKernel_strict_neg_of_orthogonal_component}).",
+      "refs": [
+        "tetherKernel_strict_neg_of_orthogonal_component"
+      ],
+      "status": "verified",
+      "notes": [
+        "FrohmanianTether.tetherKernel_strict_neg_of_orthogonal_component [theorem] axioms: propext, Classical.choice, Quot.sound"
       ]
     },
     {
@@ -936,14 +994,31 @@
       "notes": []
     },
     {
-      "id": "33dad7c3d6",
+      "id": "2c837fe0af",
       "kind": "sentence",
       "line": 204,
-      "text": "Since $\\{H,H\\}_{\\mathrm{cl}}=0$ by antisymmetry and $T(H,H)=0$ by kinetic-energy degeneracy (Proposition~\\ref{prop:degen}, condition (C2)), the tethered flow $\\dot F=\\{F,H\\}_{\\Tf}$ conserves $H$: $\\dot H=\\{H,H\\}_{\\mathrm{cl}}+T(H,H)=0$.",
-      "refs": [],
-      "status": "silent",
+      "text": "Since $\\{H,H\\}_{\\mathrm{cl}}=0$ by antisymmetry (not formalized) and $T(H,H)=0$ by kinetic-energy degeneracy (Proposition~\\ref{prop:degen}, condition (C2), \\lean{tetherKernel_degenerates_on_kinetic_energy}), the tethered flow $\\dot F=\\{F,H\\}_{\\Tf}$ conserves $H$: $\\dot H=\\{H,H\\}_{\\mathrm{cl}}+T(H,H)=0$.",
+      "refs": [
+        "tetherKernel_degenerates_on_kinetic_energy"
+      ],
+      "status": "open",
       "notes": [
-        "mathematical content with no Lean mapping"
+        "FrohmanianTether.tetherKernel_degenerates_on_kinetic_energy [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "open: not formalized"
+      ]
+    },
+    {
+      "id": "4a1d222d2d",
+      "kind": "sentence",
+      "line": 204,
+      "text": "Here $T(H,H)=0$ is \\lean{tetherKernel_degenerates_on_kinetic_energy}; $\\{H,H\\}_{\\mathrm{cl}}=0$ is not formalized.",
+      "refs": [
+        "tetherKernel_degenerates_on_kinetic_energy"
+      ],
+      "status": "open",
+      "notes": [
+        "FrohmanianTether.tetherKernel_degenerates_on_kinetic_energy [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "open: not formalized"
       ]
     },
     {
@@ -1086,14 +1161,16 @@
       ]
     },
     {
-      "id": "7234dbaa7e",
+      "id": "cddc98bcb8",
       "kind": "sentence",
       "line": 212,
-      "text": "It acts by scalar composition $g\\cdot\\omega=\\omega\\circ g^{-1}$, which is not the geometric push-forward $(Dg\\,\\omega)\\circ g^{-1}$; no smoothness is imposed, and \\texttt{T3} is \\texttt{EuclideanSpace ℝ (Fin 3)}, not the quotient torus.",
-      "refs": [],
-      "status": "silent",
+      "text": "It (\\lean{ConcreteSDiff.SDiffConcrete}) acts by scalar composition $g\\cdot\\omega=\\omega\\circ g^{-1}$, which is not the geometric push-forward $(Dg\\,\\omega)\\circ g^{-1}$; no smoothness is imposed, and \\texttt{T3} is \\texttt{EuclideanSpace ℝ (Fin 3)}, not the quotient torus.",
+      "refs": [
+        "ConcreteSDiff.SDiffConcrete"
+      ],
+      "status": "verified",
       "notes": [
-        "mathematical content with no Lean mapping"
+        "ConcreteSDiff.SDiffConcrete [def] axioms: propext, Classical.choice, Quot.sound"
       ]
     },
     {
@@ -1230,14 +1307,14 @@
       "notes": []
     },
     {
-      "id": "74617cc9a0",
+      "id": "79eb7d79ab",
       "kind": "sentence",
       "line": 235,
-      "text": "Whether $M(t)$ satisfies such an inequality is the unresolved premise of Section~\\ref{sec:damping}; nothing in this section establishes it.",
+      "text": "Whether $M(t)$ satisfies such an inequality is open; it is the unresolved premise of Section~\\ref{sec:damping}; nothing in this section establishes it.",
       "refs": [],
-      "status": "silent",
+      "status": "open",
       "notes": [
-        "mathematical content with no Lean mapping"
+        "open: is open"
       ]
     },
     {
@@ -1632,25 +1709,30 @@
       ]
     },
     {
-      "id": "9353dc5c53",
+      "id": "e4239e7625",
       "kind": "sentence",
       "line": 300,
-      "text": "On tangent variations $(\\delta u,\\delta v)\\in T_\\omega\\mathcal{O}$, the associated tethered pairing is \\begin{equation}\\label{eq:orig_2form} \\Tf(\\delta u,\\delta v) = \\int_{\\T}\\omega\\cdot(\\delta u\\times\\delta v)\\,dV - \\kappa\\int_{\\T}|\\omega|^2(\\delta u\\cdot\\delta v)\\,dV.",
-      "refs": [],
-      "status": "silent",
+      "text": "On tangent variations $(\\delta u,\\delta v)\\in T_\\omega\\mathcal{O}$, the associated tethered pairing (original programme; not formalized as stated, the formalized kernel is \\lean{TetherKernel}) is \\begin{equation}\\label{eq:orig_2form} \\Tf(\\delta u,\\delta v) = \\int_{\\T}\\omega\\cdot(\\delta u\\times\\delta v)\\,dV - \\kappa\\int_{\\T}|\\omega|^2(\\delta u\\cdot\\delta v)\\,dV.",
+      "refs": [
+        "TetherKernel"
+      ],
+      "status": "open",
       "notes": [
-        "mathematical content with no Lean mapping"
+        "FrohmanianTether.TetherKernel [def] axioms: propext, Classical.choice, Quot.sound",
+        "open: not formalized"
       ]
     },
     {
-      "id": "66e074eae0",
+      "id": "0f28d0ba38",
       "kind": "sentence",
       "line": 303,
-      "text": "\\end{equation} Because $\\Pi_u u = 0$ for $u=\\delta H/\\delta\\omega$, the tether is strictly degenerate along the kinetic-energy Hamiltonian ($B(F,H)\\equiv0$, proved in Proposition~\\ref{prop:degen}), so the reversible Hamiltonian vector field generated by $H$ remains the exact classical Euler vector field.",
-      "refs": [],
-      "status": "silent",
+      "text": "\\end{equation} Because $\\Pi_u u = 0$ for $u=\\delta H/\\delta\\omega$, the tether is strictly degenerate along the kinetic-energy Hamiltonian ($B(F,H)\\equiv0$, proved in Proposition~\\ref{prop:degen}, \\lean{tetherKernel_degenerates_on_kinetic_energy}), so the reversible Hamiltonian vector field generated by $H$ remains the exact classical Euler vector field.",
+      "refs": [
+        "tetherKernel_degenerates_on_kinetic_energy"
+      ],
+      "status": "verified",
       "notes": [
-        "mathematical content with no Lean mapping"
+        "FrohmanianTether.tetherKernel_degenerates_on_kinetic_energy [theorem] axioms: propext, Classical.choice, Quot.sound"
       ]
     },
     {
@@ -1672,14 +1754,14 @@
       "notes": []
     },
     {
-      "id": "08a6f6db0d",
+      "id": "aed4a514c0",
       "kind": "sentence",
       "line": 306,
-      "text": "\\label{sec:damping} The original programme derived a damping term for $M(t)$ from the tether.",
+      "text": "\\label{sec:damping} The original programme derived a damping term for $M(t)$ from the tether; that derivation is not established, as shown below.",
       "refs": [],
-      "status": "silent",
+      "status": "open",
       "notes": [
-        "mathematical content with no Lean mapping"
+        "open: not established"
       ]
     },
     {
@@ -1692,47 +1774,55 @@
       "notes": []
     },
     {
-      "id": "5471dd38df",
+      "id": "12283fb2ef",
       "kind": "sentence",
       "line": 307,
-      "text": "Let $\\mathcal M$ be any functional (e.g.\\ a smoothed version of $M(t)=\\|\\omega\\|_{L^\\infty}$).",
-      "refs": [],
-      "status": "silent",
+      "text": "Let $\\mathcal M$ be any functional (\\lean{FunctionalDerivative} gives its derivative) (e.g.\\ a smoothed version of $M(t)=\\|\\omega\\|_{L^\\infty}$).",
+      "refs": [
+        "FunctionalDerivative"
+      ],
+      "status": "verified",
       "notes": [
-        "mathematical content with no Lean mapping"
+        "ArnoldGeometric.FunctionalDerivative [def] axioms: propext, Classical.choice, Quot.sound"
       ]
     },
     {
-      "id": "fdc45801f0",
+      "id": "0c98818c07",
       "kind": "sentence",
       "line": 307,
-      "text": "Along the tethered flow, \\[ \\dot{\\mathcal M}=\\{\\mathcal M,H\\}_{\\mathrm{cl}}+T(\\mathcal M,H), \\] and $T(\\mathcal M,H)=T(H,\\mathcal M)=0$ by symmetry of $T$ and (C2), because $\\Pi_u(\\delta H/\\delta\\omega)=\\Pi_u u=0$.",
-      "refs": [],
-      "status": "silent",
+      "text": "Along the tethered flow, \\[ \\dot{\\mathcal M}=\\{\\mathcal M,H\\}_{\\mathrm{cl}}+T(\\mathcal M,H),\\qquad\\text{(\\lean{tetherKernel_left_H_zero})} \\] and $T(\\mathcal M,H)=T(H,\\mathcal M)=0$ by symmetry of $T$ and (C2) (\\lean{tetherKernel_left_H_zero}), because $\\Pi_u(\\delta H/\\delta\\omega)=\\Pi_u u=0$.",
+      "refs": [
+        "tetherKernel_left_H_zero"
+      ],
+      "status": "verified",
       "notes": [
-        "mathematical content with no Lean mapping"
+        "Combined.tetherKernel_left_H_zero [theorem] axioms: propext, Classical.choice, Quot.sound"
       ]
     },
     {
-      "id": "1e8582d995",
+      "id": "52e5335fec",
       "kind": "display",
       "line": 307,
-      "text": "\\[ \\dot{\\mathcal M}=\\{\\mathcal M,H\\}_{\\mathrm{cl}}+T(\\mathcal M,H), \\]",
-      "refs": [],
-      "status": "silent",
+      "text": "\\[ \\dot{\\mathcal M}=\\{\\mathcal M,H\\}_{\\mathrm{cl}}+T(\\mathcal M,H),\\qquad\\text{(\\lean{tetherKernel_left_H_zero})} \\]",
+      "refs": [
+        "tetherKernel_left_H_zero"
+      ],
+      "status": "verified",
       "notes": [
-        "mathematical content with no Lean mapping"
+        "Combined.tetherKernel_left_H_zero [theorem] axioms: propext, Classical.choice, Quot.sound"
       ]
     },
     {
-      "id": "28d9e9870d",
+      "id": "91a54a6ea3",
       "kind": "sentence",
       "line": 311,
-      "text": "Hence the damping coefficient contributed by the tether is exactly $\\mathbf{0}$: the tethered evolution of every functional coincides with its Euler evolution, and the negative diagonal values $T(F,F)\\le0$ never enter the dynamics generated by $H$.",
-      "refs": [],
-      "status": "silent",
+      "text": "Hence the damping coefficient contributed by the tether is exactly $\\mathbf{0}$ (\\lean{tetherKernel_left_H_zero}): the tethered evolution of every functional coincides with its Euler evolution, and the negative diagonal values $T(F,F)\\le0$ never enter the dynamics generated by $H$.",
+      "refs": [
+        "tetherKernel_left_H_zero"
+      ],
+      "status": "verified",
       "notes": [
-        "mathematical content with no Lean mapping"
+        "Combined.tetherKernel_left_H_zero [theorem] axioms: propext, Classical.choice, Quot.sound"
       ]
     },
     {
@@ -1796,14 +1886,14 @@
       ]
     },
     {
-      "id": "15c20fcf8a",
+      "id": "9c1906e957",
       "kind": "sentence",
       "line": 315,
-      "text": "Candidate repair routes---for example an explicit dissipative (metriplectic) bracket $[F,H]_{\\mathrm{diss}}$ with a nonzero $[M,H]$, a time-integrated or non-local mechanism, or a scale-compensated coefficient (Section~\\ref{sec:open})---are listed only as \\emph{open candidates}; none is carried out here.",
+      "text": "Candidate repair routes---for example an explicit dissipative (metriplectic) bracket $[F,H]_{\\mathrm{diss}}$ with a nonzero $[M,H]$, a time-integrated or non-local mechanism, or a scale-compensated coefficient (Section~\\ref{sec:open})---are listed only as candidates and remain open; none is carried out here.",
       "refs": [],
-      "status": "silent",
+      "status": "open",
       "notes": [
-        "mathematical content with no Lean mapping"
+        "open: remain open"
       ]
     },
     {
@@ -1830,14 +1920,18 @@
       ]
     },
     {
-      "id": "f2338c4b85",
+      "id": "24320bb543",
       "kind": "sentence",
       "line": 319,
-      "text": "The central analytic bridge of the original programme connects the quadratic feedback of the tether kernel to the pointwise vortex-stretching pairing at a spatial maximum $x_*$ of $|\\omega|$ (where $\\|\\omega(x_*)\\|=M(t)=\\|\\omega\\|_{L^\\infty}$).",
-      "refs": [],
-      "status": "silent",
+      "text": "The central analytic bridge of the original programme connects the quadratic feedback of the tether kernel to the pointwise vortex-stretching pairing (\\lean{reduced_pairing_of_unmodified_and_tether}, \\lean{tethered_stretching_of_weight}) at a spatial maximum $x_*$ of $|\\omega|$ (where $\\|\\omega(x_*)\\|=M(t)=\\|\\omega\\|_{L^\\infty}$).",
+      "refs": [
+        "reduced_pairing_of_unmodified_and_tether",
+        "tethered_stretching_of_weight"
+      ],
+      "status": "verified",
       "notes": [
-        "mathematical content with no Lean mapping"
+        "FrohmanianTether.reduced_pairing_of_unmodified_and_tether [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.tethered_stretching_of_weight [theorem] axioms: propext, Classical.choice, Quot.sound"
       ]
     },
     {
@@ -1970,14 +2064,14 @@
       "notes": []
     },
     {
-      "id": "e9c272f87e",
+      "id": "0799a712e6",
       "kind": "sentence",
       "line": 336,
-      "text": "In Section~3 and Appendix~A (Item~10) of \\emph{Frohmanian\\_Tether\\_Final\\_Submission\\_v8}, two related ODE reductions were introduced for the evolution of $M_\\varepsilon(t)=\\|\\omega_\\varepsilon(t)\\|_{L^\\infty}$:",
+      "text": "In Section~3 and Appendix~A (Item~10) of \\emph{Frohmanian\\_Tether\\_Final\\_Submission\\_v8}, two related ODE reductions (historical, not formalized as stated) were introduced for the evolution of $M_\\varepsilon(t)=\\|\\omega_\\varepsilon(t)\\|_{L^\\infty}$:",
       "refs": [],
-      "status": "silent",
+      "status": "open",
       "notes": [
-        "mathematical content with no Lean mapping"
+        "open: not formalized"
       ]
     },
     {
@@ -2062,37 +2156,37 @@
       ]
     },
     {
-      "id": "6bd363f170",
+      "id": "4f653d429b",
       "kind": "sentence",
       "line": 351,
-      "text": "Whether $M(t)$ does satisfy it is the unresolved premise of Section~\\ref{sec:damping}.",
+      "text": "Whether $M(t)$ does satisfy it is open; it is the unresolved premise of Section~\\ref{sec:damping}.",
       "refs": [],
-      "status": "silent",
+      "status": "open",
       "notes": [
-        "mathematical content with no Lean mapping"
+        "open: is open"
       ]
     },
     {
-      "id": "0aee806ed7",
+      "id": "600fb6fcab",
       "kind": "sentence",
       "line": 352,
-      "text": "\\textbf{The Original Quadratic Riccati Heuristic (from Section~3 of v8; depends on the unresolved damping premise):} In Section~3 of \\emph{v8}, an alternative constant-source quadratic Riccati heuristic was written: \\begin{equation}\\label{eq:orig_quad_riccati} \\frac{d}{dt}M_\\varepsilon(t) \\le C - \\kappa'\\,M_\\varepsilon(t)^2, \\end{equation} with comparison trajectory $y(t)=\\sqrt{C/\\kappa'}\\tanh\\bigl(\\sqrt{C\\kappa'}\\,t+\\phi_0\\bigr)$ for $y(0)<\\sqrt{C/\\kappa'}$ (and $\\coth$ for $y(0)>\\sqrt{C/\\kappa'}$), both bounded above by $\\max\\bigl(M(0),\\sqrt{C/\\kappa'}\\bigr)$.",
+      "text": "\\textbf{The Original Quadratic Riccati Heuristic (from Section~3 of v8; depends on the unresolved damping premise):} In Section~3 of \\emph{v8}, an alternative constant-source quadratic Riccati heuristic (not proved) was written: \\begin{equation}\\label{eq:orig_quad_riccati} \\frac{d}{dt}M_\\varepsilon(t) \\le C - \\kappa'\\,M_\\varepsilon(t)^2\\qquad\\text{(heuristic, not proved)} \\end{equation} with comparison trajectory $y(t)=\\sqrt{C/\\kappa'}\\tanh\\bigl(\\sqrt{C\\kappa'}\\,t+\\phi_0\\bigr)$ for $y(0)<\\sqrt{C/\\kappa'}$ (and $\\coth$ for $y(0)>\\sqrt{C/\\kappa'}$), both bounded above by $\\max\\bigl(M(0),\\sqrt{C/\\kappa'}\\bigr)$.",
       "refs": [],
-      "status": "silent",
+      "status": "open",
       "notes": [
-        "mathematical content with no Lean mapping"
+        "open: not proved"
       ]
     },
     {
-      "id": "0e6adaf7ac",
+      "id": "f43c312cce",
       "kind": "display",
       "line": 352,
-      "text": "\\begin{equation}\\label{eq:orig_quad_riccati} \\frac{d}{dt}M_\\varepsilon(t) \\le C - \\kappa'\\,M_\\varepsilon(t)^2, \\end{equation}",
+      "text": "\\begin{equation}\\label{eq:orig_quad_riccati} \\frac{d}{dt}M_\\varepsilon(t) \\le C - \\kappa'\\,M_\\varepsilon(t)^2\\qquad\\text{(heuristic, not proved)} \\end{equation}",
       "refs": [],
       "env": "equation",
-      "status": "silent",
+      "status": "open",
       "notes": [
-        "mathematical content with no Lean mapping"
+        "open: not proved"
       ]
     },
     {
@@ -2130,36 +2224,38 @@
       "notes": []
     },
     {
-      "id": "4cb5c31cc4",
+      "id": "8970a55c18",
       "kind": "sentence",
       "line": 363,
-      "text": "\\textbf{Metriplectic Viscous Completion \\cite{Morrison1986}:} The tethered bracket is already metriplectic-type, but its symmetric part is degenerate on $H$ and so dissipates nothing (Section~\\ref{sec:damping}).",
-      "refs": [],
-      "status": "silent",
+      "text": "\\textbf{Metriplectic Viscous Completion \\cite{Morrison1986}:} The tethered bracket is already metriplectic-type, but its symmetric part is degenerate on $H$ and so dissipates nothing (Section~\\ref{sec:damping}; \\lean{tetherKernel_left_H_zero}).",
+      "refs": [
+        "tetherKernel_left_H_zero"
+      ],
+      "status": "verified",
       "notes": [
-        "mathematical content with no Lean mapping"
+        "Combined.tetherKernel_left_H_zero [theorem] axioms: propext, Classical.choice, Quot.sound"
       ]
     },
     {
-      "id": "ddea4a5af4",
+      "id": "5be6d8b19e",
       "kind": "sentence",
       "line": 363,
-      "text": "Viscous dissipation $\\nu\\Delta u$ would have to be represented by a separate symmetric dissipative bracket $[F,H]_{\\mathrm{diss}}$ (an open candidate, not constructed here): \\[ \\frac{dF}{dt} = \\{F,H\\}_{\\Tf} + [F,H]_{\\mathrm{diss}}.",
+      "text": "Viscous dissipation $\\nu\\Delta u$ would have to be represented by a separate symmetric dissipative bracket $[F,H]_{\\mathrm{diss}}$ (an open candidate, not constructed here; this remains open): \\[ \\frac{dF}{dt} = \\{F,H\\}_{\\Tf} + [F,H]_{\\mathrm{diss}}.",
       "refs": [],
-      "status": "silent",
+      "status": "open",
       "notes": [
-        "mathematical content with no Lean mapping"
+        "open: remains open"
       ]
     },
     {
-      "id": "f371cc2ce8",
+      "id": "5147988c52",
       "kind": "sentence",
       "line": 366,
-      "text": "\\] In the Lean~4 statement of Theorem~\\ref{thm:main}, \\emph{if} a vorticity ceiling $M(t)\\le Y$ were available, classical Beale--Kato--Majda continuation and parabolic regularity would upgrade the solution to $C^\\infty$; no such ceiling is established here.",
+      "text": "\\] In the Lean~4 statement of Theorem~\\ref{thm:main}, \\emph{if} a vorticity ceiling $M(t)\\le Y$ were available, classical Beale--Kato--Majda continuation and parabolic regularity would upgrade the solution to $C^\\infty$; such a ceiling is not established here (BKM and parabolic regularity are cited, not formalized).",
       "refs": [],
-      "status": "silent",
+      "status": "open",
       "notes": [
-        "mathematical content with no Lean mapping"
+        "open: not established"
       ]
     },
     {
@@ -2174,14 +2270,14 @@
       ]
     },
     {
-      "id": "13a4dfdd38",
+      "id": "7836f4eab8",
       "kind": "sentence",
       "line": 368,
-      "text": "\\emph{If} a vorticity ceiling held (an open premise, Section~\\ref{sec:damping}), smooth solutions would remain in the Lipschitz/smooth class ($\\alpha=1$); no such conclusion is drawn here.",
+      "text": "\\emph{If} a vorticity ceiling held (an open premise, Section~\\ref{sec:damping}), smooth solutions would remain in the Lipschitz/smooth class ($\\alpha=1$); this is not claimed.",
       "refs": [],
-      "status": "silent",
+      "status": "open",
       "notes": [
-        "mathematical content with no Lean mapping"
+        "open: not claimed"
       ]
     },
     {
@@ -2489,14 +2585,14 @@
       "notes": []
     },
     {
-      "id": "1dc4a56960",
+      "id": "2e926a5e08",
       "kind": "sentence",
       "line": 404,
-      "text": "Fefferman's problem (B) \\cite{Fefferman2006} asks, on $\\T$ with $f\\equiv0$, for smooth spatially periodic solutions $(u,p)$ on $\\R^3\\times[0,\\infty)$.",
+      "text": "Fefferman's problem (B) \\cite{Fefferman2006} asks (background, not formalized here as such), on $\\T$ with $f\\equiv0$, for smooth spatially periodic solutions $(u,p)$ on $\\R^3\\times[0,\\infty)$.",
       "refs": [],
-      "status": "silent",
+      "status": "open",
       "notes": [
-        "mathematical content with no Lean mapping"
+        "open: not formalized"
       ]
     },
     {
@@ -2585,25 +2681,31 @@
       ]
     },
     {
-      "id": "167346328d",
+      "id": "434ffe9436",
       "kind": "sentence",
       "line": 413,
-      "text": "\\textbf{Parabolic scaling dimension of $\\kappa''$:} Under the Navier--Stokes rescaling \\eqref{eq:scaling}, $M'(t)$ scales as $\\lambda^4$, $\\CZ M(t)^2$ scales as $\\lambda^4$, and $\\kappa'' M(t)^3$ scales as $\\lambda^6$.",
-      "refs": [],
-      "status": "silent",
+      "text": "\\textbf{Parabolic scaling dimension of $\\kappa''$:} Under the Navier--Stokes rescaling \\eqref{eq:scaling}, $M'(t)$ scales as $\\lambda^4$, $\\CZ M(t)^2$ scales as $\\lambda^4$, and $\\kappa'' M(t)^3$ scales as $\\lambda^6$ (\\lean{navier_stokes_vorticity_dt_scaling_exponent}, \\lean{unnormalized_quartic_scaling_mismatch}).",
+      "refs": [
+        "navier_stokes_vorticity_dt_scaling_exponent",
+        "unnormalized_quartic_scaling_mismatch"
+      ],
+      "status": "verified",
       "notes": [
-        "mathematical content with no Lean mapping"
+        "FrohmanianTether.TorusStrainExclusion.navier_stokes_vorticity_dt_scaling_exponent [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.TorusStrainExclusion.unnormalized_quartic_scaling_mismatch [theorem] axioms: propext, Classical.choice, Quot.sound"
       ]
     },
     {
-      "id": "3499f31b7b",
+      "id": "5fde656074",
       "kind": "sentence",
       "line": 413,
-      "text": "A fixed constant $\\kappa''>0$ therefore carries the dimension of time and cannot be formed from viscosity $\\nu$ alone ($[\\nu]=L^2T^{-1}$) without incorporating a solution-dependent or scale-compensating functional (see \\texttt{SCALE\\_INVARIANT\\_TETHER.md} and \\texttt{CLAY\\_B\\_T3.md}).",
-      "refs": [],
-      "status": "silent",
+      "text": "A fixed constant $\\kappa''>0$ therefore (\\lean{unnormalized_quartic_scaling_mismatch}) carries the dimension of time and cannot be formed from viscosity $\\nu$ alone ($[\\nu]=L^2T^{-1}$) without incorporating a solution-dependent or scale-compensating functional (see \\texttt{SCALE\\_INVARIANT\\_TETHER.md} and \\texttt{CLAY\\_B\\_T3.md}).",
+      "refs": [
+        "unnormalized_quartic_scaling_mismatch"
+      ],
+      "status": "verified",
       "notes": [
-        "mathematical content with no Lean mapping"
+        "FrohmanianTether.TorusStrainExclusion.unnormalized_quartic_scaling_mismatch [theorem] axioms: propext, Classical.choice, Quot.sound"
       ]
     },
     {
@@ -2641,14 +2743,18 @@
       ]
     },
     {
-      "id": "5dcf180479",
+      "id": "98494c09e1",
       "kind": "sentence",
       "line": 415,
-      "text": "In the pointwise local-maximum lemma, $\\|\\nabla u(x)\\|\\le\\CZ\\|\\omega\\|_{L^\\infty}$ enters as the explicit hypothesis \\texttt{hCZ}.",
-      "refs": [],
-      "status": "silent",
+      "text": "In the pointwise local-maximum lemma, $\\|\\nabla u(x)\\|\\le\\CZ\\|\\omega\\|_{L^\\infty}$ enters as the explicit hypothesis \\lean{hCZ} of \\lean{stretching_inner_le_at_max}.",
+      "refs": [
+        "hCZ",
+        "stretching_inner_le_at_max"
+      ],
+      "status": "verified",
       "notes": [
-        "mathematical content with no Lean mapping"
+        "hCZ is a hypothesis of NavierStokes3D.stretching_inner_le_at_max",
+        "NavierStokes3D.stretching_inner_le_at_max [theorem] axioms: propext, Classical.choice, Quot.sound"
       ]
     },
     {
@@ -3147,14 +3253,16 @@
       ]
     },
     {
-      "id": "05ef6f4ce0",
+      "id": "91cc31931a",
       "kind": "sentence",
       "line": 464,
-      "text": "Under the symmetric C2 design the damping coefficient is $0$, so nothing proved here supplies the rate or closing-bound hypotheses.",
-      "refs": [],
-      "status": "silent",
+      "text": "Under the symmetric C2 design the damping coefficient is $0$ (\\lean{tetherKernel_left_H_zero}), so nothing proved here supplies the rate or closing-bound hypotheses.",
+      "refs": [
+        "tetherKernel_left_H_zero"
+      ],
+      "status": "verified",
       "notes": [
-        "mathematical content with no Lean mapping"
+        "Combined.tetherKernel_left_H_zero [theorem] axioms: propext, Classical.choice, Quot.sound"
       ]
     },
     {
@@ -3258,14 +3366,16 @@
       ]
     },
     {
-      "id": "c7dc220c6b",
+      "id": "8221cc6a22",
       "kind": "sentence",
       "line": 479,
-      "text": "Non-vacuity and joint satisfiability at $u_0=0$ (\\texttt{ClayStatements.lean}).",
-      "refs": [],
-      "status": "silent",
+      "text": "Non-vacuity and joint satisfiability at $u_0=0$ (\\protect\\lean{conditional_regularity_nonvacuous_at_zero}).",
+      "refs": [
+        "conditional_regularity_nonvacuous_at_zero"
+      ],
+      "status": "verified",
       "notes": [
-        "mathematical content with no Lean mapping"
+        "FrohmanianTether.ClayStatements.conditional_regularity_nonvacuous_at_zero [theorem] axioms: propext, Classical.choice, Quot.sound"
       ]
     },
     {
@@ -3673,15 +3783,13 @@
       "notes": []
     },
     {
-      "id": "7e5ecab866",
+      "id": "4d454d3819",
       "kind": "sentence",
       "line": 521,
-      "text": "\\bibitem{Kato1984} T.~Kato, Strong $L^p$-solutions of the Navier--Stokes equation in $\\mathbb R^m$, with applications to weak solutions, \\emph{Math.\\ Z.} 187 (1984), 471--480.",
+      "text": "\\bibitem{Kato1984} T.~Kato, Strong L\\textsuperscript{p}-solutions of the Navier--Stokes equation in \\ensuremath{\\mathbb R^m}, with applications to weak solutions, \\emph{Math.\\ Z.} 187 (1984), 471--480.",
       "refs": [],
-      "status": "silent",
-      "notes": [
-        "mathematical content with no Lean mapping"
-      ]
+      "status": "non-claim",
+      "notes": []
     },
     {
       "id": "65a525d2bf",

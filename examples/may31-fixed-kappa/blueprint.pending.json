@@ -147,14 +147,7 @@
       "id": "ea03cab5efda",
       "claimId": "b-tether-user",
       "kind": "silent",
-      "question": "Paper claim b-tether-user states: “T(ω)(F,G)=κ∫|ω(x)|²⟨Π_uδF,Π_uδG⟩dx (pointwise weight, positive sign), and {F,G}_T = {F,G}_cl + T.”. The anchor maps it to Lean declaration `TetherKernel`, which was not found in the scanned files. Was it renamed or removed, or is the claim intentionally unformalized?",
-      "answer": ""
-    },
-    {
-      "id": "a2e5d7f9a10b",
-      "claimId": "b-tether-user",
-      "kind": "ambiguous",
-      "question": "Paper claim b-tether-user states: “T(ω)(F,G)=κ∫|ω(x)|²⟨Π_uδF,Π_uδG⟩dx (pointwise weight, positive sign), and {F,G}_T = {F,G}_cl + T.”. Its title is “Tether term and tethered bracket (author description, 2026-11-03)”, which does not appear to describe that statement. Is the title or the statement misworded?",
+      "question": "Paper claim b-tether-user states: “T(ω)(F,G)=−κ∫|ω(x)|²⟨Π_uδF,Π_uδG⟩dx (pointwise weight; sign −κ per author correction 2026-11-03, the earlier +κ was a slip), and {F,G}_T = {F,G}_cl + T.”. The anchor maps it to Lean declaration `TetherKernel`, which was not found in the scanned files. Was it renamed or removed, or is the claim intentionally unformalized?",
       "answer": ""
     }
   ]

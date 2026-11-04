@@ -1,7 +1,7 @@
 {
   "tool": "pipelinehalt",
   "version": "0.4.1",
-  "generatedAt": "2026-11-04T01:55:24.028Z",
+  "generatedAt": "2026-11-04T02:18:30.805Z",
   "declarationsScanned": 49,
   "claims": [
     {
@@ -314,7 +314,7 @@
         "id": "b-tether-user",
         "title": "Tether term and tethered bracket (author description, 2026-11-03)",
         "kind": "definition",
-        "statement": "T(ω)(F,G)=κ∫|ω(x)|²⟨Π_uδF,Π_uδG⟩dx (pointwise weight, positive sign), and {F,G}_T = {F,G}_cl + T.",
+        "statement": "T(ω)(F,G)=−κ∫|ω(x)|²⟨Π_uδF,Π_uδG⟩dx (pointwise weight; sign −κ per author correction 2026-11-03, the earlier +κ was a slip), and {F,G}_T = {F,G}_cl + T.",
         "lean": [
           "TetherKernel"
         ],
@@ -329,17 +329,8 @@
           "lean": "TetherKernel",
           "key": "missing:TetherKernel",
           "detail": "Anchor maps this claim to `TetherKernel`, but no such declaration exists.",
-          "question": "Paper claim b-tether-user states: “T(ω)(F,G)=κ∫|ω(x)|²⟨Π_uδF,Π_uδG⟩dx (pointwise weight, positive sign), and {F,G}_T = {F,G}_cl + T.”. The anchor maps it to Lean declaration `TetherKernel`, which was not found in the scanned files. Was it renamed or removed, or is the claim intentionally unformalized?",
+          "question": "Paper claim b-tether-user states: “T(ω)(F,G)=−κ∫|ω(x)|²⟨Π_uδF,Π_uδG⟩dx (pointwise weight; sign −κ per author correction 2026-11-03, the earlier +κ was a slip), and {F,G}_T = {F,G}_cl + T.”. The anchor maps it to Lean declaration `TetherKernel`, which was not found in the scanned files. Was it renamed or removed, or is the claim intentionally unformalized?",
           "weight": 1
-        },
-        {
-          "id": "a2e5d7f9a10b",
-          "claimId": "b-tether-user",
-          "kind": "ambiguous",
-          "key": "title-vs-statement",
-          "detail": "Title “Tether term and tethered bracket (author description, 2026-11-03)” shares almost no terms with the statement.",
-          "question": "Paper claim b-tether-user states: “T(ω)(F,G)=κ∫|ω(x)|²⟨Π_uδF,Π_uδG⟩dx (pointwise weight, positive sign), and {F,G}_T = {F,G}_cl + T.”. Its title is “Tether term and tethered bracket (author description, 2026-11-03)”, which does not appear to describe that statement. Is the title or the statement misworded?",
-          "weight": 0.3
         }
       ],
       "drift": 1
@@ -555,17 +546,8 @@
       "lean": "TetherKernel",
       "key": "missing:TetherKernel",
       "detail": "Anchor maps this claim to `TetherKernel`, but no such declaration exists.",
-      "question": "Paper claim b-tether-user states: “T(ω)(F,G)=κ∫|ω(x)|²⟨Π_uδF,Π_uδG⟩dx (pointwise weight, positive sign), and {F,G}_T = {F,G}_cl + T.”. The anchor maps it to Lean declaration `TetherKernel`, which was not found in the scanned files. Was it renamed or removed, or is the claim intentionally unformalized?",
+      "question": "Paper claim b-tether-user states: “T(ω)(F,G)=−κ∫|ω(x)|²⟨Π_uδF,Π_uδG⟩dx (pointwise weight; sign −κ per author correction 2026-11-03, the earlier +κ was a slip), and {F,G}_T = {F,G}_cl + T.”. The anchor maps it to Lean declaration `TetherKernel`, which was not found in the scanned files. Was it renamed or removed, or is the claim intentionally unformalized?",
       "weight": 1
-    },
-    {
-      "id": "a2e5d7f9a10b",
-      "claimId": "b-tether-user",
-      "kind": "ambiguous",
-      "key": "title-vs-statement",
-      "detail": "Title “Tether term and tethered bracket (author description, 2026-11-03)” shares almost no terms with the statement.",
-      "question": "Paper claim b-tether-user states: “T(ω)(F,G)=κ∫|ω(x)|²⟨Π_uδF,Π_uδG⟩dx (pointwise weight, positive sign), and {F,G}_T = {F,G}_cl + T.”. Its title is “Tether term and tethered bracket (author description, 2026-11-03)”, which does not appear to describe that statement. Is the title or the statement misworded?",
-      "weight": 0.3
     }
   ],
   "status": "halt"

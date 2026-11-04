@@ -34,10 +34,10 @@ Mathlib has no Calderón–Zygmund theory, so C_CZ(3) is carried as `structure C
 - Q8 `968579d3e360`, verbatim: "Blueprint 'antisymmetric' for the tether term was a slip; correct it to symmetric in the excerpts." Applied to `blueprint.anchor.json` claim b-antisym (marked as an author correction; `blueprint-2026-06-02.md` unchanged).
 
 ## New OPEN questions (flagged, NOT adopted)
-Author's tether description (2026-11-03): "T(ω)(F,G)=κ∫|ω(x)|²⟨Π_uδF,Π_uδG⟩dx (pointwise weight, positive sign), and {F,G}_T = {F,G}_cl + T." Added as claim `b-tether-user` (PipelineHalt SILENT `ea03cab5efda`: no `TetherKernel` in this example's Lean).
-- (a) Sign: NS-repo `TetherKernel` is −κ∫‖ω‖²⟨Π,Π⟩; the description says +κ.
-- (b) Weight: pointwise |ω(x)|² vs the integrated ‖ω‖² chosen in the Q2 answer.
-- (c) Bracket: {F,G}_cl antisymmetric + T symmetric and nonzero is not antisymmetric, so {·,·}_T is a metriplectic/Leibniz-type bracket, not Lie–Poisson. A claim that the full bracket "stays antisymmetric" is false.
+Author's tether description (2026-11-03, sign later corrected to −κ): "T(ω)(F,G)=κ∫|ω(x)|²⟨Π_uδF,Π_uδG⟩dx (pointwise weight, positive sign), and {F,G}_T = {F,G}_cl + T." Added as claim `b-tether-user` (PipelineHalt SILENT `ea03cab5efda`: no `TetherKernel` in this example's Lean).
+- (a) Sign: RESOLVED (2026-11-03). Author, verbatim: "A: −κ (damping, matches the Lean). That is the intended canonical version. The tether exists to supply negative feedback that can absorb the vortex-stretching term; only the minus sign produces the cubic damping. The +κ that appeared in the earlier prose description was the slip." `b-tether-user` now reads −κ.
+- (b) Weight (OPEN): the author's text still uses pointwise |ω(x)|² vs the integrated ‖ω‖² chosen in the Q2 answer.
+- (c) Bracket (OPEN, unresolved factual conflict): the author again states the full bracket "remains antisymmetric because it is the sum of the antisymmetric classical bracket and a symmetric correction that is placed in the appropriate slot." This is false: {F,F}_T = T(F,F) ≠ 0 in general. Not written into any paper or extract. {F,G}_cl antisymmetric + T symmetric and nonzero is not antisymmetric, so {·,·}_T is a metriplectic/Leibniz-type bracket, not Lie–Poisson. A claim that the full bracket "stays antisymmetric" is false.
 - Blueprint majorant (L594) y' = Cy² − κ''y³ vs Lean `main3_bound` y' ≤ C − κy²: now a real harness flag, `8810eaeacc8a` AMBIGUOUS ("Paper ODE has y-powers {2, 3}; `main3_bound` has {0, 2}"), from the new `odeShape` check (v0.4.1).
 
 ## Honest status (analytic layer)
@@ -46,7 +46,7 @@ Author's tether description (2026-11-03): "T(ω)(F,G)=κ∫|ω(x)|²⟨Π_uδF,�
 - Proved tools: `holder_I4`, `young_inequality_eps`, `stretching_bound_of_holder`, `youngs_absorption_elimination`, `comparison_ode_stability`, `vorticity_sup_norm_riccati_bound`, `bkm_regularity_pipeline`.
 - Analytic closure is equivalent in difficulty to the Clay problem and is NOT close. The geometric/tether layer is close. No attempt is made to discharge the rate hypothesis. **No NS regularity is claimed.**
 
-## NS repo, local branch `sdiff-abstract-action` (commits `2a2cfc4`, `b018678`, `e47c5ab`; NOT pushed)
+## NS repo, local branch `sdiff-abstract-action` (commits `2a2cfc4`, `b018678`, `e47c5ab`, `4289040`; NOT pushed)
 | Item | Lean | Status |
 |---|---|---|
 | Abstract SDiff action replacing the identity stub | `CoadjointAction g ω := g • ω`, `_one/_mul/_inv/_div` | PROVED |

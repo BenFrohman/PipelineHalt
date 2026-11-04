@@ -50,7 +50,7 @@
       "id": "b-tether-user",
       "title": "Tether term and tethered bracket (author description, 2026-11-03)",
       "kind": "definition",
-      "statement": "T(ω)(F,G)=κ∫|ω(x)|²⟨Π_uδF,Π_uδG⟩dx (pointwise weight, positive sign), and {F,G}_T = {F,G}_cl + T.",
+      "statement": "T(ω)(F,G)=−κ∫|ω(x)|²⟨Π_uδF,Π_uδG⟩dx (pointwise weight; sign −κ per author correction 2026-11-03, the earlier +κ was a slip), and {F,G}_T = {F,G}_cl + T.",
       "lean": [
         "TetherKernel"
       ],
@@ -81,6 +81,22 @@
       "answer": "Blueprint 'antisymmetric' for the tether term was a slip; correct it to symmetric in the excerpts.",
       "verdict": "other",
       "answeredAt": "2026-11-04T01:55:18.970Z"
+    },
+    "baa3e5e01284": {
+      "claimId": "b-tether-user",
+      "kind": "ambiguous",
+      "question": "Sign of the tether: +κ (prose) or −κ (Lean TetherKernel)? (recorded by hand via mismatchId key qa-sign)",
+      "answer": "A: −κ (damping, matches the Lean). That is the intended canonical version. The tether exists to supply negative feedback that can absorb the vortex-stretching term; only the minus sign produces the cubic damping. The +κ that appeared in the earlier prose description was the slip.",
+      "verdict": "intentional",
+      "answeredAt": "2026-11-04T02:18:30.477Z"
+    },
+    "4b8c6e44d1ee": {
+      "claimId": "b-tether-user",
+      "kind": "ambiguous",
+      "question": "Does the full tethered bracket {F,G}_cl + T stay antisymmetric? (recorded by hand via mismatchId key qc-bracket-antisym)",
+      "answer": "UNRESOLVED FACTUAL CONFLICT (not adopted). Author's claim, verbatim: \"the full tethered bracket remains antisymmetric because it is the sum of the antisymmetric classical bracket and a symmetric correction that is placed in the appropriate slot.\" This is false in general: {F,F}_T = {F,F}_cl + T(F,F) = T(F,F) ≠ 0. Antisymmetric + nonzero symmetric is not antisymmetric (metriplectic/Leibniz-type, not Lie–Poisson). Not written into any paper or extract.",
+      "verdict": "other",
+      "answeredAt": "2026-11-04T02:18:30.477Z"
     }
   }
 }

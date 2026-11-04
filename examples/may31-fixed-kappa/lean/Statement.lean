@@ -22,8 +22,10 @@ PipelineHalt clarification questions (`examples/may31-fixed-kappa/` in PipelineH
   vFinal (6) second term). The pointwise/nonlocal kernel is NOT formalized.
 * Q3: u and ω are independent L² fields; the Biot–Savart relation u = BS ω (L122) is
   not modelled.
-* Q4: symmetry. L168/L222 and vFinal Thm 8.1 say "bilinear antisymmetric"; the kernel
-  `-κ∫|ω|² δu·δv` (L71) is symmetric. Both readings are stated below.
+* Q4 (ANSWERED by the author, 2026-11-03: "Symmetric, the metric correction reading"):
+  Theorem 2.3 is the symmetric statement `Stmt_thm23`. The literal May 31 word
+  "antisymmetric" (L168/L222, vFinal Thm 8.1) is kept only as the note
+  `Stmt_thm23_literal`: it is vacuous, because no antisymmetric `B` meets C3 when ω ≠ 0.
 * Q5: C1. L76–80 asks invariance under the SDiff(T³) coadjoint action. That action is
   taken as an abstract set `act` of L²-isometries; the step "only |ω|² is invariant"
   (L155–157, L159–161) is the named hypothesis `StabilizerTransitive`.
@@ -104,20 +106,28 @@ positive remainder. -/
 def Stmt_step4 : Prop :=
   ∀ cz : CZConstant3D, IsLeast {κ : ℝ | NoPositiveRemainder cz.C κ} (kappa cz)
 
-/-- **L219–226 Theorem 2.3, LITERAL reading (antisymmetric, Q4).** -/
-def Stmt_thm23_literal : Prop :=
-  ∀ (cz : CZConstant3D) (act : Set (L2Field ≃ₗᵢ[ℝ] L2Field)) (ω u : L2Field)
-    (B : LinearMap.BilinForm ℝ L2Field),
-    (∀ F G, B F G = -B G F) → InvariantUnder act u B →
-    DegenerateWRTKineticEnergy u B → MayC3 cz ω u B → B = mayTether cz ω u
-
-/-- **L219–226 Theorem 2.3, SYMMETRIC (metric) reading (Q4), fixed κ, with the
-Step-1 hypothesis made explicit (Q5).** -/
-def Stmt_thm23_symmetric : Prop :=
+/-- **Theorem 2.3 (L219–226), PRIMARY statement: symmetric "metric correction" reading
+(author's answer to Q4), fixed κ = C_CZ(3).** Any symmetric bilinear `B` that is C1-invariant
+under `act`, C2-degenerate and C3-calibrated equals the tether. The Step-1 hypothesis
+`StabilizerTransitive act u` is explicit (Q5); it is OPEN for the SDiff(T³) action. -/
+def Stmt_thm23 : Prop :=
   ∀ (cz : CZConstant3D) (act : Set (L2Field ≃ₗᵢ[ℝ] L2Field)) (ω u : L2Field),
     StabilizerTransitive act u →
     ∀ B : LinearMap.BilinForm ℝ L2Field,
     (∀ F G, B F G = B G F) → InvariantUnder act u B →
+    DegenerateWRTKineticEnergy u B → MayC3 cz ω u B → B = mayTether cz ω u
+
+/-- Former name of `Stmt_thm23`, kept for compatibility. -/
+abbrev Stmt_thm23_symmetric : Prop := Stmt_thm23
+
+/-- **NOTE, not Theorem 2.3: the literal May 31 wording ("antisymmetric", L222).** The
+author confirmed the intended statement is the symmetric `Stmt_thm23`. This literal form
+is only VACUOUSLY true when ω ≠ 0: no antisymmetric `B` satisfies C3
+(`thm23_literal_vacuous`). -/
+def Stmt_thm23_literal : Prop :=
+  ∀ (cz : CZConstant3D) (act : Set (L2Field ≃ₗᵢ[ℝ] L2Field)) (ω u : L2Field)
+    (B : LinearMap.BilinForm ℝ L2Field),
+    (∀ F G, B F G = -B G F) → InvariantUnder act u B →
     DegenerateWRTKineticEnergy u B → MayC3 cz ω u B → B = mayTether cz ω u
 
 /-- Existence half: the fixed-κ tether is itself admissible (given a unit e ⟂ u). -/

@@ -86,8 +86,8 @@ theorem step4 : Stmt_step4 := by
   simp [kappa] at this ⊢
   linarith
 
-/-- Theorem 2.3, literal antisymmetric reading: holds only VACUOUSLY when `ω ≠ 0`
-(no antisymmetric `B` meets C3). Recorded, not celebrated. -/
+/-- NOTE on the literal May 31 wording ("antisymmetric"), not Theorem 2.3: when `ω ≠ 0`
+no antisymmetric `B` meets C3, so the literal statement is only VACUOUSLY true. -/
 theorem thm23_literal_vacuous (cz : CZConstant3D)
     (ω u : L2Field) (hω : ω ≠ 0) (B : LinearMap.BilinForm ℝ L2Field)
     (hanti : ∀ F G, B F G = -B G F) : ¬ MayC3 cz ω u B := by
@@ -96,9 +96,9 @@ theorem thm23_literal_vacuous (cz : CZConstant3D)
   have : 0 < ‖ω‖ := norm_pos_iff.mpr hω
   exact mul_ne_zero cz.pos.ne' (by positivity)
 
-/-- Theorem 2.3, symmetric reading, fixed κ = C_CZ(3), conditional on
-`StabilizerTransitive`. -/
-theorem thm23_symmetric : Stmt_thm23_symmetric := by
+/-- **Theorem 2.3 (primary, symmetric metric-correction reading)**, fixed κ = C_CZ(3).
+CONDITIONAL on the hypothesis `StabilizerTransitive act u`, which is OPEN for SDiff(T³). -/
+theorem thm23 : Stmt_thm23 := by
   intro cz act ω u hT B hsymm hC1 hC2 hC3
   obtain ⟨e₀, he₀, hn₀, -⟩ := hC3.calibrated
   obtain ⟨c, rfl⟩ := eq_smul_tether_of_transitive act u hT B hsymm hC1 hC2 he₀ hn₀
@@ -107,12 +107,15 @@ theorem thm23_symmetric : Stmt_thm23_symmetric := by
   ext x y
   simp [mayTether, frohmanianTether_apply]
 
+/-- Former name of `thm23`, kept for compatibility. -/
+theorem thm23_symmetric : Stmt_thm23_symmetric := thm23
+
 /-- Unconditional on the full isometry group (the Step-1 hypothesis is then proved). -/
 theorem thm23_symmetric_isometries (cz : CZConstant3D) (ω u : L2Field)
     (B : LinearMap.BilinForm ℝ L2Field) (hsymm : ∀ F G, B F G = B G F)
     (hC1 : InvariantUnder Set.univ u B) (hC2 : DegenerateWRTKineticEnergy u B)
     (hC3 : MayC3 cz ω u B) : B = mayTether cz ω u :=
-  thm23_symmetric cz Set.univ ω u (stabilizerTransitive_univ u) B hsymm hC1 hC2 hC3
+  thm23 cz Set.univ ω u (stabilizerTransitive_univ u) B hsymm hC1 hC2 hC3
 
 /-- Existence: the fixed-κ tether is symmetric, C1 (any isometry set), C2, C3. -/
 theorem existence : Stmt_existence := by

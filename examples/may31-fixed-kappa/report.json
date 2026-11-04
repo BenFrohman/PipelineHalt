@@ -2,8 +2,8 @@
   "tool": "pipelinehalt",
   "version": "0.4.0",
   "anchorTitle": "Frohmanian symplectic tether, May 31 fixed-kappa T3 form",
-  "generatedAt": "2026-11-03T21:32:11.373Z",
-  "declarationsScanned": 28,
+  "generatedAt": "2026-11-04T01:27:09.467Z",
+  "declarationsScanned": 30,
   "claims": [
     {
       "claim": {
@@ -103,41 +103,18 @@
         "kind": "theorem",
         "source": "Tether.lean @ 3582a57 (May 31 2026) L219-236",
         "lean": [
-          "thm23_literal_vacuous",
-          "thm23_symmetric",
-          "thm23_symmetric_isometries"
+          "thm23"
         ]
       },
       "matched": [
         {
-          "name": "thm23_literal_vacuous",
-          "score": 0.141,
-          "explicit": true
-        },
-        {
-          "name": "thm23_symmetric",
-          "score": 0.067,
-          "explicit": true
-        },
-        {
-          "name": "thm23_symmetric_isometries",
-          "score": 0.199,
+          "name": "thm23",
+          "score": 0.055,
           "explicit": true
         }
       ],
-      "mismatches": [
-        {
-          "id": "17ee7eea9e88",
-          "claimId": "c-thm23",
-          "kind": "conditional",
-          "lean": "thm23_symmetric_isometries",
-          "key": "hyp:MayC3 cz ω u B",
-          "detail": "`thm23_symmetric_isometries` assumes `hC3 : MayC3 cz ω u B`, not stated in the claim.",
-          "question": "Paper claim Theorem (c-thm23) states: “Theorem 2.3: any antisymmetric B that is invariant under the coadjoint action of volume-preserving diffeomorphisms of T3 (C1), degenerate w.r.t. kinetic energy (C2), and produces controllable negativ…”. Lean theorem `thm23_symmetric_isometries` assumes `hC3 : MayC3 cz ω u B`, which the claim does not state. Is this extra hypothesis intentional?",
-          "weight": 0.5
-        }
-      ],
-      "drift": 0.5
+      "mismatches": [],
+      "drift": 0
     },
     {
       "claim": {
@@ -197,7 +174,7 @@
           "kind": "silent",
           "key": "no-match",
           "detail": "No Lean declaration matches this claim. Closest candidate: `mayTether` (score 0.18, below threshold 0.2).",
-          "question": "Paper claim Definition (c-kernel) states: “TetherKernel is the Biot-Savart double integral weighted by pointwise |omega(x)|^2.”. No Lean declaration matching it was found among 17 candidates. Closest candidate: `mayTether` (score 0.18, below threshold 0.2). Is this claim intentionally not formalized, or which declaration should it map to?",
+          "question": "Paper claim Definition (c-kernel) states: “TetherKernel is the Biot-Savart double integral weighted by pointwise |omega(x)|^2.”. No Lean declaration matching it was found among 18 candidates. Closest candidate: `mayTether` (score 0.18, below threshold 0.2). Is this claim intentionally not formalized, or which declaration should it map to?",
           "weight": 1
         }
       ],
@@ -222,26 +199,21 @@
       "drift": 0
     }
   ],
-  "unanchored": [],
-  "drift": 0.167,
-  "pending": [
+  "unanchored": [
     {
-      "id": "17ee7eea9e88",
-      "claimId": "c-thm23",
-      "kind": "conditional",
-      "lean": "thm23_symmetric_isometries",
-      "key": "hyp:MayC3 cz ω u B",
-      "detail": "`thm23_symmetric_isometries` assumes `hC3 : MayC3 cz ω u B`, not stated in the claim.",
-      "question": "Paper claim Theorem (c-thm23) states: “Theorem 2.3: any antisymmetric B that is invariant under the coadjoint action of volume-preserving diffeomorphisms of T3 (C1), degenerate w.r.t. kinetic energy (C2), and produces controllable negativ…”. Lean theorem `thm23_symmetric_isometries` assumes `hC3 : MayC3 cz ω u B`, which the claim does not state. Is this extra hypothesis intentional?",
-      "weight": 0.5
-    },
+      "name": "thm23_literal_vacuous",
+      "cites": "Theorem 2.3"
+    }
+  ],
+  "drift": 0.111,
+  "pending": [
     {
       "id": "096a0a1135f6",
       "claimId": "c-kernel",
       "kind": "silent",
       "key": "no-match",
       "detail": "No Lean declaration matches this claim. Closest candidate: `mayTether` (score 0.18, below threshold 0.2).",
-      "question": "Paper claim Definition (c-kernel) states: “TetherKernel is the Biot-Savart double integral weighted by pointwise |omega(x)|^2.”. No Lean declaration matching it was found among 17 candidates. Closest candidate: `mayTether` (score 0.18, below threshold 0.2). Is this claim intentionally not formalized, or which declaration should it map to?",
+      "question": "Paper claim Definition (c-kernel) states: “TetherKernel is the Biot-Savart double integral weighted by pointwise |omega(x)|^2.”. No Lean declaration matching it was found among 18 candidates. Closest candidate: `mayTether` (score 0.18, below threshold 0.2). Is this claim intentionally not formalized, or which declaration should it map to?",
       "weight": 1
     }
   ],

@@ -25,10 +25,9 @@
     },
     "c-thm23": {
       "lean": [
-        "thm23_literal_vacuous",
-        "thm23_symmetric",
-        "thm23_symmetric_isometries"
-      ]
+        "thm23"
+      ],
+      "note": "Author answer to Q4 (2026-11-03, verbatim): \"Symmetric, the metric correction reading\". Theorem 2.3 maps to the symmetric statement `thm23` (conditional on StabilizerTransitive, OPEN for SDiff(T3)). The literal 'antisymmetric' wording is vacuous; see thm23_literal_vacuous (note only)."
     },
     "c-exist": {
       "lean": [
@@ -40,5 +39,10 @@
         "main3_bound"
       ]
     }
-  }
+  },
+  "unclaimed": [
+    "thm23_literal_vacuous",
+    "thm23_symmetric",
+    "thm23_symmetric_isometries"
+  ]
 }

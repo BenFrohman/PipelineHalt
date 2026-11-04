@@ -1,6 +1,6 @@
 # PipelineHalt report
 
-Status: **HALT** · overall drift **0.990** · 8 claims · 49 Lean declarations scanned · 21 open question(s)
+Status: **HALT** · overall drift **0.991** · 9 claims · 49 Lean declarations scanned · 23 open question(s)
 
 Mapping file: none (heuristic pairing only).
 
@@ -16,6 +16,7 @@ Mapping file: none (heuristic pairing only).
 | b-majorant | `main3_bound` | 0.988 | 4 | 0 |
 | b-kappa | — | 1.000 | 1 | 0 |
 | b-tether-user | — | 1.000 | 1 | 0 |
+| b-damping | — | 1.000 | 2 | 0 |
 
 ## b-goal — Goal (global NS regularity)
 
@@ -62,6 +63,11 @@ Mapping file: none (heuristic pairing only).
 
 - `ea03cab5efda` SILENT: Anchor maps this claim to `TetherKernel`, but no such declaration exists. — **OPEN**
 
+## b-damping — Tether damping on the bracket flow
+
+- `603b3928a0af` SILENT: No Lean declaration matches this claim. Closest candidate: `tether_admissible_orbit` (score 0.14, below threshold 0.2). — **OPEN**
+- `53df6981abc8` AMBIGUOUS: Title “Tether damping on the bracket flow” shares almost no terms with the statement. — **OPEN**
+
 ## Realignment notes
 
 - b-goal: answer `cdb9cf28ef5b` — Paper claim b-goal states: “(L5) Goal**: Every smooth, divergence-free initial velocity field on T³ generates a unique globally smooth solution to the 3D incompressible Navier–Stokes equations.”. No Lean declaration matching it was found among 20 candidates. Closest candidate: `tether_admissible_orbit` (score 0.15, below threshold 0.2). Is this claim intentionally not formalized, or which declaration should it map to?
@@ -84,6 +90,8 @@ Mapping file: none (heuristic pairing only).
 - b-majorant: answer `a663b78895eb` — Paper claim b-majorant states: “(L594) Independent comparison majorant ODE y' = C y² − κ'' y³ (completely decoupled from NS).”. Lean theorem `main3_bound` assumes `(∀ x ∈ Set.Ico 0 T, HasDerivWithinAt y (y' x) (Set.Ici x) x)`, which the claim does not state. Is this extra hypothesis intentional?
 - b-majorant: answer `63c176f5158b` — Paper claim b-majorant states: “(L594) Independent comparison majorant ODE y' = C y² − κ'' y³ (completely decoupled from NS).”. Lean theorem `main3_bound` assumes `(∀ x ∈ Set.Ico 0 T, y' x ≤ C - kappa cz * y x ^ 2)`, which the claim does not state. Is this extra hypothesis intentional?
 - b-kappa: answer `9bfb80ff2a72` — Paper claim b-kappa states: “(L716) Is the coefficient κ forced to be exactly C_CZ(3), with a clear demonstration that any smaller value would violate (C3)?”. No Lean declaration matching it was found among 20 candidates. Closest candidate: `main3_bound` (score 0.11, below threshold 0.2). Is this claim intentionally not formalized, or which declaration should it map to?
-- b-tether-user: answer `ea03cab5efda` — Paper claim b-tether-user states: “T(ω)(F,G)=−κ∫|ω(x)|²⟨Π_uδF,Π_uδG⟩dx (pointwise weight; sign −κ per author correction 2026-11-03, the earlier +κ was a slip), and {F,G}_T = {F,G}_cl + T.”. The anchor maps it to Lean declaration `TetherKernel`, which was not found in the scanned files. Was it renamed or removed, or is the claim intentionally unformalized?
+- b-tether-user: answer `ea03cab5efda` — Paper claim b-tether-user states: “T(ω)(F,G) = −κ‖ω‖²∫⟨Π_uδF,Π_uδG⟩dx (overall enstrophy weight ‖ω‖²; sign −κ; author corrections 2026-11-03), and {F,G}_T = {F,G}_cl + T, a metriplectic-type bracket (antisymmetric Lie–Poisson + negati…”. The anchor maps it to Lean declaration `TetherKernel`, which was not found in the scanned files. Was it renamed or removed, or is the claim intentionally unformalized?
+- b-damping: answer `603b3928a0af` — Paper claim b-damping states: “Author derivation: T(M,H) = −κ‖ω‖²∫|Π_u ω|² gives d/dt M ≤ −κ'M² via {M,H}_T. OPEN INCONSISTENCY: C2 (T(H,·)=0) forces T(M,H)=0 by symmetry; and ∫|Π_uω|² ≤ ‖ω‖² is an upper bound that vanishes when ω…”. No Lean declaration matching it was found among 20 candidates. Closest candidate: `tether_admissible_orbit` (score 0.14, below threshold 0.2). Is this claim intentionally not formalized, or which declaration should it map to?
+- b-damping: answer `53df6981abc8` — Paper claim b-damping states: “Author derivation: T(M,H) = −κ‖ω‖²∫|Π_u ω|² gives d/dt M ≤ −κ'M² via {M,H}_T. OPEN INCONSISTENCY: C2 (T(H,·)=0) forces T(M,H)=0 by symmetry; and ∫|Π_uω|² ≤ ‖ω‖² is an upper bound that vanishes when ω…”. Its title is “Tether damping on the bracket flow”, which does not appear to describe that statement. Is the title or the statement misworded?
 - Lean `thm23_literal_vacuous` cites “Theorem 2.3” in its docstring but is not matched to any anchor claim (informational).
-HALT: 21 open question(s) written to blueprint.pending.json. Answer them (pipelinehalt answer ...) before continuing; nothing was auto-corrected.
+HALT: 23 open question(s) written to blueprint.pending.json. Answer them (pipelinehalt answer ...) before continuing; nothing was auto-corrected.

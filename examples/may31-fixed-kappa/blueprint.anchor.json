@@ -50,10 +50,17 @@
       "id": "b-tether-user",
       "title": "Tether term and tethered bracket (author description, 2026-11-03)",
       "kind": "definition",
-      "statement": "T(ω)(F,G)=−κ∫|ω(x)|²⟨Π_uδF,Π_uδG⟩dx (pointwise weight; sign −κ per author correction 2026-11-03, the earlier +κ was a slip), and {F,G}_T = {F,G}_cl + T.",
+      "statement": "T(ω)(F,G) = −κ‖ω‖²∫⟨Π_uδF,Π_uδG⟩dx (overall enstrophy weight ‖ω‖²; sign −κ; author corrections 2026-11-03), and {F,G}_T = {F,G}_cl + T, a metriplectic-type bracket (antisymmetric Lie–Poisson + negative-semidefinite symmetric).",
       "lean": [
         "TetherKernel"
       ],
+      "source": "author message 2026-11-03"
+    },
+    {
+      "id": "b-damping",
+      "title": "Tether damping on the bracket flow",
+      "kind": "claim",
+      "statement": "Author derivation: T(M,H) = −κ‖ω‖²∫|Π_u ω|² gives d/dt M ≤ −κ'M² via {M,H}_T. OPEN INCONSISTENCY: C2 (T(H,·)=0) forces T(M,H)=0 by symmetry; and ∫|Π_uω|² ≤ ‖ω‖² is an upper bound that vanishes when ω ∥ u. Analytic rate OPEN.",
       "source": "author message 2026-11-03"
     }
   ],
@@ -94,9 +101,17 @@
       "claimId": "b-tether-user",
       "kind": "ambiguous",
       "question": "Does the full tethered bracket {F,G}_cl + T stay antisymmetric? (recorded by hand via mismatchId key qc-bracket-antisym)",
-      "answer": "UNRESOLVED FACTUAL CONFLICT (not adopted). Author's claim, verbatim: \"the full tethered bracket remains antisymmetric because it is the sum of the antisymmetric classical bracket and a symmetric correction that is placed in the appropriate slot.\" This is false in general: {F,F}_T = {F,F}_cl + T(F,F) = T(F,F) ≠ 0. Antisymmetric + nonzero symmetric is not antisymmetric (metriplectic/Leibniz-type, not Lie–Poisson). Not written into any paper or extract.",
-      "verdict": "other",
-      "answeredAt": "2026-11-04T02:18:30.477Z"
+      "answer": "Antisymmetry: Agreed. The honest description is that the tethered bracket is the sum of the antisymmetric Lie–Poisson bracket and a negative-semidefinite symmetric term (metriplectic-type). The claim that the sum “remains antisymmetric” stays out of the paper and the Lean excerpts.",
+      "verdict": "intentional",
+      "answeredAt": "2026-11-04T02:19:24.362Z"
+    },
+    "f64876243843": {
+      "claimId": "b-tether-user",
+      "kind": "ambiguous",
+      "question": "Weight: pointwise |ω(x)|² or overall ‖ω‖²? (recorded by hand via mismatchId key qb-weight)",
+      "answer": "Weight: overall ‖ω‖² (the global enstrophy factor), matching the Lean. That is the canonical version. The pointwise density |ω(x)|² inside the integral is a different, stronger correction; the object that was formalized and that supplies the cubic damping in the existing analytic estimates multiplies the projected pairing by the single scalar ‖ω‖_{L²}².",
+      "verdict": "intentional",
+      "answeredAt": "2026-11-04T02:19:24.362Z"
     }
   }
 }

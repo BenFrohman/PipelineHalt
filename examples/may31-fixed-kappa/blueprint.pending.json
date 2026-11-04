@@ -147,7 +147,21 @@
       "id": "ea03cab5efda",
       "claimId": "b-tether-user",
       "kind": "silent",
-      "question": "Paper claim b-tether-user states: “T(ω)(F,G)=−κ∫|ω(x)|²⟨Π_uδF,Π_uδG⟩dx (pointwise weight; sign −κ per author correction 2026-11-03, the earlier +κ was a slip), and {F,G}_T = {F,G}_cl + T.”. The anchor maps it to Lean declaration `TetherKernel`, which was not found in the scanned files. Was it renamed or removed, or is the claim intentionally unformalized?",
+      "question": "Paper claim b-tether-user states: “T(ω)(F,G) = −κ‖ω‖²∫⟨Π_uδF,Π_uδG⟩dx (overall enstrophy weight ‖ω‖²; sign −κ; author corrections 2026-11-03), and {F,G}_T = {F,G}_cl + T, a metriplectic-type bracket (antisymmetric Lie–Poisson + negati…”. The anchor maps it to Lean declaration `TetherKernel`, which was not found in the scanned files. Was it renamed or removed, or is the claim intentionally unformalized?",
+      "answer": ""
+    },
+    {
+      "id": "603b3928a0af",
+      "claimId": "b-damping",
+      "kind": "silent",
+      "question": "Paper claim b-damping states: “Author derivation: T(M,H) = −κ‖ω‖²∫|Π_u ω|² gives d/dt M ≤ −κ'M² via {M,H}_T. OPEN INCONSISTENCY: C2 (T(H,·)=0) forces T(M,H)=0 by symmetry; and ∫|Π_uω|² ≤ ‖ω‖² is an upper bound that vanishes when ω…”. No Lean declaration matching it was found among 20 candidates. Closest candidate: `tether_admissible_orbit` (score 0.14, below threshold 0.2). Is this claim intentionally not formalized, or which declaration should it map to?",
+      "answer": ""
+    },
+    {
+      "id": "53df6981abc8",
+      "claimId": "b-damping",
+      "kind": "ambiguous",
+      "question": "Paper claim b-damping states: “Author derivation: T(M,H) = −κ‖ω‖²∫|Π_u ω|² gives d/dt M ≤ −κ'M² via {M,H}_T. OPEN INCONSISTENCY: C2 (T(H,·)=0) forces T(M,H)=0 by symmetry; and ∫|Π_uω|² ≤ ‖ω‖² is an upper bound that vanishes when ω…”. Its title is “Tether damping on the bracket flow”, which does not appear to describe that statement. Is the title or the statement misworded?",
       "answer": ""
     }
   ]

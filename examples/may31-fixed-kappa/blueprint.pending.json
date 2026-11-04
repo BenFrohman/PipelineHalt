@@ -154,14 +154,14 @@
       "id": "603b3928a0af",
       "claimId": "b-damping",
       "kind": "silent",
-      "question": "Paper claim b-damping states: “Author derivation: T(M,H) = −κ‖ω‖²∫|Π_u ω|² gives d/dt M ≤ −κ'M² via {M,H}_T. OPEN INCONSISTENCY: C2 (T(H,·)=0) forces T(M,H)=0 by symmetry; and ∫|Π_uω|² ≤ ‖ω‖² is an upper bound that vanishes when ω…”. No Lean declaration matching it was found among 20 candidates. Closest candidate: `tether_admissible_orbit` (score 0.14, below threshold 0.2). Is this claim intentionally not formalized, or which declaration should it map to?",
+      "question": "Paper claim b-damping states: “Author (pt70u, 2026-11-03): there is no damping coefficient. Under symmetry + C2, 𝔗(M,H)=0, so Ṁ={M,H}_𝔗={M,H}_cl has only the classical stretching term; the damping coefficient is exactly 0 until …”. No Lean declaration matching it was found among 20 candidates. Closest candidate: `tether_admissible_orbit` (score 0.13, below threshold 0.2). Is this claim intentionally not formalized, or which declaration should it map to?",
       "answer": ""
     },
     {
       "id": "53df6981abc8",
       "claimId": "b-damping",
       "kind": "ambiguous",
-      "question": "Paper claim b-damping states: “Author derivation: T(M,H) = −κ‖ω‖²∫|Π_u ω|² gives d/dt M ≤ −κ'M² via {M,H}_T. OPEN INCONSISTENCY: C2 (T(H,·)=0) forces T(M,H)=0 by symmetry; and ∫|Π_uω|² ≤ ‖ω‖² is an upper bound that vanishes when ω…”. Its title is “Tether damping on the bracket flow”, which does not appear to describe that statement. Is the title or the statement misworded?",
+      "question": "Paper claim b-damping states: “Author (pt70u, 2026-11-03): there is no damping coefficient. Under symmetry + C2, 𝔗(M,H)=0, so Ṁ={M,H}_𝔗={M,H}_cl has only the classical stretching term; the damping coefficient is exactly 0 until …”. Its title is “Tether damping on the bracket flow”, which does not appear to describe that statement. Is the title or the statement misworded?",
       "answer": ""
     }
   ]

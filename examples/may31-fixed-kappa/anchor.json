@@ -162,6 +162,22 @@
       "answer": "Weight: overall ‖ω‖² (the global enstrophy factor), matching the Lean. That is the canonical version. The pointwise density |ω(x)|² inside the integral is a different, stronger correction; the object that was formalized and that supplies the cubic damping in the existing analytic estimates multiplies the projected pairing by the single scalar ‖ω‖_{L²}².",
       "verdict": "intentional",
       "answeredAt": "2026-11-04T02:19:24.362Z"
+    },
+    "440d21b10009": {
+      "claimId": "c-thm23",
+      "kind": "ambiguous",
+      "question": "What is the tether damping coefficient on Ṁ given symmetry + C2? (recorded by hand via mismatchId key qd-damping-coefficient)",
+      "answer": "Author, verbatim (pt70u): **There is no damping coefficient.** Under the conditions currently stated, the tether contributes nothing to the evolution of any Lyapunov functional M: 𝔗(M,H)=0 by symmetry + C2. Consequently the formal expression Ṁ={M,H}_𝔗={M,H}_cl contains only the classical stretching term. The coefficient in front of any higher-order negative term that one might have hoped to obtain from 𝔗 is identically zero. (The symbol κ=C_CZ(3) that appears in the definition of 𝔗 remains a free positive constant in the geometric formula, but it is multiplied by a pairing that vanishes on the energy direction and therefore never enters the differential inequality for M.) Until the incompatibility between C2 and C3 is resolved, the damping coefficient is exactly 0.",
+      "verdict": "intentional",
+      "answeredAt": "2026-11-04T02:29:18.648Z"
+    },
+    "ffd3081cfa62": {
+      "claimId": "c-thm23",
+      "kind": "ambiguous",
+      "question": "Which repair of the C2/C3 incompatibility is adopted? (recorded by hand via mismatchId key qd-damping-candidates)",
+      "answer": "CANDIDATE designs (NOT adopted; logged 2026-11-03): (R1) drop symmetry of 𝔗; (R2) drop C2; (R3) put dissipation outside the bracket. Author's axisymmetric non-symmetric correction (candidate): 𝔗(F,G) = −κ‖ω‖²∫⟨Π_uδF,e⟩⟨Π_uδG,e_⊥⟩ with an invariant basis (e, e_⊥) and an `axisymmetric` hypothesis. FLAW: ⟨Π_uδF,e⟩ ≡ 0 when e ∥ u. COSTS: route-2 canonicity (step2_quadratic) needs a symmetric Q; energy conservation needs T(H,·)=0 in the FIRST slot as well; the lower-bound gap (∫|Π_uω|² ≤ ‖ω‖² is only an upper bound) remains. The author's earlier text claiming T(M,H) ≤ 0 / ≤ −κ'M² is SUPERSEDED and excluded. No route adopted; damping coefficient = 0; analytic rate OPEN.",
+      "verdict": "other",
+      "answeredAt": "2026-11-04T02:29:18.648Z"
     }
   }
 }

@@ -36,10 +36,21 @@ Mathlib has no Calderón–Zygmund theory, so C_CZ(3) is carried as `structure C
 ## New OPEN questions (flagged, NOT adopted)
 Author's original tether description (2026-11-03; sign and weight later corrected, see below): "T(ω)(F,G)=κ∫|ω(x)|²⟨Π_uδF,Π_uδG⟩dx (pointwise weight, positive sign), and {F,G}_T = {F,G}_cl + T." Added as claim `b-tether-user` (PipelineHalt SILENT `ea03cab5efda`: no `TetherKernel` in this example's Lean).
 - (a) Sign: RESOLVED (2026-11-03). Author, verbatim: "A: −κ (damping, matches the Lean). That is the intended canonical version. The tether exists to supply negative feedback that can absorb the vortex-stretching term; only the minus sign produces the cubic damping. The +κ that appeared in the earlier prose description was the slip." `b-tether-user` now reads −κ.
-- (b) Weight: RESOLVED (2026-11-03). Author, verbatim: "Weight: overall ‖ω‖² (the global enstrophy factor), matching the Lean. That is the canonical version. The pointwise density |ω(x)|² inside the integral is a different, stronger correction; the object that was formalized and that supplies the cubic damping in the existing analytic estimates multiplies the projected pairing by the single scalar ‖ω‖_{L²}²." Note: this matches the example Lean (`MayForm31`, collapsed ‖ω‖²); the NS-repo `TetherKernel` still uses the pointwise ‖ω(x)‖² integrand, so the NS repo does NOT yet match the chosen object.
+- (b) Weight: RESOLVED (2026-11-03). Author, verbatim: "Weight: overall ‖ω‖² (the global enstrophy factor), matching the Lean. That is the canonical version. The pointwise density |ω(x)|² inside the integral is a different, stronger correction; the object that was formalized and that supplies the cubic damping in the existing analytic estimates multiplies the projected pairing by the single scalar ‖ω‖_{L²}²." Note: this matches the example Lean (`MayForm31`, collapsed ‖ω‖²); the NS-repo `TetherKernel` now matches it: since commit `b5815e0` it is −κ·‖ω‖²·∫⟨Π_uδF,Π_uδG⟩ with `‖ω‖² = Enstrophy ω` outside the integral.
 - (c) Bracket: RESOLVED (2026-11-03). Author, verbatim: "Agreed. The honest description is that the tethered bracket is the sum of the antisymmetric Lie–Poisson bracket and a negative-semidefinite symmetric term (metriplectic-type). The claim that the sum “remains antisymmetric” stays out of the paper and the Lean excerpts."
 - Closed summary: sign = −κ; weight = overall ‖ω‖²; bracket = metriplectic (antisymmetric + negative-semidefinite symmetric). `b-tether-user` now reads T(ω)(F,G) = −κ‖ω‖²∫⟨Π_uδF,Π_uδG⟩.
-- **NEW OPEN inconsistency (damping derivation, claim `b-damping`)**: the derivation computes T(M,H) = −κ‖ω‖²∫|Π_u ω|², but C2 states T(H,·) = 0, which by symmetry forces T(M,H) = 0, so the bracket flow d/dt M = {M,H}_T receives no tether contribution. Also ∫|Π_uω|² ≤ ‖ω‖² is an upper bound, not the lower bound the claimed ≤ −κ'M² needs (it vanishes when ω ∥ u). The analytic rate stays OPEN.
+- **Damping inconsistency (claim `b-damping`): author CONFIRMS coefficient = 0 (2026-11-03, pt70u). Still OPEN as a design problem.** The derivation computed T(M,H) = −κ‖ω‖²∫|Π_u ω|², but C2 (T(H,·)=0) plus symmetry forces T(M,H)=0. Author, verbatim: "**There is no damping coefficient.** Under the conditions currently stated, the tether contributes nothing to the evolution of any Lyapunov functional M: 𝔗(M,H)=0 by symmetry + C2. Consequently the formal expression Ṁ={M,H}_𝔗={M,H}_cl contains only the classical stretching term. The coefficient in front of any higher-order negative term that one might have hoped to obtain from 𝔗 is identically zero. (The symbol κ=C_CZ(3) that appears in the definition of 𝔗 remains a free positive constant in the geometric formula, but it is multiplied by a pairing that vanishes on the energy direction and therefore never enters the differential inequality for M.) Until the incompatibility between C2 and C3 is resolved, the damping coefficient is exactly 0." Recorded as clarifications `440d21b10009` (anchor.json, c-thm23) and `19f39b55f10a` (blueprint, b-damping).
+- **SUPERSEDED / EXCLUDED:** the author's earlier text claiming T(M,H) ≤ 0, or d/dt M ≤ −κ'M², is superseded by the statement above and is not to be used.
+- **CANDIDATE designs (logged, NOT adopted)** (clarifications `ffd3081cfa62`, `7de09f4fe758`):
+  - Route R1: drop symmetry of 𝔗.
+  - Route R2: drop C2.
+  - Route R3: put the dissipation outside the bracket (a separate dissipative term, not part of {·,·}_𝔗).
+  - Author's axisymmetric non-symmetric correction: 𝔗(F,G) = −κ‖ω‖²∫⟨Π_uδF,e⟩⟨Π_uδG,e_⊥⟩, with an invariant basis (e, e_⊥) and an `axisymmetric` hypothesis.
+    - FLAW: ⟨Π_uδF,e⟩ ≡ 0 when e ∥ u.
+  - Costs that apply to any of these:
+    - route-2 canonicity (`step2_quadratic`) needs a symmetric Q, so a non-symmetric 𝔗 loses the uniqueness proof;
+    - energy conservation needs T(H,·)=0 in the FIRST slot as well, not only the second;
+    - the lower-bound gap remains (∫|Π_uω|² ≤ ‖ω‖² is only an upper bound and vanishes when ω ∥ u).
 - Blueprint majorant (L594) y' = Cy² − κ''y³ vs Lean `main3_bound` y' ≤ C − κy²: now a real harness flag, `8810eaeacc8a` AMBIGUOUS ("Paper ODE has y-powers {2, 3}; `main3_bound` has {0, 2}"), from the new `odeShape` check (v0.4.1).
 
 ## Honest status (analytic layer)
@@ -48,9 +59,10 @@ Author's original tether description (2026-11-03; sign and weight later correcte
 - Proved tools: `holder_I4`, `young_inequality_eps`, `stretching_bound_of_holder`, `youngs_absorption_elimination`, `comparison_ode_stability`, `vorticity_sup_norm_riccati_bound`, `bkm_regularity_pipeline`.
 - Analytic closure is equivalent in difficulty to the Clay problem and is NOT close. The geometric/tether layer is close. No attempt is made to discharge the rate hypothesis. **No NS regularity is claimed.**
 
-## NS repo, local branch `sdiff-abstract-action` (commits `2a2cfc4`, `b018678`, `e47c5ab`, `4289040`; NOT pushed)
+## NS repo, local branch `sdiff-abstract-action` (commits `2a2cfc4`, `b018678`, `e47c5ab`, `4289040`, `b5815e0`; NOT pushed)
 | Item | Lean | Status |
 |---|---|---|
+| `TetherKernel` = −κ·‖ω‖²·∫⟨Π_uδF,Π_uδG⟩ (global enstrophy outside ∫; `b5815e0`) | `TetherKernel`, `tetherMetricForm`, `canonicalTetherDensity` (spatially constant −κ‖ω‖²), C3 predicate | DEFINED; dependents restated: C1 now uses `enstrophy_invariant` + unweighted `TetherIntegralPreserved`; `h_weight`: α = −c‖ω‖²; `h_nondeg`: ‖ω‖²·∫⟨Π,Π⟩ ≠ 0; `hweight` in `tethered_stretching_of_weight`: M⁴ ≤ ‖ω‖²∫‖Π_uδF‖² |
 | Abstract SDiff action replacing the identity stub | `CoadjointAction g ω := g • ω`, `_one/_mul/_inv/_div` | PROVED |
 | Casimir invariance (C1 integral form) | `SDiffActionHyp.casimir_invariant` | OPEN named assumption |
 | Transitivity on Casimir levels | `SDiffActionHyp.transitive_on_casimir_levels` | OPEN named assumption |
@@ -75,3 +87,4 @@ Build: `lake build NS_Millennium_Proof` OK (2714 jobs), no `sorry`, no `axiom`; 
 ## Reruns (PipelineHalt 0.4.1, 2026-11-03)
 - Main (`anchor.json` + map): HALT (exit 2) · drift 0.354 · 11 open. The Stmt_ unfolding fix now surfaces CONDITIONAL hypotheses: `thm23` (StabilizerTransitive, MayC3), `thm23_orbit` (CasimirLevelTransitive, MayC3). The earlier "drift 0.000" harness limitation is fixed.
 - Blueprint (`blueprint.anchor.json`, `--no-map`): HALT (exit 2) · drift 0.990 · 22 open. b-goal, b-step1, b-step2, b-kappa SILENT; b-antisym, b-metric, b-majorant CONDITIONAL; majorant ODE-shape flag `8810eaeacc8a`; b-tether-user SILENT.
+- Rerun after the pt70u record and NS `b5815e0` (2026-11-03, 8:29 PM CST): Main HALT (exit 2) · drift 0.354 · 11 open. Blueprint HALT (exit 2) · drift 0.991 · 23 open. Unchanged: the new damping clarifications are hand-keyed (`mismatchId`) and do not match any question the harness currently raises, and this example's Lean (`lean/`) is not the NS repo. NS repo: full `lake build NS_Millennium_Proof` OK (2714 jobs), no `sorry`/`axiom`, standard axioms only.

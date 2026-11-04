@@ -1,0 +1,86 @@
+{
+  "source": "blueprint-2026-06-02.md (June 2 Blueprint; claims quoted verbatim with line numbers)",
+  "claims": [
+    {
+      "id": "b-goal",
+      "title": "Goal (global NS regularity)",
+      "statement": "(L5) Goal**: Every smooth, divergence-free initial velocity field on T³ generates a unique globally smooth solution to the 3D incompressible Navier–Stokes equations."
+    },
+    {
+      "id": "b-antisym",
+      "title": "Tether as minimal bilinear symmetric correction (corrected)",
+      "statement": "(L411) Geometric theorem first (§2): The Frohmanian Symplectic Tether 𝔗_F is constructed as the unique (up to gauge) minimal bilinear symmetric correction to Arnold’s Lie–Poisson bracket that satisfies axioms (A1)–(A5) or conditions (C1)–(C3). [author correction 2026-11-03: the source Blueprint (L411) says “antisymmetric”; the author states this was a slip and the tether term is symmetric. The source file blueprint-2026-06-02.md is unchanged.]",
+      "lean": [
+        "thm23"
+      ]
+    },
+    {
+      "id": "b-metric",
+      "title": "Quadratic metric correction with pointwise weight",
+      "statement": "(L412) Uniqueness forces the analytic object (§2.7–2.8): The quadratic metric correction B(F,G) ∝ −κ |ω|² (δF/δω · δG/δω) (with Π_u) is proven to be the only lowest-order term compatible with degeneracy on H, coadjoint invariance, and negative quadratic feedback on stretching.",
+      "lean": [
+        "thm23",
+        "thm23_orbit"
+      ]
+    },
+    {
+      "id": "b-step1",
+      "title": "Step 1 locality from coadjoint invariance",
+      "statement": "(L581) `step1_locality` (depends only on invariance under coadjoint action)"
+    },
+    {
+      "id": "b-step2",
+      "title": "Step 2 degree from antisymmetry",
+      "statement": "(L582) `step2_degree` (depends on antisymmetry + bilinearity)"
+    },
+    {
+      "id": "b-majorant",
+      "title": "Comparison majorant ODE",
+      "statement": "(L594) Independent comparison majorant ODE y' = C y² − κ'' y³ (completely decoupled from NS).",
+      "lean": [
+        "main3_bound"
+      ]
+    },
+    {
+      "id": "b-kappa",
+      "title": "kappa forced to C_CZ(3)",
+      "statement": "(L716) Is the coefficient κ forced to be exactly C_CZ(3), with a clear demonstration that any smaller value would violate (C3)?"
+    },
+    {
+      "id": "b-tether-user",
+      "title": "Tether term and tethered bracket (author description, 2026-11-03)",
+      "kind": "definition",
+      "statement": "T(ω)(F,G)=κ∫|ω(x)|²⟨Π_uδF,Π_uδG⟩dx (pointwise weight, positive sign), and {F,G}_T = {F,G}_cl + T.",
+      "lean": [
+        "TetherKernel"
+      ],
+      "source": "author message 2026-11-03"
+    }
+  ],
+  "clarifications": {
+    "ac1c56b744f6": {
+      "claimId": "b-antisym",
+      "kind": "ambiguous",
+      "question": "What does transitivity mean? (recorded by hand via mismatchId key q6-transitivity)",
+      "answer": "transitivity = transitive_on_casimir_levels: ∀ ω₁ ω₂, (∀ f, ∫ f‖ω₁‖ = ∫ f‖ω₂‖) → ∃ g, g•ω₁=ω₂; stays an open named assumption.",
+      "verdict": "other",
+      "answeredAt": "2026-11-04T01:55:18.970Z"
+    },
+    "d7406df19c88": {
+      "claimId": "b-antisym",
+      "kind": "ambiguous",
+      "question": "Is δH = BS*BS ω or u? (recorded by hand via mismatchId key q7-deltaH)",
+      "answer": "δH = u = velocity_from_vorticity ω, not BS*BS. Make FunctionalDerivative KineticEnergyHamiltonian ω = velocity_from_vorticity ω a named hypothesis or a proof.",
+      "verdict": "other",
+      "answeredAt": "2026-11-04T01:55:18.970Z"
+    },
+    "aa4c9d021f78": {
+      "claimId": "b-antisym",
+      "kind": "ambiguous",
+      "question": "Blueprint says the tether is an antisymmetric correction; Q4 says symmetric. Which? (recorded by hand via mismatchId key q8-antisym-slip)",
+      "answer": "Blueprint 'antisymmetric' for the tether term was a slip; correct it to symmetric in the excerpts.",
+      "verdict": "other",
+      "answeredAt": "2026-11-04T01:55:18.970Z"
+    }
+  }
+}

@@ -156,6 +156,7 @@ export function parseLean(src: string, file = "<memory>"): LeanDecl[] {
       binders,
       type,
       usesSorry: /\b(sorry|admit)\b/.test(body) || /\bsorry\b/.test(type),
+      body: body.startsWith(":=") ? norm(body.slice(2)) : undefined,
       usesAxioms: axiomNames.filter(
         (a) =>
           a !== st.name &&

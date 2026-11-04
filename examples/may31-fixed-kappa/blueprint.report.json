@@ -1,0 +1,572 @@
+{
+  "tool": "pipelinehalt",
+  "version": "0.4.1",
+  "generatedAt": "2026-11-04T01:55:24.028Z",
+  "declarationsScanned": 49,
+  "claims": [
+    {
+      "claim": {
+        "id": "b-goal",
+        "title": "Goal (global NS regularity)",
+        "statement": "(L5) Goal**: Every smooth, divergence-free initial velocity field on T³ generates a unique globally smooth solution to the 3D incompressible Navier–Stokes equations."
+      },
+      "matched": [],
+      "mismatches": [
+        {
+          "id": "cdb9cf28ef5b",
+          "claimId": "b-goal",
+          "kind": "silent",
+          "key": "no-match",
+          "detail": "No Lean declaration matches this claim. Closest candidate: `tether_admissible_orbit` (score 0.15, below threshold 0.2).",
+          "question": "Paper claim b-goal states: “(L5) Goal**: Every smooth, divergence-free initial velocity field on T³ generates a unique globally smooth solution to the 3D incompressible Navier–Stokes equations.”. No Lean declaration matching it was found among 20 candidates. Closest candidate: `tether_admissible_orbit` (score 0.15, below threshold 0.2). Is this claim intentionally not formalized, or which declaration should it map to?",
+          "weight": 1
+        },
+        {
+          "id": "48580542629b",
+          "claimId": "b-goal",
+          "kind": "ambiguous",
+          "key": "title-vs-statement",
+          "detail": "Title “Goal (global NS regularity)” shares almost no terms with the statement.",
+          "question": "Paper claim b-goal states: “(L5) Goal**: Every smooth, divergence-free initial velocity field on T³ generates a unique globally smooth solution to the 3D incompressible Navier–Stokes equations.”. Its title is “Goal (global NS regularity)”, which does not appear to describe that statement. Is the title or the statement misworded?",
+          "weight": 0.3
+        }
+      ],
+      "drift": 1
+    },
+    {
+      "claim": {
+        "id": "b-antisym",
+        "title": "Tether as minimal bilinear symmetric correction (corrected)",
+        "statement": "(L411) Geometric theorem first (§2): The Frohmanian Symplectic Tether 𝔗_F is constructed as the unique (up to gauge) minimal bilinear symmetric correction to Arnold’s Lie–Poisson bracket that satisfies axioms (A1)–(A5) or conditions (C1)–(C3). [author correction 2026-11-03: the source Blueprint (L411) says “antisymmetric”; the author states this was a slip and the tether term is symmetric. The source file blueprint-2026-06-02.md is unchanged.]",
+        "lean": [
+          "thm23"
+        ]
+      },
+      "matched": [
+        {
+          "name": "thm23",
+          "score": 0.065,
+          "explicit": true
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "06de4bd51e52",
+          "claimId": "b-antisym",
+          "kind": "conditional",
+          "lean": "thm23",
+          "key": "hyp:StabilizerTransitive act u",
+          "detail": "`thm23` assumes `StabilizerTransitive act u`, not stated in the claim.",
+          "question": "Paper claim b-antisym states: “(L411) Geometric theorem first (§2): The Frohmanian Symplectic Tether 𝔗_F is constructed as the unique (up to gauge) minimal bilinear symmetric correction to Arnold’s Lie–Poisson bracket that satisf…”. Lean theorem `thm23` assumes `StabilizerTransitive act u`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "d1d5e8167824",
+          "claimId": "b-antisym",
+          "kind": "conditional",
+          "lean": "thm23",
+          "key": "hyp:InvariantUnder act u B",
+          "detail": "`thm23` assumes `InvariantUnder act u B`, not stated in the claim.",
+          "question": "Paper claim b-antisym states: “(L411) Geometric theorem first (§2): The Frohmanian Symplectic Tether 𝔗_F is constructed as the unique (up to gauge) minimal bilinear symmetric correction to Arnold’s Lie–Poisson bracket that satisf…”. Lean theorem `thm23` assumes `InvariantUnder act u B`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "45800ed5db14",
+          "claimId": "b-antisym",
+          "kind": "conditional",
+          "lean": "thm23",
+          "key": "hyp:DegenerateWRTKineticEnergy u B",
+          "detail": "`thm23` assumes `DegenerateWRTKineticEnergy u B`, not stated in the claim.",
+          "question": "Paper claim b-antisym states: “(L411) Geometric theorem first (§2): The Frohmanian Symplectic Tether 𝔗_F is constructed as the unique (up to gauge) minimal bilinear symmetric correction to Arnold’s Lie–Poisson bracket that satisf…”. Lean theorem `thm23` assumes `DegenerateWRTKineticEnergy u B`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "292e0fc25b70",
+          "claimId": "b-antisym",
+          "kind": "conditional",
+          "lean": "thm23",
+          "key": "hyp:MayC3 cz ω u B",
+          "detail": "`thm23` assumes `MayC3 cz ω u B`, not stated in the claim.",
+          "question": "Paper claim b-antisym states: “(L411) Geometric theorem first (§2): The Frohmanian Symplectic Tether 𝔗_F is constructed as the unique (up to gauge) minimal bilinear symmetric correction to Arnold’s Lie–Poisson bracket that satisf…”. Lean theorem `thm23` assumes `MayC3 cz ω u B`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        }
+      ],
+      "drift": 0.938
+    },
+    {
+      "claim": {
+        "id": "b-metric",
+        "title": "Quadratic metric correction with pointwise weight",
+        "statement": "(L412) Uniqueness forces the analytic object (§2.7–2.8): The quadratic metric correction B(F,G) ∝ −κ |ω|² (δF/δω · δG/δω) (with Π_u) is proven to be the only lowest-order term compatible with degeneracy on H, coadjoint invariance, and negative quadratic feedback on stretching.",
+        "lean": [
+          "thm23",
+          "thm23_orbit"
+        ]
+      },
+      "matched": [
+        {
+          "name": "thm23",
+          "score": 0.056,
+          "explicit": true
+        },
+        {
+          "name": "thm23_orbit",
+          "score": 0.024,
+          "explicit": true
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "19a910c9faad",
+          "claimId": "b-metric",
+          "kind": "conditional",
+          "lean": "thm23",
+          "key": "hyp:StabilizerTransitive act u",
+          "detail": "`thm23` assumes `StabilizerTransitive act u`, not stated in the claim.",
+          "question": "Paper claim b-metric states: “(L412) Uniqueness forces the analytic object (§2.7–2.8): The quadratic metric correction B(F,G) ∝ −κ |ω|² (δF/δω · δG/δω) (with Π_u) is proven to be the only lowest-order term compatible with degener…”. Lean theorem `thm23` assumes `StabilizerTransitive act u`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "818f893987cc",
+          "claimId": "b-metric",
+          "kind": "conditional",
+          "lean": "thm23",
+          "key": "hyp:InvariantUnder act u B",
+          "detail": "`thm23` assumes `InvariantUnder act u B`, not stated in the claim.",
+          "question": "Paper claim b-metric states: “(L412) Uniqueness forces the analytic object (§2.7–2.8): The quadratic metric correction B(F,G) ∝ −κ |ω|² (δF/δω · δG/δω) (with Π_u) is proven to be the only lowest-order term compatible with degener…”. Lean theorem `thm23` assumes `InvariantUnder act u B`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "464081d03b6c",
+          "claimId": "b-metric",
+          "kind": "conditional",
+          "lean": "thm23",
+          "key": "hyp:DegenerateWRTKineticEnergy u B",
+          "detail": "`thm23` assumes `DegenerateWRTKineticEnergy u B`, not stated in the claim.",
+          "question": "Paper claim b-metric states: “(L412) Uniqueness forces the analytic object (§2.7–2.8): The quadratic metric correction B(F,G) ∝ −κ |ω|² (δF/δω · δG/δω) (with Π_u) is proven to be the only lowest-order term compatible with degener…”. Lean theorem `thm23` assumes `DegenerateWRTKineticEnergy u B`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "fd4e9f46def5",
+          "claimId": "b-metric",
+          "kind": "conditional",
+          "lean": "thm23",
+          "key": "hyp:MayC3 cz ω u B",
+          "detail": "`thm23` assumes `MayC3 cz ω u B`, not stated in the claim.",
+          "question": "Paper claim b-metric states: “(L412) Uniqueness forces the analytic object (§2.7–2.8): The quadratic metric correction B(F,G) ∝ −κ |ω|² (δF/δω · δG/δω) (with Π_u) is proven to be the only lowest-order term compatible with degener…”. Lean theorem `thm23` assumes `MayC3 cz ω u B`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "732585ca5417",
+          "claimId": "b-metric",
+          "kind": "conditional",
+          "lean": "thm23_orbit",
+          "key": "hyp:E.CasimirLevelTransitive ω",
+          "detail": "`thm23_orbit` assumes `E.CasimirLevelTransitive ω`, not stated in the claim.",
+          "question": "Paper claim b-metric states: “(L412) Uniqueness forces the analytic object (§2.7–2.8): The quadratic metric correction B(F,G) ∝ −κ |ω|² (δF/δω · δG/δω) (with Π_u) is proven to be the only lowest-order term compatible with degener…”. Lean theorem `thm23_orbit` assumes `E.CasimirLevelTransitive ω`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "46d100415d54",
+          "claimId": "b-metric",
+          "kind": "conditional",
+          "lean": "thm23_orbit",
+          "key": "hyp:DegenerateWRTKineticEnergy (E.velocity ω) B",
+          "detail": "`thm23_orbit` assumes `DegenerateWRTKineticEnergy (E.velocity ω) B`, not stated in the claim.",
+          "question": "Paper claim b-metric states: “(L412) Uniqueness forces the analytic object (§2.7–2.8): The quadratic metric correction B(F,G) ∝ −κ |ω|² (δF/δω · δG/δω) (with Π_u) is proven to be the only lowest-order term compatible with degener…”. Lean theorem `thm23_orbit` assumes `DegenerateWRTKineticEnergy (E.velocity ω) B`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "93d966c7f986",
+          "claimId": "b-metric",
+          "kind": "conditional",
+          "lean": "thm23_orbit",
+          "key": "hyp:MayC3 cz ω.1 (E.velocity ω) B",
+          "detail": "`thm23_orbit` assumes `MayC3 cz ω.1 (E.velocity ω) B`, not stated in the claim.",
+          "question": "Paper claim b-metric states: “(L412) Uniqueness forces the analytic object (§2.7–2.8): The quadratic metric correction B(F,G) ∝ −κ |ω|² (δF/δω · δG/δω) (with Π_u) is proven to be the only lowest-order term compatible with degener…”. Lean theorem `thm23_orbit` assumes `MayC3 cz ω.1 (E.velocity ω) B`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        }
+      ],
+      "drift": 0.992
+    },
+    {
+      "claim": {
+        "id": "b-step1",
+        "title": "Step 1 locality from coadjoint invariance",
+        "statement": "(L581) `step1_locality` (depends only on invariance under coadjoint action)"
+      },
+      "matched": [],
+      "mismatches": [
+        {
+          "id": "4ba1e357f426",
+          "claimId": "b-step1",
+          "kind": "silent",
+          "key": "no-match",
+          "detail": "No Lean declaration matches this claim. Closest candidate: `eq_smul_tether_of_transitive` (score 0.18, below threshold 0.2).",
+          "question": "Paper claim b-step1 states: “(L581) `step1_locality` (depends only on invariance under coadjoint action)”. No Lean declaration matching it was found among 20 candidates. Closest candidate: `eq_smul_tether_of_transitive` (score 0.18, below threshold 0.2). Is this claim intentionally not formalized, or which declaration should it map to?",
+          "weight": 1
+        }
+      ],
+      "drift": 1
+    },
+    {
+      "claim": {
+        "id": "b-step2",
+        "title": "Step 2 degree from antisymmetry",
+        "statement": "(L582) `step2_degree` (depends on antisymmetry + bilinearity)"
+      },
+      "matched": [],
+      "mismatches": [
+        {
+          "id": "d2ba9f61be9e",
+          "claimId": "b-step2",
+          "kind": "silent",
+          "key": "no-match",
+          "detail": "No Lean declaration matches this claim. Closest candidate: `step4` (score 0.16, below threshold 0.2).",
+          "question": "Paper claim b-step2 states: “(L582) `step2_degree` (depends on antisymmetry + bilinearity)”. No Lean declaration matching it was found among 20 candidates. Closest candidate: `step4` (score 0.16, below threshold 0.2). Is this claim intentionally not formalized, or which declaration should it map to?",
+          "weight": 1
+        }
+      ],
+      "drift": 1
+    },
+    {
+      "claim": {
+        "id": "b-majorant",
+        "title": "Comparison majorant ODE",
+        "statement": "(L594) Independent comparison majorant ODE y' = C y² − κ'' y³ (completely decoupled from NS).",
+        "lean": [
+          "main3_bound"
+        ]
+      },
+      "matched": [
+        {
+          "name": "main3_bound",
+          "score": 0,
+          "explicit": true
+        }
+      ],
+      "mismatches": [
+        {
+          "id": "8810eaeacc8a",
+          "claimId": "b-majorant",
+          "kind": "ambiguous",
+          "lean": "main3_bound",
+          "key": "ode-shape:2/3|0/2",
+          "detail": "Paper ODE has y-powers {2, 3}; `main3_bound` has {0, 2}.",
+          "question": "Paper claim b-majorant states: “(L594) Independent comparison majorant ODE y' = C y² − κ'' y³ (completely decoupled from NS).”. Its differential equation uses powers {2, 3} of y, but Lean theorem `main3_bound` (lean/Proofs.lean:131) uses {0, 2} (0 = constant term). Which ODE is intended?",
+          "weight": 0.9
+        },
+        {
+          "id": "69b4d09c1171",
+          "claimId": "b-majorant",
+          "kind": "conditional",
+          "lean": "main3_bound",
+          "key": "hyp:ContinuousOn y (Set.Icc 0 T)",
+          "detail": "`main3_bound` assumes `ContinuousOn y (Set.Icc 0 T)`, not stated in the claim.",
+          "question": "Paper claim b-majorant states: “(L594) Independent comparison majorant ODE y' = C y² − κ'' y³ (completely decoupled from NS).”. Lean theorem `main3_bound` assumes `ContinuousOn y (Set.Icc 0 T)`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "a663b78895eb",
+          "claimId": "b-majorant",
+          "kind": "conditional",
+          "lean": "main3_bound",
+          "key": "hyp:(∀ x ∈ Set.Ico 0 T, HasDerivWithinAt y (y' x) (Set.Ici x) x)",
+          "detail": "`main3_bound` assumes `(∀ x ∈ Set.Ico 0 T, HasDerivWithinAt y (y' x) (Set.Ici x) x)`, not stated in the claim.",
+          "question": "Paper claim b-majorant states: “(L594) Independent comparison majorant ODE y' = C y² − κ'' y³ (completely decoupled from NS).”. Lean theorem `main3_bound` assumes `(∀ x ∈ Set.Ico 0 T, HasDerivWithinAt y (y' x) (Set.Ici x) x)`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "63c176f5158b",
+          "claimId": "b-majorant",
+          "kind": "conditional",
+          "lean": "main3_bound",
+          "key": "hyp:(∀ x ∈ Set.Ico 0 T, y' x ≤ C - kappa cz * y x ^ 2)",
+          "detail": "`main3_bound` assumes `(∀ x ∈ Set.Ico 0 T, y' x ≤ C - kappa cz * y x ^ 2)`, not stated in the claim.",
+          "question": "Paper claim b-majorant states: “(L594) Independent comparison majorant ODE y' = C y² − κ'' y³ (completely decoupled from NS).”. Lean theorem `main3_bound` assumes `(∀ x ∈ Set.Ico 0 T, y' x ≤ C - kappa cz * y x ^ 2)`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        }
+      ],
+      "drift": 0.988
+    },
+    {
+      "claim": {
+        "id": "b-kappa",
+        "title": "kappa forced to C_CZ(3)",
+        "statement": "(L716) Is the coefficient κ forced to be exactly C_CZ(3), with a clear demonstration that any smaller value would violate (C3)?"
+      },
+      "matched": [],
+      "mismatches": [
+        {
+          "id": "9bfb80ff2a72",
+          "claimId": "b-kappa",
+          "kind": "silent",
+          "key": "no-match",
+          "detail": "No Lean declaration matches this claim. Closest candidate: `main3_bound` (score 0.11, below threshold 0.2).",
+          "question": "Paper claim b-kappa states: “(L716) Is the coefficient κ forced to be exactly C_CZ(3), with a clear demonstration that any smaller value would violate (C3)?”. No Lean declaration matching it was found among 20 candidates. Closest candidate: `main3_bound` (score 0.11, below threshold 0.2). Is this claim intentionally not formalized, or which declaration should it map to?",
+          "weight": 1
+        }
+      ],
+      "drift": 1
+    },
+    {
+      "claim": {
+        "id": "b-tether-user",
+        "title": "Tether term and tethered bracket (author description, 2026-11-03)",
+        "kind": "definition",
+        "statement": "T(ω)(F,G)=κ∫|ω(x)|²⟨Π_uδF,Π_uδG⟩dx (pointwise weight, positive sign), and {F,G}_T = {F,G}_cl + T.",
+        "lean": [
+          "TetherKernel"
+        ],
+        "source": "author message 2026-11-03"
+      },
+      "matched": [],
+      "mismatches": [
+        {
+          "id": "ea03cab5efda",
+          "claimId": "b-tether-user",
+          "kind": "silent",
+          "lean": "TetherKernel",
+          "key": "missing:TetherKernel",
+          "detail": "Anchor maps this claim to `TetherKernel`, but no such declaration exists.",
+          "question": "Paper claim b-tether-user states: “T(ω)(F,G)=κ∫|ω(x)|²⟨Π_uδF,Π_uδG⟩dx (pointwise weight, positive sign), and {F,G}_T = {F,G}_cl + T.”. The anchor maps it to Lean declaration `TetherKernel`, which was not found in the scanned files. Was it renamed or removed, or is the claim intentionally unformalized?",
+          "weight": 1
+        },
+        {
+          "id": "a2e5d7f9a10b",
+          "claimId": "b-tether-user",
+          "kind": "ambiguous",
+          "key": "title-vs-statement",
+          "detail": "Title “Tether term and tethered bracket (author description, 2026-11-03)” shares almost no terms with the statement.",
+          "question": "Paper claim b-tether-user states: “T(ω)(F,G)=κ∫|ω(x)|²⟨Π_uδF,Π_uδG⟩dx (pointwise weight, positive sign), and {F,G}_T = {F,G}_cl + T.”. Its title is “Tether term and tethered bracket (author description, 2026-11-03)”, which does not appear to describe that statement. Is the title or the statement misworded?",
+          "weight": 0.3
+        }
+      ],
+      "drift": 1
+    }
+  ],
+  "unanchored": [
+    {
+      "name": "thm23_literal_vacuous",
+      "cites": "Theorem 2.3"
+    }
+  ],
+  "drift": 0.99,
+  "pending": [
+    {
+      "id": "cdb9cf28ef5b",
+      "claimId": "b-goal",
+      "kind": "silent",
+      "key": "no-match",
+      "detail": "No Lean declaration matches this claim. Closest candidate: `tether_admissible_orbit` (score 0.15, below threshold 0.2).",
+      "question": "Paper claim b-goal states: “(L5) Goal**: Every smooth, divergence-free initial velocity field on T³ generates a unique globally smooth solution to the 3D incompressible Navier–Stokes equations.”. No Lean declaration matching it was found among 20 candidates. Closest candidate: `tether_admissible_orbit` (score 0.15, below threshold 0.2). Is this claim intentionally not formalized, or which declaration should it map to?",
+      "weight": 1
+    },
+    {
+      "id": "48580542629b",
+      "claimId": "b-goal",
+      "kind": "ambiguous",
+      "key": "title-vs-statement",
+      "detail": "Title “Goal (global NS regularity)” shares almost no terms with the statement.",
+      "question": "Paper claim b-goal states: “(L5) Goal**: Every smooth, divergence-free initial velocity field on T³ generates a unique globally smooth solution to the 3D incompressible Navier–Stokes equations.”. Its title is “Goal (global NS regularity)”, which does not appear to describe that statement. Is the title or the statement misworded?",
+      "weight": 0.3
+    },
+    {
+      "id": "06de4bd51e52",
+      "claimId": "b-antisym",
+      "kind": "conditional",
+      "lean": "thm23",
+      "key": "hyp:StabilizerTransitive act u",
+      "detail": "`thm23` assumes `StabilizerTransitive act u`, not stated in the claim.",
+      "question": "Paper claim b-antisym states: “(L411) Geometric theorem first (§2): The Frohmanian Symplectic Tether 𝔗_F is constructed as the unique (up to gauge) minimal bilinear symmetric correction to Arnold’s Lie–Poisson bracket that satisf…”. Lean theorem `thm23` assumes `StabilizerTransitive act u`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "d1d5e8167824",
+      "claimId": "b-antisym",
+      "kind": "conditional",
+      "lean": "thm23",
+      "key": "hyp:InvariantUnder act u B",
+      "detail": "`thm23` assumes `InvariantUnder act u B`, not stated in the claim.",
+      "question": "Paper claim b-antisym states: “(L411) Geometric theorem first (§2): The Frohmanian Symplectic Tether 𝔗_F is constructed as the unique (up to gauge) minimal bilinear symmetric correction to Arnold’s Lie–Poisson bracket that satisf…”. Lean theorem `thm23` assumes `InvariantUnder act u B`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "45800ed5db14",
+      "claimId": "b-antisym",
+      "kind": "conditional",
+      "lean": "thm23",
+      "key": "hyp:DegenerateWRTKineticEnergy u B",
+      "detail": "`thm23` assumes `DegenerateWRTKineticEnergy u B`, not stated in the claim.",
+      "question": "Paper claim b-antisym states: “(L411) Geometric theorem first (§2): The Frohmanian Symplectic Tether 𝔗_F is constructed as the unique (up to gauge) minimal bilinear symmetric correction to Arnold’s Lie–Poisson bracket that satisf…”. Lean theorem `thm23` assumes `DegenerateWRTKineticEnergy u B`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "292e0fc25b70",
+      "claimId": "b-antisym",
+      "kind": "conditional",
+      "lean": "thm23",
+      "key": "hyp:MayC3 cz ω u B",
+      "detail": "`thm23` assumes `MayC3 cz ω u B`, not stated in the claim.",
+      "question": "Paper claim b-antisym states: “(L411) Geometric theorem first (§2): The Frohmanian Symplectic Tether 𝔗_F is constructed as the unique (up to gauge) minimal bilinear symmetric correction to Arnold’s Lie–Poisson bracket that satisf…”. Lean theorem `thm23` assumes `MayC3 cz ω u B`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "19a910c9faad",
+      "claimId": "b-metric",
+      "kind": "conditional",
+      "lean": "thm23",
+      "key": "hyp:StabilizerTransitive act u",
+      "detail": "`thm23` assumes `StabilizerTransitive act u`, not stated in the claim.",
+      "question": "Paper claim b-metric states: “(L412) Uniqueness forces the analytic object (§2.7–2.8): The quadratic metric correction B(F,G) ∝ −κ |ω|² (δF/δω · δG/δω) (with Π_u) is proven to be the only lowest-order term compatible with degener…”. Lean theorem `thm23` assumes `StabilizerTransitive act u`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "818f893987cc",
+      "claimId": "b-metric",
+      "kind": "conditional",
+      "lean": "thm23",
+      "key": "hyp:InvariantUnder act u B",
+      "detail": "`thm23` assumes `InvariantUnder act u B`, not stated in the claim.",
+      "question": "Paper claim b-metric states: “(L412) Uniqueness forces the analytic object (§2.7–2.8): The quadratic metric correction B(F,G) ∝ −κ |ω|² (δF/δω · δG/δω) (with Π_u) is proven to be the only lowest-order term compatible with degener…”. Lean theorem `thm23` assumes `InvariantUnder act u B`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "464081d03b6c",
+      "claimId": "b-metric",
+      "kind": "conditional",
+      "lean": "thm23",
+      "key": "hyp:DegenerateWRTKineticEnergy u B",
+      "detail": "`thm23` assumes `DegenerateWRTKineticEnergy u B`, not stated in the claim.",
+      "question": "Paper claim b-metric states: “(L412) Uniqueness forces the analytic object (§2.7–2.8): The quadratic metric correction B(F,G) ∝ −κ |ω|² (δF/δω · δG/δω) (with Π_u) is proven to be the only lowest-order term compatible with degener…”. Lean theorem `thm23` assumes `DegenerateWRTKineticEnergy u B`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "fd4e9f46def5",
+      "claimId": "b-metric",
+      "kind": "conditional",
+      "lean": "thm23",
+      "key": "hyp:MayC3 cz ω u B",
+      "detail": "`thm23` assumes `MayC3 cz ω u B`, not stated in the claim.",
+      "question": "Paper claim b-metric states: “(L412) Uniqueness forces the analytic object (§2.7–2.8): The quadratic metric correction B(F,G) ∝ −κ |ω|² (δF/δω · δG/δω) (with Π_u) is proven to be the only lowest-order term compatible with degener…”. Lean theorem `thm23` assumes `MayC3 cz ω u B`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "732585ca5417",
+      "claimId": "b-metric",
+      "kind": "conditional",
+      "lean": "thm23_orbit",
+      "key": "hyp:E.CasimirLevelTransitive ω",
+      "detail": "`thm23_orbit` assumes `E.CasimirLevelTransitive ω`, not stated in the claim.",
+      "question": "Paper claim b-metric states: “(L412) Uniqueness forces the analytic object (§2.7–2.8): The quadratic metric correction B(F,G) ∝ −κ |ω|² (δF/δω · δG/δω) (with Π_u) is proven to be the only lowest-order term compatible with degener…”. Lean theorem `thm23_orbit` assumes `E.CasimirLevelTransitive ω`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "46d100415d54",
+      "claimId": "b-metric",
+      "kind": "conditional",
+      "lean": "thm23_orbit",
+      "key": "hyp:DegenerateWRTKineticEnergy (E.velocity ω) B",
+      "detail": "`thm23_orbit` assumes `DegenerateWRTKineticEnergy (E.velocity ω) B`, not stated in the claim.",
+      "question": "Paper claim b-metric states: “(L412) Uniqueness forces the analytic object (§2.7–2.8): The quadratic metric correction B(F,G) ∝ −κ |ω|² (δF/δω · δG/δω) (with Π_u) is proven to be the only lowest-order term compatible with degener…”. Lean theorem `thm23_orbit` assumes `DegenerateWRTKineticEnergy (E.velocity ω) B`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "93d966c7f986",
+      "claimId": "b-metric",
+      "kind": "conditional",
+      "lean": "thm23_orbit",
+      "key": "hyp:MayC3 cz ω.1 (E.velocity ω) B",
+      "detail": "`thm23_orbit` assumes `MayC3 cz ω.1 (E.velocity ω) B`, not stated in the claim.",
+      "question": "Paper claim b-metric states: “(L412) Uniqueness forces the analytic object (§2.7–2.8): The quadratic metric correction B(F,G) ∝ −κ |ω|² (δF/δω · δG/δω) (with Π_u) is proven to be the only lowest-order term compatible with degener…”. Lean theorem `thm23_orbit` assumes `MayC3 cz ω.1 (E.velocity ω) B`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "4ba1e357f426",
+      "claimId": "b-step1",
+      "kind": "silent",
+      "key": "no-match",
+      "detail": "No Lean declaration matches this claim. Closest candidate: `eq_smul_tether_of_transitive` (score 0.18, below threshold 0.2).",
+      "question": "Paper claim b-step1 states: “(L581) `step1_locality` (depends only on invariance under coadjoint action)”. No Lean declaration matching it was found among 20 candidates. Closest candidate: `eq_smul_tether_of_transitive` (score 0.18, below threshold 0.2). Is this claim intentionally not formalized, or which declaration should it map to?",
+      "weight": 1
+    },
+    {
+      "id": "d2ba9f61be9e",
+      "claimId": "b-step2",
+      "kind": "silent",
+      "key": "no-match",
+      "detail": "No Lean declaration matches this claim. Closest candidate: `step4` (score 0.16, below threshold 0.2).",
+      "question": "Paper claim b-step2 states: “(L582) `step2_degree` (depends on antisymmetry + bilinearity)”. No Lean declaration matching it was found among 20 candidates. Closest candidate: `step4` (score 0.16, below threshold 0.2). Is this claim intentionally not formalized, or which declaration should it map to?",
+      "weight": 1
+    },
+    {
+      "id": "8810eaeacc8a",
+      "claimId": "b-majorant",
+      "kind": "ambiguous",
+      "lean": "main3_bound",
+      "key": "ode-shape:2/3|0/2",
+      "detail": "Paper ODE has y-powers {2, 3}; `main3_bound` has {0, 2}.",
+      "question": "Paper claim b-majorant states: “(L594) Independent comparison majorant ODE y' = C y² − κ'' y³ (completely decoupled from NS).”. Its differential equation uses powers {2, 3} of y, but Lean theorem `main3_bound` (lean/Proofs.lean:131) uses {0, 2} (0 = constant term). Which ODE is intended?",
+      "weight": 0.9
+    },
+    {
+      "id": "69b4d09c1171",
+      "claimId": "b-majorant",
+      "kind": "conditional",
+      "lean": "main3_bound",
+      "key": "hyp:ContinuousOn y (Set.Icc 0 T)",
+      "detail": "`main3_bound` assumes `ContinuousOn y (Set.Icc 0 T)`, not stated in the claim.",
+      "question": "Paper claim b-majorant states: “(L594) Independent comparison majorant ODE y' = C y² − κ'' y³ (completely decoupled from NS).”. Lean theorem `main3_bound` assumes `ContinuousOn y (Set.Icc 0 T)`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "a663b78895eb",
+      "claimId": "b-majorant",
+      "kind": "conditional",
+      "lean": "main3_bound",
+      "key": "hyp:(∀ x ∈ Set.Ico 0 T, HasDerivWithinAt y (y' x) (Set.Ici x) x)",
+      "detail": "`main3_bound` assumes `(∀ x ∈ Set.Ico 0 T, HasDerivWithinAt y (y' x) (Set.Ici x) x)`, not stated in the claim.",
+      "question": "Paper claim b-majorant states: “(L594) Independent comparison majorant ODE y' = C y² − κ'' y³ (completely decoupled from NS).”. Lean theorem `main3_bound` assumes `(∀ x ∈ Set.Ico 0 T, HasDerivWithinAt y (y' x) (Set.Ici x) x)`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "63c176f5158b",
+      "claimId": "b-majorant",
+      "kind": "conditional",
+      "lean": "main3_bound",
+      "key": "hyp:(∀ x ∈ Set.Ico 0 T, y' x ≤ C - kappa cz * y x ^ 2)",
+      "detail": "`main3_bound` assumes `(∀ x ∈ Set.Ico 0 T, y' x ≤ C - kappa cz * y x ^ 2)`, not stated in the claim.",
+      "question": "Paper claim b-majorant states: “(L594) Independent comparison majorant ODE y' = C y² − κ'' y³ (completely decoupled from NS).”. Lean theorem `main3_bound` assumes `(∀ x ∈ Set.Ico 0 T, y' x ≤ C - kappa cz * y x ^ 2)`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "9bfb80ff2a72",
+      "claimId": "b-kappa",
+      "kind": "silent",
+      "key": "no-match",
+      "detail": "No Lean declaration matches this claim. Closest candidate: `main3_bound` (score 0.11, below threshold 0.2).",
+      "question": "Paper claim b-kappa states: “(L716) Is the coefficient κ forced to be exactly C_CZ(3), with a clear demonstration that any smaller value would violate (C3)?”. No Lean declaration matching it was found among 20 candidates. Closest candidate: `main3_bound` (score 0.11, below threshold 0.2). Is this claim intentionally not formalized, or which declaration should it map to?",
+      "weight": 1
+    },
+    {
+      "id": "ea03cab5efda",
+      "claimId": "b-tether-user",
+      "kind": "silent",
+      "lean": "TetherKernel",
+      "key": "missing:TetherKernel",
+      "detail": "Anchor maps this claim to `TetherKernel`, but no such declaration exists.",
+      "question": "Paper claim b-tether-user states: “T(ω)(F,G)=κ∫|ω(x)|²⟨Π_uδF,Π_uδG⟩dx (pointwise weight, positive sign), and {F,G}_T = {F,G}_cl + T.”. The anchor maps it to Lean declaration `TetherKernel`, which was not found in the scanned files. Was it renamed or removed, or is the claim intentionally unformalized?",
+      "weight": 1
+    },
+    {
+      "id": "a2e5d7f9a10b",
+      "claimId": "b-tether-user",
+      "kind": "ambiguous",
+      "key": "title-vs-statement",
+      "detail": "Title “Tether term and tethered bracket (author description, 2026-11-03)” shares almost no terms with the statement.",
+      "question": "Paper claim b-tether-user states: “T(ω)(F,G)=κ∫|ω(x)|²⟨Π_uδF,Π_uδG⟩dx (pointwise weight, positive sign), and {F,G}_T = {F,G}_cl + T.”. Its title is “Tether term and tethered bracket (author description, 2026-11-03)”, which does not appear to describe that statement. Is the title or the statement misworded?",
+      "weight": 0.3
+    }
+  ],
+  "status": "halt"
+}

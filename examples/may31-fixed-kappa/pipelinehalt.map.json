@@ -25,9 +25,10 @@
     },
     "c-thm23": {
       "lean": [
-        "thm23"
+        "thm23",
+        "thm23_orbit"
       ],
-      "note": "Author answer to Q4 (2026-11-03, verbatim): \"Symmetric, the metric correction reading\". Theorem 2.3 maps to the symmetric statement `thm23` (conditional on StabilizerTransitive, OPEN for SDiff(T3)). The literal 'antisymmetric' wording is vacuous; see thm23_literal_vacuous (note only)."
+      "note": "Author answer to Q4 (2026-11-03, verbatim): \"Symmetric, the metric correction reading\". Theorem 2.3 maps to the symmetric statement `thm23` (conditional on StabilizerTransitive, OPEN for SDiff(T3)). The literal 'antisymmetric' wording is vacuous; see thm23_literal_vacuous (note only). Orbit form `thm23_orbit` (MayForm31/Orbit.lean) uses C1 = abstract SDiff action and weight ‖ω‖², per the author's 2026-11-03 answers to Q1/Q2/Q5; conditional on CasimirLevelTransitive (OPEN)."
     },
     "c-exist": {
       "lean": [
@@ -38,6 +39,10 @@
       "lean": [
         "main3_bound"
       ]
+    },
+    "c-kernel": {
+      "lean": [],
+      "note": "INTENTIONALLY ABSTRACT (author, 2026-11-03): the singular Biot–Savart kernel is deliberately left unformalized; BS is an abstract operator in EulerGeometry and its mapping properties are named hypotheses (bs_divFree, curl_bs). Torus Green's function: future work."
     }
   },
   "unclaimed": [

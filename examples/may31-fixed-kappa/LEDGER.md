@@ -16,6 +16,7 @@ Mathlib has no Calderón–Zygmund theory, so C_CZ(3) is carried as `structure C
 | Note only, not Thm 2.3: literal May 31 "antisymmetric" wording (L222) | `thm23_literal_vacuous` | VACUOUS: no antisymmetric B satisfies C3 when ω ≠ 0 |
 | Thm 2.3 with full L² isometry group as C1 | `thm23_symmetric_isometries` | PROVED (transitivity is proved via reflection) |
 | Thm 2.3 with C1 = SDiff(T³) coadjoint action | — | OPEN (transitivity for SDiff is not shown) |
+| Thm 2.3 over the abstract orbit layer (tether commit `c8ebcb3`, local) | `thm23_orbit` | CONDITIONAL on `CasimirLevelTransitive`, `MayC3` |
 | main3: y' ≤ C − κy² ⇒ y ≤ max(y₀, √(C/κ)) | `main3_bound` | PROVED (pure ODE comparison) |
 | TetherKernel = pointwise Biot–Savart double integral (L56–64) | — | OPEN (PipelineHalt SILENT) |
 | u–ω Biot–Savart relation | — | OPEN (u and ω are independent in Lean) |
@@ -24,15 +25,51 @@ Mathlib has no Calderón–Zygmund theory, so C_CZ(3) is carried as `structure C
 
 **No global Navier–Stokes regularity or Clay result is claimed.** The fixed-κ specialization adds nothing beyond κ > 0.
 
-## Halt questions for the author
-- Q1 Space: L²(T³;ℝ³) vorticity fields, or the coadjoint orbit?
-- Q2 Weight: pointwise |ω(x)|² inside the Biot–Savart kernel, or the collapsed ‖ω‖²?
-- Q3 Should u be tied to ω by Biot–Savart?
-- Q4 **ANSWERED by the author (2026-11-03), verbatim: "Symmetric, the metric correction reading".** Recorded in `anchor.json` → `clarifications` as `306cd9f98c70`. The heuristic matcher never generated this question, so it was recorded through the harness store with `record()` and a stable `mismatchId`.
-- Q5 C1 = SDiff action vs abstract isometries; is "only |ω|² is invariant" meant as transitivity?
-- Q1, Q2, Q3, Q5: still unanswered. The agent did not answer them.
-- PipelineHalt `096a0a1135f6` (SILENT kernel): still OPEN, see `report.pending.json`. `17ee7eea9e88` (hC3 on `thm23_symmetric_isometries`) no longer fires because the map now pairs Thm 2.3 with `thm23` only. It was not answered.
-- Harness limitation: `thm23` has drift 0.000 because its hypotheses (`StabilizerTransitive`, C1–C3) sit inside the `Stmt_thm23` Prop and not in binders, so the CONDITIONAL check does not see them. The status above is the ledger's call. The harness did not check it.
+## Halt questions for the author (answers recorded in `anchor.json` → `clarifications`)
+- Q1 Space `34af9b6bbc39`, Q2 Weight `7fe71d41e6e0`, Q3 u–ω `50f49bd11469`, Q5 C1 `de3f437ea50e`: ANSWERED, recorded by hand via `record()` + `mismatchId` (verdict "other").
+- Q4 `306cd9f98c70`: "Symmetric, the metric correction reading".
+- Kernel `096a0a1135f6`: INTENTIONALLY ABSTRACT (verdict intentional).
+- Q6 transitivity `151ff9ad4153`, verbatim: "transitivity = transitive_on_casimir_levels: ∀ ω₁ ω₂, (∀ f, ∫ f‖ω₁‖ = ∫ f‖ω₂‖) → ∃ g, g•ω₁=ω₂; stays an open named assumption."
+- Q7 δH `596312f4abdb`, verbatim: "δH = u = velocity_from_vorticity ω, not BS*BS." Encoded in NS repo as the named OPEN hypothesis `PlanSteps.KineticEnergyDerivIsVelocity` (not proved: `FunctionalDerivative` is a `Classical.choose`; the Gâteaux representative of ½∫|BSω|² is BS*BSω).
+- Q8 `968579d3e360`, verbatim: "Blueprint 'antisymmetric' for the tether term was a slip; correct it to symmetric in the excerpts." Applied to `blueprint.anchor.json` claim b-antisym (marked as an author correction; `blueprint-2026-06-02.md` unchanged).
 
-## Rerun (after Q4)
-HALT (exit 2) · drift 0.111 (was 0.167) · 1 open question (`096a0a1135f6`) · 1 recorded answer.
+## New OPEN questions (flagged, NOT adopted)
+Author's tether description (2026-11-03): "T(ω)(F,G)=κ∫|ω(x)|²⟨Π_uδF,Π_uδG⟩dx (pointwise weight, positive sign), and {F,G}_T = {F,G}_cl + T." Added as claim `b-tether-user` (PipelineHalt SILENT `ea03cab5efda`: no `TetherKernel` in this example's Lean).
+- (a) Sign: NS-repo `TetherKernel` is −κ∫‖ω‖²⟨Π,Π⟩; the description says +κ.
+- (b) Weight: pointwise |ω(x)|² vs the integrated ‖ω‖² chosen in the Q2 answer.
+- (c) Bracket: {F,G}_cl antisymmetric + T symmetric and nonzero is not antisymmetric, so {·,·}_T is a metriplectic/Leibniz-type bracket, not Lie–Poisson. A claim that the full bracket "stays antisymmetric" is false.
+- Blueprint majorant (L594) y' = Cy² − κ''y³ vs Lean `main3_bound` y' ≤ C − κy²: now a real harness flag, `8810eaeacc8a` AMBIGUOUS ("Paper ODE has y-powers {2, 3}; `main3_bound` has {0, 2}"), from the new `odeShape` check (v0.4.1).
+
+## Honest status (analytic layer)
+- `GlobalRegularity.lean`'s top-level theorems are conditional on `hDI : FrohmanianTetherRate` and `hRiccati : FrohmanianTetherBound`. Both are OPEN.
+- `HWEIGHT_OBSTRUCTION.md` and `SCALE_INVARIANT_TETHER.md` show that the pointwise form ⟨ω,(ω·∇)u⟩ ≤ C M³ − κ M⁴ is dimensionally inconsistent under NS scaling (u_λ = λu(λx,λ²t), ω_λ = λ²ω). Consistent variants fail on the Burgers vortex or reduce to M' ≲ M², which does not prevent blow-up. Checked: `PlanSteps.tether_bound_not_scale_invariant` (for any S, M ≠ 0, κ > 0, λ⁶S ≤ C(λ²M)³ − κ(λ²M)⁴ fails for some λ > 0).
+- Proved tools: `holder_I4`, `young_inequality_eps`, `stretching_bound_of_holder`, `youngs_absorption_elimination`, `comparison_ode_stability`, `vorticity_sup_norm_riccati_bound`, `bkm_regularity_pipeline`.
+- Analytic closure is equivalent in difficulty to the Clay problem and is NOT close. The geometric/tether layer is close. No attempt is made to discharge the rate hypothesis. **No NS regularity is claimed.**
+
+## NS repo, local branch `sdiff-abstract-action` (commits `2a2cfc4`, `b018678`, `e47c5ab`; NOT pushed)
+| Item | Lean | Status |
+|---|---|---|
+| Abstract SDiff action replacing the identity stub | `CoadjointAction g ω := g • ω`, `_one/_mul/_inv/_div` | PROVED |
+| Casimir invariance (C1 integral form) | `SDiffActionHyp.casimir_invariant` | OPEN named assumption |
+| Transitivity on Casimir levels | `SDiffActionHyp.transitive_on_casimir_levels` | OPEN named assumption |
+| Enstrophy invariance, orbits = Casimir levels | `enstrophy_invariant`, `casimir_const_on_orbit`, `orbit_eq_casimir_level` | PROVED from `SDiffActionHyp` |
+| Tether C1 | `tether_coadjoint_invariance`, `tether_satisfies_C1` | PROVED from `TetherIntegralPreserved` (OPEN) |
+| SymplecticConstraint 2a | `VolumePreservingCoadjointAction SDiff` → `TetherIntegralPreserved` | PROVED; the old structure (∀ g : T3→T3 preserves ∫) was UNINHABITABLE, so prior results about it were vacuous |
+| Steps 1+2 (route 2, adopted) | `step2_quadratic_and_locality` | PROVED from `h_sym` + named `h_proj` |
+| Step 3 / 4 / 5 | `step3_scalar` / `step4_scalar_eq_kappa` / `step5_eq_tether` | PROVED from named `h_density`, `h_weight` / `h_sat`, `h_nondeg` / — |
+| Public symmetric Thm 2.3 | `uniqueness_of_minimal_tether` | PROVED by polarization; **does not use hC1, hC2, hC3** (or `SDiffActionHyp`) |
+| Antisymmetric version | `antisym_sat_forces_zero_diag` | VACUOUS (proved) |
+| BS Fourier symbol: div û = 0, curl∘BS = id | `PlanSteps.bsSymbol_div`, `bsSymbol_curl` | PROVED mode-wise only; NOT connected to the real-space `BiotSavart` integral |
+| Euler as coadjoint motion; Casimir conservation | `IsCoadjointMotion` (OPEN), `casimir_conserved` | PROVED conditional on `SDiffActionHyp` + `IsCoadjointMotion` |
+| δH = u | `KineticEnergyDerivIsVelocity` | OPEN named hypothesis |
+| `FrohmanianTetherRate`, `FrohmanianTetherClosingBound` | — | OPEN, unchanged |
+Build: `lake build NS_Millennium_Proof` OK (2714 jobs), no `sorry`, no `axiom`; `#print axioms` = propext, Classical.choice, Quot.sound for every item above.
+
+## Step 1 notes (author, verbatim)
+- (A) "Route 1 (C1+C2 + realizing assumption) reduced to a pairing-to-zero statement of essentially the same strength as locality itself, and the abstract-group formulation of the one-parameter subgroup was undefined. Route 2 is therefore adopted: locality is recorded as a one-line corollary of the quadratic representation established in Step 2. The earlier route-1 lemmas remain in the file under an explicit “fallback / superseded” label for audit purposes."
+- (B) "`PairsToZeroIfDerivativeVanishes` is a one-sided form of the locality statement. Step 1 is conditional on an assumption of essentially the same strength as its conclusion."
+- Earlier note: "Step 1 is conditional on an assumption of nearly the same strength as its conclusion; C1 and C2 are unused here."
+
+## Reruns (PipelineHalt 0.4.1, 2026-11-03)
+- Main (`anchor.json` + map): HALT (exit 2) · drift 0.354 · 11 open. The Stmt_ unfolding fix now surfaces CONDITIONAL hypotheses: `thm23` (StabilizerTransitive, MayC3), `thm23_orbit` (CasimirLevelTransitive, MayC3). The earlier "drift 0.000" harness limitation is fixed.
+- Blueprint (`blueprint.anchor.json`, `--no-map`): HALT (exit 2) · drift 0.990 · 22 open. b-goal, b-step1, b-step2, b-kappa SILENT; b-antisym, b-metric, b-majorant CONDITIONAL; majorant ODE-shape flag `8810eaeacc8a`; b-tether-user SILENT.

@@ -19,7 +19,7 @@ import {
 } from "./text.js";
 import { splitTop } from "./lean.js";
 
-export const VERSION = "0.4.0";
+export const VERSION = "0.4.1";
 
 export const WEIGHTS: Record<MismatchKind, number> = {
   silent: 1,
@@ -93,6 +93,34 @@ export const SYNONYMS: Record<string, string[]> = {
 };
 
 /** Hypotheses: explicit/implicit binders that are propositions, plus top-level premises of the type. */
+/** Strip leading `∀ …,` binders (top level). */
+const stripForall = (t: string) => {
+  t = t.trim();
+  while (/^∀/.test(t) && t.includes(",")) t = t.slice(t.indexOf(",") + 1).trim();
+  return t;
+};
+
+/** A theorem whose type is a `Prop` definition (e.g. `thm : Stmt_x`, `E.Stmt_x`) hides its
+ *  hypotheses in that definition's body. Return the unfolded body (following aliases, depth 4). */
+export function unfoldStatement(d: LeanDecl, decls: LeanDecl[]): LeanDecl | undefined {
+  let cur = d;
+  for (let i = 0; i < 4; i++) {
+    const m = /^(?:[\w.']+\.)?([\w']+)(?:\s+[\w.']+)*$/u.exec(cur.type.trim());
+    if (!m) return cur === d ? undefined : cur;
+    const def = decls.find(
+      (x) =>
+        x !== cur &&
+        x.name === m[1] &&
+        (x.kind === "def" || x.kind === "abbrev") &&
+        /^Prop$/.test(x.type.trim()) &&
+        x.body,
+    );
+    if (!def) return cur === d ? undefined : cur;
+    cur = { ...def, type: def.body!, binders: [...cur.binders, ...def.binders] };
+  }
+  return cur;
+}
+
 export function hypotheses(d: LeanDecl): { text: string; name?: string }[] {
   const hyps: { text: string; name?: string }[] = [];
   for (const b of d.binders) {
@@ -101,11 +129,12 @@ export function hypotheses(d: LeanDecl): { text: string; name?: string }[] {
     if (named || /[≤≥<>=≠∈∉∧∨¬↔]/.test(b.type))
       hyps.push({ text: b.type, name: b.names.join(" ") });
   }
-  let t = d.type;
-  while (/^∀/.test(t) && t.includes(","))
-    t = t.slice(t.indexOf(",") + 1).trim();
+  const t = stripForall(d.type);
   if (!/^[∃¬]/.test(t))
-    for (const p of splitTop(t, "→").slice(0, -1)) hyps.push({ text: p });
+    for (const p of splitTop(t, "→").slice(0, -1)) {
+      const q = stripForall(p);
+      if (q) hyps.push({ text: q });
+    }
   return hyps;
 }
 
@@ -128,6 +157,22 @@ function mk(
     question,
     weight,
   };
+}
+
+
+const SUP: Record<string, string> = { "²": "2", "³": "3", "⁴": "4", "⁵": "5" };
+/** Exponent set of `y` in the right-hand side of a scalar ODE/differential inequality
+ * `y' = …` / `y' x ≤ …`; 0 marks a term with no `y`. Undefined if no such ODE is found. */
+export function odeShape(text: string): number[] | undefined {
+  const m = /\by'(?:\s*\w+)?\s*(?:=|≤|<=|<)\s*([^.;,→\n]+)/u.exec(text);
+  if (!m) return undefined;
+  const rhs = m[1]!.replace(/[²³⁴⁵]/g, (ch) => `^${SUP[ch]}`);
+  const exps = new Set<number>();
+  for (const term of rhs.split(/\s[+\-−]\s|^\s*[\-−]/).filter((t) => t.trim())) {
+    const ym = /\by(?:\s+\w+)?\s*(?:\^\s*(\d+))?(?![\w'])/u.exec(term);
+    exps.add(ym ? Number(ym[1] ?? 1) : 0);
+  }
+  return [...exps].sort((a, b) => a - b);
 }
 
 export function compareClaim(
@@ -316,7 +361,30 @@ export function compareClaim(
           0.8,
         ),
       );
-    for (const h of hypotheses(d)) {
+    const unfolded = unfoldStatement(d, decls);
+    {
+      const ps = odeShape(c.statement);
+      const ls = odeShape(unfolded?.type ?? d.type);
+      if (ps && ls && ps.join() !== ls.join())
+        mismatches.push(
+          mk(
+            c,
+            "ambiguous",
+            d.name,
+            `ode-shape:${ps.join("/")}|${ls.join("/")}`,
+            `Paper ODE has y-powers {${ps.join(", ")}}; \`${d.name}\` has {${ls.join(", ")}}.`,
+            `${said} Its differential equation uses powers {${ps.join(", ")}} of y, but ${declWord(d)} \`${d.name}\` (${d.file}:${d.line}) uses {${ls.join(", ")}} (0 = constant term). Which ODE is intended?`,
+            0.9,
+          ),
+        );
+    }
+    const hypList = [
+      ...hypotheses(d),
+      ...(unfolded
+        ? hypotheses({ ...unfolded, binders: unfolded.binders.slice(d.binders.length) })
+        : []),
+    ];
+    for (const h of hypList) {
       const hb = lowerBounds(h.text);
       if (hb.size) {
         for (const [v, lo] of hb) {

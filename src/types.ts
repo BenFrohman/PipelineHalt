@@ -63,6 +63,8 @@ export interface LeanDecl {
   /** Type after the top-level colon (empty for structures without one). */
   type: string;
   usesSorry: boolean;
+  /** Definition body after `:=` (normalized), used to unfold `Prop`-valued statement defs. */
+  body?: string;
   /** Names of project-declared axioms referenced in the body or type. */
   usesAxioms: string[];
 }

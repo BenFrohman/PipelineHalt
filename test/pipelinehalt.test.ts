@@ -39,6 +39,7 @@ import {
   MAP_FILE,
   type ClaimMap,
   type Anchor,
+  odeShape,
 } from "../src/index.js";
 
 const LEAN = `import Mathlib
@@ -750,4 +751,34 @@ describe("mapping file", () => {
       "gap_eq",
     );
   });
+});
+
+describe("Prop statement defs", () => {
+  test("hypotheses inside a Stmt_ def unfolded by the theorem count as CONDITIONAL", () => {
+    const decls = parseLean(`
+namespace N
+def Stmt_main : Prop :=
+  ∀ (a : Nat) (u : Nat), StabilizerTransitive a u → ∀ b : Nat, Positive b → b = a
+abbrev Stmt_alias : Prop := Stmt_main
+theorem main : Stmt_main := by sorry_free
+theorem viaAlias : E.Stmt_alias := main
+end N
+`);
+    for (const name of ["main", "viaAlias"]) {
+      const r = compareClaim(
+        { id: "t", statement: "Every b equals a.", lean: [name] },
+        decls,
+      );
+      const hyps = r.mismatches
+        .filter((m) => m.kind === "conditional")
+        .map((m) => m.key);
+      assert.ok(hyps.includes("hyp:StabilizerTransitive a u"), `${name}: ${hyps}`);
+      assert.ok(hyps.includes("hyp:Positive b"), `${name}: ${hyps}`);
+    }
+  });
+});
+
+test("ODE shape mismatch (majorant y' = Cy² − κy³ vs y' ≤ C − κy²)", () => {
+  assert.deepEqual(odeShape("majorant ODE y' = C y² − κ'' y³ (decoupled)"), [2, 3]);
+  assert.deepEqual(odeShape("(∀ x ∈ Set.Ico 0 T, y' x ≤ C - kappa cz * y x ^ 2) →"), [0, 2]);
 });

@@ -1,9 +1,9 @@
 {
   "tool": "pipelinehalt",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "anchorTitle": "Frohmanian symplectic tether, May 31 fixed-kappa T3 form",
-  "generatedAt": "2026-11-04T01:27:09.467Z",
-  "declarationsScanned": 30,
+  "generatedAt": "2026-11-04T01:55:23.976Z",
+  "declarationsScanned": 49,
   "claims": [
     {
       "claim": {
@@ -103,7 +103,8 @@
         "kind": "theorem",
         "source": "Tether.lean @ 3582a57 (May 31 2026) L219-236",
         "lean": [
-          "thm23"
+          "thm23",
+          "thm23_orbit"
         ]
       },
       "matched": [
@@ -111,10 +112,56 @@
           "name": "thm23",
           "score": 0.055,
           "explicit": true
+        },
+        {
+          "name": "thm23_orbit",
+          "score": 0.069,
+          "explicit": true
         }
       ],
-      "mismatches": [],
-      "drift": 0
+      "mismatches": [
+        {
+          "id": "858ad372d771",
+          "claimId": "c-thm23",
+          "kind": "conditional",
+          "lean": "thm23",
+          "key": "hyp:StabilizerTransitive act u",
+          "detail": "`thm23` assumes `StabilizerTransitive act u`, not stated in the claim.",
+          "question": "Paper claim Theorem (c-thm23) states: “Theorem 2.3: any antisymmetric B that is invariant under the coadjoint action of volume-preserving diffeomorphisms of T3 (C1), degenerate w.r.t. kinetic energy (C2), and produces controllable negativ…”. Lean theorem `thm23` assumes `StabilizerTransitive act u`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "a272731d6977",
+          "claimId": "c-thm23",
+          "kind": "conditional",
+          "lean": "thm23",
+          "key": "hyp:MayC3 cz ω u B",
+          "detail": "`thm23` assumes `MayC3 cz ω u B`, not stated in the claim.",
+          "question": "Paper claim Theorem (c-thm23) states: “Theorem 2.3: any antisymmetric B that is invariant under the coadjoint action of volume-preserving diffeomorphisms of T3 (C1), degenerate w.r.t. kinetic energy (C2), and produces controllable negativ…”. Lean theorem `thm23` assumes `MayC3 cz ω u B`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "022885b6dde3",
+          "claimId": "c-thm23",
+          "kind": "conditional",
+          "lean": "thm23_orbit",
+          "key": "hyp:E.CasimirLevelTransitive ω",
+          "detail": "`thm23_orbit` assumes `E.CasimirLevelTransitive ω`, not stated in the claim.",
+          "question": "Paper claim Theorem (c-thm23) states: “Theorem 2.3: any antisymmetric B that is invariant under the coadjoint action of volume-preserving diffeomorphisms of T3 (C1), degenerate w.r.t. kinetic energy (C2), and produces controllable negativ…”. Lean theorem `thm23_orbit` assumes `E.CasimirLevelTransitive ω`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "c6ba3f00d1ed",
+          "claimId": "c-thm23",
+          "kind": "conditional",
+          "lean": "thm23_orbit",
+          "key": "hyp:MayC3 cz ω.1 (E.velocity ω) B",
+          "detail": "`thm23_orbit` assumes `MayC3 cz ω.1 (E.velocity ω) B`, not stated in the claim.",
+          "question": "Paper claim Theorem (c-thm23) states: “Theorem 2.3: any antisymmetric B that is invariant under the coadjoint action of volume-preserving diffeomorphisms of T3 (C1), degenerate w.r.t. kinetic energy (C2), and produces controllable negativ…”. Lean theorem `thm23_orbit` assumes `MayC3 cz ω.1 (E.velocity ω) B`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        }
+      ],
+      "drift": 0.938
     },
     {
       "claim": {
@@ -134,8 +181,19 @@
           "explicit": true
         }
       ],
-      "mismatches": [],
-      "drift": 0
+      "mismatches": [
+        {
+          "id": "cc64c3078c55",
+          "claimId": "c-exist",
+          "kind": "conditional",
+          "lean": "existence",
+          "key": "hyp:(∃ e : L2Field, ⟪u, e⟫ = 0 ∧ ‖e‖ = 1)",
+          "detail": "`existence` assumes `(∃ e : L2Field, ⟪u, e⟫ = 0 ∧ ‖e‖ = 1)`, not stated in the claim.",
+          "question": "Paper claim Proposition (c-exist) states: “The TetherKernel with kappa = C_CZ(3) satisfies C1, C2, C3.”. Lean theorem `existence` assumes `(∃ e : L2Field, ⟪u, e⟫ = 0 ∧ ‖e‖ = 1)`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        }
+      ],
+      "drift": 0.5
     },
     {
       "claim": {
@@ -155,8 +213,39 @@
           "explicit": true
         }
       ],
-      "mismatches": [],
-      "drift": 0
+      "mismatches": [
+        {
+          "id": "8dac4f39a594",
+          "claimId": "c-main3",
+          "kind": "conditional",
+          "lean": "main3_bound",
+          "key": "hyp:ContinuousOn y (Set.Icc 0 T)",
+          "detail": "`main3_bound` assumes `ContinuousOn y (Set.Icc 0 T)`, not stated in the claim.",
+          "question": "Paper claim Theorem (c-main3) states: “Tether bounding inequality: d/dt ||omega||_inf <= C - kappa ||omega||_inf^2 with kappa > 0, hence ||omega||_inf stays bounded.”. Lean theorem `main3_bound` assumes `ContinuousOn y (Set.Icc 0 T)`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "6f08f9e6114e",
+          "claimId": "c-main3",
+          "kind": "conditional",
+          "lean": "main3_bound",
+          "key": "hyp:(∀ x ∈ Set.Ico 0 T, HasDerivWithinAt y (y' x) (Set.Ici x) x)",
+          "detail": "`main3_bound` assumes `(∀ x ∈ Set.Ico 0 T, HasDerivWithinAt y (y' x) (Set.Ici x) x)`, not stated in the claim.",
+          "question": "Paper claim Theorem (c-main3) states: “Tether bounding inequality: d/dt ||omega||_inf <= C - kappa ||omega||_inf^2 with kappa > 0, hence ||omega||_inf stays bounded.”. Lean theorem `main3_bound` assumes `(∀ x ∈ Set.Ico 0 T, HasDerivWithinAt y (y' x) (Set.Ici x) x)`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "c127608f99a2",
+          "claimId": "c-main3",
+          "kind": "conditional",
+          "lean": "main3_bound",
+          "key": "hyp:(∀ x ∈ Set.Ico 0 T, y' x ≤ C - kappa cz * y x ^ 2)",
+          "detail": "`main3_bound` assumes `(∀ x ∈ Set.Ico 0 T, y' x ≤ C - kappa cz * y x ^ 2)`, not stated in the claim.",
+          "question": "Paper claim Theorem (c-main3) states: “Tether bounding inequality: d/dt ||omega||_inf <= C - kappa ||omega||_inf^2 with kappa > 0, hence ||omega||_inf stays bounded.”. Lean theorem `main3_bound` assumes `(∀ x ∈ Set.Ico 0 T, y' x ≤ C - kappa cz * y x ^ 2)`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        }
+      ],
+      "drift": 0.875
     },
     {
       "claim": {
@@ -164,7 +253,8 @@
         "number": "Definition",
         "statement": "TetherKernel is the Biot-Savart double integral weighted by pointwise |omega(x)|^2.",
         "kind": "definition",
-        "source": "Tether.lean @ 3582a57 (May 31 2026) L56-64"
+        "source": "Tether.lean @ 3582a57 (May 31 2026) L56-64",
+        "lean": []
       },
       "matched": [],
       "mismatches": [
@@ -174,11 +264,19 @@
           "kind": "silent",
           "key": "no-match",
           "detail": "No Lean declaration matches this claim. Closest candidate: `mayTether` (score 0.18, below threshold 0.2).",
-          "question": "Paper claim Definition (c-kernel) states: “TetherKernel is the Biot-Savart double integral weighted by pointwise |omega(x)|^2.”. No Lean declaration matching it was found among 18 candidates. Closest candidate: `mayTether` (score 0.18, below threshold 0.2). Is this claim intentionally not formalized, or which declaration should it map to?",
-          "weight": 1
+          "question": "Paper claim Definition (c-kernel) states: “TetherKernel is the Biot-Savart double integral weighted by pointwise |omega(x)|^2.”. No Lean declaration matching it was found among 29 candidates. Closest candidate: `mayTether` (score 0.18, below threshold 0.2). Is this claim intentionally not formalized, or which declaration should it map to?",
+          "weight": 1,
+          "clarification": {
+            "claimId": "c-kernel",
+            "kind": "silent",
+            "question": "Paper claim Definition (c-kernel) states: “TetherKernel is the Biot-Savart double integral weighted by pointwise |omega(x)|^2.”. No Lean declaration matching it was found among 29 candidates. Closest candidate: `mayTether` (score 0.18, below threshold 0.2). Is this claim intentionally not formalized, or which declaration should it map to?",
+            "answer": "Biot–Savart kernel: deliberately left partially unformalized; mapping properties (div-free, curl∘BS = id on the orbit, torus Green's function) are future theorems / black boxes.",
+            "verdict": "intentional",
+            "answeredAt": "2026-11-04T01:37:11.911Z"
+          }
         }
       ],
-      "drift": 1
+      "drift": 0
     },
     {
       "claim": {
@@ -195,8 +293,39 @@
           "explicit": false
         }
       ],
-      "mismatches": [],
-      "drift": 0
+      "mismatches": [
+        {
+          "id": "d8de27b4dea8",
+          "claimId": "c-ns",
+          "kind": "conditional",
+          "lean": "main3_bound",
+          "key": "hyp:ContinuousOn y (Set.Icc 0 T)",
+          "detail": "`main3_bound` assumes `ContinuousOn y (Set.Icc 0 T)`, not stated in the claim.",
+          "question": "Paper claim Theorem (c-ns) states: “Navier-Stokes vorticity on T3 obeys the tether bounding inequality (estimates layer).”. Lean theorem `main3_bound` assumes `ContinuousOn y (Set.Icc 0 T)`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "3a32a243f876",
+          "claimId": "c-ns",
+          "kind": "conditional",
+          "lean": "main3_bound",
+          "key": "hyp:(∀ x ∈ Set.Ico 0 T, HasDerivWithinAt y (y' x) (Set.Ici x) x)",
+          "detail": "`main3_bound` assumes `(∀ x ∈ Set.Ico 0 T, HasDerivWithinAt y (y' x) (Set.Ici x) x)`, not stated in the claim.",
+          "question": "Paper claim Theorem (c-ns) states: “Navier-Stokes vorticity on T3 obeys the tether bounding inequality (estimates layer).”. Lean theorem `main3_bound` assumes `(∀ x ∈ Set.Ico 0 T, HasDerivWithinAt y (y' x) (Set.Ici x) x)`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        },
+        {
+          "id": "d5ec01ceedb1",
+          "claimId": "c-ns",
+          "kind": "conditional",
+          "lean": "main3_bound",
+          "key": "hyp:(∀ x ∈ Set.Ico 0 T, y' x ≤ C - kappa cz * y x ^ 2)",
+          "detail": "`main3_bound` assumes `(∀ x ∈ Set.Ico 0 T, y' x ≤ C - kappa cz * y x ^ 2)`, not stated in the claim.",
+          "question": "Paper claim Theorem (c-ns) states: “Navier-Stokes vorticity on T3 obeys the tether bounding inequality (estimates layer).”. Lean theorem `main3_bound` assumes `(∀ x ∈ Set.Ico 0 T, y' x ≤ C - kappa cz * y x ^ 2)`, which the claim does not state. Is this extra hypothesis intentional?",
+          "weight": 0.5
+        }
+      ],
+      "drift": 0.875
     }
   ],
   "unanchored": [
@@ -205,16 +334,117 @@
       "cites": "Theorem 2.3"
     }
   ],
-  "drift": 0.111,
+  "drift": 0.354,
   "pending": [
     {
-      "id": "096a0a1135f6",
-      "claimId": "c-kernel",
-      "kind": "silent",
-      "key": "no-match",
-      "detail": "No Lean declaration matches this claim. Closest candidate: `mayTether` (score 0.18, below threshold 0.2).",
-      "question": "Paper claim Definition (c-kernel) states: “TetherKernel is the Biot-Savart double integral weighted by pointwise |omega(x)|^2.”. No Lean declaration matching it was found among 18 candidates. Closest candidate: `mayTether` (score 0.18, below threshold 0.2). Is this claim intentionally not formalized, or which declaration should it map to?",
-      "weight": 1
+      "id": "858ad372d771",
+      "claimId": "c-thm23",
+      "kind": "conditional",
+      "lean": "thm23",
+      "key": "hyp:StabilizerTransitive act u",
+      "detail": "`thm23` assumes `StabilizerTransitive act u`, not stated in the claim.",
+      "question": "Paper claim Theorem (c-thm23) states: “Theorem 2.3: any antisymmetric B that is invariant under the coadjoint action of volume-preserving diffeomorphisms of T3 (C1), degenerate w.r.t. kinetic energy (C2), and produces controllable negativ…”. Lean theorem `thm23` assumes `StabilizerTransitive act u`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "a272731d6977",
+      "claimId": "c-thm23",
+      "kind": "conditional",
+      "lean": "thm23",
+      "key": "hyp:MayC3 cz ω u B",
+      "detail": "`thm23` assumes `MayC3 cz ω u B`, not stated in the claim.",
+      "question": "Paper claim Theorem (c-thm23) states: “Theorem 2.3: any antisymmetric B that is invariant under the coadjoint action of volume-preserving diffeomorphisms of T3 (C1), degenerate w.r.t. kinetic energy (C2), and produces controllable negativ…”. Lean theorem `thm23` assumes `MayC3 cz ω u B`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "022885b6dde3",
+      "claimId": "c-thm23",
+      "kind": "conditional",
+      "lean": "thm23_orbit",
+      "key": "hyp:E.CasimirLevelTransitive ω",
+      "detail": "`thm23_orbit` assumes `E.CasimirLevelTransitive ω`, not stated in the claim.",
+      "question": "Paper claim Theorem (c-thm23) states: “Theorem 2.3: any antisymmetric B that is invariant under the coadjoint action of volume-preserving diffeomorphisms of T3 (C1), degenerate w.r.t. kinetic energy (C2), and produces controllable negativ…”. Lean theorem `thm23_orbit` assumes `E.CasimirLevelTransitive ω`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "c6ba3f00d1ed",
+      "claimId": "c-thm23",
+      "kind": "conditional",
+      "lean": "thm23_orbit",
+      "key": "hyp:MayC3 cz ω.1 (E.velocity ω) B",
+      "detail": "`thm23_orbit` assumes `MayC3 cz ω.1 (E.velocity ω) B`, not stated in the claim.",
+      "question": "Paper claim Theorem (c-thm23) states: “Theorem 2.3: any antisymmetric B that is invariant under the coadjoint action of volume-preserving diffeomorphisms of T3 (C1), degenerate w.r.t. kinetic energy (C2), and produces controllable negativ…”. Lean theorem `thm23_orbit` assumes `MayC3 cz ω.1 (E.velocity ω) B`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "cc64c3078c55",
+      "claimId": "c-exist",
+      "kind": "conditional",
+      "lean": "existence",
+      "key": "hyp:(∃ e : L2Field, ⟪u, e⟫ = 0 ∧ ‖e‖ = 1)",
+      "detail": "`existence` assumes `(∃ e : L2Field, ⟪u, e⟫ = 0 ∧ ‖e‖ = 1)`, not stated in the claim.",
+      "question": "Paper claim Proposition (c-exist) states: “The TetherKernel with kappa = C_CZ(3) satisfies C1, C2, C3.”. Lean theorem `existence` assumes `(∃ e : L2Field, ⟪u, e⟫ = 0 ∧ ‖e‖ = 1)`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "8dac4f39a594",
+      "claimId": "c-main3",
+      "kind": "conditional",
+      "lean": "main3_bound",
+      "key": "hyp:ContinuousOn y (Set.Icc 0 T)",
+      "detail": "`main3_bound` assumes `ContinuousOn y (Set.Icc 0 T)`, not stated in the claim.",
+      "question": "Paper claim Theorem (c-main3) states: “Tether bounding inequality: d/dt ||omega||_inf <= C - kappa ||omega||_inf^2 with kappa > 0, hence ||omega||_inf stays bounded.”. Lean theorem `main3_bound` assumes `ContinuousOn y (Set.Icc 0 T)`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "6f08f9e6114e",
+      "claimId": "c-main3",
+      "kind": "conditional",
+      "lean": "main3_bound",
+      "key": "hyp:(∀ x ∈ Set.Ico 0 T, HasDerivWithinAt y (y' x) (Set.Ici x) x)",
+      "detail": "`main3_bound` assumes `(∀ x ∈ Set.Ico 0 T, HasDerivWithinAt y (y' x) (Set.Ici x) x)`, not stated in the claim.",
+      "question": "Paper claim Theorem (c-main3) states: “Tether bounding inequality: d/dt ||omega||_inf <= C - kappa ||omega||_inf^2 with kappa > 0, hence ||omega||_inf stays bounded.”. Lean theorem `main3_bound` assumes `(∀ x ∈ Set.Ico 0 T, HasDerivWithinAt y (y' x) (Set.Ici x) x)`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "c127608f99a2",
+      "claimId": "c-main3",
+      "kind": "conditional",
+      "lean": "main3_bound",
+      "key": "hyp:(∀ x ∈ Set.Ico 0 T, y' x ≤ C - kappa cz * y x ^ 2)",
+      "detail": "`main3_bound` assumes `(∀ x ∈ Set.Ico 0 T, y' x ≤ C - kappa cz * y x ^ 2)`, not stated in the claim.",
+      "question": "Paper claim Theorem (c-main3) states: “Tether bounding inequality: d/dt ||omega||_inf <= C - kappa ||omega||_inf^2 with kappa > 0, hence ||omega||_inf stays bounded.”. Lean theorem `main3_bound` assumes `(∀ x ∈ Set.Ico 0 T, y' x ≤ C - kappa cz * y x ^ 2)`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "d8de27b4dea8",
+      "claimId": "c-ns",
+      "kind": "conditional",
+      "lean": "main3_bound",
+      "key": "hyp:ContinuousOn y (Set.Icc 0 T)",
+      "detail": "`main3_bound` assumes `ContinuousOn y (Set.Icc 0 T)`, not stated in the claim.",
+      "question": "Paper claim Theorem (c-ns) states: “Navier-Stokes vorticity on T3 obeys the tether bounding inequality (estimates layer).”. Lean theorem `main3_bound` assumes `ContinuousOn y (Set.Icc 0 T)`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "3a32a243f876",
+      "claimId": "c-ns",
+      "kind": "conditional",
+      "lean": "main3_bound",
+      "key": "hyp:(∀ x ∈ Set.Ico 0 T, HasDerivWithinAt y (y' x) (Set.Ici x) x)",
+      "detail": "`main3_bound` assumes `(∀ x ∈ Set.Ico 0 T, HasDerivWithinAt y (y' x) (Set.Ici x) x)`, not stated in the claim.",
+      "question": "Paper claim Theorem (c-ns) states: “Navier-Stokes vorticity on T3 obeys the tether bounding inequality (estimates layer).”. Lean theorem `main3_bound` assumes `(∀ x ∈ Set.Ico 0 T, HasDerivWithinAt y (y' x) (Set.Ici x) x)`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
+    },
+    {
+      "id": "d5ec01ceedb1",
+      "claimId": "c-ns",
+      "kind": "conditional",
+      "lean": "main3_bound",
+      "key": "hyp:(∀ x ∈ Set.Ico 0 T, y' x ≤ C - kappa cz * y x ^ 2)",
+      "detail": "`main3_bound` assumes `(∀ x ∈ Set.Ico 0 T, y' x ≤ C - kappa cz * y x ^ 2)`, not stated in the claim.",
+      "question": "Paper claim Theorem (c-ns) states: “Navier-Stokes vorticity on T3 obeys the tether bounding inequality (estimates layer).”. Lean theorem `main3_bound` assumes `(∀ x ∈ Set.Ico 0 T, y' x ≤ C - kappa cz * y x ^ 2)`, which the claim does not state. Is this extra hypothesis intentional?",
+      "weight": 0.5
     }
   ],
   "status": "halt",

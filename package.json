@@ -1,6 +1,6 @@
 {
   "name": "pipelinehalt",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "PipelineHalt: compare paper claims (anchor) against Lean statements (live artifact); halt and ask on mismatch.",
   "license": "MIT",
   "author": "Benjamin Stanley Frohman <frohmanbenjamin@gmail.com>",

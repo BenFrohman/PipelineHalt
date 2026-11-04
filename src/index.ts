@@ -8,3 +8,4 @@ export * from "./halt.js";
 export * from "./report.js";
 export * from "./protocol.js";
 export { run, parseArgs, HELP } from "./cli.js";
+export * from "./audit.js";

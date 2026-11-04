@@ -1,0 +1,3733 @@
+{
+  "source": "examples/ns-manuscript/main.tex",
+  "counts": {
+    "verified": 104,
+    "verified-audit": 0,
+    "build-ok": 2,
+    "build-mismatch": 0,
+    "broken": 0,
+    "open": 18,
+    "silent": 49,
+    "non-claim": 123
+  },
+  "total": 296,
+  "classified": 296,
+  "coverage": 1,
+  "real": {
+    "theorems": 532,
+    "modules": 22,
+    "jobs": 2716
+  },
+  "verdict": "HALT",
+  "units": [
+    {
+      "id": "3912a8cdc4",
+      "kind": "title",
+      "line": 74,
+      "text": "The Frohmanian Tether on $\\mathrm{SDiff}(\\mathbb{T}^3)$: A Metriplectic Correction, Its Canonicity, and an Obstruction to Damping",
+      "refs": [
+        "tether_kernel_uniqueness",
+        "tetherKernel_degenerates_on_kinetic_energy"
+      ],
+      "status": "verified",
+      "notes": [
+        "ClosureBlueprint.tether_kernel_uniqueness [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.tetherKernel_degenerates_on_kinetic_energy [theorem] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "9077f99160",
+      "kind": "sentence",
+      "line": 84,
+      "text": "We present in full both (1)~the complete original geometric and physical framework of the \\textbf{Frohmanian Symplectic Tether} $\\Tf$ (preserving without omission all original definitions, physical motivations, conjectured geometric--analytic bridges, and extensions from \\emph{Frohmanian\\_Tether\\_Final\\_Submission\\_v8}), and (2)~its complete, kernel-verified, non-vacuous conditional formalization in Lean~4 (repository \\texttt{NS\\_Millennium\\_Proof}: \\textbf{532 theorems across 22 modules, zero \\texttt{sorryAx}, and only the standard axioms \\texttt{propext}, \\texttt{Classical.choice}, \\texttt{Quot.sound}}).",
+      "refs": [],
+      "status": "open",
+      "notes": [
+        "theorems: 532 matches",
+        "modules: 22 matches",
+        "open: conjectured"
+      ]
+    },
+    {
+      "id": "b374ab7c4f",
+      "kind": "sentence",
+      "line": 86,
+      "text": "Let $M(t)=\\|\\omega(t)\\|_{L^\\infty}$ denote the vorticity sup-norm along a physical solution of the three-dimensional incompressible Navier--Stokes equations with smooth, divergence-free, finite-energy initial data and viscosity $\\nu>0$.",
+      "refs": [],
+      "status": "silent",
+      "notes": [
+        "mathematical content with no Lean mapping"
+      ]
+    },
+    {
+      "id": "963785d0ab",
+      "kind": "sentence",
+      "line": 86,
+      "text": "We prove in Lean~4 (\\lean{frohmanian_tether_theorem} and \\lean{conditional_regularity_of_open_hyps}) that if (i)~Kato local existence holds with a uniform restart length on the class of physical solutions (\\lean{IsPhysicalNSSolution}, enforcing pointwise time-differentiability and the Leray $L^2$ energy inequality), (ii)~uniqueness holds within \\lean{IsPhysicalNSSolution}, and (iii)~$M(t)$ satisfies the Frohmanian cubic differential inequality (\\lean{FrohmanianTetherRate}) \\[ M'(t)\\le \\CZ\\,M(t)^2-\\kappa''\\,M(t)^3,\\qquad t\\ge 0, \\] for constants $\\CZ,\\kappa''>0$, then a scalar comparison argument (\\lean{comparison_ode_stability}) yields the uniform ceiling $M(t)\\le\\max\\bigl(M(0),\\CZ/\\kappa''\\bigr)$ (\\lean{FrohmanianTetherBound}), and, as a Lean-checked implication from these open hypotheses, the Beale--Kato--Majda criterion together with uniform Kato restart yields a smooth, divergence-free physical solution.",
+      "refs": [
+        "frohmanian_tether_theorem",
+        "conditional_regularity_of_open_hyps",
+        "IsPhysicalNSSolution",
+        "FrohmanianTetherRate",
+        "comparison_ode_stability",
+        "FrohmanianTetherBound"
+      ],
+      "status": "verified",
+      "notes": [
+        "ConditionalRegularity.frohmanian_tether_theorem [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "\\lean{conditional_regularity_of_open_hyps} ambiguous: ClosureBlueprint.conditional_regularity_of_open_hyps, ConditionalRegularity.conditional_regularity_of_open_hyps",
+        "ClosureBlueprint.conditional_regularity_of_open_hyps | ConditionalRegularity.conditional_regularity_of_open_hyps [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "NavierStokes3D.IsPhysicalNSSolution [def] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.FrohmanianTetherRate [def] axioms: propext, Classical.choice, Quot.sound",
+        "\\lean{comparison_ode_stability} ambiguous: ClosureBlueprint.comparison_ode_stability, AnalyticPipeline.comparison_ode_stability",
+        "ClosureBlueprint.comparison_ode_stability | AnalyticPipeline.comparison_ode_stability [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.FrohmanianTetherBound [def] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "aebe9cee1c",
+      "kind": "display",
+      "line": 86,
+      "text": "\\[ M'(t)\\le \\CZ\\,M(t)^2-\\kappa''\\,M(t)^3,\\qquad t\\ge 0, \\]",
+      "refs": [
+        "frohmanian_tether_theorem",
+        "conditional_regularity_of_open_hyps",
+        "IsPhysicalNSSolution",
+        "FrohmanianTetherRate",
+        "comparison_ode_stability",
+        "FrohmanianTetherBound"
+      ],
+      "status": "verified",
+      "notes": [
+        "ConditionalRegularity.frohmanian_tether_theorem [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "\\lean{conditional_regularity_of_open_hyps} ambiguous: ClosureBlueprint.conditional_regularity_of_open_hyps, ConditionalRegularity.conditional_regularity_of_open_hyps",
+        "ClosureBlueprint.conditional_regularity_of_open_hyps | ConditionalRegularity.conditional_regularity_of_open_hyps [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "NavierStokes3D.IsPhysicalNSSolution [def] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.FrohmanianTetherRate [def] axioms: propext, Classical.choice, Quot.sound",
+        "\\lean{comparison_ode_stability} ambiguous: ClosureBlueprint.comparison_ode_stability, AnalyticPipeline.comparison_ode_stability",
+        "ClosureBlueprint.comparison_ode_stability | AnalyticPipeline.comparison_ode_stability [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.FrohmanianTetherBound [def] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "870208eae7",
+      "kind": "sentence",
+      "line": 92,
+      "text": "Crucially, the time-smoothness and physical-energy repair (\\lean{IsPhysicalNSSolution}) is \\textbf{fully implemented and kernel-verified non-vacuous}: in \\lean{ClayStatements.lean}, we prove that unphysical time-step fields are excluded (\\lean{stepField_not_physical}) and that all hypotheses of \\lean{conditional_regularity_of_open_hyps} (\\lean{repaired_hInt}, \\lean{repaired_huniq_at_zero}, \\lean{frohmanianTetherBound_zero}, \\lean{frohmanianTetherRate_zero}) hold simultaneously and unconditionally at $u_0=0$ (\\lean{conditional_regularity_nonvacuous_at_zero}).",
+      "refs": [
+        "IsPhysicalNSSolution",
+        "ClayStatements.lean",
+        "stepField_not_physical",
+        "conditional_regularity_of_open_hyps",
+        "repaired_hInt",
+        "repaired_huniq_at_zero",
+        "frohmanianTetherBound_zero",
+        "frohmanianTetherRate_zero",
+        "conditional_regularity_nonvacuous_at_zero"
+      ],
+      "status": "verified",
+      "notes": [
+        "NavierStokes3D.IsPhysicalNSSolution [def] axioms: propext, Classical.choice, Quot.sound",
+        "module NS_Millennium_Proof.Modules.ClayStatements: 20 theorems, all standard",
+        "FrohmanianTether.ClayStatements.stepField_not_physical [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "\\lean{conditional_regularity_of_open_hyps} ambiguous: ClosureBlueprint.conditional_regularity_of_open_hyps, ConditionalRegularity.conditional_regularity_of_open_hyps",
+        "ClosureBlueprint.conditional_regularity_of_open_hyps | ConditionalRegularity.conditional_regularity_of_open_hyps [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.ClayStatements.repaired_hInt [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.ClayStatements.repaired_huniq_at_zero [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.ClayStatements.frohmanianTetherBound_zero [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.ClayStatements.frohmanianTetherRate_zero [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.ClayStatements.conditional_regularity_nonvacuous_at_zero [theorem] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "1363925dfb",
+      "kind": "sentence",
+      "line": 92,
+      "text": "Furthermore, every original conjectured bridge—including \\lean{reduced_pairing_of_unmodified_and_tether} (via \\lean{ConjecturedUnmodifiedTetherPairing}), \\lean{tethered_stretching_of_weight}, \\lean{tether_coadjoint_invariance_of_integral_eq} (via \\lean{ConjecturedSDiffPushforwardInvariance}), and the symmetric uniqueness characterization (\\lean{uniqueness_of_minimal_tether}, which delegates to \\lean{uniqueness_of_minimal_symmetric_tether})—is compiled in the Lean build with zero \\lean{sorry}s.",
+      "refs": [
+        "reduced_pairing_of_unmodified_and_tether",
+        "ConjecturedUnmodifiedTetherPairing",
+        "tethered_stretching_of_weight",
+        "tether_coadjoint_invariance_of_integral_eq",
+        "ConjecturedSDiffPushforwardInvariance",
+        "uniqueness_of_minimal_tether",
+        "uniqueness_of_minimal_symmetric_tether",
+        "sorry"
+      ],
+      "status": "open",
+      "notes": [
+        "FrohmanianTether.reduced_pairing_of_unmodified_and_tether [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.ConjecturedUnmodifiedTetherPairing [def] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.tethered_stretching_of_weight [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.tether_coadjoint_invariance_of_integral_eq [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.ConjecturedSDiffPushforwardInvariance [def] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.uniqueness_of_minimal_tether [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.uniqueness_of_minimal_symmetric_tether [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "open: conjectured"
+      ]
+    },
+    {
+      "id": "da4184d188",
+      "kind": "heading",
+      "line": 93,
+      "text": "Status of the damping premise.",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "d3fecb1c0b",
+      "kind": "sentence",
+      "line": 93,
+      "text": "The full tethered bracket $\\{F,G\\}_{\\Tf}=\\{F,G\\}_{\\mathrm{cl}}+T(F,G)$ is of \\emph{metriplectic type}: an antisymmetric Lie--Poisson part plus a symmetric, negative-semidefinite tether $T$.",
+      "refs": [],
+      "status": "silent",
+      "notes": [
+        "mathematical content with no Lean mapping"
+      ]
+    },
+    {
+      "id": "a2255bb44a",
+      "kind": "sentence",
+      "line": 93,
+      "text": "It is \\emph{not} antisymmetric and no Jacobi identity is claimed for it.",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "b25bff4fea",
+      "kind": "sentence",
+      "line": 93,
+      "text": "Because $T$ is symmetric and degenerate on the kinetic energy (C2), $T(M,H)=0$ for every functional $M$, so the bracket contributes \\emph{no} damping to the evolution of any functional, including $M(t)=\\|\\omega\\|_{L^\\infty}$: the damping coefficient derived from the bracket is $0$.",
+      "refs": [],
+      "status": "silent",
+      "notes": [
+        "mathematical content with no Lean mapping"
+      ]
+    },
+    {
+      "id": "6ed0b790ad",
+      "kind": "sentence",
+      "line": 93,
+      "text": "The cubic rate (R) and the resulting closing bound are therefore \\textbf{open assumptions}, not consequences of the tether.",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "9a1df7c6d4",
+      "kind": "sentence",
+      "line": 93,
+      "text": "Every statement below that passes through (R)---the Riccati/cubic comparison ceiling and the conditional regularity theorems---depends on this unresolved premise.",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "b65d3b1e24",
+      "kind": "sentence",
+      "line": 93,
+      "text": "\\textbf{No regularity claim for the Navier--Stokes equations is made.}",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "64e7722fcb",
+      "kind": "heading",
+      "line": 99,
+      "text": "Introduction",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "cda7374465",
+      "kind": "sentence",
+      "line": 99,
+      "text": "\\label{sec:intro}",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "d4aad09f42",
+      "kind": "sentence",
+      "line": 101,
+      "text": "The incompressible Navier--Stokes equations on $\\T=\\R^3/\\mathbb{Z}^3$ (or on $\\R^3$ with finite energy) are \\begin{equation}\\label{eq:NS} \\partial_t u+(u\\cdot\\nabla)u+\\nabla p=\\nu\\Delta u,\\qquad \\nabla\\cdot u=0,\\qquad u(0)=u_0, \\end{equation} with $\\nu>0$.",
+      "refs": [],
+      "status": "silent",
+      "notes": [
+        "mathematical content with no Lean mapping"
+      ]
+    },
+    {
+      "id": "ebc889f262",
+      "kind": "display",
+      "line": 101,
+      "text": "\\begin{equation}\\label{eq:NS} \\partial_t u+(u\\cdot\\nabla)u+\\nabla p=\\nu\\Delta u,\\qquad \\nabla\\cdot u=0,\\qquad u(0)=u_0, \\end{equation}",
+      "refs": [],
+      "env": "equation",
+      "status": "silent",
+      "notes": [
+        "mathematical content with no Lean mapping"
+      ]
+    },
+    {
+      "id": "32b42d8743",
+      "kind": "sentence",
+      "line": 105,
+      "text": "Taking the curl yields the vorticity transport equation for $\\omega=\\nabla\\times u$: \\begin{equation}\\label{eq:vort} \\partial_t\\omega+(u\\cdot\\nabla)\\omega=(\\omega\\cdot\\nabla)u+\\nu\\Delta\\omega .",
+      "refs": [],
+      "status": "silent",
+      "notes": [
+        "mathematical content with no Lean mapping"
+      ]
+    },
+    {
+      "id": "522aee6d32",
+      "kind": "sentence",
+      "line": 108,
+      "text": "\\end{equation} By the Beale--Kato--Majda theorem \\cite{BKM1984}, a smooth solution can be continued past $T$ whenever $\\int_0^T\\|\\omega(t)\\|_{L^\\infty}\\,dt<\\infty$.",
+      "refs": [],
+      "status": "silent",
+      "notes": [
+        "mathematical content with no Lean mapping"
+      ]
+    },
+    {
+      "id": "f08f235406",
+      "kind": "sentence",
+      "line": 109,
+      "text": "A uniform ceiling on $M(t)=\\|\\omega(t)\\|_{L^\\infty}$ therefore implies, by BKM (cited, not formalized), smooth continuation of that solution.",
+      "refs": [],
+      "status": "open",
+      "notes": [
+        "open: not formalized"
+      ]
+    },
+    {
+      "id": "4646b44276",
+      "kind": "sentence",
+      "line": 109,
+      "text": "Obtaining such a bound for arbitrary large smooth data is the core difficulty of the Clay Millennium Problem \\cite{Fefferman2006}: the vortex-stretching term $(\\omega\\cdot\\nabla)u$ is supercritical with respect to the natural parabolic scaling \\begin{equation}\\label{eq:scaling} u_\\lambda(x,t)=\\lambda u(\\lambda x,\\lambda^2t),\\qquad \\omega_\\lambda(x,t)=\\lambda^2\\omega(\\lambda x,\\lambda^2 t), \\end{equation} which leaves \\eqref{eq:NS} invariant at fixed $\\nu$.",
+      "refs": [],
+      "status": "silent",
+      "notes": [
+        "mathematical content with no Lean mapping"
+      ]
+    },
+    {
+      "id": "b867b1ffac",
+      "kind": "display",
+      "line": 109,
+      "text": "\\begin{equation}\\label{eq:scaling} u_\\lambda(x,t)=\\lambda u(\\lambda x,\\lambda^2t),\\qquad \\omega_\\lambda(x,t)=\\lambda^2\\omega(\\lambda x,\\lambda^2 t), \\end{equation}",
+      "refs": [],
+      "env": "equation",
+      "status": "silent",
+      "notes": [
+        "mathematical content with no Lean mapping"
+      ]
+    },
+    {
+      "id": "8c6d595f8a",
+      "kind": "sentence",
+      "line": 115,
+      "text": "The Frohmanian programme approaches this problem through a two-layer architecture:",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "59cdfd3b7c",
+      "kind": "sentence",
+      "line": 117,
+      "text": "\\textbf{Geometric layer (\\texttt{ArnoldGeometric.lean}, \\texttt{SymplecticTether.lean}, \\texttt{Uniqueness.lean}, \\texttt{ForMathlib/Projection.lean}):} Starting from Arnold's coadjoint orbit of volume-preserving diffeomorphisms \\cite{Arnold1966,ArnoldKhesin1998}, we introduce the \\textbf{Frohmanian Symplectic Tether} $\\Tf$—realized concretely via the $L^2$-projected quadratic kernel \\lean{TetherKernel} with universal Calderón--Zygmund coupling $\\kappa=\\CZ(3)=3/2$.",
+      "refs": [
+        "TetherKernel"
+      ],
+      "status": "verified",
+      "notes": [
+        "FrohmanianTether.TetherKernel [def] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "40a19fd272",
+      "kind": "sentence",
+      "line": 117,
+      "text": "By projecting functional derivatives orthogonally to the velocity field $u=\\delta H/\\delta\\omega$ via the Gram--Schmidt projector $\\Pi_u$ (\\lean{Pi_u}), the tether satisfies exact degeneracy $B(F,H)=0$ on the kinetic-energy Hamiltonian $H$ (\\lean{tetherKernel_degenerates_on_kinetic_energy}), leaving the reversible Euler vector field unmodified while supplying a negative-semidefinite diagonal value $T(F,F)=-\\kappa\\|\\omega\\|_{L^2}^2\\int|\\Pi_u\\delta F/\\delta\\omega|^2$ (\\lean{ProducesControllableNegativeFeedback}).",
+      "refs": [
+        "Pi_u",
+        "tetherKernel_degenerates_on_kinetic_energy",
+        "ProducesControllableNegativeFeedback"
+      ],
+      "status": "verified",
+      "notes": [
+        "ForMathlib.Pi_u [def] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.tetherKernel_degenerates_on_kinetic_energy [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.ProducesControllableNegativeFeedback [def] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "d9fc1b403c",
+      "kind": "sentence",
+      "line": 117,
+      "text": "The same degeneracy implies that the tether induces no damping of $M(t)$ (Section~\\ref{sec:damping}).",
+      "refs": [],
+      "status": "silent",
+      "notes": [
+        "mathematical content with no Lean mapping"
+      ]
+    },
+    {
+      "id": "b8c3465ce8",
+      "kind": "sentence",
+      "line": 118,
+      "text": "\\textbf{Analytic layer (\\texttt{NS\\_Equations.lean}, \\texttt{TetheredLyapunov.lean}, \\texttt{IndependentMajorant.lean}, \\texttt{CubicSourceCertificate.lean}, \\texttt{AnalyticPipeline.lean}, \\texttt{ClosureBlueprint.lean}, \\texttt{ConditionalRegularity.lean}, \\texttt{ClayStatements.lean}):} Using the quartic Lyapunov functional $S_\\varepsilon(t)$ weighted by the transported enstrophy-accumulation scalar $\\varphi$ (\\lean{LyapunovS}, \\lean{IsEnstrophyAccumulation}), the programme links the cubic rate $M'(t)\\le \\CZ M(t)^2-\\kappa'' M(t)^3$ (\\lean{FrohmanianTetherRate})---an \\emph{open assumption} not derived from the tether (Section~\\ref{sec:damping})---to the autonomous comparison ODE $y'=Cy^2-\\kappa''y^3$ (\\lean{comparison_ode_stability}, \\lean{comparison_majorant_global_bound}), yielding the uniform ceiling $M(t)\\le\\max(M(0),\\CZ/\\kappa'')$ (\\lean{riccati_ceiling_of_vorticity_di}) and, \\emph{conditionally on that assumption and the further open hypotheses (K), (U)}, the smooth-continuation conclusion of Theorem~\\ref{thm:main}.",
+      "refs": [
+        "LyapunovS",
+        "IsEnstrophyAccumulation",
+        "FrohmanianTetherRate",
+        "comparison_ode_stability",
+        "comparison_majorant_global_bound",
+        "riccati_ceiling_of_vorticity_di"
+      ],
+      "status": "open",
+      "notes": [
+        "TetheredLyapunov.LyapunovS [def] axioms: propext, Classical.choice, Quot.sound",
+        "TetheredLyapunov.IsEnstrophyAccumulation [def] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.FrohmanianTetherRate [def] axioms: propext, Classical.choice, Quot.sound",
+        "\\lean{comparison_ode_stability} ambiguous: ClosureBlueprint.comparison_ode_stability, AnalyticPipeline.comparison_ode_stability",
+        "ClosureBlueprint.comparison_ode_stability | AnalyticPipeline.comparison_ode_stability [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "IndependentMajorant.comparison_majorant_global_bound [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "TetheredLyapunov.riccati_ceiling_of_vorticity_di [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "open: open assumption"
+      ]
+    },
+    {
+      "id": "c3b819f4a7",
+      "kind": "environment",
+      "line": 121,
+      "text": "[Conditional regularity implication from open hypotheses; \\lean{frohmanian_tether_theorem}, \\lean{conditional_regularity_of_open_hyps}; depends on the unresolved premise (R)]\\label{thm:main} Let $\\nu>0$ and let $u_0$ be smooth (\\lean{ContDiff ℝ ⊤}), divergence-free, and of finite $L^2$ energy. Assume within the class of physical solutions (\\lean{IsPhysicalNSSolution}): \\begin{enumerate} \\item[(K)] \\emph{Kato local existence with uniform restart}: a local smooth physical solution (\\lean{KatoLocalWitness}) exists from every such datum, with a restart increment $\\tau>0$ extending existence times below $T^*(u_0,\\nu)$; \\item[(R)] \\emph{Frohmanian cubic tether rate (\\lean{FrohmanianTetherRate})}: along every physical solution from $u_0$, the vorticity sup-norm $t\\mapsto M(t)$ is continuous, differentiable on $[0,\\infty)$, and satisfies \\[ M'(t)\\le \\CZ\\,M(t)^2-\\kappa''\\,M(t)^3\\qquad(t\\ge 0) \\] for constants $\\CZ>0$, $\\kappa''>0$ (yielding \\lean{FrohmanianTetherBound}); \\item[(U)] \\emph{Physical uniqueness (\\texttt{huniq})}: smooth physical solutions (\\lean{IsPhysicalNSSolution}) starting from $u_0$ agree with the Kato witness on each existence interval $[0,T]$. \\end{enumerate} Then $M(t)\\le\\max\\bigl(M(0),\\CZ/\\kappa''\\bigr)$ for all $t\\ge0$, and \\eqref{eq:NS} admits a physical solution defined $u$ on $[0,\\infty)$ that is spatially $C^\\infty$ for every $t\\ge0$, divergence-free, and unique among all smooth physical solutions.",
+      "refs": [
+        "frohmanian_tether_theorem",
+        "conditional_regularity_of_open_hyps",
+        "ContDiff ℝ ⊤",
+        "IsPhysicalNSSolution",
+        "KatoLocalWitness",
+        "FrohmanianTetherRate",
+        "FrohmanianTetherBound"
+      ],
+      "env": "theorem",
+      "status": "verified",
+      "notes": [
+        "ConditionalRegularity.frohmanian_tether_theorem [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "\\lean{conditional_regularity_of_open_hyps} ambiguous: ClosureBlueprint.conditional_regularity_of_open_hyps, ConditionalRegularity.conditional_regularity_of_open_hyps",
+        "ClosureBlueprint.conditional_regularity_of_open_hyps | ConditionalRegularity.conditional_regularity_of_open_hyps [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "expression \\lean{ContDiff ℝ ⊤}: head ContDiff",
+        "ContDiff [def] axioms: propext, Classical.choice, Quot.sound",
+        "NavierStokes3D.IsPhysicalNSSolution [def] axioms: propext, Classical.choice, Quot.sound",
+        "NavierStokes3D.KatoLocalWitness [inductive] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.FrohmanianTetherRate [def] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.FrohmanianTetherBound [def] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "174e16aaee",
+      "kind": "heading",
+      "line": 135,
+      "text": "Verification status of Theorem~\\ref{thm:main}.",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "3c656f3089",
+      "kind": "sentence",
+      "line": 137,
+      "text": "\\textbf{Axiom-clean \\& sorry-free:} The entire repository \\texttt{NS\\_Millennium\\_Proof} builds cleanly (\\texttt{lake build NS\\_Millennium\\_Proof}, 2716 jobs); its default target contains \\textbf{532 theorems across 22 modules, zero \\texttt{sorryAx}, and zero nonstandard axioms} (counted by \\texttt{collectAxioms} over every theorem; \\texttt{lake env lean scripts/AxiomAudit.lean} also passes) (depending only on \\lean{propext}, \\lean{Classical.choice}, \\lean{Quot.sound}).",
+      "refs": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "status": "build-ok",
+      "notes": [
+        "jobs: 2716 matches",
+        "theorems: 532 matches",
+        "modules: 22 matches"
+      ]
+    },
+    {
+      "id": "7e6b45e20f",
+      "kind": "sentence",
+      "line": 138,
+      "text": "\\textbf{Kernel-verified non-vacuous:} The physical-solution predicate \\lean{IsPhysicalNSSolution} (Section~\\ref{sec:vacuity}) rules out pathological time-step fields that previously exploited Mathlib's totalized derivative \\lean{deriv} $=0$ at jump discontinuities (\\lean{stepField_not_physical}).",
+      "refs": [
+        "IsPhysicalNSSolution",
+        "deriv",
+        "stepField_not_physical"
+      ],
+      "status": "verified",
+      "notes": [
+        "NavierStokes3D.IsPhysicalNSSolution [def] axioms: propext, Classical.choice, Quot.sound",
+        "TetheredLyapunov.IsComparisonODESolution.deriv [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.ClayStatements.stepField_not_physical [theorem] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "5dec8c2aab",
+      "kind": "sentence",
+      "line": 138,
+      "text": "In \\lean{ClayStatements.lean}, all hypotheses of Theorem~\\ref{thm:main} are proved to be jointly satisfiable and unconditionally realized at $u_0=0$ (\\lean{conditional_regularity_nonvacuous_at_zero}).",
+      "refs": [
+        "ClayStatements.lean",
+        "conditional_regularity_nonvacuous_at_zero"
+      ],
+      "status": "verified",
+      "notes": [
+        "module NS_Millennium_Proof.Modules.ClayStatements: 20 theorems, all standard",
+        "FrohmanianTether.ClayStatements.conditional_regularity_nonvacuous_at_zero [theorem] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "df10dcaaac",
+      "kind": "sentence",
+      "line": 138,
+      "text": "Theorem~\\ref{thm:main} therefore depends on an unresolved premise and is \\emph{not} a regularity result for Navier--Stokes.",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "6194b9d095",
+      "kind": "sentence",
+      "line": 139,
+      "text": "\\textbf{Clear separation of proved implications vs.\\ open premises:} The implication $\\text{(K)}+\\text{(R)}+\\text{(U)}\\implies\\text{(the conclusion of Theorem~\\ref{thm:main})}$ is kernel-verified \\emph{as an implication}.",
+      "refs": [],
+      "status": "silent",
+      "notes": [
+        "mathematical content with no Lean mapping"
+      ]
+    },
+    {
+      "id": "230395bd21",
+      "kind": "sentence",
+      "line": 139,
+      "text": "Hypothesis (R) is an open assumption: the tether does not supply it (its damping coefficient is $0$, Section~\\ref{sec:damping}), and no derivation of (R) from \\eqref{eq:vort} is known.",
+      "refs": [],
+      "status": "open",
+      "notes": [
+        "open: open assumption"
+      ]
+    },
+    {
+      "id": "09e0686ec3",
+      "kind": "sentence",
+      "line": 139,
+      "text": "Non-vacuity at $u_0=0$ shows only that the hypotheses are jointly satisfiable in a trivial case.",
+      "refs": [],
+      "status": "silent",
+      "notes": [
+        "mathematical content with no Lean mapping"
+      ]
+    },
+    {
+      "id": "f6f95c79b2",
+      "kind": "heading",
+      "line": 143,
+      "text": "Setting and the Physical Solution Class",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "1b3f755fb7",
+      "kind": "sentence",
+      "line": 143,
+      "text": "\\label{sec:setting}",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "d8ccd702d3",
+      "kind": "sentence",
+      "line": 145,
+      "text": "Write $M(t)=\\|\\omega(t)\\|_{L^\\infty}$ (Lean: \\lean{vorticity_sup_norm (vorticity (u t))}).",
+      "refs": [
+        "vorticity_sup_norm (vorticity (u t))"
+      ],
+      "status": "verified",
+      "notes": [
+        "expression \\lean{vorticity_sup_norm (vorticity (u t))}: head vorticity_sup_norm",
+        "\\lean{vorticity_sup_norm} ambiguous: ConditionalRegularity.vorticity_sup_norm, NavierStokes3D.vorticity_sup_norm",
+        "ConditionalRegularity.vorticity_sup_norm | NavierStokes3D.vorticity_sup_norm [def] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "0ad59bd2d4",
+      "kind": "sentence",
+      "line": 145,
+      "text": "In the Lean formalization, the pointwise Navier--Stokes equation is \\lean{NS_PDE u p ν}.",
+      "refs": [
+        "NS_PDE u p ν"
+      ],
+      "status": "verified",
+      "notes": [
+        "expression \\lean{NS_PDE u p ν}: head NS_PDE",
+        "NavierStokes3D.NS_PDE [def] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "006a9c6dbc",
+      "kind": "sentence",
+      "line": 145,
+      "text": "Because Mathlib's \\lean{deriv} returns $0$ at points where a function of time is not differentiable, a spatially smooth field with jump discontinuities in time would trivially satisfy \\lean{NS_PDE} unless time-differentiability and energy control are enforced.",
+      "refs": [
+        "deriv",
+        "NS_PDE"
+      ],
+      "status": "verified",
+      "notes": [
+        "TetheredLyapunov.IsComparisonODESolution.deriv [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "NavierStokes3D.NS_PDE [def] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "de60b56de2",
+      "kind": "sentence",
+      "line": 147,
+      "text": "We therefore define the physical solution class \\lean{IsPhysicalNSSolution} in \\lean{NS_Equations.lean}:",
+      "refs": [
+        "IsPhysicalNSSolution",
+        "NS_Equations.lean"
+      ],
+      "status": "verified",
+      "notes": [
+        "NavierStokes3D.IsPhysicalNSSolution [def] axioms: propext, Classical.choice, Quot.sound",
+        "module NS_Millennium_Proof.Modules.NS_Equations: 148 theorems, all standard"
+      ]
+    },
+    {
+      "id": "50e2bd55d0",
+      "kind": "listing",
+      "line": 148,
+      "text": "\\leanfile{IsPhysicalNSSolution}",
+      "refs": [],
+      "status": "non-claim",
+      "notes": [
+        "verbatim Lean listing (code, not a claim)"
+      ]
+    },
+    {
+      "id": "99844bdd07",
+      "kind": "sentence",
+      "line": 149,
+      "text": "A time-dependent velocity field $u$ belongs to \\lean{IsPhysicalNSSolution} if and only if for all $t\\ge0$:",
+      "refs": [
+        "IsPhysicalNSSolution"
+      ],
+      "status": "verified",
+      "notes": [
+        "NavierStokes3D.IsPhysicalNSSolution [def] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "078aab0b45",
+      "kind": "sentence",
+      "line": 151,
+      "text": "$s\\mapsto u(s,x)$ is pointwise differentiable at $t$ for every $x\\in\\R^3$;",
+      "refs": [],
+      "status": "silent",
+      "notes": [
+        "mathematical content with no Lean mapping"
+      ]
+    },
+    {
+      "id": "77f3069d7d",
+      "kind": "sentence",
+      "line": 152,
+      "text": "$x\\mapsto u(t,x)$ is continuous and has finite kinetic energy $\\int_{\\R^3}\\|u(t,x)\\|^2\\,dx<\\infty$;",
+      "refs": [],
+      "status": "silent",
+      "notes": [
+        "mathematical content with no Lean mapping"
+      ]
+    },
+    {
+      "id": "33467a08fe",
+      "kind": "sentence",
+      "line": 153,
+      "text": "$u$ obeys the classical Leray $L^2$ energy inequality $\\int_{\\R^3}\\|u(t,x)\\|^2\\,dx\\le\\int_{\\R^3}\\|u(0,x)\\|^2\\,dx$;",
+      "refs": [],
+      "status": "silent",
+      "notes": [
+        "mathematical content with no Lean mapping"
+      ]
+    },
+    {
+      "id": "c34dbd4a79",
+      "kind": "sentence",
+      "line": 154,
+      "text": "$u(t)=u(0)$ for $t\\le0$ (initial-value convention on $(-\\infty,0]$).",
+      "refs": [],
+      "status": "silent",
+      "notes": [
+        "mathematical content with no Lean mapping"
+      ]
+    },
+    {
+      "id": "ed58388668",
+      "kind": "sentence",
+      "line": 157,
+      "text": "The classical PDE inputs enter as explicit, transparent hypotheses:",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "ab53889fdf",
+      "kind": "sentence",
+      "line": 159,
+      "text": "Kato local existence on physical solutions (\\lean{KatoLocalWitness}, carrying \\lean{phys : IsPhysicalNSSolution u}) \\cite{Kato1984,Temam1995};",
+      "refs": [
+        "KatoLocalWitness",
+        "phys : IsPhysicalNSSolution u"
+      ],
+      "status": "verified",
+      "notes": [
+        "NavierStokes3D.KatoLocalWitness [inductive] axioms: propext, Classical.choice, Quot.sound",
+        "expression \\lean{phys : IsPhysicalNSSolution u}: head IsPhysicalNSSolution (binder phys)",
+        "NavierStokes3D.IsPhysicalNSSolution [def] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "ca1d9f8124",
+      "kind": "sentence",
+      "line": 160,
+      "text": "Beale--Kato--Majda continuation and parabolic smoothing (\\lean{bkm_regularity_pipeline}) \\cite{BKM1984,ConstantinFoias1988};",
+      "refs": [
+        "bkm_regularity_pipeline"
+      ],
+      "status": "verified",
+      "notes": [
+        "\\lean{bkm_regularity_pipeline} ambiguous: ClosureBlueprint.bkm_regularity_pipeline, AnalyticPipeline.bkm_regularity_pipeline",
+        "ClosureBlueprint.bkm_regularity_pipeline | AnalyticPipeline.bkm_regularity_pipeline [theorem] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "84fd461cff",
+      "kind": "sentence",
+      "line": 161,
+      "text": "Energy-Grönwall uniqueness of smooth physical solutions (\\lean{uniqueness_of_existence_times_of_energy_gronwall}) \\cite{Temam1995}.",
+      "refs": [
+        "uniqueness_of_existence_times_of_energy_gronwall"
+      ],
+      "status": "verified",
+      "notes": [
+        "NavierStokes3D.uniqueness_of_existence_times_of_energy_gronwall [theorem] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "c11f8c66e3",
+      "kind": "heading",
+      "line": 165,
+      "text": "Geometric Layer: The Frohmanian Symplectic Tether",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "c851779a16",
+      "kind": "sentence",
+      "line": 165,
+      "text": "\\label{sec:geom}",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "b3008d2d8d",
+      "kind": "heading",
+      "line": 167,
+      "text": "The Classical Arnold Lie--Poisson Bracket",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "ccf6034796",
+      "kind": "sentence",
+      "line": 168,
+      "text": "On the coadjoint orbit $\\mathcal O$ of the group $\\mathrm{SDiff}(\\T)$ of volume-preserving diffeomorphisms, the classical Kirillov--Kostant--Souriau / Arnold Lie--Poisson bracket \\cite{Arnold1966,ArnoldKhesin1998} is \\[ \\{F,G\\}_{\\mathrm{cl}}(\\omega)=\\int_{\\T}\\omega\\cdot\\Bigl(\\frac{\\delta F}{\\delta\\omega}\\times\\frac{\\delta G}{\\delta\\omega}\\Bigr)\\,dV .",
+      "refs": [],
+      "status": "silent",
+      "notes": [
+        "mathematical content with no Lean mapping"
+      ]
+    },
+    {
+      "id": "2baace7ced",
+      "kind": "sentence",
+      "line": 171,
+      "text": "\\] With kinetic-energy Hamiltonian $H(\\omega)=\\tfrac12\\int|u|^2\\,dV$ (where $\\delta H/\\delta\\omega=u=\\mathrm{BS}(\\omega)$ is the Biot--Savart velocity reconstruction, formalized in \\lean{ArnoldGeometric.lean}), the Hamiltonian vector field of $\\{F,H\\}_{\\mathrm{cl}}$ reproduces the ideal 3D Euler vorticity equation ($\\nu=0$ in \\eqref{eq:vort}; Lean: \\lean{classical_bracket_reproduces_Euler}).",
+      "refs": [
+        "ArnoldGeometric.lean",
+        "classical_bracket_reproduces_Euler"
+      ],
+      "status": "verified",
+      "notes": [
+        "module NS_Millennium_Proof.Modules.ArnoldGeometric: 52 theorems, all standard",
+        "ArnoldGeometric.classical_bracket_reproduces_Euler [theorem] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "cf470c372e",
+      "kind": "heading",
+      "line": 174,
+      "text": "Route A: The Projected Tether Kernel and Degeneracy",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "e406b03d1f",
+      "kind": "environment",
+      "line": 175,
+      "text": "[Frohmanian tether kernel; Lean \\lean{TetherKernel}, \\lean{Pi_u}]\\label{def:tether} For a velocity field $u=\\mathrm{BS}(\\omega)$ with $\\|u\\|_{L^2}\\neq0$, let $\\Pi_u=P^\\perp_u$ be the $L^2$-orthogonal Gram--Schmidt projection onto the complement of $\\operatorname{span}\\{u\\}$: \\[ \\Pi_u v=v-\\frac{\\langle v,u\\rangle_{L^2}}{\\|u\\|_{L^2}^2}\\,u \\] (Lean: \\lean{ForMathlib.Pi_u}, with $\\Pi_u v=v$ when $\\|u\\|_{L^2}=0$). With universal 3D Calderón--Zygmund constant $\\kappa=\\CZ(3)=\\frac{3}{8\\pi}\\cdot 4\\pi=\\frac{3}{2}$ (Lean: \\lean{kappa_eq_three_halves} in \\lean{SymplecticTether.lean}), define the Frohmanian tether kernel \\[ T(F,G)(\\omega)=B(F,G)(\\omega)=-\\kappa\\,\\|\\omega\\|_{L^2}^2\\int_{\\T}\\Bigl\\langle \\Pi_u\\Bigl(\\frac{\\delta F}{\\delta\\omega}\\Bigr)(x),\\,\\Pi_u\\Bigl(\\frac{\\delta G}{\\delta\\omega}\\Bigr)(x)\\Bigr\\rangle\\,dV , \\] where $\\|\\omega\\|_{L^2}^2=\\int_{\\T}|\\omega|^2\\,dV$ is the enstrophy (Lean: \\lean{Enstrophy}), a constant on each coadjoint orbit. The full tethered bracket is $\\{F,G\\}_{\\Tf}=\\{F,G\\}_{\\mathrm{cl}}+T(F,G)$.",
+      "refs": [
+        "TetherKernel",
+        "Pi_u",
+        "ForMathlib.Pi_u",
+        "kappa_eq_three_halves",
+        "SymplecticTether.lean",
+        "Enstrophy"
+      ],
+      "env": "definition",
+      "status": "verified",
+      "notes": [
+        "FrohmanianTether.TetherKernel [def] axioms: propext, Classical.choice, Quot.sound",
+        "ForMathlib.Pi_u [def] axioms: propext, Classical.choice, Quot.sound",
+        "ForMathlib.Pi_u [def] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.kappa_eq_three_halves [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "module NS_Millennium_Proof.Modules.SymplecticTether: 38 theorems, all standard",
+        "ArnoldGeometric.Enstrophy [def] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "8ba51cfc67",
+      "kind": "environment",
+      "line": 187,
+      "text": "[Strict Degeneracy on Kinetic Energy; proved, \\lean{tetherKernel_degenerates_on_kinetic_energy}]\\label{prop:degen} Whenever $\\delta H/\\delta\\omega=u$, $\\nabla\\cdot u=0$, and $u\\in L^2$, one has $\\Pi_u u=0$ (\\lean{projection_orthogonal_to_u}) and hence \\[ B(F,H)(\\omega)=0\\qquad\\text{for every functional }F. \\]",
+      "refs": [
+        "tetherKernel_degenerates_on_kinetic_energy",
+        "projection_orthogonal_to_u"
+      ],
+      "env": "proposition",
+      "status": "verified",
+      "notes": [
+        "FrohmanianTether.tetherKernel_degenerates_on_kinetic_energy [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "ForMathlib.projection_orthogonal_to_u [theorem] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "e0bef77fea",
+      "kind": "sentence",
+      "line": 194,
+      "text": "If $\\|u\\|_{L^2}\\ne0$, $\\Pi_u u=u-(\\langle u,u\\rangle_{L^2}/\\|u\\|_{L^2}^2)u=0$, so the projected factor $\\Pi_u(\\delta H/\\delta\\omega)$ vanishes pointwise.",
+      "refs": [],
+      "status": "silent",
+      "notes": [
+        "mathematical content with no Lean mapping"
+      ]
+    },
+    {
+      "id": "0e9777a21c",
+      "kind": "sentence",
+      "line": 194,
+      "text": "If $\\|u\\|_{L^2}=0$, $u=0$ a.e.\\ and $\\Pi_u 0=0$ (\\lean{Pi_u_zero}).",
+      "refs": [
+        "Pi_u_zero"
+      ],
+      "status": "verified",
+      "notes": [
+        "ForMathlib.Pi_u_zero [theorem] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "644a356774",
+      "kind": "sentence",
+      "line": 194,
+      "text": "Thus $\\{F,H\\}_{\\Tf}=\\{F,H\\}_{\\mathrm{cl}}$ for all $F$: the reversible Euler vector field generated by $H$ is preserved unmodified.",
+      "refs": [],
+      "status": "silent",
+      "notes": [
+        "mathematical content with no Lean mapping"
+      ]
+    },
+    {
+      "id": "d724a176bd",
+      "kind": "heading",
+      "line": 197,
+      "text": "Metriplectic Structure of the Tethered Bracket",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "4fc8a6b851",
+      "kind": "sentence",
+      "line": 197,
+      "text": "\\label{sec:metriplectic} The tether $T$ of Definition~\\ref{def:tether} is a \\emph{symmetric} bilinear form in $(F,G)$ (\\lean{tetherKernel_comm}, \\lean{tetherKernel_symmetric}) and is negative-semidefinite, $T(F,F)=-\\kappa\\|\\omega\\|_{L^2}^2\\int|\\Pi_u\\delta F/\\delta\\omega|^2\\le0$ (\\lean{ProducesControllableNegativeFeedback}).",
+      "refs": [
+        "tetherKernel_comm",
+        "tetherKernel_symmetric",
+        "ProducesControllableNegativeFeedback"
+      ],
+      "status": "verified",
+      "notes": [
+        "FrohmanianTether.tetherKernel_comm [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.tetherKernel_symmetric [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.ProducesControllableNegativeFeedback [def] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "4b5e7122de",
+      "kind": "sentence",
+      "line": 198,
+      "text": "Hence \\[ \\{F,G\\}_{\\Tf}=\\underbrace{\\{F,G\\}_{\\mathrm{cl}}}_{\\text{antisymmetric, Lie--Poisson}}+\\underbrace{T(F,G)}_{\\text{symmetric, }\\le0} \\] is a bracket of \\emph{metriplectic type} in the sense of Morrison \\cite{Morrison1986}.",
+      "refs": [],
+      "status": "silent",
+      "notes": [
+        "mathematical content with no Lean mapping"
+      ]
+    },
+    {
+      "id": "f4b54a2b48",
+      "kind": "display",
+      "line": 198,
+      "text": "\\[ \\{F,G\\}_{\\Tf}=\\underbrace{\\{F,G\\}_{\\mathrm{cl}}}_{\\text{antisymmetric, Lie--Poisson}}+\\underbrace{T(F,G)}_{\\text{symmetric, }\\le0} \\]",
+      "refs": [],
+      "status": "silent",
+      "notes": [
+        "mathematical content with no Lean mapping"
+      ]
+    },
+    {
+      "id": "26eae40b56",
+      "kind": "sentence",
+      "line": 202,
+      "text": "The full bracket is \\textbf{not} antisymmetric, and \\textbf{no Jacobi identity is claimed for it}; only its antisymmetric part $\\{\\cdot,\\cdot\\}_{\\mathrm{cl}}$ is a Lie--Poisson bracket.",
+      "refs": [],
+      "status": "silent",
+      "notes": [
+        "mathematical content with no Lean mapping"
+      ]
+    },
+    {
+      "id": "45206edb32",
+      "kind": "heading",
+      "line": 204,
+      "text": "Energy conservation via (C2).",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "33dad7c3d6",
+      "kind": "sentence",
+      "line": 204,
+      "text": "Since $\\{H,H\\}_{\\mathrm{cl}}=0$ by antisymmetry and $T(H,H)=0$ by kinetic-energy degeneracy (Proposition~\\ref{prop:degen}, condition (C2)), the tethered flow $\\dot F=\\{F,H\\}_{\\Tf}$ conserves $H$: $\\dot H=\\{H,H\\}_{\\mathrm{cl}}+T(H,H)=0$.",
+      "refs": [],
+      "status": "silent",
+      "notes": [
+        "mathematical content with no Lean mapping"
+      ]
+    },
+    {
+      "id": "53a1278ce0",
+      "kind": "heading",
+      "line": 206,
+      "text": "Canonicity: Symmetric Uniqueness",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "e6a4074ba5",
+      "kind": "sentence",
+      "line": 207,
+      "text": "In \\lean{Uniqueness.lean}, the canonicity theorem \\lean{uniqueness_of_minimal_tether} is stated for \\emph{symmetric} kernels $B'(\\omega,F,G)=B'(\\omega,G,F)$ and delegates to \\lean{uniqueness_of_minimal_symmetric_tether}: among symmetric bilinear kernels carrying the coadjoint-invariance (C1), kinetic-energy degeneracy (C2) and negative-feedback (C3) hypotheses, together with quadratic saturation (\\lean{SaturatesTetherQuadratic}) and polarization of $B'$ and of \\lean{TetherKernel} (\\lean{Polarizes}), $B'$ equals \\lean{TetherKernel}.",
+      "refs": [
+        "Uniqueness.lean",
+        "uniqueness_of_minimal_tether",
+        "uniqueness_of_minimal_symmetric_tether",
+        "SaturatesTetherQuadratic",
+        "TetherKernel",
+        "Polarizes"
+      ],
+      "status": "verified",
+      "notes": [
+        "module NS_Millennium_Proof.Modules.Uniqueness: 30 theorems, all standard",
+        "FrohmanianTether.uniqueness_of_minimal_tether [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.uniqueness_of_minimal_symmetric_tether [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.SaturatesTetherQuadratic [def] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.TetherKernel [def] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.Polarizes [def] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "c8a37e7f5a",
+      "kind": "sentence",
+      "line": 207,
+      "text": "The proof goes through polarization and saturation; the hypotheses (C1)--(C3) appear in the statement but are not used by the proof.",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "6fafab6765",
+      "kind": "sentence",
+      "line": 207,
+      "text": "The five-step route (\\lean{uniqueness_of_minimal_tether_core}) uses the density hypothesis, the enstrophy weight $\\alpha(\\omega,x)=-c\\,\\|\\omega\\|_{L^2}^2$, saturation and a non-degeneracy witness.",
+      "refs": [
+        "uniqueness_of_minimal_tether_core"
+      ],
+      "status": "verified",
+      "notes": [
+        "FrohmanianTether.uniqueness_of_minimal_tether_core [theorem] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "151ecbb933",
+      "kind": "sentence",
+      "line": 207,
+      "text": "\\lean{TetherKernel} itself is symmetric (\\lean{tetherKernel_symmetric}).",
+      "refs": [
+        "TetherKernel",
+        "tetherKernel_symmetric"
+      ],
+      "status": "verified",
+      "notes": [
+        "FrohmanianTether.TetherKernel [def] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.tetherKernel_symmetric [theorem] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "3c06ceec9b",
+      "kind": "heading",
+      "line": 209,
+      "text": "Coadjoint Invariance and the Conditional Jacobiator Lemma",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "75b052c8cd",
+      "kind": "sentence",
+      "line": 210,
+      "text": "In \\lean{SymplecticTether.lean}:",
+      "refs": [
+        "SymplecticTether.lean"
+      ],
+      "status": "verified",
+      "notes": [
+        "module NS_Millennium_Proof.Modules.SymplecticTether: 38 theorems, all standard"
+      ]
+    },
+    {
+      "id": "4ca22a6e86",
+      "kind": "sentence",
+      "line": 212,
+      "text": "\\textbf{Abstract \\& push-forward coadjoint invariance:} \\lean{tether_coadjoint_invariance} and \\lean{tetherKernel_C1} verify \\lean{InvariantUnderCoadjointAction TetherKernel} \\emph{conditionally} on \\lean{SDiffActionHyp} and \\lean{TetherIntegralPreserved}.",
+      "refs": [
+        "tether_coadjoint_invariance",
+        "tetherKernel_C1",
+        "InvariantUnderCoadjointAction TetherKernel",
+        "SDiffActionHyp",
+        "TetherIntegralPreserved"
+      ],
+      "status": "verified",
+      "notes": [
+        "FrohmanianTether.tether_coadjoint_invariance [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.tetherKernel_C1 [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "expression \\lean{InvariantUnderCoadjointAction TetherKernel}: head InvariantUnderCoadjointAction",
+        "FrohmanianTether.InvariantUnderCoadjointAction [def] axioms: propext, Classical.choice, Quot.sound",
+        "ArnoldGeometric.SDiffActionHyp [inductive] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.TetherIntegralPreserved [def] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "5ba031158f",
+      "kind": "sentence",
+      "line": 212,
+      "text": "Here $\\mathrm{SDiff}$ is an \\emph{abstract} group acting on the orbit type (a Lean \\texttt{MulAction}); it is not constructed as the diffeomorphism group of $\\T$, and volume preservation is a \\emph{hypothesis} on the field \\texttt{diffeo} of \\lean{VolumePreservingCoadjointAction}, not a theorem.",
+      "refs": [
+        "VolumePreservingCoadjointAction"
+      ],
+      "status": "verified",
+      "notes": [
+        "Symplectori.SymplecticConstraint.VolumePreservingCoadjointAction [inductive] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "386a2425c7",
+      "kind": "sentence",
+      "line": 212,
+      "text": "A concrete instance is given in \\texttt{ConcreteSDiff.lean}: \\lean{ConcreteSDiff.SDiffConcrete} is a subgroup of \\texttt{Equiv.Perm T3} whose elements $g$ are measurable with measurable inverse, \\texttt{MeasurePreserving} for \\texttt{volume} in both directions, and preserve divergence-freeness under composition (this last property is part of the definition, not a theorem).",
+      "refs": [
+        "ConcreteSDiff.SDiffConcrete"
+      ],
+      "status": "verified",
+      "notes": [
+        "ConcreteSDiff.SDiffConcrete [def] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "7234dbaa7e",
+      "kind": "sentence",
+      "line": 212,
+      "text": "It acts by scalar composition $g\\cdot\\omega=\\omega\\circ g^{-1}$, which is not the geometric push-forward $(Dg\\,\\omega)\\circ g^{-1}$; no smoothness is imposed, and \\texttt{T3} is \\texttt{EuclideanSpace ℝ (Fin 3)}, not the quotient torus.",
+      "refs": [],
+      "status": "silent",
+      "notes": [
+        "mathematical content with no Lean mapping"
+      ]
+    },
+    {
+      "id": "8e9fcb0e84",
+      "kind": "sentence",
+      "line": 212,
+      "text": "For this action the field \\texttt{casimir\\_invariant} of \\lean{SDiffActionHyp} is proved (\\lean{ConcreteSDiff.casimir_invariant}, via \\texttt{MeasurePreserving.integral\\_comp'}), and \\texttt{transitive\\_on\\_casimir\\_levels} remains an open hypothesis (\\lean{ConcreteSDiff.sdiffActionHyp_of_transitive}).",
+      "refs": [
+        "SDiffActionHyp",
+        "ConcreteSDiff.casimir_invariant",
+        "ConcreteSDiff.sdiffActionHyp_of_transitive"
+      ],
+      "status": "open",
+      "notes": [
+        "ArnoldGeometric.SDiffActionHyp [inductive] axioms: propext, Classical.choice, Quot.sound",
+        "ConcreteSDiff.casimir_invariant [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "ConcreteSDiff.sdiffActionHyp_of_transitive [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "open: open hypothesis"
+      ]
+    },
+    {
+      "id": "cbf27ba9e5",
+      "kind": "sentence",
+      "line": 212,
+      "text": "To represent the full infinite-dimensional diffeomorphism push-forward $\\omega\\mapsto g_*\\omega$ on $\\mathrm{SDiff}(\\T)$ without hiding the geometric bridge, we also define \\lean{ConjecturedSDiffPushforwardInvariance} and prove \\lean{tether_coadjoint_invariance_of_integral_eq}, showing that volume-preserving push-forward equivariance of the projected integrand yields coadjoint invariance of \\lean{TetherKernel} (the enstrophy weight is itself coadjoint-invariant).",
+      "refs": [
+        "ConjecturedSDiffPushforwardInvariance",
+        "tether_coadjoint_invariance_of_integral_eq",
+        "TetherKernel"
+      ],
+      "status": "open",
+      "notes": [
+        "FrohmanianTether.ConjecturedSDiffPushforwardInvariance [def] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.tether_coadjoint_invariance_of_integral_eq [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.TetherKernel [def] axioms: propext, Classical.choice, Quot.sound",
+        "open: ConjecturedSDiffPushforwardInvariance"
+      ]
+    },
+    {
+      "id": "1176ba865d",
+      "kind": "sentence",
+      "line": 213,
+      "text": "\\textbf{Conditional Jacobiator lemma (\\lean{tethered_jacobi_identity}):} this lemma assumes, as explicit hypotheses, that the cyclic Jacobiator of \\lean{TetheredBracket} equals a cyclic Lie-pairing integral and that this integral vanishes, and concludes that the Jacobiator vanishes.",
+      "refs": [
+        "tethered_jacobi_identity",
+        "TetheredBracket"
+      ],
+      "status": "verified",
+      "notes": [
+        "FrohmanianTether.tethered_jacobi_identity [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.TetheredBracket [def] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "533868fbac",
+      "kind": "sentence",
+      "line": 213,
+      "text": "Both hypotheses are open; the lemma does \\emph{not} establish a Jacobi identity for the full bracket, and none is claimed (a metriplectic bracket with nonzero symmetric part is not expected to satisfy one).",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "14b15271bc",
+      "kind": "heading",
+      "line": 217,
+      "text": "Local-Maximum Lemmas, the Cubic Comparison Ceiling, and Non-Vacuity",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "b546aee4c8",
+      "kind": "sentence",
+      "line": 217,
+      "text": "\\label{sec:cubic}",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "328c7f7369",
+      "kind": "heading",
+      "line": 219,
+      "text": "Local-Maximum Stretching and Transport Lemmas",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "894957b9f4",
+      "kind": "environment",
+      "line": 220,
+      "text": "[Stretching at a spatial maximum; proved, \\lean{stretching_inner_le_at_max}]\\label{lem:localmax} Let $x$ satisfy $\\|\\omega(x)\\|=\\|\\omega\\|_{L^\\infty}$ and suppose $\\|\\nabla u(x)\\|\\le\\CZ\\|\\omega\\|_{L^\\infty}$ (\\texttt{hCZ}). Then \\[ \\langle\\omega(x),(\\omega\\cdot\\nabla)u(x)\\rangle\\le\\CZ\\,\\|\\omega\\|_{L^\\infty}^3 . \\]",
+      "refs": [
+        "stretching_inner_le_at_max"
+      ],
+      "env": "lemma",
+      "status": "verified",
+      "notes": [
+        "NavierStokes3D.stretching_inner_le_at_max [theorem] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "5c63a18da2",
+      "kind": "environment",
+      "line": 227,
+      "text": "[Transport and viscosity at a spatial maximum; proved, \\lean{time_pairing_le_stretching_at_max}]\\label{lem:transport} At a spatial maximum where the convective transport pairing $\\langle\\omega,(u\\cdot\\nabla)\\omega\\rangle(x)$ vanishes and $\\langle\\omega,\\Delta\\omega\\rangle(x)\\le0$, along any solution of \\eqref{eq:vort} with $\\nu\\ge0$, \\[ \\langle\\omega,\\partial_t\\omega\\rangle(x)\\le\\langle\\omega,(\\omega\\cdot\\nabla)u\\rangle(x). \\]",
+      "refs": [
+        "time_pairing_le_stretching_at_max"
+      ],
+      "env": "lemma",
+      "status": "verified",
+      "notes": [
+        "FrohmanianTether.time_pairing_le_stretching_at_max [theorem] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "8935e13514",
+      "kind": "heading",
+      "line": 234,
+      "text": "The Quartic Lyapunov Vehicle and Cubic Comparison ODE",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "f3cac8364e",
+      "kind": "sentence",
+      "line": 235,
+      "text": "\\emph{Caveat.} The comparison results below are proved implications \\emph{from} a cubic differential inequality.",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "74617cc9a0",
+      "kind": "sentence",
+      "line": 235,
+      "text": "Whether $M(t)$ satisfies such an inequality is the unresolved premise of Section~\\ref{sec:damping}; nothing in this section establishes it.",
+      "refs": [],
+      "status": "silent",
+      "notes": [
+        "mathematical content with no Lean mapping"
+      ]
+    },
+    {
+      "id": "ea39c505b4",
+      "kind": "sentence",
+      "line": 236,
+      "text": "Let $\\varphi$ solve the linear transport equation (\\lean{IsEnstrophyAccumulation}) \\begin{equation}\\label{eq:phi} \\partial_t\\varphi+u\\cdot\\nabla\\varphi=|\\omega|^2, \\end{equation} and for mollified vorticity $\\omega_\\varepsilon$ define the tethered quartic Lyapunov functional (\\lean{LyapunovS}) \\begin{equation}\\label{eq:S} S_\\varepsilon(t)=\\int_{\\T}\\Bigl(\\tfrac12|\\omega_\\varepsilon|^2+\\tfrac{\\kappa}{4}|\\omega_\\varepsilon|^4\\,\\varphi_\\varepsilon\\Bigr)\\,dV .",
+      "refs": [
+        "IsEnstrophyAccumulation",
+        "LyapunovS"
+      ],
+      "status": "verified",
+      "notes": [
+        "TetheredLyapunov.IsEnstrophyAccumulation [def] axioms: propext, Classical.choice, Quot.sound",
+        "TetheredLyapunov.LyapunovS [def] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "28cb19edf3",
+      "kind": "display",
+      "line": 236,
+      "text": "\\begin{equation}\\label{eq:phi} \\partial_t\\varphi+u\\cdot\\nabla\\varphi=|\\omega|^2, \\end{equation}",
+      "refs": [
+        "IsEnstrophyAccumulation",
+        "LyapunovS"
+      ],
+      "env": "equation",
+      "status": "verified",
+      "notes": [
+        "TetheredLyapunov.IsEnstrophyAccumulation [def] axioms: propext, Classical.choice, Quot.sound",
+        "TetheredLyapunov.LyapunovS [def] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "17adf7d95f",
+      "kind": "sentence",
+      "line": 243,
+      "text": "\\end{equation} In \\lean{TetheredLyapunov.lean} and \\lean{CubicSourceCertificate.lean}, the Fréchet/time derivatives of the quadratic and quartic densities (\\lean{hasDerivAt_lyapunov_density}, \\lean{quartic_weight_source_eq}, \\lean{lyapunovSminus_source_density}) and the $L^6$ Hölder--Sobolev--Young absorption pipeline (\\lean{AnalyticPipeline.holder_I4_le_sobolev}, \\lean{stretching_bound_of_holder}) are proved in full.",
+      "refs": [
+        "TetheredLyapunov.lean",
+        "CubicSourceCertificate.lean",
+        "hasDerivAt_lyapunov_density",
+        "quartic_weight_source_eq",
+        "lyapunovSminus_source_density",
+        "AnalyticPipeline.holder_I4_le_sobolev",
+        "stretching_bound_of_holder"
+      ],
+      "status": "verified",
+      "notes": [
+        "module NS_Millennium_Proof.Modules.TetheredLyapunov: 58 theorems, all standard",
+        "module NS_Millennium_Proof.Modules.CubicSourceCertificate: 6 theorems, all standard",
+        "TetheredLyapunov.hasDerivAt_lyapunov_density [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "TetheredLyapunov.quartic_weight_source_eq [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "TetheredLyapunov.lyapunovSminus_source_density [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "AnalyticPipeline.holder_I4_le_sobolev [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "AnalyticPipeline.stretching_bound_of_holder [theorem] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "643ed1b330",
+      "kind": "environment",
+      "line": 246,
+      "text": "[Cubic comparison stability; proved, \\lean{comparison_ode_stability}]\\label{lem:cubic} Let $C>0$, $\\kappa''>0$, and let $y:[0,\\infty)\\to\\R$ be differentiable on $[0,\\infty)$ with \\[ y'(s)\\le C\\,y(s)^2-\\kappa''\\,y(s)^3\\qquad(s\\ge0). \\] Then for every $t\\ge0$, \\[ y(t)\\le\\max\\Bigl(y(0),\\ \\frac{C}{\\kappa''}\\Bigr). \\]",
+      "refs": [
+        "comparison_ode_stability"
+      ],
+      "env": "lemma",
+      "status": "verified",
+      "notes": [
+        "\\lean{comparison_ode_stability} ambiguous: ClosureBlueprint.comparison_ode_stability, AnalyticPipeline.comparison_ode_stability",
+        "ClosureBlueprint.comparison_ode_stability | AnalyticPipeline.comparison_ode_stability [theorem] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "fe93152357",
+      "kind": "environment",
+      "line": 257,
+      "text": "[Explicit majorant global bound; proved, \\lean{comparison_majorant_global_bound}]\\label{lem:majorant} For $C,\\kappa''>0$ and $y_0\\ge0$, any solution $Y_{C,\\kappa''}(t;y_0)$ of the comparison ODE $y'=Cy^2-\\kappa''y^3$, $y(0)=y_0$ (\\lean{ComparisonODE}) satisfies $0\\le Y_{C,\\kappa''}(t;y_0)\\le\\max(y_0,C/\\kappa'')$ for all $t\\ge0$.",
+      "refs": [
+        "comparison_majorant_global_bound",
+        "ComparisonODE"
+      ],
+      "env": "lemma",
+      "status": "verified",
+      "notes": [
+        "IndependentMajorant.comparison_majorant_global_bound [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "\\lean{ComparisonODE} ambiguous: IndependentMajorant.ComparisonODE, TetheredLyapunov.ComparisonODE",
+        "IndependentMajorant.ComparisonODE | TetheredLyapunov.ComparisonODE [def] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "7863fda26f",
+      "kind": "environment",
+      "line": 261,
+      "text": "[Cubic rate $\\Rightarrow$ uniform vorticity ceiling; proved implication, \\lean{riccati_ceiling_of_vorticity_di}; premise unresolved]\\label{prop:ceiling} If $M(t)=\\|\\omega(t)\\|_{L^\\infty}$ is differentiable on $[0,\\infty)$ and satisfies $M'(t)\\le \\CZ M(t)^2-\\kappa''M(t)^3$, then \\[ \\sup_{t\\ge0}M(t)\\le\\max\\Bigl(M(0),\\frac{\\CZ}{\\kappa''}\\Bigr). \\]",
+      "refs": [
+        "riccati_ceiling_of_vorticity_di"
+      ],
+      "env": "proposition",
+      "status": "verified",
+      "notes": [
+        "TetheredLyapunov.riccati_ceiling_of_vorticity_di [theorem] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "35b794db3a",
+      "kind": "heading",
+      "line": 268,
+      "text": "Resolution of the Unpatched Time-Derivative Vacuity and Proof of Joint Satisfiability",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "3b26a69d14",
+      "kind": "sentence",
+      "line": 268,
+      "text": "\\label{sec:vacuity} In an earlier unpatched version of the Lean library, \\lean{NS_PDE u p ν} was used in the uniqueness binder \\texttt{huniq} without requiring time-differentiability of the comparison field $v$.",
+      "refs": [
+        "NS_PDE u p ν"
+      ],
+      "status": "verified",
+      "notes": [
+        "expression \\lean{NS_PDE u p ν}: head NS_PDE",
+        "NavierStokes3D.NS_PDE [def] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "d9c5872827",
+      "kind": "sentence",
+      "line": 269,
+      "text": "Because Mathlib defines \\lean{deriv} to return $0$ at non-differentiable points, the spatially constant step field $v(t)=\\mathbf 1_{\\{t>1\\}}e_0$ with $p=0$ had formal time derivative $0$ everywhere (including at the jump $t=1$), thereby satisfying \\lean{NS_PDE} from $v(0)=0$ while violating uniqueness at $t=2$.",
+      "refs": [
+        "deriv",
+        "NS_PDE"
+      ],
+      "status": "verified",
+      "notes": [
+        "TetheredLyapunov.IsComparisonODESolution.deriv [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "NavierStokes3D.NS_PDE [def] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "d85e296122",
+      "kind": "sentence",
+      "line": 269,
+      "text": "We preserve this audit discovery as a formal theorem (\\lean{library_huniq_unsatisfiable_at_zero} in \\lean{ClayStatements.lean}) to document why the unpatched binder (\\lean{existenceTimes_unpatched}) needed repair.",
+      "refs": [
+        "library_huniq_unsatisfiable_at_zero",
+        "ClayStatements.lean",
+        "existenceTimes_unpatched"
+      ],
+      "status": "verified",
+      "notes": [
+        "FrohmanianTether.ClayStatements.library_huniq_unsatisfiable_at_zero [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "module NS_Millennium_Proof.Modules.ClayStatements: 20 theorems, all standard",
+        "NavierStokes3D.existenceTimes_unpatched [def] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "4c54ea1632",
+      "kind": "heading",
+      "line": 271,
+      "text": "The Completed Repair (\\texttt{IsPhysicalNSSolution}).",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "c5041c28f0",
+      "kind": "sentence",
+      "line": 272,
+      "text": "By threading \\lean{IsPhysicalNSSolution} through \\lean{KatoLocalWitness}, \\lean{existenceTimes}, \\lean{restart_of_kato_quantitative}, \\lean{FrohmanianTetherBound}, \\lean{FrohmanianTetherRate}, \\lean{conditional_regularity_of_open_hyps}, and \\lean{frohmanian_tether_theorem}, every solution and comparison field is required to be pointwise time-differentiable on $[0,\\infty)$ and to obey the Leray $L^2$ energy inequality $\\int\\|v(t)\\|^2\\le\\int\\|v(0)\\|^2$.",
+      "refs": [
+        "IsPhysicalNSSolution",
+        "KatoLocalWitness",
+        "existenceTimes",
+        "restart_of_kato_quantitative",
+        "FrohmanianTetherBound",
+        "FrohmanianTetherRate",
+        "conditional_regularity_of_open_hyps",
+        "frohmanian_tether_theorem"
+      ],
+      "status": "verified",
+      "notes": [
+        "NavierStokes3D.IsPhysicalNSSolution [def] axioms: propext, Classical.choice, Quot.sound",
+        "NavierStokes3D.KatoLocalWitness [inductive] axioms: propext, Classical.choice, Quot.sound",
+        "NavierStokes3D.existenceTimes [def] axioms: propext, Classical.choice, Quot.sound",
+        "NavierStokes3D.restart_of_kato_quantitative [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.FrohmanianTetherBound [def] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.FrohmanianTetherRate [def] axioms: propext, Classical.choice, Quot.sound",
+        "\\lean{conditional_regularity_of_open_hyps} ambiguous: ClosureBlueprint.conditional_regularity_of_open_hyps, ConditionalRegularity.conditional_regularity_of_open_hyps",
+        "ClosureBlueprint.conditional_regularity_of_open_hyps | ConditionalRegularity.conditional_regularity_of_open_hyps [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "ConditionalRegularity.frohmanian_tether_theorem [theorem] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "bb5e212dc6",
+      "kind": "sentence",
+      "line": 272,
+      "text": "In \\lean{ClayStatements.lean}, we prove the complete non-vacuity and joint-satisfiability theorem suite:",
+      "refs": [
+        "ClayStatements.lean"
+      ],
+      "status": "verified",
+      "notes": [
+        "module NS_Millennium_Proof.Modules.ClayStatements: 20 theorems, all standard"
+      ]
+    },
+    {
+      "id": "15aab4fa42",
+      "kind": "sentence",
+      "line": 272,
+      "text": "\\lean{conditional_regularity_nonvacuous_at_zero}: instantiates \\lean{ConditionalRegularity.conditional_regularity_of_open_hyps} at $u_0=0$ for every $\\nu>0$ \\textbf{unconditionally}, proving in the Lean kernel that the hypotheses of the main theorem are jointly satisfiable and non-vacuous.",
+      "refs": [
+        "conditional_regularity_nonvacuous_at_zero",
+        "ConditionalRegularity.conditional_regularity_of_open_hyps"
+      ],
+      "status": "verified",
+      "notes": [
+        "FrohmanianTether.ClayStatements.conditional_regularity_nonvacuous_at_zero [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "ConditionalRegularity.conditional_regularity_of_open_hyps [theorem] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "b53695e63c",
+      "kind": "sentence",
+      "line": 274,
+      "text": "\\lean{stepField_not_physical} $: \\neg\\,\\text{\\lean{IsPhysicalNSSolution stepField}}$ (the step field is not time-differentiable at $t=1$, so it is excluded from the physical solution class);",
+      "refs": [
+        "stepField_not_physical",
+        "IsPhysicalNSSolution stepField"
+      ],
+      "status": "verified",
+      "notes": [
+        "FrohmanianTether.ClayStatements.stepField_not_physical [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "expression \\lean{IsPhysicalNSSolution stepField}: head IsPhysicalNSSolution",
+        "NavierStokes3D.IsPhysicalNSSolution [def] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "5798ce5ec5",
+      "kind": "sentence",
+      "line": 275,
+      "text": "\\lean{repaired_hInt}: the energy-difference integrability hypothesis of \\lean{ClosureBlueprint.conditional_regularity_of_open_hyps} holds unconditionally for all $(u_0,\\nu)$;",
+      "refs": [
+        "repaired_hInt",
+        "ClosureBlueprint.conditional_regularity_of_open_hyps"
+      ],
+      "status": "verified",
+      "notes": [
+        "FrohmanianTether.ClayStatements.repaired_hInt [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "ClosureBlueprint.conditional_regularity_of_open_hyps [theorem] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "e2ef1eb544",
+      "kind": "sentence",
+      "line": 276,
+      "text": "\\lean{repaired_huniq_shift_at_zero} and \\lean{repaired_huniq_at_zero}: the repaired uniqueness hypotheses hold unconditionally at $u_0=0$ for every $\\nu$ and every Kato witness $w$;",
+      "refs": [
+        "repaired_huniq_shift_at_zero",
+        "repaired_huniq_at_zero"
+      ],
+      "status": "verified",
+      "notes": [
+        "FrohmanianTether.ClayStatements.repaired_huniq_shift_at_zero [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.ClayStatements.repaired_huniq_at_zero [theorem] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "91af2f69d6",
+      "kind": "sentence",
+      "line": 277,
+      "text": "\\lean{frohmanianTetherBound_zero} and \\lean{frohmanianTetherRate_zero}: both \\lean{FrohmanianTetherBound 0 ν} and \\lean{FrohmanianTetherRate 0 ν} hold unconditionally at $u_0=0$ (since the Leray energy inequality forces any continuous physical solution with $u(0)=0$ to vanish identically, giving $\\omega\\equiv0$ and $M(t)\\equiv0$);",
+      "refs": [
+        "frohmanianTetherBound_zero",
+        "frohmanianTetherRate_zero",
+        "FrohmanianTetherBound 0 ν",
+        "FrohmanianTetherRate 0 ν"
+      ],
+      "status": "verified",
+      "notes": [
+        "FrohmanianTether.ClayStatements.frohmanianTetherBound_zero [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.ClayStatements.frohmanianTetherRate_zero [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "expression \\lean{FrohmanianTetherBound 0 ν}: head FrohmanianTetherBound",
+        "FrohmanianTether.FrohmanianTetherBound [def] axioms: propext, Classical.choice, Quot.sound",
+        "expression \\lean{FrohmanianTetherRate 0 ν}: head FrohmanianTetherRate",
+        "FrohmanianTether.FrohmanianTetherRate [def] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "0b0f12d38b",
+      "kind": "listing",
+      "line": 280,
+      "text": "\\leanfile{nonvacuity_zero}",
+      "refs": [],
+      "status": "non-claim",
+      "notes": [
+        "verbatim Lean listing (code, not a claim)"
+      ]
+    },
+    {
+      "id": "9cecbc3881",
+      "kind": "heading",
+      "line": 283,
+      "text": "Original Conjectured Framework, Physical Motivation, and Bridges (Full Preservation from v8)",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "b0bdb859da",
+      "kind": "sentence",
+      "line": 283,
+      "text": "\\label{sec:original}",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "8e281c497c",
+      "kind": "sentence",
+      "line": 285,
+      "text": "To ensure that every original idea, physical motivation, mathematical construction, and conjectured bridge from Benjamin Stanley Frohman's foundational manuscript (\\emph{Frohmanian\\_Tether\\_Final\\_Submission\\_v8.tex}) is preserved in full view alongside the kernel-verified Lean theorems, we present here the complete original conjectured programme and its exact correspondence to the Lean~4 formalization.",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "fba7ae9c40",
+      "kind": "heading",
+      "line": 287,
+      "text": "Conjectured Symplectic 2-Form and Modified Kirillov--Kostant--Souriau Bracket",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "e7b5475ca0",
+      "kind": "sentence",
+      "line": 288,
+      "text": "In the original geometric programme, the coadjoint orbit $\\mathcal{O}\\subset(\\mathfrak{sdiff}(\\T))^*$ is endowed with the augmented bracket \\begin{equation}\\label{eq:orig_bracket} \\{F,G\\}_{\\Tf} = \\{F,G\\}_{\\mathrm{cl}} + B(F,G), \\end{equation} where the nonlocal Biot--Savart form of the tether correction is written \\begin{equation}\\label{eq:orig_nonlocal_B} B_{\\mathrm{BS}}(F,G) = -\\kappa \\iint_{\\T\\times\\T} |\\omega(x)|^2\\,K_{\\mathrm{BS}}(x-y)\\,\\Bigl[\\Pi_u\\Bigl(\\frac{\\delta F}{\\delta\\omega}\\Bigr)(x)\\Bigr]\\cdot\\Bigl[\\Pi_u\\Bigl(\\frac{\\delta G}{\\delta\\omega}\\Bigr)(y)\\Bigr]\\,dy\\,dx, \\end{equation} and its local projected metric realization (formalized in \\lean{FrohmanianTether.TetherKernel}, with the global enstrophy weight $\\|\\omega\\|_{L^2}^2$ replacing the pointwise weight $|\\omega(x)|^2$ of \\emph{v8}) is \\begin{equation}\\label{eq:orig_local_B} B(F,G) = -\\kappa\\,\\|\\omega\\|_{L^2}^2 \\int_{\\T} \\Bigl[\\Pi_u\\Bigl(\\frac{\\delta F}{\\delta\\omega}\\Bigr)(x)\\Bigr]\\cdot\\Bigl[\\Pi_u\\Bigl(\\frac{\\delta G}{\\delta\\omega}\\Bigr)(x)\\Bigr]\\,dx, \\end{equation} with $\\kappa = \\CZ(3) = 3/2$.",
+      "refs": [
+        "FrohmanianTether.TetherKernel"
+      ],
+      "status": "verified",
+      "notes": [
+        "FrohmanianTether.TetherKernel [def] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "3a3d522933",
+      "kind": "display",
+      "line": 288,
+      "text": "\\begin{equation}\\label{eq:orig_bracket} \\{F,G\\}_{\\Tf} = \\{F,G\\}_{\\mathrm{cl}} + B(F,G), \\end{equation}",
+      "refs": [
+        "FrohmanianTether.TetherKernel"
+      ],
+      "env": "equation",
+      "status": "verified",
+      "notes": [
+        "FrohmanianTether.TetherKernel [def] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "6b24bfbbe4",
+      "kind": "display",
+      "line": 288,
+      "text": "\\begin{equation}\\label{eq:orig_nonlocal_B} B_{\\mathrm{BS}}(F,G) = -\\kappa \\iint_{\\T\\times\\T} |\\omega(x)|^2\\,K_{\\mathrm{BS}}(x-y)\\,\\Bigl[\\Pi_u\\Bigl(\\frac{\\delta F}{\\delta\\omega}\\Bigr)(x)\\Bigr]\\cdot\\Bigl[\\Pi_u\\Bigl(\\frac{\\delta G}{\\delta\\omega}\\Bigr)(y)\\Bigr]\\,dy\\,dx, \\end{equation}",
+      "refs": [
+        "FrohmanianTether.TetherKernel"
+      ],
+      "env": "equation",
+      "status": "verified",
+      "notes": [
+        "FrohmanianTether.TetherKernel [def] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "4a4ad6b2cc",
+      "kind": "display",
+      "line": 288,
+      "text": "\\begin{equation}\\label{eq:orig_local_B} B(F,G) = -\\kappa\\,\\|\\omega\\|_{L^2}^2 \\int_{\\T} \\Bigl[\\Pi_u\\Bigl(\\frac{\\delta F}{\\delta\\omega}\\Bigr)(x)\\Bigr]\\cdot\\Bigl[\\Pi_u\\Bigl(\\frac{\\delta G}{\\delta\\omega}\\Bigr)(x)\\Bigr]\\,dx, \\end{equation}",
+      "refs": [
+        "FrohmanianTether.TetherKernel"
+      ],
+      "env": "equation",
+      "status": "verified",
+      "notes": [
+        "FrohmanianTether.TetherKernel [def] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "9353dc5c53",
+      "kind": "sentence",
+      "line": 300,
+      "text": "On tangent variations $(\\delta u,\\delta v)\\in T_\\omega\\mathcal{O}$, the associated tethered pairing is \\begin{equation}\\label{eq:orig_2form} \\Tf(\\delta u,\\delta v) = \\int_{\\T}\\omega\\cdot(\\delta u\\times\\delta v)\\,dV - \\kappa\\int_{\\T}|\\omega|^2(\\delta u\\cdot\\delta v)\\,dV.",
+      "refs": [],
+      "status": "silent",
+      "notes": [
+        "mathematical content with no Lean mapping"
+      ]
+    },
+    {
+      "id": "66e074eae0",
+      "kind": "sentence",
+      "line": 303,
+      "text": "\\end{equation} Because $\\Pi_u u = 0$ for $u=\\delta H/\\delta\\omega$, the tether is strictly degenerate along the kinetic-energy Hamiltonian ($B(F,H)\\equiv0$, proved in Proposition~\\ref{prop:degen}), so the reversible Hamiltonian vector field generated by $H$ remains the exact classical Euler vector field.",
+      "refs": [],
+      "status": "silent",
+      "notes": [
+        "mathematical content with no Lean mapping"
+      ]
+    },
+    {
+      "id": "6b95c4abe1",
+      "kind": "sentence",
+      "line": 304,
+      "text": "As explained in Section~\\ref{sec:metriplectic}, the augmented bracket \\eqref{eq:orig_bracket} is metriplectic-type, not a Poisson bracket, and the 2-form language of \\emph{v8} is retained only historically.",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "db73eba46c",
+      "kind": "heading",
+      "line": 306,
+      "text": "The Damping Coefficient Vanishes: Explicit Caveat",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "08a6f6db0d",
+      "kind": "sentence",
+      "line": 306,
+      "text": "\\label{sec:damping} The original programme derived a damping term for $M(t)$ from the tether.",
+      "refs": [],
+      "status": "silent",
+      "notes": [
+        "mathematical content with no Lean mapping"
+      ]
+    },
+    {
+      "id": "507fd51dd1",
+      "kind": "sentence",
+      "line": 307,
+      "text": "That derivation does not survive.",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "5471dd38df",
+      "kind": "sentence",
+      "line": 307,
+      "text": "Let $\\mathcal M$ be any functional (e.g.\\ a smoothed version of $M(t)=\\|\\omega\\|_{L^\\infty}$).",
+      "refs": [],
+      "status": "silent",
+      "notes": [
+        "mathematical content with no Lean mapping"
+      ]
+    },
+    {
+      "id": "fdc45801f0",
+      "kind": "sentence",
+      "line": 307,
+      "text": "Along the tethered flow, \\[ \\dot{\\mathcal M}=\\{\\mathcal M,H\\}_{\\mathrm{cl}}+T(\\mathcal M,H), \\] and $T(\\mathcal M,H)=T(H,\\mathcal M)=0$ by symmetry of $T$ and (C2), because $\\Pi_u(\\delta H/\\delta\\omega)=\\Pi_u u=0$.",
+      "refs": [],
+      "status": "silent",
+      "notes": [
+        "mathematical content with no Lean mapping"
+      ]
+    },
+    {
+      "id": "1e8582d995",
+      "kind": "display",
+      "line": 307,
+      "text": "\\[ \\dot{\\mathcal M}=\\{\\mathcal M,H\\}_{\\mathrm{cl}}+T(\\mathcal M,H), \\]",
+      "refs": [],
+      "status": "silent",
+      "notes": [
+        "mathematical content with no Lean mapping"
+      ]
+    },
+    {
+      "id": "28d9e9870d",
+      "kind": "sentence",
+      "line": 311,
+      "text": "Hence the damping coefficient contributed by the tether is exactly $\\mathbf{0}$: the tethered evolution of every functional coincides with its Euler evolution, and the negative diagonal values $T(F,F)\\le0$ never enter the dynamics generated by $H$.",
+      "refs": [],
+      "status": "silent",
+      "notes": [
+        "mathematical content with no Lean mapping"
+      ]
+    },
+    {
+      "id": "63cfd5784e",
+      "kind": "heading",
+      "line": 313,
+      "text": "Projection lower-bound gap.",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "c501263963",
+      "kind": "sentence",
+      "line": 313,
+      "text": "Any attempt to extract damping from the diagonal $T(F,F)$ (as in \\lean{tethered_stretching_of_weight}) requires a lower bound $M^4\\le\\|\\omega\\|_{L^2}^2\\int|\\Pi_u\\delta F/\\delta\\omega|^2$ (\\texttt{hweight}) for a test functional tied to $M$.",
+      "refs": [
+        "tethered_stretching_of_weight"
+      ],
+      "status": "verified",
+      "notes": [
+        "FrohmanianTether.tethered_stretching_of_weight [theorem] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "836f28222d",
+      "kind": "sentence",
+      "line": 313,
+      "text": "No such lower bound on the projected component is known, and $\\Pi_u$ annihilates exactly the direction $u=\\delta H/\\delta\\omega$ that drives the evolution; this gap is open.",
+      "refs": [],
+      "status": "open",
+      "notes": [
+        "open: is open"
+      ]
+    },
+    {
+      "id": "309549de09",
+      "kind": "heading",
+      "line": 315,
+      "text": "Open status.",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "2adb192b46",
+      "kind": "sentence",
+      "line": 315,
+      "text": "Consequently the cubic rate (R) (\\lean{FrohmanianTetherRate}) and the closing bound (\\lean{FrohmanianTetherBound}, \\lean{PeriodicTetherClosingBound}) are \\textbf{open assumptions}.",
+      "refs": [
+        "FrohmanianTetherRate",
+        "FrohmanianTetherBound",
+        "PeriodicTetherClosingBound"
+      ],
+      "status": "open",
+      "notes": [
+        "FrohmanianTether.FrohmanianTetherRate [def] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.FrohmanianTetherBound [def] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.ClayStatements.PeriodicTetherClosingBound [def] axioms: propext, Classical.choice, Quot.sound",
+        "open: are open"
+      ]
+    },
+    {
+      "id": "15c20fcf8a",
+      "kind": "sentence",
+      "line": 315,
+      "text": "Candidate repair routes---for example an explicit dissipative (metriplectic) bracket $[F,H]_{\\mathrm{diss}}$ with a nonzero $[M,H]$, a time-integrated or non-local mechanism, or a scale-compensated coefficient (Section~\\ref{sec:open})---are listed only as \\emph{open candidates}; none is carried out here.",
+      "refs": [],
+      "status": "silent",
+      "notes": [
+        "mathematical content with no Lean mapping"
+      ]
+    },
+    {
+      "id": "6606f63dab",
+      "kind": "heading",
+      "line": 317,
+      "text": "Conjectured Unmodified-Tether Pairing Bridge at Spatial Maxima",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "021bc018b8",
+      "kind": "sentence",
+      "line": 318,
+      "text": "\\emph{Caveat.} By Section~\\ref{sec:damping} the tether contributes no damping; the results in this subsection are proved implications from explicit, open hypotheses (\\lean{ConjecturedUnmodifiedTetherPairing}, \\texttt{hweight}) and do not supply (R).",
+      "refs": [
+        "ConjecturedUnmodifiedTetherPairing"
+      ],
+      "status": "open",
+      "notes": [
+        "FrohmanianTether.ConjecturedUnmodifiedTetherPairing [def] axioms: propext, Classical.choice, Quot.sound",
+        "open: ConjecturedUnmodifiedTetherPairing"
+      ]
+    },
+    {
+      "id": "f2338c4b85",
+      "kind": "sentence",
+      "line": 319,
+      "text": "The central analytic bridge of the original programme connects the quadratic feedback of the tether kernel to the pointwise vortex-stretching pairing at a spatial maximum $x_*$ of $|\\omega|$ (where $\\|\\omega(x_*)\\|=M(t)=\\|\\omega\\|_{L^\\infty}$).",
+      "refs": [],
+      "status": "silent",
+      "notes": [
+        "mathematical content with no Lean mapping"
+      ]
+    },
+    {
+      "id": "10a518d5d4",
+      "kind": "sentence",
+      "line": 319,
+      "text": "In \\lean{SymplecticTether.lean}, this bridge is formalized without \\lean{sorry} via two complementary theorems:",
+      "refs": [
+        "SymplecticTether.lean",
+        "sorry"
+      ],
+      "status": "verified",
+      "notes": [
+        "module NS_Millennium_Proof.Modules.SymplecticTether: 38 theorems, all standard"
+      ]
+    },
+    {
+      "id": "d45b2e5d5f",
+      "kind": "sentence",
+      "line": 321,
+      "text": "\\textbf{Weighted tether-stretching absorption (\\lean{tethered_stretching_of_weight}):} Under the weight dominance condition (\\texttt{hweight}) \\[ M(t)^4 \\le \\|\\omega_{\\mathrm{orb}}\\|_{L^2}^2\\int_{\\T} \\bigl|\\Pi_u(\\delta F/\\delta\\omega)(y)\\bigr|^2\\,dy, \\] the sum of the pointwise stretching pairing $\\langle\\omega(x_*),(\\omega\\cdot\\nabla)u(x_*)\\rangle$ and the diagonal tether value $B(F,F)(\\omega_{\\mathrm{orb}})$ is bounded by \\[ \\langle\\omega(x_*),(\\omega\\cdot\\nabla)u(x_*)\\rangle + B(F,F)(\\omega_{\\mathrm{orb}}) \\le (C M(t) - \\kappa\\,M(t)^2)\\,M(t)^2, \\] where $C$ is the strain constant in \\texttt{hCZ}.",
+      "refs": [
+        "tethered_stretching_of_weight"
+      ],
+      "status": "verified",
+      "notes": [
+        "FrohmanianTether.tethered_stretching_of_weight [theorem] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "6b5327326d",
+      "kind": "display",
+      "line": 321,
+      "text": "\\[ M(t)^4 \\le \\|\\omega_{\\mathrm{orb}}\\|_{L^2}^2\\int_{\\T} \\bigl|\\Pi_u(\\delta F/\\delta\\omega)(y)\\bigr|^2\\,dy, \\]",
+      "refs": [
+        "tethered_stretching_of_weight"
+      ],
+      "status": "verified",
+      "notes": [
+        "FrohmanianTether.tethered_stretching_of_weight [theorem] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "307d3eeca5",
+      "kind": "display",
+      "line": 321,
+      "text": "\\[ \\langle\\omega(x_*),(\\omega\\cdot\\nabla)u(x_*)\\rangle + B(F,F)(\\omega_{\\mathrm{orb}}) \\le (C M(t) - \\kappa\\,M(t)^2)\\,M(t)^2, \\]",
+      "refs": [
+        "tethered_stretching_of_weight"
+      ],
+      "status": "verified",
+      "notes": [
+        "FrohmanianTether.tethered_stretching_of_weight [theorem] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "dc4e61e7cf",
+      "kind": "sentence",
+      "line": 329,
+      "text": "This implication is proved in \\lean{SymplecticTether.lean} with zero \\lean{sorry}s.",
+      "refs": [
+        "SymplecticTether.lean",
+        "sorry"
+      ],
+      "status": "verified",
+      "notes": [
+        "module NS_Millennium_Proof.Modules.SymplecticTether: 38 theorems, all standard"
+      ]
+    },
+    {
+      "id": "2a698acc43",
+      "kind": "sentence",
+      "line": 330,
+      "text": "\\textbf{Unmodified stretching reduction (\\lean{reduced_pairing_of_unmodified_and_tether}):} The bridge proposition \\lean{ConjecturedUnmodifiedTetherPairing} (stated along a Navier--Stokes solution at time $t$ and a spatial maximum $x$) asserts the bound $\\langle\\omega(x),(\\omega\\cdot\\nabla)u(x)\\rangle\\le(CM-\\kappa M^2)M^2$ under the local-maximum hypotheses.",
+      "refs": [
+        "reduced_pairing_of_unmodified_and_tether",
+        "ConjecturedUnmodifiedTetherPairing"
+      ],
+      "status": "open",
+      "notes": [
+        "FrohmanianTether.reduced_pairing_of_unmodified_and_tether [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.ConjecturedUnmodifiedTetherPairing [def] axioms: propext, Classical.choice, Quot.sound",
+        "open: ConjecturedUnmodifiedTetherPairing"
+      ]
+    },
+    {
+      "id": "db6dedec00",
+      "kind": "sentence",
+      "line": 330,
+      "text": "The theorem \\lean{reduced_pairing_of_unmodified_and_tether} derives this bound from the explicit cancellation hypothesis \\lean{hcancels} ($\\langle\\omega,(\\omega\\cdot\\nabla)u\\rangle+\\kappa M^4\\le CM^3$), which is itself the open content.",
+      "refs": [
+        "reduced_pairing_of_unmodified_and_tether",
+        "hcancels"
+      ],
+      "status": "verified",
+      "notes": [
+        "FrohmanianTether.reduced_pairing_of_unmodified_and_tether [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "hcancels is a hypothesis of FrohmanianTether.reduced_pairing_of_unmodified_and_tether"
+      ]
+    },
+    {
+      "id": "2bc01ff83c",
+      "kind": "listing",
+      "line": 332,
+      "text": "\\leanfile{reduced_pairing}",
+      "refs": [],
+      "status": "non-claim",
+      "notes": [
+        "verbatim Lean listing (code, not a claim)"
+      ]
+    },
+    {
+      "id": "2482c58f8c",
+      "kind": "listing",
+      "line": 333,
+      "text": "\\leanfile{tethered_stretching_of_weight}",
+      "refs": [],
+      "status": "non-claim",
+      "notes": [
+        "verbatim Lean listing (code, not a claim)"
+      ]
+    },
+    {
+      "id": "1db6097e69",
+      "kind": "heading",
+      "line": 335,
+      "text": "Quartic Lyapunov Absorption and Quadratic Riccati Heuristic vs.\\ Cubic Ceiling",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "e9c272f87e",
+      "kind": "sentence",
+      "line": 336,
+      "text": "In Section~3 and Appendix~A (Item~10) of \\emph{Frohmanian\\_Tether\\_Final\\_Submission\\_v8}, two related ODE reductions were introduced for the evolution of $M_\\varepsilon(t)=\\|\\omega_\\varepsilon(t)\\|_{L^\\infty}$:",
+      "refs": [],
+      "status": "silent",
+      "notes": [
+        "mathematical content with no Lean mapping"
+      ]
+    },
+    {
+      "id": "84a44093ed",
+      "kind": "sentence",
+      "line": 338,
+      "text": "\\textbf{The Quartic Lyapunov $L^6$ Absorption and Cubic Comparison ODE (Formalized in Lean):} Differentiating the mollified quartic Lyapunov functional \\[ S_\\varepsilon(t)=\\int_{\\T}\\Bigl(\\frac12|\\omega_\\varepsilon|^2+\\frac{\\kappa}{4}|\\omega_\\varepsilon|^4\\varphi_\\varepsilon\\Bigr)\\,d\\lambda \\] along the vorticity transport equation and applying Hölder's inequality with conjugate exponents $(3/2,3)$ (\\lean{AnalyticPipeline.holderConjugate_three_halves_three}, \\lean{holder_I4}), the 3D Sobolev embedding $H^1\\hookrightarrow L^6$ (\\lean{holder_I4_le_sobolev}), and Young's absorption parameter $\\varepsilon=\\kappa/4$ yields \\begin{equation}\\label{eq:orig_dS} \\frac{dS_\\varepsilon}{dt}\\le C_{\\mathrm{abs}}\\bigl(1+M_\\varepsilon(t)^3\\|\\varphi_\\varepsilon\\|_{L^\\infty}^{3/2}\\bigr)-\\kappa'\\int_{\\T}|\\omega_\\varepsilon|^6\\,d\\lambda, \\end{equation} which motivates the autonomous cubic comparison ODE (\\lean{FrohmanianTetherRate}, \\lean{ComparisonODE}) \\begin{equation}\\label{eq:orig_cubic_ode} y'(t) = C\\,y(t)^2 - \\kappa''\\,y(t)^3,\\qquad y(0)=M(0).",
+      "refs": [
+        "AnalyticPipeline.holderConjugate_three_halves_three",
+        "holder_I4",
+        "holder_I4_le_sobolev",
+        "FrohmanianTetherRate",
+        "ComparisonODE"
+      ],
+      "status": "verified",
+      "notes": [
+        "AnalyticPipeline.holderConjugate_three_halves_three [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "AnalyticPipeline.holder_I4 [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "AnalyticPipeline.holder_I4_le_sobolev [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.FrohmanianTetherRate [def] axioms: propext, Classical.choice, Quot.sound",
+        "\\lean{ComparisonODE} ambiguous: IndependentMajorant.ComparisonODE, TetheredLyapunov.ComparisonODE",
+        "IndependentMajorant.ComparisonODE | TetheredLyapunov.ComparisonODE [def] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "14218443f2",
+      "kind": "display",
+      "line": 338,
+      "text": "\\[ S_\\varepsilon(t)=\\int_{\\T}\\Bigl(\\frac12|\\omega_\\varepsilon|^2+\\frac{\\kappa}{4}|\\omega_\\varepsilon|^4\\varphi_\\varepsilon\\Bigr)\\,d\\lambda \\]",
+      "refs": [
+        "AnalyticPipeline.holderConjugate_three_halves_three",
+        "holder_I4",
+        "holder_I4_le_sobolev",
+        "FrohmanianTetherRate",
+        "ComparisonODE"
+      ],
+      "status": "verified",
+      "notes": [
+        "AnalyticPipeline.holderConjugate_three_halves_three [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "AnalyticPipeline.holder_I4 [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "AnalyticPipeline.holder_I4_le_sobolev [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.FrohmanianTetherRate [def] axioms: propext, Classical.choice, Quot.sound",
+        "\\lean{ComparisonODE} ambiguous: IndependentMajorant.ComparisonODE, TetheredLyapunov.ComparisonODE",
+        "IndependentMajorant.ComparisonODE | TetheredLyapunov.ComparisonODE [def] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "2e1bfc1a12",
+      "kind": "display",
+      "line": 338,
+      "text": "\\begin{equation}\\label{eq:orig_dS} \\frac{dS_\\varepsilon}{dt}\\le C_{\\mathrm{abs}}\\bigl(1+M_\\varepsilon(t)^3\\|\\varphi_\\varepsilon\\|_{L^\\infty}^{3/2}\\bigr)-\\kappa'\\int_{\\T}|\\omega_\\varepsilon|^6\\,d\\lambda, \\end{equation}",
+      "refs": [
+        "AnalyticPipeline.holderConjugate_three_halves_three",
+        "holder_I4",
+        "holder_I4_le_sobolev",
+        "FrohmanianTetherRate",
+        "ComparisonODE"
+      ],
+      "env": "equation",
+      "status": "verified",
+      "notes": [
+        "AnalyticPipeline.holderConjugate_three_halves_three [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "AnalyticPipeline.holder_I4 [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "AnalyticPipeline.holder_I4_le_sobolev [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.FrohmanianTetherRate [def] axioms: propext, Classical.choice, Quot.sound",
+        "\\lean{ComparisonODE} ambiguous: IndependentMajorant.ComparisonODE, TetheredLyapunov.ComparisonODE",
+        "IndependentMajorant.ComparisonODE | TetheredLyapunov.ComparisonODE [def] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "8746fdf621",
+      "kind": "sentence",
+      "line": 350,
+      "text": "\\end{equation} As proved in Lemma~\\ref{lem:cubic} (\\lean{comparison_ode_stability}), the equilibrium $y_*=C/\\kappa''$ is globally asymptotically stable on $(0,\\infty)$, yielding the ceiling $M(t)\\le\\max(M(0),C/\\kappa'')$ for every trajectory that satisfies the inequality.",
+      "refs": [
+        "comparison_ode_stability"
+      ],
+      "status": "verified",
+      "notes": [
+        "\\lean{comparison_ode_stability} ambiguous: ClosureBlueprint.comparison_ode_stability, AnalyticPipeline.comparison_ode_stability",
+        "ClosureBlueprint.comparison_ode_stability | AnalyticPipeline.comparison_ode_stability [theorem] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "6bd363f170",
+      "kind": "sentence",
+      "line": 351,
+      "text": "Whether $M(t)$ does satisfy it is the unresolved premise of Section~\\ref{sec:damping}.",
+      "refs": [],
+      "status": "silent",
+      "notes": [
+        "mathematical content with no Lean mapping"
+      ]
+    },
+    {
+      "id": "0aee806ed7",
+      "kind": "sentence",
+      "line": 352,
+      "text": "\\textbf{The Original Quadratic Riccati Heuristic (from Section~3 of v8; depends on the unresolved damping premise):} In Section~3 of \\emph{v8}, an alternative constant-source quadratic Riccati heuristic was written: \\begin{equation}\\label{eq:orig_quad_riccati} \\frac{d}{dt}M_\\varepsilon(t) \\le C - \\kappa'\\,M_\\varepsilon(t)^2, \\end{equation} with comparison trajectory $y(t)=\\sqrt{C/\\kappa'}\\tanh\\bigl(\\sqrt{C\\kappa'}\\,t+\\phi_0\\bigr)$ for $y(0)<\\sqrt{C/\\kappa'}$ (and $\\coth$ for $y(0)>\\sqrt{C/\\kappa'}$), both bounded above by $\\max\\bigl(M(0),\\sqrt{C/\\kappa'}\\bigr)$.",
+      "refs": [],
+      "status": "silent",
+      "notes": [
+        "mathematical content with no Lean mapping"
+      ]
+    },
+    {
+      "id": "0e6adaf7ac",
+      "kind": "display",
+      "line": 352,
+      "text": "\\begin{equation}\\label{eq:orig_quad_riccati} \\frac{d}{dt}M_\\varepsilon(t) \\le C - \\kappa'\\,M_\\varepsilon(t)^2, \\end{equation}",
+      "refs": [],
+      "env": "equation",
+      "status": "silent",
+      "notes": [
+        "mathematical content with no Lean mapping"
+      ]
+    },
+    {
+      "id": "5cc14cf56d",
+      "kind": "sentence",
+      "line": 357,
+      "text": "In our Lean~4 formalization, the cubic differential inequality \\eqref{eq:orig_cubic_ode} from Appendix~A (Item~10) of \\emph{v8} is adopted as the canonical formulation (\\lean{FrohmanianTetherRate}) because its phase-plane barrier proof (\\lean{comparison_ode_stability}) handles both small and large initial data uniformly without switching between $\\tanh$ and $\\coth$ branches.",
+      "refs": [
+        "FrohmanianTetherRate",
+        "comparison_ode_stability"
+      ],
+      "status": "verified",
+      "notes": [
+        "FrohmanianTether.FrohmanianTetherRate [def] axioms: propext, Classical.choice, Quot.sound",
+        "\\lean{comparison_ode_stability} ambiguous: ClosureBlueprint.comparison_ode_stability, AnalyticPipeline.comparison_ode_stability",
+        "ClosureBlueprint.comparison_ode_stability | AnalyticPipeline.comparison_ode_stability [theorem] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "8b72364115",
+      "kind": "heading",
+      "line": 360,
+      "text": "Metriplectic Completion, Onsager's Conjecture, and Holographic Fluid--Gravity Motivation",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "522817149f",
+      "kind": "sentence",
+      "line": 361,
+      "text": "The broader physical motivation of the Frohmanian programme in Sections~4--6 and Appendix~A (Items~11--12) of \\emph{v8} encompasses three structural themes:",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "4cb5c31cc4",
+      "kind": "sentence",
+      "line": 363,
+      "text": "\\textbf{Metriplectic Viscous Completion \\cite{Morrison1986}:} The tethered bracket is already metriplectic-type, but its symmetric part is degenerate on $H$ and so dissipates nothing (Section~\\ref{sec:damping}).",
+      "refs": [],
+      "status": "silent",
+      "notes": [
+        "mathematical content with no Lean mapping"
+      ]
+    },
+    {
+      "id": "ddea4a5af4",
+      "kind": "sentence",
+      "line": 363,
+      "text": "Viscous dissipation $\\nu\\Delta u$ would have to be represented by a separate symmetric dissipative bracket $[F,H]_{\\mathrm{diss}}$ (an open candidate, not constructed here): \\[ \\frac{dF}{dt} = \\{F,H\\}_{\\Tf} + [F,H]_{\\mathrm{diss}}.",
+      "refs": [],
+      "status": "silent",
+      "notes": [
+        "mathematical content with no Lean mapping"
+      ]
+    },
+    {
+      "id": "f371cc2ce8",
+      "kind": "sentence",
+      "line": 366,
+      "text": "\\] In the Lean~4 statement of Theorem~\\ref{thm:main}, \\emph{if} a vorticity ceiling $M(t)\\le Y$ were available, classical Beale--Kato--Majda continuation and parabolic regularity would upgrade the solution to $C^\\infty$; no such ceiling is established here.",
+      "refs": [],
+      "status": "silent",
+      "notes": [
+        "mathematical content with no Lean mapping"
+      ]
+    },
+    {
+      "id": "ccd184611c",
+      "kind": "sentence",
+      "line": 368,
+      "text": "\\textbf{Relation to Onsager's Conjecture \\cite{Isett2018}:} Onsager's conjecture (proved by Isett \\cite{Isett2018}) states that weak Euler solutions conserve kinetic energy for Hölder regularity $\\alpha>1/3$, whereas anomalous dissipation can occur for $\\alpha\\le1/3$.",
+      "refs": [],
+      "status": "open",
+      "notes": [
+        "open: Conjecture"
+      ]
+    },
+    {
+      "id": "13a4dfdd38",
+      "kind": "sentence",
+      "line": 368,
+      "text": "\\emph{If} a vorticity ceiling held (an open premise, Section~\\ref{sec:damping}), smooth solutions would remain in the Lipschitz/smooth class ($\\alpha=1$); no such conclusion is drawn here.",
+      "refs": [],
+      "status": "silent",
+      "notes": [
+        "mathematical content with no Lean mapping"
+      ]
+    },
+    {
+      "id": "163913aa05",
+      "kind": "sentence",
+      "line": 369,
+      "text": "\\textbf{Holographic Fluid--Gravity Dual and Cosmic Censorship:} Under the AdS/CFT fluid--gravity correspondence, a finite-time vorticity blow-up on the 3D boundary manifold corresponds to the formation of a naked curvature singularity in the 4D asymptotically AdS bulk spacetime.",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "25c6f88b0f",
+      "kind": "sentence",
+      "line": 369,
+      "text": "Penrose's cosmic censorship conjecture in the bulk therefore provides a geometric dual heuristic motivating the existence of an ultraviolet vorticity ceiling on the boundary.",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "19a6a6fc6c",
+      "kind": "heading",
+      "line": 372,
+      "text": "Complete Preservation of the 14-Point Programme from Appendix~A of \\emph{v8}",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "95058dad6a",
+      "kind": "sentence",
+      "line": 373,
+      "text": "For historical completeness and traceability, Table~\\ref{tab:14point} maps each of the 14 mandatory items from Appendix~A of \\emph{Frohmanian\\_Tether\\_Final\\_Submission\\_v8.tex} to its exact realization in the Lean~4 formalization \\texttt{NS\\_Millennium\\_Proof}.",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "bcb630ca7b",
+      "kind": "table-row",
+      "line": 378,
+      "text": "p{0.6cm}>{\\raggedright\\arraybackslash}p{4.8cm}>{\\raggedright\\arraybackslash}p{4.6cm}>{\\raggedright\\arraybackslash}p{4.2cm}} \\# & Item in \\emph{v8} Appendix~A & Lean~4 Module / Declaration & Formal Status",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "1d9b45dc07",
+      "kind": "table-row",
+      "line": 380,
+      "text": "1 & ZFC Foundations, $\\R^3$, $\\T$, $L^2$, $H^s$ Sobolev spaces & Mathlib foundations + \\lean{NS_Equations.lean} & Kernel-verified in Lean~4 / Mathlib",
+      "refs": [
+        "NS_Equations.lean"
+      ],
+      "status": "verified",
+      "notes": [
+        "module NS_Millennium_Proof.Modules.NS_Equations: 148 theorems, all standard"
+      ]
+    },
+    {
+      "id": "b83a2e2521",
+      "kind": "table-row",
+      "line": 382,
+      "text": "2 & Unmodified 3D Navier--Stokes \\& vorticity transport \\eqref{eq:vort} & \\lean{NS_PDE}, \\lean{vorticity_transport_equation}, \\lean{IsPhysicalNSSolution} & Kernel-verified (0 \\lean{sorry})",
+      "refs": [
+        "NS_PDE",
+        "vorticity_transport_equation",
+        "IsPhysicalNSSolution",
+        "sorry"
+      ],
+      "status": "verified",
+      "notes": [
+        "NavierStokes3D.NS_PDE [def] axioms: propext, Classical.choice, Quot.sound",
+        "NavierStokes3D.vorticity_transport_equation [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "NavierStokes3D.IsPhysicalNSSolution [def] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "e55a35fc9b",
+      "kind": "table-row",
+      "line": 383,
+      "text": "3 & Phase space: coadjoint orbit $\\mathcal{O}$ of $\\mathrm{SDiff}$ & \\lean{VorticityField}, \\lean{Functional}, \\lean{CoadjointAction} & Defined in \\lean{ArnoldGeometric.lean}, \\lean{SymplecticTether.lean}",
+      "refs": [
+        "VorticityField",
+        "Functional",
+        "CoadjointAction",
+        "ArnoldGeometric.lean",
+        "SymplecticTether.lean"
+      ],
+      "status": "verified",
+      "notes": [
+        "NavierStokes3D.VorticityField [def] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.Functional [def] axioms: propext, Classical.choice, Quot.sound",
+        "ArnoldGeometric.CoadjointAction [def] axioms: propext, Classical.choice, Quot.sound",
+        "module NS_Millennium_Proof.Modules.ArnoldGeometric: 52 theorems, all standard",
+        "module NS_Millennium_Proof.Modules.SymplecticTether: 38 theorems, all standard"
+      ]
+    },
+    {
+      "id": "1d429dc29b",
+      "kind": "table-row",
+      "line": 384,
+      "text": "4 & Classical Arnold Lie--Poisson bracket $\\{F,G\\}_{\\mathrm{cl}}$ & \\lean{ClassicalBracket}, \\lean{classical_bracket_reproduces_Euler} & Kernel-verified (0 \\lean{sorry})",
+      "refs": [
+        "ClassicalBracket",
+        "classical_bracket_reproduces_Euler",
+        "sorry"
+      ],
+      "status": "verified",
+      "notes": [
+        "ArnoldGeometric.ClassicalBracket [def] axioms: propext, Classical.choice, Quot.sound",
+        "ArnoldGeometric.classical_bracket_reproduces_Euler [theorem] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "dfd3c7439d",
+      "kind": "table-row",
+      "line": 385,
+      "text": "5 & Explicit Frohmanian Tether $B(F,G)$, $\\Pi_u$, $\\kappa=3/2$, degeneracy & \\lean{TetherKernel}, \\lean{Pi_u}, \\lean{kappa_eq_three_halves}, \\lean{tetherKernel_degenerates_on_kinetic_energy} & Kernel-verified (0 \\lean{sorry})",
+      "refs": [
+        "TetherKernel",
+        "Pi_u",
+        "kappa_eq_three_halves",
+        "tetherKernel_degenerates_on_kinetic_energy",
+        "sorry"
+      ],
+      "status": "verified",
+      "notes": [
+        "FrohmanianTether.TetherKernel [def] axioms: propext, Classical.choice, Quot.sound",
+        "ForMathlib.Pi_u [def] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.kappa_eq_three_halves [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.tetherKernel_degenerates_on_kinetic_energy [theorem] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "1aff9ed210",
+      "kind": "table-row",
+      "line": 386,
+      "text": "6 & Coadjoint invariance of quadratic correction & \\lean{tether_coadjoint_invariance}, \\lean{tether_coadjoint_invariance_of_integral_eq} & Kernel-verified (abstract \\& conditional push-forward)",
+      "refs": [
+        "tether_coadjoint_invariance",
+        "tether_coadjoint_invariance_of_integral_eq"
+      ],
+      "status": "verified",
+      "notes": [
+        "FrohmanianTether.tether_coadjoint_invariance [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.tether_coadjoint_invariance_of_integral_eq [theorem] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "9bf2df3e05",
+      "kind": "table-row",
+      "line": 387,
+      "text": "7 & Reduced Jacobi identity (9-term expansion + cocycle) & \\lean{tethered_jacobi_identity} & Conditional lemma only; no Jacobi identity claimed for the metriplectic-type bracket",
+      "refs": [
+        "tethered_jacobi_identity"
+      ],
+      "status": "verified",
+      "notes": [
+        "FrohmanianTether.tethered_jacobi_identity [theorem] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "42424c1555",
+      "kind": "table-row",
+      "line": 388,
+      "text": "8 & Canonicity \\& Uniqueness Theorem (5-step) & \\lean{uniqueness_of_minimal_tether}, \\lean{uniqueness_of_minimal_symmetric_tether}, \\lean{uniqueness_of_minimal_tether_core} & Kernel-verified (symmetric form)",
+      "refs": [
+        "uniqueness_of_minimal_tether",
+        "uniqueness_of_minimal_symmetric_tether",
+        "uniqueness_of_minimal_tether_core"
+      ],
+      "status": "verified",
+      "notes": [
+        "FrohmanianTether.uniqueness_of_minimal_tether [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.uniqueness_of_minimal_symmetric_tether [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.uniqueness_of_minimal_tether_core [theorem] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "46f238602b",
+      "kind": "table-row",
+      "line": 389,
+      "text": "9 & Variational principle \\& Leray projector orthogonality & \\lean{projector_orthogonality}, \\lean{pressure_energy_pairing_vanishes} & Kernel-verified (0 \\lean{sorry})",
+      "refs": [
+        "projector_orthogonality",
+        "pressure_energy_pairing_vanishes",
+        "sorry"
+      ],
+      "status": "verified",
+      "notes": [
+        "ForMathlib.projector_orthogonality [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "NavierStokes3D.pressure_energy_pairing_vanishes [theorem] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "9c52a82ce7",
+      "kind": "table-row",
+      "line": 390,
+      "text": "10 & Quartic Lyapunov $S_\\varepsilon$, scalar $\\varphi$, $L^6$ absorption, cubic ODE $y'=Cy^2-\\kappa''y^3$, BKM & \\lean{LyapunovS}, \\lean{comparison_ode_stability}, \\lean{frohmanian_tether_theorem}, \\lean{conditional_regularity_of_open_hyps} & Kernel-verified conditional implication + non-vacuity at $u_0=0$; premise (R) open, damping coefficient $=0$",
+      "refs": [
+        "LyapunovS",
+        "comparison_ode_stability",
+        "frohmanian_tether_theorem",
+        "conditional_regularity_of_open_hyps"
+      ],
+      "status": "verified",
+      "notes": [
+        "TetheredLyapunov.LyapunovS [def] axioms: propext, Classical.choice, Quot.sound",
+        "\\lean{comparison_ode_stability} ambiguous: ClosureBlueprint.comparison_ode_stability, AnalyticPipeline.comparison_ode_stability",
+        "ClosureBlueprint.comparison_ode_stability | AnalyticPipeline.comparison_ode_stability [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "ConditionalRegularity.frohmanian_tether_theorem [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "\\lean{conditional_regularity_of_open_hyps} ambiguous: ClosureBlueprint.conditional_regularity_of_open_hyps, ConditionalRegularity.conditional_regularity_of_open_hyps",
+        "ClosureBlueprint.conditional_regularity_of_open_hyps | ConditionalRegularity.conditional_regularity_of_open_hyps [theorem] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "b903e29521",
+      "kind": "table-row",
+      "line": 391,
+      "text": "11 & Relation to Onsager's conjecture ($\\alpha=1$ persistence) & Section~\\ref{sec:original} of this paper & Preserved in manuscript as physical motivation",
+      "refs": [],
+      "status": "open",
+      "notes": [
+        "open: conjecture"
+      ]
+    },
+    {
+      "id": "f9b15cb9f2",
+      "kind": "table-row",
+      "line": 392,
+      "text": "12 & Metriplectic \\& holographic fluid--gravity extensions & \\texttt{Skeleton/PaperOverview.lean} (outside the default build target) \\& Section~\\ref{sec:original} & Preserved in manuscript \\& overview module",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "7e7149bd67",
+      "kind": "table-row",
+      "line": 393,
+      "text": "13 & Technical Appendix: invariance, MWR, mollifiers, pressure & \\lean{NS_Equations.lean}, \\lean{TetheredLyapunov.lean}, \\lean{AnalyticPipeline.lean} & Kernel-verified lemmas (532 theorems in the default target)",
+      "refs": [
+        "NS_Equations.lean",
+        "TetheredLyapunov.lean",
+        "AnalyticPipeline.lean"
+      ],
+      "status": "verified",
+      "notes": [
+        "theorems: 532 matches",
+        "module NS_Millennium_Proof.Modules.NS_Equations: 148 theorems, all standard",
+        "module NS_Millennium_Proof.Modules.TetheredLyapunov: 58 theorems, all standard",
+        "module NS_Millennium_Proof.Modules.AnalyticPipeline: 14 theorems, all standard"
+      ]
+    },
+    {
+      "id": "225e359a93",
+      "kind": "table-row",
+      "line": 394,
+      "text": "14 & Conclusion: non-circular conditional architecture & \\lean{ConditionalRegularity.lean}, \\lean{ClayStatements.lean} & Checked by \\texttt{scripts/AxiomAudit.lean}",
+      "refs": [
+        "ConditionalRegularity.lean",
+        "ClayStatements.lean"
+      ],
+      "status": "verified",
+      "notes": [
+        "module NS_Millennium_Proof.Modules.ConditionalRegularity: 2 theorems, all standard",
+        "module NS_Millennium_Proof.Modules.ClayStatements: 20 theorems, all standard"
+      ]
+    },
+    {
+      "id": "a743bbe1d9",
+      "kind": "caption",
+      "line": 398,
+      "text": "Complete mapping of the 14-point programme of \\emph{Frohmanian\\_Tether\\_Final\\_Submission\\_v8} to the Lean~4 formalization.",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "0e32c87cfb",
+      "kind": "sentence",
+      "line": 398,
+      "text": "\\label{tab:14point}",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "e665f965bb",
+      "kind": "heading",
+      "line": 402,
+      "text": "The Periodic Clay (B) Statement and Scaling Analysis",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "19564b444e",
+      "kind": "sentence",
+      "line": 402,
+      "text": "\\label{sec:clay}",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "1dc4a56960",
+      "kind": "sentence",
+      "line": 404,
+      "text": "Fefferman's problem (B) \\cite{Fefferman2006} asks, on $\\T$ with $f\\equiv0$, for smooth spatially periodic solutions $(u,p)$ on $\\R^3\\times[0,\\infty)$.",
+      "refs": [],
+      "status": "silent",
+      "notes": [
+        "mathematical content with no Lean mapping"
+      ]
+    },
+    {
+      "id": "713a905f8a",
+      "kind": "sentence",
+      "line": 404,
+      "text": "It is formalized in \\lean{ClayStatements.lean}:",
+      "refs": [
+        "ClayStatements.lean"
+      ],
+      "status": "verified",
+      "notes": [
+        "module NS_Millennium_Proof.Modules.ClayStatements: 20 theorems, all standard"
+      ]
+    },
+    {
+      "id": "321b8ceaa0",
+      "kind": "listing",
+      "line": 405,
+      "text": "\\leanfile{Clay_B_exact}",
+      "refs": [],
+      "status": "non-claim",
+      "notes": [
+        "verbatim Lean listing (code, not a claim)"
+      ]
+    },
+    {
+      "id": "ad730bb510",
+      "kind": "listing",
+      "line": 406,
+      "text": "\\leanfile{IsPeriodicSmoothSolution}",
+      "refs": [],
+      "status": "non-claim",
+      "notes": [
+        "verbatim Lean listing (code, not a claim)"
+      ]
+    },
+    {
+      "id": "118fbf6938",
+      "kind": "sentence",
+      "line": 407,
+      "text": "The reduction from \\lean{Clay_B_exact} to the periodic closing bound \\lean{PeriodicTetherClosingBound} and classical periodic BKM continuation \\lean{PeriodicBKMContinuation} is proved axiom-clean:",
+      "refs": [
+        "Clay_B_exact",
+        "PeriodicTetherClosingBound",
+        "PeriodicBKMContinuation"
+      ],
+      "status": "verified",
+      "notes": [
+        "FrohmanianTether.ClayStatements.Clay_B_exact [def] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.ClayStatements.PeriodicTetherClosingBound [def] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.ClayStatements.PeriodicBKMContinuation [def] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "7c75b75950",
+      "kind": "listing",
+      "line": 408,
+      "text": "\\leanfile{clay_B_exact_of_periodic}",
+      "refs": [],
+      "status": "non-claim",
+      "notes": [
+        "verbatim Lean listing (code, not a claim)"
+      ]
+    },
+    {
+      "id": "3e793ab65e",
+      "kind": "heading",
+      "line": 410,
+      "text": "Scaling Analysis and Open Analytic Questions",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "02e24772f6",
+      "kind": "sentence",
+      "line": 410,
+      "text": "\\label{sec:obstruction}\\label{sec:open} While the conditional implication Theorem~\\ref{thm:main} is proved and non-vacuous in Lean~4, its premise (R) is unresolved: the tether's damping coefficient is $0$ (Section~\\ref{sec:damping}), and discharging the cubic rate hypothesis (R) (\\lean{FrohmanianTetherRate}) unconditionally from the unmodified vorticity equation \\eqref{eq:vort} remains an open mathematical problem for the following structural reasons:",
+      "refs": [
+        "FrohmanianTetherRate"
+      ],
+      "status": "verified",
+      "notes": [
+        "FrohmanianTether.FrohmanianTetherRate [def] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "167346328d",
+      "kind": "sentence",
+      "line": 413,
+      "text": "\\textbf{Parabolic scaling dimension of $\\kappa''$:} Under the Navier--Stokes rescaling \\eqref{eq:scaling}, $M'(t)$ scales as $\\lambda^4$, $\\CZ M(t)^2$ scales as $\\lambda^4$, and $\\kappa'' M(t)^3$ scales as $\\lambda^6$.",
+      "refs": [],
+      "status": "silent",
+      "notes": [
+        "mathematical content with no Lean mapping"
+      ]
+    },
+    {
+      "id": "3499f31b7b",
+      "kind": "sentence",
+      "line": 413,
+      "text": "A fixed constant $\\kappa''>0$ therefore carries the dimension of time and cannot be formed from viscosity $\\nu$ alone ($[\\nu]=L^2T^{-1}$) without incorporating a solution-dependent or scale-compensating functional (see \\texttt{SCALE\\_INVARIANT\\_TETHER.md} and \\texttt{CLAY\\_B\\_T3.md}).",
+      "refs": [],
+      "status": "silent",
+      "notes": [
+        "mathematical content with no Lean mapping"
+      ]
+    },
+    {
+      "id": "651db3687e",
+      "kind": "sentence",
+      "line": 414,
+      "text": "\\textbf{Pointwise strain at spatial maxima (\\texttt{HWEIGHT\\_OBSTRUCTION.md}):} Because $B(F,H)=0$ by Proposition~\\ref{prop:degen} and $B$ is symmetric, $B(M,H)=0$ for every $M$: the tether adds no damping term to \\eqref{eq:vort} or to any functional. Consequently, the pointwise inequality $\\langle\\omega,(\\omega\\cdot\\nabla)u\\rangle(x_*)\\le\\CZ M^3-\\kappa M^4$ (\\lean{ConjecturedUnmodifiedTetherPairing}) and the integral weight dominance condition $M^4\\le\\|\\omega\\|_{L^2}^2\\int|\\Pi_u\\delta F|^2$ (\\texttt{hweight}) do not hold for arbitrary divergence-free fields with vanishing stretching at the maximum when $M>\\CZ/\\kappa$.",
+      "refs": [
+        "ConjecturedUnmodifiedTetherPairing"
+      ],
+      "status": "open",
+      "notes": [
+        "FrohmanianTether.ConjecturedUnmodifiedTetherPairing [def] axioms: propext, Classical.choice, Quot.sound",
+        "open: ConjecturedUnmodifiedTetherPairing"
+      ]
+    },
+    {
+      "id": "1db12258cf",
+      "kind": "sentence",
+      "line": 414,
+      "text": "Closing (R) for the unmodified PDE therefore requires a non-local or time-integrated mechanism beyond pointwise evaluation at a single time slice.",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "06715c2707",
+      "kind": "sentence",
+      "line": 415,
+      "text": "\\textbf{Calderón--Zygmund $L^\\infty$ logarithm:} Singular integral operators (such as $\\nabla u=\\nabla\\mathrm{BS}(\\omega)$) are not bounded from $L^\\infty$ to $L^\\infty$ without a logarithmic Sobolev correction $\\|\\nabla u\\|_{L^\\infty}\\lesssim \\|\\omega\\|_{L^\\infty}(1+\\log^+(\\|\\omega\\|_{H^s}/\\|\\omega\\|_{L^\\infty}))$ \\cite{BKM1984} (cited, not formalized in the Lean library).",
+      "refs": [],
+      "status": "open",
+      "notes": [
+        "open: not formalized"
+      ]
+    },
+    {
+      "id": "5dcf180479",
+      "kind": "sentence",
+      "line": 415,
+      "text": "In the pointwise local-maximum lemma, $\\|\\nabla u(x)\\|\\le\\CZ\\|\\omega\\|_{L^\\infty}$ enters as the explicit hypothesis \\texttt{hCZ}.",
+      "refs": [],
+      "status": "silent",
+      "notes": [
+        "mathematical content with no Lean mapping"
+      ]
+    },
+    {
+      "id": "35f4af385d",
+      "kind": "heading",
+      "line": 419,
+      "text": "Scope Table: Complete Status of Every Component",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "504e1ca945",
+      "kind": "sentence",
+      "line": 419,
+      "text": "\\label{sec:scope}",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "7ee02909ad",
+      "kind": "table-row",
+      "line": 422,
+      "text": "p{4.2cm}>{\\raggedright\\arraybackslash}p{5.2cm}>{\\raggedright\\arraybackslash}p{5.1cm}} Component & Lean Declaration / Location & Verification Status",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "6c4a3e63b1",
+      "kind": "table-row",
+      "line": 424,
+      "text": "\\endhead \\endfoot G1 Tether kernel & \\lean{TetherKernel}, \\lean{Pi_u} & Defined \\& symmetric (\\lean{tetherKernel_symmetric})",
+      "refs": [
+        "TetherKernel",
+        "Pi_u",
+        "tetherKernel_symmetric"
+      ],
+      "status": "verified",
+      "notes": [
+        "FrohmanianTether.TetherKernel [def] axioms: propext, Classical.choice, Quot.sound",
+        "ForMathlib.Pi_u [def] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.tetherKernel_symmetric [theorem] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "6edd302c9f",
+      "kind": "table-row",
+      "line": 427,
+      "text": "G2 Degeneracy $B(F,H)=0$ & \\lean{tetherKernel_degenerates_on_kinetic_energy}, \\lean{Combined.tetherKernel_C2_of_KEDeriv} & \\textbf{Proved axiom-clean, conditional} on $\\delta H/\\delta\\omega=u$ (\\lean{KineticEnergyDerivIsVelocity}, open), $\\nabla\\cdot u=0$, finite energy",
+      "refs": [
+        "tetherKernel_degenerates_on_kinetic_energy",
+        "Combined.tetherKernel_C2_of_KEDeriv",
+        "KineticEnergyDerivIsVelocity"
+      ],
+      "status": "verified",
+      "notes": [
+        "FrohmanianTether.tetherKernel_degenerates_on_kinetic_energy [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "Combined.tetherKernel_C2_of_KEDeriv [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "PlanSteps.KineticEnergyDerivIsVelocity [def] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "bc66879bff",
+      "kind": "table-row",
+      "line": 428,
+      "text": "A1 Canonicity (symmetric) & \\lean{uniqueness_of_minimal_tether} & \\textbf{Proved axiom-clean} (symmetric binder; delegates to the symmetric theorem)",
+      "refs": [
+        "uniqueness_of_minimal_tether"
+      ],
+      "status": "verified",
+      "notes": [
+        "FrohmanianTether.uniqueness_of_minimal_tether [theorem] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "3580e341a6",
+      "kind": "table-row",
+      "line": 429,
+      "text": "A1 Symmetric uniqueness & \\lean{uniqueness_of_minimal_symmetric_tether} & \\textbf{Proved axiom-clean}",
+      "refs": [
+        "uniqueness_of_minimal_symmetric_tether"
+      ],
+      "status": "verified",
+      "notes": [
+        "FrohmanianTether.uniqueness_of_minimal_symmetric_tether [theorem] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "3b7cc26260",
+      "kind": "table-row",
+      "line": 430,
+      "text": "A3/C1 Coadjoint invariance & \\lean{tether_coadjoint_invariance}, \\lean{Combined.tetherKernel_C1_of_casimir}, \\lean{Combined.tetherKernel_C1_of_volumePreserving} & \\textbf{Proved axiom-clean, conditional} on \\lean{SDiffActionHyp} (field \\texttt{casimir\\_invariant}) and \\lean{TetherIntegralPreserved}; abstract $\\mathrm{SDiff}$",
+      "refs": [
+        "tether_coadjoint_invariance",
+        "Combined.tetherKernel_C1_of_casimir",
+        "Combined.tetherKernel_C1_of_volumePreserving",
+        "SDiffActionHyp",
+        "TetherIntegralPreserved"
+      ],
+      "status": "verified",
+      "notes": [
+        "FrohmanianTether.tether_coadjoint_invariance [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "Combined.tetherKernel_C1_of_casimir [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "Combined.tetherKernel_C1_of_volumePreserving [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "ArnoldGeometric.SDiffActionHyp [inductive] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.TetherIntegralPreserved [def] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "8e742e4b70",
+      "kind": "table-row",
+      "line": 431,
+      "text": "A5/C3 Negative feedback & \\lean{ProducesControllableNegativeFeedback} & \\textbf{Proved axiom-clean}",
+      "refs": [
+        "ProducesControllableNegativeFeedback"
+      ],
+      "status": "verified",
+      "notes": [
+        "FrohmanianTether.ProducesControllableNegativeFeedback [def] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "c8d3fd53fc",
+      "kind": "table-row",
+      "line": 432,
+      "text": "Bracket structure & \\lean{TetheredBracket} & Metriplectic-type (antisymmetric $+$ symmetric $\\le0$); \\textbf{not} antisymmetric; no Jacobi claimed",
+      "refs": [
+        "TetheredBracket"
+      ],
+      "status": "verified",
+      "notes": [
+        "FrohmanianTether.TetheredBracket [def] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "85061bcc8b",
+      "kind": "table-row",
+      "line": 433,
+      "text": "Conditional Jacobiator lemma & \\lean{tethered_jacobi_identity} & Proved from two open hypotheses; not a Jacobi identity",
+      "refs": [
+        "tethered_jacobi_identity"
+      ],
+      "status": "verified",
+      "notes": [
+        "FrohmanianTether.tethered_jacobi_identity [theorem] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "b2d3c4dd55",
+      "kind": "table-row",
+      "line": 434,
+      "text": "Tether damping coefficient & $T(M,H)=0$ (symmetry $+$ C2) & \\textbf{Zero}; cubic rate (R) and closing bound are \\textbf{open assumptions}",
+      "refs": [],
+      "status": "open",
+      "notes": [
+        "open: are open"
+      ]
+    },
+    {
+      "id": "29cdd9a048",
+      "kind": "table-row",
+      "line": 435,
+      "text": "G4 Stretching at spatial max & \\lean{stretching_inner_le_at_max} & \\textbf{Proved axiom-clean} (given \\texttt{hCZ})",
+      "refs": [
+        "stretching_inner_le_at_max"
+      ],
+      "status": "verified",
+      "notes": [
+        "NavierStokes3D.stretching_inner_le_at_max [theorem] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "f73c2be415",
+      "kind": "table-row",
+      "line": 436,
+      "text": "G4 Transport/viscosity at max & \\lean{time_pairing_le_stretching_at_max} & \\textbf{Proved axiom-clean}",
+      "refs": [
+        "time_pairing_le_stretching_at_max"
+      ],
+      "status": "verified",
+      "notes": [
+        "FrohmanianTether.time_pairing_le_stretching_at_max [theorem] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "f5d16dc85c",
+      "kind": "table-row",
+      "line": 437,
+      "text": "Conjectured pairing bridge & \\lean{ConjecturedUnmodifiedTetherPairing}, \\lean{reduced_pairing_of_unmodified_and_tether} & \\textbf{Proved axiom-clean (0 \\lean{sorry})} from explicit bridge hypothesis",
+      "refs": [
+        "ConjecturedUnmodifiedTetherPairing",
+        "reduced_pairing_of_unmodified_and_tether",
+        "sorry"
+      ],
+      "status": "open",
+      "notes": [
+        "FrohmanianTether.ConjecturedUnmodifiedTetherPairing [def] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.reduced_pairing_of_unmodified_and_tether [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "open: Conjectured"
+      ]
+    },
+    {
+      "id": "085f8bb8ee",
+      "kind": "table-row",
+      "line": 438,
+      "text": "Weighted stretching lemma & \\lean{tethered_stretching_of_weight} & \\textbf{Proved axiom-clean (0 \\lean{sorry})} from \\texttt{hweight}",
+      "refs": [
+        "tethered_stretching_of_weight",
+        "sorry"
+      ],
+      "status": "verified",
+      "notes": [
+        "FrohmanianTether.tethered_stretching_of_weight [theorem] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "4f62b7e839",
+      "kind": "table-row",
+      "line": 439,
+      "text": "N1 Lyapunov vehicle $S_\\varepsilon,\\varphi$ & \\lean{LyapunovS}, \\lean{IsEnstrophyAccumulation} & \\textbf{Proved axiom-clean}",
+      "refs": [
+        "LyapunovS",
+        "IsEnstrophyAccumulation"
+      ],
+      "status": "verified",
+      "notes": [
+        "TetheredLyapunov.LyapunovS [def] axioms: propext, Classical.choice, Quot.sound",
+        "TetheredLyapunov.IsEnstrophyAccumulation [def] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "22f83f0fab",
+      "kind": "table-row",
+      "line": 440,
+      "text": "N2 Cubic ODE comparison & \\lean{comparison_ode_stability} & \\textbf{Proved axiom-clean}",
+      "refs": [
+        "comparison_ode_stability"
+      ],
+      "status": "verified",
+      "notes": [
+        "\\lean{comparison_ode_stability} ambiguous: ClosureBlueprint.comparison_ode_stability, AnalyticPipeline.comparison_ode_stability",
+        "ClosureBlueprint.comparison_ode_stability | AnalyticPipeline.comparison_ode_stability [theorem] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "9ed7f469c1",
+      "kind": "table-row",
+      "line": 441,
+      "text": "N2 Explicit majorant bound & \\lean{comparison_majorant_global_bound} & \\textbf{Proved axiom-clean}",
+      "refs": [
+        "comparison_majorant_global_bound"
+      ],
+      "status": "verified",
+      "notes": [
+        "IndependentMajorant.comparison_majorant_global_bound [theorem] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "79734ea876",
+      "kind": "table-row",
+      "line": 442,
+      "text": "N3 Rate $\\Rightarrow$ ceiling & \\lean{riccati_ceiling_of_vorticity_di} & \\textbf{Proved axiom-clean} implication; premise unresolved",
+      "refs": [
+        "riccati_ceiling_of_vorticity_di"
+      ],
+      "status": "verified",
+      "notes": [
+        "TetheredLyapunov.riccati_ceiling_of_vorticity_di [theorem] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "c07f89922a",
+      "kind": "table-row",
+      "line": 443,
+      "text": "N4 Physical solution class & \\lean{IsPhysicalNSSolution}, \\lean{isPhysicalNSSolution_zero} & \\textbf{Proved axiom-clean}",
+      "refs": [
+        "IsPhysicalNSSolution",
+        "isPhysicalNSSolution_zero"
+      ],
+      "status": "verified",
+      "notes": [
+        "NavierStokes3D.IsPhysicalNSSolution [def] axioms: propext, Classical.choice, Quot.sound",
+        "NavierStokes3D.isPhysicalNSSolution_zero [theorem] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "9ebfdfee23",
+      "kind": "table-row",
+      "line": 444,
+      "text": "N4 Main conditional theorem & \\lean{conditional_regularity_of_open_hyps} & \\textbf{Proved axiom-clean \\& verified non-vacuous} as an implication; depends on unresolved premise (R); no regularity claim",
+      "refs": [
+        "conditional_regularity_of_open_hyps"
+      ],
+      "status": "verified",
+      "notes": [
+        "\\lean{conditional_regularity_of_open_hyps} ambiguous: ClosureBlueprint.conditional_regularity_of_open_hyps, ConditionalRegularity.conditional_regularity_of_open_hyps",
+        "ClosureBlueprint.conditional_regularity_of_open_hyps | ConditionalRegularity.conditional_regularity_of_open_hyps [theorem] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "08bff561da",
+      "kind": "table-row",
+      "line": 445,
+      "text": "N4 Assembled tether theorem & \\lean{frohmanian_tether_theorem} & \\textbf{Proved axiom-clean} as an implication; depends on unresolved premise (R)",
+      "refs": [
+        "frohmanian_tether_theorem"
+      ],
+      "status": "verified",
+      "notes": [
+        "ConditionalRegularity.frohmanian_tether_theorem [theorem] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "3189f9124e",
+      "kind": "table-row",
+      "line": 446,
+      "text": "Non-vacuity \\& joint satisfiability & \\lean{stepField_not_physical}, \\lean{repaired_hInt}, \\lean{repaired_huniq_at_zero}, \\lean{frohmanianTetherBound_zero}, \\lean{frohmanianTetherRate_zero}, \\lean{conditional_regularity_nonvacuous_at_zero} & \\textbf{Proved unconditionally at $u_0=0$ (axiom-clean)}",
+      "refs": [
+        "stepField_not_physical",
+        "repaired_hInt",
+        "repaired_huniq_at_zero",
+        "frohmanianTetherBound_zero",
+        "frohmanianTetherRate_zero",
+        "conditional_regularity_nonvacuous_at_zero"
+      ],
+      "status": "verified",
+      "notes": [
+        "FrohmanianTether.ClayStatements.stepField_not_physical [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.ClayStatements.repaired_hInt [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.ClayStatements.repaired_huniq_at_zero [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.ClayStatements.frohmanianTetherBound_zero [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.ClayStatements.frohmanianTetherRate_zero [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.ClayStatements.conditional_regularity_nonvacuous_at_zero [theorem] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "2c125b49f1",
+      "kind": "table-row",
+      "line": 447,
+      "text": "Historical unpatched audit & \\lean{library_huniq_unsatisfiable_at_zero}, \\lean{closing_bound_uniqueness_family_unsatisfiable} & \\textbf{Proved axiom-clean} (documents why \\lean{IsPhysicalNSSolution} was added)",
+      "refs": [
+        "library_huniq_unsatisfiable_at_zero",
+        "closing_bound_uniqueness_family_unsatisfiable",
+        "IsPhysicalNSSolution"
+      ],
+      "status": "verified",
+      "notes": [
+        "FrohmanianTether.ClayStatements.library_huniq_unsatisfiable_at_zero [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.ClayStatements.closing_bound_uniqueness_family_unsatisfiable [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "NavierStokes3D.IsPhysicalNSSolution [def] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "278d701c26",
+      "kind": "table-row",
+      "line": 448,
+      "text": "N5 Clay (B) exact statement & \\lean{Clay_B_exact}, \\lean{IsPeriodicSmoothSolution} & Formalized in \\lean{ClayStatements.lean}",
+      "refs": [
+        "Clay_B_exact",
+        "IsPeriodicSmoothSolution",
+        "ClayStatements.lean"
+      ],
+      "status": "verified",
+      "notes": [
+        "FrohmanianTether.ClayStatements.Clay_B_exact [def] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.ClayStatements.IsPeriodicSmoothSolution [def] axioms: propext, Classical.choice, Quot.sound",
+        "module NS_Millennium_Proof.Modules.ClayStatements: 20 theorems, all standard"
+      ]
+    },
+    {
+      "id": "e027958f42",
+      "kind": "table-row",
+      "line": 449,
+      "text": "N5 Clay (B) conditional reduction & \\lean{clay_B_exact_of_periodic_tether_bound} & \\textbf{Proved axiom-clean} (conditional on \\lean{PeriodicTetherClosingBound})",
+      "refs": [
+        "clay_B_exact_of_periodic_tether_bound",
+        "PeriodicTetherClosingBound"
+      ],
+      "status": "verified",
+      "notes": [
+        "FrohmanianTether.ClayStatements.clay_B_exact_of_periodic_tether_bound [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.ClayStatements.PeriodicTetherClosingBound [def] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "f037e2bfa8",
+      "kind": "heading",
+      "line": 455,
+      "text": "Certificate",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "37106d451b",
+      "kind": "sentence",
+      "line": 455,
+      "text": "\\label{sec:certificate}",
+      "refs": [
+        "Combined.combined_conditional_capstone"
+      ],
+      "status": "verified",
+      "notes": [
+        "Combined.combined_conditional_capstone [theorem] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "92ecc78ba0",
+      "kind": "sentence",
+      "line": 458,
+      "text": "Builds clean: \\texttt{lake build NS\\_Millennium\\_Proof} succeeds.",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "d7cb45fb90",
+      "kind": "sentence",
+      "line": 459,
+      "text": "No \\texttt{sorry}.",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "b393825525",
+      "kind": "sentence",
+      "line": 460,
+      "text": "Standard axioms only: \\texttt{propext}, \\texttt{Classical.choice}, \\texttt{Quot.sound}.",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "a9cc1630a4",
+      "kind": "sentence",
+      "line": 461,
+      "text": "Geometric layer proved: C1, C2, C3, canonicity, Casimir conservation and $T(M,H)=0$ are proved in \\lean{Combined.combined_conditional_capstone} from its listed hypotheses.",
+      "refs": [
+        "Combined.combined_conditional_capstone"
+      ],
+      "status": "verified",
+      "notes": [
+        "Combined.combined_conditional_capstone [theorem] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "7c036ac5af",
+      "kind": "sentence",
+      "line": 462,
+      "text": "Analytic layer stated as open assumptions: \\lean{FrohmanianTetherRate}, \\lean{FrohmanianTetherClosingBound}, Kato local existence, BKM continuation and Kato uniqueness are hypotheses of \\lean{Combined.combined_conditional_capstone}, not theorems.",
+      "refs": [
+        "FrohmanianTetherRate",
+        "FrohmanianTetherClosingBound",
+        "Combined.combined_conditional_capstone"
+      ],
+      "status": "open",
+      "notes": [
+        "FrohmanianTether.FrohmanianTetherRate [def] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.ClayStatements.FrohmanianTetherClosingBound [def] axioms: propext, Classical.choice, Quot.sound",
+        "Combined.combined_conditional_capstone [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "open: open assumption"
+      ]
+    },
+    {
+      "id": "5e69dc9491",
+      "kind": "sentence",
+      "line": 464,
+      "text": "The hypotheses of \\lean{Combined.combined_conditional_capstone} are: \\lean{SDiffActionHyp}, \\lean{TetherIntegralPreserved}, \\lean{KineticEnergyDerivIsVelocity}, $\\nabla\\cdot u=0$ and finite energy on the orbit, \\lean{IsCoadjointMotion}, symmetry of $B$, \\texttt{h\\_proj}, \\texttt{h\\_dens}, \\texttt{h\\_weight}, \\texttt{h\\_sat}, \\texttt{h\\_nondeg}, smooth divergence-free finite-energy $u_0$, $\\nu>0$, \\lean{KatoLocalWitness}, \\lean{FrohmanianTetherRate}, \\lean{FrohmanianTetherClosingBound}, \\lean{PhysicalBKMContinuationCriterionFor} and \\lean{KatoUniquenessOnExistenceTimes}.",
+      "refs": [
+        "Combined.combined_conditional_capstone",
+        "SDiffActionHyp",
+        "TetherIntegralPreserved",
+        "KineticEnergyDerivIsVelocity",
+        "IsCoadjointMotion",
+        "KatoLocalWitness",
+        "FrohmanianTetherRate",
+        "FrohmanianTetherClosingBound",
+        "PhysicalBKMContinuationCriterionFor",
+        "KatoUniquenessOnExistenceTimes"
+      ],
+      "status": "verified",
+      "notes": [
+        "Combined.combined_conditional_capstone [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "ArnoldGeometric.SDiffActionHyp [inductive] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.TetherIntegralPreserved [def] axioms: propext, Classical.choice, Quot.sound",
+        "PlanSteps.KineticEnergyDerivIsVelocity [def] axioms: propext, Classical.choice, Quot.sound",
+        "PlanSteps.IsCoadjointMotion [def] axioms: propext, Classical.choice, Quot.sound",
+        "NavierStokes3D.KatoLocalWitness [inductive] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.FrohmanianTetherRate [def] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.ClayStatements.FrohmanianTetherClosingBound [def] axioms: propext, Classical.choice, Quot.sound",
+        "TetheredLyapunov.PhysicalBKMContinuationCriterionFor [def] axioms: propext, Classical.choice, Quot.sound",
+        "TetheredLyapunov.KatoUniquenessOnExistenceTimes [def] axioms: propext, Classical.choice, Quot.sound"
+      ]
+    },
+    {
+      "id": "05ef6f4ce0",
+      "kind": "sentence",
+      "line": 464,
+      "text": "Under the symmetric C2 design the damping coefficient is $0$, so nothing proved here supplies the rate or closing-bound hypotheses.",
+      "refs": [],
+      "status": "silent",
+      "notes": [
+        "mathematical content with no Lean mapping"
+      ]
+    },
+    {
+      "id": "49392a7bdf",
+      "kind": "sentence",
+      "line": 467,
+      "text": "\\appendix \\label{app:lean} Quoted verbatim from \\texttt{NS\\_Millennium\\_Proof} (532 theorems, 0 \\texttt{sorry}, 0 nonstandard axioms).",
+      "refs": [],
+      "status": "build-ok",
+      "notes": [
+        "theorems: 532 matches"
+      ]
+    },
+    {
+      "id": "259a353b66",
+      "kind": "heading",
+      "line": 468,
+      "text": "Exact Lean Statements",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "f0cae113df",
+      "kind": "heading",
+      "line": 471,
+      "text": "Physical solution class (\\texttt{NS\\_Equations.lean}).",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "50e2bd55d0",
+      "kind": "listing",
+      "line": 472,
+      "text": "\\leanfile{IsPhysicalNSSolution}",
+      "refs": [],
+      "status": "non-claim",
+      "notes": [
+        "verbatim Lean listing (code, not a claim)"
+      ]
+    },
+    {
+      "id": "6f28ad5ca4",
+      "kind": "heading",
+      "line": 473,
+      "text": "Main conditional theorem (\\texttt{ConditionalRegularity.lean}).",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "8470b7ab0d",
+      "kind": "listing",
+      "line": 474,
+      "text": "\\leanfile{conditional_regularity_of_open_hyps_main}",
+      "refs": [],
+      "status": "non-claim",
+      "notes": [
+        "verbatim Lean listing (code, not a claim)"
+      ]
+    },
+    {
+      "id": "52e942be14",
+      "kind": "heading",
+      "line": 475,
+      "text": "Assembled Frohmanian tether theorem (\\texttt{ConditionalRegularity.lean}).",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "c9a2a13455",
+      "kind": "listing",
+      "line": 476,
+      "text": "\\leanfile{frohmanian_tether_theorem_main}",
+      "refs": [],
+      "status": "non-claim",
+      "notes": [
+        "verbatim Lean listing (code, not a claim)"
+      ]
+    },
+    {
+      "id": "2fc20a9933",
+      "kind": "heading",
+      "line": 477,
+      "text": "Blueprint variant (\\texttt{ClosureBlueprint.lean}).",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "1eae856114",
+      "kind": "listing",
+      "line": 478,
+      "text": "\\leanfile{conditional_regularity_of_open_hyps_blueprint}",
+      "refs": [],
+      "status": "non-claim",
+      "notes": [
+        "verbatim Lean listing (code, not a claim)"
+      ]
+    },
+    {
+      "id": "c7dc220c6b",
+      "kind": "sentence",
+      "line": 479,
+      "text": "Non-vacuity and joint satisfiability at $u_0=0$ (\\texttt{ClayStatements.lean}).",
+      "refs": [],
+      "status": "silent",
+      "notes": [
+        "mathematical content with no Lean mapping"
+      ]
+    },
+    {
+      "id": "0b0f12d38b",
+      "kind": "listing",
+      "line": 480,
+      "text": "\\leanfile{nonvacuity_zero}",
+      "refs": [],
+      "status": "non-claim",
+      "notes": [
+        "verbatim Lean listing (code, not a claim)"
+      ]
+    },
+    {
+      "id": "a1436677c1",
+      "kind": "heading",
+      "line": 481,
+      "text": "Comparison and ceiling (\\texttt{IndependentMajorant.lean}, \\texttt{TetheredLyapunov.lean}).",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "d94b03dbfd",
+      "kind": "listing",
+      "line": 482,
+      "text": "\\leanfile{comparison_ode_stability}",
+      "refs": [],
+      "status": "non-claim",
+      "notes": [
+        "verbatim Lean listing (code, not a claim)"
+      ]
+    },
+    {
+      "id": "f3fb09bc15",
+      "kind": "listing",
+      "line": 483,
+      "text": "\\leanfile{comparison_majorant_global_bound}",
+      "refs": [],
+      "status": "non-claim",
+      "notes": [
+        "verbatim Lean listing (code, not a claim)"
+      ]
+    },
+    {
+      "id": "a20439b68d",
+      "kind": "listing",
+      "line": 484,
+      "text": "\\leanfile{riccati_ceiling_of_vorticity_di}",
+      "refs": [],
+      "status": "non-claim",
+      "notes": [
+        "verbatim Lean listing (code, not a claim)"
+      ]
+    },
+    {
+      "id": "7c3c9d4a2f",
+      "kind": "heading",
+      "line": 485,
+      "text": "Conjectured pairing bridge and weighted stretching (\\texttt{SymplecticTether.lean}, 0 \\texttt{sorry}).",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "2bc01ff83c",
+      "kind": "listing",
+      "line": 486,
+      "text": "\\leanfile{reduced_pairing}",
+      "refs": [],
+      "status": "non-claim",
+      "notes": [
+        "verbatim Lean listing (code, not a claim)"
+      ]
+    },
+    {
+      "id": "2482c58f8c",
+      "kind": "listing",
+      "line": 487,
+      "text": "\\leanfile{tethered_stretching_of_weight}",
+      "refs": [],
+      "status": "non-claim",
+      "notes": [
+        "verbatim Lean listing (code, not a claim)"
+      ]
+    },
+    {
+      "id": "116aa21f00",
+      "kind": "heading",
+      "line": 488,
+      "text": "Local maximum (\\texttt{NS\\_Equations.lean}).",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "3fce3ca5bf",
+      "kind": "listing",
+      "line": 489,
+      "text": "\\leanfile{stretching_inner_le_at_max}",
+      "refs": [],
+      "status": "non-claim",
+      "notes": [
+        "verbatim Lean listing (code, not a claim)"
+      ]
+    },
+    {
+      "id": "9e208364ba",
+      "kind": "heading",
+      "line": 490,
+      "text": "Tether kernel, degeneracy, invariance, symmetric uniqueness, and the conditional Jacobiator lemma (\\texttt{SymplecticTether.lean}, \\texttt{Uniqueness.lean}, \\texttt{ForMathlib/Projection.lean}).",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "0a206d31c8",
+      "kind": "listing",
+      "line": 491,
+      "text": "\\leanfile{TetherKernel}",
+      "refs": [],
+      "status": "non-claim",
+      "notes": [
+        "verbatim Lean listing (code, not a claim)"
+      ]
+    },
+    {
+      "id": "b0fb9a03ab",
+      "kind": "listing",
+      "line": 492,
+      "text": "\\leanfile{Pi_u}",
+      "refs": [],
+      "status": "non-claim",
+      "notes": [
+        "verbatim Lean listing (code, not a claim)"
+      ]
+    },
+    {
+      "id": "5ec569be93",
+      "kind": "listing",
+      "line": 493,
+      "text": "\\leanfile{tetherKernel_degenerates}",
+      "refs": [],
+      "status": "non-claim",
+      "notes": [
+        "verbatim Lean listing (code, not a claim)"
+      ]
+    },
+    {
+      "id": "7646b400df",
+      "kind": "listing",
+      "line": 494,
+      "text": "\\leanfile{CoadjointAction}",
+      "refs": [],
+      "status": "non-claim",
+      "notes": [
+        "verbatim Lean listing (code, not a claim)"
+      ]
+    },
+    {
+      "id": "20d589e84a",
+      "kind": "listing",
+      "line": 495,
+      "text": "\\leanfile{tether_coadjoint_invariance}",
+      "refs": [],
+      "status": "non-claim",
+      "notes": [
+        "verbatim Lean listing (code, not a claim)"
+      ]
+    },
+    {
+      "id": "fddf9fa55d",
+      "kind": "listing",
+      "line": 496,
+      "text": "\\leanfile{SaturatesTetherQuadratic}",
+      "refs": [],
+      "status": "non-claim",
+      "notes": [
+        "verbatim Lean listing (code, not a claim)"
+      ]
+    },
+    {
+      "id": "169c48f014",
+      "kind": "listing",
+      "line": 497,
+      "text": "\\leanfile{uniqueness_of_minimal_tether}",
+      "refs": [],
+      "status": "non-claim",
+      "notes": [
+        "verbatim Lean listing (code, not a claim)"
+      ]
+    },
+    {
+      "id": "d04b7d0c89",
+      "kind": "listing",
+      "line": 498,
+      "text": "\\leanfile{tethered_jacobi_identity}",
+      "refs": [],
+      "status": "non-claim",
+      "notes": [
+        "verbatim Lean listing (code, not a claim)"
+      ]
+    },
+    {
+      "id": "d3390c639b",
+      "kind": "heading",
+      "line": 499,
+      "text": "Lyapunov vehicle (\\texttt{TetheredLyapunov.lean}).",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "26b19799b4",
+      "kind": "listing",
+      "line": 500,
+      "text": "\\leanfile{IsEnstrophyAccumulation}",
+      "refs": [],
+      "status": "non-claim",
+      "notes": [
+        "verbatim Lean listing (code, not a claim)"
+      ]
+    },
+    {
+      "id": "5cca79849a",
+      "kind": "listing",
+      "line": 501,
+      "text": "\\leanfile{LyapunovS}",
+      "refs": [],
+      "status": "non-claim",
+      "notes": [
+        "verbatim Lean listing (code, not a claim)"
+      ]
+    },
+    {
+      "id": "fd5af9118c",
+      "kind": "heading",
+      "line": 502,
+      "text": "Frohmanian tether bound (\\texttt{SymplecticTether.lean}).",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "6e21094f01",
+      "kind": "listing",
+      "line": 503,
+      "text": "\\leanfile{FrohmanianTetherBound_trial}",
+      "refs": [],
+      "status": "non-claim",
+      "notes": [
+        "verbatim Lean listing (code, not a claim)"
+      ]
+    },
+    {
+      "id": "5804b1573a",
+      "kind": "heading",
+      "line": 504,
+      "text": "Historical audit of unpatched binder (\\texttt{ClayStatements.lean}).",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "89be85f5e1",
+      "kind": "listing",
+      "line": 505,
+      "text": "\\leanfile{library_huniq}",
+      "refs": [],
+      "status": "non-claim",
+      "notes": [
+        "verbatim Lean listing (code, not a claim)"
+      ]
+    },
+    {
+      "id": "60c1a01363",
+      "kind": "listing",
+      "line": 506,
+      "text": "\\leanfile{closing_bound_family}",
+      "refs": [],
+      "status": "non-claim",
+      "notes": [
+        "verbatim Lean listing (code, not a claim)"
+      ]
+    },
+    {
+      "id": "4b4e3d0277",
+      "kind": "heading",
+      "line": 507,
+      "text": "Periodic Clay (B) hypotheses (\\texttt{ClayStatements.lean}).",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "4511a23ca9",
+      "kind": "listing",
+      "line": 508,
+      "text": "\\leanfile{PeriodicTetherClosingBound}",
+      "refs": [],
+      "status": "non-claim",
+      "notes": [
+        "verbatim Lean listing (code, not a claim)"
+      ]
+    },
+    {
+      "id": "07ff649c6d",
+      "kind": "listing",
+      "line": 509,
+      "text": "\\leanfile{PeriodicBKMContinuation}",
+      "refs": [],
+      "status": "non-claim",
+      "notes": [
+        "verbatim Lean listing (code, not a claim)"
+      ]
+    },
+    {
+      "id": "c2160969ce",
+      "kind": "heading",
+      "line": 511,
+      "text": "Copyright and License",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "bb754257e2",
+      "kind": "sentence",
+      "line": 512,
+      "text": "Copyright \\copyright\\ 2026 Benjamin Stanley Frohman (ORCID: \\href{https://orcid.org/0009-0006-7068-3718}{0009-0006-7068-3718}).",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "d573b984bc",
+      "kind": "sentence",
+      "line": 512,
+      "text": "All rights reserved.",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "a73e164057",
+      "kind": "sentence",
+      "line": 512,
+      "text": "This manuscript and its companion Lean~4 formalization (\\url{https://github.com/BenFrohman/NS_Millennium_Proof}, Zenodo DOI: \\href{https://doi.org/10.5281/zenodo.23717084}{10.5281/zenodo.23717084}) are licensed under the Apache License, Version~2.0 (\\url{http://www.apache.org/licenses/LICENSE-2.0}).",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "ccf0164098",
+      "kind": "sentence",
+      "line": 514,
+      "text": "\\begin{thebibliography}{99} \\bibitem{Arnold1966} V.~I.~Arnold, Sur la g\\'eom\\'etrie diff\\'erentielle des groupes de Lie de dimension infinie et ses applications \\`a l'hydrodynamique des fluides parfaits, \\emph{Ann.\\ Inst.\\ Fourier} 16 (1966), 319--361.",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "00715cf654",
+      "kind": "sentence",
+      "line": 516,
+      "text": "\\bibitem{ArnoldKhesin1998} V.~I.~Arnold, B.~A.~Khesin, \\emph{Topological Methods in Hydrodynamics}, Springer, 1998.",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "d7d0fedfd0",
+      "kind": "sentence",
+      "line": 517,
+      "text": "\\bibitem{BKM1984} J.~T.~Beale, T.~Kato, A.~Majda, Remarks on the breakdown of smooth solutions for the 3-D Euler equations, \\emph{Comm.\\ Math.\\ Phys.} 94 (1984), 61--66.",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "78f54b89dc",
+      "kind": "sentence",
+      "line": 518,
+      "text": "\\bibitem{ConstantinFoias1988} P.~Constantin, C.~Foias, \\emph{Navier--Stokes Equations}, Univ.\\ Chicago Press, 1988.",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "d9688c6127",
+      "kind": "sentence",
+      "line": 519,
+      "text": "\\bibitem{Fefferman2006} C.~L.~Fefferman, Existence and smoothness of the Navier--Stokes equation, in \\emph{The Millennium Prize Problems}, Clay Math.\\ Inst., 2006.",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "44d9ada090",
+      "kind": "sentence",
+      "line": 520,
+      "text": "\\bibitem{Isett2018} P.~Isett, A proof of Onsager's conjecture, \\emph{Ann.\\ of Math.} 188 (2018), 871--963.",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "7e5ecab866",
+      "kind": "sentence",
+      "line": 521,
+      "text": "\\bibitem{Kato1984} T.~Kato, Strong $L^p$-solutions of the Navier--Stokes equation in $\\mathbb R^m$, with applications to weak solutions, \\emph{Math.\\ Z.} 187 (1984), 471--480.",
+      "refs": [],
+      "status": "silent",
+      "notes": [
+        "mathematical content with no Lean mapping"
+      ]
+    },
+    {
+      "id": "65a525d2bf",
+      "kind": "sentence",
+      "line": 522,
+      "text": "\\bibitem{MarsdenRatiu1986} J.~E.~Marsden, T.~Ratiu, Reduction of Poisson manifolds, \\emph{Lett.\\ Math.\\ Phys.} 11 (1986), 161--169.",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "5cff8e14b0",
+      "kind": "sentence",
+      "line": 523,
+      "text": "\\bibitem{Morrison1986} P.~J.~Morrison, A paradigm for joined Hamiltonian and dissipative systems, \\emph{Physica D} 18 (1986), 410--419.",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "6ecbb78d03",
+      "kind": "sentence",
+      "line": 524,
+      "text": "\\bibitem{Stein1993} E.~M.~Stein, \\emph{Harmonic Analysis: Real-Variable Methods, Orthogonality, and Oscillatory Integrals}, Princeton Univ.\\ Press, 1993.",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "f73787ce7f",
+      "kind": "sentence",
+      "line": 525,
+      "text": "\\bibitem{Temam1995} R.~Temam, \\emph{Navier--Stokes Equations and Nonlinear Functional Analysis}, 2nd ed., SIAM, 1995.",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    },
+    {
+      "id": "f2478857e0",
+      "kind": "sentence",
+      "line": 526,
+      "text": "\\end{thebibliography}",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
+    }
+  ],
+  "title": "The Frohmanian Tether on $\\mathrm{SDiff}(\\mathbb{T}^3)$: A Metriplectic Correction, Its Canonicity, and an Obstruction to Damping"
+}

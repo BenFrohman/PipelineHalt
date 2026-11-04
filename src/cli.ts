@@ -16,6 +16,7 @@ import {
   type PendingFile,
 } from "./halt.js";
 import { loadLean } from "./lean.js";
+import { audit, auditMarkdown, extractUnits, parseLeanFacts, runLean, type AuditMap } from "./audit.js";
 import { resolveMap } from "./map.js";
 import { exitCodeFor, handle, type AgentRequest } from "./protocol.js";
 import { toAnnotations, toJson, toMarkdown } from "./report.js";
@@ -27,6 +28,9 @@ Usage:
   pipelinehalt check   --anchor <claims.json|.md|.tex|.pdf> --lean <path>... [options]
   pipelinehalt answer  --anchor <file> (--id <id> --text "<answer>" [--verdict intentional|unintended|other] | --from <pending.json>)
   pipelinehalt extract --from <paper.tex|paper.pdf> [--out anchor.json]
+  pipelinehalt audit   --tex <paper.tex> (--project <lake dir> [--root <Module>] [--prefix <Name>] | --facts <lean-output.txt>)
+                       [--build-log <lake build log>] [--map <audit-map.json>] [--report-md f] [--report-json f] [--save-facts f]
+                       full coverage: every sentence, display, table row, caption and environment is classified
   pipelinehalt agent   < request.json > response.json      (JSON protocol, see README)
   pipelinehalt prompt                                       (print the chat protocol template)
 
@@ -109,6 +113,36 @@ export async function run(argv: string[], io: Io): Promise<number> {
         say(`wrote ${a.claims.length} claims to ${o}`);
       } else say(out);
       return 0;
+    }
+    if (cmd === "audit") {
+      const texPath = one(flags, "tex");
+      if (!texPath) throw new Usage("audit needs --tex");
+      const tex = readFileSync(texPath, "utf8");
+      let out: string;
+      const factsPath = one(flags, "facts");
+      if (factsPath) out = readFileSync(factsPath, "utf8");
+      else {
+        const project = one(flags, "project");
+        if (!project) throw new Usage("audit needs --project or --facts");
+        const root = one(flags, "root") ?? "NS_Millennium_Proof";
+        const refs = [...new Set(extractUnits(tex).units.flatMap((u) => u.refs))];
+        if (one(flags, "prefix") === undefined && root.includes(",")) flags.prefix = [root];
+        out = runLean(project, root, one(flags, "prefix") ?? root, refs, one(flags, "lake") ?? "lake");
+        const sf = one(flags, "save-facts");
+        if (sf) writeFileSync(sf, out);
+      }
+      const bl = one(flags, "build-log");
+      const facts = parseLeanFacts(out, bl ? readFileSync(bl, "utf8") : undefined);
+      const mp = one(flags, "map");
+      const map: AuditMap = mp ? JSON.parse(readFileSync(mp, "utf8")) : {};
+      const r = audit(tex, facts, map, texPath);
+      const md = one(flags, "report-md");
+      if (md) writeFileSync(md, auditMarkdown(r));
+      const js = one(flags, "report-json");
+      if (js) writeFileSync(js, JSON.stringify(r, null, 2) + "\n");
+      say(`audit ${r.verdict}: ${r.total} units, ${r.classified} classified (${(r.coverage * 100).toFixed(1)}%) — ` + Object.entries(r.counts).map(([k, v]) => `${k} ${v}`).join(", "));
+      say(`real build: ${r.real.theorems} theorems, ${r.real.modules} modules, ${r.real.jobs ?? "?"} jobs`);
+      return r.verdict === "PASS" ? 0 : r.verdict === "HALT" ? 2 : 1;
     }
     const anchorPath = one(flags, "anchor");
     if (!anchorPath) throw new Usage(`${cmd} needs --anchor`);

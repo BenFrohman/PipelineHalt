@@ -8,7 +8,9 @@ import {
   existsSync,
 } from "node:fs";
 import { tmpdir } from "node:os";
-import { join } from "node:path";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
+import { audit, extractUnits, parseLeanFacts, leanScript, sentences, buildClaims } from "../src/audit.js";
 import { PassThrough, Writable } from "node:stream";
 import { execFileSync } from "node:child_process";
 import {
@@ -360,26 +362,17 @@ describe("anchors", () => {
     assert.throws(() => loadAnchor(join(dir, "e.json")), /no claims/);
     assert.throws(() => loadAnchor(join(dir, "x.txt")), /unsupported/);
   });
-  test("pdf extraction (best effort, needs pdftotext and pdflatex)", (t) => {
-    try {
-      execFileSync("which", ["pdftotext"]);
-      execFileSync("which", ["pdflatex"]);
-    } catch {
-      return t.skip("pdftotext/pdflatex not installed");
-    }
-    const tex = join(dir, "doc.tex");
-    writeFileSync(
-      tex,
-      "\\documentclass{article}\\begin{document}\\noindent Theorem 1. Every gap is at least two.\n\nProof. Trivial.\n\\end{document}",
+  test("pdf extraction from committed fixture (needs pdftotext)", () => {
+    // test/fixtures/doc.pdf is built from test/fixtures/doc.tex (tectonic); no TeX needed at test time.
+    const pdf = join(
+      dirname(fileURLToPath(import.meta.url)),
+      "..",
+      "..",
+      "test",
+      "fixtures",
+      "doc.pdf",
     );
-    execFileSync(
-      "pdflatex",
-      ["-interaction=nonstopmode", "-output-directory", dir, tex],
-      {
-        stdio: "ignore",
-      },
-    );
-    const a = extractPdf(join(dir, "doc.pdf"));
+    const a = extractPdf(pdf);
     assert.equal(a.claims[0]!.id, "theorem-1");
     assert.match(a.claims[0]!.statement, /Every gap is at least two/);
   });
@@ -781,4 +774,69 @@ end N
 test("ODE shape mismatch (majorant y' = Cy² − κy³ vs y' ≤ C − κy²)", () => {
   assert.deepEqual(odeShape("majorant ODE y' = C y² − κ'' y³ (decoupled)"), [2, 3]);
   assert.deepEqual(odeShape("(∀ x ∈ Set.Ico 0 T, y' x ≤ C - kappa cz * y x ^ 2) →"), [0, 2]);
+});
+
+describe("full-coverage audit", () => {
+  const TEX = String.raw`\title{On gaps}
+\begin{document}
+We define $g$ in \lean{gap}. The bound \[ g \ge 2 \] holds.
+Every gap satisfies $g\ge 2$ (\lean{gap_ge_two}). The rate $M'\le CM^2$ is an open assumption.
+This repository has 3 theorems across 2 modules and builds in 9 jobs. Zero \lean{sorry} remain.
+Nothing mathematical here. A broken ref \lean{nope} is reported.
+% lean: gap_ge_two
+A mapped claim $x=y$ via comment.
+\begin{tabular}{ll} a & $b$ \\ c & d \end{tabular}
+\caption{Gap $g$.}
+\begin{theorem}Gaps exist.\end{theorem}
+\end{document}`;
+  const OUT = [
+    "PH_MOD\tDemo.A\t2\t5",
+    "PH_MOD\tDemo.B\t1\t2",
+    "PH_REF\tgap\tDemo.gap\tdef\t",
+    "PH_REF\tgap_ge_two\tDemo.gap_ge_two\ttheorem\tpropext,Quot.sound",
+    "PH_MISSING\tnope",
+  ].join("\n");
+  const facts = parseLeanFacts(OUT, "Build completed successfully (9 jobs).");
+  test("sentences keep displays and skip abbreviations", () => {
+    assert.deepEqual(sentences("A, e.g. B. C \\[x.\\] D. E"), ["A, e.g. B.", "C \\[x.\\] D.", "E"]);
+  });
+  test("build claims parsed", () => {
+    assert.deepEqual(buildClaims("\\textbf{437 theorems across 17 modules}, 2704 jobs"), [
+      { what: "theorems", claimed: 437 }, { what: "modules", claimed: 17 }, { what: "jobs", claimed: 2704 }]);
+  });
+  test("every unit classified, nothing silent passes", () => {
+    const r = audit(TEX, facts);
+    assert.equal(r.coverage, 1);
+    const by = (re: RegExp) => r.units.find((u) => re.test(u.text))!;
+    assert.equal(by(/We define/).status, "verified");
+    assert.equal(by(/^\\\[/).status, "silent"); // display inherits no refs from its sentence
+    assert.equal(by(/Every gap satisfies/).status, "verified");
+    assert.equal(by(/open assumption/).status, "open");
+    assert.equal(by(/3 theorems/).status, "build-ok");
+    assert.equal(by(/Zero/).status, "verified-audit");
+    assert.equal(by(/Nothing mathematical/).status, "non-claim");
+    assert.equal(by(/nope/).status, "broken");
+    assert.equal(by(/mapped claim/).status, "verified");
+    assert.equal(by(/a & \$b\$/).status, "silent");
+    assert.equal(by(/^Gap/).kind, "caption");
+    assert.equal(by(/Gaps exist/).status, "silent");
+    assert.equal(r.verdict, "FAIL");
+  });
+  test("build mismatch and non-standard axioms fail", () => {
+    const f2 = parseLeanFacts(OUT.replace("Quot.sound", "sorryAx"), "Build completed successfully (8 jobs).");
+    const r = audit(TEX, f2);
+    assert.equal(r.units.find((u) => /3 theorems/.test(u.text))!.status, "build-mismatch");
+    assert.equal(r.units.find((u) => /Every gap/.test(u.text))!.status, "broken");
+  });
+  test("map entries can mark open or attach Lean names", () => {
+    const u = extractUnits(TEX).units.find((x) => /Gaps exist/.test(x.text))!;
+    assert.equal(audit(TEX, facts, { [u.id]: { lean: ["gap_ge_two"] } }).units.find((x) => x.id === u.id)!.status, "verified");
+    assert.equal(audit(TEX, facts, { [u.id]: { open: "conjecture" } }).units.find((x) => x.id === u.id)!.status, "open");
+  });
+  test("lean script resolves refs and counts", () => {
+    const s = leanScript("Demo", "Demo", ["gap", "x.lean"]);
+    assert.match(s, /^import Demo/);
+    assert.match(s, /\["gap"\]/);
+    assert.match(s, /collectAxioms/);
+  });
 });

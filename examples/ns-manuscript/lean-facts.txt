@@ -5,7 +5,8 @@ PH_MOD	NS_Millennium_Proof.Modules.NS_Equations	148	211
 PH_MOD	NS_Millennium_Proof.Modules.Stage6Calculus	16	19
 PH_MOD	NS_Millennium_Proof.Modules.ConcreteSDiff	7	13
 PH_MOD	NS_Millennium_Proof.Modules.Combined	7	7
-PH_MOD	NS_Millennium_Proof.Modules.ArnoldGeometric	52	84
+PH_MOD	NS_Millennium_Proof.Modules.ArnoldGeometric	55	87
+PH_MOD	NS_Millennium_Proof.Modules.ScalingIdentities	2	3
 PH_MOD	NS_Millennium_Proof.Modules.ConditionalRegularity	2	5
 PH_MOD	NS_Millennium_Proof.Modules.IndependentMajorant	2	4
 PH_MOD	NS_Millennium_Proof.Modules.HighSetDepletionAndBKM	8	9
@@ -48,8 +49,12 @@ PH_REF	uniqueness_of_minimal_tether	FrohmanianTether.uniqueness_of_minimal_tethe
 PH_REF	uniqueness_of_minimal_symmetric_tether	FrohmanianTether.uniqueness_of_minimal_symmetric_tether	theorem	propext,Classical.choice,Quot.sound	SDiff,inst._@.NS_Millennium_Proof.Modules.Uniqueness.3932853939._hygCtx._hyg.3,inst._@.NS_Millennium_Proof.Modules.Uniqueness.3932853939._hygCtx._hyg.6,B,_h_sym,_hC1,_hC2,_hC3,h_sat,h_polarB,h_polarT,ω,F,G
 PH_REF	tetherKernel_symmetric	FrohmanianTether.tetherKernel_symmetric	theorem	propext,Classical.choice,Quot.sound	ω,F,G
 PH_REF	tetherKernel_diagonal_nonpos	FrohmanianTether.tetherKernel_diagonal_nonpos	theorem	propext,Classical.choice,Quot.sound	ωx,ωy,grad_orth
+PH_REF	classicalBracket_antisymm	ArnoldGeometric.classicalBracket_antisymm	theorem	propext,Classical.choice,Quot.sound	F,G,ω
 PH_REF	tetherKernel_left_H_zero	Combined.tetherKernel_left_H_zero	theorem	propext,Classical.choice,Quot.sound	hC2,ω,M
 PH_REF	NS_PDE	NavierStokes3D.NS_PDE	def	propext,Classical.choice,Quot.sound	u,p,ν
+PH_REF	vorticity_transport_at	NavierStokes3D.vorticity_transport_at	theorem	propext,Classical.choice,Quot.sound	u,p,ν,h_NS,t,ht,x,hreg
+PH_REF	VorticityTransportRegularity	NavierStokes3D.VorticityTransportRegularity	inductive	propext,Classical.choice,Quot.sound	u,p,t,x
+PH_REF	ScalingIdentities.vorticity_rescale	ScalingIdentities.vorticity_rescale	theorem	propext,Classical.choice,Quot.sound	lam,u,x,hd
 PH_REF	TetherKernel	FrohmanianTether.TetherKernel	def	propext,Classical.choice,Quot.sound	ω,F,G
 PH_REF	Pi_u	ForMathlib.Pi_u	def	propext,Classical.choice,Quot.sound	u,v
 PH_REF	ProducesControllableNegativeFeedback	FrohmanianTether.ProducesControllableNegativeFeedback	def	propext,Classical.choice,Quot.sound	B
@@ -73,6 +78,7 @@ PH_REF	projection_orthogonal_to_u	ForMathlib.projection_orthogonal_to_u	theorem	
 PH_REF	Pi_u_zero	ForMathlib.Pi_u_zero	theorem	propext,Classical.choice,Quot.sound	u
 PH_REF	tetherKernel_comm	FrohmanianTether.tetherKernel_comm	theorem	propext,Classical.choice,Quot.sound	ω,F,G
 PH_REF	tetherKernel_strict_neg_of_orthogonal_component	FrohmanianTether.tetherKernel_strict_neg_of_orthogonal_component	theorem	propext,Classical.choice,Quot.sound	ωx,ωy,grad_orth,h_orth
+PH_REF	classicalBracket_H_H	ArnoldGeometric.classicalBracket_H_H	theorem	propext,Classical.choice,Quot.sound	ω
 PH_REF	SaturatesTetherQuadratic	FrohmanianTether.SaturatesTetherQuadratic	def	propext,Classical.choice,Quot.sound	B
 PH_REF	Polarizes	FrohmanianTether.Polarizes	def	propext,Classical.choice,Quot.sound	B
 PH_REF	uniqueness_of_minimal_tether_core	FrohmanianTether.uniqueness_of_minimal_tether_core	theorem	propext,Classical.choice,Quot.sound	B,h_sym,h_proj,h_density,h_weight,h_sat,h_nondeg,ω,F,G

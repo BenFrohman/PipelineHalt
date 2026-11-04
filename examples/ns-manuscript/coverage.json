@@ -1,22 +1,22 @@
 {
   "source": "examples/ns-manuscript/main.tex",
   "counts": {
-    "verified": 133,
+    "verified": 140,
     "verified-audit": 0,
     "build-ok": 2,
     "build-mismatch": 0,
     "broken": 0,
-    "open": 39,
+    "open": 32,
     "silent": 0,
-    "non-claim": 124
+    "non-claim": 126
   },
-  "total": 298,
-  "classified": 298,
+  "total": 300,
+  "classified": 300,
   "coverage": 1,
   "real": {
-    "theorems": 532,
-    "modules": 22,
-    "jobs": 2716
+    "theorems": 537,
+    "modules": 23,
+    "jobs": 2717
   },
   "verdict": "HALT",
   "units": [
@@ -36,15 +36,15 @@
       ]
     },
     {
-      "id": "9077f99160",
+      "id": "6812b2194d",
       "kind": "sentence",
       "line": 84,
-      "text": "We present in full both (1)~the complete original geometric and physical framework of the \\textbf{Frohmanian Symplectic Tether} $\\Tf$ (preserving without omission all original definitions, physical motivations, conjectured geometric--analytic bridges, and extensions from \\emph{Frohmanian\\_Tether\\_Final\\_Submission\\_v8}), and (2)~its complete, kernel-verified, non-vacuous conditional formalization in Lean~4 (repository \\texttt{NS\\_Millennium\\_Proof}: \\textbf{532 theorems across 22 modules, zero \\texttt{sorryAx}, and only the standard axioms \\texttt{propext}, \\texttt{Classical.choice}, \\texttt{Quot.sound}}).",
+      "text": "We present in full both (1)~the complete original geometric and physical framework of the \\textbf{Frohmanian Symplectic Tether} $\\Tf$ (preserving without omission all original definitions, physical motivations, conjectured geometric--analytic bridges, and extensions from \\emph{Frohmanian\\_Tether\\_Final\\_Submission\\_v8}), and (2)~its complete, kernel-verified, non-vacuous conditional formalization in Lean~4 (repository \\texttt{NS\\_Millennium\\_Proof}: \\textbf{537 theorems across 23 modules, zero \\texttt{sorryAx}, and only the standard axioms \\texttt{propext}, \\texttt{Classical.choice}, \\texttt{Quot.sound}}).",
       "refs": [],
       "status": "open",
       "notes": [
-        "theorems: 532 matches",
-        "modules: 22 matches",
+        "theorems: 537 matches",
+        "modules: 23 matches",
         "open: conjectured"
       ]
     },
@@ -181,20 +181,30 @@
       "notes": []
     },
     {
-      "id": "4d4df64900",
+      "id": "93fb549d1a",
       "kind": "sentence",
       "line": 93,
-      "text": "The full tethered bracket $\\{F,G\\}_{\\Tf}=\\{F,G\\}_{\\mathrm{cl}}+T(F,G)$ is of \\emph{metriplectic type}: an antisymmetric Lie--Poisson part plus a symmetric (\\lean{tetherKernel_symmetric}), negative-semidefinite (\\lean{tetherKernel_diagonal_nonpos}) tether $T$; antisymmetry of the Lie--Poisson part is cited from \\cite{Arnold1966}, not formalized.",
+      "text": "The full tethered bracket $\\{F,G\\}_{\\Tf}=\\{F,G\\}_{\\mathrm{cl}}+T(F,G)$ is of \\emph{metriplectic type}: an antisymmetric Lie--Poisson part plus a symmetric (\\lean{tetherKernel_symmetric}), negative-semidefinite (\\lean{tetherKernel_diagonal_nonpos}) tether $T$, with the classical part antisymmetric (\\lean{classicalBracket_antisymm}).",
       "refs": [
         "tetherKernel_symmetric",
-        "tetherKernel_diagonal_nonpos"
+        "tetherKernel_diagonal_nonpos",
+        "classicalBracket_antisymm"
       ],
-      "status": "open",
+      "status": "verified",
       "notes": [
         "FrohmanianTether.tetherKernel_symmetric [theorem] axioms: propext, Classical.choice, Quot.sound",
         "FrohmanianTether.tetherKernel_diagonal_nonpos [theorem] axioms: propext, Classical.choice, Quot.sound",
-        "open: not formalized"
+        "ArnoldGeometric.classicalBracket_antisymm [theorem] axioms: propext, Classical.choice, Quot.sound"
       ]
+    },
+    {
+      "id": "532078bb39",
+      "kind": "sentence",
+      "line": 93,
+      "text": "The Jacobi identity of the classical part is cited from \\cite{Arnold1966}, not formalized.",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
     },
     {
       "id": "a2255bb44a",
@@ -291,14 +301,18 @@
       ]
     },
     {
-      "id": "86b7472692",
+      "id": "1e231a6535",
       "kind": "sentence",
       "line": 105,
-      "text": "Taking the curl yields (standard calculation, not formalized here) the vorticity transport equation for $\\omega=\\nabla\\times u$: \\begin{equation}\\label{eq:vort} \\partial_t\\omega+(u\\cdot\\nabla)\\omega=(\\omega\\cdot\\nabla)u+\\nu\\Delta\\omega .",
-      "refs": [],
-      "status": "open",
+      "text": "Taking the curl yields (\\lean{vorticity_transport_at}, under the regularity hypothesis \\lean{VorticityTransportRegularity}) the vorticity transport equation for $\\omega=\\nabla\\times u$: \\begin{equation}\\label{eq:vort} \\partial_t\\omega+(u\\cdot\\nabla)\\omega=(\\omega\\cdot\\nabla)u+\\nu\\Delta\\omega .",
+      "refs": [
+        "vorticity_transport_at",
+        "VorticityTransportRegularity"
+      ],
+      "status": "verified",
       "notes": [
-        "open: not formalized"
+        "NavierStokes3D.vorticity_transport_at [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "NavierStokes3D.VorticityTransportRegularity [inductive] axioms: propext, Classical.choice, Quot.sound"
       ]
     },
     {
@@ -324,26 +338,31 @@
       ]
     },
     {
-      "id": "c39ee01ab5",
+      "id": "ee8fb757ff",
       "kind": "sentence",
       "line": 109,
-      "text": "Obtaining such a bound for arbitrary large smooth data is the core difficulty of the Clay Millennium Problem \\cite{Fefferman2006} (background, not formalized): the vortex-stretching term $(\\omega\\cdot\\nabla)u$ is supercritical with respect to the natural parabolic scaling \\begin{equation}\\label{eq:scaling} u_\\lambda(x,t)=\\lambda u(\\lambda x,\\lambda^2t),\\qquad \\omega_\\lambda(x,t)=\\lambda^2\\omega(\\lambda x,\\lambda^2 t),\\qquad\\text{(standard; not formalized)} \\end{equation} which leaves \\eqref{eq:NS} invariant at fixed $\\nu$.",
-      "refs": [],
+      "text": "Obtaining such a bound for arbitrary large smooth data is the core difficulty of the Clay Millennium Problem \\cite{Fefferman2006} (background, not formalized): the vortex-stretching term $(\\omega\\cdot\\nabla)u$ is supercritical with respect to the natural parabolic scaling \\begin{equation}\\label{eq:scaling} u_\\lambda(x,t)=\\lambda u(\\lambda x,\\lambda^2t),\\qquad \\omega_\\lambda(x,t)=\\lambda^2\\omega(\\lambda x,\\lambda^2 t),\\qquad\\text{(at each fixed time: \\lean{ScalingIdentities.vorticity_rescale})} \\end{equation} which leaves \\eqref{eq:NS} invariant at fixed $\\nu$.",
+      "refs": [
+        "ScalingIdentities.vorticity_rescale"
+      ],
       "status": "open",
       "notes": [
+        "ScalingIdentities.vorticity_rescale [theorem] axioms: propext, Classical.choice, Quot.sound",
         "open: not formalized"
       ]
     },
     {
-      "id": "b8d20f7dc2",
+      "id": "7a138bc304",
       "kind": "display",
       "line": 109,
-      "text": "\\begin{equation}\\label{eq:scaling} u_\\lambda(x,t)=\\lambda u(\\lambda x,\\lambda^2t),\\qquad \\omega_\\lambda(x,t)=\\lambda^2\\omega(\\lambda x,\\lambda^2 t),\\qquad\\text{(standard; not formalized)} \\end{equation}",
-      "refs": [],
+      "text": "\\begin{equation}\\label{eq:scaling} u_\\lambda(x,t)=\\lambda u(\\lambda x,\\lambda^2t),\\qquad \\omega_\\lambda(x,t)=\\lambda^2\\omega(\\lambda x,\\lambda^2 t),\\qquad\\text{(at each fixed time: \\lean{ScalingIdentities.vorticity_rescale})} \\end{equation}",
+      "refs": [
+        "ScalingIdentities.vorticity_rescale"
+      ],
       "env": "equation",
-      "status": "open",
+      "status": "verified",
       "notes": [
-        "open: not formalized"
+        "ScalingIdentities.vorticity_rescale [theorem] axioms: propext, Classical.choice, Quot.sound"
       ]
     },
     {
@@ -461,10 +480,10 @@
       "notes": []
     },
     {
-      "id": "3c656f3089",
+      "id": "1158d4fdc8",
       "kind": "sentence",
       "line": 137,
-      "text": "\\textbf{Axiom-clean \\& sorry-free:} The entire repository \\texttt{NS\\_Millennium\\_Proof} builds cleanly (\\texttt{lake build NS\\_Millennium\\_Proof}, 2716 jobs); its default target contains \\textbf{532 theorems across 22 modules, zero \\texttt{sorryAx}, and zero nonstandard axioms} (counted by \\texttt{collectAxioms} over every theorem; \\texttt{lake env lean scripts/AxiomAudit.lean} also passes) (depending only on \\lean{propext}, \\lean{Classical.choice}, \\lean{Quot.sound}).",
+      "text": "\\textbf{Axiom-clean \\& sorry-free:} The entire repository \\texttt{NS\\_Millennium\\_Proof} builds cleanly (\\texttt{lake build NS\\_Millennium\\_Proof}, 2717 jobs); its default target contains \\textbf{537 theorems across 23 modules, zero \\texttt{sorryAx}, and zero nonstandard axioms} (counted by \\texttt{collectAxioms} over every theorem; \\texttt{lake env lean scripts/AxiomAudit.lean} also passes) (depending only on \\lean{propext}, \\lean{Classical.choice}, \\lean{Quot.sound}).",
       "refs": [
         "propext",
         "Classical.choice",
@@ -472,9 +491,9 @@
       ],
       "status": "build-ok",
       "notes": [
-        "jobs: 2716 matches",
-        "theorems: 532 matches",
-        "modules: 22 matches"
+        "jobs: 2717 matches",
+        "theorems: 537 matches",
+        "modules: 23 matches"
       ]
     },
     {
@@ -811,7 +830,7 @@
       ],
       "status": "verified",
       "notes": [
-        "module NS_Millennium_Proof.Modules.ArnoldGeometric: 52 theorems, all standard",
+        "module NS_Millennium_Proof.Modules.ArnoldGeometric: 55 theorems, all standard",
         "ArnoldGeometric.classical_bracket_reproduces_Euler [theorem] axioms: propext, Classical.choice, Quot.sound"
       ]
     },
@@ -930,19 +949,20 @@
       ]
     },
     {
-      "id": "dcc859b3c1",
+      "id": "e9c07d6b2b",
       "kind": "sentence",
       "line": 198,
-      "text": "Hence \\[ \\{F,G\\}_{\\Tf}=\\underbrace{\\{F,G\\}_{\\mathrm{cl}}}_{\\text{antisymmetric, Lie--Poisson}}+\\underbrace{T(F,G)}_{\\text{symmetric, }\\le0}\\qquad\\text{(\\lean{tetherKernel_symmetric}, \\lean{tetherKernel_diagonal_nonpos})} \\] is a bracket of \\emph{metriplectic type} in the sense of Morrison \\cite{Morrison1986} (symmetry and sign: \\lean{tetherKernel_symmetric}, \\lean{tetherKernel_diagonal_nonpos}; antisymmetry of the classical part is cited, not formalized).",
+      "text": "Hence \\[ \\{F,G\\}_{\\Tf}=\\underbrace{\\{F,G\\}_{\\mathrm{cl}}}_{\\text{antisymmetric, Lie--Poisson}}+\\underbrace{T(F,G)}_{\\text{symmetric, }\\le0}\\qquad\\text{(\\lean{tetherKernel_symmetric}, \\lean{tetherKernel_diagonal_nonpos})} \\] is a bracket of \\emph{metriplectic type} in the sense of Morrison \\cite{Morrison1986} (symmetry and sign: \\lean{tetherKernel_symmetric}, \\lean{tetherKernel_diagonal_nonpos}; antisymmetry of the classical part: \\lean{classicalBracket_antisymm}).",
       "refs": [
         "tetherKernel_symmetric",
-        "tetherKernel_diagonal_nonpos"
+        "tetherKernel_diagonal_nonpos",
+        "classicalBracket_antisymm"
       ],
-      "status": "open",
+      "status": "verified",
       "notes": [
         "FrohmanianTether.tetherKernel_symmetric [theorem] axioms: propext, Classical.choice, Quot.sound",
         "FrohmanianTether.tetherKernel_diagonal_nonpos [theorem] axioms: propext, Classical.choice, Quot.sound",
-        "open: not formalized"
+        "ArnoldGeometric.classicalBracket_antisymm [theorem] axioms: propext, Classical.choice, Quot.sound"
       ]
     },
     {
@@ -952,24 +972,37 @@
       "text": "\\[ \\{F,G\\}_{\\Tf}=\\underbrace{\\{F,G\\}_{\\mathrm{cl}}}_{\\text{antisymmetric, Lie--Poisson}}+\\underbrace{T(F,G)}_{\\text{symmetric, }\\le0}\\qquad\\text{(\\lean{tetherKernel_symmetric}, \\lean{tetherKernel_diagonal_nonpos})} \\]",
       "refs": [
         "tetherKernel_symmetric",
-        "tetherKernel_diagonal_nonpos"
+        "tetherKernel_diagonal_nonpos",
+        "classicalBracket_antisymm"
       ],
       "status": "verified",
       "notes": [
         "FrohmanianTether.tetherKernel_symmetric [theorem] axioms: propext, Classical.choice, Quot.sound",
-        "FrohmanianTether.tetherKernel_diagonal_nonpos [theorem] axioms: propext, Classical.choice, Quot.sound"
+        "FrohmanianTether.tetherKernel_diagonal_nonpos [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "ArnoldGeometric.classicalBracket_antisymm [theorem] axioms: propext, Classical.choice, Quot.sound"
       ]
     },
     {
-      "id": "396b00f262",
+      "id": "627d884b89",
       "kind": "sentence",
       "line": 202,
-      "text": "The full bracket is \\textbf{not} antisymmetric, and \\textbf{no Jacobi identity is claimed for it}; only its antisymmetric part $\\{\\cdot,\\cdot\\}_{\\mathrm{cl}}$ is a Lie--Poisson bracket (cited, not formalized).",
-      "refs": [],
-      "status": "open",
+      "text": "The full bracket is \\textbf{not} antisymmetric, and \\textbf{no Jacobi identity is claimed for it}; only its antisymmetric part $\\{\\cdot,\\cdot\\}_{\\mathrm{cl}}$ is antisymmetric (\\lean{classicalBracket_antisymm}).",
+      "refs": [
+        "classicalBracket_antisymm"
+      ],
+      "status": "verified",
       "notes": [
-        "open: not formalized"
+        "ArnoldGeometric.classicalBracket_antisymm [theorem] axioms: propext, Classical.choice, Quot.sound"
       ]
+    },
+    {
+      "id": "d3bad60830",
+      "kind": "sentence",
+      "line": 202,
+      "text": "Its Jacobi identity is cited from \\cite{Arnold1966}, not formalized.",
+      "refs": [],
+      "status": "non-claim",
+      "notes": []
     },
     {
       "id": "f47d187369",
@@ -994,31 +1027,33 @@
       "notes": []
     },
     {
-      "id": "2c837fe0af",
+      "id": "2bc9a8e0f2",
       "kind": "sentence",
       "line": 204,
-      "text": "Since $\\{H,H\\}_{\\mathrm{cl}}=0$ by antisymmetry (not formalized) and $T(H,H)=0$ by kinetic-energy degeneracy (Proposition~\\ref{prop:degen}, condition (C2), \\lean{tetherKernel_degenerates_on_kinetic_energy}), the tethered flow $\\dot F=\\{F,H\\}_{\\Tf}$ conserves $H$: $\\dot H=\\{H,H\\}_{\\mathrm{cl}}+T(H,H)=0$.",
+      "text": "Since $\\{H,H\\}_{\\mathrm{cl}}=0$ by antisymmetry (\\lean{classicalBracket_H_H}) and $T(H,H)=0$ by kinetic-energy degeneracy (Proposition~\\ref{prop:degen}, condition (C2), \\lean{tetherKernel_degenerates_on_kinetic_energy}), the tethered flow $\\dot F=\\{F,H\\}_{\\Tf}$ conserves $H$: $\\dot H=\\{H,H\\}_{\\mathrm{cl}}+T(H,H)=0$.",
       "refs": [
+        "classicalBracket_H_H",
         "tetherKernel_degenerates_on_kinetic_energy"
       ],
-      "status": "open",
+      "status": "verified",
       "notes": [
-        "FrohmanianTether.tetherKernel_degenerates_on_kinetic_energy [theorem] axioms: propext, Classical.choice, Quot.sound",
-        "open: not formalized"
+        "ArnoldGeometric.classicalBracket_H_H [theorem] axioms: propext, Classical.choice, Quot.sound",
+        "FrohmanianTether.tetherKernel_degenerates_on_kinetic_energy [theorem] axioms: propext, Classical.choice, Quot.sound"
       ]
     },
     {
-      "id": "4a1d222d2d",
+      "id": "6c78e23100",
       "kind": "sentence",
       "line": 204,
-      "text": "Here $T(H,H)=0$ is \\lean{tetherKernel_degenerates_on_kinetic_energy}; $\\{H,H\\}_{\\mathrm{cl}}=0$ is not formalized.",
+      "text": "Here $T(H,H)=0$ is \\lean{tetherKernel_degenerates_on_kinetic_energy}; $\\{H,H\\}_{\\mathrm{cl}}=0$ is \\lean{classicalBracket_H_H}.",
       "refs": [
-        "tetherKernel_degenerates_on_kinetic_energy"
+        "tetherKernel_degenerates_on_kinetic_energy",
+        "classicalBracket_H_H"
       ],
-      "status": "open",
+      "status": "verified",
       "notes": [
         "FrohmanianTether.tetherKernel_degenerates_on_kinetic_energy [theorem] axioms: propext, Classical.choice, Quot.sound",
-        "open: not formalized"
+        "ArnoldGeometric.classicalBracket_H_H [theorem] axioms: propext, Classical.choice, Quot.sound"
       ]
     },
     {
@@ -2373,7 +2408,7 @@
         "NavierStokes3D.VorticityField [def] axioms: propext, Classical.choice, Quot.sound",
         "FrohmanianTether.Functional [def] axioms: propext, Classical.choice, Quot.sound",
         "ArnoldGeometric.CoadjointAction [def] axioms: propext, Classical.choice, Quot.sound",
-        "module NS_Millennium_Proof.Modules.ArnoldGeometric: 52 theorems, all standard",
+        "module NS_Millennium_Proof.Modules.ArnoldGeometric: 55 theorems, all standard",
         "module NS_Millennium_Proof.Modules.SymplecticTether: 38 theorems, all standard"
       ]
     },
@@ -2516,10 +2551,10 @@
       "notes": []
     },
     {
-      "id": "7e7149bd67",
+      "id": "004cbace48",
       "kind": "table-row",
       "line": 393,
-      "text": "13 & Technical Appendix: invariance, MWR, mollifiers, pressure & \\lean{NS_Equations.lean}, \\lean{TetheredLyapunov.lean}, \\lean{AnalyticPipeline.lean} & Kernel-verified lemmas (532 theorems in the default target)",
+      "text": "13 & Technical Appendix: invariance, MWR, mollifiers, pressure & \\lean{NS_Equations.lean}, \\lean{TetheredLyapunov.lean}, \\lean{AnalyticPipeline.lean} & Kernel-verified lemmas (537 theorems in the default target)",
       "refs": [
         "NS_Equations.lean",
         "TetheredLyapunov.lean",
@@ -2527,7 +2562,7 @@
       ],
       "status": "verified",
       "notes": [
-        "theorems: 532 matches",
+        "theorems: 537 matches",
         "module NS_Millennium_Proof.Modules.NS_Equations: 148 theorems, all standard",
         "module NS_Millennium_Proof.Modules.TetheredLyapunov: 58 theorems, all standard",
         "module NS_Millennium_Proof.Modules.AnalyticPipeline: 14 theorems, all standard"
@@ -3266,14 +3301,14 @@
       ]
     },
     {
-      "id": "49392a7bdf",
+      "id": "ebc7fd6643",
       "kind": "sentence",
       "line": 467,
-      "text": "\\appendix \\label{app:lean} Quoted verbatim from \\texttt{NS\\_Millennium\\_Proof} (532 theorems, 0 \\texttt{sorry}, 0 nonstandard axioms).",
+      "text": "\\appendix \\label{app:lean} Quoted verbatim from \\texttt{NS\\_Millennium\\_Proof} (537 theorems, 0 \\texttt{sorry}, 0 nonstandard axioms).",
       "refs": [],
       "status": "build-ok",
       "notes": [
-        "theorems: 532 matches"
+        "theorems: 537 matches"
       ]
     },
     {

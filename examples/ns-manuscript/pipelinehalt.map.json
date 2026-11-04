@@ -1,0 +1,12 @@
+{
+  "claims": {
+    "thm:main": { "lean": ["frohmanian_tether_theorem", "GlobalRegularity.global_regularity_for_NS"] },
+    "def:tether": { "lean": ["TetherKernel", "Pi_u"] },
+    "prop:degen": { "lean": ["tetherKernel_degenerates_on_kinetic_energy", "projection_orthogonal_to_u"] },
+    "lem:localmax": { "lean": ["stretching_inner_le_at_max"] },
+    "lem:transport": { "lean": ["time_pairing_le_stretching_at_max"] },
+    "lem:cubic": { "lean": ["comparison_ode_stability"] },
+    "lem:majorant": { "lean": ["comparison_majorant_global_bound"] },
+    "prop:ceiling": { "lean": ["riccati_ceiling_of_vorticity_di"] }
+  }
+}

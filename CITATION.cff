@@ -3,6 +3,7 @@ message: "If you use PipelineHalt, please cite it as below."
 title: "PipelineHalt: Halting on Paper–Lean Drift and Asking Instead of Guessing"
 version: 0.4.1
 license: MIT
+doi: "10.5281/zenodo.23927310"
 repository-code: "https://github.com/BenFrohman/PipelineHalt"
 authors:
   - family-names: Frohman

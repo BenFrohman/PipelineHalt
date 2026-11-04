@@ -1,6 +1,6 @@
 # PipelineHalt
 
-[![ci.yml](https://github.com/BenFrohman/PipelineHalt/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/BenFrohman/PipelineHalt/actions/workflows/ci.yml)
+[![ci.yml](https://github.com/BenFrohman/PipelineHalt/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/BenFrohman/PipelineHalt/actions/workflows/ci.yml) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23927311.svg)](https://doi.org/10.5281/zenodo.23927311)
 
 PipelineHalt is a standalone companion to [RecurringAlignment](https://github.com/BenFrohman/RecurringAlignment). It compares the claims a paper makes with the Lean statements that are supposed to formalize them. When the two differ, it **halts and asks a precise clarification question** instead of guessing.
 
@@ -120,3 +120,8 @@ None of these questions has been answered here. To reproduce, from `examples/dhl
 ## Development
 
 `npm install && npm test`. Paper: `paper/pipelinehalt.tex` (CC BY 4.0). Author: Benjamin Stanley Frohman.
+
+## Zenodo archive
+
+- Version 0.4.0: [10.5281/zenodo.23927311](https://doi.org/10.5281/zenodo.23927311)
+- All versions (concept DOI): [10.5281/zenodo.23927310](https://doi.org/10.5281/zenodo.23927310)

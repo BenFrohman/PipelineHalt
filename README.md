@@ -125,3 +125,9 @@ None of these questions has been answered here. To reproduce, from `examples/dhl
 
 - Version 0.4.0: [10.5281/zenodo.23927311](https://doi.org/10.5281/zenodo.23927311)
 - All versions (concept DOI): [10.5281/zenodo.23927310](https://doi.org/10.5281/zenodo.23927310)
+
+## License and copyright
+
+Licensed under the MIT License. See [`LICENSE`](LICENSE).
+
+© 2026 Benjamin Stanley Frohman.

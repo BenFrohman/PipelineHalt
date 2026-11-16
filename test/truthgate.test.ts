@@ -1,10 +1,12 @@
 import { test, describe } from "node:test";
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import {
   BADGE_PASS,
+  parseProvenance,
+  proposeLock,
   approveLock,
   assertedValues,
   evaluateTruthGate,
@@ -35,6 +37,7 @@ const inputs = (over: Partial<Parameters<typeof evaluateTruthGate>[1]> = {}) => 
   facts: facts(),
   toolchain: "leanprover/lean4:v4.34.0",
   paper: { anchor: extractLatex(tex(), "paper.tex"), tex: tex() },
+  readFile: (rel: string) => (existsSync(join(FX, rel)) ? readFileSync(join(FX, rel), "utf8") : undefined),
   ...over,
 });
 const failed = (r: ReturnType<typeof evaluateTruthGate>) => r.checks.filter((c) => c.status !== "pass").map((c) => c.id);
@@ -152,5 +155,88 @@ describe("truth gate", () => {
     assert.match(b, /throwError "truth gate: \{h\} does not transport/);
     assert.match(b, new RegExp(lock().paperClaim.hash64));
     assert.equal(b, readFileSync(join(FX, "scripts", "SemanticsLock.lean"), "utf8"));
+  });
+  // ---- standing rule: independent transcription, non-vacuous correspondence, no sorry/admit/native_decide/axioms.
+  // Each rejection also has a real-Lean negative in test/fixtures/truth-gate-lean/negatives (run by run-negatives.sh in CI).
+  const docOf = (src: string) => findSourceDecl(src, "paper_claim")!;
+  const withDoc = (doc: string) =>
+    sem().replace(/\/--[\s\S]*?-\/\s*\ndef paper_claim/, `/-- ${doc} -/\ndef paper_claim`);
+  const okDoc = () => {
+    const p = lock().paperClaim.provenance;
+    return `@paper: ${p.paper} @sha256: ${p.sha256} @section: ${p.section} @quote: "${p.quote}"`;
+  };
+
+  test("provenance is parsed from paper_claim's doc comment and recorded in the lock", () => {
+    const p = parseProvenance(docOf(sem()).doc)!;
+    assert.equal(p.paper, "paper.tex");
+    assert.equal(p.quote, "For every natural number $n$, $0 + n = n$");
+    assert.deepEqual(lock().paperClaim.provenance, p);
+  });
+
+  test("reject: missing provenance (lock refuses; gate fails)", () => {
+    const src = withDoc("no provenance here");
+    assert.ok(failed(evaluateTruthGate(lock(), inputs({ semanticsSource: src }))).includes("a.provenance"));
+    assert.throws(() => proposeLock(facts(), { roots: ["Fixture.Semantics"], semantics: "Fixture/Semantics.lean", headlines: ["Fixture.headline"],
+      semanticsSource: src, toolchain: "t", commit: "c" }), /cannot lock: paper_claim needs a doc comment/);
+  });
+
+  test("reject: quote not verbatim in the paper, wrong sha256, missing paper file", () => {
+    const q = okDoc().replace("$0 + n = n$", "$n + 0 = n$");
+    assert.ok(failed(evaluateTruthGate(lock(), inputs({ semanticsSource: withDoc(q) }))).includes("a.quote-verbatim"));
+    const h = okDoc().replace(/@sha256: (\w)/, (_m, c: string) => `@sha256: ${c === "0" ? "1" : "0"}`);
+    assert.ok(failed(evaluateTruthGate(lock(), inputs({ semanticsSource: withDoc(h) }))).includes("a.paper-sha256"));
+    const m = okDoc().replace("@paper: paper.tex", "@paper: missing.tex");
+    const r = failed(evaluateTruthGate(lock(), inputs({ semanticsSource: withDoc(m) })));
+    assert.ok(r.includes("a.paper-sha256") && r.includes("a.provenance-locked"));
+    // the lock's provenance is binding even when the doc comment is self-consistent
+    const l = approveLock({ ...lock(), paperClaim: { ...lock().paperClaim, provenance: { ...lock().paperClaim.provenance, section: "other" } } }, "t", "t");
+    assert.ok(failed(evaluateTruthGate(l, inputs())).includes("a.provenance-locked"));
+  });
+
+  test("reject: paper_claim aliasing formal_claim (reference, defeq, shared constant, reverse reference)", () => {
+    for (const al of [
+      { paperRefsFormal: true, formalRefsPaper: false, defeq: true, shared: [] },
+      { paperRefsFormal: false, formalRefsPaper: false, defeq: true, shared: [] },
+      { paperRefsFormal: false, formalRefsPaper: false, defeq: false, shared: ["Fixture.lhs"] },
+      { paperRefsFormal: false, formalRefsPaper: true, defeq: false, shared: [] },
+    ]) {
+      const f = facts();
+      f.alias = al;
+      const r = evaluateTruthGate(lock(), inputs({ facts: f }));
+      assert.ok(failed(r).includes("a.no-alias"), JSON.stringify(al));
+      assert.equal(r.status, "fail");
+    }
+    const f = facts();
+    delete f.alias;
+    assert.ok(failed(evaluateTruthGate(lock(), inputs({ facts: f }))).includes("a.no-alias"), "missing alias facts fail closed");
+  });
+
+  test("reject: intended_correspondence proved by rfl / Iff.rfl / id", () => {
+    for (const why of ["proof term is Iff.rfl", "proof term is Iff.refl", "proof term is Iff.of_eq rfl", "proof term is Iff.intro of two identity functions", "proof term is id"]) {
+      const f = facts();
+      f.trivial = why;
+      assert.ok(failed(evaluateTruthGate(lock(), inputs({ facts: f }))).includes("b.nontrivial"), why);
+    }
+    const f = facts();
+    delete f.trivial;
+    assert.ok(failed(evaluateTruthGate(lock(), inputs({ facts: f }))).includes("b.nontrivial"), "missing proof-term facts fail closed");
+    const s = truthGateScript({ roots: ["Fixture.Semantics"], paperClaim: "paper_claim", correspondence: "intended_correspondence", formal: "formal_claim", heads: [] });
+    assert.match(s, /``Iff\.rfl, ``Iff\.refl, ``rfl, ``Eq\.refl, ``id/);
+    assert.match(semanticsLockLean(lock()), /is vacuous/);
+  });
+
+  test("reject: sorry, admit, native_decide and non-standard axioms", () => {
+    for (const [ax, id] of [["sorryAx", "b.axioms"], ["Lean.ofReduceBool", "b.native"], ["Lean.trustCompiler", "b.native"], ["Fixture.my_axiom", "b.axioms"]] as const) {
+      const f = facts();
+      f.axioms["Fixture.intended_correspondence"] = ["propext", ax];
+      const r = evaluateTruthGate(lock(), inputs({ facts: f }));
+      assert.ok(failed(r).includes(id), ax);
+      assert.equal(r.status, "fail");
+    }
+    for (const word of ["sorry", "admit", "native_decide"]) {
+      const src = sem().replace("fun n => (Nat.zero_add n).symm", `by ${word}`);
+      assert.ok(failed(evaluateTruthGate(lock(), inputs({ semanticsSource: src }))).includes("a.semantics-clean"), word);
+    }
+    assert.match(semanticsLockLean(lock()), /native_decide \/ compiler trust/);
   });
 });

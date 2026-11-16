@@ -13,7 +13,11 @@ Rules:
    `#print paper_claim` and tests your goal against `paper_claim`. If it prints HALT (exit 2), or the repo
    has no `Semantics.lean` / `truth-gate.lock.json`, STOP and report the mismatch (narrower, conditional,
    silent or different). Every public result must transport across `intended_correspondence`; a derivation
-   that cannot is rejected. The gate proves only that the certificate inhabits the locked statement; it never
+   that cannot is rejected. `paper_claim` is an independent transcription of the paper's verbatim claim
+   (provenance doc comment: `@paper @sha256 @section @quote`); never define it as, or through, `formal_claim`,
+   and never prove `intended_correspondence` by `rfl`, `Iff.rfl` or `id`. No `sorry`, `admit`,
+   `native_decide` or extra axioms. A gate mismatch stays red and is reported; never patch around it.
+   The gate proves only that the certificate inhabits the locked statement; it never
    means an open problem is solved.
 1. Before writing, changing, or reporting on any Lean statement, run
    `pipelinehalt agent` (or `pipelinehalt check --ci`) with the anchor and the Lean paths.

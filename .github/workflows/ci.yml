@@ -50,3 +50,7 @@ jobs:
           node ../../../dist/src/bin.js truth-gate check --project . --ci; g=$?
           echo "lake build SemanticsLock exit $b, gate exit $g"
           test $b -ne 0 && test $g -eq 1
+      - name: one real-Lean negative per rejection (each locked and approved; all must stay red)
+        run: |
+          git checkout -- .
+          ./run-negatives.sh

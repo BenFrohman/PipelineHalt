@@ -11,7 +11,13 @@
     "name": "Fixture.paper_claim",
     "sourceSha256": "d960f3e98d0fc8738ece74159fc9511c017fc10d8338d58fddcb2ed425bcd582",
     "exprSha256": "843f47a9e4e6877000838e3a5873b4baabf540a5ad4bf2347202109344eae9da",
-    "hash64": "8176375656230469964"
+    "hash64": "8176375656230469964",
+    "provenance": {
+      "paper": "paper.tex",
+      "sha256": "199a862b6d93846d2d7634d4ab41a02d54cf29089cbd8fc6a4bbaba2284ab934",
+      "section": "Theorem 1 (thm:main)",
+      "quote": "For every natural number $n$, $0 + n = n$"
+    }
   },
   "correspondence": {
     "name": "Fixture.intended_correspondence",
@@ -34,11 +40,11 @@
     ],
     "clarifications": {}
   },
-  "commit": "13513d011da56e0a02a18e2a913be7b4b0cc19cf",
+  "commit": "ea2dd12d659bee822cf6170d777c580c4733fa54",
   "toolchain": "leanprover/lean4:v4.34.0",
   "approval": {
     "approvedBy": "fixture (test only; not an author approval)",
     "approvedAt": "2026-11-16T20:30:00Z",
-    "digest": "22521d01434bb408d3b9143f6e56f130928254f209904a3e53f5a5f015e44c15"
+    "digest": "72f1d826c0f13d55380969e2b33eec9442cbba81af7b7d910655f31c86105545"
   }
 }

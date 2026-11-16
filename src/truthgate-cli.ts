@@ -171,6 +171,7 @@ export async function runTruthGate(flags: Record<string, string[]>, say: (s: str
     toolchain: toolchain(project),
     commit: git(project),
     paper: paperPath && existsSync(paperPath) ? { anchor: loadAnchor(paperPath), tex } : undefined,
+    readFile: (rel) => (existsSync(join(project, rel)) ? readFileSync(join(project, rel), "utf8") : undefined),
     requireObservation: reqObs,
     observation,
   });

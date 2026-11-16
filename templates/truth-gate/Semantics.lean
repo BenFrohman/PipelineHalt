@@ -16,15 +16,25 @@ cannot check that this transcription says what the author meant: that is the aut
 Rules:
 * Conditional results keep every hypothesis explicit inside `paper_claim` (`H₁ → H₂ → Conclusion`).
   A conditional result is never stated as its bare conclusion.
-* `paper_claim` must not be defined through `formal_claim`, the correspondence, any theorem or any axiom.
-* No `sorry`, `admit`, `axiom`, `native_decide` or `opaque` in this file.
+* `paper_claim` is an independent transcription. It must never be defined as, reference, unfold to or alias
+  `formal_claim`, must not use any project constant that `formal_claim` depends on, and must not be
+  definitionally equal to it. Write it from the paper's words, with core/Mathlib vocabulary.
+* `paper_claim`'s doc comment carries the provenance, in this exact format (checked against the paper file):
+  `@paper: <repo-relative path> @sha256: <sha256 of that file> @section: <section/page> @quote: "<verbatim claim>"`
+* `intended_correspondence` must not be proved by `rfl`, `Iff.rfl`, `id`, `⟨id, id⟩` or `Iff.of_eq rfl`.
+* No `sorry`, `admit`, `axiom`, `native_decide` (`Lean.ofReduceBool` / `Lean.trustCompiler`) or `opaque`.
 * Public (whitelisted) theorems have type `paper_claim` and are obtained as
   `intended_correspondence.mp …`. Intermediate lemmas can stay local.
 -/
 
 namespace MyProject.Semantics
 
-/-- Literal transcription of: «quote the paper's statement here, with its section/number». -/
+/-- Literal, independent transcription of the paper's claim.
+@paper: paper/main.tex
+@sha256: 0000000000000000000000000000000000000000000000000000000000000000
+@section: Theorem 1.2 (p. 3)
+@quote: "REPLACE with the paper's claim, copied verbatim"
+-/
 def paper_claim : Prop :=
   sorry -- REPLACE: the transcription (the gate rejects this file while `sorry` is present)
 

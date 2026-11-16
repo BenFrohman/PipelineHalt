@@ -22,11 +22,14 @@ It does not recover intent the author never wrote down. Matching is token-based 
 The Truth Gate binds the formal certificate to one fixed, author-approved proposition. Every formalization repo carries a `Semantics.lean` with:
 
 ```lean
-def paper_claim : Prop := …    -- literal Lean transcription of the paper's (or official) statement, approved by the author
+/-- @paper: paper/main.tex @sha256: <sha256 of that file> @section: Theorem 1.2 @quote: "<the paper's claim, verbatim>" -/
+def paper_claim : Prop := …    -- independent, literal Lean transcription of the quoted claim, approved by the author
 def formal_claim : Prop := …   -- the same statement in the development's own definitions
 theorem intended_correspondence : formal_claim ↔ paper_claim := …   -- or `formal_claim → paper_claim` for a one-way result
 theorem main_result : paper_claim := intended_correspondence.mp …   -- public results are obtained only by transport
 ```
+
+`paper_claim` is written independently of the development: it must never be defined as, reference, unfold to or alias `formal_claim`, and it shares no project constant with `formal_claim`'s dependency closure. Its doc comment carries the provenance (paper path, the file's SHA-256, section or page, and the verbatim quote), which the lock records and the gate re-verifies against the paper file.
 
 Conditional results keep every hypothesis inside `paper_claim` (`H₁ → H₂ → Conclusion`); they are never stated as their bare conclusion. A template is in [`templates/truth-gate/Semantics.lean`](templates/truth-gate/Semantics.lean).
 
@@ -50,8 +53,10 @@ pipelinehalt truth-gate check   --project . --require-observation --ci --report-
 | group | check | rejects |
 |---|---|---|
 | o | observation pass | `check --require-observation` without a receipt for the current lock digest, or a receipt whose goal is not `paper_claim` |
+| a | provenance | no `@paper / @sha256 / @section / @quote` doc comment on `paper_claim` (`lock` refuses too); a paper file that is missing or whose SHA-256 differs; a quote that does not occur verbatim (whitespace-insensitive) in the paper; provenance that differs from the approved lock |
+| a | independence (no alias) | `paper_claim`'s dependency closure (values and types, project-local constants) contains `formal_claim`, or `formal_claim`'s contains `paper_claim`; the two closures share any project constant; or `paper_claim` and `formal_claim` are definitionally equal. Strict, no exception list |
 | a | lock integrity | missing `Semantics.lean`; unapproved lock, or a lock edited after approval; any change to the normalized source or the elaborated term of `paper_claim`, to the statement of `intended_correspondence`, or to a definition `paper_claim` unfolds to; `paper_claim` defined through `formal_claim`, the correspondence, a theorem or an axiom; `sorry`/`admit`/`axiom`/`native_decide`/`opaque` in `Semantics.lean`; declarations outside a `Semantics` module; a toolchain change |
-| b | correspondence | `intended_correspondence` not a theorem; not of the locked form (`formal_claim ↔ paper_claim`, or `formal_claim → paper_claim`); any axiom beyond propext, Classical.choice, Quot.sound (including `sorryAx`) |
+| b | correspondence | a vacuous proof term: `Iff.rfl`, `Iff.refl _`, `rfl`, `Eq.refl _`, `id`, `Iff.of_eq rfl`, `fun h => h`, or `Iff.intro` of two identities (including what `by rfl` elaborates to); `native_decide` / compiler trust (`Lean.ofReduceBool`, `Lean.trustCompiler`), named explicitly; `intended_correspondence` not a theorem; not of the locked form (`formal_claim ↔ paper_claim`, or `formal_claim → paper_claim`); any axiom beyond propext, Classical.choice, Quot.sound (including `sorryAx`) |
 | c | transport | any headline or paper-cited theorem (from `\lean{}`, `% lean:`, `\texttt{}`, `\path{}`) whose type is not definitionally `paper_claim` and whose proof does not use `intended_correspondence` (transitively), unless the lock marks it auxiliary: "does not transport". Also rejects missing headlines, non-standard axioms, an auxiliary headline, and a whitelist where no theorem has type `paper_claim` |
 | d | paper side | each listed result claim against `paper_claim`, using the existing narrower/conditional/silent classifier, plus values the claim asserts (`= N`) that `paper_claim` never mentions and wording such as "solves", "settles", "unconditional" in the claims or title. Open findings HALT (exit 2) until answered; an answer with verdict other than intentional fails |
 
@@ -59,7 +64,7 @@ On pass the badge (`--badge`, shields endpoint JSON) and the summary say **"form
 
 ### Enforcement inside `lake build`
 
-`truth-gate emit-lean` generates `scripts/SemanticsLock.lean` from an approved lock. Add it to the default target ([snippet](templates/truth-gate/lakefile-snippet.lean)). The default `lake build` then fails (`throwError` in an `#eval`) unless `Semantics` is imported, `paper_claim` and `intended_correspondence` are unchanged (Lean structural hash), the correspondence has the locked form and standard axioms, and every whitelisted theorem has type `paper_claim` (by defeq) or is proved through `intended_correspondence`, with standard axioms only. CI also runs it directly with `lake env lean scripts/SemanticsLock.lean`.
+`truth-gate emit-lean` generates `scripts/SemanticsLock.lean` from an approved lock. Add it to the default target ([snippet](templates/truth-gate/lakefile-snippet.lean)). The default `lake build` then fails (`throwError` in an `#eval`) unless `Semantics` is imported, `paper_claim` and `intended_correspondence` are unchanged (Lean structural hash), the correspondence has the locked form, a non-vacuous proof term and standard axioms (no `sorryAx`, no `Lean.ofReduceBool` / `Lean.trustCompiler`), `paper_claim` is independent of `formal_claim` (closure walk and defeq test, as in check a), and every whitelisted theorem has type `paper_claim` (by defeq) or is proved through `intended_correspondence`, with standard axioms only. CI also runs it directly with `lake env lean scripts/SemanticsLock.lean`.
 
 ### Observation pass (mandatory first step)
 
@@ -75,10 +80,12 @@ jobs:
     uses: BenFrohman/PipelineHalt/.github/workflows/truth-gate.yml@main
 ```
 
-It installs elan and fetches the Mathlib cache (`lake exe cache get`) without rebuilding Mathlib. It then runs `lake build` (with the in-build lock), `lake env lean scripts/SemanticsLock.lean`, the observation pass and `truth-gate check --require-observation`, and uploads the report, badge, build log and observation receipt. This repository's own CI runs the whole path end to end on a core-Lean fixture (`test/fixtures/truth-gate-lean`), including a tampered `paper_claim` that still compiles but must fail both `lake build` and the gate.
+It installs elan and fetches the Mathlib cache (`lake exe cache get`) without rebuilding Mathlib. It then runs `lake build` (with the in-build lock), `lake env lean scripts/SemanticsLock.lean`, the observation pass and `truth-gate check --require-observation`, and uploads the report, badge, build log and observation receipt. This repository's own CI runs the whole path end to end on a core-Lean fixture (`test/fixtures/truth-gate-lean`), including a tampered `paper_claim` that still compiles but must fail both `lake build` and the gate, and [`run-negatives.sh`](test/fixtures/truth-gate-lean/run-negatives.sh): one real-Lean negative per rejection (alias, defeq alias, shared constant, `Iff.rfl`, `by rfl`, `⟨id, id⟩`, `Iff.of_eq rfl`, `fun h => h`, `sorry`, `admit`, `native_decide`, a non-standard axiom, a missing provenance, a quote not in the paper, a wrong SHA-256). Each negative is locked **and approved**, and must still fail the gate (and, except the provenance file checks, `lake build`). A mismatch keeps the gate red and is reported; it is never patched around.
 
 ### Limits
 
+- The provenance checks prove the quote is in the paper file and the file is the hashed one; they do not prove the Lean transcription matches the quote. The in-build audit does not read the paper file (no SHA-256 in core Lean); the provenance file checks run in `truth-gate check`.
+- The vacuity check recognizes the listed trivial proof terms. A correspondence can still be short when both sides are close; independence of `paper_claim` is what prevents the correspondence from being true by construction.
 - The transcription is the author's responsibility. The gate cannot tell whether `paper_claim` captures the paper's intent.
 - Theorems the paper cites from modules that the lock's `roots` do not import are not seen. Two modules that cannot be imported together (duplicate declarations) cannot both be roots.
 - The paper-side check is heuristic. It catches extra hypotheses, restricted domains, omitted sets, asserted values missing from `paper_claim`, and overclaiming words. It does not prove that the prose and the Lean say the same thing.

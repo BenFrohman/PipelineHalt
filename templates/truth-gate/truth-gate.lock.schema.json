@@ -4,61 +4,236 @@
   "title": "PipelineHalt Truth Gate lock (pipelinehalt/truth-gate-lock/v1)",
   "description": "Written by `pipelinehalt truth-gate lock` (approval: null) and approved by the author with `truth-gate approve`. approval.digest is SHA-256 of the canonical JSON of every field except `approval` and `paperSource.clarifications`; any other edit invalidates the approval.",
   "type": "object",
-  "required": ["schema", "semantics", "roots", "prefixes", "paperClaim", "correspondence", "dependencies", "axioms", "headlines", "auxiliary", "commit", "toolchain", "approval"],
+  "required": [
+    "schema",
+    "semantics",
+    "roots",
+    "prefixes",
+    "paperClaim",
+    "correspondence",
+    "dependencies",
+    "axioms",
+    "headlines",
+    "auxiliary",
+    "commit",
+    "toolchain",
+    "approval"
+  ],
   "properties": {
-    "schema": { "const": "pipelinehalt/truth-gate-lock/v1" },
-    "semantics": { "type": "string", "description": "Path of Semantics.lean relative to the Lake project root" },
-    "roots": { "type": "array", "items": { "type": "string" }, "minItems": 1, "description": "Modules imported by the gate scripts" },
-    "prefixes": { "type": "array", "items": { "type": "string" }, "description": "Module prefixes that count as the project" },
+    "schema": {
+      "const": "pipelinehalt/truth-gate-lock/v1"
+    },
+    "semantics": {
+      "type": "string",
+      "description": "Path of Semantics.lean relative to the Lake project root"
+    },
+    "roots": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "description": "Modules imported by the gate scripts"
+    },
+    "prefixes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Module prefixes that count as the project"
+    },
     "paperClaim": {
       "type": "object",
-      "required": ["name", "sourceSha256", "exprSha256", "hash64"],
+      "required": [
+        "name",
+        "sourceSha256",
+        "exprSha256",
+        "hash64",
+        "provenance"
+      ],
       "properties": {
-        "name": { "type": "string", "description": "Full name of paper_claim" },
-        "sourceSha256": { "type": "string", "pattern": "^[0-9a-f]{64}$", "description": "SHA-256 of the normalized source (comments stripped, whitespace collapsed; def header and body)" },
-        "exprSha256": { "type": "string", "pattern": "^[0-9a-f]{64}$", "description": "SHA-256 of the elaborated type and value as printed by Lean" },
-        "hash64": { "type": "string", "pattern": "^[0-9]+$", "description": "Lean structural hash (mixHash of type and value hashes), checked by the in-build #eval audit" }
+        "name": {
+          "type": "string",
+          "description": "Full name of paper_claim"
+        },
+        "sourceSha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$",
+          "description": "SHA-256 of the normalized source (comments stripped, whitespace collapsed; def header and body)"
+        },
+        "exprSha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$",
+          "description": "SHA-256 of the elaborated type and value as printed by Lean"
+        },
+        "hash64": {
+          "type": "string",
+          "pattern": "^[0-9]+$",
+          "description": "Lean structural hash (mixHash of type and value hashes), checked by the in-build #eval audit"
+        },
+        "provenance": {
+          "type": "object",
+          "required": [
+            "paper",
+            "sha256",
+            "section",
+            "quote"
+          ],
+          "description": "From paper_claim's doc comment (@paper @sha256 @section @quote); re-verified against the paper file by every check",
+          "properties": {
+            "paper": {
+              "type": "string",
+              "description": "Repo-relative path of the paper file"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$",
+              "description": "SHA-256 of the paper file"
+            },
+            "section": {
+              "type": "string",
+              "description": "Section, theorem number or page"
+            },
+            "quote": {
+              "type": "string",
+              "minLength": 1,
+              "description": "The claim, verbatim; must occur in the paper file (whitespace-insensitive)"
+            }
+          }
+        }
       }
     },
     "correspondence": {
       "type": "object",
-      "required": ["name", "formal", "direction", "sourceSha256", "typeSha256", "hash64"],
+      "required": [
+        "name",
+        "formal",
+        "direction",
+        "sourceSha256",
+        "typeSha256",
+        "hash64"
+      ],
       "properties": {
-        "name": { "type": "string" },
-        "formal": { "type": "string", "description": "Full name of formal_claim" },
-        "direction": { "enum": ["iff", "formal_implies_paper"], "description": "iff: formal_claim ↔ paper_claim; formal_implies_paper: formal_claim → paper_claim" },
-        "sourceSha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
-        "typeSha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
-        "hash64": { "type": "string", "pattern": "^[0-9]+$" }
+        "name": {
+          "type": "string"
+        },
+        "formal": {
+          "type": "string",
+          "description": "Full name of formal_claim"
+        },
+        "direction": {
+          "enum": [
+            "iff",
+            "formal_implies_paper"
+          ],
+          "description": "iff: formal_claim ↔ paper_claim; formal_implies_paper: formal_claim → paper_claim"
+        },
+        "sourceSha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "typeSha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "hash64": {
+          "type": "string",
+          "pattern": "^[0-9]+$"
+        }
       }
     },
-    "dependencies": { "type": "object", "additionalProperties": { "type": "string", "pattern": "^[0-9a-f]{64}$" }, "description": "Project-local constants paper_claim unfolds to → SHA-256 of their elaborated type and value" },
-    "axioms": { "type": "array", "items": { "enum": ["propext", "Classical.choice", "Quot.sound"] } },
-    "headlines": { "type": "array", "items": { "type": "string" }, "minItems": 1, "description": "Public whitelist; at least one must have type paper_claim" },
-    "auxiliary": { "type": "object", "additionalProperties": { "type": "string" }, "description": "Theorems outside the gate → reason. Never presented as certified." },
+    "dependencies": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{64}$"
+      },
+      "description": "Project-local constants paper_claim unfolds to → SHA-256 of their elaborated type and value"
+    },
+    "axioms": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    "headlines": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "description": "Public whitelist; at least one must have type paper_claim"
+    },
+    "auxiliary": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Theorems outside the gate → reason. Never presented as certified."
+    },
     "paperSource": {
       "type": "object",
-      "required": ["source", "claims"],
+      "required": [
+        "source",
+        "claims"
+      ],
       "properties": {
-        "source": { "type": "string" },
-        "claims": { "type": "array", "items": { "type": "string" } },
-        "cites": { "type": "array", "items": { "type": "string" } },
-        "clarifications": { "type": "object" }
+        "source": {
+          "type": "string"
+        },
+        "claims": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "cites": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "clarifications": {
+          "type": "object"
+        }
       }
     },
-    "commit": { "type": "string" },
-    "toolchain": { "type": "string" },
+    "commit": {
+      "type": "string"
+    },
+    "toolchain": {
+      "type": "string"
+    },
     "approval": {
       "oneOf": [
-        { "type": "null" },
+        {
+          "type": "null"
+        },
         {
           "type": "object",
-          "required": ["approvedBy", "approvedAt", "digest"],
+          "required": [
+            "approvedBy",
+            "approvedAt",
+            "digest"
+          ],
           "properties": {
-            "approvedBy": { "type": "string" },
-            "approvedAt": { "type": "string" },
-            "digest": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
-            "note": { "type": "string" }
+            "approvedBy": {
+              "type": "string"
+            },
+            "approvedAt": {
+              "type": "string"
+            },
+            "digest": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "note": {
+              "type": "string"
+            }
           }
         }
       ]

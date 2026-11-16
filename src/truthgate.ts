@@ -45,7 +45,7 @@ export interface TruthLock {
   prefixes: string[];
   /** paper_claim: SHA-256 of normalized source, SHA-256 of the elaborated type+value, and Lean's 64-bit
    *  structural hash (decimal) used by the in-build `#eval` audit. */
-  paperClaim: { name: string; sourceSha256: string; exprSha256: string; hash64: string };
+  paperClaim: { name: string; sourceSha256: string; exprSha256: string; hash64: string; provenance: Provenance };
   correspondence: {
     name: string;
     formal: string;
@@ -75,6 +75,24 @@ export interface TruthLock {
   toolchain: string;
   /** Author approval. Null until the author approves the transcription and lock contents. */
   approval: null | { approvedBy: string; approvedAt: string; digest: string; note?: string };
+}
+
+/** Where paper_claim comes from. Carried in paper_claim's doc comment as
+ *  `@paper: <path> @sha256: <hex of the file> @section: <section/page> @quote: "<verbatim claim>"` and recorded in the lock. */
+export interface Provenance { paper: string; sha256: string; section: string; quote: string }
+
+/** Lean constants that make a proof rely on compiled code rather than the kernel (from native_decide etc.). */
+export const NATIVE_AXIOMS = ["Lean.ofReduceBool", "Lean.trustCompiler", "Lean.ofReduceNat"];
+
+const collapse = (x: string) => x.replace(/\s+/g, " ").trim();
+
+/** Parse the provenance fields from a (whitespace-collapsed) doc comment. */
+export function parseProvenance(doc?: string): Provenance | undefined {
+  if (!doc) return undefined;
+  const m = /@paper:\s*(\S+)\s+@sha256:\s*([0-9a-fA-F]{64})\s+@section:\s*(.+?)\s+@quote:\s*(.+)$/s.exec(collapse(doc));
+  if (!m) return undefined;
+  const q = m[4]!.trim().replace(/^["“«]\s*/, "").replace(/\s*["”»]$/, "");
+  return { paper: m[1]!, sha256: m[2]!.toLowerCase(), section: m[3]!.trim(), quote: q };
 }
 
 // ---------------------------------------------------------------- hashing
@@ -168,6 +186,26 @@ def ${tag}Closure (env : Environment) (roots : List Name) (withTypes : Bool) : N
   return seen`;
 }
 
+/** Lean recognizer for a vacuous correspondence proof: `Iff.rfl`, `Iff.refl _`, `rfl`, `Eq.refl _`, `id`,
+ *  `Iff.of_eq rfl`, `fun h => h`, or `Iff.intro` of two such identities. Returns the reason, or none. */
+function leanTrivial(tag: string): string {
+  return `partial def ${tag}IsId : Expr → Bool
+  | .mdata _ e => ${tag}IsId e
+  | .lam _ _ b _ => b.consumeMData == .bvar 0 || ${tag}IsId b.consumeMData
+  | e => e.getAppFn.consumeMData.isConstOf \`\`id
+def ${tag}Trivial (v : Expr) : Option String :=
+  let v := v.consumeMData
+  let f := v.getAppFn.consumeMData
+  let triv := [\`\`Iff.rfl, \`\`Iff.refl, \`\`rfl, \`\`Eq.refl, \`\`id, \`\`HEq.refl]
+  if triv.any f.isConstOf then some s!"proof term is {f}"
+  else if f.isConstOf \`\`Iff.of_eq && v.getAppNumArgs ≥ 3 &&
+      [\`\`rfl, \`\`Eq.refl].any (v.getArg! 2).getAppFn.consumeMData.isConstOf then some "proof term is Iff.of_eq rfl"
+  else if f.isConstOf \`\`Iff.intro && v.getAppNumArgs == 4 && ${tag}IsId (v.getArg! 2) && ${tag}IsId (v.getArg! 3) then
+    some "proof term is Iff.intro of two identity functions"
+  else if ${tag}IsId v then some "proof term is an identity function"
+  else none`;
+}
+
 /** Lean 4 meta script (run with `lake env lean`). Prints TG_* lines parsed by `parseTgFacts`. */
 export function truthGateScript(o: TgScriptOptions): string {
   return `import Lean
@@ -180,6 +218,7 @@ def tgKind : ConstantInfo → String
   | .thmInfo _ => "theorem" | .defnInfo _ => "def" | .axiomInfo _ => "axiom"
   | .opaqueInfo _ => "opaque" | .inductInfo _ => "inductive" | .ctorInfo _ => "ctor"
   | _ => "other"
+${leanTrivial("tg")}
 def tgVal (ci : ConstantInfo) : String :=
   match ci.value? (allowOpaque := true) with | some v => tgClean (toString v) | none => ""
 /-- Project-local, non-internal constant names (computed once). -/
@@ -223,7 +262,17 @@ def tgResolve (env : Environment) (proj : Array Name) (r : String) : Array Name 
         s!"formal_implies_paper\\t{cty.bindingBody!.consumeMData.isConstOf P}\\t{isF cty.bindingDomain!}"
       else "other\\tfalse\\tfalse"
   IO.println s!"TG_SHAPE\\t{shape}"
-  for d in (tgClosure env [P] true).toList do
+  let pClosure := tgClosure env [P] true
+  let fClosure : NameSet := match F? with | some F => tgClosure env [F] true | none => {}
+  let shared := pClosure.toList.filter fun n => n != P && fClosure.contains n
+  let pRefsF := match F? with | some F => pClosure.contains F | none => false
+  let fRefsP := fClosure.contains P
+  let aliasDefeq ← match F? with
+    | some F => withoutModifyingState <| try isDefEq (mkConst P) (mkConst F) catch _ => pure false
+    | none => pure false
+  IO.println s!"TG_ALIAS\\t{pRefsF}\\t{fRefsP}\\t{aliasDefeq}\\t{",".intercalate (shared.map toString)}"
+  IO.println s!"TG_TRIVIAL\\t{(tgTrivial ((env.find? C).get!.value? (allowOpaque := true) |>.getD (mkConst \`\`True))).getD ""}"
+  for d in pClosure.toList do
     if d == P then continue
     let ci := (env.find? d).get!
     IO.println s!"TG_DEP\\t{d}\\t{tgKind ci}\\t{tgClean (toString ci.type)}\\t{tgVal ci}"
@@ -267,6 +316,11 @@ export interface TgFacts {
   deps: { name: string; kind: string; sha256: string }[];
   axioms: Record<string, string[]>;
   heads: TgHead[];
+  /** paper_claim's closure contains formal_claim; formal_claim's contains paper_claim; they are defeq;
+   *  project-local constants in both closures. */
+  alias?: { paperRefsFormal: boolean; formalRefsPaper: boolean; defeq: boolean; shared: string[] };
+  /** Non-empty when intended_correspondence's proof term is vacuous (Iff.rfl, rfl, id, …). */
+  trivial?: string;
   complete: boolean;
 }
 
@@ -298,6 +352,12 @@ export function parseTgFacts(out: string): TgFacts {
             query: p[1]!, full: p[2]!, kind: p[3]!, syntactic: b(p[4]), defeq: b(p[5]), direct: b(p[6]), transitive: b(p[7]),
             axioms: p[8] ? p[8].split(",") : [], origin: p[9] === "cite" ? "cite" : "head",
           });
+        break;
+      case "TG_ALIAS":
+        f.alias = { paperRefsFormal: b(p[1]), formalRefsPaper: b(p[2]), defeq: b(p[3]), shared: p[4] ? p[4].split(",") : [] };
+        break;
+      case "TG_TRIVIAL":
+        f.trivial = p[1] ?? "";
         break;
       case "TG_END":
         f.complete = true;
@@ -352,6 +412,9 @@ Generated by \`pipelinehalt truth-gate emit-lean\` from \`truth-gate.lock.json\`
 Do not edit by hand: regenerate from an approved lock.
 
 This file fails \`lake build\` unless:
+* \`${lock.paperClaim.name}\` is an independent transcription: its dependency closure contains neither
+  \`${lock.correspondence.formal}\` nor any constant of its closure, and the two are not definitionally equal;
+* \`${lock.correspondence.name}\` is not proved by \`rfl\` / \`Iff.rfl\` / \`id\`;
 * \`${lock.paperClaim.name}\` and \`${lock.correspondence.name}\` exist, live in a \`Semantics\` module, and are unchanged
   (Lean structural hash ${lock.paperClaim.hash64} / ${lock.correspondence.hash64});
 * \`${lock.correspondence.name}\` has type \`${dir === "iff" ? `${lock.correspondence.formal} ↔ ${lock.paperClaim.name}` : `${lock.correspondence.formal} → ${lock.paperClaim.name}`}\` and uses only
@@ -368,6 +431,8 @@ open Lean Meta Elab Command
 namespace SemanticsLock
 
 ${leanHelpers(pre(lock), "sl")}
+
+${leanTrivial("sl")}
 
 def slWhitelist : List Name := [${lock.headlines.map((h) => "`" + h).join(", ")}]
 
@@ -391,14 +456,25 @@ def slWhitelist : List Name := [${lock.headlines.map((h) => "`" + h).join(", ")}
     ? `match cty.iff? with | some (a, b) => a.consumeMData.isConstOf F && b.consumeMData.isConstOf P | none => false`
     : `cty.isArrow && cty.bindingDomain!.consumeMData.isConstOf F && cty.bindingBody!.consumeMData.isConstOf P`}
   unless okShape do throwError "truth gate: {C} does not have the locked form"
+  if let some r := slTrivial (cci.value? (allowOpaque := true) |>.getD (mkConst \`\`True)) then
+    throwError "truth gate: {C} is vacuous: {r}"
+  let pCl := slClosure env [P] true
+  let fCl := slClosure env [F] true
+  if pCl.contains F then throwError "truth gate: {P} references or unfolds to {F}: an alias, so {C} would be vacuous"
+  if fCl.contains P then throwError "truth gate: {F} references {P}: an alias, so {C} would be vacuous"
+  for n in pCl.toList do
+    if n != P && fCl.contains n then
+      throwError "truth gate: {P} uses {n}, a constant of {F}'s closure; paper_claim must be an independent transcription"
+  if (← withoutModifyingState <| try isDefEq (mkConst P) (mkConst F) catch _ => pure false) then
+    throwError "truth gate: {P} is definitionally equal to {F}; {C} would be Iff.rfl"
   for a in (← collectAxioms C) do
-    unless std.contains a do throwError "truth gate: {C} depends on non-standard axiom {a}"
+    unless std.contains a do throwError "truth gate: {C} depends on non-standard axiom {a}{if a == \`Lean.ofReduceBool || a == \`Lean.trustCompiler then " (native_decide / compiler trust)" else ""}"
   let mut certs := 0
   for h in slWhitelist do
     let some ci := env.find? h | throwError "truth gate: whitelisted theorem {h} not found"
     unless ci matches .thmInfo _ do throwError "truth gate: whitelisted {h} is not a theorem"
     for a in (← collectAxioms h) do
-      unless std.contains a do throwError "truth gate: {h} depends on non-standard axiom {a}"
+      unless std.contains a do throwError "truth gate: {h} depends on non-standard axiom {a}{if a == \`Lean.ofReduceBool || a == \`Lean.trustCompiler then " (native_decide / compiler trust)" else ""}"
     let de ← withoutModifyingState <| try isDefEq ci.type (mkConst P) catch _ => pure false
     if de then certs := certs + 1
     else unless (slClosure env [h] false).contains C do
@@ -588,6 +664,8 @@ export interface GateInputs {
   toolchain?: string;
   commit?: string;
   paper?: { anchor: Anchor; tex?: string };
+  /** Reads a project-relative file (for the provenance check). Returns undefined if absent. */
+  readFile?: (path: string) => string | undefined;
   /** When set, an observation receipt for the current lock digest is required (mandatory first step). */
   observation?: Observation | null;
   requireObservation?: boolean;
@@ -626,6 +704,33 @@ export function evaluateTruthGate(lock: TruthLock, inp: GateInputs): TruthGateRe
   add("a", "a.correspondence-source", "intended_correspondence statement hash",
     !!cSrc && sourceHash(cSrc) === lock.correspondence.sourceSha256,
     cSrc ? `sha256 ${sourceHash(cSrc)} (locked ${lock.correspondence.sourceSha256})` : `${short(lock.correspondence.name)} not found in ${lock.semantics}`);
+  {
+    const pv = parseProvenance(pSrc?.doc);
+    add("a", "a.provenance", "paper_claim's doc comment carries @paper, @sha256, @section and @quote",
+      !!pv, pv ? `${pv.paper} §${pv.section}` : "missing or malformed provenance doc comment on paper_claim");
+    const lp = lock.paperClaim.provenance;
+    add("a", "a.provenance-locked", "provenance equals the approved lock", !!pv && !!lp && canonical(pv) === canonical(lp),
+      lp ? "" : "lock has no provenance");
+    if (pv) {
+      const text = inp.readFile?.(pv.paper);
+      add("a", "a.paper-sha256", "paper file exists and its sha256 matches @sha256", text !== undefined && sha256(text) === pv.sha256,
+        text === undefined ? `${pv.paper} not found` : `sha256 ${sha256(text)} (doc says ${pv.sha256})`);
+      add("a", "a.quote-verbatim", "the @quote occurs verbatim in the paper (whitespace-insensitive)",
+        text !== undefined && pv.quote.length > 0 && collapse(text).includes(collapse(pv.quote)),
+        `quote: “${pv.quote.length > 160 ? pv.quote.slice(0, 157) + "..." : pv.quote}”`);
+    }
+  }
+  {
+    const al = f.alias;
+    const reasons = !al ? ["no alias facts reported"] : [
+      ...(al.paperRefsFormal ? ["paper_claim references or unfolds to formal_claim"] : []),
+      ...(al.formalRefsPaper ? ["formal_claim references paper_claim"] : []),
+      ...(al.defeq ? ["paper_claim is definitionally equal to formal_claim (the correspondence would be Iff.rfl)"] : []),
+      ...(al.shared.length ? [`paper_claim uses formal_claim's project constants: ${al.shared.join(", ")}`] : []),
+    ];
+    add("a", "a.no-alias", "paper_claim is an independent transcription: its dependency closure contains none of formal_claim's constants, and it is not defeq to formal_claim",
+      !!al && reasons.length === 0, ...reasons);
+  }
   if (src !== undefined) {
     const { code } = stripComments(src);
     const bad = [...code.matchAll(/\b(sorry|admit|axiom|native_decide|opaque|implemented_by|extern)\b/g)].map((m) => m[1]!);
@@ -667,6 +772,10 @@ export function evaluateTruthGate(lock: TruthLock, inp: GateInputs): TruthGateRe
   add("b", "b.kind", "intended_correspondence is a theorem", C?.kind === "theorem", C ? C.kind : "missing");
   add("b", "b.axioms", "intended_correspondence uses only propext, Classical.choice, Quot.sound (no sorryAx)",
     !!C && f.axioms[lock.correspondence.name] !== undefined && nonstd.length === 0, `axioms: ${cAx.join(", ") || "(none)"}`);
+  add("b", "b.nontrivial", "intended_correspondence is not proved by rfl / Iff.rfl / id",
+    f.trivial !== undefined && f.trivial === "", f.trivial ? f.trivial : f.trivial === undefined ? "no proof-term facts reported" : "");
+  const nat = cAx.filter((a) => NATIVE_AXIOMS.includes(a));
+  if (nat.length) add("b", "b.native", "no native_decide / compiler trust (Lean.ofReduceBool, Lean.trustCompiler)", false, `axioms: ${nat.join(", ")}`);
   add("b", "b.shape", `intended_correspondence has the locked form (${lock.correspondence.direction === "iff" ? "formal_claim ↔ paper_claim" : "formal_claim → paper_claim"})`,
     !!f.shape && f.shape.form === lock.correspondence.direction && f.shape.paperSide && f.shape.formalSide,
     f.shape ? `form ${f.shape.form}; paper_claim side ${f.shape.paperSide}; formal_claim side ${f.shape.formalSide}` : "no shape reported");
@@ -688,7 +797,7 @@ export function evaluateTruthGate(lock: TruthLock, inp: GateInputs): TruthGateRe
     const bad = h.axioms.filter((a) => !STD_AXIOMS.includes(a));
     let verdict: Transport["verdict"];
     let note: string;
-    if (bad.length) { verdict = "unsound"; note = `uses ${bad.join(", ")}`; }
+    if (bad.length) { verdict = "unsound"; note = `uses ${bad.join(", ")}${bad.some((a) => NATIVE_AXIOMS.includes(a)) ? " (native_decide / compiler trust)" : ""}${bad.includes("sorryAx") ? " (sorry)" : ""}`; }
     else if (h.kind !== "theorem") { verdict = "does-not-transport"; note = `${h.kind}, not a theorem`; }
     else if (h.syntactic || h.defeq) {
       verdict = "certificate";
@@ -782,6 +891,9 @@ export function proposeLock(facts: TgFacts, o: ProposeOptions): TruthLock {
   const pSrc = findSourceDecl(o.semanticsSource, P.full, o.semantics);
   const cSrc = findSourceDecl(o.semanticsSource, C.full, o.semantics);
   if (!pSrc || !cSrc) throw new Error(`cannot lock: ${o.semantics} does not contain both declarations`);
+  const provenance = parseProvenance(pSrc.doc);
+  if (!provenance)
+    throw new Error("cannot lock: paper_claim needs a doc comment with `@paper: <path> @sha256: <hex> @section: <section> @quote: \"<verbatim claim>\"`");
   const auxiliary = { ...(o.auxiliary ?? {}) };
   if (o.auxiliaryCited !== undefined)
     for (const h of facts.heads)
@@ -793,7 +905,7 @@ export function proposeLock(facts: TgFacts, o: ProposeOptions): TruthLock {
     semantics: o.semantics,
     roots: o.roots,
     prefixes: o.prefixes?.length ? o.prefixes : o.roots,
-    paperClaim: { name: P.full, sourceSha256: sourceHash(pSrc), exprSha256: exprHash(P), hash64: P.hash64 },
+    paperClaim: { name: P.full, sourceSha256: sourceHash(pSrc), exprSha256: exprHash(P), hash64: P.hash64, provenance },
     correspondence: { name: C.full, formal: F.full, direction: facts.shape.form, sourceSha256: sourceHash(cSrc), typeSha256: sha256(C.type), hash64: C.hash64 },
     dependencies: Object.fromEntries(facts.deps.map((d) => [d.name, d.sha256]).sort()),
     axioms: facts.axioms[C.full] ?? [],

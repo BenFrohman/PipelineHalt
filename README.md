@@ -203,6 +203,6 @@ None of these questions has been answered here. To reproduce, from `examples/dhl
 
 ## License and copyright
 
-Licensed under the MIT License. See [`LICENSE`](LICENSE).
+Licensed under the Apache License, Version 2.0. See [`LICENSE`](LICENSE).
 
 © 2026 Benjamin Stanley Frohman.

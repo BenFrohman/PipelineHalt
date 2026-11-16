@@ -1,4 +1,17 @@
+/-
+Copyright (c) 2026 Benjamin Stanley Frohman. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Benjamin Stanley Frohman
+-/
+
 import MayForm31.Orbit
+
+/-!
+# examples.may31-fixed-kappa.lean.Axioms
+
+Machine-checked Lean 4 module.
+-/
+
 open Frohman.MayForm31
 #print axioms projection
 #print axioms degeneracy

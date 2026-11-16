@@ -221,7 +221,8 @@ describe("truth gate", () => {
     delete f.trivial;
     assert.ok(failed(evaluateTruthGate(lock(), inputs({ facts: f }))).includes("b.nontrivial"), "missing proof-term facts fail closed");
     const s = truthGateScript({ roots: ["Fixture.Semantics"], paperClaim: "paper_claim", correspondence: "intended_correspondence", formal: "formal_claim", heads: [] });
-    assert.match(s, /``Iff\.rfl, ``Iff\.refl, ``rfl, ``Eq\.refl, ``id/);
+    assert.match(s, /``Iff\.rfl, ``Iff\.refl, ``rfl, ``Eq\.refl, ``HEq\.refl/);
+    assert.match(s, /isConstOf ``id && v\.getAppNumArgs == 2 then tgTrivial/, "id x is a type ascription, not a vacuous proof");
     assert.match(semanticsLockLean(lock()), /is vacuous/);
   });
 

@@ -192,18 +192,23 @@ def ${tag}Closure (env : Environment) (roots : List Name) (withTypes : Bool) : N
 /** Lean recognizer for a vacuous correspondence proof: `Iff.rfl`, `Iff.refl _`, `rfl`, `Eq.refl _`, `id`,
  *  `Iff.of_eq rfl`, `fun h => h`, or `Iff.intro` of two such identities. Returns the reason, or none. */
 function leanTrivial(tag: string): string {
-  return `partial def ${tag}IsId : Expr → Bool
-  | .mdata _ e => ${tag}IsId e
-  | .lam _ _ b _ => b.consumeMData == .bvar 0 || ${tag}IsId b.consumeMData
-  | e => e.getAppFn.consumeMData.isConstOf \`\`id
-def ${tag}Trivial (v : Expr) : Option String :=
+  const b = "\`\`";
+  return `/-- \`fun h => h\`, \`fun h => id h\`, or \`@id α\` (not \`id x\`, which is a type ascription). -/
+def ${tag}IsId (e : Expr) : Bool :=
+  match e.consumeMData with
+  | .lam _ _ body _ =>
+    let body := body.consumeMData
+    body == .bvar 0 ||
+      (body.getAppFn.consumeMData.isConstOf ${b}id && body.getAppNumArgs == 2 && (body.getArg! 1).consumeMData == .bvar 0)
+  | e => e.getAppFn.consumeMData.isConstOf ${b}id && e.getAppNumArgs ≤ 1
+partial def ${tag}Trivial (v : Expr) : Option String :=
   let v := v.consumeMData
   let f := v.getAppFn.consumeMData
-  let triv := [\`\`Iff.rfl, \`\`Iff.refl, \`\`rfl, \`\`Eq.refl, \`\`id, \`\`HEq.refl]
-  if triv.any f.isConstOf then some s!"proof term is {f}"
-  else if f.isConstOf \`\`Iff.of_eq && v.getAppNumArgs ≥ 3 &&
-      [\`\`rfl, \`\`Eq.refl].any (v.getArg! 2).getAppFn.consumeMData.isConstOf then some "proof term is Iff.of_eq rfl"
-  else if f.isConstOf \`\`Iff.intro && v.getAppNumArgs == 4 && ${tag}IsId (v.getArg! 2) && ${tag}IsId (v.getArg! 3) then
+  if f.isConstOf ${b}id && v.getAppNumArgs == 2 then ${tag}Trivial (v.getArg! 1)
+  else if [${b}Iff.rfl, ${b}Iff.refl, ${b}rfl, ${b}Eq.refl, ${b}HEq.refl].any f.isConstOf then some s!"proof term is {f}"
+  else if f.isConstOf ${b}Iff.of_eq && v.getAppNumArgs ≥ 3 &&
+      [${b}rfl, ${b}Eq.refl].any (v.getArg! 2).getAppFn.consumeMData.isConstOf then some "proof term is Iff.of_eq rfl"
+  else if f.isConstOf ${b}Iff.intro && v.getAppNumArgs == 4 && ${tag}IsId (v.getArg! 2) && ${tag}IsId (v.getArg! 3) then
     some "proof term is Iff.intro of two identity functions"
   else if ${tag}IsId v then some "proof term is an identity function"
   else none`;

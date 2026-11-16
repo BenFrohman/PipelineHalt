@@ -61,15 +61,19 @@ def slClosure (env : Environment) (roots : List Name) (withTypes : Bool) : NameS
           if slProj env c && !seen.contains c then todo := c :: todo
   return seen
 
-partial def slIsId : Expr → Bool
-  | .mdata _ e => slIsId e
-  | .lam _ _ b _ => b.consumeMData == .bvar 0 || slIsId b.consumeMData
-  | e => e.getAppFn.consumeMData.isConstOf ``id
-def slTrivial (v : Expr) : Option String :=
+/-- `fun h => h`, `fun h => id h`, or `@id α` (not `id x`, which is a type ascription). -/
+def slIsId (e : Expr) : Bool :=
+  match e.consumeMData with
+  | .lam _ _ body _ =>
+    let body := body.consumeMData
+    body == .bvar 0 ||
+      (body.getAppFn.consumeMData.isConstOf ``id && body.getAppNumArgs == 2 && (body.getArg! 1).consumeMData == .bvar 0)
+  | e => e.getAppFn.consumeMData.isConstOf ``id && e.getAppNumArgs ≤ 1
+partial def slTrivial (v : Expr) : Option String :=
   let v := v.consumeMData
   let f := v.getAppFn.consumeMData
-  let triv := [``Iff.rfl, ``Iff.refl, ``rfl, ``Eq.refl, ``id, ``HEq.refl]
-  if triv.any f.isConstOf then some s!"proof term is {f}"
+  if f.isConstOf ``id && v.getAppNumArgs == 2 then slTrivial (v.getArg! 1)
+  else if [``Iff.rfl, ``Iff.refl, ``rfl, ``Eq.refl, ``HEq.refl].any f.isConstOf then some s!"proof term is {f}"
   else if f.isConstOf ``Iff.of_eq && v.getAppNumArgs ≥ 3 &&
       [``rfl, ``Eq.refl].any (v.getArg! 2).getAppFn.consumeMData.isConstOf then some "proof term is Iff.of_eq rfl"
   else if f.isConstOf ``Iff.intro && v.getAppNumArgs == 4 && slIsId (v.getArg! 2) && slIsId (v.getArg! 3) then

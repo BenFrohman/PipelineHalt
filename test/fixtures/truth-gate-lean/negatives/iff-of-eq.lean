@@ -1,5 +1,18 @@
+/-
+Copyright (c) 2026 Benjamin Stanley Frohman. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Benjamin Stanley Frohman
+-/
+
 -- expect-fail: b.nontrivial a.no-alias
 -- expect-build: vacuous
+
+/-!
+# Truth Gate negative fixture
+
+Locked and approved by `run-negatives.sh`; the gate and `lake build` must still reject it.
+-/
+
 namespace Fixture
 
 def formal_claim : Prop := ∀ n : Nat, n = 0 + n

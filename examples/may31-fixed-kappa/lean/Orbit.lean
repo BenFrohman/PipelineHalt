@@ -1,10 +1,16 @@
 /-
 Copyright (c) 2026 Benjamin Stanley Frohman. All rights reserved.
-Released under Apache 2.0 license.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Benjamin Stanley Frohman
+-/
+
+import MayForm31.Proofs
+
+/-!
+# examples.may31-fixed-kappa.lean.Orbit
+
 Author: Benjamin Stanley Frohman.
-
 # Orbit layer: abstract SDiff coadjoint action, Euler as coadjoint motion, kinetic energy
-
 This layer follows the author's 2026-11-03 answers to Q1, Q2, Q3 and Q5:
 * Q1: the coadjoint orbit is a subtype of the divergence-free fields inside the ambient
   L² space `L2Field`.
@@ -14,16 +20,13 @@ This layer follows the author's 2026-11-03 answers to Q1, Q2, Q3 and Q5:
   `velocity_from_vorticity` in ArnoldGeometric.lean; the singular kernel stays abstract).
 * Q5: C1 is the SDiff pushforward action. "Only |ω|² is invariant" is the transitivity
   hypothesis `CasimirLevelTransitive` below.
-
 Everything the classical theory supplies but this file does not prove is a FIELD of
 the structure `EulerGeometry` (a named hypothesis). There is no `axiom` and no `sorry`.
 Nothing here asserts existence of Euler or Navier–Stokes solutions, or any regularity.
-
 Reuse note: ArnoldGeometric.lean (NS_Millennium_Proof) defines `CoadjointAction g ω := ω`
 (an identity stub) and `velocity_from_vorticity ω := BiotSavart ω.val`. The stub is NOT
 reused here, because it would make C1 trivially true. The action is abstract data instead.
 -/
-import MayForm31.Proofs
 
 namespace Frohman.MayForm31
 noncomputable section

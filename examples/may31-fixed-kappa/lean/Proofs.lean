@@ -1,15 +1,20 @@
 /-
 Copyright (c) 2026 Benjamin Stanley Frohman. All rights reserved.
-Released under Apache 2.0 license.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Benjamin Stanley Frohman
+-/
+
+import MayForm31.Statement
+
+/-!
+# examples.may31-fixed-kappa.lean.Proofs
+
 Author: Benjamin Stanley Frohman.
-
 # Proofs of the May 31 statements (fixed κ = C_CZ(3), T³)
-
 No `sorry`, no `axiom`. Hypotheses that the May text leaves open appear as explicit
 arguments (`StabilizerTransitive`, the unit direction `e ⟂ u`, the differential
 inequality). Nothing here asserts global Navier–Stokes regularity.
 -/
-import MayForm31.Statement
 
 namespace Frohman.MayForm31
 

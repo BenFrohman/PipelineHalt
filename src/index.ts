@@ -9,3 +9,5 @@ export * from "./report.js";
 export * from "./protocol.js";
 export { run, parseArgs, HELP } from "./cli.js";
 export * from "./audit.js";
+export * from "./truthgate.js";
+export { runTruthGate, TRUTH_GATE_HELP } from "./truthgate-cli.js";

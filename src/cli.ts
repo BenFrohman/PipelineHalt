@@ -21,6 +21,7 @@ import { resolveMap } from "./map.js";
 import { exitCodeFor, handle, type AgentRequest } from "./protocol.js";
 import { toAnnotations, toJson, toMarkdown } from "./report.js";
 import type { Verdict } from "./types.js";
+import { runTruthGate } from "./truthgate-cli.js";
 
 export const HELP = `pipelinehalt ${VERSION} — compare paper claims (anchor) with Lean statements; halt and ask on mismatch.
 
@@ -31,6 +32,8 @@ Usage:
   pipelinehalt audit   --tex <paper.tex> (--project <lake dir> [--root <Module>] [--prefix <Name>] | --facts <lean-output.txt>)
                        [--build-log <lake build log>] [--map <audit-map.json>] [--report-md f] [--report-json f] [--save-facts f]
                        full coverage: every sentence, display, table row, caption and environment is classified
+  pipelinehalt truth-gate (observe|lock|approve|emit-lean|check|script) ...
+                       bind the certificate to a locked paper_claim (see: pipelinehalt truth-gate help)
   pipelinehalt agent   < request.json > response.json      (JSON protocol, see README)
   pipelinehalt prompt                                       (print the chat protocol template)
 
@@ -94,6 +97,7 @@ export async function run(argv: string[], io: Io): Promise<number> {
     if (cmd === "help" || cmd === "--help" || cmd === "-h")
       return (say(HELP), 0);
     if (cmd === "prompt") return (say(readFileSync(templatePath(), "utf8")), 0);
+    if (cmd === "truth-gate") return await runTruthGate(flags, say);
     if (cmd === "agent") {
       const req = JSON.parse(await readAll(io.stdin)) as AgentRequest;
       const res = handle(req);

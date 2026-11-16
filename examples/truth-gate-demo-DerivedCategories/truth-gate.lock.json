@@ -1,0 +1,90 @@
+{
+  "schema": "pipelinehalt/truth-gate-lock/v1",
+  "semantics": "lean/Semantics.lean",
+  "roots": [
+    "Semantics",
+    "BHK",
+    "Equations",
+    "ResidualIdentity",
+    "WrittenPartner",
+    "FmPartnerConjecture"
+  ],
+  "prefixes": [
+    "Semantics",
+    "Intersections",
+    "BHK",
+    "Equations",
+    "ResidualIdentity",
+    "WrittenPartner",
+    "FmPartnerConjecture"
+  ],
+  "paperClaim": {
+    "name": "Frohman.Residual.TruthGate.paper_claim",
+    "sourceSha256": "3b68eec7d53c58521ebaf8cadac64773efd60bbf75d08c50b631d6d12abcb55d",
+    "exprSha256": "7f5ed82daba8c5e15e38a7e383f97dec966afc04933e26b4c6fa41c1cf1820b2",
+    "hash64": "17629050349138358009"
+  },
+  "correspondence": {
+    "name": "Frohman.Residual.TruthGate.intended_correspondence",
+    "formal": "Frohman.Residual.TruthGate.formal_claim",
+    "direction": "iff",
+    "sourceSha256": "d8af500c140b408d53610c2e603d7897181268bb921bb8acb46631a4225c0dbd",
+    "typeSha256": "b5ce656eda1de9c1892d2b2e434fe152ddc0578aac879a03cce2bb9df5e30e54",
+    "hash64": "3847770387"
+  },
+  "dependencies": {},
+  "axioms": [],
+  "headlines": [
+    "Frohman.Residual.TruthGate.ledger_certificate"
+  ],
+  "auxiliary": {
+    "Frohman.BHK.FT_not_unweighted_deg6": "recorded-value lemma cited by the paper; outside the locked statement",
+    "Frohman.BHK.F_cy_weights": "recorded-value lemma cited by the paper; outside the locked statement",
+    "Frohman.BHK.F_homogeneous": "recorded-value lemma cited by the paper; outside the locked statement",
+    "Frohman.BHK.block_degree_u5": "recorded-value lemma cited by the paper; outside the locked statement",
+    "Frohman.BHK.block_degree_u_v6": "recorded-value lemma cited by the paper; outside the locked statement",
+    "Frohman.BHK.detA_ne_zero": "recorded-value lemma cited by the paper; outside the locked statement",
+    "Frohman.BHK.det_block": "recorded-value lemma cited by the paper; outside the locked statement",
+    "Frohman.BHK.dual_cy": "recorded-value lemma cited by the paper; outside the locked statement",
+    "Frohman.BHK.invertible": "recorded-value lemma cited by the paper; outside the locked statement",
+    "Frohman.BHK.transpose_block": "recorded-value lemma cited by the paper; outside the locked statement",
+    "Frohman.Residual.S_degree": "recorded-value lemma cited by the paper; outside the locked statement",
+    "Frohman.Residual.S_meets_Pi": "recorded-value lemma cited by the paper; outside the locked statement",
+    "Frohman.Residual.S_self": "recorded-value lemma cited by the paper; outside the locked statement",
+    "Frohman.Residual.chi_S": "recorded-value lemma cited by the paper; outside the locked statement",
+    "Frohman.Residual.curve_genus": "recorded-value lemma cited by the paper; outside the locked statement",
+    "Frohman.Residual.deg_X": "recorded-value lemma cited by the paper; outside the locked statement",
+    "Frohman.Residual.geometric_genus": "recorded-value lemma cited by the paper; outside the locked statement",
+    "Frohman.Residual.no_new_independent_class": "recorded-value lemma cited by the paper; outside the locked statement",
+    "Frohman.Residual.plane_meets_P3": "recorded-value lemma cited by the paper; outside the locked statement",
+    "Frohman.Residual.samples_hold": "recorded-value lemma cited by the paper; outside the locked statement",
+    "Frohman.Residual.self_intersection_Pi": "recorded-value lemma cited by the paper; outside the locked statement",
+    "Frohman.Residual.topological_euler": "recorded-value lemma cited by the paper; outside the locked statement",
+    "Frohman.Sextic.F_has_three_chain_blocks": "recorded-value lemma cited by the paper; outside the locked statement",
+    "Frohman.Sextic.F_ne_FT": "recorded-value lemma cited by the paper; outside the locked statement",
+    "Frohman.Sextic.hmf_is_same_host": "recorded-value lemma cited by the paper; outside the locked statement",
+    "Frohman.Sextic.identity_is_X": "recorded-value lemma cited by the paper; outside the locked statement",
+    "Frohman.Sextic.kernel_unwritten": "recorded-value lemma cited by the paper; outside the locked statement",
+    "Frohman.Sextic.not_vacuous_true": "recorded-value lemma cited by the paper; outside the locked statement",
+    "Frohman.Sextic.partner_equations_unwritten": "recorded-value lemma cited by the paper; outside the locked statement",
+    "Frohman.Sextic.partner_must_be_fourfold": "recorded-value lemma cited by the paper; outside the locked statement",
+    "Frohman.Sextic.partner_must_not_be_X": "recorded-value lemma cited by the paper; outside the locked statement",
+    "Frohman.Sextic.residual_fails_canonical": "recorded-value lemma cited by the paper; outside the locked statement",
+    "Frohman.Sextic.residual_fails_dim": "recorded-value lemma cited by the paper; outside the locked statement"
+  },
+  "paperSource": {
+    "source": "paper/Frohman_Locked_Sextic_Numerical_Ledger_Lean_2026.tex",
+    "claims": [
+      "proposition-4.1"
+    ],
+    "clarifications": {}
+  },
+  "commit": "4d056001933b2e2340221f226d36bec04e7452bd",
+  "toolchain": "leanprover/lean4:v4.34.0",
+  "approval": {
+    "approvedBy": "DEMO scratch approval (not an author approval)",
+    "approvedAt": "2026-11-16T20:19:40.046Z",
+    "digest": "1705cc0937aafb93b9ff1018b0bec33a2ace5ec2c9e223ea34a56969c7ef871e",
+    "note": "scratch demo only"
+  }
+}

@@ -1,0 +1,9 @@
+# Copy to .github/workflows/truth-gate.yml in a formalization repo.
+name: truth-gate
+on: [push, pull_request]
+jobs:
+  truth-gate:
+    uses: BenFrohman/PipelineHalt/.github/workflows/truth-gate.yml@main
+    # with:
+    #   lock: truth-gate.lock.json
+    #   lock-script: scripts/SemanticsLock.lean

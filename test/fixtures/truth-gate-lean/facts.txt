@@ -1,0 +1,13 @@
+TG_RESOLVE	paper	paper_claim	Fixture.paper_claim
+TG_DECL	paper	Fixture.paper_claim	def	Fixture.Semantics	0	8176375656230469964	Prop	forall (n : Nat), Eq.{1} Nat (HAdd.hAdd.{0, 0, 0} Nat Nat Nat (instHAdd.{0} Nat instAddNat) (OfNat.ofNat.{0} Nat 0 (instOfNatNat 0)) n) n
+TG_RESOLVE	correspondence	intended_correspondence	Fixture.intended_correspondence
+TG_DECL	correspondence	Fixture.intended_correspondence	theorem	Fixture.Semantics	0	645702572	Iff Fixture.formal_claim Fixture.paper_claim	
+TG_RESOLVE	formal	formal_claim	Fixture.formal_claim
+TG_DECL	formal	Fixture.formal_claim	def	Fixture.Semantics	0	8316779571377372435	Prop	forall (n : Nat), Eq.{1} Nat n (HAdd.hAdd.{0, 0, 0} Nat Nat Nat (instHAdd.{0} Nat instAddNat) (OfNat.ofNat.{0} Nat 0 (instOfNatNat 0)) n)
+TG_SHAPE	iff	true	true
+TG_ALIAS	false	false	false	
+TG_TRIVIAL	
+TG_AXIOMS	Fixture.intended_correspondence	
+TG_HEAD	Fixture.headline	Fixture.headline	theorem	true	true	true	true		head
+TG_HEAD	headline	Fixture.headline	theorem	true	true	true	true		cite
+TG_END

@@ -1,19 +1,26 @@
 /-
 Copyright (c) 2026 Benjamin Stanley Frohman. All rights reserved.
-Released under Apache 2.0 license.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Benjamin Stanley Frohman
+-/
+
+import TetherMayForm.Basic
+import Mathlib.Analysis.Fourier.AddCircleMulti
+import Mathlib.MeasureTheory.Function.L2Space
+import Mathlib.Analysis.Calculus.MeanValue
+
+/-!
+# examples.may31-fixed-kappa.lean.Statement
+
 Author: Benjamin Stanley Frohman.
-
 # May 31 2026 statements, fixed κ = C_CZ(3), on T³ (vorticity level)
-
 Statements only; proofs are in `MayForm31/Proofs.lean`.
 Line numbers `L..` refer to the May 31 `Tether.lean` snapshot
 (commit 3582a57, `history/2026-05-31_Tether_lean/Tether_May31.lean.txt`).
 `vFinal` = May 21 2026 vFinal excerpt (commit f2fd3ed), `main3` = May 2 2026
 excerpt (commit 67f0df4), `roadmap` = May 18 2026 excerpt (commit 03a314d).
-
 Ambiguities in the May text are NOT resolved here; they are recorded as
 PipelineHalt clarification questions (`examples/may31-fixed-kappa/` in PipelineHalt).
-
 ## Modelling choices (each one is a recorded halt question)
 * Q1: the space. `T³ = UnitAddTorus (Fin 3)` (Mathlib), fields in `L²(T³; ℝ³)`.
 * Q2: the weight. L59–60 and vFinal (4) weight pointwise by `|ω(x)|²` (and in L59–63 /
@@ -30,10 +37,6 @@ PipelineHalt clarification questions (`examples/may31-fixed-kappa/` in PipelineH
   taken as an abstract set `act` of L²-isometries; the step "only |ω|² is invariant"
   (L155–157, L159–161) is the named hypothesis `StabilizerTransitive`.
 -/
-import TetherMayForm.Basic
-import Mathlib.Analysis.Fourier.AddCircleMulti
-import Mathlib.MeasureTheory.Function.L2Space
-import Mathlib.Analysis.Calculus.MeanValue
 
 namespace Frohman.MayForm31
 noncomputable section

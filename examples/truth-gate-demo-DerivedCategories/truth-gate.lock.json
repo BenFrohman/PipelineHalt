@@ -22,7 +22,13 @@
     "name": "Frohman.Residual.TruthGate.paper_claim",
     "sourceSha256": "3b68eec7d53c58521ebaf8cadac64773efd60bbf75d08c50b631d6d12abcb55d",
     "exprSha256": "7f5ed82daba8c5e15e38a7e383f97dec966afc04933e26b4c6fa41c1cf1820b2",
-    "hash64": "17629050349138358009"
+    "hash64": "17629050349138358009",
+    "provenance": {
+      "paper": "paper/Frohman_Locked_Sextic_Numerical_Ledger_Lean_2026.tex",
+      "sha256": "4f9786ed195e6c0affec3c5f941894507dae1e572bcd2be419cbda8c45c11c25",
+      "section": "Section 3, Proposition [recorded values] (Proposition 4.1 in the extracted anchor)",
+      "quote": "From these values: $S\\cdot h^2=5$, $S\\cdot\\Pi=-20$, $S^2=6-2+21=25$. Also $(5-1)(5-2)/2=6$ (genus of a plane quintic), $\\chi(\\mathcal O_S)=5$, $p_g=4$, $12\\chi-5=55$, and the recorded span rank is $2$."
+    }
   },
   "correspondence": {
     "name": "Frohman.Residual.TruthGate.intended_correspondence",
@@ -79,12 +85,11 @@
     ],
     "clarifications": {}
   },
-  "commit": "4d056001933b2e2340221f226d36bec04e7452bd",
+  "commit": "4e003167378bb5f2a410401c1e4185b6a1d48003",
   "toolchain": "leanprover/lean4:v4.34.0",
   "approval": {
     "approvedBy": "DEMO scratch approval (not an author approval)",
-    "approvedAt": "2026-11-16T20:19:40.046Z",
-    "digest": "1705cc0937aafb93b9ff1018b0bec33a2ace5ec2c9e223ea34a56969c7ef871e",
-    "note": "scratch demo only"
+    "approvedAt": "2026-11-16T21:01:55.765Z",
+    "digest": "bde8daaa4070e33d5d41962cf5f220e58ab4177edb361120e1a4f139ccc3b273"
   }
 }

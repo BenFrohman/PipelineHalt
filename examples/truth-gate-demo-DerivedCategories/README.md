@@ -34,6 +34,18 @@ $PH truth-gate check --require-observation --ci
 | N4: a narrower transcription (only `S·h²`, `S·Π`, `S²`) locked and approved | pass | **halt** (exit 2): Proposition 4.1 asserts 4 and 55, which `paper_claim` never mentions | `n4.report.json`, `n4-narrow-transcription.md` |
 | N5: `observe --goal "Frohman.Residual.S2 = 25"` | n/a | **HALT** (exit 2): the goal is not `paper_claim` | — |
 
+**Re-run after the independent-transcription rule (2026-11-16, ~3:05 PM CST).** `paper_claim` now carries the provenance doc
+comment (`@paper`, the file's SHA-256 `4f9786ed…`, `@section`, and the verbatim `@quote` of the proposition). The lock was re-proposed,
+re-approved (demo approval) and re-emitted. `lake build` passes the in-build audit, `observe` matches, and
+`check --require-observation` **passes** (exit 0). The new checks a.provenance, a.paper-sha256, a.quote-verbatim, a.no-alias and
+b.nontrivial all pass: `paper_claim` uses only `Int` arithmetic and none of `formal_claim`'s constants (`S_h2`, `S2`, …).
+`Semantics.lean`, `truth-gate.lock.json`, `SemanticsLock.lean` and `check-pass.md` here are from this re-run. The N1–N5 reports are from
+the earlier run; the new rejections (alias, vacuous proof, native_decide, provenance) are exercised by the fixture negatives in CI.
+
+Note: in this demo the correspondence's `formal_claim → paper_claim` direction does not need `formal_claim`, because
+`paper_claim` takes the recorded values as hypotheses and is provable by `decide`. The gate certifies only that the locked
+`paper_claim` is inhabited. That is the README's stated limit, and it is why the transcription is the author's sign-off.
+
 The 33 other theorems the paper cites are listed as `auxiliary` in the lock (proposed by `--auxiliary-cited`;
 the approval decides). They are reported and never presented as certified. `lean/SMore.lean` cannot be imported
 next to `lean/Intersections.lean` (both declare `Frohman.Residual.h4`), so its three cited theorems are not seen.

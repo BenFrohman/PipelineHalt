@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
-# Truth Gate local/CI verification for a formalization repo. Exit 0 only if the formal certificate inhabits the
-# locked statement. Never edit Semantics.lean or the lock to make this pass: a mismatch stays red and is reported.
+# Truth Gate local/CI verification for a formalization repo (copy to scripts/verify-lock.sh). Exit 0 only if the
+# formal certificate inhabits the locked statement. Never edit Semantics.lean or the lock to make this pass: a
+# mismatch stays red and is reported. Delegates to PipelineHalt's checker, which runs preflight, compiles the
+# Semantics module, runs the observation pass FIRST (#check intended_correspondence, #print paper_claim,
+# #print formal_claim), then lake build (in-build #eval audit), scripts/SemanticsLock.lean and truth-gate check.
+# Set PIPELINEHALT_DIR to a PipelineHalt checkout (built with `npm install && npx tsc -b`).
 set -euo pipefail
 cd "$(dirname "$0")/.."
-PH="${PIPELINEHALT:-npx pipelinehalt} truth-gate"
-lake build                                   # includes the in-build #eval audit (scripts/SemanticsLock.lean)
-lake env lean scripts/SemanticsLock.lean     # the same audit, run directly
-$PH observe --project . ${GOAL_DECL:+--goal-decl "$GOAL_DECL"}
-$PH check --project . --require-observation ${CI:+--ci} --report-md truth-gate-report.md --badge truth-gate-badge.json
+: "${PIPELINEHALT_DIR:?set PIPELINEHALT_DIR to a built BenFrohman/PipelineHalt checkout}"
+exec "$PIPELINEHALT_DIR/scripts/verify-lock.sh" .

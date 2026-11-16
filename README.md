@@ -19,6 +19,8 @@ It does not recover intent the author never wrote down. Matching is token-based 
 
 ## Truth Gate (semantics lock)
 
+Agents load [`TRUTH_GATE.md`](TRUTH_GATE.md) first; the mandate is [`docs/MANDATE.md`](docs/MANDATE.md). The checker is [`scripts/verify-lock.sh`](scripts/verify-lock.sh) `[project-dir]` (preflight, compile Semantics, **observation pass first**, `lake build` with the in-build lock, the lock script, `truth-gate check`; prints `TRUTH GATE: PASS` or `TRUTH GATE: REJECT <reason>`). Past drift is listed in [`truth-gate/drift-inventory.md`](truth-gate/drift-inventory.md).
+
 The Truth Gate binds the formal certificate to one fixed, author-approved proposition. Every formalization repo carries a `Semantics.lean` with:
 
 ```lean
@@ -80,7 +82,7 @@ jobs:
     uses: BenFrohman/PipelineHalt/.github/workflows/truth-gate.yml@main
 ```
 
-It installs elan and fetches the Mathlib cache (`lake exe cache get`) without rebuilding Mathlib. It then runs `lake build` (with the in-build lock), `lake env lean scripts/SemanticsLock.lean`, the observation pass and `truth-gate check --require-observation`, and uploads the report, badge, build log and observation receipt. This repository's own CI runs the whole path end to end on a core-Lean fixture (`test/fixtures/truth-gate-lean`), including a tampered `paper_claim` that still compiles but must fail both `lake build` and the gate, and [`run-negatives.sh`](test/fixtures/truth-gate-lean/run-negatives.sh): one real-Lean negative per rejection (alias, defeq alias, shared constant, `Iff.rfl`, `by rfl`, `⟨id, id⟩`, `Iff.of_eq rfl`, `fun h => h`, `sorry`, `admit`, `native_decide`, a non-standard axiom, a missing provenance, a quote not in the paper, a wrong SHA-256). Each negative is locked **and approved**, and must still fail the gate (and, except the provenance file checks, `lake build`). A mismatch keeps the gate red and is reported; it is never patched around.
+It installs elan and fetches the Mathlib cache (`lake exe cache get`) without rebuilding Mathlib. It then runs `lake build` (with the in-build lock), `lake env lean scripts/SemanticsLock.lean`, the observation pass and `truth-gate check --require-observation`, and uploads the report, badge, build log and observation receipt. This repository's own CI runs the whole path end to end on a core-Lean fixture (`test/fixtures/truth-gate-lean`), including a tampered `paper_claim` that still compiles but must fail both `lake build` and the gate, and [`run-negatives.sh`](test/fixtures/truth-gate-lean/run-negatives.sh): one real-Lean negative per rejection (alias, defeq alias, shared constant, `Iff.rfl`, `by rfl`, `⟨id, id⟩`, `Iff.of_eq rfl`, `fun h => h`, `sorry`, `admit`, `native_decide`, a non-standard axiom, a missing provenance, a quote not in the paper, a wrong SHA-256), plus [`run-tamper.sh`](test/fixtures/truth-gate-lean/run-tamper.sh), which runs `scripts/verify-lock.sh` on the unmodified fixture (passing demo) and on post-approval tampering: a missing `Semantics.lean`, a missing correspondence, a missing `@quote`, a missing `@sha256`, a failed `lake build`. Each negative is locked **and approved**, and must still fail the gate (and, except the provenance file checks, `lake build`). A mismatch keeps the gate red and is reported; it is never patched around.
 
 ### Limits
 

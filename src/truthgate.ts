@@ -83,6 +83,9 @@ export interface Provenance { paper: string; sha256: string; section: string; qu
 
 /** Lean constants that make a proof rely on compiled code rather than the kernel (from native_decide etc.). */
 export const NATIVE_AXIOMS = ["Lean.ofReduceBool", "Lean.trustCompiler", "Lean.ofReduceNat"];
+/** True for native_decide's trust axioms: `Lean.ofReduceBool` / `Lean.trustCompiler` (older Lean) or the per-use
+ *  auxiliary axiom `<decl>._native.native_decide.ax_…` that newer Lean (e.g. v4.34) adds instead. */
+export const isNativeAxiom = (a: string) => NATIVE_AXIOMS.includes(a) || /(^|\.)_native(\.|$)|native_decide/.test(a);
 
 const collapse = (x: string) => x.replace(/\s+/g, " ").trim();
 
@@ -468,13 +471,13 @@ def slWhitelist : List Name := [${lock.headlines.map((h) => "`" + h).join(", ")}
   if (← withoutModifyingState <| try isDefEq (mkConst P) (mkConst F) catch _ => pure false) then
     throwError "truth gate: {P} is definitionally equal to {F}; {C} would be Iff.rfl"
   for a in (← collectAxioms C) do
-    unless std.contains a do throwError "truth gate: {C} depends on non-standard axiom {a}{if a == \`Lean.ofReduceBool || a == \`Lean.trustCompiler then " (native_decide / compiler trust)" else ""}"
+    unless std.contains a do throwError "truth gate: {C} depends on non-standard axiom {a}{if a == \`Lean.ofReduceBool || a == \`Lean.trustCompiler || (a.toString.splitOn "_native").length > 1 then " (native_decide / compiler trust)" else ""}"
   let mut certs := 0
   for h in slWhitelist do
     let some ci := env.find? h | throwError "truth gate: whitelisted theorem {h} not found"
     unless ci matches .thmInfo _ do throwError "truth gate: whitelisted {h} is not a theorem"
     for a in (← collectAxioms h) do
-      unless std.contains a do throwError "truth gate: {h} depends on non-standard axiom {a}{if a == \`Lean.ofReduceBool || a == \`Lean.trustCompiler then " (native_decide / compiler trust)" else ""}"
+      unless std.contains a do throwError "truth gate: {h} depends on non-standard axiom {a}{if a == \`Lean.ofReduceBool || a == \`Lean.trustCompiler || (a.toString.splitOn "_native").length > 1 then " (native_decide / compiler trust)" else ""}"
     let de ← withoutModifyingState <| try isDefEq ci.type (mkConst P) catch _ => pure false
     if de then certs := certs + 1
     else unless (slClosure env [h] false).contains C do
@@ -774,7 +777,7 @@ export function evaluateTruthGate(lock: TruthLock, inp: GateInputs): TruthGateRe
     !!C && f.axioms[lock.correspondence.name] !== undefined && nonstd.length === 0, `axioms: ${cAx.join(", ") || "(none)"}`);
   add("b", "b.nontrivial", "intended_correspondence is not proved by rfl / Iff.rfl / id",
     f.trivial !== undefined && f.trivial === "", f.trivial ? f.trivial : f.trivial === undefined ? "no proof-term facts reported" : "");
-  const nat = cAx.filter((a) => NATIVE_AXIOMS.includes(a));
+  const nat = cAx.filter(isNativeAxiom);
   if (nat.length) add("b", "b.native", "no native_decide / compiler trust (Lean.ofReduceBool, Lean.trustCompiler)", false, `axioms: ${nat.join(", ")}`);
   add("b", "b.shape", `intended_correspondence has the locked form (${lock.correspondence.direction === "iff" ? "formal_claim ↔ paper_claim" : "formal_claim → paper_claim"})`,
     !!f.shape && f.shape.form === lock.correspondence.direction && f.shape.paperSide && f.shape.formalSide,
@@ -797,7 +800,7 @@ export function evaluateTruthGate(lock: TruthLock, inp: GateInputs): TruthGateRe
     const bad = h.axioms.filter((a) => !STD_AXIOMS.includes(a));
     let verdict: Transport["verdict"];
     let note: string;
-    if (bad.length) { verdict = "unsound"; note = `uses ${bad.join(", ")}${bad.some((a) => NATIVE_AXIOMS.includes(a)) ? " (native_decide / compiler trust)" : ""}${bad.includes("sorryAx") ? " (sorry)" : ""}`; }
+    if (bad.length) { verdict = "unsound"; note = `uses ${bad.join(", ")}${bad.some(isNativeAxiom) ? " (native_decide / compiler trust)" : ""}${bad.includes("sorryAx") ? " (sorry)" : ""}`; }
     else if (h.kind !== "theorem") { verdict = "does-not-transport"; note = `${h.kind}, not a theorem`; }
     else if (h.syntactic || h.defeq) {
       verdict = "certificate";

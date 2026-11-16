@@ -7,6 +7,8 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with: { node-version: 22 }
+      - name: pdftotext (used by the PDF anchor test)
+        run: command -v pdftotext || (sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils)
       - run: npm install
       - run: npm test
   truth-gate-e2e:

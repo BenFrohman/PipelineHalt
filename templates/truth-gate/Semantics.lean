@@ -22,7 +22,7 @@ Rules:
 * `paper_claim`'s doc comment carries the provenance, in this exact format (checked against the paper file):
   `@paper: <repo-relative path> @sha256: <sha256 of that file> @section: <section/page> @quote: "<verbatim claim>"`
 * `intended_correspondence` must not be proved by `rfl`, `Iff.rfl`, `id`, `⟨id, id⟩` or `Iff.of_eq rfl`.
-* No `sorry`, `admit`, `axiom`, `native_decide` (`Lean.ofReduceBool` / `Lean.trustCompiler`) or `opaque`.
+* No `sorry`, `admit`, `axiom`, `native_decide` (`Lean.ofReduceBool` / `Lean.trustCompiler`, or `<decl>._native.native_decide.ax_…` on newer Lean) or `opaque`.
 * Public (whitelisted) theorems have type `paper_claim` and are obtained as
   `intended_correspondence.mp …`. Intermediate lemmas can stay local.
 -/

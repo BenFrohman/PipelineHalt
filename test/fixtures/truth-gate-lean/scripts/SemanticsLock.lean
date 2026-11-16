@@ -109,13 +109,13 @@ def slWhitelist : List Name := [`Fixture.headline]
   if (← withoutModifyingState <| try isDefEq (mkConst P) (mkConst F) catch _ => pure false) then
     throwError "truth gate: {P} is definitionally equal to {F}; {C} would be Iff.rfl"
   for a in (← collectAxioms C) do
-    unless std.contains a do throwError "truth gate: {C} depends on non-standard axiom {a}{if a == `Lean.ofReduceBool || a == `Lean.trustCompiler then " (native_decide / compiler trust)" else ""}"
+    unless std.contains a do throwError "truth gate: {C} depends on non-standard axiom {a}{if a == `Lean.ofReduceBool || a == `Lean.trustCompiler || (a.toString.splitOn "_native").length > 1 then " (native_decide / compiler trust)" else ""}"
   let mut certs := 0
   for h in slWhitelist do
     let some ci := env.find? h | throwError "truth gate: whitelisted theorem {h} not found"
     unless ci matches .thmInfo _ do throwError "truth gate: whitelisted {h} is not a theorem"
     for a in (← collectAxioms h) do
-      unless std.contains a do throwError "truth gate: {h} depends on non-standard axiom {a}{if a == `Lean.ofReduceBool || a == `Lean.trustCompiler then " (native_decide / compiler trust)" else ""}"
+      unless std.contains a do throwError "truth gate: {h} depends on non-standard axiom {a}{if a == `Lean.ofReduceBool || a == `Lean.trustCompiler || (a.toString.splitOn "_native").length > 1 then " (native_decide / compiler trust)" else ""}"
     let de ← withoutModifyingState <| try isDefEq ci.type (mkConst P) catch _ => pure false
     if de then certs := certs + 1
     else unless (slClosure env [h] false).contains C do

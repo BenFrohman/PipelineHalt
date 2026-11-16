@@ -226,7 +226,7 @@ describe("truth gate", () => {
   });
 
   test("reject: sorry, admit, native_decide and non-standard axioms", () => {
-    for (const [ax, id] of [["sorryAx", "b.axioms"], ["Lean.ofReduceBool", "b.native"], ["Lean.trustCompiler", "b.native"], ["Fixture.my_axiom", "b.axioms"]] as const) {
+    for (const [ax, id] of [["sorryAx", "b.axioms"], ["Lean.ofReduceBool", "b.native"], ["Lean.trustCompiler", "b.native"], ["Fixture.intended_correspondence._native.native_decide.ax_1_1", "b.native"], ["Fixture.my_axiom", "b.axioms"]] as const) {
       const f = facts();
       f.axioms["Fixture.intended_correspondence"] = ["propext", ax];
       const r = evaluateTruthGate(lock(), inputs({ facts: f }));

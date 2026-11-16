@@ -1,6 +1,6 @@
 # Truth Gate: formal certificate inhabits the locked statement
 
-Status: **PASS** · lock digest `1705cc0937aafb93` · locked commit `4d056001933b2e2340221f226d36bec04e7452bd` · current commit `4e003167378bb5f2a410401c1e4185b6a1d48003` · toolchain `leanprover/lean4:v4.34.0`
+Status: **PASS** · lock digest `bde8daaa4070e33d` · locked commit `4e003167378bb5f2a410401c1e4185b6a1d48003` · current commit `4e003167378bb5f2a410401c1e4185b6a1d48003` · toolchain `leanprover/lean4:v4.34.0`
 
 Locked statement (`Frohman.Residual.TruthGate.paper_claim`, conditional: its hypotheses are part of the statement):
 
@@ -12,17 +12,22 @@ def paper_claim : Prop := ∀ h4 hPi Pi2 chi pg rank : Int, h4 = 6 → hPi = 1 �
 
 | check | group | status | detail |
 |---|---|---|---|
-| o.observed | o | PASS | observation pass (#check intended_correspondence, #print paper_claim) recorded for this lock: observed 2026-11-16T20:19:52.520Z at 4e003167378bb5f2a410401c1e4185b6a1d48003; verdict goal-matches-paper-claim |
+| o.observed | o | PASS | observation pass (#check intended_correspondence, #print paper_claim) recorded for this lock: observed 2026-11-16T21:05:14.789Z at 4e003167378bb5f2a410401c1e4185b6a1d48003; verdict goal-matches-paper-claim |
 | a.schema | a | PASS | lock schema: schema pipelinehalt/truth-gate-lock/v1 |
-| a.approval | a | PASS | lock approved by the author, digest matches: approved by DEMO scratch approval (not an author approval) at 2026-11-16T20:19:40.046Z |
+| a.approval | a | PASS | lock approved by the author, digest matches: approved by DEMO scratch approval (not an author approval) at 2026-11-16T21:01:55.765Z |
 | a.semantics | a | PASS | lean/Semantics.lean exists |
 | a.paper-claim-source | a | PASS | paper_claim source hash: sha256 3b68eec7d53c58521ebaf8cadac64773efd60bbf75d08c50b631d6d12abcb55d (locked 3b68eec7d53c58521ebaf8cadac64773efd60bbf75d08c50b631d6d12abcb55d) |
 | a.correspondence-source | a | PASS | intended_correspondence statement hash: sha256 d8af500c140b408d53610c2e603d7897181268bb921bb8acb46631a4225c0dbd (locked d8af500c140b408d53610c2e603d7897181268bb921bb8acb46631a4225c0dbd) |
+| a.provenance | a | PASS | paper_claim's doc comment carries @paper, @sha256, @section and @quote: paper/Frohman_Locked_Sextic_Numerical_Ledger_Lean_2026.tex §Section 3, Proposition [recorded values] (Proposition 4.1 in the extracted anchor) |
+| a.provenance-locked | a | PASS | provenance equals the approved lock:  |
+| a.paper-sha256 | a | PASS | paper file exists and its sha256 matches @sha256: sha256 4f9786ed195e6c0affec3c5f941894507dae1e572bcd2be419cbda8c45c11c25 (doc says 4f9786ed195e6c0affec3c5f941894507dae1e572bcd2be419cbda8c45c11c25) |
+| a.quote-verbatim | a | PASS | the @quote occurs verbatim in the paper (whitespace-insensitive): quote: “From these values: $S\cdot h^2=5$, $S\cdot\Pi=-20$, $S^2=6-2+21=25$. Also $(5-1)(5-2)/2=6$ (genus of a plane quintic), $\chi(\mathcal O_S)=5$, $p_g=4$, $12\c...” |
+| a.no-alias | a | PASS | paper_claim is an independent transcription: its dependency closure contains none of formal_claim's constants, and it is not defeq to formal_claim |
 | a.semantics-clean | a | PASS | Semantics.lean has no sorry/admit/axiom/native_decide/opaque |
 | a.lean-run | a | PASS | Lean meta script completed |
-| a.resolve-paper | a | PASS | paper_claim resolves to the locked constant: resolved Frohman.Residual.TruthGate.paper_claim |
-| a.resolve-correspondence | a | PASS | intended_correspondence resolves to the locked constant: resolved Frohman.Residual.TruthGate.intended_correspondence |
-| a.resolve-formal | a | PASS | formal_claim resolves to the locked constant: resolved Frohman.Residual.TruthGate.formal_claim |
+| a.resolve-paper | a | PASS | paper_claim is the locked constant: found Frohman.Residual.TruthGate.paper_claim |
+| a.resolve-correspondence | a | PASS | intended_correspondence is the locked constant: found Frohman.Residual.TruthGate.intended_correspondence |
+| a.resolve-formal | a | PASS | formal_claim is the locked constant: found Frohman.Residual.TruthGate.formal_claim |
 | a.paper-claim-kind | a | PASS | paper_claim is a universe-monomorphic def of type Prop: def : Prop, 0 universe params |
 | a.module | a | PASS | locked declarations live in a Semantics module: Semantics / Semantics |
 | a.paper-claim-expr | a | PASS | paper_claim elaborated hash: sha256 7f5ed82daba8c5e15e38a7e383f97dec966afc04933e26b4c6fa41c1cf1820b2 (locked 7f5ed82daba8c5e15e38a7e383f97dec966afc04933e26b4c6fa41c1cf1820b2); hash64 17629050349138358009 (locked 17629050349138358009) |
@@ -32,6 +37,7 @@ def paper_claim : Prop := ∀ h4 hPi Pi2 chi pg rank : Int, h4 = 6 → hPi = 1 �
 | a.toolchain | a | PASS | toolchain matches the lock: locked leanprover/lean4:v4.34.0, current leanprover/lean4:v4.34.0 |
 | b.kind | b | PASS | intended_correspondence is a theorem: theorem |
 | b.axioms | b | PASS | intended_correspondence uses only propext, Classical.choice, Quot.sound (no sorryAx): axioms: (none) |
+| b.nontrivial | b | PASS | intended_correspondence is not proved by rfl / Iff.rfl / id:  |
 | b.shape | b | PASS | intended_correspondence has the locked form (formal_claim ↔ paper_claim): form iff; paper_claim side true; formal_claim side true |
 | b.formal | b | PASS | formal_claim is a def of type Prop: def : Prop |
 | c.transport | c | PASS | every headline and paper-cited theorem transports across intended_correspondence or is marked auxiliary |

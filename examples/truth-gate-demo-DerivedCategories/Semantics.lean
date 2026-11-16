@@ -3,6 +3,7 @@ Copyright (c) 2026 Benjamin Stanley Frohman. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Benjamin Stanley Frohman
 -/
+
 import Intersections
 
 /-!
@@ -17,7 +18,12 @@ namespace Frohman.Residual.TruthGate
 
 /-- Literal transcription of Proposition 4.1 ("recorded values"). The recorded inputs
 `h^4 = 6`, `h^2·Π = 1`, `Π^2 = 21`, `χ(O_S) = 5`, `p_g = 4` and span rank `2` are hypotheses,
-exactly as the paper says ("from these values"); the conclusions are the paper's equalities. -/
+exactly as the paper says ("from these values"); the conclusions are the paper's equalities.
+@paper: paper/Frohman_Locked_Sextic_Numerical_Ledger_Lean_2026.tex
+@sha256: 4f9786ed195e6c0affec3c5f941894507dae1e572bcd2be419cbda8c45c11c25
+@section: Section 3, Proposition [recorded values] (Proposition 4.1 in the extracted anchor)
+@quote: "From these values: $S\cdot h^2=5$, $S\cdot\Pi=-20$, $S^2=6-2+21=25$. Also $(5-1)(5-2)/2=6$ (genus of a plane quintic), $\chi(\mathcal O_S)=5$, $p_g=4$, $12\chi-5=55$, and the recorded span rank is $2$."
+-/
 def paper_claim : Prop :=
   ∀ h4 hPi Pi2 chi pg rank : Int,
     h4 = 6 → hPi = 1 → Pi2 = 21 → chi = 5 → pg = 4 → rank = 2 →

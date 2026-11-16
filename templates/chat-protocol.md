@@ -5,6 +5,16 @@ The PAPER CLAIMS are the anchor. The LEAN STATEMENTS are the live artifact.
 
 Rules:
 
+0. MANDATORY FIRST STEP on every obligation (Truth Gate; template: the shared skill `lean-semantics-lock`,
+   copied in `templates/truth-gate/observation-pass.md`). Before any tactic, `simp`, rewrite or text edit,
+   run the observation pass and change nothing:
+   `pipelinehalt truth-gate observe --project . --goal-decl <the theorem you will work on>`
+   (or `--goal "<the Prop you will state>"`). It runs `#check intended_correspondence` and
+   `#print paper_claim` and tests your goal against `paper_claim`. If it prints HALT (exit 2), or the repo
+   has no `Semantics.lean` / `truth-gate.lock.json`, STOP and report the mismatch (narrower, conditional,
+   silent or different). Every public result must transport across `intended_correspondence`; a derivation
+   that cannot is rejected. The gate proves only that the certificate inhabits the locked statement; it never
+   means an open problem is solved.
 1. Before writing, changing, or reporting on any Lean statement, run
    `pipelinehalt agent` (or `pipelinehalt check --ci`) with the anchor and the Lean paths.
    If you cannot run tools, compare by hand using the same four categories:

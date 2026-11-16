@@ -182,20 +182,25 @@ def tgKind : ConstantInfo → String
   | _ => "other"
 def tgVal (ci : ConstantInfo) : String :=
   match ci.value? (allowOpaque := true) with | some v => tgClean (toString v) | none => ""
-def tgResolve (env : Environment) (r : String) : Array Name := Id.run do
-  if env.contains r.toName && tgProj env r.toName then return #[r.toName]
-  let mut hits := #[]
-  for (n, _) in env.constants.toList do
-    if n.isInternal || !tgProj env n then continue
-    if n.toString == r || n.toString.endsWith ("." ++ r) then hits := hits.push n
-  return hits
+/-- Project-local, non-internal constant names (computed once). -/
+def tgProjNames (env : Environment) : Array Name := Id.run do
+  let mut out := #[]
+  for (n, _) in env.constants.map₁.toList do
+    if !n.isInternal && tgProj env n then out := out.push n
+  for (n, _) in env.constants.map₂.toList do
+    if !n.isInternal && tgProj env n then out := out.push n
+  return out
+def tgResolve (env : Environment) (proj : Array Name) (r : String) : Array Name :=
+  if env.contains r.toName && tgProj env r.toName then #[r.toName]
+  else proj.filter fun n => n.toString == r || n.toString.endsWith ("." ++ r)
 
 #eval show CommandElabM Unit from liftTermElabM do
   let env ← getEnv
+  let proj := tgProjNames env
   let roles : List (String × String) := [("paper", ${JSON.stringify(o.paperClaim)}), ("correspondence", ${JSON.stringify(o.correspondence)}), ("formal", ${JSON.stringify(o.formal)})]
   let mut found : Std.HashMap String Name := {}
   for (role, r) in roles do
-    let hits := tgResolve env r
+    let hits := tgResolve env proj r
     if hits.size != 1 then
       IO.println s!"TG_RESOLVE\\t{role}\\t{r}\\t!{hits.size}"
       continue
@@ -226,7 +231,7 @@ def tgResolve (env : Environment) (r : String) : Array Name := Id.run do
   IO.println s!"TG_AXIOMS\\t{C}\\t{",".intercalate (axs.toList.map toString)}"
   let heads : List (String × Bool) := (${lit(o.heads)} : List String).map (·, true) ++ (${lit(o.maybe ?? [])} : List String).map (·, false)
   for (r, must) in heads do
-    let hits := tgResolve env r
+    let hits := tgResolve env proj r
     if hits.isEmpty then
       if must then IO.println s!"TG_HEAD\\t{r}\\t?\\tmissing"
       continue
@@ -632,8 +637,8 @@ export function evaluateTruthGate(lock: TruthLock, inp: GateInputs): TruthGateRe
   for (const role of ["paper", "correspondence", "formal"] as const) {
     const r = f.resolve[role];
     const want = role === "paper" ? lock.paperClaim.name : role === "correspondence" ? lock.correspondence.name : lock.correspondence.formal;
-    add("a", `a.resolve-${role}`, `${short(want)} resolves to the locked constant`, !!r?.full && r.full === want,
-      r?.full ? `resolved ${r.full}` : `resolved ${r?.count ?? 0} candidates`);
+    add("a", `a.resolve-${role}`, `${short(want)} is the locked constant`, !!r?.full && r.full === want,
+      r?.full ? `found ${r.full}` : `${r?.count ?? 0} candidates`);
   }
   add("a", "a.paper-claim-kind", "paper_claim is a universe-monomorphic def of type Prop",
     !!P && P.kind === "def" && P.type === "Prop" && P.levels === 0, P ? `${P.kind} : ${P.type}, ${P.levels} universe params` : "missing");

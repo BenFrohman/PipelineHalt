@@ -17,6 +17,74 @@ PipelineHalt is a standalone companion to [RecurringAlignment](https://github.co
 
 It does not recover intent the author never wrote down. Matching is token-based and heuristic, with no semantic or proof-level checking. A clean report means "no differences found by these checks", not "the formalization is faithful". A hand-written [mapping file](#the-mapping-file-pipelinehaltmapjson) makes results much more reliable than heuristic matching. It is still human-authored and does not validate meaning.
 
+## Truth Gate (semantics lock)
+
+The Truth Gate binds the formal certificate to one fixed, author-approved proposition. Every formalization repo carries a `Semantics.lean` with:
+
+```lean
+def paper_claim : Prop := …    -- literal Lean transcription of the paper's (or official) statement, approved by the author
+def formal_claim : Prop := …   -- the same statement in the development's own definitions
+theorem intended_correspondence : formal_claim ↔ paper_claim := …   -- or `formal_claim → paper_claim` for a one-way result
+theorem main_result : paper_claim := intended_correspondence.mp …   -- public results are obtained only by transport
+```
+
+Conditional results keep every hypothesis inside `paper_claim` (`H₁ → H₂ → Conclusion`); they are never stated as their bare conclusion. A template is in [`templates/truth-gate/Semantics.lean`](templates/truth-gate/Semantics.lean).
+
+**What it guarantees, and what it does not.** A Lean equivalence relates two Lean propositions, so the gate can only check that the certificate inhabits the locked `paper_claim`. Whether `paper_claim` says what the paper means is the author's sign-off, recorded in the lock. The kernel does not check that. Once both sides are proved, `formal_claim ↔ paper_claim` holds trivially, so what the certificate establishes is that `paper_claim` is inhabited. The `↔` documents the link, and the lock freezes `paper_claim`. The gate makes no claim about any open problem beyond the locked statement.
+
+### Workflow
+
+```sh
+pipelinehalt truth-gate observe --project . --goal-decl My.thm   # MANDATORY FIRST STEP; changes nothing (see below)
+pipelinehalt truth-gate lock    --project . --root My.Semantics,My.Main --prefix My --semantics My/Semantics.lean \
+  --headline main_result --paper paper/main.tex --claim thm:main  # proposes an UNAPPROVED lock (approval: null)
+pipelinehalt truth-gate approve --lock truth-gate.lock.json --by "Frohman, Benjamin Stanley"   # the author approves
+pipelinehalt truth-gate emit-lean --lock truth-gate.lock.json   # writes scripts/SemanticsLock.lean (in-build #eval audit)
+pipelinehalt truth-gate check   --project . --require-observation --ci --report-md report.md --badge badge.json
+```
+
+`truth-gate.lock.json` ([schema](templates/truth-gate/truth-gate.lock.schema.json)) records the SHA-256 of the normalized source of `paper_claim` and of the statement of `intended_correspondence`, the SHA-256 of their elaborated terms, Lean's 64-bit structural hashes (for the in-build audit), fingerprints of every project definition `paper_claim` unfolds to, `#print axioms intended_correspondence`, the public whitelist (`headlines`), the theorems deliberately left outside the gate (`auxiliary`, each with a reason), the paper source and the result claims, the commit, the toolchain, and the approval (who, when, digest). The approval digest covers every field except the approval itself and the paper-side answers, so any edit to the lock invalidates the approval.
+
+### Checks
+
+| group | check | rejects |
+|---|---|---|
+| o | observation pass | `check --require-observation` without a receipt for the current lock digest, or a receipt whose goal is not `paper_claim` |
+| a | lock integrity | missing `Semantics.lean`; unapproved lock, or a lock edited after approval; any change to the normalized source or the elaborated term of `paper_claim`, to the statement of `intended_correspondence`, or to a definition `paper_claim` unfolds to; `paper_claim` defined through `formal_claim`, the correspondence, a theorem or an axiom; `sorry`/`admit`/`axiom`/`native_decide`/`opaque` in `Semantics.lean`; declarations outside a `Semantics` module; a toolchain change |
+| b | correspondence | `intended_correspondence` not a theorem; not of the locked form (`formal_claim ↔ paper_claim`, or `formal_claim → paper_claim`); any axiom beyond propext, Classical.choice, Quot.sound (including `sorryAx`) |
+| c | transport | any headline or paper-cited theorem (from `\lean{}`, `% lean:`, `\texttt{}`, `\path{}`) whose type is not definitionally `paper_claim` and whose proof does not use `intended_correspondence` (transitively), unless the lock marks it auxiliary: "does not transport". Also rejects missing headlines, non-standard axioms, an auxiliary headline, and a whitelist where no theorem has type `paper_claim` |
+| d | paper side | each listed result claim against `paper_claim`, using the existing narrower/conditional/silent classifier, plus values the claim asserts (`= N`) that `paper_claim` never mentions and wording such as "solves", "settles", "unconditional" in the claims or title. Open findings HALT (exit 2) until answered; an answer with verdict other than intentional fails |
+
+On pass the badge (`--badge`, shields endpoint JSON) and the summary say **"formal certificate inhabits the locked statement"**. They never say more than that.
+
+### Enforcement inside `lake build`
+
+`truth-gate emit-lean` generates `scripts/SemanticsLock.lean` from an approved lock. Add it to the default target ([snippet](templates/truth-gate/lakefile-snippet.lean)). The default `lake build` then fails (`throwError` in an `#eval`) unless `Semantics` is imported, `paper_claim` and `intended_correspondence` are unchanged (Lean structural hash), the correspondence has the locked form and standard axioms, and every whitelisted theorem has type `paper_claim` (by defeq) or is proved through `intended_correspondence`, with standard axioms only. CI also runs it directly with `lake env lean scripts/SemanticsLock.lean`.
+
+### Observation pass (mandatory first step)
+
+`truth-gate observe` runs `#check @intended_correspondence`, `#print paper_claim`, `#print formal_claim` and `#print axioms intended_correspondence`, changes nothing, and with `--goal-decl <thm>` or `--goal "<Prop>"` tests the obligation against `paper_claim` by definitional equality. On a mismatch it prints HALT and exits 2: no tactic, rewrite or text edit is allowed, and the agent reports the mismatch. The template for this step is the shared skill `lean-semantics-lock` ([copy](templates/truth-gate/observation-pass.md)). The [chat protocol](templates/chat-protocol.md) makes it step 0.
+
+### CI
+
+Formalization repos call the reusable workflow:
+
+```yaml
+jobs:
+  truth-gate:
+    uses: BenFrohman/PipelineHalt/.github/workflows/truth-gate.yml@main
+```
+
+It installs elan and fetches the Mathlib cache (`lake exe cache get`) without rebuilding Mathlib. It then runs `lake build` (with the in-build lock), `lake env lean scripts/SemanticsLock.lean`, the observation pass and `truth-gate check --require-observation`, and uploads the report, badge, build log and observation receipt. This repository's own CI runs the whole path end to end on a core-Lean fixture (`test/fixtures/truth-gate-lean`), including a tampered `paper_claim` that still compiles but must fail both `lake build` and the gate.
+
+### Limits
+
+- The transcription is the author's responsibility. The gate cannot tell whether `paper_claim` captures the paper's intent.
+- Theorems the paper cites from modules that the lock's `roots` do not import are not seen. Two modules that cannot be imported together (duplicate declarations) cannot both be roots.
+- The paper-side check is heuristic. It catches extra hypotheses, restricted domains, omitted sets, asserted values missing from `paper_claim`, and overclaiming words. It does not prove that the prose and the Lean say the same thing.
+- The in-build audit compares Lean's 64-bit structural hash, which detects edits but is not a cryptographic commitment. The CI check compares SHA-256 of the source and of the elaborated terms.
+- The elaborated hashes depend on the toolchain, so a toolchain bump needs a new, re-approved lock.
+
 ## Usage
 
 ```sh

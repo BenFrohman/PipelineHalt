@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/BenFrohman/PipelineHalt/templates/truth-gate/truth-gate.lock.schema.json",
+  "title": "PipelineHalt Truth Gate lock (pipelinehalt/truth-gate-lock/v1)",
+  "description": "Written by `pipelinehalt truth-gate lock` (approval: null) and approved by the author with `truth-gate approve`. approval.digest is SHA-256 of the canonical JSON of every field except `approval` and `paperSource.clarifications`; any other edit invalidates the approval.",
+  "type": "object",
+  "required": ["schema", "semantics", "roots", "prefixes", "paperClaim", "correspondence", "dependencies", "axioms", "headlines", "auxiliary", "commit", "toolchain", "approval"],
+  "properties": {
+    "schema": { "const": "pipelinehalt/truth-gate-lock/v1" },
+    "semantics": { "type": "string", "description": "Path of Semantics.lean relative to the Lake project root" },
+    "roots": { "type": "array", "items": { "type": "string" }, "minItems": 1, "description": "Modules imported by the gate scripts" },
+    "prefixes": { "type": "array", "items": { "type": "string" }, "description": "Module prefixes that count as the project" },
+    "paperClaim": {
+      "type": "object",
+      "required": ["name", "sourceSha256", "exprSha256", "hash64"],
+      "properties": {
+        "name": { "type": "string", "description": "Full name of paper_claim" },
+        "sourceSha256": { "type": "string", "pattern": "^[0-9a-f]{64}$", "description": "SHA-256 of the normalized source (comments stripped, whitespace collapsed; def header and body)" },
+        "exprSha256": { "type": "string", "pattern": "^[0-9a-f]{64}$", "description": "SHA-256 of the elaborated type and value as printed by Lean" },
+        "hash64": { "type": "string", "pattern": "^[0-9]+$", "description": "Lean structural hash (mixHash of type and value hashes), checked by the in-build #eval audit" }
+      }
+    },
+    "correspondence": {
+      "type": "object",
+      "required": ["name", "formal", "direction", "sourceSha256", "typeSha256", "hash64"],
+      "properties": {
+        "name": { "type": "string" },
+        "formal": { "type": "string", "description": "Full name of formal_claim" },
+        "direction": { "enum": ["iff", "formal_implies_paper"], "description": "iff: formal_claim ↔ paper_claim; formal_implies_paper: formal_claim → paper_claim" },
+        "sourceSha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "typeSha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "hash64": { "type": "string", "pattern": "^[0-9]+$" }
+      }
+    },
+    "dependencies": { "type": "object", "additionalProperties": { "type": "string", "pattern": "^[0-9a-f]{64}$" }, "description": "Project-local constants paper_claim unfolds to → SHA-256 of their elaborated type and value" },
+    "axioms": { "type": "array", "items": { "enum": ["propext", "Classical.choice", "Quot.sound"] } },
+    "headlines": { "type": "array", "items": { "type": "string" }, "minItems": 1, "description": "Public whitelist; at least one must have type paper_claim" },
+    "auxiliary": { "type": "object", "additionalProperties": { "type": "string" }, "description": "Theorems outside the gate → reason. Never presented as certified." },
+    "paperSource": {
+      "type": "object",
+      "required": ["source", "claims"],
+      "properties": {
+        "source": { "type": "string" },
+        "claims": { "type": "array", "items": { "type": "string" } },
+        "cites": { "type": "array", "items": { "type": "string" } },
+        "clarifications": { "type": "object" }
+      }
+    },
+    "commit": { "type": "string" },
+    "toolchain": { "type": "string" },
+    "approval": {
+      "oneOf": [
+        { "type": "null" },
+        {
+          "type": "object",
+          "required": ["approvedBy", "approvedAt", "digest"],
+          "properties": {
+            "approvedBy": { "type": "string" },
+            "approvedAt": { "type": "string" },
+            "digest": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+            "note": { "type": "string" }
+          }
+        }
+      ]
+    }
+  }
+}

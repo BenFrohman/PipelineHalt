@@ -7,6 +7,46 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with: { node-version: 22 }
-      - run: sudo apt-get update && sudo apt-get install -y poppler-utils
       - run: npm install
       - run: npm test
+  truth-gate-e2e:
+    # End-to-end on a core-Lean fixture (no Mathlib): lake build runs the in-build lock, the observation
+    # pass and the gate pass, and a tampered paper_claim must fail both lake build and the gate.
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: test/fixtures/truth-gate-lean
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - name: Install elan
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Build PipelineHalt
+        working-directory: .
+        run: npm install && npx tsc -b
+      - name: lake build (in-build semantics lock)
+        run: lake build
+      - name: semantics lock script
+        run: lake env lean scripts/SemanticsLock.lean
+      - name: observation pass
+        run: node ../../../dist/src/bin.js truth-gate observe --project . --goal-decl Fixture.headline
+      - name: observation pass rejects a goal that is not paper_claim
+        run: |
+          set +e
+          node ../../../dist/src/bin.js truth-gate observe --project . --goal "Fixture.formal_claim" --out /tmp/obs.json
+          test $? -eq 2
+      - name: truth gate
+        run: node ../../../dist/src/bin.js truth-gate check --project . --require-observation --ci --report-md "$GITHUB_STEP_SUMMARY"
+      - name: tampered paper_claim fails lake build and the gate
+        run: |
+          sed -i 's/def paper_claim : Prop := ∀ n : Nat, 0 + n = n/def paper_claim : Prop := ∀ n : Nat, n = n/' Fixture/Semantics.lean
+          sed -i 's/^  ⟨fun h n => (h n).symm, fun h n => (h n).symm⟩$/  ⟨fun _ _ => rfl, fun _ n => (Nat.zero_add n).symm⟩/' Fixture/Semantics.lean
+          lake build Fixture
+          set +e
+          lake build SemanticsLock; b=$?
+          node ../../../dist/src/bin.js truth-gate check --project . --ci; g=$?
+          echo "lake build SemanticsLock exit $b, gate exit $g"
+          test $b -ne 0 && test $g -eq 1

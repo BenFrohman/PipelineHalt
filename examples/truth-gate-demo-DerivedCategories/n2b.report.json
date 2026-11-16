@@ -1,0 +1,480 @@
+{
+  "tool": "pipelinehalt/truth-gate",
+  "status": "fail",
+  "badge": {
+    "schemaVersion": 1,
+    "label": "truth gate",
+    "message": "formal certificate not bound to the locked statement",
+    "color": "red"
+  },
+  "paperClaim": "Frohman.Residual.TruthGate.paper_claim",
+  "paperClaimSource": "def paper_claim : Prop := ∀ h4 hPi Pi2 chi pg rank : Int, h4 = 6 → hPi = 1 → Pi2 = 21 → chi = 5 → pg = 4 → rank = 2 → h4 - hPi = 5 ∧ hPi - Pi2 = -20 ∧ h4 - 2 * hPi + Pi2 = 25 ∧ (5 - 1) * (5 - 2) / 2 = (6 : Int) ∧ chi = 5 ∧ pg = 4 ∧ 12 * chi - 5 = 55 ∧ rank = 2",
+  "correspondence": "Frohman.Residual.TruthGate.intended_correspondence",
+  "direction": "iff",
+  "conditional": true,
+  "checks": [
+    {
+      "id": "a.schema",
+      "group": "a",
+      "title": "lock schema",
+      "status": "pass",
+      "detail": [
+        "schema pipelinehalt/truth-gate-lock/v1"
+      ]
+    },
+    {
+      "id": "a.approval",
+      "group": "a",
+      "title": "lock approved by the author, digest matches",
+      "status": "pass",
+      "detail": [
+        "approved by DEMO scratch approval (not an author approval) at 2026-11-16T20:22:35.811Z"
+      ]
+    },
+    {
+      "id": "a.semantics",
+      "group": "a",
+      "title": "lean/Semantics.lean exists",
+      "status": "pass",
+      "detail": []
+    },
+    {
+      "id": "a.paper-claim-source",
+      "group": "a",
+      "title": "paper_claim source hash",
+      "status": "pass",
+      "detail": [
+        "sha256 3b68eec7d53c58521ebaf8cadac64773efd60bbf75d08c50b631d6d12abcb55d (locked 3b68eec7d53c58521ebaf8cadac64773efd60bbf75d08c50b631d6d12abcb55d)"
+      ]
+    },
+    {
+      "id": "a.correspondence-source",
+      "group": "a",
+      "title": "intended_correspondence statement hash",
+      "status": "pass",
+      "detail": [
+        "sha256 d8af500c140b408d53610c2e603d7897181268bb921bb8acb46631a4225c0dbd (locked d8af500c140b408d53610c2e603d7897181268bb921bb8acb46631a4225c0dbd)"
+      ]
+    },
+    {
+      "id": "a.semantics-clean",
+      "group": "a",
+      "title": "Semantics.lean has no sorry/admit/axiom/native_decide/opaque",
+      "status": "pass",
+      "detail": []
+    },
+    {
+      "id": "a.lean-run",
+      "group": "a",
+      "title": "Lean meta script completed",
+      "status": "pass",
+      "detail": []
+    },
+    {
+      "id": "a.resolve-paper",
+      "group": "a",
+      "title": "paper_claim resolves to the locked constant",
+      "status": "pass",
+      "detail": [
+        "resolved Frohman.Residual.TruthGate.paper_claim"
+      ]
+    },
+    {
+      "id": "a.resolve-correspondence",
+      "group": "a",
+      "title": "intended_correspondence resolves to the locked constant",
+      "status": "pass",
+      "detail": [
+        "resolved Frohman.Residual.TruthGate.intended_correspondence"
+      ]
+    },
+    {
+      "id": "a.resolve-formal",
+      "group": "a",
+      "title": "formal_claim resolves to the locked constant",
+      "status": "pass",
+      "detail": [
+        "resolved Frohman.Residual.TruthGate.formal_claim"
+      ]
+    },
+    {
+      "id": "a.paper-claim-kind",
+      "group": "a",
+      "title": "paper_claim is a universe-monomorphic def of type Prop",
+      "status": "pass",
+      "detail": [
+        "def : Prop, 0 universe params"
+      ]
+    },
+    {
+      "id": "a.module",
+      "group": "a",
+      "title": "locked declarations live in a Semantics module",
+      "status": "pass",
+      "detail": [
+        "Semantics / Semantics"
+      ]
+    },
+    {
+      "id": "a.paper-claim-expr",
+      "group": "a",
+      "title": "paper_claim elaborated hash",
+      "status": "pass",
+      "detail": [
+        "sha256 7f5ed82daba8c5e15e38a7e383f97dec966afc04933e26b4c6fa41c1cf1820b2 (locked 7f5ed82daba8c5e15e38a7e383f97dec966afc04933e26b4c6fa41c1cf1820b2); hash64 17629050349138358009 (locked 17629050349138358009)"
+      ]
+    },
+    {
+      "id": "a.correspondence-type",
+      "group": "a",
+      "title": "intended_correspondence elaborated type hash",
+      "status": "pass",
+      "detail": [
+        "sha256 b5ce656eda1de9c1892d2b2e434fe152ddc0578aac879a03cce2bb9df5e30e54 (locked b5ce656eda1de9c1892d2b2e434fe152ddc0578aac879a03cce2bb9df5e30e54)"
+      ]
+    },
+    {
+      "id": "a.dependencies",
+      "group": "a",
+      "title": "definitions paper_claim unfolds to are unchanged",
+      "status": "pass",
+      "detail": [
+        "0 project-local dependencies"
+      ]
+    },
+    {
+      "id": "a.independent",
+      "group": "a",
+      "title": "paper_claim is not defined through formal_claim, the correspondence, theorems or axioms",
+      "status": "pass",
+      "detail": []
+    },
+    {
+      "id": "a.toolchain",
+      "group": "a",
+      "title": "toolchain matches the lock",
+      "status": "pass",
+      "detail": [
+        "locked leanprover/lean4:v4.34.0, current leanprover/lean4:v4.34.0"
+      ]
+    },
+    {
+      "id": "b.kind",
+      "group": "b",
+      "title": "intended_correspondence is a theorem",
+      "status": "pass",
+      "detail": [
+        "theorem"
+      ]
+    },
+    {
+      "id": "b.axioms",
+      "group": "b",
+      "title": "intended_correspondence uses only propext, Classical.choice, Quot.sound (no sorryAx)",
+      "status": "pass",
+      "detail": [
+        "axioms: (none)"
+      ]
+    },
+    {
+      "id": "b.shape",
+      "group": "b",
+      "title": "intended_correspondence has the locked form (formal_claim ↔ paper_claim)",
+      "status": "pass",
+      "detail": [
+        "form iff; paper_claim side true; formal_claim side true"
+      ]
+    },
+    {
+      "id": "b.formal",
+      "group": "b",
+      "title": "formal_claim is a def of type Prop",
+      "status": "pass",
+      "detail": [
+        "def : Prop"
+      ]
+    },
+    {
+      "id": "c.transport",
+      "group": "c",
+      "title": "every headline and paper-cited theorem transports across intended_correspondence or is marked auxiliary",
+      "status": "fail",
+      "detail": [
+        "does-not-transport: Frohman.Residual.S_self (head) — type is not paper_claim and the proof does not use intended_correspondence"
+      ]
+    },
+    {
+      "id": "c.certificate",
+      "group": "c",
+      "title": "at least one headline theorem has type paper_claim",
+      "status": "pass",
+      "detail": [
+        "Frohman.Residual.TruthGate.ledger_certificate: type is paper_claim; proof goes through intended_correspondence"
+      ]
+    },
+    {
+      "id": "d.claims",
+      "group": "d",
+      "title": "listed result claims exist in the paper",
+      "status": "pass",
+      "detail": []
+    },
+    {
+      "id": "d.stronger",
+      "group": "d",
+      "title": "no listed paper claim is stronger than paper_claim",
+      "status": "pass",
+      "detail": []
+    }
+  ],
+  "transport": [
+    {
+      "name": "Frohman.Residual.TruthGate.ledger_certificate",
+      "query": "Frohman.Residual.TruthGate.ledger_certificate",
+      "origin": "head",
+      "verdict": "certificate",
+      "note": "type is paper_claim; proof goes through intended_correspondence"
+    },
+    {
+      "name": "Frohman.Residual.S_self",
+      "query": "Frohman.Residual.S_self",
+      "origin": "head",
+      "verdict": "does-not-transport",
+      "note": "type is not paper_claim and the proof does not use intended_correspondence"
+    },
+    {
+      "name": "Frohman.BHK.det_block",
+      "query": "det_block",
+      "origin": "cite",
+      "verdict": "auxiliary",
+      "note": "auxiliary: recorded-value lemma cited by the paper; outside the locked statement"
+    },
+    {
+      "name": "Frohman.BHK.transpose_block",
+      "query": "transpose_block",
+      "origin": "cite",
+      "verdict": "auxiliary",
+      "note": "auxiliary: recorded-value lemma cited by the paper; outside the locked statement"
+    },
+    {
+      "name": "Frohman.BHK.block_degree_u5",
+      "query": "block_degree_u5",
+      "origin": "cite",
+      "verdict": "auxiliary",
+      "note": "auxiliary: recorded-value lemma cited by the paper; outside the locked statement"
+    },
+    {
+      "name": "Frohman.BHK.block_degree_u_v6",
+      "query": "block_degree_u_v6",
+      "origin": "cite",
+      "verdict": "auxiliary",
+      "note": "auxiliary: recorded-value lemma cited by the paper; outside the locked statement"
+    },
+    {
+      "name": "Frohman.BHK.dual_cy",
+      "query": "dual_cy",
+      "origin": "cite",
+      "verdict": "auxiliary",
+      "note": "auxiliary: recorded-value lemma cited by the paper; outside the locked statement"
+    },
+    {
+      "name": "Frohman.BHK.F_homogeneous",
+      "query": "F_homogeneous",
+      "origin": "cite",
+      "verdict": "auxiliary",
+      "note": "auxiliary: recorded-value lemma cited by the paper; outside the locked statement"
+    },
+    {
+      "name": "Frohman.BHK.F_cy_weights",
+      "query": "F_cy_weights",
+      "origin": "cite",
+      "verdict": "auxiliary",
+      "note": "auxiliary: recorded-value lemma cited by the paper; outside the locked statement"
+    },
+    {
+      "name": "Frohman.BHK.invertible",
+      "query": "invertible",
+      "origin": "cite",
+      "verdict": "auxiliary",
+      "note": "auxiliary: recorded-value lemma cited by the paper; outside the locked statement"
+    },
+    {
+      "name": "Frohman.BHK.detA_ne_zero",
+      "query": "detA_ne_zero",
+      "origin": "cite",
+      "verdict": "auxiliary",
+      "note": "auxiliary: recorded-value lemma cited by the paper; outside the locked statement"
+    },
+    {
+      "name": "Frohman.BHK.FT_not_unweighted_deg6",
+      "query": "FT_not_unweighted_deg6",
+      "origin": "cite",
+      "verdict": "auxiliary",
+      "note": "auxiliary: recorded-value lemma cited by the paper; outside the locked statement"
+    },
+    {
+      "name": "Frohman.Sextic.F_ne_FT",
+      "query": "F_ne_FT",
+      "origin": "cite",
+      "verdict": "auxiliary",
+      "note": "auxiliary: recorded-value lemma cited by the paper; outside the locked statement"
+    },
+    {
+      "name": "Frohman.Sextic.F_has_three_chain_blocks",
+      "query": "F_has_three_chain_blocks",
+      "origin": "cite",
+      "verdict": "auxiliary",
+      "note": "auxiliary: recorded-value lemma cited by the paper; outside the locked statement"
+    },
+    {
+      "name": "Frohman.Residual.deg_X",
+      "query": "deg_X",
+      "origin": "cite",
+      "verdict": "auxiliary",
+      "note": "auxiliary: recorded-value lemma cited by the paper; outside the locked statement"
+    },
+    {
+      "name": "Frohman.Residual.plane_meets_P3",
+      "query": "plane_meets_P3",
+      "origin": "cite",
+      "verdict": "auxiliary",
+      "note": "auxiliary: recorded-value lemma cited by the paper; outside the locked statement"
+    },
+    {
+      "name": "Frohman.Residual.self_intersection_Pi",
+      "query": "self_intersection_Pi",
+      "origin": "cite",
+      "verdict": "auxiliary",
+      "note": "auxiliary: recorded-value lemma cited by the paper; outside the locked statement"
+    },
+    {
+      "name": "Frohman.Residual.S_degree",
+      "query": "S_degree",
+      "origin": "cite",
+      "verdict": "auxiliary",
+      "note": "auxiliary: recorded-value lemma cited by the paper; outside the locked statement"
+    },
+    {
+      "name": "Frohman.Residual.S_meets_Pi",
+      "query": "S_meets_Pi",
+      "origin": "cite",
+      "verdict": "auxiliary",
+      "note": "auxiliary: recorded-value lemma cited by the paper; outside the locked statement"
+    },
+    {
+      "name": "Frohman.Residual.curve_genus",
+      "query": "curve_genus",
+      "origin": "cite",
+      "verdict": "auxiliary",
+      "note": "auxiliary: recorded-value lemma cited by the paper; outside the locked statement"
+    },
+    {
+      "name": "Frohman.Residual.chi_S",
+      "query": "chi_S",
+      "origin": "cite",
+      "verdict": "auxiliary",
+      "note": "auxiliary: recorded-value lemma cited by the paper; outside the locked statement"
+    },
+    {
+      "name": "Frohman.Residual.geometric_genus",
+      "query": "geometric_genus",
+      "origin": "cite",
+      "verdict": "auxiliary",
+      "note": "auxiliary: recorded-value lemma cited by the paper; outside the locked statement"
+    },
+    {
+      "name": "Frohman.Residual.topological_euler",
+      "query": "topological_euler",
+      "origin": "cite",
+      "verdict": "auxiliary",
+      "note": "auxiliary: recorded-value lemma cited by the paper; outside the locked statement"
+    },
+    {
+      "name": "Frohman.Residual.no_new_independent_class",
+      "query": "no_new_independent_class",
+      "origin": "cite",
+      "verdict": "auxiliary",
+      "note": "auxiliary: recorded-value lemma cited by the paper; outside the locked statement"
+    },
+    {
+      "name": "Frohman.Residual.samples_hold",
+      "query": "Frohman.Residual.samples_hold",
+      "origin": "cite",
+      "verdict": "auxiliary",
+      "note": "auxiliary: recorded-value lemma cited by the paper; outside the locked statement"
+    },
+    {
+      "name": "Frohman.Sextic.partner_must_be_fourfold",
+      "query": "partner_must_be_fourfold",
+      "origin": "cite",
+      "verdict": "auxiliary",
+      "note": "auxiliary: recorded-value lemma cited by the paper; outside the locked statement"
+    },
+    {
+      "name": "Frohman.Sextic.partner_must_not_be_X",
+      "query": "partner_must_not_be_X",
+      "origin": "cite",
+      "verdict": "auxiliary",
+      "note": "auxiliary: recorded-value lemma cited by the paper; outside the locked statement"
+    },
+    {
+      "name": "Frohman.Sextic.partner_equations_unwritten",
+      "query": "partner_equations_unwritten",
+      "origin": "cite",
+      "verdict": "auxiliary",
+      "note": "auxiliary: recorded-value lemma cited by the paper; outside the locked statement"
+    },
+    {
+      "name": "Frohman.Sextic.kernel_unwritten",
+      "query": "kernel_unwritten",
+      "origin": "cite",
+      "verdict": "auxiliary",
+      "note": "auxiliary: recorded-value lemma cited by the paper; outside the locked statement"
+    },
+    {
+      "name": "Frohman.Sextic.residual_fails_dim",
+      "query": "residual_fails_dim",
+      "origin": "cite",
+      "verdict": "auxiliary",
+      "note": "auxiliary: recorded-value lemma cited by the paper; outside the locked statement"
+    },
+    {
+      "name": "Frohman.Sextic.residual_fails_canonical",
+      "query": "residual_fails_canonical",
+      "origin": "cite",
+      "verdict": "auxiliary",
+      "note": "auxiliary: recorded-value lemma cited by the paper; outside the locked statement"
+    },
+    {
+      "name": "Frohman.Sextic.hmf_is_same_host",
+      "query": "hmf_is_same_host",
+      "origin": "cite",
+      "verdict": "auxiliary",
+      "note": "auxiliary: recorded-value lemma cited by the paper; outside the locked statement"
+    },
+    {
+      "name": "Frohman.Sextic.identity_is_X",
+      "query": "identity_is_X",
+      "origin": "cite",
+      "verdict": "auxiliary",
+      "note": "auxiliary: recorded-value lemma cited by the paper; outside the locked statement"
+    },
+    {
+      "name": "Frohman.Sextic.not_vacuous_true",
+      "query": "not_vacuous_true",
+      "origin": "cite",
+      "verdict": "auxiliary",
+      "note": "auxiliary: recorded-value lemma cited by the paper; outside the locked statement"
+    }
+  ],
+  "paper": [],
+  "lockDigest": "2cafa7112915fd1e1361cd20a4fd3b8bd4cabad56655d58bac1c9513c6caa10e",
+  "commit": {
+    "locked": "4d056001933b2e2340221f226d36bec04e7452bd",
+    "current": "4e003167378bb5f2a410401c1e4185b6a1d48003"
+  },
+  "toolchain": {
+    "locked": "leanprover/lean4:v4.34.0",
+    "current": "leanprover/lean4:v4.34.0"
+  }
+}

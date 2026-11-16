@@ -1,0 +1,44 @@
+{
+  "schema": "pipelinehalt/truth-gate-lock/v1",
+  "semantics": "Fixture/Semantics.lean",
+  "roots": [
+    "Fixture.Semantics"
+  ],
+  "prefixes": [
+    "Fixture"
+  ],
+  "paperClaim": {
+    "name": "Fixture.paper_claim",
+    "sourceSha256": "d960f3e98d0fc8738ece74159fc9511c017fc10d8338d58fddcb2ed425bcd582",
+    "exprSha256": "843f47a9e4e6877000838e3a5873b4baabf540a5ad4bf2347202109344eae9da",
+    "hash64": "8176375656230469964"
+  },
+  "correspondence": {
+    "name": "Fixture.intended_correspondence",
+    "formal": "Fixture.formal_claim",
+    "direction": "iff",
+    "sourceSha256": "d8af500c140b408d53610c2e603d7897181268bb921bb8acb46631a4225c0dbd",
+    "typeSha256": "9dea0e9f5d5b4142b076b39aa1d5fd7c6901406dcec4a0ac8abb9aeff5acecf7",
+    "hash64": "645702572"
+  },
+  "dependencies": {},
+  "axioms": [],
+  "headlines": [
+    "Fixture.headline"
+  ],
+  "auxiliary": {},
+  "paperSource": {
+    "source": "paper.tex",
+    "claims": [
+      "thm:main"
+    ],
+    "clarifications": {}
+  },
+  "commit": "13513d011da56e0a02a18e2a913be7b4b0cc19cf",
+  "toolchain": "leanprover/lean4:v4.34.0",
+  "approval": {
+    "approvedBy": "fixture (test only; not an author approval)",
+    "approvedAt": "2026-11-16T20:30:00Z",
+    "digest": "22521d01434bb408d3b9143f6e56f130928254f209904a3e53f5a5f015e44c15"
+  }
+}

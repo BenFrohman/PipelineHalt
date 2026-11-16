@@ -158,9 +158,16 @@ export async function runTruthGate(flags: Record<string, string[]>, say: (s: str
   const reqObs = "require-observation" in flags;
   const obsPath = one(flags, "require-observation") ?? join(project, OBSERVATION_FILE);
   const observation: Observation | null = reqObs && existsSync(obsPath) ? JSON.parse(readFileSync(obsPath, "utf8")) : null;
+  let tgFacts;
+  try {
+    tgFacts = facts(o);
+  } catch (e) {
+    say(`truth-gate: Lean elaboration failed, so nothing is certified: ${(e as Error).message.split("\n").slice(0, 6).join(" | ")}`);
+    tgFacts = parseTgFacts("");
+  }
   const report = evaluateTruthGate(lock, {
     semanticsSource: existsSync(semPath) ? readFileSync(semPath, "utf8") : undefined,
-    facts: facts(o),
+    facts: tgFacts,
     toolchain: toolchain(project),
     commit: git(project),
     paper: paperPath && existsSync(paperPath) ? { anchor: loadAnchor(paperPath), tex } : undefined,

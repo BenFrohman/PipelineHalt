@@ -56,3 +56,8 @@ jobs:
         run: |
           git checkout -- .
           ./run-negatives.sh
+      - name: verify-lock.sh passing demo and one tamper negative per post-approval rejection
+        run: |
+          git checkout -- .
+          lake build
+          ./run-tamper.sh

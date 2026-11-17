@@ -4,8 +4,10 @@
 #     truth-gate:
 #       uses: BenFrohman/PipelineHalt/.github/workflows/truth-gate.yml@main
 #
+# It runs scripts/verify-lock.sh: preflight, compile Semantics, observation pass (#check intended_correspondence,
+# #print paper_claim, #print formal_claim), lake build with the in-build lock, the lock script, and truth-gate check.
 # It never rebuilds Mathlib: when the project depends on Mathlib it fetches the published oleans with
-# `lake exe cache get` before `lake build`.
+# `lake exe cache get` before building.
 name: truth-gate
 on:
   workflow_call:
@@ -40,16 +42,6 @@ jobs:
           path: ${{ inputs.project }}/.lake
           key: lake-${{ runner.os }}-${{ hashFiles(format('{0}/lean-toolchain', inputs.project), format('{0}/lake-manifest.json', inputs.project)) }}-${{ github.sha }}
           restore-keys: lake-${{ runner.os }}-${{ hashFiles(format('{0}/lean-toolchain', inputs.project), format('{0}/lake-manifest.json', inputs.project)) }}-
-      - name: Fetch Mathlib cache (never rebuild Mathlib)
-        working-directory: ${{ inputs.project }}
-        run: |
-          if [ -f lake-manifest.json ] && grep -q '"mathlib"' lake-manifest.json; then lake exe cache get; fi
-      - name: lake build (includes the in-build #eval semantics lock)
-        working-directory: ${{ inputs.project }}
-        run: lake build 2>&1 | tee lake-build.log
-      - name: Run the semantics lock script explicitly
-        working-directory: ${{ inputs.project }}
-        run: lake env lean ${{ inputs.lock-script }}
       - uses: actions/checkout@v4
         with:
           repository: BenFrohman/PipelineHalt
@@ -60,19 +52,19 @@ jobs:
       - name: Build PipelineHalt
         working-directory: _pipelinehalt
         run: npm install && npx tsc -b
-      - name: Observation pass (mandatory first step; changes nothing)
-        run: node _pipelinehalt/dist/src/bin.js truth-gate observe --project ${{ inputs.project }} --lock ${{ inputs.project }}/${{ inputs.lock }}
-      - name: Truth Gate check
-        run: >
-          node _pipelinehalt/dist/src/bin.js truth-gate check --project ${{ inputs.project }}
-          --lock ${{ inputs.project }}/${{ inputs.lock }} --require-observation --ci
-          --report-md "$GITHUB_STEP_SUMMARY" --report-json truth-gate-report.json --badge truth-gate-badge.json
+      - name: Truth Gate (scripts/verify-lock.sh; observation pass is the first Lean step; never rebuilds Mathlib)
+        env:
+          LOCK: ${{ inputs.lock }}
+          LOCK_SCRIPT: ${{ inputs.lock-script }}
+          REPORT_DIR: ${{ github.workspace }}/truth-gate-out
+          CI: "1"
+        run: |
+          set +e
+          "$GITHUB_WORKSPACE/_pipelinehalt/scripts/verify-lock.sh" "${{ inputs.project }}"; rc=$?
+          [ -f truth-gate-out/truth-gate-report.md ] && cat truth-gate-out/truth-gate-report.md >> "$GITHUB_STEP_SUMMARY"
+          exit $rc
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: truth-gate
-          path: |
-            truth-gate-report.json
-            truth-gate-badge.json
-            ${{ inputs.project }}/lake-build.log
-            ${{ inputs.project }}/.pipelinehalt/observation.json
+          path: truth-gate-out/

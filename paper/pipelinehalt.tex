@@ -1,3 +1,4 @@
+% Copyright (c) 2026 Benjamin Stanley Frohman
 \documentclass[11pt]{article}
 \usepackage[margin=1in]{geometry}
 \usepackage{amsmath,amssymb,booktabs,hyperref,xcolor,listings}
@@ -7,6 +8,8 @@
 \date{November 2026}
 \begin{document}
 \maketitle
+\noindent{\small Copyright (c) 2026 Benjamin Stanley Frohman.}\par
+
 \begin{abstract}
 A formalization is only as faithful as the match between the statements it proves and the claims the accompanying paper makes. These two artifacts drift: indices shift, hypotheses are added, sets are re-encoded, numbering diverges. We describe PipelineHalt, a small open-source tool that treats the paper's claims as an anchor and the Lean statements as the live artifact, flags places where the Lean is \emph{silent}, \emph{narrower}, or \emph{conditional} relative to the paper, or where the paper itself is \emph{ambiguous}, and then halts with a precise clarification question rather than correcting anything. Answers are recorded verbatim in the anchor under stable identifiers so questions are not re-asked. The tool does not and cannot recover intent that was never written down; its matching is heuristic and syntactic. We report its real output on a small Lean development, including a false positive.
 \end{abstract}
